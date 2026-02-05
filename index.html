@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Control - Caleb E</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --accent-crimson: #dc143c;
+            --text-primary: #ffffff;
+            --text-secondary: #8a8a9a;
+            --border: #2a2a3a;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        .topbar {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+        }
+        
+        .logo span {
+            background: linear-gradient(90deg, var(--accent-crimson), #ff4757);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .container { display: flex; min-height: calc(100vh - 70px); }
+        
+        .sidebar {
+            width: 280px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .nav-section { margin-bottom: 24px; }
+        
+        .nav-title {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-left: 12px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            font-size: 14px;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: rgba(220, 20, 60, 0.1);
+            border-color: rgba(220, 20, 60, 0.3);
+        }
+        
+        .main {
+            flex: 1;
+            padding: 32px;
+            overflow-y: auto;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+        
+        .section-title { font-size: 28px; font-weight: 700; }
+        
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(220, 20, 60, 0.5);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .project-title { font-size: 18px; font-weight: 700; }
+        
+        .project-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .status-active { background: rgba(76, 175, 80, 0.2); color: #4CAF50; }
+        .status-progress { background: rgba(255, 152, 0, 0.2); color: #FF9800; }
+        .status-planning { background: rgba(33, 150, 243, 0.2); color: #2196F3; }
+        
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 12px 0;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: var(--bg-primary);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-crimson), #ff4757);
+            border-radius: 3px;
+        }
+        
+        .tasks-container {
+            display: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .tasks-container.expanded { display: block; }
+        
+        .task-item {
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .btn-spawn {
+            background: var(--accent-crimson);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-spawn:hover { background: #ff3366; }
+        
+        .subtasks {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+        
+        .subtask {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="logo">🎯 MISSION <span>CONTROL</span></div>
+        <div style="color: var(--text-secondary);">Caleb E Dashboard</div>
+    </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="nav-section">
+                <div class="nav-title">Dashboard</div>
+                <div class="nav-item active" onclick="showHome()">🏠 Home</div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">A — Ambition by Calbee</div>
+                <div class="nav-item" onclick="showProject('A1')">A1 Personal Tasks</div>
+                <div class="nav-item" onclick="showProject('A2')">A2 RE: UNITE</div>
+                <div class="nav-item" onclick="showProject('A3')">A3 KOE</div>
+                <div class="nav-item" onclick="showProject('A4')">A4 Streaming</div>
+                <div class="nav-item" onclick="showProject('A5')">A5 Trading</div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">B — Business Empire</div>
+                <div class="nav-item" onclick="showProject('B1')">B1 Team Elevate</div>
+                <div class="nav-item" onclick="showProject('B2')">B2 ETHEREAL</div>
+            </div>
+        </div>
+        
+        <div class="main" id="main-content">
+            <div class="section-header">
+                <h1 class="section-title">Active Projects</h1>
+            </div>
+            
+            <!-- RE: UNITE -->
+            <div class="project-card" onclick="toggleTasks('reunite')">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">📖 A2 RE: UNITE</div>
+                        <div class="project-desc">R21 Isekai AI Story Writing</div>
+                    </div>
+                    <span class="project-status status-active">Active</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                
+                <div class="tasks-container" id="tasks-reunite">
+                    <div class="task-item">
+                        <div class="task-header">
+                            <span><strong>Upload Chapter 1-12 to platforms</strong></span>
+                            <button class="btn-spawn" onclick="event.stopPropagation(); spawnAgent('reunite-upload')">Spawn Agent</button>
+                        </div>
+                        <div class="subtasks">
+                            <div class="subtask">☐ Royal Road upload</div>
+                            <div class="subtask">☐ Wattpad upload</div>
+                            <div class="subtask">☐ Scribble Hub upload</div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-item">
+                        <div class="task-header">
+                            <span><strong>Write Chapter 13</strong></span>
+                            <button class="btn-spawn" onclick="event.stopPropagation(); spawnAgent('reunite-ch13')">Spawn Agent</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Elevate -->
+            <div class="project-card" onclick="toggleTasks('elevate')">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">🌐 B1 Team Elevate</div>
+                        <div class="project-desc">Website development project</div>
+                    </div>
+                    <span class="project-status status-progress">In Progress</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                
+                <div class="tasks-container" id="tasks-elevate">
+                    <div class="task-item">
+                        <div class="task-header">
+                            <span><strong>Build homepage design</strong></span>
+                            <button class="btn-spawn" onclick="event.stopPropagation(); spawnAgent('elevate-homepage')">Spawn Agent</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ETHEREAL -->
+            <div class="project-card" onclick="toggleTasks('ethereal')">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">🖨️ B2 ETHEREAL</div>
+                        <div class="project-desc">3D Printing Business - Shopify</div>
+                    </div>
+                    <span class="project-status status-planning">Planning</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                
+                <div class="tasks-container" id="tasks-ethereal">
+                    <div class="task-item">
+                        <div class="task-header">
+                            <span><strong>Setup Shopify store</strong></span>
+                            <button class="btn-spawn" onclick="event.stopPropagation(); spawnAgent('ethereal-shopify')">Spawn Agent</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleTasks(projectId) {
+            const container = document.getElementById('tasks-' + projectId);
+            if (container) {
+                container.classList.toggle('expanded');
+            }
+        }
+        
+        function spawnAgent(taskId) {
+            alert('🤖 Spawning agent for: ' + taskId + '\n\nAgent will start working and update progress here.');
+            console.log('Agent spawn requested:', taskId);
+        }
+        
+        function showHome() {
+            document.getElementById('main-content').innerHTML = `
+                <div class="section-header">
+                    <h1 class="section-title">Active Projects</h1>
+                </div>
+                <p style="color: var(--text-secondary);">Select a project from the sidebar or click a card above to view tasks.</p>
+            `;
+        }
+        
+        function showProject(projectId) {
+            alert('Navigating to project: ' + projectId);
+        }
+    </script>
+</body>
+</html>
