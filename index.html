@@ -901,6 +901,19 @@
             </div>
             
             
+            <div id="view-project" class="view">
+                <div style="margin-bottom: 20px;">
+                    <button onclick="showView('categories')" style="background: transparent; border: 1px solid rgba(255,0,51,0.3); color: #fff; padding: 10px 20px; border-radius: 8px; cursor: pointer;">← Back to Projects</button>
+                </div>
+                
+                <h1 class="page-title" id="project-title">Project Name</h1>
+                <p class="page-subtitle" id="project-subtitle">Project description</p>
+                
+                <div id="project-tasks-container">
+                    <!-- Tasks will be loaded here -->
+                </div>
+            </div>
+            
             <div id="view-insights" class="view">
                 <h1 class="page-title">Insights</h1>
                 <div class="card" style="padding: 80px; text-align: center;">
@@ -1020,6 +1033,65 @@
         fetchData();
         setInterval(fetchData, POLL_INTERVAL);
         
+        // Show project details
+        async function showProject(projectCode) {
+            // Find project data
+            const category = projectCode.charAt(0);
+            const projectData = currentData?.projects?.[category]?.projects?.find(p => p.code === projectCode);
+            
+            if (!projectData) {
+                alert('Project ' + projectCode + ' details coming soon!');
+                return;
+            }
+            
+            // Update project view
+            document.getElementById('project-title').textContent = projectCode + ' ' + projectData.name;
+            document.getElementById('project-subtitle').textContent = projectData.tasks?.length + ' tasks' || 'Loading tasks...';
+            
+            // Build tasks HTML
+            const tasksContainer = document.getElementById('project-tasks-container');
+            if (projectData.tasks) {
+                tasksContainer.innerHTML = projectData.tasks.map(task => `
+                    <div class="card" style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                            <div>
+                                <h3 style="font-size: 18px; margin-bottom: 4px;">${task.title}</h3>
+                                <span style="color: rgba(255,255,255,0.5); font-size: 13px;">${task.status === 'in_progress' ? '🟡 In Progress' : '⚪ Pending'}</span>
+                            </div>
+                            <button onclick="spawnAgentForTask('${task.id}', '${task.title}')" 
+                                style="background: linear-gradient(135deg, rgba(255,0,51,0.8), rgba(255,77,0,0.7)); border: none; color: #fff; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                                🤖 Spawn Agent
+                            </button>
+                        </div>
+                        
+                        <div class="progress-bg" style="margin-bottom: 16px;">
+                            <div class="progress-fill" style="width: ${task.progress}%"></div>
+                        </div>
+                        
+                        <div style="margin-left: 20px;">
+                            ${task.subtasks.map(sub => `
+                                <div style="padding: 8px 0; color: ${sub.done ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.7)'}; text-decoration: ${sub.done ? 'line-through' : 'none'};">
+                                    ${sub.done ? '✅' : '⬜'} ${sub.title}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                tasksContainer.innerHTML = '<div class="card" style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">No tasks loaded yet</div>';
+            }
+            
+            // Show project view
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-project').classList.add('active');
+        }
+        
+        // Spawn agent for specific task
+        function spawnAgentForTask(taskId, taskTitle) {
+            alert(`🚀 Spawning agent for:\n${taskTitle}\n\nTask ID: ${taskId}\n\nThis will connect to OpenClaw and start working on the task!`);
+            // Task 3: Connect to OpenClaw sessions_spawn here
+        }
+        
         // UI Functions
         function toggleCat(id) {
             document.getElementById(id).classList.toggle('show');
@@ -1029,8 +1101,10 @@
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
             document.getElementById('view-' + view).classList.add('active');
             
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            event.target.classList.add('active');
+            if (event && event.target.classList.contains('nav-item')) {
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                event.target.classList.add('active');
+            }
         }
         
         // Simulate spawning an agent (will connect to OpenClaw later)
@@ -1038,7 +1112,7 @@
             const task = prompt('What task should the agent work on?');
             if (task) {
                 alert(`🚀 Spawning agent for: ${task}\n\nThis will be connected to OpenClaw in Task 3!`);
-                // In Task 3, this will call: sessions_spawn
+                // Task 3: Call sessions_spawn here
             }
         }
     </script>

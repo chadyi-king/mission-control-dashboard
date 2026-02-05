@@ -106,7 +106,44 @@
       "count": 6,
       "projects": [
         {"code": "A1", "name": "Personal Tasks", "tasks_count": 12},
-        {"code": "A2", "name": "RE: UNITE", "tasks_count": 8},
+        {"code": "A2", "name": "RE: UNITE", "tasks_count": 8, 
+         "tasks": [
+           {
+             "id": "A2-1",
+             "title": "Upload Chapters 1-12",
+             "status": "in_progress",
+             "progress": 45,
+             "subtasks": [
+               {"title": "Royal Road upload", "done": true},
+               {"title": "Wattpad upload", "done": true},
+               {"title": "Scribble Hub upload", "done": false},
+               {"title": "Novel Updates", "done": false}
+             ]
+           },
+           {
+             "id": "A2-2",
+             "title": "Write Chapter 13",
+             "status": "pending",
+             "progress": 0,
+             "subtasks": [
+               {"title": "Outline plot points", "done": false},
+               {"title": "Draft chapter", "done": false},
+               {"title": "Edit and proofread", "done": false}
+             ]
+           },
+           {
+             "id": "A2-3",
+             "title": "Design book cover",
+             "status": "pending",
+             "progress": 0,
+             "subtasks": [
+               {"title": "Research cover trends", "done": false},
+               {"title": "Create draft designs", "done": false},
+               {"title": "Finalize cover", "done": false}
+             ]
+           }
+         ]
+        },
         {"code": "A3", "name": "KOE", "tasks_count": 5},
         {"code": "A4", "name": "Streaming", "tasks_count": 6},
         {"code": "A5", "name": "Trading", "tasks_count": 4},
