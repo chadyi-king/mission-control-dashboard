@@ -385,8 +385,7 @@
             transition: padding-left 0.3s ease;
         }
 
-        .sidebar.expanded ~ .main-container,
-        body:has(.sidebar.expanded) .main-container {
+        .main-container.sidebar-expanded {
             padding-left: 224px;
         }
 
@@ -395,8 +394,7 @@
             transition: padding-left 0.3s ease;
         }
 
-        .sidebar.expanded ~ .stats-bar,
-        body:has(.sidebar.expanded) .stats-bar {
+        .stats-bar.sidebar-expanded {
             padding-left: 224px;
         }
 
@@ -1514,43 +1512,50 @@
                             <div class="category-title">A<span>MBITION</span></div>
                             <div class="category-subtitle">By Calbee (Personal)</div>
                         </div>
-                        <div class="category-count">5</div>
+                        <div class="category-count">6</div>
                     </div>
                     <div class="category-projects">
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>A1 · Personal Tasks</h4>
                                 <p>General personal tasks</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item active">
+                        <div class="category-project-item active" onclick="viewProject('A2')">
                             <div class="project-info">
                                 <h4>A2 · Re:Unite</h4>
                                 <p>Novel - 3/12 chapters</p>
                             </div>
                             <span class="project-status active">Active</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>A3 · KOE</h4>
                                 <p>Project KOE</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>A4 · Streaming</h4>
                                 <p>Live streaming setup</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>A5 · Trading</h4>
                                 <p>Trading activities</p>
                             </div>
                             <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item active" onclick="viewProject('A6')">
+                            <div class="project-info">
+                                <h4>A6 · Mission Control</h4>
+                                <p>Dashboard - 46% complete (12/26 tasks)</p>
+                            </div>
+                            <span class="project-status active">Active</span>
                         </div>
                     </div>
                 </div>
@@ -1565,70 +1570,70 @@
                         <div class="category-count">10</div>
                     </div>
                     <div class="category-projects">
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B1 · Exstatic</h4>
                                 <p>Business unit 1</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B2 · Energize</h4>
                                 <p>Business unit 2</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item active">
+                        <div class="category-project-item active" onclick="viewProject('A2')">
                             <div class="project-info">
                                 <h4>B3 · Team Elevate</h4>
                                 <p>1/10 tasks · Active</p>
                             </div>
                             <span class="project-status active">Active</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B4 · Pesta Fiesta</h4>
                                 <p>Business unit 4</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B5 · Enticipate</h4>
                                 <p>Business unit 5</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B6 · Elluminate</h4>
                                 <p>Business unit 6</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B7 · Encompasse</h4>
                                 <p>Business unit 7</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B8 · Empyrean</h4>
                                 <p>Business unit 8</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B9 · Ethereal</h4>
                                 <p>Business unit 9</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>B10 · Epitaph</h4>
                                 <p>Business unit 10</p>
@@ -1648,14 +1653,14 @@
                         <div class="category-count">2</div>
                     </div>
                     <div class="category-projects">
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>C1 · Real Estate</h4>
                                 <p>Property investments</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>C2 · Side Sales Jobs</h4>
                                 <p>Additional sales work</p>
@@ -1839,10 +1844,22 @@
             const sidebar = document.getElementById('sidebar');
             const toggleArrow = document.querySelector('.sidebar-toggle span:first-child');
             const toggleText = document.querySelector('.sidebar-toggle-text');
+            const mainContainer = document.querySelector('.main-container');
+            const statsBar = document.querySelector('.stats-bar');
+
             sidebar.classList.toggle('expanded');
             const isExpanded = sidebar.classList.contains('expanded');
+
             toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
+
+            // Shift content when sidebar expands
+            if (mainContainer) {
+                mainContainer.classList.toggle('sidebar-expanded', isExpanded);
+            }
+            if (statsBar) {
+                statsBar.classList.toggle('sidebar-expanded', isExpanded);
+            }
         }
 
         function setActive(element) {
