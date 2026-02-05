@@ -266,6 +266,87 @@
             animation: pulse 2s infinite;
         }
         
+        /* Quick Actions */
+        .quick-actions {
+            position: relative;
+        }
+        
+        .quick-btn {
+            padding: 8px 16px;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 4px;
+            color: var(--crimson-bright);
+            font-family: var(--display-font);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quick-btn:hover {
+            background: var(--crimson-bright);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--crimson-glow);
+        }
+        
+        .quick-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
+            padding: 8px;
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        
+        .quick-menu.show {
+            display: block;
+        }
+        
+        .quick-section {
+            margin-bottom: 8px;
+        }
+        
+        .quick-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .quick-section-title {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--crystal-border);
+        }
+        
+        .quick-item {
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        
+        .quick-item:hover {
+            background: var(--crimson-glow);
+            color: var(--crimson-bright);
+        }
+        
         /* Compact Stats */
         .stats-bar {
             display: grid;
@@ -482,6 +563,59 @@
         
         <div class="topbar-right">
             <div class="clock-widget" id="clock">00:00:00</div>
+            
+            <!-- Quick Actions Menu -->
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="toggleQuickMenu()">
+                    ⚡ ACTIONS ▼
+                </button>
+                <div class="quick-menu" id="quickMenu">
+                    
+                    <div class="quick-section">
+                        <div class="quick-section-title">Control</div>
+                        <div class="quick-item" onclick="quickAction('pause')">
+                            ⏸ Pause All Agents
+                        </div>
+                        <div class="quick-item" onclick="quickAction('resume')">
+                            ▶ Resume All
+                        </div>
+                        <div class="quick-item" onclick="quickAction('smack')">
+                            👋 Smack All (Status Check)
+                        </div>
+                        <div class="quick-item" onclick="quickAction('kill')">
+                            ✕ Kill Stuck Agent
+                        </div>
+                    </div>
+                    
+                    <div class="quick-section">
+                        <div class="quick-section-title">Execute</div>
+                        <div class="quick-item" onclick="quickAction('spawn-a2')">
+                            🚀 Spawn for A2
+                        </div>
+                        <div class="quick-item" onclick="quickAction('spawn-b3')">
+                            🚀 Spawn for B3
+                        </div>
+                        <div class="quick-item" onclick="quickAction('emergency')">
+                            🚨 Emergency Agent
+                        </div>
+                    </div>
+                    
+                    <div class="quick-section">
+                        <div class="quick-section-title">Create</div>
+                        <div class="quick-item" onclick="quickAction('add-task')">
+                            ➕ Quick Add Task
+                        </div>
+                        <div class="quick-item" onclick="quickAction('blocked')">
+                            🚫 Add Blocked Task
+                        </div>
+                        <div class="quick-item" onclick="quickAction('github')">
+                            📤 GitHub Push
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
             <div class="status-widget">
                 <div class="status-dot"></div>
                 <span>ONLINE</span>
@@ -803,6 +937,53 @@
         }
         setInterval(updateClock, 1000);
         updateClock();
+        
+        // Quick Actions Menu
+        function toggleQuickMenu() {
+            document.getElementById('quickMenu').classList.toggle('show');
+        }
+        
+        function quickAction(action) {
+            const messages = {
+                'pause': '⏸ All agents paused',
+                'resume': '▶ All agents resumed',
+                'smack': '👋 Pinging all agents for status...',
+                'kill': '✕ Select agent to kill:',
+                'spawn-a2': '🚀 Spawning agent for A2...',
+                'spawn-b3': '🚀 Spawning agent for B3...',
+                'emergency': '🚨 Emergency agent spawned!',
+                'add-task': '➕ Enter task name:',
+                'blocked': '🚫 Enter blocked task:',
+                'github': '📤 Pushing to GitHub...'
+            };
+            
+            const msg = messages[action] || 'Processing...';
+            
+            if (action === 'add-task' || action === 'blocked') {
+                const input = prompt(msg);
+                if (input) {
+                    alert(`✅ ${action === 'add-task' ? 'Task' : 'Blocked task'} added: ${input}`);
+                }
+            } else if (action === 'kill') {
+                const agent = prompt(msg + '\n\n1. K2.5-Writer\n2. GPT-4-Coder\n3. K2.5-Researcher');
+                if (agent) {
+                    alert(`✕ Killing agent ${agent}...`);
+                }
+            } else {
+                alert(msg);
+            }
+            
+            document.getElementById('quickMenu').classList.remove('show');
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('quickMenu');
+            const btn = document.querySelector('.quick-btn');
+            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
     </script>
 </body>
 </html>
