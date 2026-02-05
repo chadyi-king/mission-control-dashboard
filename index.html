@@ -572,44 +572,25 @@
                 <div class="quick-menu" id="quickMenu">
                     
                     <div class="quick-section">
-                        <div class="quick-section-title">Control</div>
-                        <div class="quick-item" onclick="quickAction('pause')">
-                            ⏸ Pause All Agents
+                        <div class="quick-section-title">Control Dashboard</div>
+                        <div class="quick-item" onclick="quickAction('refresh')">
+                            🔄 Refresh Data
                         </div>
-                        <div class="quick-item" onclick="quickAction('resume')">
-                            ▶ Resume All
+                        <div class="quick-item" onclick="quickAction('fullscreen')">
+                            ⛶ Toggle Fullscreen
                         </div>
-                        <div class="quick-item" onclick="quickAction('smack')">
-                            👋 Smack All (Status Check)
-                        </div>
-                        <div class="quick-item" onclick="quickAction('kill')">
-                            ✕ Kill Stuck Agent
+                        <div class="quick-item" onclick="quickAction('export')">
+                            📊 Export Today's Report
                         </div>
                     </div>
                     
                     <div class="quick-section">
-                        <div class="quick-section-title">Execute</div>
-                        <div class="quick-item" onclick="quickAction('spawn-a2')">
-                            🚀 Spawn for A2
-                        </div>
-                        <div class="quick-item" onclick="quickAction('spawn-b3')">
-                            🚀 Spawn for B3
-                        </div>
-                        <div class="quick-item" onclick="quickAction('emergency')">
-                            🚨 Emergency Agent
-                        </div>
-                    </div>
-                    
-                    <div class="quick-section">
-                        <div class="quick-section-title">Create</div>
+                        <div class="quick-section-title">Create Task (Demo)</div>
                         <div class="quick-item" onclick="quickAction('add-task')">
                             ➕ Quick Add Task
                         </div>
-                        <div class="quick-item" onclick="quickAction('blocked')">
-                            🚫 Add Blocked Task
-                        </div>
                         <div class="quick-item" onclick="quickAction('github')">
-                            📤 GitHub Push
+                            📤 Deploy to GitHub
                         </div>
                     </div>
                     
@@ -944,33 +925,24 @@
         }
         
         function quickAction(action) {
-            const messages = {
-                'pause': '⏸ All agents paused',
-                'resume': '▶ All agents resumed',
-                'smack': '👋 Pinging all agents for status...',
-                'kill': '✕ Select agent to kill:',
-                'spawn-a2': '🚀 Spawning agent for A2...',
-                'spawn-b3': '🚀 Spawning agent for B3...',
-                'emergency': '🚨 Emergency agent spawned!',
-                'add-task': '➕ Enter task name:',
-                'blocked': '🚫 Enter blocked task:',
-                'github': '📤 Pushing to GitHub...'
-            };
-            
-            const msg = messages[action] || 'Processing...';
-            
-            if (action === 'add-task' || action === 'blocked') {
-                const input = prompt(msg);
-                if (input) {
-                    alert(`✅ ${action === 'add-task' ? 'Task' : 'Blocked task'} added: ${input}`);
+            if (action === 'refresh') {
+                location.reload();
+            } else if (action === 'fullscreen') {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
                 }
-            } else if (action === 'kill') {
-                const agent = prompt(msg + '\n\n1. K2.5-Writer\n2. GPT-4-Coder\n3. K2.5-Researcher');
-                if (agent) {
-                    alert(`✕ Killing agent ${agent}...`);
+            } else if (action === 'export') {
+                const report = `MISSION CONTROL REPORT\n${new Date().toLocaleString()}\n\nActive Agents: 3\nTasks Done Today: 7\nFocus Project: A2`;
+                alert(report);
+            } else if (action === 'add-task') {
+                const task = prompt('Enter task name:');
+                if (task) {
+                    alert(`✅ Task added (demo): ${task}\n\nNote: Not connected to real system yet.`);
                 }
-            } else {
-                alert(msg);
+            } else if (action === 'github') {
+                alert('📤 Deploying to GitHub Pages...\n\n(This would trigger a git push in real setup)');
             }
             
             document.getElementById('quickMenu').classList.remove('show');
