@@ -920,6 +920,107 @@
     </div>
     
     <script>
+        // Data polling configuration
+        const DATA_URL = 'https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json';
+        const POLL_INTERVAL = 30000; // 30 seconds
+        
+        let currentData = null;
+        
+        // Fetch and update dashboard data
+        async function fetchData() {
+            try {
+                const response = await fetch(DATA_URL + '?t=' + Date.now()); // Cache buster
+                const data = await response.json();
+                currentData = data;
+                updateDashboard(data);
+                console.log('Data updated:', new Date().toLocaleTimeString());
+            } catch (error) {
+                console.error('Failed to fetch data:', error);
+            }
+        }
+        
+        // Update dashboard with new data
+        function updateDashboard(data) {
+            // Update stats
+            if (data.stats) {
+                updateStat(0, data.stats.active_agents);
+                updateStat(1, data.stats.time_today);
+                updateStat(2, '$' + data.stats.token_cost_today.toFixed(2));
+                updateStat(3, data.stats.completion_rate + '%');
+            }
+            
+            // Update agents
+            if (data.agents) {
+                updateAgents(data.agents);
+            }
+            
+            // Update activity feed
+            if (data.activity) {
+                updateActivity(data.activity);
+            }
+        }
+        
+        // Update a single stat value
+        function updateStat(index, value) {
+            const statCards = document.querySelectorAll('.stats-grid .stat-number');
+            if (statCards[index] && statCards[index].textContent !== String(value)) {
+                statCards[index].textContent = value;
+                statCards[index].style.animation = 'none';
+                setTimeout(() => {
+                    statCards[index].style.animation = 'pulse 0.5s';
+                }, 10);
+            }
+        }
+        
+        // Update agent cards
+        function updateAgents(agents) {
+            const agentCards = document.querySelectorAll('.agent-card');
+            agents.forEach((agent, index) => {
+                if (agentCards[index]) {
+                    const nameEl = agentCards[index].querySelector('.agent-name');
+                    const taskEl = agentCards[index].querySelector('.agent-task');
+                    const etaEl = agentCards[index].querySelector('.agent-eta');
+                    const progressNum = agentCards[index].querySelector('.agent-progress-num');
+                    const progressFill = agentCards[index].querySelector('.progress-fill');
+                    
+                    if (nameEl) nameEl.textContent = agent.name;
+                    if (taskEl) taskEl.textContent = agent.task;
+                    if (etaEl) etaEl.textContent = agent.eta + ' remaining';
+                    if (progressNum) progressNum.textContent = agent.progress + '%';
+                    if (progressFill) progressFill.style.width = agent.progress + '%';
+                }
+            });
+        }
+        
+        // Update activity feed
+        function updateActivity(activities) {
+            const activityList = document.querySelector('.activity-list');
+            if (!activityList || activities.length === 0) return;
+            
+            // Only update if first item is different
+            const firstItem = activityList.querySelector('.activity-item');
+            if (firstItem) {
+                const firstText = firstItem.querySelector('div > div:first-child');
+                if (firstText && firstText.textContent !== activities[0].text) {
+                    // Rebuild activity list
+                    activityList.innerHTML = activities.slice(0, 5).map(activity => `
+                        <div class="activity-item">
+                            <div class="activity-badge badge-${activity.type === 'success' ? 'green' : activity.type === 'warning' ? 'yellow' : 'red'}">${activity.icon}</div>
+                            <div>
+                                <div>${activity.text}</div>
+                                <div style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 4px;">${activity.time} • ${activity.category}</div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+        
+        // Initial fetch and polling
+        fetchData();
+        setInterval(fetchData, POLL_INTERVAL);
+        
+        // UI Functions
         function toggleCat(id) {
             document.getElementById(id).classList.toggle('show');
         }
@@ -930,6 +1031,15 @@
             
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             event.target.classList.add('active');
+        }
+        
+        // Simulate spawning an agent (will connect to OpenClaw later)
+        function spawnAgent() {
+            const task = prompt('What task should the agent work on?');
+            if (task) {
+                alert(`🚀 Spawning agent for: ${task}\n\nThis will be connected to OpenClaw in Task 3!`);
+                // In Task 3, this will call: sessions_spawn
+            }
         }
     </script>
 </body>
