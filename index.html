@@ -239,6 +239,114 @@
             gap: 20px;
         }
         
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 60px;
+            width: 60px;
+            height: calc(100vh - 60px);
+            background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(5,5,8,0.9) 100%);
+            border-right: 1px solid var(--crystal-border);
+            z-index: 90;
+            display: flex;
+            flex-direction: column;
+            padding: 16px 0;
+            transition: width 0.3s;
+        }
+        
+        .sidebar.expanded {
+            width: 200px;
+        }
+        
+        .sidebar-toggle {
+            position: absolute;
+            right: -12px;
+            top: 20px;
+            width: 24px;
+            height: 24px;
+            background: var(--crimson-bright);
+            border: none;
+            border-radius: 50%;
+            color: var(--bg-primary);
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px var(--crimson-glow);
+        }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        
+        .sidebar-item:hover {
+            background: var(--crimson-glow);
+            color: var(--crimson-bright);
+        }
+        
+        .sidebar-item.active {
+            background: var(--crimson-glow);
+            color: var(--crimson-bright);
+            border-right: 3px solid var(--crimson-bright);
+        }
+        
+        .sidebar-icon {
+            font-size: 20px;
+            min-width: 28px;
+            text-align: center;
+        }
+        
+        .sidebar-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .sidebar.expanded .sidebar-label {
+            opacity: 1;
+        }
+        
+        /* Adjust main container for sidebar */
+        .main-container {
+            padding: 16px 24px 16px 84px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .stats-bar {
+            padding: 10px 24px 10px 84px;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+            
+            .main-container {
+                padding: 16px;
+            }
+            
+            .stats-bar {
+                padding: 10px 24px;
+            }
+        }
+        
         .clock-widget {
             font-family: var(--display-font);
             font-size: 16px;
@@ -352,7 +460,7 @@
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 6px;
-            padding: 10px 24px;
+            padding: 10px 24px 10px 84px;
             background: linear-gradient(180deg, rgba(10,10,15,0.8) 0%, transparent 100%);
             position: relative;
             z-index: 10;
@@ -385,13 +493,6 @@
         .stat-sub {
             font-size: 8px;
             color: var(--text-secondary);
-        }
-        
-        /* Main Container */
-        .main-container {
-            padding: 16px 24px;
-            position: relative;
-            z-index: 10;
         }
         
         .row {
@@ -507,8 +608,10 @@
         
         @media (max-width: 768px) {
             .topbar-center { display: none; }
-            .stats-bar { grid-template-columns: repeat(3, 1fr); }
-            .main-container { padding: 12px; }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .stats-bar { grid-template-columns: repeat(3, 1fr); padding: 10px 24px; }
+            .main-container { padding: 16px; }
         }
     </style>
 </head>
@@ -602,6 +705,41 @@
                 <span>ONLINE</span>
             </div>
         </div>
+    </div>
+    
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">▶</button>
+        
+        <a href="#" class="sidebar-item active" onclick="setActive(this)">
+            <span class="sidebar-icon">◈</span>
+            <span class="sidebar-label">Home</span>
+        </a>
+        
+        <a href="#" class="sidebar-item" onclick="setActive(this)">
+            <span class="sidebar-icon">📋</span>
+            <span class="sidebar-label">Categories</span>
+        </a>
+        
+        <a href="#" class="sidebar-item" onclick="setActive(this)">
+            <span class="sidebar-icon">👤</span>
+            <span class="sidebar-label">Insights</span>
+        </a>
+        
+        <a href="#" class="sidebar-item" onclick="setActive(this)">
+            <span class="sidebar-icon">💼</span>
+            <span class="sidebar-label">Resources</span>
+        </a>
+        
+        <a href="#" class="sidebar-item" onclick="setActive(this)">
+            <span class="sidebar-icon">🔧</span>
+            <span class="sidebar-label">System</span>
+        </a>
+        
+        <a href="#" class="sidebar-item" onclick="setActive(this)">
+            <span class="sidebar-icon">⚙️</span>
+            <span class="sidebar-label">Profile</span>
+        </a>
     </div>
     
     <!-- COMPACT STATS BAR -->
@@ -946,6 +1084,21 @@
             }
             
             document.getElementById('quickMenu').classList.remove('show');
+        }
+        
+        // Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.sidebar-toggle');
+            sidebar.classList.toggle('expanded');
+            toggle.textContent = sidebar.classList.contains('expanded') ? '◀' : '▶';
+        }
+        
+        function setActive(element) {
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
         }
         
         // Close menu when clicking outside
