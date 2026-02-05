@@ -10,19 +10,20 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --bg-primary: #0a0a0c;
-            --bg-card: #121216;
-            --bg-elevated: #1a1a20;
-            --fire-bright: #ff4500;
-            --fire-glow: #ff2200;
-            --fire-soft: rgba(255, 69, 0, 0.3);
+            --bg-primary: #050508;
+            --bg-card: #0a0a0f;
+            --bg-elevated: #12121a;
+            --crimson: #8B0000;
+            --crimson-bright: #DC143C;
+            --crimson-glow: rgba(139, 0, 0, 0.4);
+            --blood: #660000;
             --alert-red: #ff1a1a;
             --chart-green: #00ff88;
-            --chart-line: #ff6600;
-            --text-primary: #ffffff;
+            --text-primary: rgba(255, 255, 255, 0.95);
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-muted: rgba(255, 255, 255, 0.4);
-            --border-glow: rgba(255, 69, 0, 0.4);
+            --crystal: rgba(255, 255, 255, 0.03);
+            --crystal-border: rgba(255, 255, 255, 0.08);
             --tech-font: 'Rajdhani', sans-serif;
             --display-font: 'Orbitron', sans-serif;
         }
@@ -37,8 +38,8 @@
             letter-spacing: 0.5px;
         }
         
-        /* Tactical Background */
-        .tactical-bg {
+        /* Animated Crystal Background */
+        .crystal-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -46,12 +47,14 @@
             height: 100%;
             z-index: 0;
             background: 
-                radial-gradient(ellipse 50% 40% at 30% 20%, rgba(255, 69, 0, 0.15) 0%, transparent 60%),
-                radial-gradient(ellipse 40% 30% at 70% 80%, rgba(255, 34, 0, 0.1) 0%, transparent 50%),
-                linear-gradient(180deg, rgba(10,10,12,1) 0%, rgba(8,8,10,1) 100%);
+                radial-gradient(ellipse 60% 50% at 20% 30%, var(--crimson-glow) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 80% 70%, rgba(139, 0, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse 30% 30% at 50% 50%, rgba(220, 20, 60, 0.1) 0%, transparent 40%),
+                var(--bg-primary);
         }
         
-        .grid-overlay {
+        /* Crystal Shards Animation */
+        .crystal-shards {
             position: fixed;
             top: 0;
             left: 0;
@@ -59,18 +62,57 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.03;
-            background-image: 
-                linear-gradient(rgba(255, 69, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 69, 0, 0.5) 1px, transparent 1px);
-            background-size: 50px 50px;
+            overflow: hidden;
         }
         
-        /* Top Bar - Tactical */
+        .shard {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: float 20s ease-in-out infinite;
+            opacity: 0.3;
+        }
+        
+        .shard:nth-child(1) { width: 60px; height: 100px; left: 10%; top: 20%; animation-delay: 0s; }
+        .shard:nth-child(2) { width: 40px; height: 80px; left: 25%; top: 60%; animation-delay: 5s; }
+        .shard:nth-child(3) { width: 80px; height: 120px; left: 70%; top: 30%; animation-delay: 10s; }
+        .shard:nth-child(4) { width: 50px; height: 90px; left: 85%; top: 70%; animation-delay: 15s; }
+        .shard:nth-child(5) { width: 35px; height: 70px; left: 45%; top: 80%; animation-delay: 7s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+            50% { transform: translateY(-30px) rotate(5deg); opacity: 0.4; }
+        }
+        
+        /* Light Refraction */
+        .light-ray {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent 40%, 
+                rgba(139, 0, 0, 0.03) 45%, 
+                rgba(220, 20, 60, 0.05) 50%, 
+                rgba(139, 0, 0, 0.03) 55%, 
+                transparent 60%);
+            animation: shimmer 15s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        /* Top Bar */
         .topbar {
-            background: linear-gradient(180deg, rgba(18,18,22,0.95) 0%, rgba(10,10,12,0.9) 100%);
-            border-bottom: 2px solid var(--fire-bright);
-            box-shadow: 0 0 20px var(--fire-soft);
+            background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(5,5,8,0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--crimson-glow);
+            box-shadow: 0 0 30px var(--crimson-glow);
             padding: 12px 24px;
             display: flex;
             justify-content: space-between;
@@ -89,14 +131,14 @@
         .logo-icon {
             width: 36px;
             height: 36px;
-            border: 2px solid var(--fire-bright);
+            border: 1px solid var(--crimson-bright);
             border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            background: var(--fire-soft);
-            box-shadow: 0 0 15px var(--fire-soft), inset 0 0 10px var(--fire-soft);
+            background: var(--crystal);
+            box-shadow: 0 0 20px var(--crimson-glow), inset 0 0 10px rgba(139,0,0,0.2);
         }
         
         .logo-text {
@@ -108,8 +150,18 @@
         }
         
         .logo-text span {
-            color: var(--fire-bright);
-            text-shadow: 0 0 10px var(--fire-glow);
+            color: var(--crimson-bright);
+            text-shadow: 0 0 15px var(--crimson-glow);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--crystal-border);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
         }
         
         .system-status {
@@ -134,20 +186,23 @@
             50% { opacity: 0.5; }
         }
         
-        /* Stats Bar - Tactical Display */
+        /* Stats Bar */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
+            gap: 12px;
             padding: 16px 24px;
-            background: linear-gradient(180deg, rgba(18,18,22,0.8) 0%, transparent 100%);
+            background: linear-gradient(180deg, rgba(10,10,15,0.8) 0%, transparent 100%);
         }
         
         .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 4px;
+            background: var(--crystal);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
             padding: 16px;
+            text-align: center;
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
@@ -159,16 +214,12 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, transparent, var(--fire-bright), transparent);
+            background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent);
         }
         
-        .stat-card.alert {
-            border-color: var(--alert-red);
-            box-shadow: 0 0 15px rgba(255, 26, 26, 0.3);
-        }
-        
-        .stat-card.alert::before {
-            background: linear-gradient(90deg, transparent, var(--alert-red), transparent);
+        .stat-card:hover {
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 20px var(--crimson-glow);
         }
         
         .stat-label {
@@ -181,61 +232,47 @@
         
         .stat-value {
             font-family: var(--display-font);
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
-            color: var(--fire-bright);
-            text-shadow: 0 0 10px var(--fire-glow);
-        }
-        
-        .stat-value.alert {
-            color: var(--alert-red);
-            text-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
+            color: var(--crimson-bright);
+            text-shadow: 0 0 10px var(--crimson-glow);
         }
         
         .stat-sub {
             font-size: 11px;
             color: var(--text-secondary);
             margin-top: 4px;
-            letter-spacing: 1px;
-        }
-        
-        /* Mini Chart */
-        .mini-chart {
-            height: 30px;
-            margin-top: 8px;
-            display: flex;
-            align-items: flex-end;
-            gap: 2px;
-        }
-        
-        .chart-bar {
-            flex: 1;
-            background: var(--fire-bright);
-            opacity: 0.6;
-            transition: opacity 0.3s;
-        }
-        
-        .chart-bar:hover {
-            opacity: 1;
         }
         
         /* Layout */
         .app-container {
             display: flex;
-            height: calc(100vh - 180px);
+            height: calc(100vh - 160px);
             position: relative;
             z-index: 10;
             padding: 0 24px 24px;
             gap: 16px;
         }
         
-        /* Sidebar - Tactical */
+        /* Sidebar */
         .sidebar {
             width: 200px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 4px;
+            background: var(--crystal);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
             padding: 16px;
+            overflow-y: auto;
+            transition: transform 0.3s;
+        }
+        
+        .sidebar.mobile-hidden {
+            transform: translateX(-100%);
+            position: fixed;
+            left: 0;
+            top: 80px;
+            height: calc(100vh - 100px);
+            z-index: 99;
         }
         
         .nav-item {
@@ -244,7 +281,7 @@
             gap: 12px;
             padding: 12px;
             margin-bottom: 4px;
-            border-radius: 2px;
+            border-radius: 6px;
             cursor: pointer;
             color: var(--text-secondary);
             font-size: 13px;
@@ -255,24 +292,62 @@
         }
         
         .nav-item:hover {
-            background: rgba(255, 69, 0, 0.1);
+            background: rgba(139, 0, 0, 0.1);
             color: var(--text-primary);
-            border-left-color: var(--fire-bright);
+            border-left-color: var(--crimson-bright);
         }
         
         .nav-item.active {
-            background: rgba(255, 69, 0, 0.15);
-            border-left-color: var(--fire-bright);
+            background: var(--crimson-glow);
+            border-left-color: var(--crimson-bright);
             color: var(--text-primary);
         }
         
         .nav-section-title {
             font-size: 9px;
-            color: var(--fire-bright);
+            color: var(--crimson-bright);
             text-transform: uppercase;
             letter-spacing: 3px;
             padding: 16px 12px 8px;
             font-weight: 600;
+        }
+        
+        .category-group {
+            margin-bottom: 4px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 11px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .category-header:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .category-projects { display: none; padding-left: 16px; }
+        .category-projects.show { display: block; }
+        
+        .project-link {
+            padding: 8px 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .project-link:hover {
+            color: var(--crimson-bright);
+            padding-left: 16px;
         }
         
         /* Main Content */
@@ -283,20 +358,21 @@
             overflow: hidden;
         }
         
-        /* Tactical Panels */
+        /* Panels */
         .panel {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 4px;
+            background: var(--crystal);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
         
         .panel-header {
-            background: linear-gradient(90deg, rgba(255,69,0,0.1) 0%, transparent 100%);
+            background: linear-gradient(90deg, var(--crimson-glow) 0%, transparent 100%);
             padding: 12px 16px;
-            border-bottom: 1px solid var(--border-glow);
+            border-bottom: 1px solid var(--crystal-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -308,7 +384,7 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--fire-bright);
+            color: var(--crimson-bright);
         }
         
         .panel-value {
@@ -323,155 +399,31 @@
             flex: 1;
         }
         
-        /* Agents Panel */
-        .agents-panel { width: 240px; }
-        
-        .agent-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            margin-bottom: 8px;
-            background: var(--bg-elevated);
-            border-radius: 2px;
-            border-left: 3px solid var(--fire-bright);
-            position: relative;
-        }
-        
-        .agent-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 30px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,69,0,0.1));
-        }
-        
-        .agent-status-icon {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--chart-green);
-            box-shadow: 0 0 8px var(--chart-green);
-        }
-        
-        .agent-info h4 {
-            font-family: var(--display-font);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-        
-        .agent-task {
-            font-size: 11px;
-            color: var(--fire-bright);
-            margin-top: 4px;
-        }
-        
-        .agent-time {
-            font-size: 10px;
-            color: var(--text-muted);
-            margin-left: auto;
-            font-family: var(--display-font);
-        }
-        
-        /* Queue Panel */
+        .agents-panel { width: 220px; }
         .queue-panel { flex: 1; }
+        .chart-panel { width: 280px; }
+        .feed-panel { width: 240px; }
         
-        .task-item {
-            background: var(--bg-elevated);
-            border: 1px solid transparent;
-            border-radius: 2px;
-            padding: 16px;
-            margin-bottom: 12px;
-            position: relative;
+        .agent-item, .task-item, .feed-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            padding: 14px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--crimson-bright);
             transition: all 0.2s;
         }
         
-        .task-item:hover {
-            border-color: var(--fire-bright);
-            box-shadow: 0 0 15px var(--fire-soft);
-        }
-        
-        .task-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--fire-bright);
-        }
-        
-        .task-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-        
-        .task-title {
-            font-family: var(--display-font);
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-        
-        .task-priority {
-            padding: 4px 8px;
-            background: rgba(255, 69, 0, 0.2);
-            border: 1px solid var(--fire-bright);
-            border-radius: 2px;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--fire-bright);
-        }
-        
-        .task-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-        
-        .task-progress-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        
-        .task-progress-bg {
-            flex: 1;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        
-        .task-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--fire-bright), var(--chart-green));
-            border-radius: 3px;
-            box-shadow: 0 0 10px var(--fire-bright);
-        }
-        
-        .task-progress-text {
-            font-family: var(--display-font);
-            font-size: 12px;
-            color: var(--fire-bright);
-            min-width: 40px;
-            text-align: right;
+        .agent-item:hover, .task-item:hover {
+            background: rgba(139, 0, 0, 0.1);
+            box-shadow: 0 0 15px var(--crimson-glow);
         }
         
         .task-btn {
             padding: 8px 16px;
             background: transparent;
-            border: 1px solid var(--fire-bright);
-            border-radius: 2px;
-            color: var(--fire-bright);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 4px;
+            color: var(--crimson-bright);
             font-family: var(--tech-font);
             font-size: 11px;
             font-weight: 600;
@@ -479,163 +431,169 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.2s;
+            margin-top: 12px;
         }
         
         .task-btn:hover {
-            background: var(--fire-soft);
-            box-shadow: 0 0 15px var(--fire-soft);
-        }
-        
-        /* Chart Panel */
-        .chart-panel { width: 300px; }
-        
-        .chart-container {
-            height: 120px;
-            margin-bottom: 16px;
-            position: relative;
-        }
-        
-        .chart-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-        }
-        
-        .chart-line svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .metric-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .metric-label {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .metric-value {
-            font-family: var(--display-font);
-            font-size: 14px;
-            color: var(--fire-bright);
-        }
-        
-        /* Feed Panel */
-        .feed-panel { width: 260px; }
-        
-        .feed-item {
-            padding: 12px;
-            margin-bottom: 8px;
-            background: var(--bg-elevated);
-            border-radius: 2px;
-            border-left: 2px solid var(--fire-bright);
-            font-size: 12px;
-        }
-        
-        .feed-time {
-            font-size: 10px;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-            font-family: var(--display-font);
-        }
-        
-        .feed-content {
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-        
-        .feed-alert {
-            border-left-color: var(--alert-red);
-            background: rgba(255, 26, 26, 0.1);
+            background: var(--crimson-glow);
+            box-shadow: 0 0 15px var(--crimson-glow);
         }
         
         /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-card); }
-        ::-webkit-scrollbar-thumb { background: var(--fire-bright); border-radius: 3px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--crystal-border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--crimson-bright); }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 1200px) {
+            .stats-bar {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                padding: 12px 16px;
+            }
+            
+            .chart-panel, .feed-panel {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .system-status {
+                display: none;
+            }
+            
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                padding: 12px;
+            }
+            
+            .stat-value {
+                font-size: 22px;
+            }
+            
+            .app-container {
+                flex-direction: column;
+                height: auto;
+                padding: 12px;
+            }
+            
+            .sidebar {
+                width: 100%;
+                max-height: 200px;
+                margin-bottom: 12px;
+            }
+            
+            .sidebar.mobile-hidden {
+                display: none;
+            }
+            
+            .main-content {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .agents-panel, .queue-panel {
+                width: 100%;
+                max-height: 400px;
+            }
+            
+            .panel-content {
+                max-height: 350px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 14px;
+                letter-spacing: 2px;
+            }
+            
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-card {
+                padding: 12px 8px;
+            }
+            
+            .stat-value {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="tactical-bg"></div>
-    <div class="grid-overlay"></div>
+    <div class="crystal-bg"></div>
+    <div class="light-ray"></div>
+    <div class="crystal-shards">
+        <div class="shard"></div>
+        <div class="shard"></div>
+        <div class="shard"></div>
+        <div class="shard"></div>
+        <div class="shard"></div>
+    </div>
     
     <div class="topbar">
-        <div class="logo">
-            <div class="logo-icon">◈</div>
-            <div class="logo-text">MISSION <span>CONTROL</span></div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+            <div class="logo">
+                <div class="logo-icon">◈</div>
+                <div class="logo-text">MISSION <span>CONTROL</span></div>
+            </div>
         </div>
+        
         <div class="system-status">
             <div class="status-dot"></div>
-            <span>SYSTEM ONLINE</span>
+            <span>ONLINE</span>
         </div>
     </div>
     
     <div class="stats-bar">
         <div class="stat-card">
-            <div class="stat-label">Agents Active</div>
+            <div class="stat-label">Agents</div>
             <div class="stat-value">03</div>
-            <div class="mini-chart">
-                <div class="chart-bar" style="height: 60%"></div>
-                <div class="chart-bar" style="height: 80%"></div>
-                <div class="chart-bar" style="height: 40%"></div>
-                <div class="chart-bar" style="height: 90%"></div>
-                <div class="chart-bar" style="height: 70%"></div>
-            </div>
+            <div class="stat-sub">Active</div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-label">Tasks Queue</div>
+            <div class="stat-label">Tasks</div>
             <div class="stat-value">12</div>
-            <div class="stat-sub">+3 TODAY</div>
+            <div class="stat-sub">In Queue</div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-label">Time Active</div>
-            <div class="stat-value">4:23:15</div>
-            <div class="mini-chart">
-                <div class="chart-bar" style="height: 50%"></div>
-                <div class="chart-bar" style="height: 70%"></div>
-                <div class="chart-bar" style="height: 60%"></div>
-                <div class="chart-bar" style="height: 85%"></div>
-                <div class="chart-bar" style="height: 75%"></div>
-            </div>
+            <div class="stat-label">Time</div>
+            <div class="stat-value">4:23</div>
+            <div class="stat-sub">Active</div>
         </div>
         
-        <div class="stat-card alert">
-            <div class="stat-label">Token Burn</div>
-            <div class="stat-value alert">82%</div>
-            <div class="stat-sub">⚠ CRITICAL</div>
+        <div class="stat-card">
+            <div class="stat-label">Tokens</div>
+            <div class="stat-value">82%</div>
+            <div class="stat-sub">⚠ Burn</div>
         </div>
         
         <div class="stat-card">
             <div class="stat-label">Efficiency</div>
             <div class="stat-value">94%</div>
-            <div class="mini-chart">
-                <div class="chart-bar" style="height: 90%; background: var(--chart-green)"></div>
-                <div class="chart-bar" style="height: 94%; background: var(--chart-green)"></div>
-                <div class="chart-bar" style="height: 88%; background: var(--chart-green)"></div>
-                <div class="chart-bar" style="height: 96%; background: var(--chart-green)"></div>
-                <div class="chart-bar" style="height: 92%; background: var(--chart-green)"></div>
-            </div>
+            <div class="stat-sub">Success</div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-label">Wedding ETA</div>
+            <div class="stat-label">Wedding</div>
             <div class="stat-value">311d</div>
-            <div class="stat-sub">DEC 13, 2026</div>
+            <div class="stat-sub">Dec 13</div>
         </div>
     </div>
     
     <div class="app-container">
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="nav-item active">
                 <span>◈</span> COMMAND
             </div>
@@ -657,178 +615,98 @@
             <div class="nav-item">
                 <span>◆</span> C — SIDE
             </div>
-            
-            <div class="nav-section-title">SYSTEM</div>
-            
-            <div class="nav-item">
-                <span>◎</span> ANALYTICS
-            </div>
-            
-            <div class="nav-item">
-                <span>◐</span> SETTINGS
-            </div>
         </div>
         
         <div class="main-content">
             
             <div class="panel agents-panel">
                 <div class="panel-header">
-                    <span class="panel-title">ACTIVE AGENTS</span>
+                    <span class="panel-title">AGENTS</span>
                     <span class="panel-value">03</span>
                 </div>
                 <div class="panel-content">
                     <div class="agent-item">
-                        <div class="agent-status-icon"></div>
-                        <div class="agent-info">
-                            <h4>K2.5-WRITER</h4>
-                            <div class="agent-task">A2 · CHAPTER 13</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-family: var(--display-font); font-size: 13px;">K2.5-WRITER</div>
+                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">A2 · CHAPTER 13</div>
+                            </div>
+                            <div style="font-size: 11px; color: var(--crimson-bright); font-family: var(--display-font);">00:45</div>
                         </div>
-                        <div class="agent-time">00:45:12</div>
                     </div>
                     
                     <div class="agent-item">
-                        <div class="agent-status-icon"></div>
-                        <div class="agent-info">
-                            <h4>GPT-4-CODER</h4>
-                            <div class="agent-task">B3 · HOMEPAGE</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-family: var(--display-font); font-size: 13px;">GPT-4-CODER</div>
+                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">B3 · HOMEPAGE</div>
+                            </div>
+                            <div style="font-size: 11px; color: var(--crimson-bright); font-family: var(--display-font);">01:20</div>
                         </div>
-                        <div class="agent-time">01:20:45</div>
                     </div>
                     
                     <div class="agent-item">
-                        <div class="agent-status-icon"></div>
-                        <div class="agent-info">
-                            <h4>K2.5-RESEARCHER</h4>
-                            <div class="agent-task">A4 · KICK RESEARCH</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-family: var(--display-font); font-size: 13px;">K2.5-RESEARCHER</div>
+                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">A4 · KICK</div>
+                            </div>
+                            <div style="font-size: 11px; color: var(--crimson-bright); font-family: var(--display-font);">02:15</div>
                         </div>
-                        <div class="agent-time">02:15:33</div>
                     </div>
                 </div>
             </div>
             
             <div class="panel queue-panel">
                 <div class="panel-header">
-                    <span class="panel-title">MISSION QUEUE</span>
+                    <span class="panel-title">QUEUE</span>
                     <span class="panel-value">05</span>
                 </div>
                 <div class="panel-content">
                     <div class="task-item">
-                        <div class="task-header">
-                            <div class="task-title">UPLOAD RE:UNITE CHAPTERS</div>
-                            <span class="task-priority">HIGH</span>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-family: var(--display-font); font-size: 14px;">UPLOAD CHAPTERS</span>
+                            <span style="font-size: 10px; color: var(--crimson-bright); border: 1px solid var(--crimson-bright); padding: 2px 6px; border-radius: 2px;">HIGH</span>
                         </div>
-                        <div class="task-meta">
-                            <span>A2 · K2.5-WRITER</span>
-                            <span>ETA: 12m</span>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">A2 · K2.5-WRITER · ETA: 12m</div>
+                        <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 12px;">
+                            <div style="width: 45%; height: 100%; background: linear-gradient(90deg, var(--crimson-bright), var(--chart-green)); border-radius: 2px; box-shadow: 0 0 8px var(--crimson-bright);"></div>
                         </div>
-                        <div class="task-progress-container">
-                            <div class="task-progress-bg">
-                                <div class="task-progress-fill" style="width: 45%"></div>
-                            </div>
-                            <div class="task-progress-text">45%</div>
-                        </div>
-                        
-                        <button class="task-btn">SPAWN SUB-AGENT</button>
+                        <button class="task-btn">SPAWN</button>
                     </div>
                     
                     <div class="task-item">
-                        <div class="task-header">
-                            <div class="task-title">DESIGN TEAM ELEVATE HOMEPAGE</div>
-                            <span class="task-priority">MED</span>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-family: var(--display-font); font-size: 14px;">DESIGN HOMEPAGE</span>
+                            <span style="font-size: 10px; color: var(--text-muted); border: 1px solid var(--text-muted); padding: 2px 6px; border-radius: 2px;">MED</span>
                         </div>
-                        <div class="task-meta">
-                            <span>B3 · GPT-4-CODER</span>
-                            <span>ETA: 45m</span>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">B3 · GPT-4-CODER · ETA: 45m</div>
+                        <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 12px;">
+                            <div style="width: 20%; height: 100%; background: var(--crimson-bright); border-radius: 2px; box-shadow: 0 0 8px var(--crimson-bright);"></div>
                         </div>
-                        <div class="task-progress-container">
-                            <div class="task-progress-bg">
-                                <div class="task-progress-fill" style="width: 20%"></div>
-                            </div>
-                            <div class="task-progress-text">20%</div>
-                        </div>
-                        
-                        <button class="task-btn">SPAWN SUB-AGENT</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="panel chart-panel">
-                <div class="panel-header">
-                    <span class="panel-title">METRICS</span>
-                </div>
-                <div class="panel-content">
-                    <div class="chart-container">
-                        <div class="chart-line">
-                            <svg viewBox="0 0 100 50" preserveAspectRatio="none">
-                                <path d="M0,40 L20,35 L40,25 L60,30 L80,15 L100,10" 
-                                      fill="none" 
-                                      stroke="var(--fire-bright)" 
-                                      stroke-width="2"
-                                      filter="drop-shadow(0 0 4px var(--fire-bright))"/>
-                                <path d="M0,40 L20,35 L40,25 L60,30 L80,15 L100,10 L100,50 L0,50 Z" 
-                                      fill="url(#gradient)" 
-                                      opacity="0.3"/>
-                                <defs>
-                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" style="stop-color:var(--fire-bright);stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:var(--fire-bright);stop-opacity:0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="metric-row">
-                        <span class="metric-label">Tasks Completed</span>
-                        <span class="metric-value">07</span>
-                    </div>
-                    
-                    <div class="metric-row">
-                        <span class="metric-label">Success Rate</span>
-                        <span class="metric-value">94%</span>
-                    </div>
-                    
-                    <div class="metric-row">
-                        <span class="metric-label">Avg Task Time</span>
-                        <span class="metric-value">42m</span>
-                    </div>
-                    
-                    <div class="metric-row">
-                        <span class="metric-label">Active Projects</span>
-                        <span class="metric-value">05</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="panel feed-panel">
-                <div class="panel-header">
-                    <span class="panel-title">LIVE FEED</span>
-                    <span class="panel-value">08</span>
-                </div>
-                <div class="panel-content">
-                    <div class="feed-item feed-alert">
-                        <div class="feed-time">[CRITICAL]</div>
-                        <div class="feed-content">Token usage at 82% — Consider pausing non-critical agents</div>
-                    </div>
-                    
-                    <div class="feed-item">
-                        <div class="feed-time">[02:34:15]</div>
-                        <div class="feed-content">K2.5-WRITER completed upload to Royal Road</div>
-                    </div>
-                    
-                    <div class="feed-item">
-                        <div class="feed-time">[02:31:22]</div>
-                        <div class="feed-content">New task added to B3 queue</div>
-                    </div>
-                    
-                    <div class="feed-item">
-                        <div class="feed-time">[02:15:08]</div>
-                        <div class="feed-content">GPT-4-CODER started B3 homepage design</div>
+                        <button class="task-btn">SPAWN</button>
                     </div>
                 </div>
             </div>
             
         </div>
     </div>
+    
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('mobile-hidden');
+        }
+        
+        // Auto-hide sidebar on mobile load
+        if (window.innerWidth <= 768) {
+            document.getElementById('sidebar').classList.add('mobile-hidden');
+        }
+        
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.getElementById('sidebar').classList.remove('mobile-hidden');
+            }
+        });
+    </script>
 </body>
 </html>
