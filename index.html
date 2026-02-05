@@ -1730,6 +1730,47 @@
             </div>
         </div>
 
+        <!-- PROJECT DETAIL MODAL (Task 13) -->
+        <div class="modal" id="projectModal">
+            <div class="modal-content" style="max-width: 700px;">
+                <div class="modal-header">
+                    <span class="modal-title" id="projectModalTitle">📁 Project</span>
+                    <button class="modal-close" onclick="closeProjectModal()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-stats-row" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatTotal">0</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Total Tasks</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatActive">0</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Active</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatDone">0</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Completed</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatProgress">0%</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Progress</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Tasks</label>
+                        <div id="projectTasksList" style="max-height: 300px; overflow-y: auto;">
+                            <!-- Tasks populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeProjectModal()">Close</button>
+                    <button class="btn-primary" onclick="addTaskToCurrentProject()">+ Add Task</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -1943,6 +1984,83 @@
         window.viewTask = viewTask;
         window.completeTask = completeTask;
         window.deleteTask = deleteTask;
+
+        // ==========================================
+        // PROJECT MANAGEMENT (Tasks 13-16)
+        // ==========================================
+
+        let currentProjectId = null;
+
+        // Project Detail View (Task 13)
+        function viewProject(projectId) {
+            if (!dashboardData) return;
+
+            currentProjectId = projectId;
+
+            // Find project data
+            let project = null;
+            let category = '';
+            for (const cat of ['A', 'B', 'C']) {
+                const found = dashboardData.projects[cat].projects.find(p => p.id === projectId);
+                if (found) {
+                    project = found;
+                    category = cat;
+                    break;
+                }
+            }
+
+            if (!project) return;
+
+            // Get project tasks
+            const projectTasks = dashboardData.tasks.filter(t => t.project === projectId);
+            const activeTasks = projectTasks.filter(t => t.status === 'active').length;
+            const doneTasks = projectTasks.filter(t => t.status === 'done').length;
+            const totalTasks = projectTasks.length;
+            const progress = totalTasks > 0 ? Math.round((doneTasks / totalTasks) * 100) : 0;
+
+            // Update modal
+            document.getElementById('projectModalTitle').textContent = `📁 ${project.id} · ${project.name}`;
+            document.getElementById('projStatTotal').textContent = totalTasks;
+            document.getElementById('projStatActive').textContent = activeTasks;
+            document.getElementById('projStatDone').textContent = doneTasks;
+            document.getElementById('projStatProgress').textContent = progress + '%';
+
+            // Render tasks
+            const tasksList = document.getElementById('projectTasksList');
+            if (projectTasks.length === 0) {
+                tasksList.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);">No tasks yet</div>';
+            } else {
+                tasksList.innerHTML = projectTasks.map(task => `
+                    <div class="category-project-item ${task.status}" style="margin-bottom: 8px;" onclick="viewTask('${task.id}')">
+                        <div class="project-info">
+                            <h4>${task.title}</h4>
+                            <p>${formatStatus(task.status)} · ${task.priority}</p>
+                        </div>
+                        <span class="project-status ${task.status}">${task.status}</span>
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('projectModal').classList.add('show');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.remove('show');
+            currentProjectId = null;
+        }
+
+        function addTaskToCurrentProject() {
+            closeProjectModal();
+            if (currentProjectId) {
+                document.getElementById('taskProject').value = currentProjectId;
+            }
+            openModal();
+        }
+
+        // Make project functions global
+        window.viewProject = viewProject;
+        window.closeProjectModal = closeProjectModal;
+        window.addTaskToCurrentProject = addTaskToCurrentProject;
 
         // ==========================================
         // LIVE DATA SYSTEM (Tasks 1-5)
