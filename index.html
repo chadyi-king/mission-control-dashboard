@@ -107,6 +107,42 @@
             letter-spacing: 1px;
         }
         
+        .top-stat-sub {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        
+        /* Rotating Countdown */
+        .countdown-container {
+            text-align: center;
+            min-width: 140px;
+        }
+        
+        .countdown-value {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--fire-red);
+            transition: opacity 0.3s;
+        }
+        
+        .countdown-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .countdown-task {
+            font-size: 10px;
+            color: var(--fire-orange);
+            margin-top: 2px;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
         /* Layout */
         .app-container {
             display: flex;
@@ -543,18 +579,22 @@
             <div class="top-stat">
                 <div class="top-stat-value">3</div>
                 <div class="top-stat-label">Agents Active</div>
+                <div class="top-stat-sub">2 working • 1 idle</div>
             </div>
             <div class="top-stat">
                 <div class="top-stat-value">12</div>
                 <div class="top-stat-label">Tasks in Queue</div>
+                <div class="top-stat-sub">5 high priority</div>
             </div>
             <div class="top-stat">
                 <div class="top-stat-value">$12</div>
                 <div class="top-stat-label">Token Burn</div>
+                <div class="top-stat-sub">$88 remaining today</div>
             </div>
-            <div class="top-stat">
-                <div class="top-stat-value">13:46</div>
-                <div class="top-stat-label">Time</div>
+            <div class="countdown-container">
+                <div class="countdown-value" id="countdown-value">311d 12h</div>
+                <div class="countdown-label">Countdown</div>
+                <div class="countdown-task" id="countdown-task">💍 Wedding</div>
             </div>
         </div>
     </div>
@@ -877,6 +917,47 @@
                 alert('🚀 Spawning agent for: ' + task);
             }
         }
+        
+        // Rotating Countdown
+        const countdowns = [
+            { name: '💍 Wedding', deadline: new Date('2026-12-13'), type: 'days' },
+            { name: '📖 RE:UNITE Ch13', deadline: new Date('2026-02-10'), type: 'days' },
+            { name: '💼 Team Elevate HP', deadline: new Date('2026-02-08'), type: 'days' },
+            { name: '⏱️ Current Task', timeLeft: '12 min', type: 'timer' },
+            { name: '⏱️ Upload Progress', timeLeft: '45 min', type: 'timer' }
+        ];
+        
+        let currentCountdownIndex = 0;
+        
+        function updateCountdown() {
+            const item = countdowns[currentCountdownIndex];
+            const valueEl = document.getElementById('countdown-value');
+            const taskEl = document.getElementById('countdown-task');
+            
+            if (item.type === 'days') {
+                const now = new Date();
+                const diff = item.deadline - now;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                valueEl.textContent = `${days}d ${hours}h`;
+            } else {
+                valueEl.textContent = item.timeLeft;
+            }
+            
+            taskEl.textContent = item.name;
+            
+            // Fade effect
+            valueEl.style.opacity = '0';
+            setTimeout(() => {
+                valueEl.style.opacity = '1';
+            }, 100);
+            
+            currentCountdownIndex = (currentCountdownIndex + 1) % countdowns.length;
+        }
+        
+        // Start rotating every 5 seconds
+        setInterval(updateCountdown, 5000);
+        updateCountdown(); // Initial call
     </script>
 </body>
 </html>
