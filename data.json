@@ -1,180 +1,63 @@
 {
-  "last_updated": "2026-02-05T17:57:00Z",
+  "lastUpdated": "2026-02-06T00:00:00Z",
   "stats": {
-    "active_agents": 3,
-    "time_today": "4h 23m",
-    "token_cost_today": 12.40,
-    "token_cost_week": 89.20,
-    "completion_rate": 78,
-    "tasks_completed_today": 7,
-    "tasks_total_today": 9
+    "activeAgents": 0,
+    "spawnedToday": 0,
+    "tasksDone": 0,
+    "timeActive": "0:00",
+    "focusProject": "-",
+    "eventsToday": 0
   },
-  "agents": [
-    {
-      "id": "agent-1",
-      "name": "K2.5-Writer",
-      "model": "kimi-coding/k2p5",
-      "task": "Upload RE:UNITE Chapters 1-12",
-      "progress": 45,
-      "progress_detail": "5/12 chapters",
-      "eta": "12 minutes",
-      "status": "active",
-      "category": "A2",
-      "started_at": "2026-02-05T15:30:00Z"
-    },
-    {
-      "id": "agent-2",
-      "name": "GPT-4-Coder",
-      "model": "openai/gpt-4",
-      "task": "Design Team Elevate Homepage",
-      "progress": 20,
-      "progress_detail": "Wireframing",
-      "eta": "45 minutes",
-      "status": "active",
-      "category": "B3",
-      "started_at": "2026-02-05T16:00:00Z"
-    },
-    {
-      "id": "agent-3",
-      "name": "K2.5-Researcher",
-      "model": "kimi-coding/k2p5",
-      "task": "Research Kick Platform",
-      "progress": 10,
-      "progress_detail": "Initial scan",
-      "eta": "2 hours",
-      "status": "active",
-      "category": "A4",
-      "started_at": "2026-02-05T16:30:00Z"
-    }
-  ],
-  "activity": [
-    {
-      "id": 1,
-      "type": "success",
-      "icon": "✓",
-      "text": "Agent K2.5 completed 'Upload Ch1-3 to Royal Road'",
-      "time": "2 minutes ago",
-      "category": "A2",
-      "timestamp": "2026-02-05T17:55:00Z"
-    },
-    {
-      "id": 2,
-      "type": "warning",
-      "icon": "+",
-      "text": "New task added to B3: 'Design contact page'",
-      "time": "5 minutes ago",
-      "category": "B3",
-      "timestamp": "2026-02-05T17:52:00Z"
-    },
-    {
-      "id": 3,
-      "type": "error",
-      "icon": "!",
-      "text": "Agent K2.5 failed on 'Scribble Hub upload' — retrying",
-      "time": "25 minutes ago",
-      "category": "A2",
-      "timestamp": "2026-02-05T17:32:00Z"
-    },
-    {
-      "id": 4,
-      "type": "info",
-      "icon": "💍",
-      "text": "Wedding task added: 'Confirm florist booking'",
-      "time": "1 hour ago",
-      "category": "A1",
-      "timestamp": "2026-02-05T16:57:00Z"
-    }
-  ],
-  "alerts": [
-    {
-      "type": "fire",
-      "icon": "🔥",
-      "title": "Token Burn Alert",
-      "message": "82% usage — 3 agents at maximum capacity"
-    },
-    {
-      "type": "gold",
-      "icon": "💍",
-      "title": "Wedding",
-      "message": "311 days — 12 tasks need immediate attention"
-    }
-  ],
+  "workflow": {
+    "pending": [],
+    "active": [],
+    "review": [],
+    "done": []
+  },
   "projects": {
     "A": {
-      "name": "Ambition by Calbee",
-      "description": "Personal projects & creative work",
-      "count": 6,
+      "name": "Ambition",
+      "subtitle": "By Calbee (Personal)",
       "projects": [
-        {"code": "A1", "name": "Personal Tasks", "tasks_count": 12},
-        {"code": "A2", "name": "RE: UNITE", "tasks_count": 8, 
-         "tasks": [
-           {
-             "id": "A2-1",
-             "title": "Upload Chapters 1-12",
-             "status": "in_progress",
-             "progress": 45,
-             "subtasks": [
-               {"title": "Royal Road upload", "done": true},
-               {"title": "Wattpad upload", "done": true},
-               {"title": "Scribble Hub upload", "done": false},
-               {"title": "Novel Updates", "done": false}
-             ]
-           },
-           {
-             "id": "A2-2",
-             "title": "Write Chapter 13",
-             "status": "pending",
-             "progress": 0,
-             "subtasks": [
-               {"title": "Outline plot points", "done": false},
-               {"title": "Draft chapter", "done": false},
-               {"title": "Edit and proofread", "done": false}
-             ]
-           },
-           {
-             "id": "A2-3",
-             "title": "Design book cover",
-             "status": "pending",
-             "progress": 0,
-             "subtasks": [
-               {"title": "Research cover trends", "done": false},
-               {"title": "Create draft designs", "done": false},
-               {"title": "Finalize cover", "done": false}
-             ]
-           }
-         ]
-        },
-        {"code": "A3", "name": "KOE", "tasks_count": 5},
-        {"code": "A4", "name": "Streaming", "tasks_count": 6},
-        {"code": "A5", "name": "Trading", "tasks_count": 4},
-        {"code": "A6", "name": "Mission Control", "tasks_count": 7}
+        {"id": "A1", "name": "Personal Tasks", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "A2", "name": "Re:Unite", "status": "active", "progress": 25, "tasks": []},
+        {"id": "A3", "name": "KOE", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "A4", "name": "Streaming", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "A5", "name": "Trading", "status": "pending", "progress": 0, "tasks": []}
       ]
     },
     "B": {
-      "name": "Business Empire",
-      "description": "Main work & client projects",
-      "count": 10,
+      "name": "Business",
+      "subtitle": "Empire (Main Work)",
       "projects": [
-        {"code": "B1", "name": "Exstatic", "tasks_count": 3},
-        {"code": "B2", "name": "Energize", "tasks_count": 3},
-        {"code": "B3", "name": "Team Elevate", "tasks_count": 12},
-        {"code": "B4", "name": "Pesta Fiesta", "tasks_count": 5},
-        {"code": "B5", "name": "Enticipate", "tasks_count": 4},
-        {"code": "B6", "name": "Elluminate", "tasks_count": 4},
-        {"code": "B7", "name": "Encompasse", "tasks_count": 3},
-        {"code": "B8", "name": "Empyrean", "tasks_count": 3},
-        {"code": "B9", "name": "ETHEREAL", "tasks_count": 8},
-        {"code": "B10", "name": "Epitaph", "tasks_count": 2}
+        {"id": "B1", "name": "Exstatic", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "B2", "name": "Energize", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "B3", "name": "Team Elevate", "status": "active", "progress": 10, "tasks": []},
+        {"id": "B4", "name": "Pesta Fiesta", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "B5", "name": "Enticipate", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "B6", "name": "Elluminate", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "B7", "name": "Encompasse", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "B8", "name": "Empyrean", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "B9", "name": "Ethereal", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "B10", "name": "Epitaph", "status": "pending", "progress": 0, "tasks": []}
       ]
     },
     "C": {
-      "name": "Callings on the Side",
-      "description": "Other jobs & side hustles",
-      "count": 2,
+      "name": "Callings",
+      "subtitle": "On The Side (Other Jobs)",
       "projects": [
-        {"code": "C1", "name": "Real Estate", "tasks_count": 6},
-        {"code": "C2", "name": "Side Sales", "tasks_count": 4}
+        {"id": "C1", "name": "Real Estate", "status": "pending", "progress": 0, "tasks": []},
+        {"id": "C2", "name": "Side Sales Jobs", "status": "pending", "progress": 0, "tasks": []}
       ]
     }
+  },
+  "tasks": [],
+  "decisions": [],
+  "activity": [],
+  "agents": [],
+  "calendar": {
+    "past": [],
+    "today": [],
+    "future": []
   }
 }
