@@ -239,6 +239,41 @@
             gap: 20px;
         }
         
+        /* Sun Avatar with Info in Header */
+        .sun-widget-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .sun-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .sun-name {
+            font-family: var(--display-font);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--crimson-bright);
+        }
+        
+        .sun-status {
+            font-size: 9px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sun-mode {
+            font-size: 8px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         /* Sidebar */
         .sidebar {
             position: fixed;
@@ -345,14 +380,6 @@
             .stats-bar {
                 padding: 10px 24px;
             }
-        }
-        
-        .clock-widget {
-            font-family: var(--display-font);
-            font-size: 16px;
-            color: var(--crimson-bright);
-            text-shadow: 0 0 10px var(--crimson-glow);
-            letter-spacing: 2px;
         }
         
         .status-widget {
@@ -639,34 +666,35 @@
     <div class="float-hex">0xC3</div>
     <div class="float-hex">0x91</div>
     
-    <!-- TOP BAR: Sun Avatar | Center Title | Clock -->
+    <!-- TOP BAR: Sun Avatar + Info | Center Title | Actions -->
     <div class="topbar">
         <div class="topbar-left">
-            <!-- Red Sun Avatar -->
-            <div class="sun-avatar-small">
-                <div class="sun-ray-small"></div>
-                <div class="sun-ray-small"></div>
-                <div class="sun-ray-small"></div>
-                <div class="sun-ray-small"></div>
-                <div class="sun-ray-small"></div>
-                <div class="sun-ray-small"></div>
-                <div class="sun-ray-small"></div>
-                <div class="sun-ray-small"></div>
-                <div class="sun-core-small"></div>
-            </div>
-            
-            <div class="logo">
-                <div class="logo-text">MISSION <span>CONTROL</span></div>
+            <!-- Red Sun Avatar with Info -->
+            <div class="sun-widget-header">
+                <div class="sun-avatar-small">
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-core-small"></div>
+                </div>
+                <div class="sun-info">
+                    <div class="sun-name">CHAD_YI</div>
+                    <div class="sun-status">● ACTIVE</div>
+                    <div class="sun-mode">COMMAND</div>
+                </div>
             </div>
         </div>
         
         <div class="topbar-center">
-            Caleb E Command Center
+            MISSION CONTROL
         </div>
         
         <div class="topbar-right">
-            <div class="clock-widget" id="clock">00:00:00</div>
-            
             <!-- Quick Actions Menu -->
             <div class="quick-actions">
                 <button class="quick-btn" onclick="toggleQuickMenu()">
@@ -813,7 +841,55 @@
                             <div class="pipeline-label">Done</div>
                         </div>
                     </div>
-                    <div style="font-size: 10px; color: var(--text-muted); text-align: center;">2 tasks blocked · 3 waiting for you</div>
+                    
+                    <div style="font-size: 10px; color: var(--text-muted); text-align: center; margin-bottom: 16px;">2 tasks blocked · 3 waiting for you</div>
+                    
+                    <!-- Recent Movement -->
+                    <div style="border-top: 1px solid var(--crystal-border); padding-top: 12px;">
+                        <div style="font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Recent Movement</div>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
+                                <span style="color: #00ff88;">↑</span>
+                                <span style="color: var(--text-secondary);">Chapter 4</span>
+                                <span style="color: var(--text-muted); margin-left: auto;">2m ago</span>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
+                                <span style="color: #00ff88;">↑</span>
+                                <span style="color: var(--text-secondary);">B3 Homepage</span>
+                                <span style="color: var(--text-muted); margin-left: auto;">15m ago</span>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
+                                <span style="color: var(--crimson-bright);">→</span>
+                                <span style="color: var(--text-secondary);">Research Notes</span>
+                                <span style="color: var(--text-muted); margin-left: auto;">1h ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Throughput Metrics -->
+                    <div style="border-top: 1px solid var(--crystal-border); padding-top: 12px; margin-top: 12px;">
+                        <div style="font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Throughput</div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
+                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">12</div>
+                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Today</div>
+                            </div>
+                            
+                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
+                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">2.4</div>
+                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">/hr</div>
+                            </div>
+                            
+                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
+                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">85%</div>
+                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Velocity</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -1046,17 +1122,6 @@
     </div>
     
     <script>
-        // Real-time clock
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-        
         // Quick Actions Menu
         function toggleQuickMenu() {
             document.getElementById('quickMenu').classList.toggle('show');
