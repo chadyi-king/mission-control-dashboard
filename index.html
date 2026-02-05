@@ -287,7 +287,7 @@
             display: flex;
             flex-direction: column;
             padding: 16px 0;
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
         
         .sidebar.expanded {
@@ -295,21 +295,36 @@
         }
         
         .sidebar-toggle {
-            position: absolute;
-            right: -12px;
-            top: 20px;
-            width: 24px;
-            height: 24px;
-            background: var(--crimson-bright);
+            width: 100%;
+            padding: 12px 16px;
+            background: transparent;
             border: none;
-            border-radius: 50%;
-            color: var(--bg-primary);
-            font-size: 12px;
+            border-bottom: 1px solid var(--crystal-border);
+            color: var(--crimson-bright);
+            font-size: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 10px var(--crimson-glow);
+            gap: 8px;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+        
+        .sidebar-toggle:hover {
+            background: var(--crimson-glow);
+        }
+        
+        .sidebar-toggle-text {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .sidebar.expanded .sidebar-toggle-text {
+            opacity: 1;
         }
         
         .sidebar-item {
@@ -367,10 +382,22 @@
             padding: 16px 24px 16px 84px;
             position: relative;
             z-index: 10;
+            transition: padding-left 0.3s ease;
+        }
+        
+        .sidebar.expanded ~ .main-container,
+        body:has(.sidebar.expanded) .main-container {
+            padding-left: 224px;
         }
         
         .stats-bar {
             padding: 10px 24px 10px 84px;
+            transition: padding-left 0.3s ease;
+        }
+        
+        .sidebar.expanded ~ .stats-bar,
+        body:has(.sidebar.expanded) .stats-bar {
+            padding-left: 224px;
         }
         
         @media (max-width: 768px) {
@@ -862,7 +889,10 @@
     
     <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" onclick="toggleSidebar()">▶</button>
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <span>▶</span>
+            <span class="sidebar-toggle-text">Expand</span>
+        </button>
         
         <a href="#" class="sidebar-item active" onclick="showSection('home', this)">
             <span class="sidebar-icon">
@@ -1291,57 +1321,50 @@
         <div class="section" id="categories-section">
             <div class="row" style="grid-template-columns: repeat(3, 1fr);">
                 
-                <!-- A - Ambition -->
+                <!-- A - Ambition by Calbee -->
                 <div class="category-card">
                     <div class="category-header">
                         <div>
                             <div class="category-title">A<span>MBITION</span></div>
-                            <div class="category-subtitle">By Calbee</div>
+                            <div class="category-subtitle">By Calbee (Personal)</div>
                         </div>
-                        <div class="category-count">6</div>
+                        <div class="category-count">5</div>
                     </div>
                     <div class="category-projects">
-                        <div class="category-project-item active">
+                        <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>A1 · Wedding</h4>
-                                <p>311 days · Planning phase</p>
+                                <h4>A1 · Personal Tasks</h4>
+                                <p>General personal tasks</p>
                             </div>
-                            <span class="project-status active">Active</span>
+                            <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item active">
                             <div class="project-info">
-                                <h4>A2 · RE:UNITE</h4>
-                                <p>3/12 chapters · 25% complete</p>
+                                <h4>A2 · Re:Unite</h4>
+                                <p>Novel - 3/12 chapters</p>
                             </div>
                             <span class="project-status active">Active</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>A3 · Calbee Fit</h4>
-                                <p>Health & fitness tracking</p>
+                                <h4>A3 · KOE</h4>
+                                <p>Project KOE</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
                                 <h4>A4 · Streaming</h4>
-                                <p>Research phase · 5%</p>
+                                <p>Live streaming setup</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>A5 · YouTube</h4>
-                                <p>Content creation channel</p>
+                                <h4>A5 · Trading</h4>
+                                <p>Trading activities</p>
                             </div>
                             <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item active">
-                            <div class="project-info">
-                                <h4>A6 · Mission Control</h4>
-                                <p>This dashboard · Building</p>
-                            </div>
-                            <span class="project-status active">Active</span>
                         </div>
                     </div>
                 </div>
@@ -1351,78 +1374,78 @@
                     <div class="category-header">
                         <div>
                             <div class="category-title">B<span>USINESS</span></div>
-                            <div class="category-subtitle">Empire Building</div>
+                            <div class="category-subtitle">Empire (Main Work)</div>
                         </div>
                         <div class="category-count">10</div>
                     </div>
                     <div class="category-projects">
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B1 · Dropshipping</h4>
-                                <p>E-commerce store setup</p>
+                                <h4>B1 · Exstatic</h4>
+                                <p>Business unit 1</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B2 · Private Label</h4>
-                                <p>Brand development</p>
+                                <h4>B2 · Energize</h4>
+                                <p>Business unit 2</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item active">
                             <div class="project-info">
                                 <h4>B3 · Team Elevate</h4>
-                                <p>1/10 tasks · 10% complete</p>
+                                <p>1/10 tasks · Active</p>
                             </div>
                             <span class="project-status active">Active</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B4 · Course Creation</h4>
-                                <p>Online education platform</p>
+                                <h4>B4 · Pesta Fiesta</h4>
+                                <p>Business unit 4</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B5 · Email List</h4>
-                                <p>Audience building</p>
+                                <h4>B5 · Enticipate</h4>
+                                <p>Business unit 5</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B6 · Copywriting</h4>
-                                <p>Freelance services</p>
+                                <h4>B6 · Elluminate</h4>
+                                <p>Business unit 6</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B7 · Micro SaaS</h4>
-                                <p>Software as service</p>
+                                <h4>B7 · Encompasse</h4>
+                                <p>Business unit 7</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B8 · Affiliate</h4>
-                                <p>Commission marketing</p>
+                                <h4>B8 · Empyrean</h4>
+                                <p>Business unit 8</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B9 · Shopify Store</h4>
-                                <p>Blocked · needs API key</p>
+                                <h4>B9 · Ethereal</h4>
+                                <p>Business unit 9</p>
                             </div>
-                            <span class="project-status pending">Blocked</span>
+                            <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>B10 · Coaching</h4>
-                                <p>1-on-1 mentorship</p>
+                                <h4>B10 · Epitaph</h4>
+                                <p>Business unit 10</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
@@ -1434,22 +1457,22 @@
                     <div class="category-header">
                         <div>
                             <div class="category-title">C<span>ALLINGS</span></div>
-                            <div class="category-subtitle">On The Side</div>
+                            <div class="category-subtitle">On The Side (Other Jobs)</div>
                         </div>
                         <div class="category-count">2</div>
                     </div>
                     <div class="category-projects">
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>C1 · Ministry</h4>
-                                <p>Faith-based initiatives</p>
+                                <h4>C1 · Real Estate</h4>
+                                <p>Property investments</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending">
                             <div class="project-info">
-                                <h4>C2 · Podcast</h4>
-                                <p>Audio content series</p>
+                                <h4>C2 · Side Sales Jobs</h4>
+                                <p>Additional sales work</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
@@ -1518,9 +1541,12 @@
         // Sidebar Toggle
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
-            const toggle = document.querySelector('.sidebar-toggle');
+            const toggleArrow = document.querySelector('.sidebar-toggle span:first-child');
+            const toggleText = document.querySelector('.sidebar-toggle-text');
             sidebar.classList.toggle('expanded');
-            toggle.textContent = sidebar.classList.contains('expanded') ? '◀' : '▶';
+            const isExpanded = sidebar.classList.contains('expanded');
+            toggleArrow.textContent = isExpanded ? '◀' : '▶';
+            toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
         }
         
         function setActive(element) {
