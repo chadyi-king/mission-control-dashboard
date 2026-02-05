@@ -16,9 +16,6 @@
             --crimson: #8B0000;
             --crimson-bright: #DC143C;
             --crimson-glow: rgba(139, 0, 0, 0.4);
-            --blood: #660000;
-            --alert-red: #ff1a1a;
-            --chart-green: #00ff88;
             --text-primary: rgba(255, 255, 255, 0.95);
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-muted: rgba(255, 255, 255, 0.4);
@@ -49,11 +46,9 @@
             background: 
                 radial-gradient(ellipse 60% 50% at 20% 30%, var(--crimson-glow) 0%, transparent 60%),
                 radial-gradient(ellipse 40% 40% at 80% 70%, rgba(139, 0, 0, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse 30% 30% at 50% 50%, rgba(220, 20, 60, 0.1) 0%, transparent 40%),
                 var(--bg-primary);
         }
         
-        /* Crystal Shards Animation */
         .crystal-shards {
             position: fixed;
             top: 0;
@@ -77,14 +72,12 @@
         .shard:nth-child(2) { width: 40px; height: 80px; left: 25%; top: 60%; animation-delay: 5s; }
         .shard:nth-child(3) { width: 80px; height: 120px; left: 70%; top: 30%; animation-delay: 10s; }
         .shard:nth-child(4) { width: 50px; height: 90px; left: 85%; top: 70%; animation-delay: 15s; }
-        .shard:nth-child(5) { width: 35px; height: 70px; left: 45%; top: 80%; animation-delay: 7s; }
         
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
             50% { transform: translateY(-30px) rotate(5deg); opacity: 0.4; }
         }
         
-        /* Light Refraction */
         .light-ray {
             position: fixed;
             top: -50%;
@@ -138,7 +131,7 @@
             justify-content: center;
             font-size: 18px;
             background: var(--crystal);
-            box-shadow: 0 0 20px var(--crimson-glow), inset 0 0 10px rgba(139,0,0,0.2);
+            box-shadow: 0 0 20px var(--crimson-glow);
         }
         
         .logo-text {
@@ -164,34 +157,12 @@
             cursor: pointer;
         }
         
-        .system-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--chart-green);
-            box-shadow: 0 0 10px var(--chart-green);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* Stats Bar */
+        /* Compact Stats Bar */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
-            padding: 16px 24px;
+            gap: 8px;
+            padding: 12px 24px;
             background: linear-gradient(180deg, rgba(10,10,15,0.8) 0%, transparent 100%);
         }
         
@@ -199,8 +170,8 @@
             background: var(--crystal);
             backdrop-filter: blur(10px);
             border: 1px solid var(--crystal-border);
-            border-radius: 8px;
-            padding: 16px;
+            border-radius: 6px;
+            padding: 10px;
             text-align: center;
             transition: all 0.3s;
             position: relative;
@@ -213,78 +184,105 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 1px;
             background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent);
         }
         
         .stat-card:hover {
             border-color: var(--crimson-bright);
-            box-shadow: 0 0 20px var(--crimson-glow);
+            box-shadow: 0 0 15px var(--crimson-glow);
         }
         
         .stat-label {
-            font-size: 10px;
+            font-size: 8px;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
         }
         
         .stat-value {
             font-family: var(--display-font);
-            font-size: 26px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--crimson-bright);
-            text-shadow: 0 0 10px var(--crimson-glow);
+            text-shadow: 0 0 8px var(--crimson-glow);
         }
         
         .stat-sub {
-            font-size: 11px;
+            font-size: 9px;
             color: var(--text-secondary);
-            margin-top: 4px;
+            margin-top: 2px;
         }
         
         /* Layout */
         .app-container {
             display: flex;
-            height: calc(100vh - 160px);
+            height: calc(100vh - 140px);
             position: relative;
             z-index: 10;
             padding: 0 24px 24px;
             gap: 16px;
         }
         
-        /* Sidebar */
+        /* Collapsible Sidebar */
         .sidebar {
-            width: 200px;
+            width: 220px;
             background: var(--crystal);
             backdrop-filter: blur(10px);
             border: 1px solid var(--crystal-border);
             border-radius: 8px;
-            padding: 16px;
+            padding: 12px;
             overflow-y: auto;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            flex-shrink: 0;
         }
         
-        .sidebar.mobile-hidden {
-            transform: translateX(-100%);
-            position: fixed;
-            left: 0;
-            top: 80px;
-            height: calc(100vh - 100px);
-            z-index: 99;
+        .sidebar.collapsed {
+            width: 60px;
+            padding: 12px 8px;
+        }
+        
+        .sidebar.collapsed .nav-text,
+        .sidebar.collapsed .nav-section-title {
+            display: none;
+        }
+        
+        .sidebar.collapsed .nav-item {
+            justify-content: center;
+            padding: 12px;
+        }
+        
+        .collapse-btn {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            background: transparent;
+            border: 1px solid var(--crystal-border);
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .collapse-btn:hover {
+            border-color: var(--crimson-bright);
+            color: var(--crimson-bright);
         }
         
         .nav-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px;
+            padding: 10px 12px;
             margin-bottom: 4px;
             border-radius: 6px;
             cursor: pointer;
             color: var(--text-secondary);
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.2s;
@@ -303,12 +301,18 @@
             color: var(--text-primary);
         }
         
+        .nav-icon {
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+        
         .nav-section-title {
-            font-size: 9px;
+            font-size: 8px;
             color: var(--crimson-bright);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            padding: 16px 12px 8px;
+            letter-spacing: 2px;
+            padding: 12px 12px 6px;
             font-weight: 600;
         }
         
@@ -320,10 +324,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 12px;
+            padding: 8px 12px;
             color: var(--text-muted);
             cursor: pointer;
-            font-size: 11px;
+            font-size: 10px;
             border-radius: 6px;
             transition: all 0.2s;
         }
@@ -333,12 +337,12 @@
             background: rgba(255, 255, 255, 0.02);
         }
         
-        .category-projects { display: none; padding-left: 16px; }
+        .category-projects { display: none; padding-left: 12px; }
         .category-projects.show { display: block; }
         
         .project-link {
-            padding: 8px 12px;
-            font-size: 11px;
+            padding: 6px 12px;
+            font-size: 10px;
             color: var(--text-muted);
             cursor: pointer;
             border-radius: 4px;
@@ -356,6 +360,7 @@
             display: flex;
             gap: 16px;
             overflow: hidden;
+            min-width: 0;
         }
         
         /* Panels */
@@ -371,7 +376,7 @@
         
         .panel-header {
             background: linear-gradient(90deg, var(--crimson-glow) 0%, transparent 100%);
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-bottom: 1px solid var(--crystal-border);
             display: flex;
             justify-content: space-between;
@@ -380,7 +385,7 @@
         
         .panel-title {
             font-family: var(--display-font);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -389,71 +394,248 @@
         
         .panel-value {
             font-family: var(--display-font);
-            font-size: 14px;
+            font-size: 12px;
             color: var(--text-primary);
         }
         
         .panel-content {
-            padding: 16px;
+            padding: 12px;
             overflow-y: auto;
             flex: 1;
         }
         
-        .agents-panel { width: 220px; }
+        .agents-panel { width: 200px; }
         .queue-panel { flex: 1; }
-        .chart-panel { width: 280px; }
-        .feed-panel { width: 240px; }
+        .metrics-panel { width: 240px; }
+        .activity-panel { width: 220px; }
         
-        .agent-item, .task-item, .feed-item {
+        /* Agent Items */
+        .agent-item {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 6px;
-            padding: 14px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--crimson-bright);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-left: 2px solid var(--crimson-bright);
             transition: all 0.2s;
         }
         
-        .agent-item:hover, .task-item:hover {
+        .agent-item:hover {
             background: rgba(139, 0, 0, 0.1);
-            box-shadow: 0 0 15px var(--crimson-glow);
+        }
+        
+        .agent-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        
+        .status-indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00ff88;
+            box-shadow: 0 0 6px #00ff88;
+        }
+        
+        .status-indicator.idle {
+            background: var(--text-muted);
+            box-shadow: none;
+        }
+        
+        .agent-name {
+            font-family: var(--display-font);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .agent-task {
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        
+        .agent-time {
+            font-size: 10px;
+            color: var(--crimson-bright);
+            font-family: var(--display-font);
+            margin-top: 4px;
+        }
+        
+        /* Task Items */
+        .task-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+        }
+        
+        .task-item:hover {
+            border-color: var(--crimson-bright);
+            background: rgba(139, 0, 0, 0.05);
+        }
+        
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+        
+        .task-title {
+            font-family: var(--display-font);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        
+        .task-badge {
+            font-size: 8px;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .task-badge.active {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .task-badge.pending {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid var(--crystal-border);
+        }
+        
+        .task-badge.blocked {
+            background: rgba(139, 0, 0, 0.2);
+            color: var(--crimson-bright);
+            border: 1px solid var(--crimson-bright);
+        }
+        
+        .task-meta {
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .task-desc {
+            font-size: 10px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        
+        .task-actions {
+            display: flex;
+            gap: 8px;
         }
         
         .task-btn {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: transparent;
             border: 1px solid var(--crimson-bright);
-            border-radius: 4px;
+            border-radius: 3px;
             color: var(--crimson-bright);
             font-family: var(--tech-font);
-            font-size: 11px;
+            font-size: 9px;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.2s;
-            margin-top: 12px;
         }
         
         .task-btn:hover {
             background: var(--crimson-glow);
-            box-shadow: 0 0 15px var(--crimson-glow);
+            box-shadow: 0 0 10px var(--crimson-glow);
+        }
+        
+        .task-btn.secondary {
+            border-color: var(--crystal-border);
+            color: var(--text-muted);
+        }
+        
+        .task-btn.secondary:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-secondary);
+        }
+        
+        /* Activity Feed */
+        .activity-item {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            border-left: 2px solid var(--crimson-bright);
+            font-size: 10px;
+        }
+        
+        .activity-time {
+            font-size: 8px;
+            color: var(--text-muted);
+            font-family: var(--display-font);
+            margin-bottom: 4px;
+        }
+        
+        .activity-text {
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        
+        .activity-project {
+            font-size: 8px;
+            color: var(--crimson-bright);
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Metrics */
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--crystal-border);
+        }
+        
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .metric-value {
+            font-family: var(--display-font);
+            font-size: 11px;
+            color: var(--crimson-bright);
         }
         
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--crystal-border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: var(--crystal-border); border-radius: 2px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--crimson-bright); }
         
-        /* MOBILE RESPONSIVE */
+        /* Mobile Responsive */
         @media (max-width: 1200px) {
             .stats-bar {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-                padding: 12px 16px;
+                gap: 6px;
+                padding: 10px 16px;
             }
             
-            .chart-panel, .feed-panel {
+            .metrics-panel, .activity-panel {
                 display: none;
             }
         }
@@ -463,18 +645,14 @@
                 display: block;
             }
             
-            .system-status {
-                display: none;
-            }
-            
             .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-                padding: 12px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+                padding: 10px 12px;
             }
             
             .stat-value {
-                font-size: 22px;
+                font-size: 16px;
             }
             
             .app-container {
@@ -485,45 +663,25 @@
             
             .sidebar {
                 width: 100%;
-                max-height: 200px;
+                max-height: 50vh;
                 margin-bottom: 12px;
+                position: fixed;
+                left: 0;
+                top: 60px;
+                z-index: 99;
+                transform: translateX(-100%);
             }
             
-            .sidebar.mobile-hidden {
-                display: none;
+            .sidebar.open {
+                transform: translateX(0);
             }
             
             .main-content {
                 flex-direction: column;
-                height: auto;
             }
             
             .agents-panel, .queue-panel {
                 width: 100%;
-                max-height: 400px;
-            }
-            
-            .panel-content {
-                max-height: 350px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo-text {
-                font-size: 14px;
-                letter-spacing: 2px;
-            }
-            
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stat-card {
-                padding: 12px 8px;
-            }
-            
-            .stat-value {
-                font-size: 20px;
             }
         }
     </style>
@@ -536,35 +694,36 @@
         <div class="shard"></div>
         <div class="shard"></div>
         <div class="shard"></div>
-        <div class="shard"></div>
     </div>
     
     <div class="topbar">
         <div style="display: flex; align-items: center; gap: 16px;">
-            <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+            <button class="mobile-menu-btn" onclick="toggleMobileSidebar()">☰</button>
             <div class="logo">
                 <div class="logo-icon">◈</div>
                 <div class="logo-text">MISSION <span>CONTROL</span></div>
             </div>
         </div>
-        
-        <div class="system-status">
-            <div class="status-dot"></div>
-            <span>ONLINE</span>
-        </div>
     </div>
     
+    <!-- REAL TRACKABLE STATS ONLY -->
     <div class="stats-bar">
         <div class="stat-card">
-            <div class="stat-label">Agents</div>
-            <div class="stat-value">03</div>
-            <div class="stat-sub">Active</div>
+            <div class="stat-label">Active</div>
+            <div class="stat-value">3</div>
+            <div class="stat-sub">Agents</div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-label">Tasks</div>
-            <div class="stat-value">12</div>
-            <div class="stat-sub">In Queue</div>
+            <div class="stat-label">Spawned</div>
+            <div class="stat-value">5</div>
+            <div class="stat-sub">Today</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-label">Completed</div>
+            <div class="stat-value">7</div>
+            <div class="stat-sub">Tasks</div>
         </div>
         
         <div class="stat-card">
@@ -574,117 +733,258 @@
         </div>
         
         <div class="stat-card">
-            <div class="stat-label">Tokens</div>
-            <div class="stat-value">82%</div>
-            <div class="stat-sub">⚠ Burn</div>
+            <div class="stat-label">Models</div>
+            <div class="stat-value">K2.5</div>
+            <div class="stat-sub">60%</div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-label">Efficiency</div>
-            <div class="stat-value">94%</div>
-            <div class="stat-sub">Success</div>
-        </div>
-        
-        <div class="stat-card">
-            <div class="stat-label">Wedding</div>
-            <div class="stat-value">311d</div>
-            <div class="stat-sub">Dec 13</div>
+            <div class="stat-label">Focus</div>
+            <div class="stat-value">A2</div>
+            <div class="stat-sub">Project</div>
         </div>
     </div>
     
     <div class="app-container">
+        <!-- Collapsible Sidebar with Icons -->
         <div class="sidebar" id="sidebar">
+            <button class="collapse-btn" onclick="toggleSidebar()">◀ Collapse</button>
+            
             <div class="nav-item active">
-                <span>◈</span> COMMAND
+                <span class="nav-icon">◈</span>
+                <span class="nav-text">Command</span>
             </div>
             
-            <div class="nav-section-title">OPERATIONS</div>
+            <div class="nav-section-title">Operations</div>
             
             <div class="nav-item">
-                <span>◉</span> ALL PROJECTS
-            </div>
-            
-            <div class="nav-item">
-                <span>◆</span> A — PERSONAL
-            </div>
-            
-            <div class="nav-item">
-                <span>◆</span> B — BUSINESS
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">All Projects</span>
             </div>
             
             <div class="nav-item">
-                <span>◆</span> C — SIDE
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">A — Personal</span>
+            </div>
+            
+            <div class="nav-item">
+                <span class="nav-icon">💼</span>
+                <span class="nav-text">B — Business</span>
+            </div>
+            
+            <div class="nav-item">
+                <span class="nav-icon">🔧</span>
+                <span class="nav-text">C — Side</span>
+            </div>
+            
+            <div class="nav-section-title">System</div>
+            
+            <div class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Analytics</span>
+            </div>
+            
+            <div class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
             </div>
         </div>
         
         <div class="main-content">
             
+            <!-- Agents Panel -->
             <div class="panel agents-panel">
                 <div class="panel-header">
-                    <span class="panel-title">AGENTS</span>
-                    <span class="panel-value">03</span>
+                    <span class="panel-title">Agents</span>
+                    <span class="panel-value">3/5</span>
                 </div>
                 <div class="panel-content">
+                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Active</div>
+                    
                     <div class="agent-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="font-family: var(--display-font); font-size: 13px;">K2.5-WRITER</div>
-                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">A2 · CHAPTER 13</div>
-                            </div>
-                            <div style="font-size: 11px; color: var(--crimson-bright); font-family: var(--display-font);">00:45</div>
+                        <div class="agent-status">
+                            <div class="status-indicator"></div>
+                            <span class="agent-name">K2.5-WRITER</span>
                         </div>
+                        <div class="agent-task">✎ Writing · A2 Chapter 13</div>
+                        <div class="agent-time">⏱ 00:45:12</div>
                     </div>
                     
                     <div class="agent-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="font-family: var(--display-font); font-size: 13px;">GPT-4-CODER</div>
-                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">B3 · HOMEPAGE</div>
-                            </div>
-                            <div style="font-size: 11px; color: var(--crimson-bright); font-family: var(--display-font);">01:20</div>
+                        <div class="agent-status">
+                            <div class="status-indicator"></div>
+                            <span class="agent-name">GPT-4-CODER</span>
                         </div>
+                        <div class="agent-task"></ > Coding · B3 Homepage</div>
+                        <div class="agent-time">⏱ 01:20:45</div>
                     </div>
                     
                     <div class="agent-item">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="font-family: var(--display-font); font-size: 13px;">K2.5-RESEARCHER</div>
-                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">A4 · KICK</div>
-                            </div>
-                            <div style="font-size: 11px; color: var(--crimson-bright); font-family: var(--display-font);">02:15</div>
+                        <div class="agent-status">
+                            <div class="status-indicator"></div>
+                            <span class="agent-name">K2.5-RESEARCHER</span>
+                        </div>
+                        <div class="agent-task">🔍 Research · A4 Kick</div>
+                        <div class="agent-time">⏱ 02:15:33</div>
+                    </div>
+                    
+                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 8px;">Idle</div>
+                    
+                    <div class="agent-item">
+                        <div class="agent-status">
+                            <div class="status-indicator idle"></div>
+                            <span class="agent-name">CLAUDE-HELPER</span>
+                        </div>
+                        <div class="agent-task">🎨 Design · Available</div>
+                    </div>
+                    
+                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 8px;">Completed Today</div>
+                    
+                    <div style="font-size: 10px; color: var(--text-secondary); padding: 8px; background: rgba(0,255,136,0.05); border-radius: 4px; border-left: 2px solid #00ff88;">
+                        <div>K2.5-Writer: 5 tasks</div>
+                        <div style="margin-top: 4px;">GPT-4-Coder: 2 tasks</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Queue Panel -->
+            <div class="panel queue-panel">
+                <div class="panel-header">
+                    <span class="panel-title">Queue</span>
+                    <span class="panel-value">12</span>
+                </div>
+                <div class="panel-content">
+                    <!-- In Progress -->
+                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">In Progress · 3</div>
+                    
+                    <div class="task-item">
+                        <div class="task-header">
+                            <span class="task-title">Upload RE:UNITE Chapters</span>
+                            <span class="task-badge active">ACTIVE</span>
+                        </div>
+                        <div class="task-meta">✎ Writing · A2 · K2.5-WRITER · Started 45m ago</div>
+                        <div class="task-desc">Upload to Royal Road, Wattpad, Scribble Hub, Novel Updates. 3/4 platforms remaining.</div>
+                        <div class="task-actions">
+                            <button class="task-btn">Complete</button>
+                            <button class="task-btn secondary">View</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Pending -->
+                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 8px;">Pending · 5</div>
+                    
+                    <div class="task-item">
+                        <div class="task-header">
+                            <span class="task-title">Design Team Elevate Homepage</span>
+                            <span class="task-badge pending">PENDING</span>
+                        </div>
+                        <div class="task-meta"></ > Coding · B3 · GPT-4-CODER · Waiting</div>
+                        <div class="task-desc">Create layout, implement components, responsive design.</div>
+                        <div class="task-actions">
+                            <button class="task-btn">Start</button>
+                            <button class="task-btn secondary">Edit</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Blocked -->
+                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 8px;">Blocked · 2</div>
+                    
+                    <div class="task-item">
+                        <div class="task-header">
+                            <span class="task-title">Setup Shopify Store</span>
+                            <span class="task-badge blocked">BLOCKED</span>
+                        </div>
+                        <div class="task-meta">🛒 E-commerce · B9 · Waiting for API key</div>
+                        <div class="task-desc">Cannot proceed without Shopify API credentials. Awaiting your input.</div>
+                        <div class="task-actions">
+                            <button class="task-btn">Provide Key</button>
+                            <button class="task-btn secondary">Skip</button>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="panel queue-panel">
+            <!-- Metrics Panel -->
+            <div class="panel metrics-panel">
                 <div class="panel-header">
-                    <span class="panel-title">QUEUE</span>
-                    <span class="panel-value">05</span>
+                    <span class="panel-title">Metrics</span>
                 </div>
                 <div class="panel-content">
-                    <div class="task-item">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span style="font-family: var(--display-font); font-size: 14px;">UPLOAD CHAPTERS</span>
-                            <span style="font-size: 10px; color: var(--crimson-bright); border: 1px solid var(--crimson-bright); padding: 2px 6px; border-radius: 2px;">HIGH</span>
-                        </div>
-                        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">A2 · K2.5-WRITER · ETA: 12m</div>
-                        <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 12px;">
-                            <div style="width: 45%; height: 100%; background: linear-gradient(90deg, var(--crimson-bright), var(--chart-green)); border-radius: 2px; box-shadow: 0 0 8px var(--crimson-bright);"></div>
-                        </div>
-                        <button class="task-btn">SPAWN</button>
+                    <div class="metric-row">
+                        <span class="metric-label">Tasks Spawned</span>
+                        <span class="metric-value">5</span>
                     </div>
                     
-                    <div class="task-item">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span style="font-family: var(--display-font); font-size: 14px;">DESIGN HOMEPAGE</span>
-                            <span style="font-size: 10px; color: var(--text-muted); border: 1px solid var(--text-muted); padding: 2px 6px; border-radius: 2px;">MED</span>
+                    <div class="metric-row">
+                        <span class="metric-label">Tasks Done</span>
+                        <span class="metric-value">7</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">Success Rate</span>
+                        <span class="metric-value">94%</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">Avg Time/Task</span>
+                        <span class="metric-value">42m</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">K2.5 Usage</span>
+                        <span class="metric-value">60%</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">GPT-4 Usage</span>
+                        <span class="metric-value">30%</span>
+                    </div>
+                    
+                    <div style="margin-top: 16px; padding: 10px; background: rgba(0,255,136,0.05); border-radius: 6px; border-left: 2px solid #00ff88;">
+                        <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Next Milestone</div>
+                        <div style="font-size: 11px; color: var(--text-primary);">A2: 3/12 chapters complete</div>
+                        <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 8px;">
+                            <div style="width: 25%; height: 100%; background: linear-gradient(90deg, #00ff88, #00cc6a); border-radius: 2px;"></div>
                         </div>
-                        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">B3 · GPT-4-CODER · ETA: 45m</div>
-                        <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 12px;">
-                            <div style="width: 20%; height: 100%; background: var(--crimson-bright); border-radius: 2px; box-shadow: 0 0 8px var(--crimson-bright);"></div>
-                        </div>
-                        <button class="task-btn">SPAWN</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Activity Panel -->
+            <div class="panel activity-panel">
+                <div class="panel-header">
+                    <span class="panel-title">Activity</span>
+                    <span class="panel-value">8</span>
+                </div>
+                <div class="panel-content">
+                    <div class="activity-item">
+                        <div class="activity-time">[14:32:15]</div>
+                        <div class="activity-text">K2.5-WRITER completed upload to Royal Road</div>
+                        <div class="activity-project">A2 RE:UNITE</div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-time">[14:28:42]</div>
+                        <div class="activity-text">New task added to B3 queue</div>
+                        <div class="activity-project">B3 Team Elevate</div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-time">[14:15:08]</div>
+                        <div class="activity-text">GPT-4-CODER started B3 homepage</div>
+                        <div class="activity-project">B3 Team Elevate</span>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-time">[13:52:33]</div>
+                        <div class="activity-text">K2.5-WRITER spawned for A2</div>
+                        <div class="activity-project">A2 RE:UNITE</div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-time">[12:15:00]</div>
+                        <div class="activity-text">GitHub push: Updated dashboard</div>
+                        <div class="activity-project">A6 Mission Control</div>
                     </div>
                 </div>
             </div>
@@ -694,17 +994,22 @@
     
     <script>
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('mobile-hidden');
+            document.getElementById('sidebar').classList.toggle('collapsed');
         }
         
-        // Auto-hide sidebar on mobile load
-        if (window.innerWidth <= 768) {
-            document.getElementById('sidebar').classList.add('mobile-hidden');
+        function toggleMobileSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
         }
         
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                document.getElementById('sidebar').classList.remove('mobile-hidden');
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(e.target) && 
+                !menuBtn.contains(e.target)) {
+                sidebar.classList.remove('open');
             }
         });
     </script>
