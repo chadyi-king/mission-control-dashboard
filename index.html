@@ -335,9 +335,18 @@
         }
         
         .sidebar-icon {
-            font-size: 20px;
-            min-width: 28px;
-            text-align: center;
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: currentColor;
+        }
+        
+        .sidebar-icon svg {
+            width: 100%;
+            height: 100%;
         }
         
         .sidebar-label {
@@ -621,6 +630,121 @@
         .queue-priority { font-size: 8px; padding: 3px 8px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
         .queue-priority.high { background: rgba(139, 0, 0, 0.3); color: var(--crimson-bright); }
         
+        .category-card {
+            background: var(--crystal);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .category-card:hover {
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 30px var(--crimson-glow);
+        }
+        
+        .category-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .category-title {
+            font-family: var(--display-font);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .category-title span {
+            color: var(--crimson-bright);
+        }
+        
+        .category-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .category-count {
+            font-family: var(--display-font);
+            font-size: 32px;
+            color: var(--crimson-bright);
+        }
+        
+        .category-projects {
+            padding: 16px;
+        }
+        
+        .category-project-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--crystal-border);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .category-project-item:hover {
+            background: var(--crimson-glow);
+            border-left-color: var(--crimson-bright);
+        }
+        
+        .category-project-item.active {
+            border-left-color: var(--crimson-bright);
+            background: var(--crimson-glow);
+        }
+        
+        .project-info h4 {
+            font-family: var(--display-font);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        
+        .project-info p {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+        
+        .project-status {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .project-status.active {
+            background: rgba(139, 0, 0, 0.3);
+            color: var(--crimson-bright);
+        }
+        
+        .project-status.pending {
+            background: rgba(201, 169, 98, 0.2);
+            color: #c9a962;
+        }
+        
+        .project-status.complete {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
         /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -639,6 +763,7 @@
             .sidebar.mobile-open { transform: translateX(0); }
             .stats-bar { grid-template-columns: repeat(3, 1fr); padding: 10px 24px; }
             .main-container { padding: 16px; }
+            #categories-section .row { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -739,33 +864,70 @@
     <div class="sidebar" id="sidebar">
         <button class="sidebar-toggle" onclick="toggleSidebar()">▶</button>
         
-        <a href="#" class="sidebar-item active" onclick="setActive(this)">
-            <span class="sidebar-icon">◈</span>
+        <a href="#" class="sidebar-item active" onclick="showSection('home', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+            </span>
             <span class="sidebar-label">Home</span>
         </a>
         
-        <a href="#" class="sidebar-item" onclick="setActive(this)">
-            <span class="sidebar-icon">📋</span>
+        <a href="#" class="sidebar-item" onclick="showSection('categories', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+            </span>
             <span class="sidebar-label">Categories</span>
         </a>
         
-        <a href="#" class="sidebar-item" onclick="setActive(this)">
-            <span class="sidebar-icon">👤</span>
+        <a href="#" class="sidebar-item" onclick="showSection('insights', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"/>
+                    <line x1="12" y1="20" x2="12" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+            </span>
             <span class="sidebar-label">Insights</span>
         </a>
         
-        <a href="#" class="sidebar-item" onclick="setActive(this)">
-            <span class="sidebar-icon">💼</span>
+        <a href="#" class="sidebar-item" onclick="showSection('resources', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                </svg>
+            </span>
             <span class="sidebar-label">Resources</span>
         </a>
         
-        <a href="#" class="sidebar-item" onclick="setActive(this)">
-            <span class="sidebar-icon">🔧</span>
+        <a href="#" class="sidebar-item" onclick="showSection('system', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+            </span>
             <span class="sidebar-label">System</span>
         </a>
         
-        <a href="#" class="sidebar-item" onclick="setActive(this)">
-            <span class="sidebar-icon">⚙️</span>
+        <a href="#" class="sidebar-item" onclick="showSection('profile', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </span>
             <span class="sidebar-label">Profile</span>
         </a>
     </div>
@@ -809,8 +971,11 @@
         </div>
     </div>
     
-    <!-- MAIN CONTENT (6 Panels from previous) -->
+    <!-- MAIN CONTENT -->
     <div class="main-container">
+        
+        <!-- HOME SECTION -->
+        <div class="section active" id="home-section">
         
         <!-- ROW 1: WORKFLOW + PROJECTS -->
         <div class="row">
@@ -1119,6 +1284,182 @@
             </div>
         </div>
         
+        </div>
+        <!-- END HOME SECTION -->
+        
+        <!-- CATEGORIES SECTION -->
+        <div class="section" id="categories-section">
+            <div class="row" style="grid-template-columns: repeat(3, 1fr);">
+                
+                <!-- A - Ambition -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <div>
+                            <div class="category-title">A<span>MBITION</span></div>
+                            <div class="category-subtitle">By Calbee</div>
+                        </div>
+                        <div class="category-count">6</div>
+                    </div>
+                    <div class="category-projects">
+                        <div class="category-project-item active">
+                            <div class="project-info">
+                                <h4>A1 · Wedding</h4>
+                                <p>311 days · Planning phase</p>
+                            </div>
+                            <span class="project-status active">Active</span>
+                        </div>
+                        <div class="category-project-item active">
+                            <div class="project-info">
+                                <h4>A2 · RE:UNITE</h4>
+                                <p>3/12 chapters · 25% complete</p>
+                            </div>
+                            <span class="project-status active">Active</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>A3 · Calbee Fit</h4>
+                                <p>Health & fitness tracking</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>A4 · Streaming</h4>
+                                <p>Research phase · 5%</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>A5 · YouTube</h4>
+                                <p>Content creation channel</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item active">
+                            <div class="project-info">
+                                <h4>A6 · Mission Control</h4>
+                                <p>This dashboard · Building</p>
+                            </div>
+                            <span class="project-status active">Active</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- B - Business Empire -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <div>
+                            <div class="category-title">B<span>USINESS</span></div>
+                            <div class="category-subtitle">Empire Building</div>
+                        </div>
+                        <div class="category-count">10</div>
+                    </div>
+                    <div class="category-projects">
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B1 · Dropshipping</h4>
+                                <p>E-commerce store setup</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B2 · Private Label</h4>
+                                <p>Brand development</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item active">
+                            <div class="project-info">
+                                <h4>B3 · Team Elevate</h4>
+                                <p>1/10 tasks · 10% complete</p>
+                            </div>
+                            <span class="project-status active">Active</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B4 · Course Creation</h4>
+                                <p>Online education platform</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B5 · Email List</h4>
+                                <p>Audience building</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B6 · Copywriting</h4>
+                                <p>Freelance services</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B7 · Micro SaaS</h4>
+                                <p>Software as service</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B8 · Affiliate</h4>
+                                <p>Commission marketing</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B9 · Shopify Store</h4>
+                                <p>Blocked · needs API key</p>
+                            </div>
+                            <span class="project-status pending">Blocked</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>B10 · Coaching</h4>
+                                <p>1-on-1 mentorship</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- C - Callings -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <div>
+                            <div class="category-title">C<span>ALLINGS</span></div>
+                            <div class="category-subtitle">On The Side</div>
+                        </div>
+                        <div class="category-count">2</div>
+                    </div>
+                    <div class="category-projects">
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>C1 · Ministry</h4>
+                                <p>Faith-based initiatives</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>C2 · Podcast</h4>
+                                <p>Audio content series</p>
+                            </div>
+                            <span class="project-status pending">Pending</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- END CATEGORIES SECTION -->
+        
     </div>
     
     <script>
@@ -1149,6 +1490,29 @@
             }
             
             document.getElementById('quickMenu').classList.remove('show');
+        }
+        
+        // Section Navigation
+        function showSection(sectionName, element) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const sectionId = sectionName + '-section';
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+            }
+            
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            if (element) {
+                element.classList.add('active');
+            }
         }
         
         // Sidebar Toggle
