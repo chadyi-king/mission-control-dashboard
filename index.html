@@ -3,42 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission Control — Caleb E</title>
+    <title>MISSION CONTROL</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap');
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --obsidian: #020203;
-            --obsidian-light: #08080c;
-            --crystal: rgba(255, 255, 255, 0.03);
-            --crystal-border: rgba(255, 255, 255, 0.08);
-            --crystal-highlight: rgba(255, 255, 255, 0.12);
-            --ember: #ff1a3c;
-            --ember-soft: rgba(255, 26, 60, 0.3);
-            --ember-glow: rgba(255, 26, 60, 0.15);
-            --gold: #c9a962;
-            --gold-soft: rgba(201, 169, 98, 0.2);
-            --text-primary: rgba(255, 255, 255, 0.95);
-            --text-secondary: rgba(255, 255, 255, 0.6);
-            --text-muted: rgba(255, 255, 255, 0.35);
-            --luxury-serif: 'Cormorant Garamond', serif;
-            --luxury-sans: 'Montserrat', sans-serif;
+            --bg-primary: #0a0a0c;
+            --bg-card: #121216;
+            --bg-elevated: #1a1a20;
+            --fire-bright: #ff4500;
+            --fire-glow: #ff2200;
+            --fire-soft: rgba(255, 69, 0, 0.3);
+            --alert-red: #ff1a1a;
+            --chart-green: #00ff88;
+            --chart-line: #ff6600;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --border-glow: rgba(255, 69, 0, 0.4);
+            --tech-font: 'Rajdhani', sans-serif;
+            --display-font: 'Orbitron', sans-serif;
         }
         
         body {
-            font-family: var(--luxury-sans);
-            font-weight: 300;
-            background: var(--obsidian);
+            font-family: var(--tech-font);
+            font-weight: 500;
+            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
         }
         
-        /* Crystal Background */
-        .crystal-bg {
+        /* Tactical Background */
+        .tactical-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -46,14 +46,12 @@
             height: 100%;
             z-index: 0;
             background: 
-                radial-gradient(ellipse 40% 30% at 20% 20%, var(--ember-glow) 0%, transparent 60%),
-                radial-gradient(ellipse 30% 25% at 80% 80%, var(--gold-soft) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 70%),
-                var(--obsidian);
+                radial-gradient(ellipse 50% 40% at 30% 20%, rgba(255, 69, 0, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 30% at 70% 80%, rgba(255, 34, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, rgba(10,10,12,1) 0%, rgba(8,8,10,1) 100%);
         }
         
-        /* Spark Particles */
-        .sparks {
+        .grid-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -61,37 +59,19 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
-            overflow: hidden;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(rgba(255, 69, 0, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 69, 0, 0.5) 1px, transparent 1px);
+            background-size: 50px 50px;
         }
         
-        .spark {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            background: var(--ember);
-            border-radius: 50%;
-            box-shadow: 0 0 4px var(--ember), 0 0 8px var(--ember-soft);
-            animation: sparkle 6s ease-in-out infinite;
-            opacity: 0;
-        }
-        
-        .spark:nth-child(1) { left: 15%; top: 20%; animation-delay: 0s; }
-        .spark:nth-child(2) { left: 75%; top: 35%; animation-delay: 1.5s; }
-        .spark:nth-child(3) { left: 45%; top: 60%; animation-delay: 3s; }
-        .spark:nth-child(4) { left: 85%; top: 75%; animation-delay: 4.5s; }
-        .spark:nth-child(5) { left: 25%; top: 80%; animation-delay: 2s; }
-        
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 0.8; transform: scale(1); }
-        }
-        
-        /* Top Bar - Crystal */
+        /* Top Bar - Tactical */
         .topbar {
-            background: linear-gradient(180deg, rgba(8,8,12,0.9) 0%, rgba(8,8,12,0.6) 100%);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--crystal-border);
-            padding: 20px 32px;
+            background: linear-gradient(180deg, rgba(18,18,22,0.95) 0%, rgba(10,10,12,0.9) 100%);
+            border-bottom: 2px solid var(--fire-bright);
+            box-shadow: 0 0 20px var(--fire-soft);
+            padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -109,47 +89,65 @@
         .logo-icon {
             width: 36px;
             height: 36px;
-            border: 1px solid var(--ember-soft);
-            border-radius: 50%;
+            border: 2px solid var(--fire-bright);
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            background: var(--crystal);
-            box-shadow: 0 0 20px var(--ember-glow), inset 0 1px 0 var(--crystal-highlight);
+            font-size: 18px;
+            background: var(--fire-soft);
+            box-shadow: 0 0 15px var(--fire-soft), inset 0 0 10px var(--fire-soft);
         }
         
         .logo-text {
-            font-family: var(--luxury-serif);
-            font-size: 22px;
-            font-weight: 300;
-            letter-spacing: 3px;
+            font-family: var(--display-font);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 4px;
             text-transform: uppercase;
         }
         
         .logo-text span {
-            color: var(--ember);
-            font-weight: 400;
+            color: var(--fire-bright);
+            text-shadow: 0 0 10px var(--fire-glow);
         }
         
-        /* Stats Bar - Crystal Cards */
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--chart-green);
+            box-shadow: 0 0 10px var(--chart-green);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Stats Bar - Tactical Display */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
-            padding: 24px 32px;
-            background: transparent;
+            gap: 16px;
+            padding: 16px 24px;
+            background: linear-gradient(180deg, rgba(18,18,22,0.8) 0%, transparent 100%);
         }
         
         .stat-card {
-            background: var(--crystal);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--crystal-border);
-            border-radius: 8px;
-            padding: 20px 16px;
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 16px;
             position: relative;
             overflow: hidden;
         }
@@ -160,143 +158,121 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--crystal-highlight), transparent);
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--fire-bright), transparent);
         }
         
-        .stat-card:hover {
-            border-color: var(--ember-soft);
-            box-shadow: 0 0 30px var(--ember-glow);
-            transform: translateY(-2px);
+        .stat-card.alert {
+            border-color: var(--alert-red);
+            box-shadow: 0 0 15px rgba(255, 26, 26, 0.3);
         }
         
-        .stat-icon {
-            font-size: 14px;
-            margin-bottom: 12px;
-            opacity: 0.7;
-        }
-        
-        .stat-value {
-            font-family: var(--luxury-serif);
-            font-size: 26px;
-            font-weight: 300;
-            color: var(--text-primary);
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+        .stat-card.alert::before {
+            background: linear-gradient(90deg, transparent, var(--alert-red), transparent);
         }
         
         .stat-label {
-            font-size: 9px;
+            font-size: 10px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-top: 8px;
-            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-family: var(--display-font);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--fire-bright);
+            text-shadow: 0 0 10px var(--fire-glow);
+        }
+        
+        .stat-value.alert {
+            color: var(--alert-red);
+            text-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
         }
         
         .stat-sub {
-            font-size: 10px;
-            color: var(--ember);
-            margin-top: 6px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            min-height: 14px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+        
+        /* Mini Chart */
+        .mini-chart {
+            height: 30px;
+            margin-top: 8px;
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+        }
+        
+        .chart-bar {
+            flex: 1;
+            background: var(--fire-bright);
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        
+        .chart-bar:hover {
+            opacity: 1;
         }
         
         /* Layout */
         .app-container {
             display: flex;
-            height: calc(100vh - 200px);
+            height: calc(100vh - 180px);
             position: relative;
             z-index: 10;
-            padding: 0 32px 24px;
+            padding: 0 24px 24px;
             gap: 16px;
         }
         
-        /* Sidebar - Crystal */
+        /* Sidebar - Tactical */
         .sidebar {
-            width: 220px;
-            background: var(--crystal);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            padding: 20px 16px;
-            overflow-y: auto;
+            width: 200px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 16px;
         }
         
         .nav-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 14px;
-            margin-bottom: 2px;
-            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 4px;
+            border-radius: 2px;
             cursor: pointer;
             color: var(--text-secondary);
-            font-size: 12px;
-            font-weight: 400;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            letter-spacing: 0.5px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
         }
         
         .nav-item:hover {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 69, 0, 0.1);
             color: var(--text-primary);
-            border-color: var(--crystal-border);
+            border-left-color: var(--fire-bright);
         }
         
         .nav-item.active {
-            background: var(--ember-glow);
-            border-color: var(--ember-soft);
+            background: rgba(255, 69, 0, 0.15);
+            border-left-color: var(--fire-bright);
             color: var(--text-primary);
         }
         
         .nav-section-title {
-            font-size: 8px;
-            color: var(--text-muted);
+            font-size: 9px;
+            color: var(--fire-bright);
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-            padding: 20px 14px 10px;
-            font-weight: 500;
-        }
-        
-        .category-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 14px;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 11px;
-            border-radius: 6px;
-            transition: all 0.2s;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-        
-        .category-header:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.02);
-        }
-        
-        .category-projects { display: none; padding-left: 16px; }
-        .category-projects.show { display: block; }
-        
-        .project-link {
-            padding: 8px 14px;
-            font-size: 11px;
-            color: var(--text-muted);
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.2s;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-        }
-        
-        .project-link:hover {
-            color: var(--ember);
-            padding-left: 18px;
+            letter-spacing: 3px;
+            padding: 16px 12px 8px;
+            font-weight: 600;
         }
         
         /* Main Content */
@@ -307,581 +283,552 @@
             overflow: hidden;
         }
         
-        /* Crystal Columns */
-        .column {
-            background: var(--crystal);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
+        /* Tactical Panels */
+        .panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
         
-        .column-header {
-            padding: 18px 20px;
-            border-bottom: 1px solid var(--crystal-border);
+        .panel-header {
+            background: linear-gradient(90deg, rgba(255,69,0,0.1) 0%, transparent 100%);
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-glow);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%);
         }
         
-        .column-title {
-            font-family: var(--luxury-serif);
-            font-size: 13px;
-            font-weight: 400;
+        .panel-title {
+            font-family: var(--display-font);
+            font-size: 12px;
+            font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--text-secondary);
+            color: var(--fire-bright);
         }
         
-        .column-count {
-            font-family: var(--luxury-serif);
+        .panel-value {
+            font-family: var(--display-font);
             font-size: 14px;
-            font-weight: 300;
-            color: var(--ember);
-            letter-spacing: 1px;
+            color: var(--text-primary);
         }
         
-        .column-content {
+        .panel-content {
             padding: 16px;
             overflow-y: auto;
             flex: 1;
         }
         
-        /* Agents Column */
-        .agents-col { width: 200px; }
+        /* Agents Panel */
+        .agents-panel { width: 240px; }
         
         .agent-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 14px;
+            padding: 12px;
             margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-        
-        .agent-item:hover {
-            border-color: var(--crystal-border);
-            background: rgba(255, 255, 255, 0.04);
-        }
-        
-        .agent-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1px solid var(--ember-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            background: var(--crystal);
-            box-shadow: 0 0 15px var(--ember-glow);
-        }
-        
-        .agent-info h4 {
-            font-family: var(--luxury-sans);
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-        
-        .agent-role {
-            font-size: 10px;
-            color: var(--text-muted);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-        
-        .agent-task {
-            font-size: 9px;
-            color: var(--ember);
-            margin-top: 6px;
-            letter-spacing: 0.5px;
-            font-weight: 400;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 120px;
-        }
-        
-        .agent-time {
-            font-size: 9px;
-            color: var(--text-muted);
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Queue Column */
-        .queue-col { flex: 1; }
-        
-        .task-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid transparent;
-            border-radius: 8px;
-            padding: 18px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            background: var(--bg-elevated);
+            border-radius: 2px;
+            border-left: 3px solid var(--fire-bright);
             position: relative;
         }
         
-        .task-card:hover {
-            border-color: var(--crystal-border);
-            background: rgba(255, 255, 255, 0.03);
+        .agent-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,69,0,0.1));
         }
         
-        .task-card::before {
+        .agent-status-icon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--chart-green);
+            box-shadow: 0 0 8px var(--chart-green);
+        }
+        
+        .agent-info h4 {
+            font-family: var(--display-font);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .agent-task {
+            font-size: 11px;
+            color: var(--fire-bright);
+            margin-top: 4px;
+        }
+        
+        .agent-time {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-left: auto;
+            font-family: var(--display-font);
+        }
+        
+        /* Queue Panel */
+        .queue-panel { flex: 1; }
+        
+        .task-item {
+            background: var(--bg-elevated);
+            border: 1px solid transparent;
+            border-radius: 2px;
+            padding: 16px;
+            margin-bottom: 12px;
+            position: relative;
+            transition: all 0.2s;
+        }
+        
+        .task-item:hover {
+            border-color: var(--fire-bright);
+            box-shadow: 0 0 15px var(--fire-soft);
+        }
+        
+        .task-item::before {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--ember), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .task-card:hover::before {
-            opacity: 0.5;
+            width: 3px;
+            background: var(--fire-bright);
         }
         
         .task-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
             margin-bottom: 12px;
         }
         
         .task-title {
-            font-family: var(--luxury-serif);
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.4;
-            letter-spacing: 0.5px;
+            font-family: var(--display-font);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
         
-        .task-project {
-            font-family: var(--luxury-sans);
+        .task-priority {
+            padding: 4px 8px;
+            background: rgba(255, 69, 0, 0.2);
+            border: 1px solid var(--fire-bright);
+            border-radius: 2px;
             font-size: 9px;
-            color: var(--ember);
-            letter-spacing: 1.5px;
-            font-weight: 400;
-        }
-        
-        .task-desc {
-            font-size: 11px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 14px;
-            font-weight: 300;
-            letter-spacing: 0.3px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--fire-bright);
         }
         
         .task-meta {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            font-size: 10px;
+            font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 14px;
-            letter-spacing: 0.5px;
+            margin-bottom: 12px;
         }
         
-        .task-agent {
+        .task-progress-container {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
         
-        .task-time {
-            font-family: var(--luxury-serif);
-            color: var(--gold);
-            letter-spacing: 1px;
+        .task-progress-bg {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .task-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--fire-bright), var(--chart-green));
+            border-radius: 3px;
+            box-shadow: 0 0 10px var(--fire-bright);
+        }
+        
+        .task-progress-text {
+            font-family: var(--display-font);
+            font-size: 12px;
+            color: var(--fire-bright);
+            min-width: 40px;
+            text-align: right;
         }
         
         .task-btn {
             padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 400;
-            letter-spacing: 1.5px;
+            background: transparent;
+            border: 1px solid var(--fire-bright);
+            border-radius: 2px;
+            color: var(--fire-bright);
+            font-family: var(--tech-font);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
             cursor: pointer;
-            border: 1px solid var(--ember-soft);
-            background: transparent;
-            color: var(--ember);
-            transition: all 0.3s ease;
-        }
-        
-        .task-btn:hover {
-            background: var(--ember-glow);
-            box-shadow: 0 0 20px var(--ember-glow);
-        }
-        
-        /* Feed Column */
-        .feed-col { width: 260px; }
-        
-        .feed-item {
-            padding: 14px 0;
-            border-bottom: 1px solid var(--crystal-border);
             transition: all 0.2s;
         }
         
-        .feed-item:last-child {
-            border-bottom: none;
+        .task-btn:hover {
+            background: var(--fire-soft);
+            box-shadow: 0 0 15px var(--fire-soft);
         }
         
-        .feed-header {
+        /* Chart Panel */
+        .chart-panel { width: 300px; }
+        
+        .chart-container {
+            height: 120px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .chart-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+        }
+        
+        .chart-line svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .metric-row {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
-        .feed-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--ember);
-            box-shadow: 0 0 6px var(--ember);
-        }
-        
-        .feed-author {
+        .metric-label {
             font-size: 11px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-        
-        .feed-time {
-            font-size: 9px;
             color: var(--text-muted);
-            margin-left: auto;
-            letter-spacing: 0.5px;
-        }
-        
-        .feed-content {
-            font-size: 11px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-            padding-left: 14px;
-        }
-        
-        .feed-project {
-            font-size: 9px;
-            color: var(--gold);
-            margin-top: 6px;
-            padding-left: 14px;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
         
+        .metric-value {
+            font-family: var(--display-font);
+            font-size: 14px;
+            color: var(--fire-bright);
+        }
+        
+        /* Feed Panel */
+        .feed-panel { width: 260px; }
+        
+        .feed-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: var(--bg-elevated);
+            border-radius: 2px;
+            border-left: 2px solid var(--fire-bright);
+            font-size: 12px;
+        }
+        
+        .feed-time {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-family: var(--display-font);
+        }
+        
+        .feed-content {
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        
+        .feed-alert {
+            border-left-color: var(--alert-red);
+            background: rgba(255, 26, 26, 0.1);
+        }
+        
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--crystal-border); border-radius: 2px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--ember-soft); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-card); }
+        ::-webkit-scrollbar-thumb { background: var(--fire-bright); border-radius: 3px; }
     </style>
 </head>
 <body>
-    <div class="crystal-bg"></div>
-    <div class="sparks">
-        <div class="spark"></div>
-        <div class="spark"></div>
-        <div class="spark"></div>
-        <div class="spark"></div>
-        <div class="spark"></div>
-    </div>
+    <div class="tactical-bg"></div>
+    <div class="grid-overlay"></div>
     
     <div class="topbar">
         <div class="logo">
-            <div class="logo-icon">◆</div>
-            <div class="logo-text">Mission <span>Control</span></div>
+            <div class="logo-icon">◈</div>
+            <div class="logo-text">MISSION <span>CONTROL</span></div>
         </div>
-        <div style="font-family: var(--luxury-serif); font-size: 13px; color: var(--text-muted); letter-spacing: 2px;">
-            Caleb E
+        <div class="system-status">
+            <div class="status-dot"></div>
+            <span>SYSTEM ONLINE</span>
         </div>
     </div>
     
     <div class="stats-bar">
         <div class="stat-card">
-            <div class="stat-icon">◆</div>
-            <div class="stat-value" id="stat-agents-value">3</div>
-            <div class="stat-label">Agents</div>
-            <div class="stat-sub" id="stat-agents-sub">Active</div>
+            <div class="stat-label">Agents Active</div>
+            <div class="stat-value">03</div>
+            <div class="mini-chart">
+                <div class="chart-bar" style="height: 60%"></div>
+                <div class="chart-bar" style="height: 80%"></div>
+                <div class="chart-bar" style="height: 40%"></div>
+                <div class="chart-bar" style="height: 90%"></div>
+                <div class="chart-bar" style="height: 70%"></div>
+            </div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-icon">◎</div>
-            <div class="stat-value" id="stat-tasks-value">12</div>
-            <div class="stat-label">Tasks</div>
-            <div class="stat-sub" id="stat-tasks-sub">In Queue</div>
+            <div class="stat-label">Tasks Queue</div>
+            <div class="stat-value">12</div>
+            <div class="stat-sub">+3 TODAY</div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-icon">◐</div>
-            <div class="stat-value" id="stat-time-value">4h 23m</div>
-            <div class="stat-label">Time</div>
-            <div class="stat-sub" id="stat-time-sub">Active</div>
+            <div class="stat-label">Time Active</div>
+            <div class="stat-value">4:23:15</div>
+            <div class="mini-chart">
+                <div class="chart-bar" style="height: 50%"></div>
+                <div class="chart-bar" style="height: 70%"></div>
+                <div class="chart-bar" style="height: 60%"></div>
+                <div class="chart-bar" style="height: 85%"></div>
+                <div class="chart-bar" style="height: 75%"></div>
+            </div>
+        </div>
+        
+        <div class="stat-card alert">
+            <div class="stat-label">Token Burn</div>
+            <div class="stat-value alert">82%</div>
+            <div class="stat-sub">⚠ CRITICAL</div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-icon">◇</div>
-            <div class="stat-value" id="stat-models-value">K2.5</div>
-            <div class="stat-label">Models</div>
-            <div class="stat-sub" id="stat-models-sub">Primary</div>
+            <div class="stat-label">Efficiency</div>
+            <div class="stat-value">94%</div>
+            <div class="mini-chart">
+                <div class="chart-bar" style="height: 90%; background: var(--chart-green)"></div>
+                <div class="chart-bar" style="height: 94%; background: var(--chart-green)"></div>
+                <div class="chart-bar" style="height: 88%; background: var(--chart-green)"></div>
+                <div class="chart-bar" style="height: 96%; background: var(--chart-green)"></div>
+                <div class="chart-bar" style="height: 92%; background: var(--chart-green)"></div>
+            </div>
         </div>
         
         <div class="stat-card">
-            <div class="stat-icon">□</div>
-            <div class="stat-value" id="stat-projects-value">A2</div>
-            <div class="stat-label">Focus</div>
-            <div class="stat-sub" id="stat-projects-sub">Project</div>
-        </div>
-        
-        <div class="stat-card">
-            <div class="stat-icon">○</div>
-            <div class="stat-value" id="stat-countdown-value">311</div>
-            <div class="stat-label">Days</div>
-            <div class="stat-sub" id="stat-countdown-sub">Wedding</div>
+            <div class="stat-label">Wedding ETA</div>
+            <div class="stat-value">311d</div>
+            <div class="stat-sub">DEC 13, 2026</div>
         </div>
     </div>
     
     <div class="app-container">
         <div class="sidebar">
             <div class="nav-item active">
-                <span>◆</span> Home
+                <span>◈</span> COMMAND
             </div>
             
-            <div class="nav-section-title">Categories</div>
+            <div class="nav-section-title">OPERATIONS</div>
             
             <div class="nav-item">
-                <span>◎</span> All Projects
-            </div>
-            
-            <div class="category-group">
-                <div class="category-header" onclick="toggleCat('cat-a')">
-                    <span>A — Personal</span>
-                    <span>▸</span>
-                </div>
-                <div class="category-projects" id="cat-a">
-                    <div class="project-link">A1 Tasks</div>
-                    <div class="project-link">A2 RE:UNITE</div>
-                    <div class="project-link">A3 KOE</div>
-                    <div class="project-link">A4 Streaming</div>
-                    <div class="project-link">A5 Trading</div>
-                    <div class="project-link">A6 Control</div>
-                </div>
-            </div>
-            
-            <div class="category-group">
-                <div class="category-header" onclick="toggleCat('cat-b')">
-                    <span>B — Business</span>
-                    <span>▸</span>
-                </div>
-                <div class="category-projects" id="cat-b">
-                    <div class="project-link">B1-B10</div>
-                </div>
-            </div>
-            
-            <div class="nav-section-title">System</div>
-            
-            <div class="nav-item">
-                <span>◈</span> Insights
+                <span>◉</span> ALL PROJECTS
             </div>
             
             <div class="nav-item">
-                <span>◉</span> Settings
+                <span>◆</span> A — PERSONAL
+            </div>
+            
+            <div class="nav-item">
+                <span>◆</span> B — BUSINESS
+            </div>
+            
+            <div class="nav-item">
+                <span>◆</span> C — SIDE
+            </div>
+            
+            <div class="nav-section-title">SYSTEM</div>
+            
+            <div class="nav-item">
+                <span>◎</span> ANALYTICS
+            </div>
+            
+            <div class="nav-item">
+                <span>◐</span> SETTINGS
             </div>
         </div>
         
         <div class="main-content">
             
-            <div class="column agents-col">
-                <div class="column-header">
-                    <span class="column-title">Agents</span>
-                    <span class="column-count">03</span>
+            <div class="panel agents-panel">
+                <div class="panel-header">
+                    <span class="panel-title">ACTIVE AGENTS</span>
+                    <span class="panel-value">03</span>
                 </div>
-                <div class="column-content">
+                <div class="panel-content">
                     <div class="agent-item">
-                        <div class="agent-avatar">◆</div>
+                        <div class="agent-status-icon"></div>
                         <div class="agent-info">
-                            <h4>K2.5-Writer</h4>
-                            <div class="agent-role">Content</div>
-                            <div class="agent-task">A2 · Chapter 13</div>
-                            <div class="agent-time">45m</div>
+                            <h4>K2.5-WRITER</h4>
+                            <div class="agent-task">A2 · CHAPTER 13</div>
                         </div>
+                        <div class="agent-time">00:45:12</div>
                     </div>
                     
                     <div class="agent-item">
-                        <div class="agent-avatar">◆</div>
+                        <div class="agent-status-icon"></div>
                         <div class="agent-info">
-                            <h4>GPT-4-Coder</h4>
-                            <div class="agent-role">Development</div>
-                            <div class="agent-task">B3 · Homepage</div>
-                            <div class="agent-time">1h 20m</div>
+                            <h4>GPT-4-CODER</h4>
+                            <div class="agent-task">B3 · HOMEPAGE</div>
                         </div>
+                        <div class="agent-time">01:20:45</div>
                     </div>
                     
                     <div class="agent-item">
-                        <div class="agent-avatar">◆</div>
+                        <div class="agent-status-icon"></div>
                         <div class="agent-info">
-                            <h4>K2.5-Researcher</h4>
-                            <div class="agent-role">Research</div>
-                            <div class="agent-task">A4 · Kick Platform</div>
-                            <div class="agent-time">2h 15m</div>
+                            <h4>K2.5-RESEARCHER</h4>
+                            <div class="agent-task">A4 · KICK RESEARCH</div>
                         </div>
+                        <div class="agent-time">02:15:33</div>
                     </div>
                 </div>
             </div>
             
-            <div class="column queue-col">
-                <div class="column-header">
-                    <span class="column-title">Queue</span>
-                    <span class="column-count">05</span>
+            <div class="panel queue-panel">
+                <div class="panel-header">
+                    <span class="panel-title">MISSION QUEUE</span>
+                    <span class="panel-value">05</span>
                 </div>
-                <div class="column-content">
-                    <div class="task-card">
+                <div class="panel-content">
+                    <div class="task-item">
                         <div class="task-header">
-                            <div class="task-title">Upload RE:UNITE Chapters</div>
-                            <span class="task-project">A2</span>
+                            <div class="task-title">UPLOAD RE:UNITE CHAPTERS</div>
+                            <span class="task-priority">HIGH</span>
                         </div>
-                        <div class="task-desc">Royal Road, Wattpad, Scribble Hub, Novel Updates</div>
                         <div class="task-meta">
-                            <div class="task-agent">◆ K2.5-Writer</div>
-                            <div class="task-time">45m</div>
+                            <span>A2 · K2.5-WRITER</span>
+                            <span>ETA: 12m</span>
                         </div>
-                        <button class="task-btn">Spawn Agent</button>
+                        <div class="task-progress-container">
+                            <div class="task-progress-bg">
+                                <div class="task-progress-fill" style="width: 45%"></div>
+                            </div>
+                            <div class="task-progress-text">45%</div>
+                        </div>
+                        
+                        <button class="task-btn">SPAWN SUB-AGENT</button>
                     </div>
                     
-                    <div class="task-card">
+                    <div class="task-item">
                         <div class="task-header">
-                            <div class="task-title">Design Team Elevate Homepage</div>
-                            <span class="task-project">B3</span>
+                            <div class="task-title">DESIGN TEAM ELEVATE HOMEPAGE</div>
+                            <span class="task-priority">MED</span>
                         </div>
-                        <div class="task-desc">Layout, components, responsive design</div>
                         <div class="task-meta">
-                            <div class="task-agent">◆ GPT-4-Coder</div>
-                            <div class="task-time">1h 20m</div>
+                            <span>B3 · GPT-4-CODER</span>
+                            <span>ETA: 45m</span>
                         </div>
-                        <button class="task-btn">Spawn Agent</button>
+                        <div class="task-progress-container">
+                            <div class="task-progress-bg">
+                                <div class="task-progress-fill" style="width: 20%"></div>
+                            </div>
+                            <div class="task-progress-text">20%</div>
+                        </div>
+                        
+                        <button class="task-btn">SPAWN SUB-AGENT</button>
                     </div>
                 </div>
             </div>
             
-            <div class="column feed-col">
-                <div class="column-header">
-                    <span class="column-title">Feed</span>
-                    <span class="column-count">08</span>
+            <div class="panel chart-panel">
+                <div class="panel-header">
+                    <span class="panel-title">METRICS</span>
                 </div>
-                <div class="column-content">
-                    <div class="feed-item">
-                        <div class="feed-header">
-                            <div class="feed-dot"></div>
-                            <span class="feed-author">K2.5-Writer</span>
-                            <span class="feed-time">2m</span>
+                <div class="panel-content">
+                    <div class="chart-container">
+                        <div class="chart-line">
+                            <svg viewBox="0 0 100 50" preserveAspectRatio="none">
+                                <path d="M0,40 L20,35 L40,25 L60,30 L80,15 L100,10" 
+                                      fill="none" 
+                                      stroke="var(--fire-bright)" 
+                                      stroke-width="2"
+                                      filter="drop-shadow(0 0 4px var(--fire-bright))"/>
+                                <path d="M0,40 L20,35 L40,25 L60,30 L80,15 L100,10 L100,50 L0,50 Z" 
+                                      fill="url(#gradient)" 
+                                      opacity="0.3"/>
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:var(--fire-bright);stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:var(--fire-bright);stop-opacity:0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
                         </div>
-                        <div class="feed-content">Completed upload to Royal Road</div>
-                        <div class="feed-project">A2 RE:UNITE</div>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">Tasks Completed</span>
+                        <span class="metric-value">07</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">Success Rate</span>
+                        <span class="metric-value">94%</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">Avg Task Time</span>
+                        <span class="metric-value">42m</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">Active Projects</span>
+                        <span class="metric-value">05</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel feed-panel">
+                <div class="panel-header">
+                    <span class="panel-title">LIVE FEED</span>
+                    <span class="panel-value">08</span>
+                </div>
+                <div class="panel-content">
+                    <div class="feed-item feed-alert">
+                        <div class="feed-time">[CRITICAL]</div>
+                        <div class="feed-content">Token usage at 82% — Consider pausing non-critical agents</div>
                     </div>
                     
                     <div class="feed-item">
-                        <div class="feed-header">
-                            <div class="feed-dot"></div>
-                            <span class="feed-author">System</span>
-                            <span class="feed-time">5m</span>
-                        </div>
-                        <div class="feed-content">New task added to B3</div>
-                        <div class="feed-project">B3 Team Elevate</div>
+                        <div class="feed-time">[02:34:15]</div>
+                        <div class="feed-content">K2.5-WRITER completed upload to Royal Road</div>
                     </div>
                     
                     <div class="feed-item">
-                        <div class="feed-header">
-                            <div class="feed-dot"></div>
-                            <span class="feed-author">K2.5-Writer</span>
-                            <span class="feed-time">25m</span>
-                        </div>
-                        <div class="feed-content">Failed upload — retrying</div>
-                        <div class="feed-project">A2 RE:UNITE</div>
+                        <div class="feed-time">[02:31:22]</div>
+                        <div class="feed-content">New task added to B3 queue</div>
+                    </div>
+                    
+                    <div class="feed-item">
+                        <div class="feed-time">[02:15:08]</div>
+                        <div class="feed-content">GPT-4-CODER started B3 homepage design</div>
                     </div>
                 </div>
             </div>
             
         </div>
     </div>
-    
-    <script>
-        function toggleCat(id) {
-            document.getElementById(id).classList.toggle('show');
-        }
-        
-        // Rotating stats
-        const statsData = {
-            agents: [
-                { value: '3', sub: 'Active' },
-                { value: '5', sub: 'Today' },
-                { value: '2', sub: 'Done' },
-                { value: '1', sub: 'Idle' }
-            ],
-            tasks: [
-                { value: '12', sub: 'Queue' },
-                { value: '5', sub: 'High' },
-                { value: '3', sub: 'Overdue' },
-                { value: '7', sub: 'Done' }
-            ],
-            time: [
-                { value: '4h 23m', sub: 'Active' },
-                { value: '2h 15m', sub: 'K2.5' },
-                { value: '1h 20m', sub: 'GPT-4' },
-                { value: '45m', sub: 'Avg' }
-            ],
-            models: [
-                { value: 'K2.5', sub: '60%' },
-                { value: 'GPT-4', sub: '30%' },
-                { value: 'Claude', sub: '10%' },
-                { value: 'Low', sub: 'Cost' }
-            ],
-            projects: [
-                { value: 'A2', sub: '3 tasks' },
-                { value: 'B3', sub: '2 tasks' },
-                { value: 'A4', sub: '1 task' },
-                { value: 'C1', sub: 'None' }
-            ],
-            countdown: [
-                { value: '311', sub: 'Wedding' },
-                { value: '5d', sub: 'A2 Ch13' },
-                { value: '2d', sub: 'B3 HP' },
-                { value: '12m', sub: 'Task' }
-            ]
-        };
-        
-        let statIndices = { agents: 0, tasks: 0, time: 0, models: 0, projects: 0, countdown: 0 };
-        
-        function rotateStat(type) {
-            const data = statsData[type];
-            const index = statIndices[type];
-            const item = data[index];
-            
-            document.getElementById(`stat-${type}-value`).textContent = item.value;
-            document.getElementById(`stat-${type}-sub`).textContent = item.sub;
-            
-            statIndices[type] = (index + 1) % data.length;
-        }
-        
-        setInterval(() => rotateStat('agents'), 5000);
-        setInterval(() => rotateStat('tasks'), 5000);
-        setInterval(() => rotateStat('time'), 5000);
-        setInterval(() => rotateStat('models'), 5000);
-        setInterval(() => rotateStat('projects'), 5000);
-        setInterval(() => rotateStat('countdown'), 5000);
-    </script>
 </body>
 </html>
