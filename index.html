@@ -35,145 +35,151 @@
             letter-spacing: 0.5px;
         }
         
-        /* Red Sun Avatar Widget */
-        .sun-widget {
-            position: fixed;
-            left: 24px;
-            top: 100px;
-            z-index: 50;
-            background: var(--crystal);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            padding: 16px;
-            width: 140px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .sun-widget:hover {
-            border-color: var(--crimson-bright);
-            box-shadow: 0 0 30px var(--crimson-glow);
-        }
-        
-        .sun-avatar {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 12px;
-            position: relative;
-        }
-        
-        .sun-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 24px;
-            height: 24px;
-            background: radial-gradient(circle, #fff 0%, var(--crimson-bright) 40%, var(--crimson) 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 20px var(--crimson-bright), 0 0 40px var(--crimson-glow);
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        .sun-ray {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 2px;
-            height: 35px;
-            background: linear-gradient(to bottom, var(--crimson-bright), transparent);
-            transform-origin: center bottom;
-            animation: flare 4s ease-in-out infinite;
-        }
-        
-        .sun-ray:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); animation-delay: 0s; }
-        .sun-ray:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg); animation-delay: 0.5s; }
-        .sun-ray:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg); animation-delay: 1s; }
-        .sun-ray:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg); animation-delay: 1.5s; }
-        .sun-ray:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg); animation-delay: 2s; }
-        .sun-ray:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg); animation-delay: 2.5s; }
-        .sun-ray:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg); animation-delay: 3s; }
-        .sun-ray:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg); animation-delay: 3.5s; }
-        
-        @keyframes flare {
-            0%, 100% { opacity: 0.3; height: 30px; }
-            50% { opacity: 0.8; height: 40px; }
-        }
-        
-        .sun-name {
-            font-family: var(--display-font);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--crimson-bright);
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-        
-        .sun-status {
-            font-size: 10px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-        
-        .sun-load {
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-        
-        .sun-load-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b);
-            border-radius: 2px;
-            width: 75%;
-            animation: loadPulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes loadPulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
-        }
-        
-        .sun-mode {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .crystal-shards {
+        /* CYBER DATA STREAM BACKGROUND */
+        .cyber-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            z-index: 0;
+            background: var(--bg-primary);
             overflow: hidden;
         }
         
-        .shard {
+        /* Falling Data Streams */
+        .data-stream {
             position: absolute;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            animation: float 20s ease-in-out infinite;
-            opacity: 0.3;
+            top: -100%;
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--crimson-bright);
+            opacity: 0.1;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            animation: fall linear infinite;
+            white-space: nowrap;
+            pointer-events: none;
         }
         
-        .shard:nth-child(1) { width: 60px; height: 100px; left: 10%; top: 20%; animation-delay: 0s; }
-        .shard:nth-child(2) { width: 40px; height: 80px; left: 25%; top: 60%; animation-delay: 5s; }
-        .shard:nth-child(3) { width: 80px; height: 120px; left: 70%; top: 30%; animation-delay: 10s; }
-        .shard:nth-child(4) { width: 50px; height: 90px; left: 85%; top: 70%; animation-delay: 15s; }
+        .data-stream:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; font-size: 12px; }
+        .data-stream:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; font-size: 10px; }
+        .data-stream:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 4s; font-size: 14px; }
+        .data-stream:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; font-size: 11px; }
+        .data-stream:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 3s; font-size: 13px; }
+        .data-stream:nth-child(6) { left: 55%; animation-duration: 14s; animation-delay: 5s; font-size: 12px; }
+        .data-stream:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 2s; font-size: 10px; }
+        .data-stream:nth-child(8) { left: 75%; animation-duration: 17s; animation-delay: 4s; font-size: 14px; }
+        .data-stream:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 1s; font-size: 11px; }
+        .data-stream:nth-child(10) { left: 95%; animation-duration: 21s; animation-delay: 3s; font-size: 12px; }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-            50% { transform: translateY(-30px) rotate(5deg); opacity: 0.4; }
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 0; }
+            10% { opacity: 0.1; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(200vh); opacity: 0; }
+        }
+        
+        /* Circuit Pattern Overlay */
+        .circuit-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.08;
+            background-image: 
+                linear-gradient(90deg, var(--crimson-bright) 1px, transparent 1px),
+                linear-gradient(var(--crimson-bright) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+        
+        /* Hex Grid Pattern */
+        .hex-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dc143c' fill-opacity='0.4'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        /* Random Floating Elements */
+        .float-hex {
+            position: absolute;
+            font-family: monospace;
+            font-size: 20px;
+            color: var(--crimson-bright);
+            opacity: 0.08;
+            animation: floatHex 10s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        .float-hex:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .float-hex:nth-child(2) { top: 30%; left: 70%; animation-delay: 2s; }
+        .float-hex:nth-child(3) { top: 60%; left: 40%; animation-delay: 4s; }
+        .float-hex:nth-child(4) { top: 80%; left: 80%; animation-delay: 6s; }
+        .float-hex:nth-child(5) { top: 40%; left: 10%; animation-delay: 8s; }
+        
+        @keyframes floatHex {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.12; }
+        }
+        
+        /* Red Sun Avatar (Small for Top Bar) */
+        .sun-avatar-small {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .sun-core-small {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #fff 0%, var(--crimson-bright) 40%, var(--crimson) 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--crimson-bright), 0 0 20px var(--crimson-glow);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .sun-ray-small {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 18px;
+            background: linear-gradient(to bottom, var(--crimson-bright), transparent);
+            transform-origin: center bottom;
+            animation: flare 3s ease-in-out infinite;
+        }
+        
+        .sun-ray-small:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); animation-delay: 0s; }
+        .sun-ray-small:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg); animation-delay: 0.375s; }
+        .sun-ray-small:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg); animation-delay: 0.75s; }
+        .sun-ray-small:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg); animation-delay: 1.125s; }
+        .sun-ray-small:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg); animation-delay: 1.5s; }
+        .sun-ray-small:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg); animation-delay: 1.875s; }
+        .sun-ray-small:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg); animation-delay: 2.25s; }
+        .sun-ray-small:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg); animation-delay: 2.625s; }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        @keyframes flare {
+            0%, 100% { opacity: 0.3; height: 15px; }
+            50% { opacity: 0.8; height: 20px; }
         }
         
         /* Top Bar */
@@ -191,23 +197,16 @@
             z-index: 100;
         }
         
-        .logo {
+        .topbar-left {
             display: flex;
             align-items: center;
             gap: 16px;
         }
         
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--crimson-bright);
-            border-radius: 4px;
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            background: var(--crystal);
-            box-shadow: 0 0 20px var(--crimson-glow);
+            gap: 16px;
         }
         
         .logo-text {
@@ -223,6 +222,50 @@
             text-shadow: 0 0 15px var(--crimson-glow);
         }
         
+        .topbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--display-font);
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .clock-widget {
+            font-family: var(--display-font);
+            font-size: 16px;
+            color: var(--crimson-bright);
+            text-shadow: 0 0 10px var(--crimson-glow);
+            letter-spacing: 2px;
+        }
+        
+        .status-widget {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff88;
+            box-shadow: 0 0 10px #00ff88;
+            animation: pulse 2s infinite;
+        }
+        
         /* Compact Stats */
         .stats-bar {
             display: grid;
@@ -230,6 +273,8 @@
             gap: 6px;
             padding: 10px 24px;
             background: linear-gradient(180deg, rgba(10,10,15,0.8) 0%, transparent 100%);
+            position: relative;
+            z-index: 10;
         }
         
         .stat-card {
@@ -261,21 +306,11 @@
             color: var(--text-secondary);
         }
         
-        /* Main Layout - 3 Rows x 2 Panels */
+        /* Main Container */
         .main-container {
-            padding: 16px 24px 16px 180px;
+            padding: 16px 24px;
             position: relative;
             z-index: 10;
-        }
-        
-        @media (max-width: 768px) {
-            .sun-widget {
-                display: none;
-            }
-            
-            .main-container {
-                padding: 16px;
-            }
         }
         
         .row {
@@ -291,6 +326,8 @@
             border: 1px solid var(--crystal-border);
             border-radius: 8px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
             min-height: 200px;
         }
         
@@ -324,271 +361,56 @@
             overflow-y: auto;
         }
         
-        /* WORKFLOW PIPELINE */
-        .pipeline {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
+        /* All panel content styles from previous version */
+        .pipeline { display: flex; gap: 8px; margin-bottom: 16px; }
+        .pipeline-stage { flex: 1; text-align: center; padding: 12px 8px; background: rgba(255,255,255,0.02); border-radius: 6px; border-top: 2px solid var(--crystal-border); }
+        .pipeline-stage.active { border-top-color: var(--crimson-bright); background: var(--crimson-glow); }
+        .pipeline-count { font-family: var(--display-font); font-size: 24px; font-weight: 700; color: var(--crimson-bright); }
+        .pipeline-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .workflow-arrow { display: flex; align-items: center; color: var(--crimson-bright); font-size: 16px; }
         
-        .pipeline-stage {
-            flex: 1;
-            text-align: center;
-            padding: 12px 8px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            border-top: 2px solid var(--crystal-border);
-        }
+        .project-card { background: rgba(255,255,255,0.02); border-radius: 6px; padding: 12px; margin-bottom: 10px; border-left: 3px solid var(--crimson-bright); }
+        .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .project-name { font-family: var(--display-font); font-size: 13px; font-weight: 600; }
+        .project-percent { font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright); }
+        .project-progress { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-bottom: 8px; overflow: hidden; }
+        .project-progress-fill { height: 100%; background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b); border-radius: 3px; box-shadow: 0 0 10px var(--crimson-glow); }
+        .project-meta { font-size: 10px; color: var(--text-muted); }
         
-        .pipeline-stage.active {
-            border-top-color: var(--crimson-bright);
-            background: var(--crimson-glow);
-        }
+        .calendar-section { margin-bottom: 16px; }
+        .calendar-header { font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; font-weight: 600; }
+        .calendar-item { display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.02); border-radius: 6px; margin-bottom: 8px; }
+        .calendar-date { text-align: center; min-width: 45px; }
+        .calendar-day { font-family: var(--display-font); font-size: 18px; font-weight: 700; color: var(--crimson-bright); }
+        .calendar-month { font-size: 9px; color: var(--text-muted); text-transform: uppercase; }
+        .calendar-content h4 { font-size: 12px; margin-bottom: 2px; }
+        .calendar-content p { font-size: 10px; color: var(--text-muted); }
         
-        .pipeline-count {
-            font-family: var(--display-font);
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--crimson-bright);
-        }
-        
-        .pipeline-label {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
-        }
-        
-        .workflow-arrow {
-            display: flex;
-            align-items: center;
-            color: var(--crimson-bright);
-            font-size: 16px;
-        }
-        
-        /* PROJECT CARDS */
-        .project-card {
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            padding: 12px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--crimson-bright);
-        }
-        
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        
-        .project-name {
-            font-family: var(--display-font);
-            font-size: 13px;
-            font-weight: 600;
-        }
-        
-        .project-percent {
-            font-family: var(--display-font);
-            font-size: 16px;
-            color: var(--crimson-bright);
-        }
-        
-        .project-progress {
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            margin-bottom: 8px;
-            overflow: hidden;
-        }
-        
-        .project-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b);
-            border-radius: 3px;
-            box-shadow: 0 0 10px var(--crimson-glow);
-        }
-        
-        .project-meta {
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-        
-        /* CALENDAR */
-        .calendar-section {
-            margin-bottom: 16px;
-        }
-        
-        .calendar-header {
-            font-size: 9px;
-            color: var(--crimson-bright);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .calendar-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
-        
-        .calendar-date {
-            text-align: center;
-            min-width: 45px;
-        }
-        
-        .calendar-day {
-            font-family: var(--display-font);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--crimson-bright);
-        }
-        
-        .calendar-month {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-        
-        .calendar-content h4 {
-            font-size: 12px;
-            margin-bottom: 2px;
-        }
-        
-        .calendar-content p {
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-        
-        /* DECISIONS */
-        .decision-item {
-            background: rgba(139, 0, 0, 0.1);
-            border: 1px solid var(--crimson-bright);
-            border-radius: 6px;
-            padding: 12px;
-            margin-bottom: 10px;
-        }
-        
-        .decision-item.blocked {
-            border-color: var(--crimson-bright);
-        }
-        
-        .decision-item.input {
-            border-color: #c9a962;
-            background: rgba(201, 169, 98, 0.1);
-        }
-        
-        .decision-type {
-            font-size: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-        
+        .decision-item { background: rgba(139, 0, 0, 0.1); border: 1px solid var(--crimson-bright); border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+        .decision-item.blocked { border-color: var(--crimson-bright); }
+        .decision-item.input { border-color: #c9a962; background: rgba(201, 169, 98, 0.1); }
+        .decision-type { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
         .decision-type.blocked { color: var(--crimson-bright); }
         .decision-type.input { color: #c9a962; }
+        .decision-title { font-size: 12px; margin-bottom: 6px; }
+        .decision-reason { font-size: 10px; color: var(--text-muted); margin-bottom: 10px; }
+        .decision-btn { padding: 6px 12px; background: transparent; border: 1px solid var(--crimson-bright); border-radius: 3px; color: var(--crimson-bright); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        .decision-btn:hover { background: var(--crimson-glow); }
         
-        .decision-title {
-            font-size: 12px;
-            margin-bottom: 6px;
-        }
+        .activity-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--crystal-border); }
+        .activity-item:last-child { border-bottom: none; }
+        .activity-time { font-family: var(--display-font); font-size: 10px; color: var(--text-muted); min-width: 70px; }
+        .activity-content h4 { font-size: 11px; margin-bottom: 2px; }
+        .activity-content p { font-size: 10px; color: var(--text-muted); }
         
-        .decision-reason {
-            font-size: 10px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-        
-        .decision-btn {
-            padding: 6px 12px;
-            background: transparent;
-            border: 1px solid var(--crimson-bright);
-            border-radius: 3px;
-            color: var(--crimson-bright);
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-        }
-        
-        .decision-btn:hover {
-            background: var(--crimson-glow);
-        }
-        
-        /* ACTIVITY */
-        .activity-item {
-            display: flex;
-            gap: 12px;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-        
-        .activity-item:last-child {
-            border-bottom: none;
-        }
-        
-        .activity-time {
-            font-family: var(--display-font);
-            font-size: 10px;
-            color: var(--text-muted);
-            min-width: 70px;
-        }
-        
-        .activity-content h4 {
-            font-size: 11px;
-            margin-bottom: 2px;
-        }
-        
-        .activity-content p {
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-        
-        /* QUEUE */
-        .queue-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            margin-bottom: 8px;
-            border-left: 2px solid var(--crystal-border);
-        }
-        
+        .queue-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.02); border-radius: 6px; margin-bottom: 8px; border-left: 2px solid var(--crystal-border); }
         .queue-item.high { border-left-color: var(--crimson-bright); }
         .queue-item.medium { border-left-color: #c9a962; }
         .queue-item.low { border-left-color: var(--text-muted); }
-        
-        .queue-info h4 {
-            font-size: 11px;
-            margin-bottom: 2px;
-        }
-        
-        .queue-info p {
-            font-size: 9px;
-            color: var(--text-muted);
-        }
-        
-        .queue-priority {
-            font-size: 8px;
-            padding: 3px 8px;
-            border-radius: 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .queue-priority.high {
-            background: rgba(139, 0, 0, 0.3);
-            color: var(--crimson-bright);
-        }
+        .queue-info h4 { font-size: 11px; margin-bottom: 2px; }
+        .queue-info p { font-size: 9px; color: var(--text-muted); }
+        .queue-priority { font-size: 8px; padding: 3px 8px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .queue-priority.high { background: rgba(139, 0, 0, 0.3); color: var(--crimson-bright); }
         
         /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
@@ -596,53 +418,75 @@
         ::-webkit-scrollbar-thumb { background: var(--crystal-border); border-radius: 2px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--crimson-bright); }
         
-        /* Mobile */
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .stats-bar { grid-template-columns: repeat(3, 1fr); }
+            .row { grid-template-columns: 1fr; }
+        }
+        
         @media (max-width: 768px) {
-            .stats-bar {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .row {
-                grid-template-columns: 1fr;
-            }
+            .topbar-center { display: none; }
+            .stats-bar { grid-template-columns: repeat(3, 1fr); }
+            .main-container { padding: 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="crystal-bg"></div>
-    <div class="crystal-shards">
-        <div class="shard"></div>
-        <div class="shard"></div>
-        <div class="shard"></div>
-        <div class="shard"></div>
+    <!-- CYBER DATA STREAM BACKGROUND -->
+    <div class="cyber-bg">
+        <div class="data-stream">01 A2 43 B3 92 C1 15 D4</div>
+        <div class="data-stream">FF 23 9A 4C 7B E1 56 82</div>
+        <div class="data-stream">AGENT_SPAWN K2.5 TASK_ACTIVE</div>
+        <div class="data-stream">88 12 FA 3D 67 91 BC 22</div>
+        <div class="data-stream">PROJECT_A2 STATUS_RUNNING 45%</div>
+        <div class="data-stream">CD 45 EF 89 12 34 AB 67</div>
+        <div class="data-stream">TOKEN_DATA STREAM_ACTIVE 82%</div>
+        <div class="data-stream">77 88 99 AA BB CC DD EE</div>
+        <div class="data-stream">GITHUB_PUSH REPO_UPDATED MAIN</div>
+        <div class="data-stream">11 22 33 44 55 66 77 88</div>
     </div>
     
+    <div class="circuit-overlay"></div>
+    <div class="hex-pattern"></div>
+    
+    <div class="float-hex">0xFF</div>
+    <div class="float-hex">0xA2</div>
+    <div class="float-hex">0x7B</div>
+    <div class="float-hex">0xC3</div>
+    <div class="float-hex">0x91</div>
+    
+    <!-- TOP BAR: Sun Avatar | Center Title | Clock -->
     <div class="topbar">
-        <div class="logo">
-            <div class="logo-icon">◈</div>
-            <div class="logo-text">MISSION <span>CONTROL</span></div>
+        <div class="topbar-left">
+            <!-- Red Sun Avatar -->
+            <div class="sun-avatar-small">
+                <div class="sun-ray-small"></div>
+                <div class="sun-ray-small"></div>
+                <div class="sun-ray-small"></div>
+                <div class="sun-ray-small"></div>
+                <div class="sun-ray-small"></div>
+                <div class="sun-ray-small"></div>
+                <div class="sun-ray-small"></div>
+                <div class="sun-ray-small"></div>
+                <div class="sun-core-small"></div>
+            </div>
+            
+            <div class="logo">
+                <div class="logo-text">MISSION <span>CONTROL</span></div>
+            </div>
         </div>
-    </div>
-    
-    <!-- Red Sun Avatar Widget -->
-    <div class="sun-widget">
-        <div class="sun-avatar">
-            <div class="sun-ray"></div>
-            <div class="sun-ray"></div>
-            <div class="sun-ray"></div>
-            <div class="sun-ray"></div>
-            <div class="sun-ray"></div>
-            <div class="sun-ray"></div>
-            <div class="sun-ray"></div>
-            <div class="sun-ray"></div>
-            <div class="sun-core"></div>
+        
+        <div class="topbar-center">
+            Caleb E Command Center
         </div>
-        <div class="sun-name">CHAD_YI</div>
-        <div class="sun-status">● ACTIVE</div>
-        <div class="sun-load">
-            <div class="sun-load-fill"></div>
+        
+        <div class="topbar-right">
+            <div class="clock-widget" id="clock">00:00:00</div>
+            <div class="status-widget">
+                <div class="status-dot"></div>
+                <span>ONLINE</span>
+            </div>
         </div>
-        <div class="sun-mode">COMMAND MODE</div>
     </div>
     
     <!-- COMPACT STATS BAR -->
@@ -652,26 +496,31 @@
             <div class="stat-value">3</div>
             <div class="stat-sub">Agents</div>
         </div>
+        
         <div class="stat-card">
             <div class="stat-label">Spawned</div>
             <div class="stat-value">5</div>
             <div class="stat-sub">Today</div>
         </div>
+        
         <div class="stat-card">
             <div class="stat-label">Done</div>
             <div class="stat-value">7</div>
             <div class="stat-sub">Tasks</div>
         </div>
+        
         <div class="stat-card">
             <div class="stat-label">Time</div>
             <div class="stat-value">4:23</div>
             <div class="stat-sub">Active</div>
         </div>
+        
         <div class="stat-card">
             <div class="stat-label">Focus</div>
             <div class="stat-value">A2</div>
             <div class="stat-sub">Project</div>
         </div>
+        
         <div class="stat-card">
             <div class="stat-label">Events</div>
             <div class="stat-value">12</div>
@@ -679,12 +528,11 @@
         </div>
     </div>
     
-    <!-- 3 ROWS × 2 PANELS -->
+    <!-- MAIN CONTENT (6 Panels from previous) -->
     <div class="main-container">
         
         <!-- ROW 1: WORKFLOW + PROJECTS -->
         <div class="row">
-            <!-- PANEL 1: WORKFLOW PIPELINE -->
             <div class="panel">
                 <div class="panel-header">
                     <span class="panel-title">Workflow Pipeline</span>
@@ -697,34 +545,25 @@
                             <div class="pipeline-label">Pending</div>
                         </div>
                         <div class="workflow-arrow">→</div>
-                        
                         <div class="pipeline-stage active">
                             <div class="pipeline-count">3</div>
                             <div class="pipeline-label">Active</div>
                         </div>
-                        
                         <div class="workflow-arrow">→</div>
-                        
                         <div class="pipeline-stage">
                             <div class="pipeline-count">2</div>
                             <div class="pipeline-label">Review</div>
                         </div>
-                        
                         <div class="workflow-arrow">→</div>
-                        
                         <div class="pipeline-stage">
                             <div class="pipeline-count">7</div>
                             <div class="pipeline-label">Done</div>
                         </div>
                     </div>
-                    
-                    <div style="font-size: 10px; color: var(--text-muted); text-align: center;">
-                        2 tasks blocked · 3 waiting for you
-                    </div>
+                    <div style="font-size: 10px; color: var(--text-muted); text-align: center;">2 tasks blocked · 3 waiting for you</div>
                 </div>
             </div>
             
-            <!-- PANEL 2: PROJECT PROGRESS -->
             <div class="panel">
                 <div class="panel-header">
                     <span class="panel-title">Project Progress</span>
@@ -769,7 +608,6 @@
         
         <!-- ROW 2: CALENDAR + DECISIONS -->
         <div class="row">
-            <!-- PANEL 3: CALENDAR -->
             <div class="panel">
                 <div class="panel-header">
                     <span class="panel-title">Calendar</span>
@@ -778,7 +616,6 @@
                 <div class="panel-content">
                     <div class="calendar-section">
                         <div class="calendar-header">Past</div>
-                        
                         <div class="calendar-item">
                             <div class="calendar-date">
                                 <div class="calendar-day">05</div>
@@ -793,7 +630,6 @@
                     
                     <div class="calendar-section">
                         <div class="calendar-header">Today</div>
-                        
                         <div class="calendar-item">
                             <div class="calendar-date">
                                 <div class="calendar-day">05</div>
@@ -808,7 +644,6 @@
                     
                     <div class="calendar-section">
                         <div class="calendar-header">Upcoming</div>
-                        
                         <div class="calendar-item">
                             <div class="calendar-date">
                                 <div class="calendar-day">28</div>
@@ -834,7 +669,6 @@
                 </div>
             </div>
             
-            <!-- PANEL 4: DECISIONS REQUIRED -->
             <div class="panel">
                 <div class="panel-header">
                     <span class="panel-title">Decisions Required</span>
@@ -867,7 +701,6 @@
         
         <!-- ROW 3: ACTIVITY + QUEUE -->
         <div class="row">
-            <!-- PANEL 5: ACTIVITY FEED -->
             <div class="panel">
                 <div class="panel-header">
                     <span class="panel-title">Activity Feed</span>
@@ -885,7 +718,7 @@
                     <div class="activity-item">
                         <div class="activity-time">[14:28:42]</div>
                         <div class="activity-content">
-                            <h4>Task Added</div>
+                            <h4>Task Added</h4>
                             <p>New task added to B3 queue by you</p>
                         </div>
                     </div>
@@ -893,7 +726,7 @@
                     <div class="activity-item">
                         <div class="activity-time">[14:15:08]</div>
                         <div class="activity-content">
-                            <h4>Agent Spawned</div>
+                            <h4>Agent Spawned</h4>
                             <p>GPT-4-CODER started on B3 homepage</p>
                         </div>
                     </div>
@@ -909,14 +742,13 @@
                     <div class="activity-item">
                         <div class="activity-time">[12:15:00]</div>
                         <div class="activity-content">
-                            <h4>Milestone Reached</div>
+                            <h4>Milestone Reached</h4>
                             <p>A2: 25% complete (3/12 chapters)</p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- PANEL 6: TASK QUEUE -->
             <div class="panel">
                 <div class="panel-header">
                     <span class="panel-title">Task Queue</span>
@@ -959,5 +791,18 @@
         </div>
         
     </div>
+    
+    <script>
+        // Real-time clock
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 </body>
 </html>
