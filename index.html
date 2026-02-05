@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
         
-        /* Subtle Fire Background */
+        /* Background */
         .bg-fire {
             position: fixed;
             top: 0;
@@ -41,7 +41,6 @@
             z-index: 0;
             background: 
                 radial-gradient(ellipse 60% 40% at 15% 50%, rgba(255, 0, 51, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse 40% 30% at 85% 70%, rgba(255, 77, 0, 0.05) 0%, transparent 40%),
                 var(--obsidian);
         }
         
@@ -85,68 +84,63 @@
             color: var(--fire-red);
         }
         
-        .top-stats {
-            display: flex;
-            gap: 32px;
+        /* Stat Cards */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(10, 10, 18, 0.6);
+            border-bottom: 1px solid var(--border);
         }
         
-        .top-stat {
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
             text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
         }
         
-        .top-stat-value {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--fire-red);
+        .stat-card:hover {
+            border-color: rgba(255, 0, 51, 0.4);
+            transform: translateY(-2px);
         }
         
-        .top-stat-label {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .stat-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
         }
         
-        .top-stat-sub {
-            font-size: 10px;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-        
-        /* Rotating Countdown */
-        .countdown-container {
-            text-align: center;
-            min-width: 140px;
-        }
-        
-        .countdown-value {
-            font-size: 24px;
+        .stat-value {
+            font-size: 28px;
             font-weight: 800;
             color: var(--fire-red);
             transition: opacity 0.3s;
         }
         
-        .countdown-label {
-            font-size: 11px;
+        .stat-label {
+            font-size: 10px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 4px;
         }
         
-        .countdown-task {
-            font-size: 10px;
+        .stat-sub {
+            font-size: 11px;
             color: var(--fire-orange);
-            margin-top: 2px;
-            max-width: 150px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            margin-top: 6px;
+            min-height: 16px;
+            transition: opacity 0.3s;
         }
         
         /* Layout */
         .app-container {
             display: flex;
-            height: calc(100vh - 73px);
+            height: calc(100vh - 180px);
             position: relative;
             z-index: 10;
         }
@@ -246,15 +240,14 @@
             gap: 20px;
         }
         
-        .view { display: none; width: 100%; }
-        .view.active { display: flex; gap: 20px; }
-        
-        /* Three Column Layout for Home */
+        /* Columns */
         .column {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         
         .column-header {
@@ -263,6 +256,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(255, 0, 51, 0.05);
         }
         
         .column-title {
@@ -285,11 +279,11 @@
         .column-content {
             padding: 16px;
             overflow-y: auto;
-            max-height: calc(100vh - 200px);
+            flex: 1;
         }
         
         /* Agents Column */
-        .agents-col { width: 220px; }
+        .agents-col { width: 240px; }
         
         .agent-item {
             display: flex;
@@ -306,7 +300,6 @@
         
         .agent-item:hover {
             border-color: rgba(255, 0, 51, 0.3);
-            transform: translateX(4px);
         }
         
         .agent-avatar {
@@ -332,23 +325,21 @@
             color: var(--text-muted);
         }
         
-        .agent-status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .agent-task {
             font-size: 11px;
+            color: var(--fire-orange);
             margin-top: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 140px;
         }
         
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
+        .agent-time {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 2px;
         }
-        
-        .status-dot.active { background: #4CAF50; box-shadow: 0 0 6px #4CAF50; }
-        .status-dot.busy { background: var(--fire-orange); box-shadow: 0 0 6px var(--fire-orange); }
-        .status-dot.idle { background: var(--text-muted); }
         
         /* Queue Column */
         .queue-col { flex: 1; }
@@ -380,14 +371,12 @@
             line-height: 1.4;
         }
         
-        .task-priority {
+        .task-project {
             padding: 4px 8px;
             background: rgba(255, 0, 51, 0.15);
             border-radius: 4px;
             font-size: 10px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             color: var(--fire-red);
         }
         
@@ -400,75 +389,42 @@
             margin-bottom: 12px;
         }
         
-        .task-assignee {
+        .task-agent {
             display: flex;
             align-items: center;
             gap: 6px;
         }
         
-        .task-assignee-avatar {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
+        .task-time {
+            font-family: monospace;
+            color: var(--fire-orange);
         }
         
-        .task-progress {
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            overflow: hidden;
+        .task-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
             margin-bottom: 12px;
         }
         
-        .task-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--fire-red), var(--fire-orange));
-            border-radius: 2px;
-            transition: width 0.3s;
-        }
-        
-        .task-actions {
-            display: flex;
-            gap: 8px;
-        }
-        
         .task-btn {
-            padding: 8px 14px;
+            padding: 8px 16px;
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             border: none;
+            background: linear-gradient(135deg, rgba(255, 0, 51, 0.8), rgba(255, 77, 0, 0.7));
+            color: white;
             transition: all 0.2s;
         }
         
-        .task-btn-primary {
-            background: linear-gradient(135deg, rgba(255, 0, 51, 0.8), rgba(255, 77, 0, 0.7));
-            color: white;
-        }
-        
-        .task-btn-primary:hover {
+        .task-btn:hover {
             box-shadow: 0 4px 20px rgba(255, 0, 51, 0.4);
         }
         
-        .task-btn-secondary {
-            background: rgba(255,255,255,0.05);
-            color: var(--text-secondary);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .task-btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            color: var(--text-primary);
-        }
-        
         /* Feed Column */
-        .feed-col { width: 280px; }
+        .feed-col { width: 300px; }
         
         .feed-item {
             padding: 14px;
@@ -515,47 +471,10 @@
             line-height: 1.5;
         }
         
-        .feed-alert {
-            background: rgba(255, 0, 51, 0.1);
-            border-left: 3px solid var(--fire-red);
-            padding: 12px;
-            margin-bottom: 12px;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .feed-alert-title {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--fire-red);
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .feed-alert-text {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-        
-        /* Other Views */
-        .single-view {
-            flex: 1;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-        }
-        
-        .view-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-        
-        .view-subtitle {
-            color: var(--text-muted);
-            margin-bottom: 32px;
+        .feed-project {
+            font-size: 11px;
+            color: var(--fire-orange);
+            margin-top: 6px;
         }
         
         /* Scrollbar */
@@ -574,28 +493,53 @@
             <div class="logo-icon">🎯</div>
             <div class="logo-text">MISSION <span>CONTROL</span></div>
         </div>
+        <div style="color: var(--text-muted); font-size: 14px;">
+            <span id="current-time"></span>
+        </div>
+    </div>
+    
+    <!-- Stats Bar - 6 Rotating Cards -->
+    <div class="stats-bar">
+        <div class="stat-card" id="stat-agents">
+            <div class="stat-icon">🚀</div>
+            <div class="stat-value" id="stat-agents-value">3</div>
+            <div class="stat-label">Agents</div>
+            <div class="stat-sub" id="stat-agents-sub">Active now</div>
+        </div>
         
-        <div class="top-stats">
-            <div class="top-stat">
-                <div class="top-stat-value">3</div>
-                <div class="top-stat-label">Agents Active</div>
-                <div class="top-stat-sub">2 working • 1 idle</div>
-            </div>
-            <div class="top-stat">
-                <div class="top-stat-value">12</div>
-                <div class="top-stat-label">Tasks in Queue</div>
-                <div class="top-stat-sub">5 high priority</div>
-            </div>
-            <div class="top-stat">
-                <div class="top-stat-value">$12</div>
-                <div class="top-stat-label">Token Burn</div>
-                <div class="top-stat-sub">$88 remaining today</div>
-            </div>
-            <div class="countdown-container">
-                <div class="countdown-value" id="countdown-value">311d 12h</div>
-                <div class="countdown-label">Countdown</div>
-                <div class="countdown-task" id="countdown-task">💍 Wedding</div>
-            </div>
+        <div class="stat-card" id="stat-tasks">
+            <div class="stat-icon">📋</div>
+            <div class="stat-value" id="stat-tasks-value">12</div>
+            <div class="stat-label">Tasks</div>
+            <div class="stat-sub" id="stat-tasks-sub">In queue</div>
+        </div>
+        
+        <div class="stat-card" id="stat-time">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-value" id="stat-time-value">4h 23m</div>
+            <div class="stat-label">Time</div>
+            <div class="stat-sub" id="stat-time-sub">Active today</div>
+        </div>
+        
+        <div class="stat-card" id="stat-models">
+            <div class="stat-icon">🤖</div>
+            <div class="stat-value" id="stat-models-value">K2.5</div>
+            <div class="stat-label">Models</div>
+            <div class="stat-sub" id="stat-models-sub">60% usage</div>
+        </div>
+        
+        <div class="stat-card" id="stat-projects">
+            <div class="stat-icon">📁</div>
+            <div class="stat-value" id="stat-projects-value">A2</div>
+            <div class="stat-label">Projects</div>
+            <div class="stat-sub" id="stat-projects-sub">3 tasks active</div>
+        </div>
+        
+        <div class="stat-card" id="stat-countdown">
+            <div class="stat-icon">⏰</div>
+            <div class="stat-value" id="stat-countdown-value">311d</div>
+            <div class="stat-label">Countdown</div>
+            <div class="stat-sub" id="stat-countdown-sub">💍 Wedding</div>
         </div>
     </div>
     
@@ -618,12 +562,12 @@
                     <span>▶</span>
                 </div>
                 <div class="category-projects" id="cat-a">
-                    <div class="project-link" onclick="showProject('A1')">A1 Personal Tasks</div>
-                    <div class="project-link" onclick="showProject('A2')">A2 RE: UNITE</div>
-                    <div class="project-link" onclick="showProject('A3')">A3 KOE</div>
-                    <div class="project-link" onclick="showProject('A4')">A4 Streaming</div>
-                    <div class="project-link" onclick="showProject('A5')">A5 Trading</div>
-                    <div class="project-link" onclick="showProject('A6')">A6 Mission Control</div>
+                    <div class="project-link">A1 Personal Tasks</div>
+                    <div class="project-link">A2 RE: UNITE</div>
+                    <div class="project-link">A3 KOE</div>
+                    <div class="project-link">A4 Streaming</div>
+                    <div class="project-link">A5 Trading</div>
+                    <div class="project-link">A6 Mission Control</div>
                 </div>
             </div>
             
@@ -633,17 +577,10 @@
                     <span>▶</span>
                 </div>
                 <div class="category-projects" id="cat-b">
-                    <div class="project-link">B1-B10 Projects</div>
-                </div>
-            </div>
-            
-            <div class="category-group">
-                <div class="category-header" onclick="toggleCat('cat-c')">
-                    <span>📂 C — Side</span>
-                    <span>▶</span>
-                </div>
-                <div class="category-projects" id="cat-c">
-                    <div class="project-link">C1-C2 Projects</div>
+                    <div class="project-link">B1 Exstatic</div>
+                    <div class="project-link">B2 Energize</div>
+                    <div class="project-link">B3 Team Elevate</div>
+                    <div class="project-link">B4-B10...</div>
                 </div>
             </div>
             
@@ -652,240 +589,156 @@
             <div class="nav-item" onclick="showView('insights')">
                 <span>📊</span> Insights
             </div>
-            <div class="nav-item" onclick="showView('resources')">
-                <span>📎</span> Resources
-            </div>
-            <div class="nav-item" onclick="showView('system')">
+            <div class="nav-item" onclick="showView('settings')">
                 <span>⚙️</span> Settings
-            </div>
-            <div class="nav-item" onclick="showView('profile')">
-                <span>👤</span> Profile
             </div>
         </div>
         
         <!-- Main Content -->
         <div class="main-content">
             
-            <!-- HOME VIEW - Three Columns -->
-            <div id="view-home" class="view active">
-                
-                <!-- Agents Column -->
-                <div class="column agents-col">
-                    <div class="column-header">
-                        <span class="column-title">Agents</span>
-                        <span class="column-count">3</span>
-                    </div>
-                    <div class="column-content">
-                        <div class="agent-item">
-                            <div class="agent-avatar">🤖</div>
-                            <div class="agent-info">
-                                <h4>K2.5-Writer</h4>
-                                <div class="agent-role">Content Agent</div>
-                                <div class="agent-status">
-                                    <span class="status-dot active"></span>
-                                    <span>Working on A2</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="agent-item">
-                            <div class="agent-avatar">💻</div>
-                            <div class="agent-info">
-                                <h4>GPT-4-Coder</h4>
-                                <div class="agent-role">Dev Agent</div>
-                                <div class="agent-status">
-                                    <span class="status-dot busy"></span>
-                                    <span>Building B3</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="agent-item">
-                            <div class="agent-avatar">🔍</div>
-                            <div class="agent-info">
-                                <h4>K2.5-Researcher</h4>
-                                <div class="agent-role">Research Agent</div>
-                                <div class="agent-status">
-                                    <span class="status-dot active"></span>
-                                    <span>Scanning A4</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Agents Column -->
+            <div class="column agents-col">
+                <div class="column-header">
+                    <span class="column-title">Active Agents</span>
+                    <span class="column-count">3</span>
                 </div>
-                
-                <!-- Mission Queue Column -->
-                <div class="column queue-col">
-                    <div class="column-header">
-                        <span class="column-title">Mission Queue</span>
-                        <span class="column-count">5</span>
+                <div class="column-content">
+                    <div class="agent-item">
+                        <div class="agent-avatar">🤖</div>
+                        <div class="agent-info">
+                            <h4>K2.5-Writer</h4>
+                            <div class="agent-role">Content Agent</div>
+                            <div class="agent-task">A2: Chapter 13</div>
+                            <div class="agent-time">Active: 45m</div>
+                        </div>
                     </div>
-                    <div class="column-content">
-                        
-                        <div class="task-card">
-                            <div class="task-header">
-                                <div class="task-title">Upload RE:UNITE Chapters 1-12 to all platforms</div>
-                                <span class="task-priority">High</span>
-                            </div>
-                            <div class="task-meta">
-                                <div class="task-assignee">
-                                    <div class="task-assignee-avatar">🤖</div>
-                                    <span>K2.5-Writer</span>
-                                </div>
-                                <span>⏱️ 12 min remaining</span>
-                            </div>
-                            <div class="task-progress">
-                                <div class="task-progress-fill" style="width: 45%"></div>
-                            </div>
-                            <div class="task-actions">
-                                <button class="task-btn task-btn-primary" onclick="spawnAgent()">🚀 Spawn Sub-Agent</button>
-                                <button class="task-btn task-btn-secondary">View</button>
-                            </div>
+                    
+                    <div class="agent-item">
+                        <div class="agent-avatar">💻</div>
+                        <div class="agent-info">
+                            <h4>GPT-4-Coder</h4>
+                            <div class="agent-role">Dev Agent</div>
+                            <div class="agent-task">B3: Homepage</div>
+                            <div class="agent-time">Active: 1h 20m</div>
                         </div>
-                        
-                        <div class="task-card">
-                            <div class="task-header">
-                                <div class="task-title">Design Team Elevate homepage layout</div>
-                                <span class="task-priority">Medium</span>
-                            </div>
-                            <div class="task-meta">
-                                <div class="task-assignee">
-                                    <div class="task-assignee-avatar">💻</div>
-                                    <span>GPT-4-Coder</span>
-                                </div>
-                                <span>⏱️ 45 min remaining</span>
-                            </div>
-                            <div class="task-progress">
-                                <div class="task-progress-fill" style="width: 20%"></div>
-                            </div>
-                            <div class="task-actions">
-                                <button class="task-btn task-btn-primary" onclick="spawnAgent()">🚀 Spawn Sub-Agent</button>
-                                <button class="task-btn task-btn-secondary">View</button>
-                            </div>
-                        </div>
-                        
-                        <div class="task-card">
-                            <div class="task-header">
-                                <div class="task-title">Research Kick streaming platform requirements</div>
-                                <span class="task-priority">Low</span>
-                            </div>
-                            <div class="task-meta">
-                                <div class="task-assignee">
-                                    <div class="task-assignee-avatar">🔍</div>
-                                    <span>K2.5-Researcher</span>
-                                </div>
-                                <span>⏱️ 2 hours remaining</span>
-                            </div>
-                            <div class="task-progress">
-                                <div class="task-progress-fill" style="width: 10%"></div>
-                            </div>
-                            <div class="task-actions">
-                                <button class="task-btn task-btn-primary" onclick="spawnAgent()">🚀 Spawn Sub-Agent</button>
-                                <button class="task-btn task-btn-secondary">View</button>
-                            </div>
-                        </div>
-                        
                     </div>
-                </div>
-                
-                <!-- Live Feed Column -->
-                <div class="column feed-col">
-                    <div class="column-header">
-                        <span class="column-title">Live Feed</span>
-                        <span class="column-count">8</span>
+                    
+                    <div class="agent-item">
+                        <div class="agent-avatar">🔍</div>
+                        <div class="agent-info">
+                            <h4>K2.5-Researcher</h4>
+                            <div class="agent-role">Research Agent</div>
+                            <div class="agent-task">A4: Kick Platform</div>
+                            <div class="agent-time">Active: 2h 15m</div>
+                        </div>
                     </div>
-                    <div class="column-content">
-                        
-                        <div class="feed-alert">
-                            <div class="feed-alert-title">🔥 Token Burn Alert</div>
-                            <div class="feed-alert-text">82% usage — 3 agents at max capacity</div>
-                        </div>
-                        
-                        <div class="feed-alert" style="border-left-color: #ffc107; background: rgba(255, 193, 7, 0.1);">
-                            <div class="feed-alert-title" style="color: #ffc107;">💍 Wedding Countdown</div>
-                            <div class="feed-alert-text">311 days — 12 tasks need attention</div>
-                        </div>
-                        
-                        <div class="feed-item">
-                            <div class="feed-header">
-                                <div class="feed-avatar">🤖</div>
-                                <span class="feed-author">K2.5-Writer</span>
-                                <span class="feed-time">2m ago</span>
-                            </div>
-                            <div class="feed-content">Completed "Upload Ch1-3 to Royal Road" — 3 chapters remaining</div>
-                        </div>
-                        
-                        <div class="feed-item">
-                            <div class="feed-header">
-                                <div class="feed-avatar">➕</div>
-                                <span class="feed-author">System</span>
-                                <span class="feed-time">5m ago</span>
-                            </div>
-                            <div class="feed-content">New task added to B3: "Design contact page" by @Caleb</div>
-                        </div>
-                        
-                        <div class="feed-item">
-                            <div class="feed-header">
-                                <div class="feed-avatar">⚠️</div>
-                                <span class="feed-author">K2.5-Writer</span>
-                                <span class="feed-time">25m ago</span>
-                            </div>
-                            <div class="feed-content">Failed upload to Scribble Hub — retrying with backoff</div>
-                        </div>
-                        
-                        <div class="feed-item">
-                            <div class="feed-header">
-                                <div class="feed-avatar">💍</div>
-                                <span class="feed-author">Caleb</span>
-                                <span class="feed-time">1h ago</span>
-                            </div>
-                            <div class="feed-content">Added wedding task: "Confirm florist booking" — due in 3 days</div>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-            </div>
-            
-            <!-- CATEGORIES VIEW -->
-            <div id="view-categories" class="view">
-                <div class="single-view">
-                    <div class="view-title">All Projects</div>
-                    <div class="view-subtitle">18 active projects across 3 categories</div>
-                    <p style="color: var(--text-muted);">Category cards will appear here...</p>
                 </div>
             </div>
             
-            <!-- OTHER VIEWS -->
-            <div id="view-insights" class="view">
-                <div class="single-view">
-                    <div class="view-title">Insights</div>
-                    <div class="view-subtitle">Analytics & performance metrics</div>
-                    <p style="color: var(--text-muted);">Coming soon...</p>
+            <!-- Mission Queue Column -->
+            <div class="column queue-col">
+                <div class="column-header">
+                    <span class="column-title">Mission Queue</span>
+                    <span class="column-count">5</span>
+                </div>
+                <div class="column-content">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <div class="task-title">Upload RE:UNITE Chapters 1-12</div>
+                            <span class="task-project">A2</span>
+                        </div>
+                        <div class="task-desc">Upload to Royal Road, Wattpad, Scribble Hub, Novel Updates</div>
+                        <div class="task-meta">
+                            <div class="task-agent">
+                                <span>🤖</span>
+                                <span>K2.5-Writer</span>
+                            </div>
+                            <span class="task-time">⏱️ 45m</span>
+                        </div>
+                        <button class="task-btn">🚀 Spawn Sub-Agent</button>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <div class="task-title">Design Team Elevate Homepage</div>
+                            <span class="task-project">B3</span>
+                        </div>
+                        <div class="task-desc">Create layout, implement components, responsive design</div>
+                        <div class="task-meta">
+                            <div class="task-agent">
+                                <span>💻</span>
+                                <span>GPT-4-Coder</span>
+                            </div>
+                            <span class="task-time">⏱️ 1h 20m</span>
+                        </div>
+                        <button class="task-btn">🚀 Spawn Sub-Agent</button>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <div class="task-title">Research Kick Platform</div>
+                            <span class="task-project">A4</span>
+                        </div>
+                        <div class="task-desc">Compare Kick vs Twitch, requirements, monetization</div>
+                        <div class="task-meta">
+                            <div class="task-agent">
+                                <span>🔍</span>
+                                <span>K2.5-Researcher</span>
+                            </div>
+                            <span class="task-time">⏱️ 2h 15m</span>
+                        </div>
+                        <button class="task-btn">🚀 Spawn Sub-Agent</button>
+                    </div>
                 </div>
             </div>
             
-            <div id="view-resources" class="view">
-                <div class="single-view">
-                    <div class="view-title">Resources</div>
-                    <div class="view-subtitle">Files, templates & search</div>
-                    <p style="color: var(--text-muted);">Coming soon...</p>
+            <!-- Live Feed Column -->
+            <div class="column feed-col">
+                <div class="column-header">
+                    <span class="column-title">Live Feed</span>
+                    <span class="column-count">8</span>
                 </div>
-            </div>
-            
-            <div id="view-system" class="view">
-                <div class="single-view">
-                    <div class="view-title">System Settings</div>
-                    <div class="view-subtitle">Configuration & preferences</div>
-                    <p style="color: var(--text-muted);">Coming soon...</p>
-                </div>
-            </div>
-            
-            <div id="view-profile" class="view">
-                <div class="single-view">
-                    <div class="view-title">Profile</div>
-                    <div class="view-subtitle">Chad Yi settings</div>
-                    <p style="color: var(--text-muted);">Coming soon...</p>
+                <div class="column-content">
+                    <div class="feed-item">
+                        <div class="feed-header">
+                            <div class="feed-avatar">✅</div>
+                            <span class="feed-author">K2.5-Writer</span>
+                            <span class="feed-time">2m ago</span>
+                        </div>
+                        <div class="feed-content">Completed upload to Royal Road (3 chapters remaining)</div>
+                        <div class="feed-project">A2 RE:UNITE</div>
+                    </div>
+                    
+                    <div class="feed-item">
+                        <div class="feed-header">
+                            <div class="feed-avatar">➕</div>
+                            <span class="feed-author">System</span>
+                            <span class="feed-time">5m ago</span>
+                        </div>
+                        <div class="feed-content">New task added: "Design contact page"</div>
+                        <div class="feed-project">B3 Team Elevate</div>
+                    </div>
+                    
+                    <div class="feed-item">
+                        <div class="feed-header">
+                            <div class="feed-avatar">⚠️</div>
+                            <span class="feed-author">K2.5-Writer</span>
+                            <span class="feed-time">25m ago</span>
+                        </div>
+                        <div class="feed-content">Failed upload to Scribble Hub — retrying</div>
+                        <div class="feed-project">A2 RE:UNITE</div>
+                    </div>
+                    
+                    <div class="feed-item">
+                        <div class="feed-header">
+                            <div class="feed-avatar">🎉</div>
+                            <span class="feed-author">Caleb</span>
+                            <span class="feed-time">1h ago</span>
+                        </div>
+                        <div class="feed-content">Spawned new agent for wedding planning</div>
+                        <div class="feed-project">A1 Personal</div>
+                    </div>
                 </div>
             </div>
             
@@ -893,71 +746,99 @@
     </div>
     
     <script>
+        // Update current time
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = 
+                now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+        
+        // Rotating stats data (REAL only)
+        const statsData = {
+            agents: [
+                { value: '3', sub: 'Active now' },
+                { value: '5', sub: 'Spawned today' },
+                { value: '2', sub: 'Completed' },
+                { value: '1', sub: 'Idle' }
+            ],
+            tasks: [
+                { value: '12', sub: 'In queue' },
+                { value: '5', sub: 'High priority' },
+                { value: '3', sub: 'Overdue' },
+                { value: '7', sub: 'Done today' }
+            ],
+            time: [
+                { value: '4h 23m', sub: 'Active today' },
+                { value: '2h 15m', sub: 'K2.5-Writer' },
+                { value: '1h 20m', sub: 'GPT-4-Coder' },
+                { value: '45m', sub: 'Avg per task' }
+            ],
+            models: [
+                { value: 'K2.5', sub: '60% of agents' },
+                { value: 'GPT-4', sub: '30% of agents' },
+                { value: 'Claude', sub: '10% of agents' },
+                { value: 'Low', sub: 'Cost tier' }
+            ],
+            projects: [
+                { value: 'A2', sub: '3 tasks active' },
+                { value: 'B3', sub: '2 tasks active' },
+                { value: 'A4', sub: '1 task active' },
+                { value: 'C1', sub: '0 tasks ⚠️' }
+            ],
+            countdown: [
+                { value: '311d', sub: '💍 Wedding' },
+                { value: '5d 8h', sub: '📖 A2 Ch13' },
+                { value: '2d 4h', sub: '💼 B3 HP' },
+                { value: '12m', sub: '⏱️ Current task' }
+            ]
+        };
+        
+        let statIndices = { agents: 0, tasks: 0, time: 0, models: 0, projects: 0, countdown: 0 };
+        
+        function rotateStat(type) {
+            const data = statsData[type];
+            const index = statIndices[type];
+            const item = data[index];
+            
+            const valueEl = document.getElementById(`stat-${type}-value`);
+            const subEl = document.getElementById(`stat-${type}-sub`);
+            
+            // Fade out
+            valueEl.style.opacity = '0';
+            subEl.style.opacity = '0';
+            
+            setTimeout(() => {
+                valueEl.textContent = item.value;
+                subEl.textContent = item.sub;
+                
+                // Fade in
+                valueEl.style.opacity = '1';
+                subEl.style.opacity = '1';
+            }, 150);
+            
+            statIndices[type] = (index + 1) % data.length;
+        }
+        
+        // Rotate each stat card every 5 seconds
+        setInterval(() => rotateStat('agents'), 5000);
+        setInterval(() => rotateStat('tasks'), 5000);
+        setInterval(() => rotateStat('time'), 5000);
+        setInterval(() => rotateStat('models'), 5000);
+        setInterval(() => rotateStat('projects'), 5000);
+        setInterval(() => rotateStat('countdown'), 5000);
+        
+        // Sidebar functions
         function toggleCat(id) {
             document.getElementById(id).classList.toggle('show');
         }
         
-        function showView(viewName) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById('view-' + viewName).classList.add('active');
-            
+        function showView(view) {
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            if (event.target.classList.contains('nav-item')) {
-                event.target.classList.add('active');
-            }
+            event.target.classList.add('active');
+            alert(view + ' view coming soon!');
         }
-        
-        function showProject(code) {
-            alert('Opening ' + code + '...\nProject detail view coming next!');
-        }
-        
-        function spawnAgent() {
-            const task = prompt('What should the sub-agent work on?');
-            if (task) {
-                alert('🚀 Spawning agent for: ' + task);
-            }
-        }
-        
-        // Rotating Countdown
-        const countdowns = [
-            { name: '💍 Wedding', deadline: new Date('2026-12-13'), type: 'days' },
-            { name: '📖 RE:UNITE Ch13', deadline: new Date('2026-02-10'), type: 'days' },
-            { name: '💼 Team Elevate HP', deadline: new Date('2026-02-08'), type: 'days' },
-            { name: '⏱️ Current Task', timeLeft: '12 min', type: 'timer' },
-            { name: '⏱️ Upload Progress', timeLeft: '45 min', type: 'timer' }
-        ];
-        
-        let currentCountdownIndex = 0;
-        
-        function updateCountdown() {
-            const item = countdowns[currentCountdownIndex];
-            const valueEl = document.getElementById('countdown-value');
-            const taskEl = document.getElementById('countdown-task');
-            
-            if (item.type === 'days') {
-                const now = new Date();
-                const diff = item.deadline - now;
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                valueEl.textContent = `${days}d ${hours}h`;
-            } else {
-                valueEl.textContent = item.timeLeft;
-            }
-            
-            taskEl.textContent = item.name;
-            
-            // Fade effect
-            valueEl.style.opacity = '0';
-            setTimeout(() => {
-                valueEl.style.opacity = '1';
-            }, 100);
-            
-            currentCountdownIndex = (currentCountdownIndex + 1) % countdowns.length;
-        }
-        
-        // Start rotating every 5 seconds
-        setInterval(updateCountdown, 5000);
-        updateCountdown(); // Initial call
     </script>
 </body>
 </html>
