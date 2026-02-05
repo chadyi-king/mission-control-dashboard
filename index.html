@@ -805,18 +805,9 @@
             const valueEl = document.getElementById(`stat-${type}-value`);
             const subEl = document.getElementById(`stat-${type}-sub`);
             
-            // Fade out
-            valueEl.style.opacity = '0';
-            subEl.style.opacity = '0';
-            
-            setTimeout(() => {
-                valueEl.textContent = item.value;
-                subEl.textContent = item.sub;
-                
-                // Fade in
-                valueEl.style.opacity = '1';
-                subEl.style.opacity = '1';
-            }, 150);
+            // Direct text change (no fade to avoid disappearing bug)
+            valueEl.textContent = item.value;
+            subEl.textContent = item.sub;
             
             statIndices[type] = (index + 1) % data.length;
         }
