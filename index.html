@@ -1674,6 +1674,101 @@
         </div>
         <!-- END CATEGORIES SECTION -->
 
+        <!-- INSIGHTS SECTION (Task 28) -->
+        <div class="section" id="insights-section">
+            <div class="row" style="grid-template-columns: repeat(2, 1fr);">
+                
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Productivity Overview</span>
+                        <span class="panel-value">Tasks Over Time</span>
+                    </div>
+                    <div class="panel-content">
+                        <div id="productivityChart" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            📊 Chart: Tasks completed per day
+                            <br><br>
+                            <div style="font-size: 48px; color: var(--crimson-bright);">12</div>
+                            <div>Tasks completed today</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Project Velocity</span>
+                        <span class="panel-value">Speed Metrics</span>
+                    </div>
+                    <div class="panel-content">
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; text-align: center;">
+                                <div style="font-family: var(--display-font); font-size: 32px; color: var(--crimson-bright);">2.4</div>
+                                <div style="font-size: 11px; color: var(--text-muted);">Tasks/hour</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; text-align: center;">
+                                <div style="font-family: var(--display-font); font-size: 32px; color: var(--crimson-bright);">85%</div>
+                                <div style="font-size: 11px; color: var(--text-muted);">Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Time Distribution</span>
+                        <span class="panel-value">Where Time Goes</span>
+                    </div>
+                    <div class="panel-content">
+                        <div style="padding: 20px;">
+                            <div style="margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span>A6 · Mission Control</span>
+                                    <span>46%</span>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                    <div style="width: 46%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span>A2 · Re:Unite</span>
+                                    <span>25%</span>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                    <div style="width: 25%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span>B3 · Team Elevate</span>
+                                    <span>10%</span>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                    <div style="width: 10%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Agent Performance</span>
+                        <span class="panel-value">AI Efficiency</span>
+                    </div>
+                    <div class="panel-content">
+                        <div id="agentPerformance" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            🤖 Agent analytics coming soon
+                            <br><br>
+                            <div style="font-size: 48px; color: var(--crimson-bright);">CHAD_YI</div>
+                            <div>Currently active</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END INSIGHTS SECTION -->
+
         <!-- ADD TASK MODAL (Task 6) -->
         <div class="modal" id="addTaskModal">
             <div class="modal-content">
@@ -1805,8 +1900,7 @@
                     document.exitFullscreen();
                 }
             } else if (action === 'export') {
-                const report = `MISSION CONTROL REPORT\n${new Date().toLocaleString()}\n\nActive Agents: 3\nTasks Done Today: 7\nFocus Project: A2`;
-                alert(report);
+                exportReport();
             } else if (action === 'add-task') {
                 openModal();
             } else if (action === 'github') {
@@ -2012,6 +2106,58 @@
         window.viewTask = viewTask;
         window.completeTask = completeTask;
         window.deleteTask = deleteTask;
+
+        // Export Report (Task 23)
+        function exportReport() {
+            if (!dashboardData) {
+                alert('No data available to export');
+                return;
+            }
+
+            const report = {
+                generatedAt: new Date().toISOString(),
+                summary: dashboardData.stats,
+                tasks: dashboardData.tasks,
+                projects: dashboardData.projects
+            };
+
+            const dataStr = JSON.stringify(report, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `mission-control-report-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            alert('📊 Report exported! Check your downloads.');
+        }
+
+        // Data Backup (Task 24)
+        function backupData() {
+            const data = localStorage.getItem('missionControlData');
+            if (!data) {
+                alert('No data to backup');
+                return;
+            }
+
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `mission-control-backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            alert('💾 Data backup complete!');
+        }
+
+        window.exportReport = exportReport;
+        window.backupData = backupData;
 
         // ==========================================
         // PROJECT MANAGEMENT (Tasks 13-16)
