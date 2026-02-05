@@ -1891,10 +1891,58 @@
             }
         });
 
+        // Task Filters (Task 11)
+        function filterTasks(filterType, filterValue) {
+            if (!dashboardData || !dashboardData.tasks) return;
+
+            let filtered = dashboardData.tasks;
+
+            if (filterType === 'project') {
+                filtered = filtered.filter(t => t.project === filterValue);
+            } else if (filterType === 'priority') {
+                filtered = filtered.filter(t => t.priority === filterValue);
+            } else if (filterType === 'status') {
+                filtered = filtered.filter(t => t.status === filterValue);
+            }
+
+            renderFilteredTasks(filtered);
+        }
+
+        function renderFilteredTasks(tasks) {
+            const container = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-content');
+            if (!container) return;
+
+            container.innerHTML = tasks.map(task => `
+                <div class="queue-item ${task.priority}" onclick="viewTask('${task.id}')">
+                    <div class="queue-info">
+                        <h4>${task.title}</h4>
+                        <p>${task.project} · ${formatStatus(task.status)}</p>
+                    </div>
+                    <span class="queue-priority ${task.priority}">${task.priority}</span>
+                </div>
+            `).join('');
+        }
+
+        // Task Search (Task 12)
+        function searchTasks(query) {
+            if (!dashboardData || !dashboardData.tasks) return;
+
+            const lowerQuery = query.toLowerCase();
+            const filtered = dashboardData.tasks.filter(t =>
+                t.title.toLowerCase().includes(lowerQuery) ||
+                t.project.toLowerCase().includes(lowerQuery) ||
+                (t.notes && t.notes.toLowerCase().includes(lowerQuery))
+            );
+
+            renderFilteredTasks(filtered);
+        }
+
         // Make functions global
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-        window.submitTask = submitTask;
+        window.filterTasks = filterTasks;
+        window.searchTasks = searchTasks;
+        window.viewTask = viewTask;
+        window.completeTask = completeTask;
+        window.deleteTask = deleteTask;
 
         // ==========================================
         // LIVE DATA SYSTEM (Tasks 1-5)
@@ -1953,11 +2001,170 @@
         }
 
         function updateActivityFeed() {
-            // Will be enhanced in later tasks
+            if (!dashboardData || !dashboardData.activity) return;
+
+            const container = document.querySelector('.panel:has(.panel-title:contains("Activity Feed")) .panel-content');
+            if (!container) return;
+
+            container.innerHTML = dashboardData.activity.slice(0, 5).map(event => `
+                <div class="activity-item">
+                    <div class="activity-time">[${formatTime(event.timestamp)}]</div>
+                    <div class="activity-content">
+                        <h4>${event.title}</h4>
+                        <p>${event.description}</p>
+                    </div>
+                </div>
+            `).join('');
         }
 
         function updateTaskQueue() {
-            // Will be enhanced in later tasks
+            if (!dashboardData || !dashboardData.tasks) return;
+
+            const container = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-content');
+            if (!container) return;
+
+            const activeTasks = dashboardData.tasks
+                .filter(t => t.status !== 'done')
+                .sort((a, b) => priorityWeight(b.priority) - priorityWeight(a.priority))
+                .slice(0, 5);
+
+            container.innerHTML = activeTasks.map(task => `
+                <div class="queue-item ${task.priority}" onclick="viewTask('${task.id}')">
+                    <div class="queue-info">
+                        <h4>${task.title}</h4>
+                        <p>${task.project} · ${formatStatus(task.status)}</p>
+                    </div>
+                    <span class="queue-priority ${task.priority}">${task.priority}</span>
+                </div>
+            `).join('');
+
+            // Update count
+            const countEl = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-value');
+            if (countEl) countEl.textContent = activeTasks.length + ' Total';
+        }
+
+        function priorityWeight(p) {
+            return { high: 3, medium: 2, low: 1 }[p] || 0;
+        }
+
+        function formatStatus(s) {
+            return { pending: 'Pending', active: 'Active', review: 'Review', done: 'Done' }[s] || s;
+        }
+
+        function formatTime(iso) {
+            const d = new Date(iso);
+            return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
+        }
+
+        // Complete Task (Task 8)
+        function completeTask(taskId) {
+            if (!dashboardData) return;
+
+            const task = dashboardData.tasks.find(t => t.id === taskId);
+            if (task) {
+                task.status = 'done';
+                task.completedAt = new Date().toISOString();
+
+                // Move from workflow
+                ['pending', 'active', 'review'].forEach(stage => {
+                    dashboardData.workflow[stage] = dashboardData.workflow[stage].filter(t => t.id !== taskId);
+                });
+                dashboardData.workflow.done.push(task);
+
+                // Update stats
+                dashboardData.stats.tasksDone++;
+
+                // Add activity
+                dashboardData.activity.unshift({
+                    timestamp: new Date().toISOString(),
+                    title: 'Task Completed',
+                    description: `${task.title} in ${task.project}`
+                });
+
+                saveData();
+                updateDashboard();
+                alert('✅ Task completed!');
+            }
+        }
+
+        // Delete Task (Task 9)
+        function deleteTask(taskId) {
+            if (!confirm('Are you sure you want to delete this task?')) return;
+
+            if (!dashboardData) return;
+
+            dashboardData.tasks = dashboardData.tasks.filter(t => t.id !== taskId);
+            ['pending', 'active', 'review', 'done'].forEach(stage => {
+                dashboardData.workflow[stage] = dashboardData.workflow[stage].filter(t => t.id !== taskId);
+            });
+
+            saveData();
+            updateDashboard();
+            alert('🗑️ Task deleted');
+        }
+
+        // View/Edit Task (Task 10)
+        function viewTask(taskId) {
+            if (!dashboardData) return;
+
+            const task = dashboardData.tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            // Populate edit modal (reuse add modal with values)
+            document.getElementById('taskTitle').value = task.title;
+            document.getElementById('taskProject').value = task.project;
+            document.getElementById('taskStatus').value = task.status;
+            document.getElementById('taskNotes').value = task.notes || '';
+
+            // Set priority
+            document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-priority="${task.priority}"]`).classList.add('active');
+            selectedPriority = task.priority;
+
+            // Change submit to update
+            const submitBtn = document.querySelector('.modal-footer .btn-primary');
+            submitBtn.textContent = 'Update Task';
+            submitBtn.onclick = () => updateTask(taskId);
+
+            openModal();
+        }
+
+        function updateTask(taskId) {
+            if (!dashboardData) return;
+
+            const task = dashboardData.tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            const oldStatus = task.status;
+            const newStatus = document.getElementById('taskStatus').value;
+
+            task.title = document.getElementById('taskTitle').value;
+            task.project = document.getElementById('taskProject').value;
+            task.status = newStatus;
+            task.priority = selectedPriority;
+            task.notes = document.getElementById('taskNotes').value;
+
+            // Move between workflow stages if status changed
+            if (oldStatus !== newStatus) {
+                dashboardData.workflow[oldStatus] = dashboardData.workflow[oldStatus].filter(t => t.id !== taskId);
+                dashboardData.workflow[newStatus].push(task);
+            }
+
+            saveData();
+            updateDashboard();
+            closeModal();
+
+            // Reset submit button
+            const submitBtn = document.querySelector('.modal-footer .btn-primary');
+            submitBtn.textContent = 'Add Task';
+            submitBtn.onclick = submitTask;
+
+            alert('✅ Task updated');
+        }
+
+        // Save data helper
+        function saveData() {
+            localStorage.setItem('missionControlData', JSON.stringify(dashboardData));
         }
 
         // Auto-refresh every 30 seconds (Task 5)
