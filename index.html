@@ -781,6 +781,191 @@
             color: #00ff88;
         }
 
+        /* Expandable Project Cards */
+        .expandable-project-card {
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .expandable-project-card:hover {
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 15px var(--crimson-glow);
+        }
+
+        .expandable-project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.02);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .expandable-project-header:hover {
+            background: var(--crimson-glow);
+        }
+
+        .expandable-project-info h4 {
+            font-family: var(--display-font);
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .expandable-project-info p {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .expandable-project-meta {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .expandable-project-meta .deadline {
+            color: var(--crimson-bright);
+        }
+
+        .expand-icon {
+            font-size: 12px;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .expandable-project-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .expandable-project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .expandable-project-card.expanded .expandable-project-content {
+            max-height: 500px;
+        }
+
+        .next-task-preview {
+            padding: 12px 16px;
+            background: rgba(139, 0, 0, 0.1);
+            border-left: 3px solid var(--crimson-bright);
+            margin: 12px 16px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .next-task-preview .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--crimson-bright);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .next-task-preview .task {
+            font-size: 12px;
+            color: var(--text-primary);
+        }
+
+        .project-tasks-list {
+            padding: 0 16px 16px;
+        }
+
+        .project-task-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border-left: 2px solid transparent;
+        }
+
+        .project-task-item.high-priority {
+            border-left-color: var(--crimson-bright);
+        }
+
+        .task-status-dot {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .task-status-dot.inactive { color: var(--text-muted); }
+        .task-status-dot.input-needed { color: #c9a962; }
+        .task-status-dot.active { color: #00ff88; }
+        .task-status-dot.done { color: #00ff88; }
+
+        .project-task-info {
+            flex: 1;
+        }
+
+        .project-task-info h5 {
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .project-task-info p {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .task-agent-badge {
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+
+        .subtasks-list {
+            margin: 8px 0 8px 28px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.15);
+            border-radius: 4px;
+        }
+
+        .subtask-item {
+            font-size: 11px;
+            color: var(--text-secondary);
+            padding: 3px 0;
+        }
+
+        .project-action-buttons {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--crystal-border);
+        }
+
+        .proj-action-btn {
+            padding: 6px 12px;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 4px;
+            color: var(--crimson-bright);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .proj-action-btn:hover {
+            background: var(--crimson-bright);
+            color: white;
+        }
+
         .section {
             display: none;
         }
@@ -1537,48 +1722,189 @@
                         <div class="category-count">6</div>
                     </div>
                     <div class="category-projects">
-                        <div class="category-project-item pending" onclick="viewProject('A1')">
-                            <div class="project-info">
-                                <h4>A1 · Personal Tasks</h4>
-                                <p>General personal tasks</p>
+                        
+                        <!-- A1 - Collapsed -->
+                        <div class="expandable-project-card" data-project="A1">
+                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
+                                <div class="expandable-project-info">
+                                    <h4>A1 · Personal Tasks</h4>
+                                    <p>General personal tasks and errands</p>
+                                    <div class="expandable-project-meta">
+                                        <span>📋 3 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item active" onclick="viewProject('A2')">
-                            <div class="project-info">
-                                <h4>A2 · Re:Unite</h4>
-                                <p>Novel - 3/12 chapters</p>
+                            <div class="expandable-project-content">
+                                <div class="next-task-preview">
+                                    <div class="label">Next Task</div>
+                                    <div class="task">Organize digital files</div>
+                                </div>
+                                <div class="project-tasks-list">
+                                    <div class="project-task-item">
+                                        <span class="task-status-dot inactive">○</span>
+                                        <div class="project-task-info">
+                                            <h5>Organize digital files</h5>
+                                        </div>
+                                        <span class="task-agent-badge">No agent</span>
+                                    </div>
+                                </div>
+                                <div class="project-action-buttons">
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A1')">🤖 Spawn Agent</button>
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A1')">+ Add Task</button>
+                                </div>
                             </div>
-                            <span class="project-status active">Active</span>
                         </div>
-                        <div class="category-project-item pending" onclick="viewProject('A3')">
-                            <div class="project-info">
-                                <h4>A3 · KOE</h4>
-                                <p>Project KOE</p>
+
+                        <!-- A2 - Expanded by default -->
+                        <div class="expandable-project-card expanded" data-project="A2">
+                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
+                                <div class="expandable-project-info">
+                                    <h4>A2 · Re:Unite</h4>
+                                    <p>Fantasy novel - Christian allegory</p>
+                                    <div class="expandable-project-meta">
+                                        <span>📋 12 chapters</span>
+                                        <span>✅ 3 done</span>
+                                        <span class="deadline">⏰ Every Sunday</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('A4')">
-                            <div class="project-info">
-                                <h4>A4 · Streaming</h4>
-                                <p>Live streaming setup</p>
+                            <div class="expandable-project-content">
+                                <div class="next-task-preview">
+                                    <div class="label">Next (Chapter 13)</div>
+                                    <div class="task">Write "The Revelation" - Awaiting your draft</div>
+                                </div>
+                                <div class="project-tasks-list">
+                                    <div class="project-task-item high-priority">
+                                        <span class="task-status-dot input-needed">!</span>
+                                        <div class="project-task-info">
+                                            <h5>Write Chapter 13</h5>
+                                            <p>User writing - awaiting completion</p>
+                                        </div>
+                                        <span class="task-agent-badge">CHAD_YI</span>
+                                    </div>
+                                    <div class="subtasks-list">
+                                        <div class="subtask-item">✓ Draft outline</div>
+                                        <div class="subtask-item">⏳ Write content (60%)</div>
+                                        <div class="subtask-item">○ Edit & polish</div>
+                                    </div>
+                                    <div class="project-task-item">
+                                        <span class="task-status-dot inactive">○</span>
+                                        <div class="project-task-info">
+                                            <h5>Upload to Google Drive</h5>
+                                            <p>Auto-executes on chapter completion</p>
+                                        </div>
+                                        <span class="task-agent-badge">Auto</span>
+                                    </div>
+                                </div>
+                                <div class="project-action-buttons">
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); viewDrive('A2')">📁 Open Drive</button>
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A2')">+ Add Task</button>
+                                </div>
                             </div>
-                            <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending" onclick="viewProject('A5')">
-                            <div class="project-info">
-                                <h4>A5 · Trading</h4>
-                                <p>Trading activities</p>
+
+                        <!-- A3 - Collapsed -->
+                        <div class="expandable-project-card" data-project="A3">
+                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
+                                <div class="expandable-project-info">
+                                    <h4>A3 · KOE</h4>
+                                    <p>Christian YouTube channel</p>
+                                    <div class="expandable-project-meta">
+                                        <span>📋 3 scripts</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item active" onclick="viewProject('A6')">
-                            <div class="project-info">
-                                <h4>A6 · Mission Control</h4>
-                                <p>Dashboard - 46% complete (12/26 tasks)</p>
+                            <div class="expandable-project-content">
+                                <div class="next-task-preview">
+                                    <div class="label">Next Task</div>
+                                    <div class="task">Write Script 1: Right vs Left Paradigm</div>
+                                </div>
+                                <div class="project-action-buttons">
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A3')">🤖 Spawn Agent</button>
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A3')">+ Add Task</button>
+                                </div>
                             </div>
-                            <span class="project-status active">Active</span>
                         </div>
+
+                        <!-- A4 - Collapsed -->
+                        <div class="expandable-project-card" data-project="A4">
+                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
+                                <div class="expandable-project-info">
+                                    <h4>A4 · Streaming</h4>
+                                    <p>VTuber/Faceless streaming setup</p>
+                                    <div class="expandable-project-meta">
+                                        <span>📋 5 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="expandable-project-content">
+                                <div class="next-task-preview">
+                                    <div class="label">Next Task</div>
+                                    <div class="task">Research Kick streaming platform</div>
+                                </div>
+                                <div class="project-action-buttons">
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A4')">🤖 Spawn Agent</button>
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A4')">+ Add Task</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- A5 - Collapsed -->
+                        <div class="expandable-project-card" data-project="A5">
+                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
+                                <div class="expandable-project-info">
+                                    <h4>A5 · Trading</h4>
+                                    <p>Forex & Options trading bots</p>
+                                    <div class="expandable-project-meta">
+                                        <span>📋 6 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="expandable-project-content">
+                                <div class="next-task-preview">
+                                    <div class="label">Next Task</div>
+                                    <div class="task">Set up OANDA API connection</div>
+                                </div>
+                                <div class="project-action-buttons">
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A5')">🤖 Spawn Agent</button>
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A5')">+ Add Task</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- A6 - Collapsed -->
+                        <div class="expandable-project-card" data-project="A6">
+                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
+                                <div class="expandable-project-info">
+                                    <h4>A6 · Mission Control</h4>
+                                    <p>This dashboard project</p>
+                                    <div class="expandable-project-meta">
+                                        <span>📋 26 tasks</span>
+                                        <span>✅ 12 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="expandable-project-content">
+                                <div class="next-task-preview">
+                                    <div class="label">Next Task</div>
+                                    <div class="task">Fix Categories page expandable cards</div>
+                                </div>
+                                <div class="project-action-buttons">
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A6')">+ Add Task</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -1595,14 +1921,14 @@
                         <div class="category-project-item pending" onclick="viewProject('B1')">
                             <div class="project-info">
                                 <h4>B1 · Exstatic</h4>
-                                <p>Business unit 1</p>
+                                <p>Business unit 1 - Define scope needed</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending" onclick="viewProject('B2')">
                             <div class="project-info">
                                 <h4>B2 · Energize</h4>
-                                <p>Business unit 2</p>
+                                <p>Business unit 2 - Define scope needed</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
@@ -1616,49 +1942,49 @@
                         <div class="category-project-item pending" onclick="viewProject('B4')">
                             <div class="project-info">
                                 <h4>B4 · Pesta Fiesta</h4>
-                                <p>Business unit 4</p>
+                                <p>Business unit 4 - Define scope needed</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending" onclick="viewProject('B5')">
                             <div class="project-info">
                                 <h4>B5 · Enticipate</h4>
-                                <p>Business unit 5</p>
+                                <p>Business unit 5 - Define scope needed</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending" onclick="viewProject('B6')">
                             <div class="project-info">
                                 <h4>B6 · Elluminate</h4>
-                                <p>Business unit 6</p>
+                                <p>Business unit 6 - Define scope needed</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending" onclick="viewProject('B7')">
                             <div class="project-info">
                                 <h4>B7 · Encompasse</h4>
-                                <p>Business unit 7</p>
+                                <p>Business unit 7 - Define scope needed</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending" onclick="viewProject('B8')">
                             <div class="project-info">
                                 <h4>B8 · Empyrean</h4>
-                                <p>Business unit 8</p>
+                                <p>Business unit 8 - Define scope needed</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending" onclick="viewProject('B9')">
                             <div class="project-info">
                                 <h4>B9 · Ethereal</h4>
-                                <p>Business unit 9</p>
+                                <p>Business unit 9 - Define scope needed</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
                         <div class="category-project-item pending" onclick="viewProject('B10')">
                             <div class="project-info">
                                 <h4>B10 · Epitaph</h4>
-                                <p>Business unit 10</p>
+                                <p>Business unit 10 - YOU DEFINE THIS</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
@@ -2068,6 +2394,12 @@
         function toggleMobileMenu() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('mobile-open');
+        }
+
+        // Toggle Project Expand
+        function toggleProjectExpand(header) {
+            const card = header.closest('.expandable-project-card');
+            card.classList.toggle('expanded');
         }
 
         function setActive(element) {
