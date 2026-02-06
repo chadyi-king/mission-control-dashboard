@@ -131,10 +131,10 @@
             50% { transform: translateY(-20px) rotate(10deg); opacity: 0.12; }
         }
 
-        /* Red Sun Avatar - Burning Ring */
+        /* Red Sun Avatar (Small for Top Bar) */
         .sun-avatar-small {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             position: relative;
             flex-shrink: 0;
         }
@@ -144,81 +144,42 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 24px;
-            height: 24px;
+            width: 12px;
+            height: 12px;
             background: radial-gradient(circle, #fff 0%, var(--crimson-bright) 40%, var(--crimson) 100%);
             border-radius: 50%;
-            box-shadow: 0 0 20px var(--crimson-bright), 0 0 40px var(--crimson-glow);
+            box-shadow: 0 0 10px var(--crimson-bright), 0 0 20px var(--crimson-glow);
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        /* Burning Ring - Fire effect */
-        .sun-avatar-small::before {
-            content: '';
+        .sun-ray-small {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            transition: all 0.5s;
+            width: 1px;
+            height: 18px;
+            background: linear-gradient(to bottom, var(--crimson-bright), transparent);
+            transform-origin: center bottom;
+            animation: flare 3s ease-in-out infinite;
         }
 
-        /* ACTIVE - Red burning fire ring */
-        .sun-avatar-small.active::before {
-            border-color: var(--crimson-bright);
-            box-shadow: 
-                0 0 10px var(--crimson-bright),
-                0 0 20px var(--crimson-glow),
-                0 0 30px var(--crimson),
-                inset 0 0 10px var(--crimson-glow);
-            animation: burning-ring 1.5s ease-in-out infinite;
+        .sun-ray-small:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); animation-delay: 0s; }
+        .sun-ray-small:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg); animation-delay: 0.375s; }
+        .sun-ray-small:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg); animation-delay: 0.75s; }
+        .sun-ray-small:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg); animation-delay: 1.125s; }
+        .sun-ray-small:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg); animation-delay: 1.5s; }
+        .sun-ray-small:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg); animation-delay: 1.875s; }
+        .sun-ray-small:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg); animation-delay: 2.25s; }
+        .sun-ray-small:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg); animation-delay: 2.625s; }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
         }
 
-        /* INACTIVE - Grey dull ring */
-        .sun-avatar-small.inactive::before {
-            border-color: #444;
-            box-shadow: none;
-            animation: none;
-        }
-
-        @keyframes burning-ring {
-            0%, 100% {
-                box-shadow: 
-                    0 0 10px var(--crimson-bright),
-                    0 0 20px var(--crimson-glow),
-                    0 0 30px var(--crimson),
-                    inset 0 0 10px var(--crimson-glow);
-                transform: translate(-50%, -50%) scale(1);
-            }
-            25% {
-                box-shadow: 
-                    0 0 15px var(--crimson-bright),
-                    0 0 30px var(--crimson-glow),
-                    0 0 45px var(--crimson),
-                    2px -2px 15px var(--crimson-bright),
-                    inset 0 0 15px var(--crimson-glow);
-                transform: translate(-50%, -50%) scale(1.05);
-            }
-            50% {
-                box-shadow: 
-                    0 0 20px var(--crimson-bright),
-                    0 0 40px var(--crimson-glow),
-                    0 0 60px var(--crimson),
-                    -2px 2px 20px var(--crimson-bright),
-                    inset 0 0 20px var(--crimson-glow);
-                transform: translate(-50%, -50%) scale(1.1);
-            }
-            75% {
-                box-shadow: 
-                    0 0 15px var(--crimson-bright),
-                    0 0 30px var(--crimson-glow),
-                    0 0 45px var(--crimson),
-                    3px 3px 15px var(--crimson-bright),
-                    inset 0 0 15px var(--crimson-glow);
-                transform: translate(-50%, -50%) scale(1.05);
-            }
+        @keyframes flare {
+            0%, 100% { opacity: 0.3; height: 15px; }
+            50% { opacity: 0.8; height: 20px; }
         }
 
         /* Top Bar */
@@ -313,34 +274,24 @@
             letter-spacing: 1px;
         }
 
-        /* Sidebar - Overlay mode with higher z-index */
+        /* Sidebar */
         .sidebar {
             position: fixed;
             left: 0;
-            top: 0;
+            top: 60px;
             width: 60px;
-            height: 100vh;
-            background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
+            height: calc(100vh - 60px);
+            background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(5,5,8,0.9) 100%);
             border-right: 1px solid var(--crystal-border);
-            z-index: 1000;
+            z-index: 5;
             display: flex;
             flex-direction: column;
-            padding: 76px 0 16px 0;
+            padding: 16px 0;
             transition: width 0.3s ease;
         }
-        
+
         .sidebar.expanded {
             width: 200px;
-        }
-        
-        /* Content wrapper that shifts */
-        .content-wrapper {
-            margin-left: 60px;
-            transition: margin-left 0.3s ease;
-        }
-        
-        body.sidebar-expanded .content-wrapper {
-            margin-left: 200px;
         }
 
         .sidebar-toggle {
@@ -426,43 +377,27 @@
             opacity: 1;
         }
 
-        /* Content shifts with sidebar */
+        /* Adjust main container for sidebar */
         .main-container {
-            margin-left: 60px;
-            transition: margin-left 0.3s ease;
-            padding: 16px 24px;
+            padding: 16px 24px 16px 84px;
+            position: relative;
+            z-index: 20;
+            transition: padding-left 0.3s ease;
         }
 
-        body.sidebar-expanded .main-container {
-            margin-left: 200px;
+        .main-container.sidebar-expanded {
+            padding-left: 224px;
         }
 
         .stats-bar {
-            margin-left: 60px;
-            transition: margin-left 0.3s ease;
-            padding: 10px 24px;
+            padding: 10px 24px 10px 84px;
+            transition: padding-left 0.3s ease;
+            position: relative;
+            z-index: 20;
         }
 
-        body.sidebar-expanded .stats-bar {
-            margin-left: 200px;
-        }
-
-        /* Sidebar expanded - shift content on non-home pages */
-        body.sidebar-expanded #categories-section,
-        body.sidebar-expanded #insights-section,
-        body.sidebar-expanded #resources-section,
-        body.sidebar-expanded #system-section,
-        body.sidebar-expanded #profile-section {
-            margin-left: 200px !important;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        /* Home section uses main-container margin only */
-        #home-section {
-            margin-left: 0 !important;
+        .stats-bar.sidebar-expanded {
+            padding-left: 224px;
         }
 
         @media (max-width: 768px) {
@@ -1032,228 +967,6 @@
             .main-container { padding: 16px; }
             #categories-section .row { grid-template-columns: 1fr !important; }
         }
-
-        /* NEW CATEGORIES DESIGN - Expandable Project Cards */
-        .categories-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 24px;
-            margin-left: 60px;
-        }
-        
-        body.sidebar-expanded .categories-container {
-            margin-left: 200px;
-        }
-
-        .category-section {
-            margin-bottom: 40px;
-        }
-
-        .category-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .category-title span {
-            color: var(--crimson-bright);
-            font-size: 20px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 16px;
-        }
-
-        .project-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            border-color: var(--crimson-bright);
-            box-shadow: 0 0 20px var(--crimson-glow);
-        }
-
-        .project-header {
-            padding: 16px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            background: linear-gradient(90deg, rgba(139,0,0,0.1), transparent);
-        }
-
-        .project-info-main h3 {
-            font-family: var(--display-font);
-            font-size: 15px;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .agent-badge {
-            font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.1);
-            color: var(--text-muted);
-            font-weight: normal;
-        }
-
-        .agent-badge.active {
-            background: rgba(0, 255, 136, 0.15);
-            color: #00ff88;
-        }
-
-        .project-info-main p {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .project-meta {
-            display: flex;
-            gap: 12px;
-            margin-top: 8px;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .project-meta .deadline {
-            color: var(--crimson-bright);
-        }
-
-        .expand-icon {
-            font-size: 12px;
-            color: var(--text-muted);
-            transition: transform 0.3s;
-        }
-
-        .project-card.expanded .expand-icon {
-            transform: rotate(180deg);
-        }
-
-        .project-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .project-card.expanded .project-content {
-            max-height: 600px;
-        }
-
-        .next-task-bar {
-            padding: 10px 16px;
-            background: rgba(139, 0, 0, 0.1);
-            border-left: 3px solid var(--crimson-bright);
-            margin: 0 16px 12px;
-            font-size: 12px;
-        }
-
-        .next-task-bar.highlight {
-            background: rgba(139, 0, 0, 0.2);
-        }
-
-        .next-task-bar strong {
-            color: var(--crimson-bright);
-        }
-
-        .tasks-list {
-            padding: 0 16px 12px;
-        }
-
-        .task-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            margin-bottom: 6px;
-            font-size: 12px;
-        }
-
-        .task-row.high {
-            border-left: 2px solid var(--crimson-bright);
-        }
-
-        .task-row.done {
-            opacity: 0.6;
-        }
-
-        .task-row span:nth-child(2) {
-            flex: 1;
-        }
-
-        .task-dot {
-            width: 18px;
-            height: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-        }
-
-        .task-dot.inactive { color: var(--text-muted); }
-        .task-dot.input-needed { color: #c9a962; }
-        .task-dot.active { color: #00ff88; }
-
-        .task-agent {
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 3px;
-            background: rgba(0, 255, 136, 0.1);
-            color: #00ff88;
-        }
-
-        .subtasks {
-            margin: 0 16px 12px 40px;
-            padding: 8px 12px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 6px;
-        }
-
-        .subtask {
-            font-size: 11px;
-            color: var(--text-muted);
-            padding: 4px 0;
-        }
-
-        .project-actions {
-            display: flex;
-            gap: 8px;
-            padding: 12px 16px;
-            border-top: 1px solid var(--crystal-border);
-        }
-
-        .action-btn {
-            padding: 6px 12px;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            border-radius: 4px;
-            color: var(--crimson-bright);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .action-btn:hover {
-            background: var(--crimson-bright);
-            color: white;
-        }
     </style>
 </head>
 <body>
@@ -1285,7 +998,15 @@
         <div class="topbar-left">
             <!-- Red Sun Avatar with Info -->
             <div class="sun-widget-header">
-                <div class="sun-avatar-small active">
+                <div class="sun-avatar-small">
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
+                    <div class="sun-ray-small"></div>
                     <div class="sun-core-small"></div>
                 </div>
                 <div class="sun-info">
@@ -1343,7 +1064,7 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" onclick="toggleSidebar()" title="Expand/Collapse sidebar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
             <span>▶</span>
             <span class="sidebar-toggle-text">Expand</span>
         </button>
@@ -1394,7 +1115,7 @@
             <span class="sidebar-label">Resources</span>
         </a>
 
-        <a href="system.html" class="sidebar-item">
+        <a href="#" class="sidebar-item" onclick="showSection('system', this)">
             <span class="sidebar-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
@@ -1405,7 +1126,7 @@
             <span class="sidebar-label">System</span>
         </a>
 
-        <a href="profile.html" class="sidebar-item">
+        <a href="#" class="sidebar-item" onclick="showSection('profile', this)">
             <span class="sidebar-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -1796,7 +1517,7 @@
                         <div class="category-count">6</div>
                     </div>
                     <div class="category-projects">
-                        <div class="category-project-item" onclick="viewProject('A1')">
+                        <div class="category-project-item pending" onclick="viewProject('A1')">
                             <div class="project-info">
                                 <h4>A1 · Personal Tasks</h4>
                                 <p>General personal tasks</p>
@@ -1810,21 +1531,21 @@
                             </div>
                             <span class="project-status active">Active</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('A3')">
+                        <div class="category-project-item pending" onclick="viewProject('A3')">
                             <div class="project-info">
                                 <h4>A3 · KOE</h4>
                                 <p>Project KOE</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('A4')">
+                        <div class="category-project-item pending" onclick="viewProject('A4')">
                             <div class="project-info">
                                 <h4>A4 · Streaming</h4>
                                 <p>Live streaming setup</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('A5')">
+                        <div class="category-project-item pending" onclick="viewProject('A5')">
                             <div class="project-info">
                                 <h4>A5 · Trading</h4>
                                 <p>Trading activities</p>
@@ -1834,7 +1555,7 @@
                         <div class="category-project-item active" onclick="viewProject('A6')">
                             <div class="project-info">
                                 <h4>A6 · Mission Control</h4>
-                                <p>Dashboard - 46% complete</p>
+                                <p>Dashboard - 46% complete (12/26 tasks)</p>
                             </div>
                             <span class="project-status active">Active</span>
                         </div>
@@ -1851,14 +1572,14 @@
                         <div class="category-count">10</div>
                     </div>
                     <div class="category-projects">
-                        <div class="category-project-item" onclick="viewProject('B1')">
+                        <div class="category-project-item pending" onclick="viewProject('B1')">
                             <div class="project-info">
                                 <h4>B1 · Exstatic</h4>
                                 <p>Business unit 1</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('B2')">
+                        <div class="category-project-item pending" onclick="viewProject('B2')">
                             <div class="project-info">
                                 <h4>B2 · Energize</h4>
                                 <p>Business unit 2</p>
@@ -1872,49 +1593,49 @@
                             </div>
                             <span class="project-status active">Active</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('B4')">
+                        <div class="category-project-item pending" onclick="viewProject('B4')">
                             <div class="project-info">
                                 <h4>B4 · Pesta Fiesta</h4>
                                 <p>Business unit 4</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('B5')">
+                        <div class="category-project-item pending" onclick="viewProject('B5')">
                             <div class="project-info">
                                 <h4>B5 · Enticipate</h4>
                                 <p>Business unit 5</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('B6')">
+                        <div class="category-project-item pending" onclick="viewProject('B6')">
                             <div class="project-info">
                                 <h4>B6 · Elluminate</h4>
                                 <p>Business unit 6</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('B7')">
+                        <div class="category-project-item pending" onclick="viewProject('B7')">
                             <div class="project-info">
                                 <h4>B7 · Encompasse</h4>
                                 <p>Business unit 7</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('B8')">
+                        <div class="category-project-item pending" onclick="viewProject('B8')">
                             <div class="project-info">
                                 <h4>B8 · Empyrean</h4>
                                 <p>Business unit 8</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('B9')">
+                        <div class="category-project-item pending" onclick="viewProject('B9')">
                             <div class="project-info">
                                 <h4>B9 · Ethereal</h4>
                                 <p>Business unit 9</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('B10')">
+                        <div class="category-project-item pending" onclick="viewProject('B10')">
                             <div class="project-info">
                                 <h4>B10 · Epitaph</h4>
                                 <p>Business unit 10</p>
@@ -1934,14 +1655,14 @@
                         <div class="category-count">2</div>
                     </div>
                     <div class="category-projects">
-                        <div class="category-project-item" onclick="viewProject('C1')">
+                        <div class="category-project-item pending" onclick="viewProject('C1')">
                             <div class="project-info">
                                 <h4>C1 · Real Estate</h4>
                                 <p>Property investments</p>
                             </div>
                             <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item" onclick="viewProject('C2')">
+                        <div class="category-project-item pending" onclick="viewProject('C2')">
                             <div class="project-info">
                                 <h4>C2 · Side Sales Jobs</h4>
                                 <p>Additional sales work</p>
@@ -1958,7 +1679,7 @@
         <!-- INSIGHTS SECTION (Task 28) -->
         <div class="section" id="insights-section">
             <div class="row" style="grid-template-columns: repeat(2, 1fr);">
-
+                
                 <div class="panel">
                     <div class="panel-header">
                         <span class="panel-title">Productivity Overview</span>
@@ -2300,41 +2021,13 @@
             }
         }
 
-        // Update Sun Avatar Status
-        function updateSunStatus() {
-            const sunAvatar = document.querySelector('.sun-avatar-small');
-            if (!sunAvatar) return;
-            
-            // Check if any agent is working
-            const activeAgents = dashboardData?.agents?.filter(a => a.status === 'active').length || 0;
-            const activeTasks = dashboardData?.workflow?.active?.length || 0;
-            
-            // Binary: either active (working) or inactive
-            if (activeAgents > 1 || activeTasks > 0) {
-                sunAvatar.classList.remove('inactive');
-                sunAvatar.classList.add('active');
-            } else {
-                sunAvatar.classList.remove('active');
-                sunAvatar.classList.add('inactive');
-            }
-        }
-
-        // Toggle Project Expand
-        function toggleProject(header) {
-            const card = header.closest('.project-card');
-            card.classList.toggle('expanded');
-        }
-
-        function viewDrive(projectId) {
-            console.log('Open Google Drive for', projectId);
-            // TODO: Open Google Drive for project
-        }
-
         // Sidebar Toggle
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const toggleArrow = document.querySelector('.sidebar-toggle span:first-child');
             const toggleText = document.querySelector('.sidebar-toggle-text');
+            const mainContainer = document.querySelector('.main-container');
+            const statsBar = document.querySelector('.stats-bar');
 
             sidebar.classList.toggle('expanded');
             const isExpanded = sidebar.classList.contains('expanded');
@@ -2342,8 +2035,13 @@
             toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
 
-            // Shift ALL content via body class
-            document.body.classList.toggle('sidebar-expanded', isExpanded);
+            // Shift content when sidebar expands
+            if (mainContainer) {
+                mainContainer.classList.toggle('sidebar-expanded', isExpanded);
+            }
+            if (statsBar) {
+                statsBar.classList.toggle('sidebar-expanded', isExpanded);
+            }
         }
 
         function setActive(element) {
