@@ -966,6 +966,102 @@
             color: white;
         }
 
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Deadline Countdown */
+        .deadline-countdown {
+            font-size: 11px;
+            color: var(--crimson-bright);
+            font-weight: 600;
+        }
+
+        .deadline-countdown.urgent {
+            color: #ff4444;
+            animation: pulse 1s infinite;
+        }
+
+        /* Priority Indicator */
+        .priority-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .priority-high { background: #ff4444; box-shadow: 0 0 6px #ff4444; }
+        .priority-medium { background: #c9a962; box-shadow: 0 0 6px #c9a962; }
+        .priority-low { background: #00ff88; box-shadow: 0 0 6px #00ff88; }
+
+        /* Blocked Count */
+        .blocked-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            background: rgba(255, 68, 68, 0.2);
+            border: 1px solid #ff4444;
+            border-radius: 3px;
+            color: #ff4444;
+        }
+
+        /* Project Health */
+        .project-health {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            margin: 12px 16px;
+            font-size: 11px;
+        }
+
+        .health-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .health-good { background: #00ff88; }
+        .health-warning { background: #c9a962; }
+        .health-danger { background: #ff4444; }
+
+        /* Enhanced Task Item */
+        .task-meta-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 4px;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .task-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Section Header */
         .section {
             display: none;
         }
@@ -1757,51 +1853,86 @@
                             </div>
                         </div>
 
-                        <!-- A2 - Expanded by default -->
+                        <!-- A2 - Expanded with FULL DETAILS -->
                         <div class="expandable-project-card expanded" data-project="A2">
                             <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
                                 <div class="expandable-project-info">
-                                    <h4>A2 · Re:Unite</h4>
+                                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                        <span class="priority-dot priority-high"></span>
+                                        <h4>A2 · Re:Unite</h4>
+                                        <span class="task-agent-badge" style="margin-left: auto;">🤖 CHAD_YI</span>
+                                    </div>
                                     <p>Fantasy novel - Christian allegory</p>
                                     <div class="expandable-project-meta">
                                         <span>📋 12 chapters</span>
                                         <span>✅ 3 done</span>
-                                        <span class="deadline">⏰ Every Sunday</span>
+                                        <span class="deadline-countdown">⏰ Due Sunday (2 days)</span>
                                     </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 25%;"></div>
+                                    </div>
+                                    <div class="progress-text">25% complete · 47 hours logged</div>
                                 </div>
                                 <span class="expand-icon">▼</span>
                             </div>
                             <div class="expandable-project-content">
+                                <div class="project-health">
+                                    <span class="health-indicator health-warning"></span>
+                                    <span>🟡 At Risk - Chapter 13 behind schedule</span>
+                                    <span style="margin-left: auto; font-size: 10px;">Updated 2h ago</span>
+                                </div>
+                                
                                 <div class="next-task-preview">
                                     <div class="label">Next (Chapter 13)</div>
                                     <div class="task">Write "The Revelation" - Awaiting your draft</div>
+                                    <div style="font-size: 10px; color: var(--text-muted); margin-top: 4px;">
+                                        <span class="priority-dot priority-high"></span> High Priority · Due in 2 days
+                                    </div>
                                 </div>
+                                
                                 <div class="project-tasks-list">
                                     <div class="project-task-item high-priority">
                                         <span class="task-status-dot input-needed">!</span>
                                         <div class="project-task-info">
                                             <h5>Write Chapter 13</h5>
-                                            <p>User writing - awaiting completion</p>
+                                            <div class="task-meta-row">
+                                                <span class="task-meta-item">🤖 CHAD_YI</span>
+                                                <span class="task-meta-item">⏰ Due Sunday</span>
+                                                <span class="task-meta-item">⏱️ Est: 4h</span>
+                                            </div>
                                         </div>
-                                        <span class="task-agent-badge">CHAD_YI</span>
                                     </div>
                                     <div class="subtasks-list">
-                                        <div class="subtask-item">✓ Draft outline</div>
-                                        <div class="subtask-item">⏳ Write content (60%)</div>
+                                        <div class="subtask-item">✅ Draft outline (complete)</div>
+                                        <div class="subtask-item">⏳ Write content (60% - 2.5h spent)</div>
                                         <div class="subtask-item">○ Edit & polish</div>
                                     </div>
                                     <div class="project-task-item">
                                         <span class="task-status-dot inactive">○</span>
                                         <div class="project-task-info">
                                             <h5>Upload to Google Drive</h5>
-                                            <p>Auto-executes on chapter completion</p>
+                                            <div class="task-meta-row">
+                                                <span class="task-meta-item">🤖 Auto</span>
+                                                <span class="task-meta-item">📅 On complete</span>
+                                            </div>
                                         </div>
-                                        <span class="task-agent-badge">Auto</span>
+                                    </div>
+                                    <div class="project-task-item">
+                                        <span class="task-status-dot inactive">○</span>
+                                        <div class="project-task-info">
+                                            <h5>Start Chapter 14</h5>
+                                            <div class="task-meta-row">
+                                                <span class="task-meta-item">🤖 Unassigned</span>
+                                                <span class="task-meta-item">📅 Next week</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                
                                 <div class="project-action-buttons">
                                     <button class="proj-action-btn" onclick="event.stopPropagation(); viewDrive('A2')">📁 Open Drive</button>
                                     <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A2')">+ Add Task</button>
+                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A2')">🤖 Spawn Agent</button>
                                 </div>
                             </div>
                         </div>
