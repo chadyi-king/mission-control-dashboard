@@ -447,14 +447,19 @@
             margin-left: 200px;
         }
 
-        /* Sidebar expanded - shift ALL content */
-        body.sidebar-expanded .section,
-        body.sidebar-expanded .section.active {
+        /* Sidebar expanded - shift ALL content except home */
+        body.sidebar-expanded .section:not(#home-section),
+        body.sidebar-expanded .section.active:not(#home-section) {
             margin-left: 200px !important;
         }
 
         .section.active {
             display: block;
+        }
+
+        /* Home section uses main-container margin only */
+        #home-section {
+            margin-left: 0 !important;
         }
 
         @media (max-width: 768px) {
