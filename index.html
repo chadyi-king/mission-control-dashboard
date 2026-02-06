@@ -131,39 +131,12 @@
             50% { transform: translateY(-20px) rotate(10deg); opacity: 0.12; }
         }
 
-        /* Red Sun Avatar with Status Ring */
+        /* Red Sun Avatar - Burning Ring */
         .sun-avatar-small {
             width: 60px;
             height: 60px;
             position: relative;
             flex-shrink: 0;
-        }
-        
-        .sun-avatar-small::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            transition: border-color 0.3s;
-        }
-        
-        .sun-avatar-small.active-agents::before {
-            border-color: #00ff88;
-            box-shadow: 0 0 15px #00ff88;
-        }
-        
-        .sun-avatar-small.doing-tasks::before {
-            border-color: var(--crimson-bright);
-            box-shadow: 0 0 15px var(--crimson-glow);
-        }
-        
-        .sun-avatar-small.inactive::before {
-            border-color: #666;
-            box-shadow: none;
         }
 
         .sun-core-small {
@@ -171,42 +144,81 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: radial-gradient(circle, #fff 0%, var(--crimson-bright) 40%, var(--crimson) 100%);
             border-radius: 50%;
-            box-shadow: 0 0 15px var(--crimson-bright), 0 0 30px var(--crimson-glow);
-            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 20px var(--crimson-bright), 0 0 40px var(--crimson-glow);
         }
 
-        .sun-ray-small {
+        /* Burning Ring - Fire effect */
+        .sun-avatar-small::before {
+            content: '';
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 2px;
-            height: 28px;
-            background: linear-gradient(to bottom, var(--crimson-bright), transparent);
-            transform-origin: center bottom;
-            animation: flare 3s ease-in-out infinite;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: all 0.5s;
         }
 
-        .sun-ray-small:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); animation-delay: 0s; }
-        .sun-ray-small:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg); animation-delay: 0.375s; }
-        .sun-ray-small:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg); animation-delay: 0.75s; }
-        .sun-ray-small:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg); animation-delay: 1.125s; }
-        .sun-ray-small:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg); animation-delay: 1.5s; }
-        .sun-ray-small:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg); animation-delay: 1.875s; }
-        .sun-ray-small:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg); animation-delay: 2.25s; }
-        .sun-ray-small:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg); animation-delay: 2.625s; }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
+        /* ACTIVE - Red burning fire ring */
+        .sun-avatar-small.active::before {
+            border-color: var(--crimson-bright);
+            box-shadow: 
+                0 0 10px var(--crimson-bright),
+                0 0 20px var(--crimson-glow),
+                0 0 30px var(--crimson),
+                inset 0 0 10px var(--crimson-glow);
+            animation: burning-ring 1.5s ease-in-out infinite;
         }
 
-        @keyframes flare {
-            0%, 100% { opacity: 0.3; height: 24px; }
-            50% { opacity: 0.8; height: 32px; }
+        /* INACTIVE - Grey dull ring */
+        .sun-avatar-small.inactive::before {
+            border-color: #444;
+            box-shadow: none;
+            animation: none;
+        }
+
+        @keyframes burning-ring {
+            0%, 100% {
+                box-shadow: 
+                    0 0 10px var(--crimson-bright),
+                    0 0 20px var(--crimson-glow),
+                    0 0 30px var(--crimson),
+                    inset 0 0 10px var(--crimson-glow);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            25% {
+                box-shadow: 
+                    0 0 15px var(--crimson-bright),
+                    0 0 30px var(--crimson-glow),
+                    0 0 45px var(--crimson),
+                    2px -2px 15px var(--crimson-bright),
+                    inset 0 0 15px var(--crimson-glow);
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+            50% {
+                box-shadow: 
+                    0 0 20px var(--crimson-bright),
+                    0 0 40px var(--crimson-glow),
+                    0 0 60px var(--crimson),
+                    -2px 2px 20px var(--crimson-bright),
+                    inset 0 0 20px var(--crimson-glow);
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            75% {
+                box-shadow: 
+                    0 0 15px var(--crimson-bright),
+                    0 0 30px var(--crimson-glow),
+                    0 0 45px var(--crimson),
+                    3px 3px 15px var(--crimson-bright),
+                    inset 0 0 15px var(--crimson-glow);
+                transform: translate(-50%, -50%) scale(1.05);
+            }
         }
 
         /* Top Bar */
@@ -1251,15 +1263,7 @@
         <div class="topbar-left">
             <!-- Red Sun Avatar with Info -->
             <div class="sun-widget-header">
-                <div class="sun-avatar-small">
-                    <div class="sun-ray-small"></div>
-                    <div class="sun-ray-small"></div>
-                    <div class="sun-ray-small"></div>
-                    <div class="sun-ray-small"></div>
-                    <div class="sun-ray-small"></div>
-                    <div class="sun-ray-small"></div>
-                    <div class="sun-ray-small"></div>
-                    <div class="sun-ray-small"></div>
+                <div class="sun-avatar-small active">
                     <div class="sun-core-small"></div>
                 </div>
                 <div class="sun-info">
@@ -2318,11 +2322,21 @@
         }
 
         // Update Sun Avatar Status
-        function updateSunStatus(status) {
+        function updateSunStatus() {
             const sunAvatar = document.querySelector('.sun-avatar-small');
-            if (sunAvatar) {
-                sunAvatar.classList.remove('active-agents', 'doing-tasks', 'inactive');
-                sunAvatar.classList.add(status);
+            if (!sunAvatar) return;
+            
+            // Check if any agent is working
+            const activeAgents = dashboardData?.agents?.filter(a => a.status === 'active').length || 0;
+            const activeTasks = dashboardData?.workflow?.active?.length || 0;
+            
+            // Binary: either active (working) or inactive
+            if (activeAgents > 1 || activeTasks > 0) {
+                sunAvatar.classList.remove('inactive');
+                sunAvatar.classList.add('active');
+            } else {
+                sunAvatar.classList.remove('active');
+                sunAvatar.classList.add('inactive');
             }
         }
 
