@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-02-06T12:30:00Z",
+  "lastUpdated": "2026-02-06T17:30:00Z",
   "stats": {
     "activeAgents": 3,
     "spawnedToday": 47,
     "tasksDone": 12,
-    "timeActive": "12:30",
+    "timeActive": "17:30",
     "focusProject": "A6",
     "eventsToday": 5
   },
@@ -12,48 +12,88 @@
     "pending": [
       {"id": "A1-1", "title": "Plan weekly schedule", "project": "A1", "priority": "medium", "status": "pending", "notes": "Organize personal calendar", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
       {"id": "A2-4", "title": "Write Chapter 4", "project": "A2", "priority": "high", "status": "pending", "notes": "Continue RE:UNITE novel", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "A3-1", "title": "Research KOE requirements", "project": "A3", "priority": "medium", "status": "pending", "notes": "Initial research phase", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "A4-1", "title": "Set up streaming equipment", "project": "A4", "priority": "medium", "status": "pending", "notes": "Buy mic, camera, lights", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "A5-1", "title": "Study trading patterns", "project": "A5", "priority": "low", "status": "pending", "notes": "Technical analysis basics", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B1-1", "title": "Define Exstatic MVP", "project": "B1", "priority": "medium", "status": "pending", "notes": "Minimum viable product scope", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B2-1", "title": "Energize brand identity", "project": "B2", "priority": "medium", "status": "pending", "notes": "Logo and color scheme", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B4-1", "title": "Plan Pesta Fiesta launch", "project": "B4", "priority": "low", "status": "pending", "notes": "Event planning phase", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B5-1", "title": "Enticipate market research", "project": "B5", "priority": "low", "status": "pending", "notes": "Competitor analysis", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B6-1", "title": "Elluminate website design", "project": "B6", "priority": "low", "status": "pending", "notes": "Homepage mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B7-1", "title": "Encompasse service offerings", "project": "B7", "priority": "low", "status": "pending", "notes": "Define service packages", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B8-1", "title": "Empyrean product catalog", "project": "B8", "priority": "low", "status": "pending", "notes": "List products/services", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B9-1", "title": "Ethereal content strategy", "project": "B9", "priority": "low", "status": "pending", "notes": "Content calendar planning", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B10-1", "title": "Epitaph legacy planning", "project": "B10", "priority": "low", "status": "pending", "notes": "Long-term vision document", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "C1-1", "title": "Research property market", "project": "C1", "priority": "low", "status": "pending", "notes": "Location analysis", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "C2-1", "title": "Update sales portfolio", "project": "C2", "priority": "low", "status": "pending", "notes": "Add recent work samples", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "TASK-14", "title": "Project Tasks List - Show all tasks for project", "project": "A6", "priority": "high", "status": "pending", "notes": "Enhance project modal to show full task list", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "TASK-15", "title": "Project Timeline - Milestone view", "project": "A6", "priority": "medium", "status": "pending", "notes": "Gantt-style timeline for projects", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "TASK-16", "title": "Archive Project - Hide completed", "project": "A6", "priority": "low", "status": "pending", "notes": "Ability to archive finished projects", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "TASK-17", "title": "Spawn Agent Button - Actually spawn agents", "project": "A6", "priority": "high", "status": "pending", "notes": "Connect to OpenClaw agent spawning", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
+      {"id": "A3-1", "title": "Script 1: Right vs Left politics", "project": "A3", "priority": "high", "status": "pending", "notes": "First KOE YouTube short script", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A3-2", "title": "Script 2: Left is stupid and evil", "project": "A3", "priority": "high", "status": "pending", "notes": "Second KOE YouTube short script", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A3-3", "title": "Script 3: Spiritual warfare in America", "project": "A3", "priority": "high", "status": "pending", "notes": "Third KOE YouTube short script", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A4-1", "title": "Research VTuber agencies hiring", "project": "A4", "priority": "high", "status": "pending", "notes": "4-6hrs, 3x/week minimum", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A4-2", "title": "Research Kick platform setup", "project": "A4", "priority": "high", "status": "pending", "notes": "Sign up process, requirements", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A4-3", "title": "Research streaming equipment", "project": "A4", "priority": "medium", "status": "pending", "notes": "Mic, camera, lighting setup", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A5-1", "title": "Trading Bot: Forex/Commodities (Telegram → OANDA)", "project": "A5", "priority": "high", "status": "pending", "notes": "Build bot to read signals and execute", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A5-2", "title": "Trading Bot: Options Flow (Twitter → Moomoo)", "project": "A5", "priority": "high", "status": "pending", "notes": "Build bot for options trading", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A6-14", "title": "Project Tasks List enhancement", "project": "A6", "priority": "high", "status": "pending", "notes": "Show all tasks in project modal", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A6-15", "title": "Project Timeline view", "project": "A6", "priority": "medium", "status": "pending", "notes": "Gantt-style milestone view", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A6-16", "title": "Document upload system", "project": "A6", "priority": "high", "status": "pending", "notes": "Drag & drop file upload", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A6-17", "title": "Voice/chat integration", "project": "A6", "priority": "medium", "status": "pending", "notes": "Dashboard talks back to user", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A6-18", "title": "Security hardening", "project": "A6", "priority": "high", "status": "pending", "notes": "Auth, encryption, access control", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B1-1", "title": "B1: Website design/redesign", "project": "B1", "priority": "high", "status": "pending", "notes": "Research competitors, create mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B1-2", "title": "B1: SEO setup", "project": "B1", "priority": "high", "status": "pending", "notes": "Keywords, meta tags, optimization", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B1-3", "title": "B1: Google Ads management", "project": "B1", "priority": "medium", "status": "pending", "notes": "Campaigns, bidding, ad copy", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B1-4", "title": "B1: Social media management", "project": "B1", "priority": "medium", "status": "pending", "notes": "Accounts, content calendar, posts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B1-5", "title": "B1: Client management setup", "project": "B1", "priority": "medium", "status": "pending", "notes": "CRM, email templates, follow-ups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B2-1", "title": "B2: Website design/redesign", "project": "B2", "priority": "high", "status": "pending", "notes": "Research competitors, create mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B2-2", "title": "B2: SEO setup", "project": "B2", "priority": "high", "status": "pending", "notes": "Keywords, meta tags, optimization", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B2-3", "title": "B2: Google Ads management", "project": "B2", "priority": "medium", "status": "pending", "notes": "Campaigns, bidding, ad copy", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B2-4", "title": "B2: Social media management", "project": "B2", "priority": "medium", "status": "pending", "notes": "Accounts, content calendar, posts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B2-5", "title": "B2: Client management setup", "project": "B2", "priority": "medium", "status": "pending", "notes": "CRM, email templates, follow-ups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B4-1", "title": "B4: Website design/redesign", "project": "B4", "priority": "high", "status": "pending", "notes": "Research competitors, create mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B4-2", "title": "B4: SEO setup", "project": "B4", "priority": "high", "status": "pending", "notes": "Keywords, meta tags, optimization", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B4-3", "title": "B4: Google Ads management", "project": "B4", "priority": "medium", "status": "pending", "notes": "Campaigns, bidding, ad copy", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B4-4", "title": "B4: Social media management", "project": "B4", "priority": "medium", "status": "pending", "notes": "Accounts, content calendar, posts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B4-5", "title": "B4: Client management setup", "project": "B4", "priority": "medium", "status": "pending", "notes": "CRM, email templates, follow-ups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B5-1", "title": "B5: Website design/redesign", "project": "B5", "priority": "high", "status": "pending", "notes": "Research competitors, create mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B5-2", "title": "B5: SEO setup", "project": "B5", "priority": "high", "status": "pending", "notes": "Keywords, meta tags, optimization", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B5-3", "title": "B5: Google Ads management", "project": "B5", "priority": "medium", "status": "pending", "notes": "Campaigns, bidding, ad copy", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B5-4", "title": "B5: Social media management", "project": "B5", "priority": "medium", "status": "pending", "notes": "Accounts, content calendar, posts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B5-5", "title": "B5: Client management setup", "project": "B5", "priority": "medium", "status": "pending", "notes": "CRM, email templates, follow-ups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B7-1", "title": "B7: Website design/redesign", "project": "B7", "priority": "high", "status": "pending", "notes": "Research competitors, create mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B7-2", "title": "B7: SEO setup", "project": "B7", "priority": "high", "status": "pending", "notes": "Keywords, meta tags, optimization", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B7-3", "title": "B7: Google Ads management", "project": "B7", "priority": "medium", "status": "pending", "notes": "Campaigns, bidding, ad copy", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B7-4", "title": "B7: Social media management", "project": "B7", "priority": "medium", "status": "pending", "notes": "Accounts, content calendar, posts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B7-5", "title": "B7: Client management setup", "project": "B7", "priority": "medium", "status": "pending", "notes": "CRM, email templates, follow-ups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B8-1", "title": "B8: Website design/redesign", "project": "B8", "priority": "high", "status": "pending", "notes": "Research competitors, create mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B8-2", "title": "B8: SEO setup", "project": "B8", "priority": "high", "status": "pending", "notes": "Keywords, meta tags, optimization", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B8-3", "title": "B8: Google Ads management", "project": "B8", "priority": "medium", "status": "pending", "notes": "Campaigns, bidding, ad copy", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B8-4", "title": "B8: Social media management", "project": "B8", "priority": "medium", "status": "pending", "notes": "Accounts, content calendar, posts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B8-5", "title": "B8: Client management setup", "project": "B8", "priority": "medium", "status": "pending", "notes": "CRM, email templates, follow-ups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B9-1", "title": "B9: Website design/redesign", "project": "B9", "priority": "high", "status": "pending", "notes": "Research competitors, create mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B9-2", "title": "B9: SEO setup", "project": "B9", "priority": "high", "status": "pending", "notes": "Keywords, meta tags, optimization", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B9-3", "title": "B9: Google Ads management", "project": "B9", "priority": "medium", "status": "pending", "notes": "Campaigns, bidding, ad copy", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B9-4", "title": "B9: Social media management", "project": "B9", "priority": "medium", "status": "pending", "notes": "Accounts, content calendar, posts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B9-5", "title": "B9: Client management setup", "project": "B9", "priority": "medium", "status": "pending", "notes": "CRM, email templates, follow-ups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B3-2", "title": "B3: SEO optimization", "project": "B3", "priority": "high", "status": "pending", "notes": "Website done by Lovable, now optimize", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B3-3", "title": "B3: Google Ads setup", "project": "B3", "priority": "medium", "status": "pending", "notes": "Campaigns for Team Elevate", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B3-4", "title": "B3: Social media management", "project": "B3", "priority": "medium", "status": "pending", "notes": "Content for Team Elevate", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B3-5", "title": "B3: Client management", "project": "B3", "priority": "medium", "status": "pending", "notes": "CRM for team members", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B6-2", "title": "B6: SEO optimization", "project": "B6", "priority": "high", "status": "pending", "notes": "Website done by Lovable, now optimize", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B6-3", "title": "B6: Google Ads setup", "project": "B6", "priority": "medium", "status": "pending", "notes": "Campaigns for Elluminate", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B6-4", "title": "B6: Social media management", "project": "B6", "priority": "medium", "status": "pending", "notes": "Content for Elluminate", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B6-5", "title": "B6: Client management", "project": "B6", "priority": "medium", "status": "pending", "notes": "CRM setup", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "B10-1", "title": "B10: [NEED DETAILS]", "project": "B10", "priority": "low", "status": "pending", "notes": "Waiting for user to define B10 task", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      
+      {"id": "C1-1", "title": "Research property market trends", "project": "C1", "priority": "low", "status": "pending", "notes": "Location analysis for investments", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "C2-1", "title": "Update side sales portfolio", "project": "C2", "priority": "low", "status": "pending", "notes": "Add recent work and testimonials", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
     ],
     "active": [
-      {"id": "A2-3", "title": "Edit Chapter 3", "project": "A2", "priority": "high", "status": "active", "notes": "Review and polish", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "B3-2", "title": "Team Elevate onboarding", "project": "B3", "priority": "high", "status": "active", "notes": "Train new team members", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-      {"id": "TASK-13", "title": "Project Detail Page - Click project → full view", "project": "A6", "priority": "high", "status": "active", "notes": "Create modal showing project stats and tasks", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
+      {"id": "A2-3", "title": "Edit Chapter 3", "project": "A2", "priority": "high", "status": "active", "notes": "Review and polish novel chapter", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A6-13", "title": "Project Detail Page", "project": "A6", "priority": "high", "status": "active", "notes": "Click project → full view modal", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
     ],
     "review": [
       {"id": "A2-2", "title": "Review Chapter 2 feedback", "project": "A2", "priority": "high", "status": "review", "notes": "Editor comments to address", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
     ],
     "done": [
       {"id": "A2-1", "title": "Complete Chapter 1", "project": "A2", "priority": "high", "status": "done", "notes": "First draft complete", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T20:00:00Z"},
-      {"id": "B3-1", "title": "Team Elevate website", "project": "B3", "priority": "high", "status": "done", "notes": "Homepage deployed", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T18:00:00Z"},
-      {"id": "TASK-1", "title": "Connect data.json - Create live data structure", "project": "A6", "priority": "high", "status": "done", "notes": "Created data.json with proper structure", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:30:00Z"},
-      {"id": "TASK-2", "title": "Real Stats Bar - Pull from actual task counts", "project": "A6", "priority": "high", "status": "done", "notes": "Stats update from dashboardData", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:32:00Z"},
-      {"id": "TASK-3", "title": "Live Workflow Pipeline - Real counts", "project": "A6", "priority": "high", "status": "done", "notes": "Pipeline shows real pending/active/review/done counts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:35:00Z"},
-      {"id": "TASK-4", "title": "Real Project Progress - Calculate %", "project": "A6", "priority": "high", "status": "done", "notes": "Progress % calculated from done/total tasks", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:36:00Z"},
-      {"id": "TASK-5", "title": "Auto-refresh System - Poll every 30s", "project": "A6", "priority": "high", "status": "done", "notes": "setInterval to reload data every 30 seconds", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:37:00Z"},
-      {"id": "TASK-6", "title": "Add Task Button - Create new task form", "project": "A6", "priority": "high", "status": "done", "notes": "Modal with title, project, priority, status, notes", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:45:00Z"},
-      {"id": "TASK-7", "title": "Edit Task - Modify task details", "project": "A6", "priority": "high", "status": "done", "notes": "Click task to edit, save changes", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:50:00Z"},
-      {"id": "TASK-8", "title": "Complete Task - Check off, move to Done", "project": "A6", "priority": "high", "status": "done", "notes": "completeTask() function moves to done workflow", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:52:00Z"},
-      {"id": "TASK-9", "title": "Delete Task - Remove with confirmation", "project": "A6", "priority": "high", "status": "done", "notes": "deleteTask() with confirm() dialog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:54:00Z"},
-      {"id": "TASK-10", "title": "Task Detail View - Full task info modal", "project": "A6", "priority": "high", "status": "done", "notes": "viewTask() opens modal with full details", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:55:00Z"},
-      {"id": "TASK-11", "title": "Task Filters - Filter by project/priority/status", "project": "A6", "priority": "high", "status": "done", "notes": "filterTasks() function implemented", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:57:00Z"},
-      {"id": "TASK-12", "title": "Task Search - Search across all tasks", "project": "A6", "priority": "high", "status": "done", "notes": "searchTasks() filters by text input", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:58:00Z"}
+      {"id": "B3-1", "title": "Team Elevate website (Lovable)", "project": "B3", "priority": "high", "status": "done", "notes": "Website completed via Lovable", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T18:00:00Z"},
+      {"id": "B6-1", "title": "Elluminate website (Lovable)", "project": "B6", "priority": "high", "status": "done", "notes": "Website completed via Lovable", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T18:00:00Z"}
     ]
   },
   "projects": {
@@ -61,81 +101,40 @@
       "name": "Ambition",
       "subtitle": "By Calbee (Personal)",
       "projects": [
-        {"id": "A1", "name": "Personal Tasks", "status": "active", "progress": 0, "tasks": ["A1-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "A2", "name": "Re:Unite", "status": "active", "progress": 25, "tasks": ["A2-1","A2-2","A2-3","A2-4"], "activeTasks": 1, "completedTasks": 1, "totalTasks": 4},
-        {"id": "A3", "name": "KOE", "status": "pending", "progress": 0, "tasks": ["A3-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "A4", "name": "Streaming", "status": "pending", "progress": 0, "tasks": ["A4-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "A5", "name": "Trading", "status": "pending", "progress": 0, "tasks": ["A5-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "A6", "name": "Mission Control", "status": "active", "progress": 46, "tasks": ["TASK-1","TASK-2","TASK-3","TASK-4","TASK-5","TASK-6","TASK-7","TASK-8","TASK-9","TASK-10","TASK-11","TASK-12","TASK-13","TASK-14","TASK-15","TASK-16","TASK-17"], "activeTasks": 1, "completedTasks": 12, "totalTasks": 17}
+        {"id": "A1", "name": "Personal Tasks", "status": "active", "progress": 0, "totalTasks": 1, "activeTasks": 0, "completedTasks": 0},
+        {"id": "A2", "name": "Re:Unite", "status": "active", "progress": 25, "totalTasks": 4, "activeTasks": 1, "completedTasks": 1},
+        {"id": "A3", "name": "KOE", "status": "active", "progress": 0, "totalTasks": 3, "activeTasks": 0, "completedTasks": 0},
+        {"id": "A4", "name": "Streaming", "status": "active", "progress": 0, "totalTasks": 3, "activeTasks": 0, "completedTasks": 0},
+        {"id": "A5", "name": "Trading", "status": "active", "progress": 0, "totalTasks": 2, "activeTasks": 0, "completedTasks": 0},
+        {"id": "A6", "name": "Mission Control", "status": "active", "progress": 46, "totalTasks": 18, "activeTasks": 2, "completedTasks": 12}
       ]
     },
     "B": {
       "name": "Business",
       "subtitle": "Empire (Main Work)",
       "projects": [
-        {"id": "B1", "name": "Exstatic", "status": "pending", "progress": 0, "tasks": ["B1-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "B2", "name": "Energize", "status": "pending", "progress": 0, "tasks": ["B2-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "B3", "name": "Team Elevate", "status": "active", "progress": 33, "tasks": ["B3-1","B3-2"], "activeTasks": 1, "completedTasks": 1, "totalTasks": 2},
-        {"id": "B4", "name": "Pesta Fiesta", "status": "pending", "progress": 0, "tasks": ["B4-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "B5", "name": "Enticipate", "status": "pending", "progress": 0, "tasks": ["B5-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "B6", "name": "Elluminate", "status": "pending", "progress": 0, "tasks": ["B6-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "B7", "name": "Encompasse", "status": "pending", "progress": 0, "tasks": ["B7-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "B8", "name": "Empyrean", "status": "pending", "progress": 0, "tasks": ["B8-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "B9", "name": "Ethereal", "status": "pending", "progress": 0, "tasks": ["B9-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "B10", "name": "Epitaph", "status": "pending", "progress": 0, "tasks": ["B10-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1}
+        {"id": "B1", "name": "Exstatic", "status": "pending", "progress": 0, "totalTasks": 5, "activeTasks": 0, "completedTasks": 0},
+        {"id": "B2", "name": "Energize", "status": "pending", "progress": 0, "totalTasks": 5, "activeTasks": 0, "completedTasks": 0},
+        {"id": "B3", "name": "Team Elevate", "status": "active", "progress": 20, "totalTasks": 5, "activeTasks": 0, "completedTasks": 1},
+        {"id": "B4", "name": "Pesta Fiesta", "status": "pending", "progress": 0, "totalTasks": 5, "activeTasks": 0, "completedTasks": 0},
+        {"id": "B5", "name": "Enticipate", "status": "pending", "progress": 0, "totalTasks": 5, "activeTasks": 0, "completedTasks": 0},
+        {"id": "B6", "name": "Elluminate", "status": "active", "progress": 20, "totalTasks": 5, "activeTasks": 0, "completedTasks": 1},
+        {"id": "B7", "name": "Encompasse", "status": "pending", "progress": 0, "totalTasks": 5, "activeTasks": 0, "completedTasks": 0},
+        {"id": "B8", "name": "Empyrean", "status": "pending", "progress": 0, "totalTasks": 5, "activeTasks": 0, "completedTasks": 0},
+        {"id": "B9", "name": "Ethereal", "status": "pending", "progress": 0, "totalTasks": 5, "activeTasks": 0, "completedTasks": 0},
+        {"id": "B10", "name": "Epitaph", "status": "pending", "progress": 0, "totalTasks": 1, "activeTasks": 0, "completedTasks": 0}
       ]
     },
     "C": {
       "name": "Callings",
       "subtitle": "On The Side (Other Jobs)",
       "projects": [
-        {"id": "C1", "name": "Real Estate", "status": "pending", "progress": 0, "tasks": ["C1-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
-        {"id": "C2", "name": "Side Sales Jobs", "status": "pending", "progress": 0, "tasks": ["C2-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1}
+        {"id": "C1", "name": "Real Estate", "status": "pending", "progress": 0, "totalTasks": 1, "activeTasks": 0, "completedTasks": 0},
+        {"id": "C2", "name": "Side Sales Jobs", "status": "pending", "progress": 0, "totalTasks": 1, "activeTasks": 0, "completedTasks": 0}
       ]
     }
   },
-  "tasks": [
-    {"id": "A1-1", "title": "Plan weekly schedule", "project": "A1", "priority": "medium", "status": "pending", "notes": "Organize personal calendar", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "A2-1", "title": "Complete Chapter 1", "project": "A2", "priority": "high", "status": "done", "notes": "First draft complete", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T20:00:00Z"},
-    {"id": "A2-2", "title": "Review Chapter 2 feedback", "project": "A2", "priority": "high", "status": "review", "notes": "Editor comments to address", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "A2-3", "title": "Edit Chapter 3", "project": "A2", "priority": "high", "status": "active", "notes": "Review and polish", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "A2-4", "title": "Write Chapter 4", "project": "A2", "priority": "high", "status": "pending", "notes": "Continue RE:UNITE novel", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "A3-1", "title": "Research KOE requirements", "project": "A3", "priority": "medium", "status": "pending", "notes": "Initial research phase", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "A4-1", "title": "Set up streaming equipment", "project": "A4", "priority": "medium", "status": "pending", "notes": "Buy mic, camera, lights", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "A5-1", "title": "Study trading patterns", "project": "A5", "priority": "low", "status": "pending", "notes": "Technical analysis basics", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B1-1", "title": "Define Exstatic MVP", "project": "B1", "priority": "medium", "status": "pending", "notes": "Minimum viable product scope", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B2-1", "title": "Energize brand identity", "project": "B2", "priority": "medium", "status": "pending", "notes": "Logo and color scheme", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B3-1", "title": "Team Elevate website", "project": "B3", "priority": "high", "status": "done", "notes": "Homepage deployed", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T18:00:00Z"},
-    {"id": "B3-2", "title": "Team Elevate onboarding", "project": "B3", "priority": "high", "status": "active", "notes": "Train new team members", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B4-1", "title": "Plan Pesta Fiesta launch", "project": "B4", "priority": "low", "status": "pending", "notes": "Event planning phase", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B5-1", "title": "Enticipate market research", "project": "B5", "priority": "low", "status": "pending", "notes": "Competitor analysis", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B6-1", "title": "Elluminate website design", "project": "B6", "priority": "low", "status": "pending", "notes": "Homepage mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B7-1", "title": "Encompasse service offerings", "project": "B7", "priority": "low", "status": "pending", "notes": "Define service packages", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B8-1", "title": "Empyrean product catalog", "project": "B8", "priority": "low", "status": "pending", "notes": "List products/services", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B9-1", "title": "Ethereal content strategy", "project": "B9", "priority": "low", "status": "pending", "notes": "Content calendar planning", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "B10-1", "title": "Epitaph legacy planning", "project": "B10", "priority": "low", "status": "pending", "notes": "Long-term vision document", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "C1-1", "title": "Research property market", "project": "C1", "priority": "low", "status": "pending", "notes": "Location analysis", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "C2-1", "title": "Update sales portfolio", "project": "C2", "priority": "low", "status": "pending", "notes": "Add recent work samples", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
-  ],
-  "decisions": [
-    {"type": "blocked", "title": "Sidebar blocking issue", "reason": "z-index conflict between sidebar and content", "action": "Fixed - reduced sidebar z-index to 5, increased content to 20"}
-  ],
-  "activity": [
-    {"timestamp": "2026-02-06T12:30:00Z", "title": "All Projects Populated", "description": "Added sample tasks to A1-A5, B1-B10, C1-C2"},
-    {"timestamp": "2026-02-06T12:20:00Z", "title": "Sidebar Fixed", "description": "Fixed z-index so content appears above sidebar when expanded"},
-    {"timestamp": "2026-02-06T02:15:00Z", "title": "Data Updated", "description": "Added all Mission Dashboard tasks to A6 project"}
-  ],
   "agents": [
-    {"id": "CHAD_YI", "name": "Chad_YI", "status": "active", "currentTask": "Populating all projects with tasks", "lastActive": "2026-02-06T12:30:00Z"}
-  ],
-  "calendar": {
-    "past": [],
-    "today": [
-      {"time": "12:30", "title": "Populate All Projects", "description": "Added tasks to every project"},
-      {"time": "12:20", "title": "Sidebar Fixed", "description": "z-index issue resolved"}
-    ],
-    "future": [
-      {"date": "2026-02-06", "title": "Test Dashboard", "description": "Verify all projects show correct stats"}
-    ]
-  }
+    {"id": "CHAD_YI", "name": "Chad_YI", "status": "active", "currentTask": "Populating all B projects", "lastActive": "2026-02-06T17:30:00Z"}
+  ]
 }
