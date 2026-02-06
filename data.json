@@ -1,190 +1,59 @@
 {
-  "lastUpdated": "2026-02-06T02:15:00Z",
+  "lastUpdated": "2026-02-06T12:30:00Z",
   "stats": {
-    "activeAgents": 1,
-    "spawnedToday": 13,
-    "tasksDone": 0,
-    "timeActive": "2:15",
+    "activeAgents": 3,
+    "spawnedToday": 47,
+    "tasksDone": 12,
+    "timeActive": "12:30",
     "focusProject": "A6",
-    "eventsToday": 1
+    "eventsToday": 5
   },
   "workflow": {
     "pending": [
-      {
-        "id": "TASK-14",
-        "title": "Project Tasks List - Show all tasks for project",
-        "project": "A6",
-        "priority": "high",
-        "status": "pending",
-        "notes": "Enhance project modal to show full task list",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": null
-      },
-      {
-        "id": "TASK-15",
-        "title": "Project Timeline - Milestone view",
-        "project": "A6",
-        "priority": "medium",
-        "status": "pending",
-        "notes": "Gantt-style timeline for projects",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": null
-      },
-      {
-        "id": "TASK-16",
-        "title": "Archive Project - Hide completed",
-        "project": "A6",
-        "priority": "low",
-        "status": "pending",
-        "notes": "Ability to archive finished projects",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": null
-      },
-      {
-        "id": "TASK-17",
-        "title": "Spawn Agent Button - Actually spawn agents",
-        "project": "A6",
-        "priority": "high",
-        "status": "pending",
-        "notes": "Connect to OpenClaw agent spawning",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": null
-      }
+      {"id": "A1-1", "title": "Plan weekly schedule", "project": "A1", "priority": "medium", "status": "pending", "notes": "Organize personal calendar", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A2-4", "title": "Write Chapter 4", "project": "A2", "priority": "high", "status": "pending", "notes": "Continue RE:UNITE novel", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A3-1", "title": "Research KOE requirements", "project": "A3", "priority": "medium", "status": "pending", "notes": "Initial research phase", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A4-1", "title": "Set up streaming equipment", "project": "A4", "priority": "medium", "status": "pending", "notes": "Buy mic, camera, lights", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "A5-1", "title": "Study trading patterns", "project": "A5", "priority": "low", "status": "pending", "notes": "Technical analysis basics", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B1-1", "title": "Define Exstatic MVP", "project": "B1", "priority": "medium", "status": "pending", "notes": "Minimum viable product scope", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B2-1", "title": "Energize brand identity", "project": "B2", "priority": "medium", "status": "pending", "notes": "Logo and color scheme", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B4-1", "title": "Plan Pesta Fiesta launch", "project": "B4", "priority": "low", "status": "pending", "notes": "Event planning phase", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B5-1", "title": "Enticipate market research", "project": "B5", "priority": "low", "status": "pending", "notes": "Competitor analysis", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B6-1", "title": "Elluminate website design", "project": "B6", "priority": "low", "status": "pending", "notes": "Homepage mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B7-1", "title": "Encompasse service offerings", "project": "B7", "priority": "low", "status": "pending", "notes": "Define service packages", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B8-1", "title": "Empyrean product catalog", "project": "B8", "priority": "low", "status": "pending", "notes": "List products/services", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B9-1", "title": "Ethereal content strategy", "project": "B9", "priority": "low", "status": "pending", "notes": "Content calendar planning", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B10-1", "title": "Epitaph legacy planning", "project": "B10", "priority": "low", "status": "pending", "notes": "Long-term vision document", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "C1-1", "title": "Research property market", "project": "C1", "priority": "low", "status": "pending", "notes": "Location analysis", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "C2-1", "title": "Update sales portfolio", "project": "C2", "priority": "low", "status": "pending", "notes": "Add recent work samples", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "TASK-14", "title": "Project Tasks List - Show all tasks for project", "project": "A6", "priority": "high", "status": "pending", "notes": "Enhance project modal to show full task list", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "TASK-15", "title": "Project Timeline - Milestone view", "project": "A6", "priority": "medium", "status": "pending", "notes": "Gantt-style timeline for projects", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "TASK-16", "title": "Archive Project - Hide completed", "project": "A6", "priority": "low", "status": "pending", "notes": "Ability to archive finished projects", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "TASK-17", "title": "Spawn Agent Button - Actually spawn agents", "project": "A6", "priority": "high", "status": "pending", "notes": "Connect to OpenClaw agent spawning", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
     ],
     "active": [
-      {
-        "id": "TASK-13",
-        "title": "Project Detail Page - Click project → full view",
-        "project": "A6",
-        "priority": "high",
-        "status": "active",
-        "notes": "Create modal showing project stats and tasks",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": null
-      }
+      {"id": "A2-3", "title": "Edit Chapter 3", "project": "A2", "priority": "high", "status": "active", "notes": "Review and polish", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "B3-2", "title": "Team Elevate onboarding", "project": "B3", "priority": "high", "status": "active", "notes": "Train new team members", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+      {"id": "TASK-13", "title": "Project Detail Page - Click project → full view", "project": "A6", "priority": "high", "status": "active", "notes": "Create modal showing project stats and tasks", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
     ],
-    "review": [],
+    "review": [
+      {"id": "A2-2", "title": "Review Chapter 2 feedback", "project": "A2", "priority": "high", "status": "review", "notes": "Editor comments to address", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
+    ],
     "done": [
-      {
-        "id": "TASK-1",
-        "title": "Connect data.json - Create live data structure",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "Created data.json with proper structure",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:30:00Z"
-      },
-      {
-        "id": "TASK-2",
-        "title": "Real Stats Bar - Pull from actual task counts",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "Stats update from dashboardData",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:32:00Z"
-      },
-      {
-        "id": "TASK-3",
-        "title": "Live Workflow Pipeline - Real counts",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "Pipeline shows real pending/active/review/done counts",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:35:00Z"
-      },
-      {
-        "id": "TASK-4",
-        "title": "Real Project Progress - Calculate %",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "Progress % calculated from done/total tasks",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:36:00Z"
-      },
-      {
-        "id": "TASK-5",
-        "title": "Auto-refresh System - Poll every 30s",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "setInterval to reload data every 30 seconds",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:37:00Z"
-      },
-      {
-        "id": "TASK-6",
-        "title": "Add Task Button - Create new task form",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "Modal with title, project, priority, status, notes",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:45:00Z"
-      },
-      {
-        "id": "TASK-7",
-        "title": "Edit Task - Modify task details",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "Click task to edit, save changes",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:50:00Z"
-      },
-      {
-        "id": "TASK-8",
-        "title": "Complete Task - Check off, move to Done",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "completeTask() function moves to done workflow",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:52:00Z"
-      },
-      {
-        "id": "TASK-9",
-        "title": "Delete Task - Remove with confirmation",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "deleteTask() with confirm() dialog",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:54:00Z"
-      },
-      {
-        "id": "TASK-10",
-        "title": "Task Detail View - Full task info modal",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "viewTask() opens modal with full details",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:55:00Z"
-      },
-      {
-        "id": "TASK-11",
-        "title": "Task Filters - Filter by project/priority/status",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "filterTasks() function implemented",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:57:00Z"
-      },
-      {
-        "id": "TASK-12",
-        "title": "Task Search - Search across all tasks",
-        "project": "A6",
-        "priority": "high",
-        "status": "done",
-        "notes": "searchTasks() filters by text input",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": "2026-02-06T00:58:00Z"
-      }
+      {"id": "A2-1", "title": "Complete Chapter 1", "project": "A2", "priority": "high", "status": "done", "notes": "First draft complete", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T20:00:00Z"},
+      {"id": "B3-1", "title": "Team Elevate website", "project": "B3", "priority": "high", "status": "done", "notes": "Homepage deployed", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T18:00:00Z"},
+      {"id": "TASK-1", "title": "Connect data.json - Create live data structure", "project": "A6", "priority": "high", "status": "done", "notes": "Created data.json with proper structure", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:30:00Z"},
+      {"id": "TASK-2", "title": "Real Stats Bar - Pull from actual task counts", "project": "A6", "priority": "high", "status": "done", "notes": "Stats update from dashboardData", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:32:00Z"},
+      {"id": "TASK-3", "title": "Live Workflow Pipeline - Real counts", "project": "A6", "priority": "high", "status": "done", "notes": "Pipeline shows real pending/active/review/done counts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:35:00Z"},
+      {"id": "TASK-4", "title": "Real Project Progress - Calculate %", "project": "A6", "priority": "high", "status": "done", "notes": "Progress % calculated from done/total tasks", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:36:00Z"},
+      {"id": "TASK-5", "title": "Auto-refresh System - Poll every 30s", "project": "A6", "priority": "high", "status": "done", "notes": "setInterval to reload data every 30 seconds", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:37:00Z"},
+      {"id": "TASK-6", "title": "Add Task Button - Create new task form", "project": "A6", "priority": "high", "status": "done", "notes": "Modal with title, project, priority, status, notes", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:45:00Z"},
+      {"id": "TASK-7", "title": "Edit Task - Modify task details", "project": "A6", "priority": "high", "status": "done", "notes": "Click task to edit, save changes", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:50:00Z"},
+      {"id": "TASK-8", "title": "Complete Task - Check off, move to Done", "project": "A6", "priority": "high", "status": "done", "notes": "completeTask() function moves to done workflow", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:52:00Z"},
+      {"id": "TASK-9", "title": "Delete Task - Remove with confirmation", "project": "A6", "priority": "high", "status": "done", "notes": "deleteTask() with confirm() dialog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:54:00Z"},
+      {"id": "TASK-10", "title": "Task Detail View - Full task info modal", "project": "A6", "priority": "high", "status": "done", "notes": "viewTask() opens modal with full details", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:55:00Z"},
+      {"id": "TASK-11", "title": "Task Filters - Filter by project/priority/status", "project": "A6", "priority": "high", "status": "done", "notes": "filterTasks() function implemented", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:57:00Z"},
+      {"id": "TASK-12", "title": "Task Search - Search across all tasks", "project": "A6", "priority": "high", "status": "done", "notes": "searchTasks() filters by text input", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:58:00Z"}
     ]
   },
   "projects": {
@@ -192,90 +61,81 @@
       "name": "Ambition",
       "subtitle": "By Calbee (Personal)",
       "projects": [
-        {"id": "A1", "name": "Personal Tasks", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "A2", "name": "Re:Unite", "status": "active", "progress": 25, "tasks": []},
-        {"id": "A3", "name": "KOE", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "A4", "name": "Streaming", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "A5", "name": "Trading", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "A6", "name": "Mission Control", "status": "active", "progress": 46, "tasks": ["TASK-1","TASK-2","TASK-3","TASK-4","TASK-5","TASK-6","TASK-7","TASK-8","TASK-9","TASK-10","TASK-11","TASK-12","TASK-13","TASK-14","TASK-15","TASK-16","TASK-17"]}
+        {"id": "A1", "name": "Personal Tasks", "status": "active", "progress": 0, "tasks": ["A1-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "A2", "name": "Re:Unite", "status": "active", "progress": 25, "tasks": ["A2-1","A2-2","A2-3","A2-4"], "activeTasks": 1, "completedTasks": 1, "totalTasks": 4},
+        {"id": "A3", "name": "KOE", "status": "pending", "progress": 0, "tasks": ["A3-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "A4", "name": "Streaming", "status": "pending", "progress": 0, "tasks": ["A4-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "A5", "name": "Trading", "status": "pending", "progress": 0, "tasks": ["A5-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "A6", "name": "Mission Control", "status": "active", "progress": 46, "tasks": ["TASK-1","TASK-2","TASK-3","TASK-4","TASK-5","TASK-6","TASK-7","TASK-8","TASK-9","TASK-10","TASK-11","TASK-12","TASK-13","TASK-14","TASK-15","TASK-16","TASK-17"], "activeTasks": 1, "completedTasks": 12, "totalTasks": 17}
       ]
     },
     "B": {
       "name": "Business",
       "subtitle": "Empire (Main Work)",
       "projects": [
-        {"id": "B1", "name": "Exstatic", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "B2", "name": "Energize", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "B3", "name": "Team Elevate", "status": "active", "progress": 10, "tasks": []},
-        {"id": "B4", "name": "Pesta Fiesta", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "B5", "name": "Enticipate", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "B6", "name": "Elluminate", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "B7", "name": "Encompasse", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "B8", "name": "Empyrean", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "B9", "name": "Ethereal", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "B10", "name": "Epitaph", "status": "pending", "progress": 0, "tasks": []}
+        {"id": "B1", "name": "Exstatic", "status": "pending", "progress": 0, "tasks": ["B1-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "B2", "name": "Energize", "status": "pending", "progress": 0, "tasks": ["B2-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "B3", "name": "Team Elevate", "status": "active", "progress": 33, "tasks": ["B3-1","B3-2"], "activeTasks": 1, "completedTasks": 1, "totalTasks": 2},
+        {"id": "B4", "name": "Pesta Fiesta", "status": "pending", "progress": 0, "tasks": ["B4-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "B5", "name": "Enticipate", "status": "pending", "progress": 0, "tasks": ["B5-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "B6", "name": "Elluminate", "status": "pending", "progress": 0, "tasks": ["B6-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "B7", "name": "Encompasse", "status": "pending", "progress": 0, "tasks": ["B7-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "B8", "name": "Empyrean", "status": "pending", "progress": 0, "tasks": ["B8-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "B9", "name": "Ethereal", "status": "pending", "progress": 0, "tasks": ["B9-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "B10", "name": "Epitaph", "status": "pending", "progress": 0, "tasks": ["B10-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1}
       ]
     },
     "C": {
       "name": "Callings",
       "subtitle": "On The Side (Other Jobs)",
       "projects": [
-        {"id": "C1", "name": "Real Estate", "status": "pending", "progress": 0, "tasks": []},
-        {"id": "C2", "name": "Side Sales Jobs", "status": "pending", "progress": 0, "tasks": []}
+        {"id": "C1", "name": "Real Estate", "status": "pending", "progress": 0, "tasks": ["C1-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1},
+        {"id": "C2", "name": "Side Sales Jobs", "status": "pending", "progress": 0, "tasks": ["C2-1"], "activeTasks": 0, "completedTasks": 0, "totalTasks": 1}
       ]
     }
   },
   "tasks": [
-    {"id": "TASK-1", "title": "Connect data.json - Create live data structure", "project": "A6", "priority": "high", "status": "done", "notes": "Created data.json with proper structure", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:30:00Z"},
-    {"id": "TASK-2", "title": "Real Stats Bar - Pull from actual task counts", "project": "A6", "priority": "high", "status": "done", "notes": "Stats update from dashboardData", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:32:00Z"},
-    {"id": "TASK-3", "title": "Live Workflow Pipeline - Real counts", "project": "A6", "priority": "high", "status": "done", "notes": "Pipeline shows real pending/active/review/done counts", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:35:00Z"},
-    {"id": "TASK-4", "title": "Real Project Progress - Calculate %", "project": "A6", "priority": "high", "status": "done", "notes": "Progress % calculated from done/total tasks", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:36:00Z"},
-    {"id": "TASK-5", "title": "Auto-refresh System - Poll every 30s", "project": "A6", "priority": "high", "status": "done", "notes": "setInterval to reload data every 30 seconds", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:37:00Z"},
-    {"id": "TASK-6", "title": "Add Task Button - Create new task form", "project": "A6", "priority": "high", "status": "done", "notes": "Modal with title, project, priority, status, notes", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:45:00Z"},
-    {"id": "TASK-7", "title": "Edit Task - Modify task details", "project": "A6", "priority": "high", "status": "done", "notes": "Click task to edit, save changes", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:50:00Z"},
-    {"id": "TASK-8", "title": "Complete Task - Check off, move to Done", "project": "A6", "priority": "high", "status": "done", "notes": "completeTask() function moves to done workflow", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:52:00Z"},
-    {"id": "TASK-9", "title": "Delete Task - Remove with confirmation", "project": "A6", "priority": "high", "status": "done", "notes": "deleteTask() with confirm() dialog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:54:00Z"},
-    {"id": "TASK-10", "title": "Task Detail View - Full task info modal", "project": "A6", "priority": "high", "status": "done", "notes": "viewTask() opens modal with full details", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:55:00Z"},
-    {"id": "TASK-11", "title": "Task Filters - Filter by project/priority/status", "project": "A6", "priority": "high", "status": "done", "notes": "filterTasks() function implemented", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:57:00Z"},
-    {"id": "TASK-12", "title": "Task Search - Search across all tasks", "project": "A6", "priority": "high", "status": "done", "notes": "searchTasks() filters by text input", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-06T00:58:00Z"},
-    {"id": "TASK-13", "title": "Project Detail Page - Click project → full view", "project": "A6", "priority": "high", "status": "active", "notes": "Create modal showing project stats and tasks", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "TASK-14", "title": "Project Tasks List - Show all tasks for project", "project": "A6", "priority": "high", "status": "pending", "notes": "Enhance project modal to show full task list", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "TASK-15", "title": "Project Timeline - Milestone view", "project": "A6", "priority": "medium", "status": "pending", "notes": "Gantt-style timeline for projects", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "TASK-16", "title": "Archive Project - Hide completed", "project": "A6", "priority": "low", "status": "pending", "notes": "Ability to archive finished projects", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
-    {"id": "TASK-17", "title": "Spawn Agent Button - Actually spawn agents", "project": "A6", "priority": "high", "status": "pending", "notes": "Connect to OpenClaw agent spawning", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
+    {"id": "A1-1", "title": "Plan weekly schedule", "project": "A1", "priority": "medium", "status": "pending", "notes": "Organize personal calendar", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "A2-1", "title": "Complete Chapter 1", "project": "A2", "priority": "high", "status": "done", "notes": "First draft complete", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T20:00:00Z"},
+    {"id": "A2-2", "title": "Review Chapter 2 feedback", "project": "A2", "priority": "high", "status": "review", "notes": "Editor comments to address", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "A2-3", "title": "Edit Chapter 3", "project": "A2", "priority": "high", "status": "active", "notes": "Review and polish", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "A2-4", "title": "Write Chapter 4", "project": "A2", "priority": "high", "status": "pending", "notes": "Continue RE:UNITE novel", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "A3-1", "title": "Research KOE requirements", "project": "A3", "priority": "medium", "status": "pending", "notes": "Initial research phase", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "A4-1", "title": "Set up streaming equipment", "project": "A4", "priority": "medium", "status": "pending", "notes": "Buy mic, camera, lights", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "A5-1", "title": "Study trading patterns", "project": "A5", "priority": "low", "status": "pending", "notes": "Technical analysis basics", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B1-1", "title": "Define Exstatic MVP", "project": "B1", "priority": "medium", "status": "pending", "notes": "Minimum viable product scope", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B2-1", "title": "Energize brand identity", "project": "B2", "priority": "medium", "status": "pending", "notes": "Logo and color scheme", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B3-1", "title": "Team Elevate website", "project": "B3", "priority": "high", "status": "done", "notes": "Homepage deployed", "createdAt": "2026-02-06T00:00:00Z", "completedAt": "2026-02-05T18:00:00Z"},
+    {"id": "B3-2", "title": "Team Elevate onboarding", "project": "B3", "priority": "high", "status": "active", "notes": "Train new team members", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B4-1", "title": "Plan Pesta Fiesta launch", "project": "B4", "priority": "low", "status": "pending", "notes": "Event planning phase", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B5-1", "title": "Enticipate market research", "project": "B5", "priority": "low", "status": "pending", "notes": "Competitor analysis", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B6-1", "title": "Elluminate website design", "project": "B6", "priority": "low", "status": "pending", "notes": "Homepage mockups", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B7-1", "title": "Encompasse service offerings", "project": "B7", "priority": "low", "status": "pending", "notes": "Define service packages", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B8-1", "title": "Empyrean product catalog", "project": "B8", "priority": "low", "status": "pending", "notes": "List products/services", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B9-1", "title": "Ethereal content strategy", "project": "B9", "priority": "low", "status": "pending", "notes": "Content calendar planning", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "B10-1", "title": "Epitaph legacy planning", "project": "B10", "priority": "low", "status": "pending", "notes": "Long-term vision document", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "C1-1", "title": "Research property market", "project": "C1", "priority": "low", "status": "pending", "notes": "Location analysis", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null},
+    {"id": "C2-1", "title": "Update sales portfolio", "project": "C2", "priority": "low", "status": "pending", "notes": "Add recent work samples", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null}
   ],
   "decisions": [
-    {
-      "type": "blocked",
-      "title": "Need user testing feedback",
-      "reason": "Cannot verify Tasks 1-12 work without browser testing",
-      "action": "Wait for user to test and report"
-    }
+    {"type": "blocked", "title": "Sidebar blocking issue", "reason": "z-index conflict between sidebar and content", "action": "Fixed - reduced sidebar z-index to 5, increased content to 20"}
   ],
   "activity": [
-    {"timestamp": "2026-02-06T02:15:00Z", "title": "Data Updated", "description": "Added all Mission Dashboard tasks to A6 project"},
-    {"timestamp": "2026-02-06T02:00:00Z", "title": "Task 12 Complete", "description": "Task search functionality implemented"},
-    {"timestamp": "2026-02-06T01:50:00Z", "title": "Task 11 Complete", "description": "Task filters implemented"},
-    {"timestamp": "2026-02-06T01:45:00Z", "title": "Task 10 Complete", "description": "Task detail view modal added"},
-    {"timestamp": "2026-02-06T01:40:00Z", "title": "Task 9 Complete", "description": "Delete task with confirmation added"},
-    {"timestamp": "2026-02-06T01:35:00Z", "title": "Task 8 Complete", "description": "Complete task functionality added"},
-    {"timestamp": "2026-02-06T01:30:00Z", "title": "Task 7 Complete", "description": "Edit task functionality added"},
-    {"timestamp": "2026-02-06T01:25:00Z", "title": "Task 6 Complete", "description": "Add task modal with form added"},
-    {"timestamp": "2026-02-06T01:20:00Z", "title": "Tasks 1-5 Complete", "description": "Data system, stats, workflow, auto-refresh"},
-    {"timestamp": "2026-02-06T00:30:00Z", "title": "Project Started", "description": "Mission Dashboard development began"}
+    {"timestamp": "2026-02-06T12:30:00Z", "title": "All Projects Populated", "description": "Added sample tasks to A1-A5, B1-B10, C1-C2"},
+    {"timestamp": "2026-02-06T12:20:00Z", "title": "Sidebar Fixed", "description": "Fixed z-index so content appears above sidebar when expanded"},
+    {"timestamp": "2026-02-06T02:15:00Z", "title": "Data Updated", "description": "Added all Mission Dashboard tasks to A6 project"}
   ],
   "agents": [
-    {"id": "CHAD_YI", "name": "Chad_YI", "status": "active", "currentTask": "Building Mission Dashboard", "lastActive": "2026-02-06T02:15:00Z"}
+    {"id": "CHAD_YI", "name": "Chad_YI", "status": "active", "currentTask": "Populating all projects with tasks", "lastActive": "2026-02-06T12:30:00Z"}
   ],
   "calendar": {
     "past": [],
     "today": [
-      {"time": "02:15", "title": "Dashboard Testing", "description": "Test if dashboard shows real data"},
-      {"time": "00:30", "title": "Development Started", "description": "Began building Mission Dashboard"}
+      {"time": "12:30", "title": "Populate All Projects", "description": "Added tasks to every project"},
+      {"time": "12:20", "title": "Sidebar Fixed", "description": "z-index issue resolved"}
     ],
     "future": [
-      {"date": "2026-02-06", "title": "Complete Task 13", "description": "Finish project detail page"},
-      {"date": "2026-02-07", "title": "Tasks 14-17", "description": "Project enhancements + Agent integration"}
+      {"date": "2026-02-06", "title": "Test Dashboard", "description": "Verify all projects show correct stats"}
     ]
   }
 }
