@@ -313,7 +313,7 @@
             letter-spacing: 1px;
         }
 
-        /* Sidebar - Behind top bar */
+        /* Sidebar - Overlay mode with higher z-index */
         .sidebar {
             position: fixed;
             left: 0;
@@ -322,7 +322,7 @@
             height: 100vh;
             background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
             border-right: 1px solid var(--crystal-border);
-            z-index: 50;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
             padding: 76px 0 16px 0;
@@ -331,7 +331,16 @@
         
         .sidebar.expanded {
             width: 200px;
-            z-index: 200;
+        }
+        
+        /* Content wrapper that shifts */
+        .content-wrapper {
+            margin-left: 60px;
+            transition: margin-left 0.3s ease;
+        }
+        
+        body.sidebar-expanded .content-wrapper {
+            margin-left: 200px;
         }
 
         .sidebar-toggle {
@@ -417,47 +426,35 @@
             opacity: 1;
         }
 
-        /* Adjust main container for sidebar */
+        /* Content shifts with sidebar */
         .main-container {
-            padding: 16px 24px 16px 84px;
-            position: relative;
-            z-index: 20;
-            transition: padding-left 0.3s ease;
+            margin-left: 60px;
+            transition: margin-left 0.3s ease;
+            padding: 16px 24px;
         }
 
-        .main-container.sidebar-expanded {
-            padding-left: 224px;
+        body.sidebar-expanded .main-container {
+            margin-left: 200px;
         }
 
         .stats-bar {
-            padding: 10px 24px 10px 84px;
-            transition: padding-left 0.3s ease;
-            position: relative;
-            z-index: 20;
+            margin-left: 60px;
+            transition: margin-left 0.3s ease;
+            padding: 10px 24px;
         }
 
-        .stats-bar.sidebar-expanded {
-            padding-left: 224px;
+        body.sidebar-expanded .stats-bar {
+            margin-left: 200px;
         }
 
         /* Sidebar expanded - shift ALL content */
-        body.sidebar-expanded .main-container {
-            padding-left: 224px !important;
-        }
-        
-        body.sidebar-expanded .stats-bar {
-            padding-left: 224px !important;
-        }
-
         body.sidebar-expanded .section,
         body.sidebar-expanded .section.active {
-            padding-left: 160px !important;
+            margin-left: 200px !important;
         }
-        
-        /* Ensure sections have proper left padding */
+
         .section.active {
             display: block;
-            padding-left: 84px;
         }
 
         @media (max-width: 768px) {
@@ -2368,8 +2365,6 @@
             const sidebar = document.getElementById('sidebar');
             const toggleArrow = document.querySelector('.sidebar-toggle span:first-child');
             const toggleText = document.querySelector('.sidebar-toggle-text');
-            const mainContainer = document.querySelector('.main-container');
-            const statsBar = document.querySelector('.stats-bar');
 
             sidebar.classList.toggle('expanded');
             const isExpanded = sidebar.classList.contains('expanded');
@@ -2377,20 +2372,8 @@
             toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
 
-            // Shift ALL content when sidebar expands
+            // Shift ALL content via body class
             document.body.classList.toggle('sidebar-expanded', isExpanded);
-            
-            if (mainContainer) {
-                mainContainer.classList.toggle('sidebar-expanded', isExpanded);
-            }
-            if (statsBar) {
-                statsBar.classList.toggle('sidebar-expanded', isExpanded);
-            }
-            
-            // Also shift sections on other pages
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.toggle('sidebar-expanded', isExpanded);
-            });
         }
 
         function setActive(element) {
