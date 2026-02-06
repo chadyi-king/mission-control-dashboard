@@ -998,6 +998,223 @@
             .main-container { padding: 16px; }
             #categories-section .row { grid-template-columns: 1fr !important; }
         }
+
+        /* NEW CATEGORIES DESIGN - Expandable Project Cards */
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-title span {
+            color: var(--crimson-bright);
+            font-size: 20px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 16px;
+        }
+
+        .project-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 20px var(--crimson-glow);
+        }
+
+        .project-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: linear-gradient(90deg, rgba(139,0,0,0.1), transparent);
+        }
+
+        .project-info-main h3 {
+            font-family: var(--display-font);
+            font-size: 15px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .agent-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .agent-badge.active {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+        }
+
+        .project-info-main p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .project-meta .deadline {
+            color: var(--crimson-bright);
+        }
+
+        .expand-icon {
+            font-size: 12px;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .project-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .project-card.expanded .project-content {
+            max-height: 600px;
+        }
+
+        .next-task-bar {
+            padding: 10px 16px;
+            background: rgba(139, 0, 0, 0.1);
+            border-left: 3px solid var(--crimson-bright);
+            margin: 0 16px 12px;
+            font-size: 12px;
+        }
+
+        .next-task-bar.highlight {
+            background: rgba(139, 0, 0, 0.2);
+        }
+
+        .next-task-bar strong {
+            color: var(--crimson-bright);
+        }
+
+        .tasks-list {
+            padding: 0 16px 12px;
+        }
+
+        .task-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .task-row.high {
+            border-left: 2px solid var(--crimson-bright);
+        }
+
+        .task-row.done {
+            opacity: 0.6;
+        }
+
+        .task-row span:nth-child(2) {
+            flex: 1;
+        }
+
+        .task-dot {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .task-dot.inactive { color: var(--text-muted); }
+        .task-dot.input-needed { color: #c9a962; }
+        .task-dot.active { color: #00ff88; }
+
+        .task-agent {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+
+        .subtasks {
+            margin: 0 16px 12px 40px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .subtask {
+            font-size: 11px;
+            color: var(--text-muted);
+            padding: 4px 0;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--crystal-border);
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 4px;
+            color: var(--crimson-bright);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--crimson-bright);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -1536,169 +1753,212 @@
 
         <!-- CATEGORIES SECTION -->
         <div class="section" id="categories-section">
-            <div class="row" style="grid-template-columns: repeat(3, 1fr);">
-
+            <div class="categories-container">
+                
                 <!-- A - Ambition by Calbee -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">A<span>MBITION</span></div>
-                            <div class="category-subtitle">By Calbee (Personal)</div>
-                        </div>
-                        <div class="category-count">6</div>
-                    </div>
-                    <div class="category-projects">
-                        <div class="category-project-item pending" onclick="viewProject('A1')">
-                            <div class="project-info">
-                                <h4>A1 · Personal Tasks</h4>
-                                <p>General personal tasks</p>
+                <div class="category-section">
+                    <div class="category-title">A <span>MBITION</span> — Personal Projects</div>
+                    <div class="projects-grid">
+                        
+                        <div class="project-card" data-project="A1">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A1 · Personal Tasks <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>General personal tasks and errands</p>
+                                    <div class="project-meta">
+                                        <span>📋 3 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item active" onclick="viewProject('A2')">
-                            <div class="project-info">
-                                <h4>A2 · Re:Unite</h4>
-                                <p>Novel - 3/12 chapters</p>
+                            <div class="project-content">
+                                <div class="next-task-bar">
+                                    <strong>Next:</strong> Organize digital files
+                                </div>
+                                <div class="tasks-list">
+                                    <div class="task-row">
+                                        <span class="task-dot inactive">○</span>
+                                        <span>Organize digital files</span>
+                                        <span class="task-agent">No agent</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn" onclick="event.stopPropagation(); spawnAgent('A1')">Spawn Agent</button>
+                                    <button class="action-btn" onclick="event.stopPropagation(); addTask('A1')">Add Task</button>
+                                </div>
                             </div>
-                            <span class="project-status active">Active</span>
                         </div>
-                        <div class="category-project-item pending" onclick="viewProject('A3')">
-                            <div class="project-info">
-                                <h4>A3 · KOE</h4>
-                                <p>Project KOE</p>
+
+                        <div class="project-card expanded" data-project="A2">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A2 · Re:Unite <span class="agent-badge active">🤖 CHAD_YI Active</span></h3>
+                                    <p>Fantasy novel - Christian allegory</p>
+                                    <div class="project-meta">
+                                        <span>📋 12 chapters</span>
+                                        <span>✅ 3 done</span>
+                                        <span class="deadline">⏰ Every Sunday</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('A4')">
-                            <div class="project-info">
-                                <h4>A4 · Streaming</h4>
-                                <p>Live streaming setup</p>
+                            <div class="project-content">
+                                <div class="next-task-bar highlight">
+                                    <strong>Next (Ch 13):</strong> Write "The Revelation" - Awaiting your draft
+                                </div>
+                                <div class="tasks-list">
+                                    <div class="task-row high">
+                                        <span class="task-dot input-needed">!</span>
+                                        <span>Write Chapter 13</span>
+                                        <span class="task-agent">CHAD_YI</span>
+                                    </div>
+                                    <div class="subtasks">
+                                        <div class="subtask">Draft outline ✓</div>
+                                        <div class="subtask">Write content (60%)</div>
+                                        <div class="subtask">Edit & polish</div>
+                                    </div>
+                                    <div class="task-row">
+                                        <span class="task-dot inactive">○</span>
+                                        <span>Upload to Google Drive</span>
+                                        <span class="task-agent">Auto on done</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn" onclick="event.stopPropagation(); viewDrive('A2')">📁 Open Drive</button>
+                                    <button class="action-btn" onclick="event.stopPropagation(); addTask('A2')">Add Task</button>
+                                </div>
                             </div>
-                            <span class="project-status pending">Pending</span>
                         </div>
-                        <div class="category-project-item pending" onclick="viewProject('A5')">
-                            <div class="project-info">
-                                <h4>A5 · Trading</h4>
-                                <p>Trading activities</p>
+
+                        <div class="project-card" data-project="A3">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A3 · KOE <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>Christian YouTube channel</p>
+                                    <div class="project-meta">
+                                        <span>📋 3 scripts</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item active" onclick="viewProject('A6')">
-                            <div class="project-info">
-                                <h4>A6 · Mission Control</h4>
-                                <p>Dashboard - 46% complete (12/26 tasks)</p>
+                            <div class="project-content">
+                                <div class="next-task-bar">
+                                    <strong>Next:</strong> Write Script 1: Right vs Left Paradigm
+                                </div>
+                                <div class="tasks-list">
+                                    <div class="task-row high">
+                                        <span class="task-dot inactive">○</span>
+                                        <span>Script 1: Right vs Left</span>
+                                        <span class="task-agent">No agent</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn" onclick="event.stopPropagation(); spawnAgent('A3')">Spawn Agent</button>
+                                    <button class="action-btn" onclick="event.stopPropagation(); addTask('A3')">Add Task</button>
+                                </div>
                             </div>
-                            <span class="project-status active">Active</span>
                         </div>
+
+                        <div class="project-card" data-project="A4">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A4 · Streaming <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>VTuber/Faceless streaming setup</p>
+                                    <div class="project-meta">
+                                        <span>📋 5 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project="A5">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A5 · Trading <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>Forex & Options trading bots</p>
+                                    <div class="project-meta">
+                                        <span>📋 6 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project="A6">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A6 · Mission Control <span class="agent-badge active">🤖 Active</span></h3>
+                                    <p>This dashboard project</p>
+                                    <div class="project-meta">
+                                        <span>📋 26 tasks</span>
+                                        <span>✅ 12 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
                 <!-- B - Business Empire -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">B<span>USINESS</span></div>
-                            <div class="category-subtitle">Empire (Main Work)</div>
-                        </div>
-                        <div class="category-count">10</div>
-                    </div>
-                    <div class="category-projects">
-                        <div class="category-project-item pending" onclick="viewProject('B1')">
-                            <div class="project-info">
-                                <h4>B1 · Exstatic</h4>
-                                <p>Business unit 1</p>
+                <div class="category-section">
+                    <div class="category-title">B <span>USINESS</span> — Empire Projects</div>
+                    <div class="projects-grid">
+                        <div class="project-card" data-project="B3">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>B3 · Team Elevate <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>Website done by Lovable</p>
+                                    <div class="project-meta">
+                                        <span>📋 4 tasks</span>
+                                        <span>✅ 1 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B2')">
-                            <div class="project-info">
-                                <h4>B2 · Energize</h4>
-                                <p>Business unit 2</p>
+                            <div class="project-content">
+                                <div class="next-task-bar">
+                                    <strong>Next:</strong> Optimize SEO for search ranking
+                                </div>
+                                <div class="tasks-list">
+                                    <div class="task-row high">
+                                        <span class="task-dot inactive">○</span>
+                                        <span>SEO Optimization</span>
+                                        <span class="task-agent">No agent</span>
+                                    </div>
+                                    <div class="task-row done">
+                                        <span class="task-dot">✓</span>
+                                        <span>Website Design (Lovable)</span>
+                                        <span class="task-agent">Lovable</span>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item active" onclick="viewProject('B3')">
-                            <div class="project-info">
-                                <h4>B3 · Team Elevate</h4>
-                                <p>1/10 tasks · Active</p>
-                            </div>
-                            <span class="project-status active">Active</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B4')">
-                            <div class="project-info">
-                                <h4>B4 · Pesta Fiesta</h4>
-                                <p>Business unit 4</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B5')">
-                            <div class="project-info">
-                                <h4>B5 · Enticipate</h4>
-                                <p>Business unit 5</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B6')">
-                            <div class="project-info">
-                                <h4>B6 · Elluminate</h4>
-                                <p>Business unit 6</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B7')">
-                            <div class="project-info">
-                                <h4>B7 · Encompasse</h4>
-                                <p>Business unit 7</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B8')">
-                            <div class="project-info">
-                                <h4>B8 · Empyrean</h4>
-                                <p>Business unit 8</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B9')">
-                            <div class="project-info">
-                                <h4>B9 · Ethereal</h4>
-                                <p>Business unit 9</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B10')">
-                            <div class="project-info">
-                                <h4>B10 · Epitaph</h4>
-                                <p>Business unit 10</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- C - Callings -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">C<span>ALLINGS</span></div>
-                            <div class="category-subtitle">On The Side (Other Jobs)</div>
-                        </div>
-                        <div class="category-count">2</div>
-                    </div>
-                    <div class="category-projects">
-                        <div class="category-project-item pending" onclick="viewProject('C1')">
-                            <div class="project-info">
-                                <h4>C1 · Real Estate</h4>
-                                <p>Property investments</p>
+                <div class="category-section">
+                    <div class="category-title">C <span>ALLINGS</span> — Side Projects</div>
+                    <div class="projects-grid">
+                        <div class="project-card" data-project="C1">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>C1 · Real Estate <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>Property investments</p>
+                                    <div class="project-meta">
+                                        <span>📋 3 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
                             </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('C2')">
-                            <div class="project-info">
-                                <h4>C2 · Side Sales Jobs</h4>
-                                <p>Additional sales work</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
                         </div>
                     </div>
                 </div>
@@ -2059,6 +2319,17 @@
                 sunAvatar.classList.remove('active-agents', 'doing-tasks', 'inactive');
                 sunAvatar.classList.add(status);
             }
+        }
+
+        // Toggle Project Expand
+        function toggleProject(header) {
+            const card = header.closest('.project-card');
+            card.classList.toggle('expanded');
+        }
+
+        function viewDrive(projectId) {
+            console.log('Open Google Drive for', projectId);
+            // TODO: Open Google Drive for project
         }
 
         // Sidebar Toggle
