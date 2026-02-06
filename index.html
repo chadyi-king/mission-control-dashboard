@@ -447,9 +447,12 @@
             margin-left: 200px;
         }
 
-        /* Sidebar expanded - shift ALL content except home */
-        body.sidebar-expanded .section:not(#home-section),
-        body.sidebar-expanded .section.active:not(#home-section) {
+        /* Sidebar expanded - shift content on non-home pages */
+        body.sidebar-expanded #categories-section,
+        body.sidebar-expanded #insights-section,
+        body.sidebar-expanded #resources-section,
+        body.sidebar-expanded #system-section,
+        body.sidebar-expanded #profile-section {
             margin-left: 200px !important;
         }
 
