@@ -1,0 +1,2905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISSION CONTROL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #050508;
+            --bg-card: #0a0a0f;
+            --bg-elevated: #12121a;
+            --crimson: #8B0000;
+            --crimson-bright: #DC143C;
+            --crimson-glow: rgba(139, 0, 0, 0.4);
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --crystal: rgba(255, 255, 255, 0.03);
+            --crystal-border: rgba(255, 255, 255, 0.08);
+            --tech-font: 'Rajdhani', sans-serif;
+            --display-font: 'Orbitron', sans-serif;
+        }
+
+        body {
+            font-family: var(--tech-font);
+            font-weight: 500;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        /* CYBER DATA STREAM BACKGROUND */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: var(--bg-primary);
+            overflow: hidden;
+        }
+
+        /* Falling Data Streams */
+        .data-stream {
+            position: absolute;
+            top: -100%;
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--crimson-bright);
+            opacity: 0.1;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            animation: fall linear infinite;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .data-stream:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; font-size: 12px; }
+        .data-stream:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; font-size: 10px; }
+        .data-stream:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 4s; font-size: 14px; }
+        .data-stream:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; font-size: 11px; }
+        .data-stream:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 3s; font-size: 13px; }
+        .data-stream:nth-child(6) { left: 55%; animation-duration: 14s; animation-delay: 5s; font-size: 12px; }
+        .data-stream:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 2s; font-size: 10px; }
+        .data-stream:nth-child(8) { left: 75%; animation-duration: 17s; animation-delay: 4s; font-size: 14px; }
+        .data-stream:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 1s; font-size: 11px; }
+        .data-stream:nth-child(10) { left: 95%; animation-duration: 21s; animation-delay: 3s; font-size: 12px; }
+
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 0; }
+            10% { opacity: 0.1; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(200vh); opacity: 0; }
+        }
+
+        /* Circuit Pattern Overlay */
+        .circuit-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.08;
+            background-image:
+                linear-gradient(90deg, var(--crimson-bright) 1px, transparent 1px),
+                linear-gradient(var(--crimson-bright) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+
+        /* Hex Grid Pattern */
+        .hex-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dc143c' fill-opacity='0.4'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Random Floating Elements */
+        .float-hex {
+            position: absolute;
+            font-family: monospace;
+            font-size: 20px;
+            color: var(--crimson-bright);
+            opacity: 0.08;
+            animation: floatHex 10s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .float-hex:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .float-hex:nth-child(2) { top: 30%; left: 70%; animation-delay: 2s; }
+        .float-hex:nth-child(3) { top: 60%; left: 40%; animation-delay: 4s; }
+        .float-hex:nth-child(4) { top: 80%; left: 80%; animation-delay: 6s; }
+        .float-hex:nth-child(5) { top: 40%; left: 10%; animation-delay: 8s; }
+
+        @keyframes floatHex {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.12; }
+        }
+
+        /* Red Sun Avatar - Burning Ring */
+        .sun-avatar-small {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .sun-core-small {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, #fff 0%, var(--crimson-bright) 40%, var(--crimson) 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--crimson-bright), 0 0 40px var(--crimson-glow);
+        }
+
+        /* Burning Ring - Fire effect */
+        .sun-avatar-small::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: all 0.5s;
+        }
+
+        /* ACTIVE - Red burning fire ring */
+        .sun-avatar-small.active::before {
+            border-color: var(--crimson-bright);
+            box-shadow: 
+                0 0 10px var(--crimson-bright),
+                0 0 20px var(--crimson-glow),
+                0 0 30px var(--crimson),
+                inset 0 0 10px var(--crimson-glow);
+            animation: burning-ring 1.5s ease-in-out infinite;
+        }
+
+        /* INACTIVE - Grey dull ring */
+        .sun-avatar-small.inactive::before {
+            border-color: #444;
+            box-shadow: none;
+            animation: none;
+        }
+
+        @keyframes burning-ring {
+            0%, 100% {
+                box-shadow: 
+                    0 0 10px var(--crimson-bright),
+                    0 0 20px var(--crimson-glow),
+                    0 0 30px var(--crimson),
+                    inset 0 0 10px var(--crimson-glow);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            25% {
+                box-shadow: 
+                    0 0 15px var(--crimson-bright),
+                    0 0 30px var(--crimson-glow),
+                    0 0 45px var(--crimson),
+                    2px -2px 15px var(--crimson-bright),
+                    inset 0 0 15px var(--crimson-glow);
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+            50% {
+                box-shadow: 
+                    0 0 20px var(--crimson-bright),
+                    0 0 40px var(--crimson-glow),
+                    0 0 60px var(--crimson),
+                    -2px 2px 20px var(--crimson-bright),
+                    inset 0 0 20px var(--crimson-glow);
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            75% {
+                box-shadow: 
+                    0 0 15px var(--crimson-bright),
+                    0 0 30px var(--crimson-glow),
+                    0 0 45px var(--crimson),
+                    3px 3px 15px var(--crimson-bright),
+                    inset 0 0 15px var(--crimson-glow);
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        /* Top Bar */
+        .topbar {
+            background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(5,5,8,0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--crimson-glow);
+            box-shadow: 0 0 30px var(--crimson-glow);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-text {
+            font-family: var(--display-font);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: var(--crimson-bright);
+            text-shadow: 0 0 15px var(--crimson-glow);
+        }
+
+        .topbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--display-font);
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Sun Avatar with Info in Header */
+        .sun-widget-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sun-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .sun-name {
+            font-family: var(--display-font);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--crimson-bright);
+        }
+
+        .sun-status {
+            font-size: 9px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sun-mode {
+            font-size: 8px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sidebar - Overlay mode with higher z-index */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 100vh;
+            background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
+            border-right: 1px solid var(--crystal-border);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 76px 0 16px 0;
+            transition: width 0.3s ease;
+        }
+        
+        .sidebar.expanded {
+            width: 200px;
+        }
+        
+        /* Content wrapper that shifts */
+        .content-wrapper {
+            margin-left: 60px;
+            transition: margin-left 0.3s ease;
+        }
+        
+        body.sidebar-expanded .content-wrapper {
+            margin-left: 200px;
+        }
+
+        .sidebar-toggle {
+            width: 100%;
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--crystal-border);
+            color: var(--crimson-bright);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-toggle:hover {
+            background: var(--crimson-glow);
+        }
+
+        .sidebar-toggle-text {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.expanded .sidebar-toggle-text {
+            opacity: 1;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .sidebar-item:hover {
+            background: var(--crimson-glow);
+            color: var(--crimson-bright);
+        }
+
+        .sidebar-item.active {
+            background: var(--crimson-glow);
+            color: var(--crimson-bright);
+            border-right: 3px solid var(--crimson-bright);
+        }
+
+        .sidebar-icon {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: currentColor;
+        }
+
+        .sidebar-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .sidebar-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.expanded .sidebar-label {
+            opacity: 1;
+        }
+
+        /* Content shifts with sidebar */
+        .main-container {
+            margin-left: 60px;
+            transition: margin-left 0.3s ease;
+            padding: 16px 24px;
+        }
+
+        body.sidebar-expanded .main-container {
+            margin-left: 200px;
+        }
+
+        .stats-bar {
+            margin-left: 60px;
+            transition: margin-left 0.3s ease;
+            padding: 10px 24px;
+        }
+
+        body.sidebar-expanded .stats-bar {
+            margin-left: 200px;
+        }
+
+        /* Sidebar expanded - shift content on non-home pages */
+        body.sidebar-expanded #categories-section,
+        body.sidebar-expanded #insights-section,
+        body.sidebar-expanded #resources-section,
+        body.sidebar-expanded #system-section,
+        body.sidebar-expanded #profile-section {
+            margin-left: 200px !important;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Home section uses main-container margin only */
+        #home-section {
+            margin-left: 0 !important;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-container {
+                padding: 16px;
+            }
+
+            .stats-bar {
+                padding: 10px 24px;
+            }
+        }
+
+        .status-widget {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff88;
+            box-shadow: 0 0 10px #00ff88;
+            animation: pulse 2s infinite;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            position: relative;
+        }
+
+        .quick-btn {
+            padding: 8px 16px;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 4px;
+            color: var(--crimson-bright);
+            font-family: var(--display-font);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-btn:hover {
+            background: var(--crimson-bright);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--crimson-glow);
+        }
+
+        .quick-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
+            padding: 8px;
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .quick-menu.show {
+            display: block;
+        }
+
+        .quick-section {
+            margin-bottom: 8px;
+        }
+
+        .quick-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .quick-section-title {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--crystal-border);
+        }
+
+        .quick-item {
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .quick-item:hover {
+            background: var(--crimson-glow);
+            color: var(--crimson-bright);
+        }
+
+        /* Compact Stats */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            padding: 10px 24px 10px 84px;
+            background: linear-gradient(180deg, rgba(10,10,15,0.8) 0%, transparent 100%);
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: var(--crystal);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--crystal-border);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 8px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-family: var(--display-font);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--crimson-bright);
+            margin: 2px 0;
+        }
+
+        .stat-sub {
+            font-size: 8px;
+            color: var(--text-secondary);
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .panel {
+            background: var(--crystal);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+
+        .panel-header {
+            background: linear-gradient(90deg, var(--crimson-glow) 0%, transparent 100%);
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--crystal-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-title {
+            font-family: var(--display-font);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--crimson-bright);
+        }
+
+        .panel-value {
+            font-family: var(--display-font);
+            font-size: 12px;
+            color: var(--text-primary);
+        }
+
+        .panel-content {
+            padding: 14px;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        /* All panel content styles from previous version */
+        .pipeline { display: flex; gap: 8px; margin-bottom: 16px; }
+        .pipeline-stage { flex: 1; text-align: center; padding: 12px 8px; background: rgba(255,255,255,0.02); border-radius: 6px; border-top: 2px solid var(--crystal-border); }
+        .pipeline-stage.active { border-top-color: var(--crimson-bright); background: var(--crimson-glow); }
+        .pipeline-count { font-family: var(--display-font); font-size: 24px; font-weight: 700; color: var(--crimson-bright); }
+        .pipeline-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .workflow-arrow { display: flex; align-items: center; color: var(--crimson-bright); font-size: 16px; }
+
+        .project-card { background: rgba(255,255,255,0.02); border-radius: 6px; padding: 12px; margin-bottom: 10px; border-left: 3px solid var(--crimson-bright); }
+        .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .project-name { font-family: var(--display-font); font-size: 13px; font-weight: 600; }
+        .project-percent { font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright); }
+        .project-progress { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-bottom: 8px; overflow: hidden; }
+        .project-progress-fill { height: 100%; background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b); border-radius: 3px; box-shadow: 0 0 10px var(--crimson-glow); }
+        .project-meta { font-size: 10px; color: var(--text-muted); }
+
+        .calendar-section { margin-bottom: 16px; }
+        .calendar-header { font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; font-weight: 600; }
+        .calendar-item { display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.02); border-radius: 6px; margin-bottom: 8px; }
+        .calendar-date { text-align: center; min-width: 45px; }
+        .calendar-day { font-family: var(--display-font); font-size: 18px; font-weight: 700; color: var(--crimson-bright); }
+        .calendar-month { font-size: 9px; color: var(--text-muted); text-transform: uppercase; }
+        .calendar-content h4 { font-size: 12px; margin-bottom: 2px; }
+        .calendar-content p { font-size: 10px; color: var(--text-muted); }
+
+        .decision-item { background: rgba(139, 0, 0, 0.1); border: 1px solid var(--crimson-bright); border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+        .decision-item.blocked { border-color: var(--crimson-bright); }
+        .decision-item.input { border-color: #c9a962; background: rgba(201, 169, 98, 0.1); }
+        .decision-type { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .decision-type.blocked { color: var(--crimson-bright); }
+        .decision-type.input { color: #c9a962; }
+        .decision-title { font-size: 12px; margin-bottom: 6px; }
+        .decision-reason { font-size: 10px; color: var(--text-muted); margin-bottom: 10px; }
+        .decision-btn { padding: 6px 12px; background: transparent; border: 1px solid var(--crimson-bright); border-radius: 3px; color: var(--crimson-bright); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        .decision-btn:hover { background: var(--crimson-glow); }
+
+        .activity-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--crystal-border); }
+        .activity-item:last-child { border-bottom: none; }
+        .activity-time { font-family: var(--display-font); font-size: 10px; color: var(--text-muted); min-width: 70px; }
+        .activity-content h4 { font-size: 11px; margin-bottom: 2px; }
+        .activity-content p { font-size: 10px; color: var(--text-muted); }
+
+        .queue-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.02); border-radius: 6px; margin-bottom: 8px; border-left: 2px solid var(--crystal-border); }
+        .queue-item.high { border-left-color: var(--crimson-bright); }
+        .queue-item.medium { border-left-color: #c9a962; }
+        .queue-item.low { border-left-color: var(--text-muted); }
+        .queue-info h4 { font-size: 11px; margin-bottom: 2px; }
+        .queue-info p { font-size: 9px; color: var(--text-muted); }
+        .queue-priority { font-size: 8px; padding: 3px 8px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .queue-priority.high { background: rgba(139, 0, 0, 0.3); color: var(--crimson-bright); }
+
+        .category-card {
+            background: var(--crystal);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .category-card:hover {
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 30px var(--crimson-glow);
+        }
+
+        .category-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-title {
+            font-family: var(--display-font);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .category-title span {
+            color: var(--crimson-bright);
+        }
+
+        .category-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .category-count {
+            font-family: var(--display-font);
+            font-size: 32px;
+            color: var(--crimson-bright);
+        }
+
+        .category-projects {
+            padding: 16px;
+        }
+
+        .category-project-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--crystal-border);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .category-project-item:hover {
+            background: var(--crimson-glow);
+            border-left-color: var(--crimson-bright);
+        }
+
+        .category-project-item.active {
+            border-left-color: var(--crimson-bright);
+            background: var(--crimson-glow);
+        }
+
+        .project-info h4 {
+            font-family: var(--display-font);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .project-info p {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .project-status {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-status.active {
+            background: rgba(139, 0, 0, 0.3);
+            color: var(--crimson-bright);
+        }
+
+        .project-status.pending {
+            background: rgba(201, 169, 98, 0.2);
+            color: #c9a962;
+        }
+
+        .project-status.complete {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Modal Styles (Task 6) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-family: var(--display-font);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: var(--crimson-bright);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid var(--crystal-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--crystal-border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: var(--tech-font);
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 10px var(--crimson-glow);
+        }
+
+        .priority-options {
+            display: flex;
+            gap: 8px;
+        }
+
+        .priority-btn {
+            flex: 1;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--crystal-border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .priority-btn:hover {
+            background: var(--crimson-glow);
+        }
+
+        .priority-btn.active[data-priority="high"] {
+            background: rgba(139, 0, 0, 0.3);
+            border-color: var(--crimson-bright);
+            color: var(--crimson-bright);
+        }
+
+        .priority-btn.active[data-priority="medium"] {
+            background: rgba(201, 169, 98, 0.2);
+            border-color: #c9a962;
+            color: #c9a962;
+        }
+
+        .priority-btn.active[data-priority="low"] {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-muted);
+            color: var(--text-secondary);
+        }
+
+        .btn-secondary,
+        .btn-primary {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--crystal-border);
+            color: var(--text-muted);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--crimson-bright);
+            color: var(--crimson-bright);
+        }
+
+        .btn-primary {
+            background: var(--crimson-bright);
+            border: 1px solid var(--crimson-bright);
+            color: var(--bg-primary);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px var(--crimson-glow);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--crystal-border); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--crimson-bright); }
+
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .stats-bar { grid-template-columns: repeat(3, 1fr); }
+            .row { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .topbar-center { display: none; }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .stats-bar { grid-template-columns: repeat(3, 1fr); padding: 10px 24px; }
+            .main-container { padding: 16px; }
+            #categories-section .row { grid-template-columns: 1fr !important; }
+        }
+
+        /* NEW CATEGORIES DESIGN - Expandable Project Cards */
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+            margin-left: 60px;
+        }
+        
+        body.sidebar-expanded .categories-container {
+            margin-left: 200px;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-title span {
+            color: var(--crimson-bright);
+            font-size: 20px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 16px;
+        }
+
+        .project-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 20px var(--crimson-glow);
+        }
+
+        .project-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: linear-gradient(90deg, rgba(139,0,0,0.1), transparent);
+        }
+
+        .project-info-main h3 {
+            font-family: var(--display-font);
+            font-size: 15px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .agent-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .agent-badge.active {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+        }
+
+        .project-info-main p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .project-meta .deadline {
+            color: var(--crimson-bright);
+        }
+
+        .expand-icon {
+            font-size: 12px;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .project-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .project-card.expanded .project-content {
+            max-height: 600px;
+        }
+
+        .next-task-bar {
+            padding: 10px 16px;
+            background: rgba(139, 0, 0, 0.1);
+            border-left: 3px solid var(--crimson-bright);
+            margin: 0 16px 12px;
+            font-size: 12px;
+        }
+
+        .next-task-bar.highlight {
+            background: rgba(139, 0, 0, 0.2);
+        }
+
+        .next-task-bar strong {
+            color: var(--crimson-bright);
+        }
+
+        .tasks-list {
+            padding: 0 16px 12px;
+        }
+
+        .task-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .task-row.high {
+            border-left: 2px solid var(--crimson-bright);
+        }
+
+        .task-row.done {
+            opacity: 0.6;
+        }
+
+        .task-row span:nth-child(2) {
+            flex: 1;
+        }
+
+        .task-dot {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .task-dot.inactive { color: var(--text-muted); }
+        .task-dot.input-needed { color: #c9a962; }
+        .task-dot.active { color: #00ff88; }
+
+        .task-agent {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+
+        .subtasks {
+            margin: 0 16px 12px 40px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .subtask {
+            font-size: 11px;
+            color: var(--text-muted);
+            padding: 4px 0;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--crystal-border);
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 4px;
+            color: var(--crimson-bright);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--crimson-bright);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- CYBER DATA STREAM BACKGROUND -->
+    <div class="cyber-bg">
+        <div class="data-stream">01 A2 43 B3 92 C1 15 D4</div>
+        <div class="data-stream">FF 23 9A 4C 7B E1 56 82</div>
+        <div class="data-stream">AGENT_SPAWN K2.5 TASK_ACTIVE</div>
+        <div class="data-stream">88 12 FA 3D 67 91 BC 22</div>
+        <div class="data-stream">PROJECT_A2 STATUS_RUNNING 45%</div>
+        <div class="data-stream">CD 45 EF 89 12 34 AB 67</div>
+        <div class="data-stream">TOKEN_DATA STREAM_ACTIVE 82%</div>
+        <div class="data-stream">77 88 99 AA BB CC DD EE</div>
+        <div class="data-stream">GITHUB_PUSH REPO_UPDATED MAIN</div>
+        <div class="data-stream">11 22 33 44 55 66 77 88</div>
+    </div>
+
+    <div class="circuit-overlay"></div>
+    <div class="hex-pattern"></div>
+
+    <div class="float-hex">0xFF</div>
+    <div class="float-hex">0xA2</div>
+    <div class="float-hex">0x7B</div>
+    <div class="float-hex">0xC3</div>
+    <div class="float-hex">0x91</div>
+
+    <!-- TOP BAR: Sun Avatar + Info | Center Title | Actions -->
+    <div class="topbar">
+        <div class="topbar-left">
+            <!-- Red Sun Avatar with Info -->
+            <div class="sun-widget-header">
+                <div class="sun-avatar-small active">
+                    <div class="sun-core-small"></div>
+                </div>
+                <div class="sun-info">
+                    <div class="sun-name">CHAD_YI</div>
+                    <div class="sun-status">● ACTIVE</div>
+                    <div class="sun-mode">COMMAND</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="topbar-center">
+            MISSION CONTROL
+        </div>
+
+        <div class="topbar-right">
+            <!-- Quick Actions Menu -->
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="toggleQuickMenu()">
+                    ⚡ ACTIONS ▼
+                </button>
+                <div class="quick-menu" id="quickMenu">
+
+                    <div class="quick-section">
+                        <div class="quick-section-title">Control Dashboard</div>
+                        <div class="quick-item" onclick="quickAction('refresh')">
+                            🔄 Refresh Data
+                        </div>
+                        <div class="quick-item" onclick="quickAction('fullscreen')">
+                            ⛶ Toggle Fullscreen
+                        </div>
+                        <div class="quick-item" onclick="quickAction('export')">
+                            📊 Export Today's Report
+                        </div>
+                    </div>
+
+                    <div class="quick-section">
+                        <div class="quick-section-title">Create Task (Demo)</div>
+                        <div class="quick-item" onclick="quickAction('add-task')">
+                            ➕ Quick Add Task
+                        </div>
+                        <div class="quick-item" onclick="quickAction('github')">
+                            📤 Deploy to GitHub
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="status-widget">
+                <div class="status-dot"></div>
+                <span>ONLINE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" title="Expand/Collapse sidebar">
+            <span>▶</span>
+            <span class="sidebar-toggle-text">Expand</span>
+        </button>
+
+        <a href="#" class="sidebar-item active" onclick="showSection('home', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+            </span>
+            <span class="sidebar-label">Home</span>
+        </a>
+
+        <a href="#" class="sidebar-item" onclick="showSection('categories', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+            </span>
+            <span class="sidebar-label">Categories</span>
+        </a>
+
+        <a href="#" class="sidebar-item" onclick="showSection('insights', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"/>
+                    <line x1="12" y1="20" x2="12" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+            </span>
+            <span class="sidebar-label">Insights</span>
+        </a>
+
+        <a href="#" class="sidebar-item" onclick="showSection('resources', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                </svg>
+            </span>
+            <span class="sidebar-label">Resources</span>
+        </a>
+
+        <a href="#" class="sidebar-item" onclick="showSection('system', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+            </span>
+            <span class="sidebar-label">System</span>
+        </a>
+
+        <a href="#" class="sidebar-item" onclick="showSection('profile', this)">
+            <span class="sidebar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </span>
+            <span class="sidebar-label">Profile</span>
+        </a>
+    </div>
+
+    <!-- COMPACT STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-label">Active</div>
+            <div class="stat-value">3</div>
+            <div class="stat-sub">Agents</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Spawned</div>
+            <div class="stat-value">5</div>
+            <div class="stat-sub">Today</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Done</div>
+            <div class="stat-value">7</div>
+            <div class="stat-sub">Tasks</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Time</div>
+            <div class="stat-value">4:23</div>
+            <div class="stat-sub">Active</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Focus</div>
+            <div class="stat-value">A2</div>
+            <div class="stat-sub">Project</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Events</div>
+            <div class="stat-value">12</div>
+            <div class="stat-sub">Today</div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+
+        <!-- HOME SECTION -->
+        <div class="section active" id="home-section">
+
+        <!-- ROW 1: WORKFLOW + PROJECTS -->
+        <div class="row">
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">Workflow Pipeline</span>
+                    <span class="panel-value">12 Total</span>
+                </div>
+                <div class="panel-content">
+                    <div class="pipeline">
+                        <div class="pipeline-stage">
+                            <div class="pipeline-count">5</div>
+                            <div class="pipeline-label">Pending</div>
+                        </div>
+                        <div class="workflow-arrow">→</div>
+                        <div class="pipeline-stage active">
+                            <div class="pipeline-count">3</div>
+                            <div class="pipeline-label">Active</div>
+                        </div>
+                        <div class="workflow-arrow">→</div>
+                        <div class="pipeline-stage">
+                            <div class="pipeline-count">2</div>
+                            <div class="pipeline-label">Review</div>
+                        </div>
+                        <div class="workflow-arrow">→</div>
+                        <div class="pipeline-stage">
+                            <div class="pipeline-count">7</div>
+                            <div class="pipeline-label">Done</div>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 10px; color: var(--text-muted); text-align: center; margin-bottom: 16px;">2 tasks blocked · 3 waiting for you</div>
+
+                    <!-- Recent Movement -->
+                    <div style="border-top: 1px solid var(--crystal-border); padding-top: 12px;">
+                        <div style="font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Recent Movement</div>
+
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
+                                <span style="color: #00ff88;">↑</span>
+                                <span style="color: var(--text-secondary);">Chapter 4</span>
+                                <span style="color: var(--text-muted); margin-left: auto;">2m ago</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
+                                <span style="color: #00ff88;">↑</span>
+                                <span style="color: var(--text-secondary);">B3 Homepage</span>
+                                <span style="color: var(--text-muted); margin-left: auto;">15m ago</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
+                                <span style="color: var(--crimson-bright);">→</span>
+                                <span style="color: var(--text-secondary);">Research Notes</span>
+                                <span style="color: var(--text-muted); margin-left: auto;">1h ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Throughput Metrics -->
+                    <div style="border-top: 1px solid var(--crystal-border); padding-top: 12px; margin-top: 12px;">
+                        <div style="font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Throughput</div>
+
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
+                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">12</div>
+                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Today</div>
+                            </div>
+
+                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
+                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">2.4</div>
+                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">/hr</div>
+                            </div>
+
+                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
+                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">85%</div>
+                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Velocity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">Project Progress</span>
+                    <span class="panel-value">6 Active</span>
+                </div>
+                <div class="panel-content">
+                    <div class="project-card" style="border-left-color: #00ff88;">
+                        <div class="project-header">
+                            <span class="project-name">A6 · Mission Control</span>
+                            <span class="project-percent" style="color: #00ff88;">46%</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="project-progress-fill" style="width: 46%; background: linear-gradient(90deg, #00ff88, #00cc6a);"></div>
+                        </div>
+                        <div class="project-meta">12/26 tasks · Dashboard building</div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <span class="project-name">A2 · RE:UNITE</span>
+                            <span class="project-percent">25%</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="project-progress-fill" style="width: 25%"></div>
+                        </div>
+                        <div class="project-meta">3/12 chapters · 2 tasks active</div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <span class="project-name">B3 · Team Elevate</span>
+                            <span class="project-percent">10%</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="project-progress-fill" style="width: 10%"></div>
+                        </div>
+                        <div class="project-meta">1/10 tasks · 1 task active</div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <span class="project-name">A4 · Streaming</span>
+                            <span class="project-percent">5%</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="project-progress-fill" style="width: 5%"></div>
+                        </div>
+                        <div class="project-meta">Research phase · 1 task active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2: CALENDAR + DECISIONS -->
+        <div class="row">
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">Calendar</span>
+                    <span class="panel-value">Past · Present · Future</span>
+                </div>
+                <div class="panel-content">
+                    <div class="calendar-section">
+                        <div class="calendar-header">Past</div>
+                        <div class="calendar-item">
+                            <div class="calendar-date">
+                                <div class="calendar-day">05</div>
+                                <div class="calendar-month">FEB</div>
+                            </div>
+                            <div class="calendar-content">
+                                <h4>7 Tasks Completed</h4>
+                                <p>A2: 3 chapters uploaded</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calendar-section">
+                        <div class="calendar-header">Today</div>
+                        <div class="calendar-item">
+                            <div class="calendar-date">
+                                <div class="calendar-day">05</div>
+                                <div class="calendar-month">FEB</div>
+                            </div>
+                            <div class="calendar-content">
+                                <h4>3 Tasks Active</h4>
+                                <p>5 agents spawned · 12 events</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calendar-section">
+                        <div class="calendar-header">Upcoming</div>
+                        <div class="calendar-item">
+                            <div class="calendar-date">
+                                <div class="calendar-day">28</div>
+                                <div class="calendar-month">FEB</div>
+                            </div>
+                            <div class="calendar-content">
+                                <h4>B3 Homepage Due</h4>
+                                <p>23 days remaining</p>
+                            </div>
+                        </div>
+
+                        <div class="calendar-item">
+                            <div class="calendar-date">
+                                <div class="calendar-day">13</div>
+                                <div class="calendar-month">DEC</div>
+                            </div>
+                            <div class="calendar-content">
+                                <h4>💍 Wedding Day</h4>
+                                <p>311 days remaining</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">Decisions Required</span>
+                    <span class="panel-value">3 Pending</span>
+                </div>
+                <div class="panel-content">
+                    <div class="decision-item blocked">
+                        <div class="decision-type blocked">⚠ Blocked</div>
+                        <div class="decision-title">Setup Shopify Store</div>
+                        <div class="decision-reason">B9 · Cannot proceed without API key</div>
+                        <button class="decision-btn">Provide API Key</button>
+                    </div>
+
+                    <div class="decision-item input">
+                        <div class="decision-type input">❓ Input Needed</div>
+                        <div class="decision-title">Choose Homepage Color Scheme</div>
+                        <div class="decision-reason">B3 · Awaiting your design preference</div>
+                        <button class="decision-btn">Select Colors</button>
+                    </div>
+
+                    <div class="decision-item blocked">
+                        <div class="decision-type blocked">⚠ Blocked</div>
+                        <div class="decision-title">Chapter 13 Outline Approval</div>
+                        <div class="decision-reason">A2 · Agent waiting for your approval</div>
+                        <button class="decision-btn">Review Outline</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 3: ACTIVITY + QUEUE -->
+        <div class="row">
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">Activity Feed</span>
+                    <span class="panel-value">12 Events</span>
+                </div>
+                <div class="panel-content">
+                    <div class="activity-item">
+                        <div class="activity-time">[14:32:15]</div>
+                        <div class="activity-content">
+                            <h4>Task Completed</h4>
+                            <p>K2.5-WRITER uploaded to Royal Road</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-time">[14:28:42]</div>
+                        <div class="activity-content">
+                            <h4>Task Added</h4>
+                            <p>New task added to B3 queue by you</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-time">[14:15:08]</div>
+                        <div class="activity-content">
+                            <h4>Agent Spawned</h4>
+                            <p>GPT-4-CODER started on B3 homepage</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-time">[13:52:33]</div>
+                        <div class="activity-content">
+                            <h4>GitHub Push</div>
+                            <p>Updated mission-control-dashboard</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-time">[12:15:00]</div>
+                        <div class="activity-content">
+                            <h4>Milestone Reached</h4>
+                            <p>A2: 25% complete (3/12 chapters)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">Task Queue</span>
+                    <span class="panel-value">12 Total</span>
+                </div>
+                <div class="panel-content">
+                    <div class="queue-item high">
+                        <div class="queue-info">
+                            <h4>Upload RE:UNITE Chapters</h4>
+                            <p>A2 · ✎ Writing · Active 45m</p>
+                        </div>
+                        <span class="queue-priority high">High</span>
+                    </div>
+
+                    <div class="queue-item medium">
+                        <div class="queue-info">
+                            <h4>Design Team Elevate Homepage</h4>
+                            <p>B3 · </ > Coding · Pending</p>
+                        </div>
+                        <span class="queue-priority medium">Med</span>
+                    </div>
+
+                    <div class="queue-item medium">
+                        <div class="queue-info">
+                            <h4>Research Kick Platform</h4>
+                            <p>A4 · 🔍 Research · Active 2h</p>
+                        </div>
+                        <span class="queue-priority medium">Med</span>
+                    </div>
+
+                    <div class="queue-item low">
+                        <div class="queue-info">
+                            <h4>Update Documentation</h4>
+                            <p>A6 · ✎ Writing · Backlog</p>
+                        </div>
+                        <span class="queue-priority low">Low</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <!-- END HOME SECTION -->
+
+        <!-- CATEGORIES SECTION -->
+        <div class="section" id="categories-section">
+            <div class="categories-container">
+                
+                <!-- A - Ambition by Calbee -->
+                <div class="category-section">
+                    <div class="category-title">A <span>MBITION</span> — Personal Projects</div>
+                    <div class="projects-grid">
+                        
+                        <div class="project-card" data-project="A1">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A1 · Personal Tasks <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>General personal tasks and errands</p>
+                                    <div class="project-meta">
+                                        <span>📋 3 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="project-content">
+                                <div class="next-task-bar">
+                                    <strong>Next:</strong> Organize digital files
+                                </div>
+                                <div class="tasks-list">
+                                    <div class="task-row">
+                                        <span class="task-dot inactive">○</span>
+                                        <span>Organize digital files</span>
+                                        <span class="task-agent">No agent</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn" onclick="event.stopPropagation(); spawnAgent('A1')">Spawn Agent</button>
+                                    <button class="action-btn" onclick="event.stopPropagation(); addTask('A1')">Add Task</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card expanded" data-project="A2">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A2 · Re:Unite <span class="agent-badge active">🤖 CHAD_YI Active</span></h3>
+                                    <p>Fantasy novel - Christian allegory</p>
+                                    <div class="project-meta">
+                                        <span>📋 12 chapters</span>
+                                        <span>✅ 3 done</span>
+                                        <span class="deadline">⏰ Every Sunday</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="project-content">
+                                <div class="next-task-bar highlight">
+                                    <strong>Next (Ch 13):</strong> Write "The Revelation" - Awaiting your draft
+                                </div>
+                                <div class="tasks-list">
+                                    <div class="task-row high">
+                                        <span class="task-dot input-needed">!</span>
+                                        <span>Write Chapter 13</span>
+                                        <span class="task-agent">CHAD_YI</span>
+                                    </div>
+                                    <div class="subtasks">
+                                        <div class="subtask">Draft outline ✓</div>
+                                        <div class="subtask">Write content (60%)</div>
+                                        <div class="subtask">Edit & polish</div>
+                                    </div>
+                                    <div class="task-row">
+                                        <span class="task-dot inactive">○</span>
+                                        <span>Upload to Google Drive</span>
+                                        <span class="task-agent">Auto on done</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn" onclick="event.stopPropagation(); viewDrive('A2')">📁 Open Drive</button>
+                                    <button class="action-btn" onclick="event.stopPropagation(); addTask('A2')">Add Task</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project="A3">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A3 · KOE <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>Christian YouTube channel</p>
+                                    <div class="project-meta">
+                                        <span>📋 3 scripts</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="project-content">
+                                <div class="next-task-bar">
+                                    <strong>Next:</strong> Write Script 1: Right vs Left Paradigm
+                                </div>
+                                <div class="tasks-list">
+                                    <div class="task-row high">
+                                        <span class="task-dot inactive">○</span>
+                                        <span>Script 1: Right vs Left</span>
+                                        <span class="task-agent">No agent</span>
+                                    </div>
+                                </div>
+                                <div class="project-actions">
+                                    <button class="action-btn" onclick="event.stopPropagation(); spawnAgent('A3')">Spawn Agent</button>
+                                    <button class="action-btn" onclick="event.stopPropagation(); addTask('A3')">Add Task</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project="A4">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A4 · Streaming <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>VTuber/Faceless streaming setup</p>
+                                    <div class="project-meta">
+                                        <span>📋 5 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project="A5">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A5 · Trading <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>Forex & Options trading bots</p>
+                                    <div class="project-meta">
+                                        <span>📋 6 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project="A6">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>A6 · Mission Control <span class="agent-badge active">🤖 Active</span></h3>
+                                    <p>This dashboard project</p>
+                                    <div class="project-meta">
+                                        <span>📋 26 tasks</span>
+                                        <span>✅ 12 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- B - Business Empire -->
+                <div class="category-section">
+                    <div class="category-title">B <span>USINESS</span> — Empire Projects</div>
+                    <div class="projects-grid">
+                        <div class="project-card" data-project="B3">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>B3 · Team Elevate <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>Website done by Lovable</p>
+                                    <div class="project-meta">
+                                        <span>📋 4 tasks</span>
+                                        <span>✅ 1 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="project-content">
+                                <div class="next-task-bar">
+                                    <strong>Next:</strong> Optimize SEO for search ranking
+                                </div>
+                                <div class="tasks-list">
+                                    <div class="task-row high">
+                                        <span class="task-dot inactive">○</span>
+                                        <span>SEO Optimization</span>
+                                        <span class="task-agent">No agent</span>
+                                    </div>
+                                    <div class="task-row done">
+                                        <span class="task-dot">✓</span>
+                                        <span>Website Design (Lovable)</span>
+                                        <span class="task-agent">Lovable</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C - Callings -->
+                <div class="category-section">
+                    <div class="category-title">C <span>ALLINGS</span> — Side Projects</div>
+                    <div class="projects-grid">
+                        <div class="project-card" data-project="C1">
+                            <div class="project-header" onclick="toggleProject(this)">
+                                <div class="project-info-main">
+                                    <h3>C1 · Real Estate <span class="agent-badge">🤖 Inactive</span></h3>
+                                    <p>Property investments</p>
+                                    <div class="project-meta">
+                                        <span>📋 3 tasks</span>
+                                        <span>✅ 0 done</span>
+                                    </div>
+                                </div>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END CATEGORIES SECTION -->
+
+        <!-- INSIGHTS SECTION (Task 28) -->
+        <div class="section" id="insights-section">
+            <div class="row" style="grid-template-columns: repeat(2, 1fr);">
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Productivity Overview</span>
+                        <span class="panel-value">Tasks Over Time</span>
+                    </div>
+                    <div class="panel-content">
+                        <div id="productivityChart" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            📊 Chart: Tasks completed per day
+                            <br><br>
+                            <div style="font-size: 48px; color: var(--crimson-bright);">12</div>
+                            <div>Tasks completed today</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Project Velocity</span>
+                        <span class="panel-value">Speed Metrics</span>
+                    </div>
+                    <div class="panel-content">
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; text-align: center;">
+                                <div style="font-family: var(--display-font); font-size: 32px; color: var(--crimson-bright);">2.4</div>
+                                <div style="font-size: 11px; color: var(--text-muted);">Tasks/hour</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; text-align: center;">
+                                <div style="font-family: var(--display-font); font-size: 32px; color: var(--crimson-bright);">85%</div>
+                                <div style="font-size: 11px; color: var(--text-muted);">Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Time Distribution</span>
+                        <span class="panel-value">Where Time Goes</span>
+                    </div>
+                    <div class="panel-content">
+                        <div style="padding: 20px;">
+                            <div style="margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span>A6 · Mission Control</span>
+                                    <span>46%</span>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                    <div style="width: 46%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span>A2 · Re:Unite</span>
+                                    <span>25%</span>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                    <div style="width: 25%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                    <span>B3 · Team Elevate</span>
+                                    <span>10%</span>
+                                </div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                    <div style="width: 10%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Agent Performance</span>
+                        <span class="panel-value">AI Efficiency</span>
+                    </div>
+                    <div class="panel-content">
+                        <div id="agentPerformance" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            🤖 Agent analytics coming soon
+                            <br><br>
+                            <div style="font-size: 48px; color: var(--crimson-bright);">CHAD_YI</div>
+                            <div>Currently active</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END INSIGHTS SECTION -->
+
+        <!-- RESOURCES SECTION (Task 29) -->
+        <div class="section" id="resources-section">
+            <div class="row" style="grid-template-columns: repeat(3, 1fr);">
+
+                <!-- Quick Links -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <div>
+                            <div class="category-title">🔗 <span>LINKS</span></div>
+                            <div class="category-subtitle">Quick Access</div>
+                        </div>
+                    </div>
+                    <div class="category-projects">
+                        <a href="https://github.com/chadyi-king/mission-control-dashboard" target="_blank" class="category-project-item pending" style="text-decoration: none; color: inherit;">
+                            <div class="project-info">
+                                <h4>GitHub Repository</h4>
+                                <p>Source code & commits</p>
+                            </div>
+                            <span class="project-status pending">→</span>
+                        </a>
+                        <a href="https://chadyi-king.github.io/mission-control-dashboard/" target="_blank" class="category-project-item pending" style="text-decoration: none; color: inherit;">
+                            <div class="project-info">
+                                <h4>Live Dashboard</h4>
+                                <p>Production deployment</p>
+                            </div>
+                            <span class="project-status pending">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Documentation -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <div>
+                            <div class="category-title">📚 <span>DOCS</span></div>
+                            <div class="category-subtitle">References</div>
+                        </div>
+                    </div>
+                    <div class="category-projects">
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>Project Structure</h4>
+                                <p>A/B/C organization</p>
+                            </div>
+                            <span class="project-status pending">View</span>
+                        </div>
+                        <div class="category-project-item pending">
+                            <div class="project-info">
+                                <h4>Task Guidelines</h4>
+                                <p>How to use dashboard</p>
+                            </div>
+                            <span class="project-status pending">View</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="category-card">
+                    <div class="category-header">
+                        <div>
+                            <div class="category-title">🛠️ <span>TOOLS</span></div>
+                            <div class="category-subtitle">Utilities</div>
+                        </div>
+                    </div>
+                    <div class="category-projects">
+                        <div class="category-project-item pending" onclick="exportReport()">
+                            <div class="project-info">
+                                <h4>Export Data</h4>
+                                <p>Download JSON report</p>
+                            </div>
+                            <span class="project-status pending">↗</span>
+                        </div>
+                        <div class="category-project-item pending" onclick="backupData()">
+                            <div class="project-info">
+                                <h4>Backup</h4>
+                                <p>Save localStorage data</p>
+                            </div>
+                            <span class="project-status pending">↗</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END RESOURCES SECTION -->
+
+        <!-- ADD TASK MODAL (Task 6) -->
+        <div class="modal" id="addTaskModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">➕ Add New Task</span>
+                    <button class="modal-close" onclick="closeModal()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Task Title</label>
+                        <input type="text" id="taskTitle" placeholder="Enter task name...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project</label>
+                        <select id="taskProject">
+                            <optgroup label="A - Ambition">
+                                <option value="A1">A1 · Personal Tasks</option>
+                                <option value="A2">A2 · Re:Unite</option>
+                                <option value="A3">A3 · KOE</option>
+                                <option value="A4">A4 · Streaming</option>
+                                <option value="A5">A5 · Trading</option>
+                            </optgroup>
+                            <optgroup label="B - Business">
+                                <option value="B1">B1 · Exstatic</option>
+                                <option value="B2">B2 · Energize</option>
+                                <option value="B3" selected>B3 · Team Elevate</option>
+                                <option value="B4">B4 · Pesta Fiesta</option>
+                                <option value="B5">B5 · Enticipate</option>
+                                <option value="B6">B6 · Elluminate</option>
+                                <option value="B7">B7 · Encompasse</option>
+                                <option value="B8">B8 · Empyrean</option>
+                                <option value="B9">B9 · Ethereal</option>
+                                <option value="B10">B10 · Epitaph</option>
+                            </optgroup>
+                            <optgroup label="C - Callings">
+                                <option value="C1">C1 · Real Estate</option>
+                                <option value="C2">C2 · Side Sales Jobs</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <div class="priority-options">
+                            <button type="button" class="priority-btn" data-priority="high">High</button>
+                            <button type="button" class="priority-btn active" data-priority="medium">Medium</button>
+                            <button type="button" class="priority-btn" data-priority="low">Low</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="taskStatus">
+                            <option value="pending">Pending</option>
+                            <option value="active">Active</option>
+                            <option value="review">Review</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notes (optional)</label>
+                        <textarea id="taskNotes" rows="3" placeholder="Add details..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button class="btn-primary" onclick="submitTask()">Add Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT DETAIL MODAL (Task 13) -->
+        <div class="modal" id="projectModal">
+            <div class="modal-content" style="max-width: 700px;">
+                <div class="modal-header">
+                    <span class="modal-title" id="projectModalTitle">📁 Project</span>
+                    <button class="modal-close" onclick="closeProjectModal()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-stats-row" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatTotal">0</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Total Tasks</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatActive">0</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Active</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatDone">0</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Completed</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatProgress">0%</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Progress</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Tasks</label>
+                        <div id="projectTasksList" style="max-height: 300px; overflow-y: auto;">
+                            <!-- Tasks populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeProjectModal()">Close</button>
+                    <button class="btn-primary" onclick="addTaskToCurrentProject()">+ Add Task</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Quick Actions Menu
+        function toggleQuickMenu() {
+            document.getElementById('quickMenu').classList.toggle('show');
+        }
+
+        function quickAction(action) {
+            if (action === 'refresh') {
+                location.reload();
+            } else if (action === 'fullscreen') {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            } else if (action === 'export') {
+                exportReport();
+            } else if (action === 'add-task') {
+                openModal();
+            } else if (action === 'github') {
+                alert('📤 Deploying to GitHub Pages...\n\n(This would trigger a git push in real setup)');
+            }
+
+            document.getElementById('quickMenu').classList.remove('show');
+        }
+
+        // Section Navigation
+        function showSection(sectionName, element) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const sectionId = sectionName + '-section';
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+            }
+
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            if (element) {
+                element.classList.add('active');
+            }
+        }
+
+        // Update Sun Avatar Status
+        function updateSunStatus() {
+            const sunAvatar = document.querySelector('.sun-avatar-small');
+            if (!sunAvatar) return;
+            
+            // Check if any agent is working
+            const activeAgents = dashboardData?.agents?.filter(a => a.status === 'active').length || 0;
+            const activeTasks = dashboardData?.workflow?.active?.length || 0;
+            
+            // Binary: either active (working) or inactive
+            if (activeAgents > 1 || activeTasks > 0) {
+                sunAvatar.classList.remove('inactive');
+                sunAvatar.classList.add('active');
+            } else {
+                sunAvatar.classList.remove('active');
+                sunAvatar.classList.add('inactive');
+            }
+        }
+
+        // Toggle Project Expand
+        function toggleProject(header) {
+            const card = header.closest('.project-card');
+            card.classList.toggle('expanded');
+        }
+
+        function viewDrive(projectId) {
+            console.log('Open Google Drive for', projectId);
+            // TODO: Open Google Drive for project
+        }
+
+        // Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleArrow = document.querySelector('.sidebar-toggle span:first-child');
+            const toggleText = document.querySelector('.sidebar-toggle-text');
+
+            sidebar.classList.toggle('expanded');
+            const isExpanded = sidebar.classList.contains('expanded');
+
+            toggleArrow.textContent = isExpanded ? '◀' : '▶';
+            toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
+
+            // Shift ALL content via body class
+            document.body.classList.toggle('sidebar-expanded', isExpanded);
+        }
+
+        function setActive(element) {
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('quickMenu');
+            const btn = document.querySelector('.quick-btn');
+            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        // ==========================================
+        // TASK MANAGEMENT (Tasks 6-12)
+        // ==========================================
+
+        let selectedPriority = 'medium';
+
+        // Priority button selection
+        document.querySelectorAll('.priority-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedPriority = this.dataset.priority;
+            });
+        });
+
+        function openModal() {
+            document.getElementById('addTaskModal').classList.add('show');
+            document.getElementById('taskTitle').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('addTaskModal').classList.remove('show');
+            // Reset form
+            document.getElementById('taskTitle').value = '';
+            document.getElementById('taskNotes').value = '';
+            document.getElementById('taskStatus').value = 'pending';
+            selectedPriority = 'medium';
+            document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('[data-priority="medium"]').classList.add('active');
+        }
+
+        function submitTask() {
+            const title = document.getElementById('taskTitle').value.trim();
+            const project = document.getElementById('taskProject').value;
+            const status = document.getElementById('taskStatus').value;
+            const notes = document.getElementById('taskNotes').value.trim();
+
+            if (!title) {
+                alert('Please enter a task title');
+                return;
+            }
+
+            const task = {
+                id: 'TASK-' + Date.now(),
+                title: title,
+                project: project,
+                priority: selectedPriority,
+                status: status,
+                notes: notes,
+                createdAt: new Date().toISOString(),
+                completedAt: null
+            };
+
+            // Add to dashboardData
+            if (dashboardData) {
+                dashboardData.tasks.push(task);
+                dashboardData.workflow[status].push(task);
+
+                // Update stats
+                dashboardData.stats.spawnedToday++;
+                if (status === 'active') {
+                    dashboardData.stats.activeAgents++;
+                    dashboardData.stats.focusProject = project;
+                }
+
+                // Save to localStorage (temporary until backend)
+                localStorage.setItem('missionControlData', JSON.stringify(dashboardData));
+
+                // Update UI
+                updateDashboard();
+                alert('✅ Task added: ' + title);
+                closeModal();
+            }
+        }
+
+        // Close modal on outside click
+        document.getElementById('addTaskModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Task Filters (Task 11)
+        function filterTasks(filterType, filterValue) {
+            if (!dashboardData || !dashboardData.tasks) return;
+
+            let filtered = dashboardData.tasks;
+
+            if (filterType === 'project') {
+                filtered = filtered.filter(t => t.project === filterValue);
+            } else if (filterType === 'priority') {
+                filtered = filtered.filter(t => t.priority === filterValue);
+            } else if (filterType === 'status') {
+                filtered = filtered.filter(t => t.status === filterValue);
+            }
+
+            renderFilteredTasks(filtered);
+        }
+
+        function renderFilteredTasks(tasks) {
+            const container = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-content');
+            if (!container) return;
+
+            container.innerHTML = tasks.map(task => `
+                <div class="queue-item ${task.priority}" onclick="viewTask('${task.id}')">
+                    <div class="queue-info">
+                        <h4>${task.title}</h4>
+                        <p>${task.project} · ${formatStatus(task.status)}</p>
+                    </div>
+                    <span class="queue-priority ${task.priority}">${task.priority}</span>
+                </div>
+            `).join('');
+        }
+
+        // Task Search (Task 12)
+        function searchTasks(query) {
+            if (!dashboardData || !dashboardData.tasks) return;
+
+            const lowerQuery = query.toLowerCase();
+            const filtered = dashboardData.tasks.filter(t =>
+                t.title.toLowerCase().includes(lowerQuery) ||
+                t.project.toLowerCase().includes(lowerQuery) ||
+                (t.notes && t.notes.toLowerCase().includes(lowerQuery))
+            );
+
+            renderFilteredTasks(filtered);
+        }
+
+        // Make functions global
+        window.filterTasks = filterTasks;
+        window.searchTasks = searchTasks;
+        window.viewTask = viewTask;
+        window.completeTask = completeTask;
+        window.deleteTask = deleteTask;
+
+        // Export Report (Task 23)
+        function exportReport() {
+            if (!dashboardData) {
+                alert('No data available to export');
+                return;
+            }
+
+            const report = {
+                generatedAt: new Date().toISOString(),
+                summary: dashboardData.stats,
+                tasks: dashboardData.tasks,
+                projects: dashboardData.projects
+            };
+
+            const dataStr = JSON.stringify(report, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `mission-control-report-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            alert('📊 Report exported! Check your downloads.');
+        }
+
+        // Data Backup (Task 24)
+        function backupData() {
+            const data = localStorage.getItem('missionControlData');
+            if (!data) {
+                alert('No data to backup');
+                return;
+            }
+
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `mission-control-backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            alert('💾 Data backup complete!');
+        }
+
+        window.exportReport = exportReport;
+        window.backupData = backupData;
+
+        // ==========================================
+        // PROJECT MANAGEMENT (Tasks 13-16)
+        // ==========================================
+
+        let currentProjectId = null;
+
+        // Project Detail View (Task 13)
+        function viewProject(projectId) {
+            if (!dashboardData) return;
+
+            currentProjectId = projectId;
+
+            // Find project data
+            let project = null;
+            let category = '';
+            for (const cat of ['A', 'B', 'C']) {
+                const found = dashboardData.projects[cat].projects.find(p => p.id === projectId);
+                if (found) {
+                    project = found;
+                    category = cat;
+                    break;
+                }
+            }
+
+            if (!project) return;
+
+            // Get project tasks
+            const projectTasks = dashboardData.tasks.filter(t => t.project === projectId);
+            const activeTasks = projectTasks.filter(t => t.status === 'active').length;
+            const doneTasks = projectTasks.filter(t => t.status === 'done').length;
+            const totalTasks = projectTasks.length;
+            const progress = totalTasks > 0 ? Math.round((doneTasks / totalTasks) * 100) : 0;
+
+            // Update modal
+            document.getElementById('projectModalTitle').textContent = `📁 ${project.id} · ${project.name}`;
+            document.getElementById('projStatTotal').textContent = totalTasks;
+            document.getElementById('projStatActive').textContent = activeTasks;
+            document.getElementById('projStatDone').textContent = doneTasks;
+            document.getElementById('projStatProgress').textContent = progress + '%';
+
+            // Render tasks
+            const tasksList = document.getElementById('projectTasksList');
+            if (projectTasks.length === 0) {
+                tasksList.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);">No tasks yet</div>';
+            } else {
+                tasksList.innerHTML = projectTasks.map(task => `
+                    <div class="category-project-item ${task.status}" style="margin-bottom: 8px;" onclick="viewTask('${task.id}')">
+                        <div class="project-info">
+                            <h4>${task.title}</h4>
+                            <p>${formatStatus(task.status)} · ${task.priority}</p>
+                        </div>
+                        <span class="project-status ${task.status}">${task.status}</span>
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('projectModal').classList.add('show');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.remove('show');
+            currentProjectId = null;
+        }
+
+        function addTaskToCurrentProject() {
+            closeProjectModal();
+            if (currentProjectId) {
+                document.getElementById('taskProject').value = currentProjectId;
+            }
+            openModal();
+        }
+
+        // Make project functions global
+        window.viewProject = viewProject;
+        window.closeProjectModal = closeProjectModal;
+        window.addTaskToCurrentProject = addTaskToCurrentProject;
+
+        // ==========================================
+        // LIVE DATA SYSTEM (Tasks 1-5)
+        // ==========================================
+
+        let dashboardData = null;
+
+        async function loadData() {
+            try {
+                // Try localStorage first
+                const saved = localStorage.getItem('missionControlData');
+                if (saved) {
+                    dashboardData = JSON.parse(saved);
+                } else {
+                    // Load from file
+                    const response = await fetch('data.json?t=' + Date.now());
+                    dashboardData = await response.json();
+                }
+                updateDashboard();
+                console.log('✅ Data loaded:', new Date().toLocaleTimeString());
+            } catch (error) {
+                console.error('❌ Failed to load data:', error);
+            }
+        }
+
+        function updateDashboard() {
+            if (!dashboardData) return;
+
+            // Update Stats Bar (Task 2)
+            const stats = dashboardData.stats;
+            const statValues = document.querySelectorAll('.stat-value');
+            if (statValues.length >= 6) {
+                statValues[0].textContent = stats.activeAgents;
+                statValues[1].textContent = stats.spawnedToday;
+                statValues[2].textContent = stats.tasksDone;
+                statValues[3].textContent = stats.timeActive;
+                statValues[4].textContent = stats.focusProject;
+                statValues[5].textContent = stats.eventsToday;
+            }
+
+            // Update Workflow Pipeline (Task 3)
+            const workflow = dashboardData.workflow;
+            const pipelineCounts = document.querySelectorAll('.pipeline-count');
+            if (pipelineCounts.length >= 4) {
+                pipelineCounts[0].textContent = workflow.pending.length;
+                pipelineCounts[1].textContent = workflow.active.length;
+                pipelineCounts[2].textContent = workflow.review.length;
+                pipelineCounts[3].textContent = workflow.done.length;
+            }
+
+            // Update Activity Feed
+            updateActivityFeed();
+
+            // Update Task Queue
+            updateTaskQueue();
+        }
+
+        function updateActivityFeed() {
+            if (!dashboardData || !dashboardData.activity) return;
+
+            const container = document.querySelector('.panel:has(.panel-title:contains("Activity Feed")) .panel-content');
+            if (!container) return;
+
+            container.innerHTML = dashboardData.activity.slice(0, 5).map(event => `
+                <div class="activity-item">
+                    <div class="activity-time">[${formatTime(event.timestamp)}]</div>
+                    <div class="activity-content">
+                        <h4>${event.title}</h4>
+                        <p>${event.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateTaskQueue() {
+            if (!dashboardData || !dashboardData.tasks) return;
+
+            const container = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-content');
+            if (!container) return;
+
+            const activeTasks = dashboardData.tasks
+                .filter(t => t.status !== 'done')
+                .sort((a, b) => priorityWeight(b.priority) - priorityWeight(a.priority))
+                .slice(0, 5);
+
+            container.innerHTML = activeTasks.map(task => `
+                <div class="queue-item ${task.priority}" onclick="viewTask('${task.id}')">
+                    <div class="queue-info">
+                        <h4>${task.title}</h4>
+                        <p>${task.project} · ${formatStatus(task.status)}</p>
+                    </div>
+                    <span class="queue-priority ${task.priority}">${task.priority}</span>
+                </div>
+            `).join('');
+
+            // Update count
+            const countEl = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-value');
+            if (countEl) countEl.textContent = activeTasks.length + ' Total';
+        }
+
+        function priorityWeight(p) {
+            return { high: 3, medium: 2, low: 1 }[p] || 0;
+        }
+
+        function formatStatus(s) {
+            return { pending: 'Pending', active: 'Active', review: 'Review', done: 'Done' }[s] || s;
+        }
+
+        function formatTime(iso) {
+            const d = new Date(iso);
+            return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
+        }
+
+        // Complete Task (Task 8)
+        function completeTask(taskId) {
+            if (!dashboardData) return;
+
+            const task = dashboardData.tasks.find(t => t.id === taskId);
+            if (task) {
+                task.status = 'done';
+                task.completedAt = new Date().toISOString();
+
+                // Move from workflow
+                ['pending', 'active', 'review'].forEach(stage => {
+                    dashboardData.workflow[stage] = dashboardData.workflow[stage].filter(t => t.id !== taskId);
+                });
+                dashboardData.workflow.done.push(task);
+
+                // Update stats
+                dashboardData.stats.tasksDone++;
+
+                // Add activity
+                dashboardData.activity.unshift({
+                    timestamp: new Date().toISOString(),
+                    title: 'Task Completed',
+                    description: `${task.title} in ${task.project}`
+                });
+
+                saveData();
+                updateDashboard();
+                alert('✅ Task completed!');
+            }
+        }
+
+        // Delete Task (Task 9)
+        function deleteTask(taskId) {
+            if (!confirm('Are you sure you want to delete this task?')) return;
+
+            if (!dashboardData) return;
+
+            dashboardData.tasks = dashboardData.tasks.filter(t => t.id !== taskId);
+            ['pending', 'active', 'review', 'done'].forEach(stage => {
+                dashboardData.workflow[stage] = dashboardData.workflow[stage].filter(t => t.id !== taskId);
+            });
+
+            saveData();
+            updateDashboard();
+            alert('🗑️ Task deleted');
+        }
+
+        // View/Edit Task (Task 10)
+        function viewTask(taskId) {
+            if (!dashboardData) return;
+
+            const task = dashboardData.tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            // Populate edit modal (reuse add modal with values)
+            document.getElementById('taskTitle').value = task.title;
+            document.getElementById('taskProject').value = task.project;
+            document.getElementById('taskStatus').value = task.status;
+            document.getElementById('taskNotes').value = task.notes || '';
+
+            // Set priority
+            document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-priority="${task.priority}"]`).classList.add('active');
+            selectedPriority = task.priority;
+
+            // Change submit to update
+            const submitBtn = document.querySelector('.modal-footer .btn-primary');
+            submitBtn.textContent = 'Update Task';
+            submitBtn.onclick = () => updateTask(taskId);
+
+            openModal();
+        }
+
+        function updateTask(taskId) {
+            if (!dashboardData) return;
+
+            const task = dashboardData.tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            const oldStatus = task.status;
+            const newStatus = document.getElementById('taskStatus').value;
+
+            task.title = document.getElementById('taskTitle').value;
+            task.project = document.getElementById('taskProject').value;
+            task.status = newStatus;
+            task.priority = selectedPriority;
+            task.notes = document.getElementById('taskNotes').value;
+
+            // Move between workflow stages if status changed
+            if (oldStatus !== newStatus) {
+                dashboardData.workflow[oldStatus] = dashboardData.workflow[oldStatus].filter(t => t.id !== taskId);
+                dashboardData.workflow[newStatus].push(task);
+            }
+
+            saveData();
+            updateDashboard();
+            closeModal();
+
+            // Reset submit button
+            const submitBtn = document.querySelector('.modal-footer .btn-primary');
+            submitBtn.textContent = 'Add Task';
+            submitBtn.onclick = submitTask;
+
+            alert('✅ Task updated');
+        }
+
+        // Save data helper
+        function saveData() {
+            localStorage.setItem('missionControlData', JSON.stringify(dashboardData));
+        }
+
+        // Auto-refresh every 30 seconds (Task 5)
+        setInterval(loadData, 30000);
+
+        // Initial load
+        loadData();
+
+        // Make loadData available globally
+        window.loadData = loadData;
+    </script>
+</body>
+</html>

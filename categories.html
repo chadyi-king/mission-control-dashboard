@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Mission Control Dashboard</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --panel-bg: rgba(18, 18, 26, 0.8);
+            --crimson: #8B0000;
+            --crimson-bright: #DC143C;
+            --crimson-glow: rgba(220, 20, 60, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --border: #1a1a2e;
+            --success: #00ff88;
+            --warning: #c9a962;
+            --display-font: 'Orbitron', monospace;
+            --crystal-border: rgba(220, 20, 60, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 60px;
+            width: 60px;
+            height: calc(100vh - 60px);
+            background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(5,5,8,0.9) 100%);
+            border-right: 1px solid var(--crystal-border);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            padding: 16px 0;
+            transition: width 0.3s ease;
+        }
+
+        .sidebar.expanded { width: 200px; }
+
+        .sidebar-toggle {
+            width: 100%;
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--crystal-border);
+            color: var(--crimson-bright);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .sidebar-toggle-text {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.expanded .sidebar-toggle-text { opacity: 1; }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .sidebar-item:hover {
+            background: var(--crimson-glow);
+            color: var(--crimson-bright);
+        }
+
+        .sidebar-item.active {
+            background: var(--crimson-glow);
+            color: var(--crimson-bright);
+            border-right: 3px solid var(--crimson-bright);
+        }
+
+        .sidebar-icon {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-icon svg { width: 100%; height: 100%; }
+
+        .sidebar-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.expanded .sidebar-label { opacity: 1; }
+
+        /* Main content */
+        .main-content {
+            margin-left: 60px;
+            padding: 24px;
+            transition: margin-left 0.3s ease;
+        }
+
+        body.sidebar-expanded .main-content {
+            margin-left: 200px;
+        }
+
+        /* Categories specific styles */
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 28px;
+            margin-bottom: 32px;
+            background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-title span {
+            color: var(--crimson-bright);
+            font-size: 20px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 16px;
+        }
+
+        .project-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 20px var(--crimson-glow);
+        }
+
+        .project-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: linear-gradient(90deg, rgba(139,0,0,0.1), transparent);
+        }
+
+        .project-info-main h3 {
+            font-family: var(--display-font);
+            font-size: 15px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .agent-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-muted);
+        }
+
+        .agent-badge.active {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+        }
+
+        .project-info-main p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .deadline { color: var(--crimson-bright); }
+
+        .expand-icon {
+            font-size: 12px;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .project-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .project-card.expanded .project-content {
+            max-height: 600px;
+        }
+
+        .next-task-bar {
+            padding: 10px 16px;
+            background: rgba(139, 0, 0, 0.1);
+            border-left: 3px solid var(--crimson-bright);
+            margin: 0 16px 12px;
+            font-size: 12px;
+        }
+
+        .next-task-bar strong { color: var(--crimson-bright); }
+
+        .tasks-list { padding: 0 16px 12px; }
+
+        .task-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .task-row.high { border-left: 2px solid var(--crimson-bright); }
+        .task-row.done { opacity: 0.6; }
+
+        .task-dot {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .task-dot.inactive { color: var(--text-muted); }
+        .task-dot.input-needed { color: #c9a962; }
+
+        .task-agent {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+
+        .subtasks {
+            margin: 0 16px 12px 40px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .subtask {
+            font-size: 11px;
+            color: var(--text-muted);
+            padding: 4px 0;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--crystal-border);
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 4px;
+            color: var(--crimson-bright);
+            font-size: 10px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background: var(--crimson-bright);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" title="Expand/Collapse">
+            <span>▶</span>
+            <span class="sidebar-toggle-text">Expand</span>
+        </button>
+
+        <a href="index.html" class="sidebar-item">
+            <span class="sidebar-icon">🏠</span>
+            <span class="sidebar-label">Home</span>
+        </a>
+
+        <a href="categories.html" class="sidebar-item active">
+            <span class="sidebar-icon">📁</span>
+            <span class="sidebar-label">Categories</span>
+        </a>
+
+        <a href="insights.html" class="sidebar-item">
+            <span class="sidebar-icon">📊</span>
+            <span class="sidebar-label">Insights</span>
+        </a>
+
+        <a href="resources.html" class="sidebar-item">
+            <span class="sidebar-icon">📎</span>
+            <span class="sidebar-label">Resources</span>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="categories-container">
+            <h1 class="page-title">📁 Project Categories</h1>
+
+            <!-- A - Ambition -->
+            <div class="category-section">
+                <div class="category-title">A <span>MBITION</span> — Personal Projects</div>
+                <div class="projects-grid">
+                    
+                    <div class="project-card expanded" data-project="A2">
+                        <div class="project-header" onclick="toggleProject(this)">
+                            <div class="project-info-main">
+                                <h3>A2 · Re:Unite <span class="agent-badge active">🤖 Active</span></h3>
+                                <p>Fantasy novel - Christian allegory</p>
+                                <div class="project-meta">
+                                    <span>📋 12 chapters</span>
+                                    <span>✅ 3 done</span>
+                                    <span class="deadline">⏰ Every Sunday</span>
+                                </div>
+                            </div>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="next-task-bar">
+                                <strong>Next (Ch 13):</strong> Write "The Revelation" - Awaiting your draft
+                            </div>
+                            <div class="tasks-list">
+                                <div class="task-row high">
+                                    <span class="task-dot input-needed">!</span>
+                                    <span>Write Chapter 13</span>
+                                    <span class="task-agent">CHAD_YI</span>
+                                </div>
+                                <div class="subtasks">
+                                    <div class="subtask">Draft outline ✓</div>
+                                    <div class="subtask">Write content (60%)</div>
+                                    <div class="subtask">Edit & polish</div>
+                                </div>
+                            </div>
+                            <div class="project-actions">
+                                <button class="action-btn">📁 Open Drive</button>
+                                <button class="action-btn">Add Task</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleArrow = document.querySelector('.sidebar-toggle span:first-child');
+            const toggleText = document.querySelector('.sidebar-toggle-text');
+
+            sidebar.classList.toggle('expanded');
+            const isExpanded = sidebar.classList.contains('expanded');
+
+            toggleArrow.textContent = isExpanded ? '◀' : '▶';
+            toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
+            document.body.classList.toggle('sidebar-expanded', isExpanded);
+        }
+
+        function toggleProject(header) {
+            const card = header.closest('.project-card');
+            card.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
