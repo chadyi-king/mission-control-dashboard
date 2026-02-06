@@ -449,8 +449,14 @@
             padding-left: 224px !important;
         }
 
-        body.sidebar-expanded .section {
-            padding-left: 140px !important;
+        body.sidebar-expanded .section,
+        body.sidebar-expanded .section.active {
+            padding-left: 160px !important;
+        }
+        
+        /* Ensure sections have proper left padding */
+        .section.active {
+            padding-left: 84px;
         }
 
         @media (max-width: 768px) {
