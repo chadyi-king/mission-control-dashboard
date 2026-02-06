@@ -400,21 +400,57 @@
             padding-left: 224px;
         }
 
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            color: var(--crimson-bright);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 1100;
+        }
 
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .sidebar {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 250px;
+                height: calc(100vh - 60px);
+                transform: translateX(-100%);
+                z-index: 1050;
+                background: rgba(10, 10, 15, 0.98);
+            }
+            
             .sidebar.mobile-open {
                 transform: translateX(0);
             }
-
+            
             .main-container {
                 padding: 16px;
+                margin-left: 0 !important;
             }
-
+            
             .stats-bar {
-                padding: 10px 24px;
+                padding: 10px 16px;
+                margin-left: 0 !important;
+            }
+            
+            .section {
+                margin-left: 0 !important;
+            }
+            
+            body.sidebar-expanded .main-container,
+            body.sidebar-expanded .stats-bar,
+            body.sidebar-expanded .section {
+                margin-left: 0 !important;
             }
         }
 
@@ -1022,6 +1058,9 @@
         </div>
 
         <div class="topbar-right">
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+
             <!-- Quick Actions Menu -->
             <div class="quick-actions">
                 <button class="quick-btn" onclick="toggleQuickMenu()">
@@ -2042,6 +2081,12 @@
             if (statsBar) {
                 statsBar.classList.toggle('sidebar-expanded', isExpanded);
             }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('mobile-open');
         }
 
         function setActive(element) {
