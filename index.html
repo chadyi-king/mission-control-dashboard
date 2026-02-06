@@ -313,24 +313,25 @@
             letter-spacing: 1px;
         }
 
-        /* Sidebar */
+        /* Sidebar - Behind top bar */
         .sidebar {
             position: fixed;
             left: 0;
-            top: 60px;
+            top: 0;
             width: 60px;
-            height: calc(100vh - 60px);
-            background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(5,5,8,0.9) 100%);
+            height: 100vh;
+            background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
             border-right: 1px solid var(--crystal-border);
-            z-index: 100;
+            z-index: 50;
             display: flex;
             flex-direction: column;
-            padding: 16px 0;
+            padding: 76px 0 16px 0;
             transition: width 0.3s ease;
         }
         
         .sidebar.expanded {
             width: 200px;
+            z-index: 200;
         }
 
         .sidebar-toggle {
@@ -440,20 +441,16 @@
         }
 
         /* Sidebar expanded - shift ALL content */
+        body.sidebar-expanded .main-container {
+            padding-left: 224px !important;
+        }
+        
+        body.sidebar-expanded .stats-bar {
+            padding-left: 224px !important;
+        }
+
         body.sidebar-expanded .section {
-            padding-left: 180px !important;
-        }
-
-        body.sidebar-expanded #home-section,
-        body.sidebar-expanded #insights-section,
-        body.sidebar-expanded #resources-section,
-        body.sidebar-expanded #system-section,
-        body.sidebar-expanded #profile-section {
-            padding-left: 180px !important;
-        }
-
-        body.sidebar-expanded .categories-container {
-            padding-left: 180px !important;
+            padding-left: 140px !important;
         }
 
         @media (max-width: 768px) {
@@ -1329,7 +1326,7 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" title="Expand/Collapse sidebar">
             <span>▶</span>
             <span class="sidebar-toggle-text">Expand</span>
         </button>
@@ -1769,7 +1766,7 @@
         <!-- END HOME SECTION -->
 
         <!-- CATEGORIES SECTION -->
-        <div class="section active" id="categories-section">
+        <div class="section" id="categories-section">
             <div class="categories-container">
                 
                 <!-- A - Ambition by Calbee -->
