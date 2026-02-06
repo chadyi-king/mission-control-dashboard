@@ -441,11 +441,19 @@
 
         /* Sidebar expanded - shift ALL content */
         body.sidebar-expanded .section {
-            padding-left: 160px;
+            padding-left: 180px !important;
+        }
+
+        body.sidebar-expanded #home-section,
+        body.sidebar-expanded #insights-section,
+        body.sidebar-expanded #resources-section,
+        body.sidebar-expanded #system-section,
+        body.sidebar-expanded #profile-section {
+            padding-left: 180px !important;
         }
 
         body.sidebar-expanded .categories-container {
-            padding-left: 180px;
+            padding-left: 180px !important;
         }
 
         @media (max-width: 768px) {
