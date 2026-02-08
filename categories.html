@@ -26,6 +26,8 @@
             --panel-bg: rgba(18, 18, 26, 0.8);
             --success: #00ff88;
             --warning: #c9a962;
+            --danger: #ff4444;
+            --info: #4dabf7;
         }
 
         body {
@@ -38,7 +40,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* CYBER DATA STREAM BACKGROUND */
+        /* Background Effects */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -64,16 +66,16 @@
             pointer-events: none;
         }
 
-        .data-stream:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; font-size: 12px; }
-        .data-stream:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; font-size: 10px; }
-        .data-stream:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 4s; font-size: 14px; }
-        .data-stream:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; font-size: 11px; }
-        .data-stream:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 3s; font-size: 13px; }
-        .data-stream:nth-child(6) { left: 55%; animation-duration: 14s; animation-delay: 5s; font-size: 12px; }
-        .data-stream:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 2s; font-size: 10px; }
-        .data-stream:nth-child(8) { left: 75%; animation-duration: 17s; animation-delay: 4s; font-size: 14px; }
-        .data-stream:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 1s; font-size: 11px; }
-        .data-stream:nth-child(10) { left: 95%; animation-duration: 21s; animation-delay: 3s; font-size: 12px; }
+        .data-stream:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; }
+        .data-stream:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; }
+        .data-stream:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 4s; }
+        .data-stream:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; }
+        .data-stream:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 3s; }
+        .data-stream:nth-child(6) { left: 55%; animation-duration: 14s; animation-delay: 5s; }
+        .data-stream:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 2s; }
+        .data-stream:nth-child(8) { left: 75%; animation-duration: 17s; animation-delay: 4s; }
+        .data-stream:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 1s; }
+        .data-stream:nth-child(10) { left: 95%; animation-duration: 21s; animation-delay: 3s; }
 
         @keyframes fall {
             0% { transform: translateY(0); opacity: 0; }
@@ -133,51 +135,21 @@
         .sun-avatar-enhanced {
             width: 44px;
             height: 44px;
-            position: relative;
-            flex-shrink: 0;
             border-radius: 50%;
             background: radial-gradient(circle at 35% 35%, #ffeb3b 0%, #ff9800 15%, #ff5722 30%, #d32f2f 50%, #8b0000 70%, #3e0000 100%);
-            box-shadow: 
-                0 0 20px rgba(255, 87, 34, 0.8),
-                0 0 40px rgba(255, 87, 34, 0.4),
-                0 0 60px rgba(139, 0, 0, 0.3),
-                inset -8px -8px 20px rgba(0,0,0,0.4),
-                inset 8px 8px 20px rgba(255,200,100,0.3);
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.8), 0 0 40px rgba(255, 87, 34, 0.4), inset -8px -8px 20px rgba(0,0,0,0.4);
             animation: sunPulse 4s ease-in-out infinite;
-            overflow: visible;
         }
 
         @keyframes sunPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 87, 34, 0.8), 0 0 40px rgba(255, 87, 34, 0.4), 0 0 60px rgba(139, 0, 0, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 87, 34, 1), 0 0 60px rgba(255, 87, 34, 0.6), 0 0 90px rgba(139, 0, 0, 0.5); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .sun-widget-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .sun-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .sun-name {
-            font-family: var(--display-font);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--crimson-bright);
-        }
-
-        .sun-status {
-            font-size: 9px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .sun-widget-header { display: flex; align-items: center; gap: 12px; }
+        .sun-info { display: flex; flex-direction: column; gap: 2px; }
+        .sun-name { font-family: var(--display-font); font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--crimson-bright); }
+        .sun-status { font-size: 9px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
 
         .topbar-center {
             position: absolute;
@@ -210,8 +182,8 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #00ff88;
-            box-shadow: 0 0 10px #00ff88;
+            background: var(--success);
+            box-shadow: 0 0 10px var(--success);
             animation: pulse 2s infinite;
         }
 
@@ -236,9 +208,7 @@
             transition: width 0.3s ease;
         }
 
-        .sidebar.expanded {
-            width: 200px;
-        }
+        .sidebar.expanded { width: 200px; }
 
         .sidebar-toggle {
             width: 100%;
@@ -257,21 +227,9 @@
             transition: all 0.2s;
         }
 
-        .sidebar-toggle:hover {
-            background: var(--crimson-glow);
-        }
-
-        .sidebar-toggle-text {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .sidebar.expanded .sidebar-toggle-text {
-            opacity: 1;
-        }
+        .sidebar-toggle:hover { background: var(--crimson-glow); }
+        .sidebar-toggle-text { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transition: opacity 0.3s; }
+        .sidebar.expanded .sidebar-toggle-text { opacity: 1; }
 
         .sidebar-item {
             display: flex;
@@ -284,44 +242,12 @@
             text-decoration: none;
         }
 
-        .sidebar-item:hover {
-            background: var(--crimson-glow);
-            color: var(--crimson-bright);
-        }
-
-        .sidebar-item.active {
-            background: var(--crimson-glow);
-            color: var(--crimson-bright);
-            border-right: 3px solid var(--crimson-bright);
-        }
-
-        .sidebar-icon {
-            width: 20px;
-            height: 20px;
-            min-width: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: currentColor;
-        }
-
-        .sidebar-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .sidebar-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .sidebar.expanded .sidebar-label {
-            opacity: 1;
-        }
+        .sidebar-item:hover { background: var(--crimson-glow); color: var(--crimson-bright); }
+        .sidebar-item.active { background: var(--crimson-glow); color: var(--crimson-bright); border-right: 3px solid var(--crimson-bright); }
+        .sidebar-icon { width: 20px; height: 20px; min-width: 20px; display: flex; align-items: center; justify-content: center; }
+        .sidebar-icon svg { width: 100%; height: 100%; }
+        .sidebar-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; opacity: 0; transition: opacity 0.3s; }
+        .sidebar.expanded .sidebar-label { opacity: 1; }
 
         /* Main Content */
         .main-content {
@@ -332,17 +258,145 @@
             z-index: 10;
         }
 
-        body.sidebar-expanded .main-content {
-            margin-left: 200px;
-        }
+        body.sidebar-expanded .main-content { margin-left: 200px; }
 
         .page-title {
             font-family: var(--display-font);
             font-size: 24px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Dashboard Stats Bar */
+        .dashboard-stats-bar {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .dashboard-stat {
+            text-align: center;
+            padding: 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            border-left: 3px solid var(--crystal-border);
+            transition: all 0.3s;
+        }
+
+        .dashboard-stat:hover {
+            background: var(--crimson-glow);
+            border-left-color: var(--crimson-bright);
+        }
+
+        .dashboard-stat-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .dashboard-stat-value {
+            font-family: var(--display-font);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--crimson-bright);
+            margin-bottom: 4px;
+        }
+
+        .dashboard-stat-value.success { color: var(--success); }
+        .dashboard-stat-value.warning { color: var(--warning); }
+        .dashboard-stat-value.danger { color: var(--danger); }
+
+        .dashboard-stat-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .next-deadline-countdown {
+            font-family: var(--display-font);
+            font-size: 14px;
+            color: var(--warning);
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-select, .filter-btn {
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--crystal-border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: var(--tech-font);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-select:hover, .filter-btn:hover {
+            border-color: var(--crimson-bright);
+            background: var(--crimson-glow);
+        }
+
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filter-btn.active {
+            background: var(--crimson-glow);
+            border-color: var(--crimson-bright);
+            color: var(--crimson-bright);
+        }
+
+        .filter-clear {
+            margin-left: auto;
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--crystal-border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-clear:hover {
+            border-color: var(--crimson-bright);
+            color: var(--crimson-bright);
         }
 
         /* Category Section */
@@ -414,11 +468,11 @@
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 20px;
         }
 
-        /* Project Card */
+        /* Project Card Enhanced */
         .project-card {
             background: var(--panel-bg);
             border: 1px solid var(--crystal-border);
@@ -431,6 +485,10 @@
         .project-card:hover {
             border-color: var(--crimson-bright);
             box-shadow: 0 0 20px var(--crimson-glow);
+        }
+
+        .project-card.filtered-out {
+            display: none;
         }
 
         .project-card-header {
@@ -464,23 +522,29 @@
             font-weight: 600;
         }
 
+        .project-badges {
+            display: flex;
+            gap: 6px;
+        }
+
         .agent-badge {
-            font-size: 10px;
-            padding: 3px 10px;
+            font-size: 9px;
+            padding: 3px 8px;
             border-radius: 4px;
             background: rgba(255,255,255,0.1);
             color: var(--text-muted);
             font-weight: 500;
+            text-transform: uppercase;
         }
 
         .agent-badge.active {
             background: rgba(0, 255, 136, 0.15);
-            color: #00ff88;
+            color: var(--success);
         }
 
         .agent-badge.pending {
             background: rgba(201, 169, 98, 0.15);
-            color: #c9a962;
+            color: var(--warning);
         }
 
         .project-id {
@@ -489,43 +553,100 @@
             font-family: monospace;
         }
 
-        /* Task Stats Row */
+        /* Enhanced Task Stats */
         .task-stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            padding: 12px 20px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--crystal-border);
         }
 
         .task-stat {
             text-align: center;
-            padding: 8px;
+            padding: 8px 4px;
             background: rgba(255,255,255,0.02);
             border-radius: 6px;
         }
 
         .task-stat-value {
             font-family: var(--display-font);
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: var(--text-primary);
         }
 
         .task-stat-label {
-            font-size: 9px;
+            font-size: 8px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 2px;
         }
 
-        .task-stat.urgent .task-stat-value {
-            color: var(--crimson-bright);
+        .task-stat.high-priority .task-stat-value { color: var(--danger); }
+        .task-stat.medium-priority .task-stat-value { color: var(--warning); }
+        .task-stat.low-priority .task-stat-value { color: var(--success); }
+        .task-stat.urgent .task-stat-value { color: var(--crimson-bright); }
+
+        /* Time Tracking */
+        .time-tracking-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            background: rgba(0,0,0,0.2);
         }
 
-        /* Next Due Date */
-        .next-due {
+        .time-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .time-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .time-value {
+            font-family: var(--display-font);
+            font-size: 14px;
+            color: var(--info);
+        }
+
+        .time-value.over-budget {
+            color: var(--danger);
+        }
+
+        .time-progress-bar {
+            width: 120px;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .time-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--info), #74c0fc);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .time-progress-fill.warning {
+            background: linear-gradient(90deg, var(--warning), #ffd43b);
+        }
+
+        .time-progress-fill.danger {
+            background: linear-gradient(90deg, var(--danger), #ff8787);
+        }
+
+        /* Due Date Countdown */
+        .due-countdown {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -534,18 +655,36 @@
             font-size: 12px;
         }
 
-        .next-due-label {
+        .due-label {
             color: var(--text-muted);
         }
 
-        .next-due-value {
-            color: var(--crimson-bright);
+        .due-value {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-weight: 600;
         }
 
-        .next-due-value.urgent {
-            color: #ff4444;
+        .due-value.urgent {
+            color: var(--danger);
             animation: pulse 1.5s infinite;
+        }
+
+        .due-value.warning {
+            color: var(--warning);
+        }
+
+        .due-value.success {
+            color: var(--success);
+        }
+
+        .countdown-timer {
+            font-family: var(--display-font);
+            font-size: 11px;
+            padding: 2px 8px;
+            background: rgba(139, 0, 0, 0.3);
+            border-radius: 4px;
         }
 
         /* Progress Bar */
@@ -586,6 +725,72 @@
             box-shadow: 0 0 10px var(--crimson-glow);
         }
 
+        /* Milestones */
+        .milestones-section {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--crystal-border);
+        }
+
+        .milestones-title {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .milestones-track {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .milestone {
+            flex: 1;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .milestone.completed {
+            background: var(--success);
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .milestone.active {
+            background: var(--warning);
+            box-shadow: 0 0 8px var(--warning);
+            animation: pulse 2s infinite;
+        }
+
+        .milestone.upcoming {
+            background: rgba(255,255,255,0.05);
+            border: 1px dashed var(--crystal-border);
+        }
+
+        .milestone-tooltip {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--crystal-border);
+            border-radius: 4px;
+            font-size: 9px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 10;
+        }
+
+        .milestone:hover .milestone-tooltip {
+            opacity: 1;
+        }
+
         /* Expand Icon */
         .expand-icon {
             font-size: 12px;
@@ -609,7 +814,7 @@
             max-height: 800px;
         }
 
-        /* Tasks List in Expanded View */
+        /* Tasks Section */
         .tasks-section {
             padding: 16px 20px;
             border-bottom: 1px solid var(--crystal-border);
@@ -637,11 +842,16 @@
             background: rgba(255,255,255,0.03);
             border-radius: 6px;
             border-left: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .task-item:hover {
+            background: rgba(255,255,255,0.05);
         }
 
         .task-item.high-priority {
-            border-left-color: var(--crimson-bright);
-            background: rgba(139, 0, 0, 0.08);
+            border-left-color: var(--danger);
+            background: rgba(255, 68, 68, 0.05);
         }
 
         .task-item.medium-priority {
@@ -696,8 +906,8 @@
         }
 
         .priority-badge.high {
-            background: rgba(139, 0, 0, 0.3);
-            color: var(--crimson-bright);
+            background: rgba(255, 68, 68, 0.2);
+            color: var(--danger);
         }
 
         .priority-badge.medium {
@@ -710,26 +920,12 @@
             color: var(--success);
         }
 
-        /* Subtasks */
-        .subtasks-list {
-            margin: 8px 0 8px 32px;
-            padding: 10px 14px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 6px;
-        }
-
-        .subtask-item {
-            font-size: 11px;
-            color: var(--text-muted);
-            padding: 4px 0;
+        .assigned-agent {
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .subtask-item::before {
-            content: '└─';
-            color: var(--crimson-bright);
+            gap: 4px;
+            font-size: 10px;
+            color: var(--info);
         }
 
         /* Action Buttons */
@@ -800,36 +996,37 @@
             color: var(--crimson-bright);
         }
 
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-muted);
+        }
+
         /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .dashboard-stats-bar {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .task-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .sidebar.mobile-open {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
-                padding: 16px;
-            }
-            
-            body.sidebar-expanded .main-content {
-                margin-left: 0;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .category-stats {
-                display: none;
-            }
-            
-            .topbar-center {
-                display: none;
-            }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main-content { margin-left: 0; padding: 16px; }
+            body.sidebar-expanded .main-content { margin-left: 0; }
+            .dashboard-stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid { grid-template-columns: 1fr; }
+            .category-stats { display: none; }
+            .topbar-center { display: none; }
+            .filter-bar { flex-direction: column; align-items: stretch; }
+            .filter-group { justify-content: space-between; }
+            .filter-clear { margin-left: 0; }
+            .task-stats { grid-template-columns: repeat(3, 1fr); }
+            .time-tracking-bar { flex-direction: column; gap: 10px; align-items: flex-start; }
         }
 
         /* Scrollbar */
@@ -953,6 +1150,85 @@
     <!-- Main Content -->
     <div class="main-content">
         <h1 class="page-title">📁 Project Categories</h1>
+
+        <!-- Dashboard Stats Bar -->
+        <div id="dashboard-stats-bar" class="dashboard-stats-bar" style="display: none;">
+            <div class="dashboard-stat">
+                <div class="dashboard-stat-icon">📊</div>
+                <div class="dashboard-stat-value" id="total-projects">0</div>
+                <div class="dashboard-stat-label">Total Projects</div>
+            </div>
+            <div class="dashboard-stat">
+                <div class="dashboard-stat-icon">📋</div>
+                <div class="dashboard-stat-value" id="total-tasks">0</div>
+                <div class="dashboard-stat-label">Total Tasks</div>
+            </div>
+            <div class="dashboard-stat">
+                <div class="dashboard-stat-icon">✓</div>
+                <div class="dashboard-stat-value success" id="tasks-done">0</div>
+                <div class="dashboard-stat-label">Tasks Done</div>
+            </div>
+            <div class="dashboard-stat">
+                <div class="dashboard-stat-icon">⏳</div>
+                <div class="dashboard-stat-value warning" id="tasks-pending">0</div>
+                <div class="dashboard-stat-label">Pending</div>
+            </div>
+            <div class="dashboard-stat">
+                <div class="dashboard-stat-icon">🎯</div>
+                <div class="dashboard-stat-value" id="completion-rate">0%</div>
+                <div class="dashboard-stat-label">Completion</div>
+            </div>
+            <div class="dashboard-stat">
+                <div class="dashboard-stat-icon">🚨</div>
+                <div class="dashboard-stat-value danger" id="urgent-tasks">0</div>
+                <div class="dashboard-stat-label">Urgent Tasks</div>
+            </div>
+        </div>
+
+        <!-- Next Deadline Countdown -->
+        <div id="deadline-banner" class="due-countdown" style="display: none; margin-bottom: 24px; padding: 16px 20px; background: var(--panel-bg); border: 1px solid var(--crystal-border); border-radius: 12px;">
+            <span class="due-label">⏰ NEXT DEADLINE:</span>
+            <div class="due-value" id="next-deadline-display"></div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar" id="filter-bar" style="display: none;">
+            <div class="filter-group">
+                <span class="filter-label">Filter by:</span>
+            </div>
+            <div class="filter-group">
+                <select class="filter-select" id="filter-priority" onchange="applyFilters()">
+                    <option value="">All Priorities</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select class="filter-select" id="filter-status" onchange="applyFilters()">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="pending">Pending</option>
+                    <option value="done">Done</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select class="filter-select" id="filter-agent" onchange="applyFilters()">
+                    <option value="">All Agents</option>
+                    <option value="CHAD_YI">CHAD_YI</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">Sort:</span>
+                <select class="filter-select" id="sort-by" onchange="applyFilters()">
+                    <option value="name">Project Name</option>
+                    <option value="due">Due Date</option>
+                    <option value="progress">Progress</option>
+                    <option value="tasks">Task Count</option>
+                </select>
+            </div>
+            <button class="filter-clear" onclick="clearFilters()">Clear Filters</button>
+        </div>
         
         <div id="loading-state" class="loading-state">
             <div class="loading-spinner"></div>
@@ -963,10 +1239,19 @@
             <div>⚠️ Failed to load data</div>
         </div>
 
+        <div id="no-results" class="no-results" style="display: none;">
+            <div>🔍 No projects match your filters</div>
+            <button class="filter-clear" onclick="clearFilters()" style="margin-top: 16px;">Clear Filters</button>
+        </div>
+
         <div id="categories-container"></div>
     </div>
 
     <script>
+        // Global data store
+        let appData = null;
+        let allProjects = [];
+
         // Sidebar Toggle
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -987,13 +1272,40 @@
             card.classList.toggle('expanded');
         }
 
-        // Load Data and Render
+        // Load Data
         async function loadData() {
             try {
                 const response = await fetch('data.json');
-                const data = await response.json();
-                renderCategories(data);
+                appData = await response.json();
+                allProjects = [];
+                
+                // Process all projects
+                Object.keys(appData.projects).forEach(catKey => {
+                    const cat = appData.projects[catKey];
+                    cat.projects.forEach(proj => {
+                        const projTasks = appData.tasks.filter(t => t.project === proj.id);
+                        const taskStats = calculateTaskStats(projTasks);
+                        
+                        allProjects.push({
+                            ...proj,
+                            category: catKey,
+                            categoryName: cat.name,
+                            tasks: projTasks,
+                            stats: taskStats,
+                            priorityBreakdown: getPriorityBreakdown(projTasks),
+                            timeTracking: calculateTimeTracking(projTasks),
+                            nextDeadline: getNextDeadline(projTasks),
+                            milestones: generateMilestones(proj, projTasks)
+                        });
+                    });
+                });
+
+                renderDashboardStats();
+                renderCategories();
+                
                 document.getElementById('loading-state').style.display = 'none';
+                document.getElementById('dashboard-stats-bar').style.display = 'grid';
+                document.getElementById('filter-bar').style.display = 'flex';
             } catch (error) {
                 console.error('Failed to load data:', error);
                 document.getElementById('loading-state').style.display = 'none';
@@ -1001,57 +1313,180 @@
             }
         }
 
-        // Render Categories
-        function renderCategories(data) {
-            const container = document.getElementById('categories-container');
-            const allTasks = data.tasks || [];
+        // Calculate comprehensive task statistics
+        function calculateTaskStats(tasks) {
+            return {
+                total: tasks.length,
+                pending: tasks.filter(t => t.status === 'pending').length,
+                active: tasks.filter(t => t.status === 'active').length,
+                review: tasks.filter(t => t.status === 'review').length,
+                done: tasks.filter(t => t.status === 'done').length,
+                highPriority: tasks.filter(t => t.priority === 'high' && t.status !== 'done').length,
+                mediumPriority: tasks.filter(t => t.priority === 'medium' && t.status !== 'done').length,
+                lowPriority: tasks.filter(t => t.priority === 'low' && t.status !== 'done').length,
+                urgent: tasks.filter(t => t.priority === 'high' && t.status !== 'done').length
+            };
+        }
+
+        // Get priority breakdown
+        function getPriorityBreakdown(tasks) {
+            return {
+                high: tasks.filter(t => t.priority === 'high').length,
+                medium: tasks.filter(t => t.priority === 'medium').length,
+                low: tasks.filter(t => t.priority === 'low').length
+            };
+        }
+
+        // Calculate time tracking (simulated based on task data)
+        function calculateTimeTracking(tasks) {
+            const estimatedHours = tasks.reduce((sum, t) => {
+                if (t.notes && t.notes.includes('hr')) {
+                    const match = t.notes.match(/(\d+)[\s-]*(\d*)\s*hr/i);
+                    if (match) {
+                        const hours = match[2] ? (parseInt(match[1]) + parseInt(match[2])) / 2 : parseInt(match[1]);
+                        return sum + hours;
+                    }
+                }
+                return sum + 2; // Default 2 hours per task
+            }, 0);
+
+            const completedTasks = tasks.filter(t => t.status === 'done').length;
+            const totalTasks = tasks.length;
+            const spentHours = totalTasks > 0 ? (completedTasks / totalTasks) * estimatedHours * 0.8 : 0;
+
+            return {
+                estimated: Math.round(estimatedHours),
+                spent: Math.round(spentHours),
+                remaining: Math.max(0, Math.round(estimatedHours - spentHours))
+            };
+        }
+
+        // Get next deadline
+        function getNextDeadline(tasks) {
+            const pendingTasks = tasks.filter(t => t.status !== 'done');
+            if (pendingTasks.length === 0) return null;
             
-            // Group projects by category
+            // Sort by priority (high first), then by creation date as proxy for due date
+            const sorted = pendingTasks.sort((a, b) => {
+                if (a.priority === 'high' && b.priority !== 'high') return -1;
+                if (b.priority === 'high' && a.priority !== 'high') return 1;
+                return new Date(a.createdAt) - new Date(b.createdAt);
+            });
+
+            // Simulate deadline: 3 days from creation for high priority, 7 for others
+            const task = sorted[0];
+            const created = new Date(task.createdAt);
+            const daysToAdd = task.priority === 'high' ? 3 : (task.priority === 'medium' ? 7 : 14);
+            const deadline = new Date(created);
+            deadline.setDate(deadline.getDate() + daysToAdd);
+            
+            return {
+                task: task,
+                date: deadline,
+                priority: task.priority
+            };
+        }
+
+        // Generate milestones
+        function generateMilestones(project, tasks) {
+            const milestones = [];
+            const totalTasks = tasks.length;
+            const completedTasks = tasks.filter(t => t.status === 'done').length;
+            
+            // Create 4 milestone checkpoints
+            for (let i = 1; i <= 4; i++) {
+                const threshold = i * 0.25;
+                const milestoneTasks = Math.floor(totalTasks * threshold);
+                const isCompleted = completedTasks >= milestoneTasks && milestoneTasks > 0;
+                const isActive = !isCompleted && completedTasks >= milestoneTasks - Math.ceil(totalTasks * 0.1);
+                
+                milestones.push({
+                    number: i,
+                    label: `${i * 25}%`,
+                    completed: isCompleted,
+                    active: isActive,
+                    tasksRequired: milestoneTasks
+                });
+            }
+            
+            return milestones;
+        }
+
+        // Format countdown
+        function formatCountdown(targetDate) {
+            const now = new Date();
+            const diff = targetDate - now;
+            
+            if (diff < 0) return 'OVERDUE';
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            if (days > 0) return `${days}d ${hours}h`;
+            return `${hours}h`;
+        }
+
+        // Render Dashboard Stats
+        function renderDashboardStats() {
+            const allTasks = appData.tasks || [];
+            const totalProjects = allProjects.length;
+            const totalTasks = allTasks.length;
+            const tasksDone = allTasks.filter(t => t.status === 'done').length;
+            const tasksPending = allTasks.filter(t => t.status === 'pending').length;
+            const urgentTasks = allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
+            const completionRate = totalTasks > 0 ? Math.round((tasksDone / totalTasks) * 100) : 0;
+
+            document.getElementById('total-projects').textContent = totalProjects;
+            document.getElementById('total-tasks').textContent = totalTasks;
+            document.getElementById('tasks-done').textContent = tasksDone;
+            document.getElementById('tasks-pending').textContent = tasksPending;
+            document.getElementById('completion-rate').textContent = completionRate + '%';
+            document.getElementById('urgent-tasks').textContent = urgentTasks;
+
+            // Find next deadline across all projects
+            const allDeadlines = allProjects
+                .map(p => p.nextDeadline)
+                .filter(d => d !== null)
+                .sort((a, b) => a.date - b.date);
+
+            if (allDeadlines.length > 0) {
+                const next = allDeadlines[0];
+                const countdown = formatCountdown(next.date);
+                const isUrgent = next.priority === 'high' || countdown.includes('OVERDUE');
+                
+                document.getElementById('deadline-banner').style.display = 'flex';
+                document.getElementById('next-deadline-display').innerHTML = `
+                    <span class="${isUrgent ? 'urgent' : ''}">${next.task.title}</span>
+                    <span class="countdown-timer">${countdown}</span>
+                `;
+            }
+        }
+
+        // Render Categories
+        function renderCategories() {
+            const container = document.getElementById('categories-container');
+            
+            // Group by category
             const categories = {
-                A: { icon: '🔥', name: 'Ambition', subtitle: 'Personal Projects', projects: [] },
+                A: { icon: '🔥', name: 'Ambition', subtitle: 'By Calbee (Personal)', projects: [] },
                 B: { icon: '💼', name: 'Business', subtitle: 'Empire (Main Work)', projects: [] },
-                C: { icon: '⚡', name: 'Callings', subtitle: 'On The Side', projects: [] }
+                C: { icon: '⚡', name: 'Callings', subtitle: 'On The Side (Other Jobs)', projects: [] }
             };
 
-            // Process all projects from data
-            Object.keys(data.projects).forEach(catKey => {
-                const cat = data.projects[catKey];
-                if (categories[catKey]) {
-                    cat.projects.forEach(proj => {
-                        // Calculate task stats
-                        const projTasks = allTasks.filter(t => t.project === proj.id);
-                        const total = projTasks.length;
-                        const completed = projTasks.filter(t => t.status === 'done').length;
-                        const active = projTasks.filter(t => t.status === 'active').length;
-                        const urgent = projTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
-                        
-                        // Get next due task
-                        const pendingTasks = projTasks
-                            .filter(t => t.status !== 'done')
-                            .sort((a, b) => {
-                                if (a.priority === 'high' && b.priority !== 'high') return -1;
-                                if (b.priority === 'high' && a.priority !== 'high') return 1;
-                                return 0;
-                            });
-                        
-                        categories[catKey].projects.push({
-                            ...proj,
-                            tasks: projTasks,
-                            stats: { total, completed, active, urgent },
-                            pendingTasks: pendingTasks
-                        });
-                    });
+            allProjects.forEach(proj => {
+                if (categories[proj.category]) {
+                    categories[proj.category].projects.push(proj);
                 }
             });
 
-            // Render each category
             container.innerHTML = Object.keys(categories).map(catKey => {
                 const cat = categories[catKey];
                 const totalTasks = cat.projects.reduce((sum, p) => sum + p.stats.total, 0);
-                const completedTasks = cat.projects.reduce((sum, p) => sum + p.stats.completed, 0);
+                const completedTasks = cat.projects.reduce((sum, p) => sum + p.stats.done, 0);
+                const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
                 
                 return `
-                    <div class="category-section">
+                    <div class="category-section" data-category="${catKey}">
                         <div class="category-header-bar">
                             <div class="category-icon">${cat.icon}</div>
                             <div class="category-title-group">
@@ -1068,7 +1503,7 @@
                                     <div class="category-stat-label">Tasks</div>
                                 </div>
                                 <div class="category-stat">
-                                    <div class="category-stat-value">${Math.round((completedTasks / totalTasks) * 100) || 0}%</div>
+                                    <div class="category-stat-value">${completionRate}%</div>
                                     <div class="category-stat-label">Complete</div>
                                 </div>
                             </div>
@@ -1083,23 +1518,40 @@
 
         // Render Individual Project Card
         function renderProjectCard(proj) {
-            const progress = Math.round((proj.stats.completed / proj.stats.total) * 100) || 0;
+            const progress = proj.stats.total > 0 ? Math.round((proj.stats.done / proj.stats.total) * 100) : 0;
             const statusClass = proj.status === 'active' ? 'active' : (proj.status === 'pending' ? 'pending' : '');
-            const nextTask = proj.pendingTasks[0];
+            const timePercent = proj.timeTracking.estimated > 0 
+                ? Math.min(100, Math.round((proj.timeTracking.spent / proj.timeTracking.estimated) * 100)) 
+                : 0;
+            const timeClass = timePercent > 100 ? 'danger' : (timePercent > 80 ? 'warning' : '');
             
-            // Get most urgent due date
-            const nextDue = nextTask ? 'ASAP' : 'No pending tasks';
-            const isUrgent = proj.stats.urgent > 0;
+            const deadline = proj.nextDeadline;
+            let dueDisplay = 'No pending tasks';
+            let dueClass = 'success';
+            let countdown = '';
             
+            if (deadline) {
+                countdown = formatCountdown(deadline.date);
+                dueDisplay = deadline.task.title.substring(0, 30) + (deadline.task.title.length > 30 ? '...' : '');
+                dueClass = deadline.priority === 'high' || countdown === 'OVERDUE' ? 'urgent' : 
+                          (countdown.includes('d') && parseInt(countdown) <= 2 ? 'warning' : 'success');
+            }
+
             return `
-                <div class="project-card" data-project="${proj.id}">
+                <div class="project-card" data-project="${proj.id}" data-status="${proj.status}" 
+                     data-priority="${proj.stats.urgent > 0 ? 'high' : (proj.stats.mediumPriority > 0 ? 'medium' : 'low')}"
+                     data-agent="CHAD_YI" data-due="${deadline ? deadline.date.getTime() : 9999999999999}"
+                     data-progress="${progress}" data-tasks="${proj.stats.total}">
                     <div class="project-card-header" onclick="toggleProject(this)">
                         <div class="project-info-main">
                             <div class="project-title-row">
                                 <h3>${proj.id} · ${proj.name}</h3>
-                                <span class="agent-badge ${statusClass}">${proj.status}</span>
+                                <div class="project-badges">
+                                    <span class="agent-badge ${statusClass}">${proj.status}</span>
+                                    ${proj.stats.urgent > 0 ? '<span class="agent-badge" style="background: rgba(255,68,68,0.3); color: #ff4444;">URGENT</span>' : ''}
+                                </div>
                             </div>
-                            <div class="project-id">${proj.stats.total} tasks · ${proj.stats.completed} completed</div>
+                            <div class="project-id">${proj.stats.total} tasks · ${proj.stats.done} completed · ${proj.stats.active} active</div>
                         </div>
                         <span class="expand-icon">▼</span>
                     </div>
@@ -1109,28 +1561,64 @@
                             <div class="task-stat-value">${proj.stats.total}</div>
                             <div class="task-stat-label">Total</div>
                         </div>
-                        <div class="task-stat">
+                        <div class="task-stat high-priority">
+                            <div class="task-stat-value">${proj.priorityBreakdown.high}</div>
+                            <div class="task-stat-label">High</div>
+                        </div>
+                        <div class="task-stat medium-priority">
+                            <div class="task-stat-value">${proj.priorityBreakdown.medium}</div>
+                            <div class="task-stat-label">Med</div>
+                        </div>
+                        <div class="task-stat low-priority">
+                            <div class="task-stat-value">${proj.priorityBreakdown.low}</div>
+                            <div class="task-stat-label">Low</div>
+                        </div>
+                        <div class="task-stat urgent">
                             <div class="task-stat-value">${proj.stats.active}</div>
                             <div class="task-stat-label">Active</div>
                         </div>
                         <div class="task-stat">
-                            <div class="task-stat-value">${proj.stats.completed}</div>
+                            <div class="task-stat-value">${proj.stats.done}</div>
                             <div class="task-stat-label">Done</div>
                         </div>
-                        <div class="task-stat ${proj.stats.urgent > 0 ? 'urgent' : ''}">
-                            <div class="task-stat-value">${proj.stats.urgent}</div>
-                            <div class="task-stat-label">Urgent</div>
+                    </div>
+
+                    <div class="time-tracking-bar">
+                        <div class="time-stat">
+                            <span class="time-label">Time Spent</span>
+                            <span class="time-value ${timeClass}">${proj.timeTracking.spent}h / ${proj.timeTracking.estimated}h</span>
+                        </div>
+                        <div class="time-progress-bar">
+                            <div class="time-progress-fill ${timeClass}" style="width: ${Math.min(100, timePercent)}%"></div>
+                        </div>
+                        <div class="time-stat">
+                            <span class="time-label">Remaining</span>
+                            <span class="time-value">${proj.timeTracking.remaining}h</span>
                         </div>
                     </div>
                     
-                    <div class="next-due">
-                        <span class="next-due-label">Next Due:</span>
-                        <span class="next-due-value ${isUrgent ? 'urgent' : ''}">${nextDue}</span>
+                    <div class="due-countdown">
+                        <span class="due-label">🕐 Next Due:</span>
+                        <div class="due-value ${dueClass}">
+                            ${dueDisplay}
+                            ${countdown ? `<span class="countdown-timer">${countdown}</span>` : ''}
+                        </div>
+                    </div>
+                    
+                    <div class="milestones-section">
+                        <div class="milestones-title">📍 Milestones</div>
+                        <div class="milestones-track">
+                            ${proj.milestones.map(m => `
+                                <div class="milestone ${m.completed ? 'completed' : (m.active ? 'active' : 'upcoming')}">
+                                    <div class="milestone-tooltip">${m.label} (${m.tasksRequired} tasks)</div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                     
                     <div class="progress-section">
                         <div class="progress-header">
-                            <span class="progress-label">Progress</span>
+                            <span class="progress-label">Overall Progress</span>
                             <span class="progress-value">${progress}%</span>
                         </div>
                         <div class="progress-bar">
@@ -1139,31 +1627,65 @@
                     </div>
                     
                     <div class="project-card-content">
-                        ${proj.pendingTasks.length > 0 ? `
-                            <div class="tasks-section">
-                                <div class="tasks-section-title">📋 Tasks (${proj.pendingTasks.length} pending)</div>
-                                <div class="task-list">
-                                    ${proj.pendingTasks.slice(0, 5).map(task => renderTaskItem(task)).join('')}
-                                    ${proj.pendingTasks.length > 5 ? `
-                                        <div class="task-item" style="justify-content: center; color: var(--text-muted); font-size: 11px;">
-                                            +${proj.pendingTasks.length - 5} more tasks
-                                        </div>
-                                    ` : ''}
-                                </div>
-                            </div>
-                        ` : `
-                            <div class="tasks-section" style="text-align: center; color: var(--success);">
-                                ✓ All tasks completed!
-                            </div>
-                        `}
+                        ${renderTasksSection(proj)}
                         
                         <div class="project-actions">
-                            <button class="action-btn" onclick="event.stopPropagation(); alert('Open ${proj.name}')">Open Project</button>
-                            <button class="action-btn secondary" onclick="event.stopPropagation(); alert('Add task to ${proj.name}')">Add Task</button>
+                            <button class="action-btn" onclick="event.stopPropagation(); openProject('${proj.id}')">Open Project</button>
+                            <button class="action-btn secondary" onclick="event.stopPropagation(); addTask('${proj.id}')">Add Task</button>
                         </div>
                     </div>
                 </div>
             `;
+        }
+
+        // Render Tasks Section
+        function renderTasksSection(proj) {
+            const pendingTasks = proj.tasks.filter(t => t.status !== 'done');
+            const doneTasks = proj.tasks.filter(t => t.status === 'done');
+            
+            if (pendingTasks.length === 0 && doneTasks.length === 0) {
+                return `
+                    <div class="tasks-section" style="text-align: center; color: var(--success);">
+                        ✓ No tasks yet. Ready to start!
+                    </div>
+                `;
+            }
+
+            let html = '';
+            
+            if (pendingTasks.length > 0) {
+                html += `
+                    <div class="tasks-section">
+                        <div class="tasks-section-title">📋 Pending Tasks (${pendingTasks.length})</div>
+                        <div class="task-list">
+                            ${pendingTasks.slice(0, 5).map(task => renderTaskItem(task)).join('')}
+                            ${pendingTasks.length > 5 ? `
+                                <div class="task-item" style="justify-content: center; color: var(--text-muted); font-size: 11px;">
+                                    +${pendingTasks.length - 5} more tasks
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (doneTasks.length > 0) {
+                html += `
+                    <div class="tasks-section">
+                        <div class="tasks-section-title">✓ Completed Tasks (${doneTasks.length})</div>
+                        <div class="task-list">
+                            ${doneTasks.slice(0, 3).map(task => renderTaskItem(task)).join('')}
+                            ${doneTasks.length > 3 ? `
+                                <div class="task-item" style="justify-content: center; color: var(--success); font-size: 11px;">
+                                    +${doneTasks.length - 3} more completed
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            return html;
         }
 
         // Render Task Item
@@ -1181,10 +1703,81 @@
                         <div class="task-meta-row">
                             <span class="priority-badge ${task.priority}">${task.priority}</span>
                             <span>${task.status}</span>
+                            <span class="assigned-agent">👤 CHAD_YI</span>
                         </div>
                     </div>
                 </div>
             `;
+        }
+
+        // Apply Filters
+        function applyFilters() {
+            const priorityFilter = document.getElementById('filter-priority').value;
+            const statusFilter = document.getElementById('filter-status').value;
+            const agentFilter = document.getElementById('filter-agent').value;
+            const sortBy = document.getElementById('sort-by').value;
+
+            const cards = document.querySelectorAll('.project-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const cardPriority = card.dataset.priority;
+                const cardStatus = card.dataset.status;
+                const cardAgent = card.dataset.agent;
+
+                let visible = true;
+                if (priorityFilter && cardPriority !== priorityFilter) visible = false;
+                if (statusFilter && cardStatus !== statusFilter) visible = false;
+                if (agentFilter && cardAgent !== agentFilter) visible = false;
+
+                if (visible) {
+                    card.classList.remove('filtered-out');
+                    visibleCount++;
+                } else {
+                    card.classList.add('filtered-out');
+                }
+            });
+
+            // Sort visible cards
+            const sections = document.querySelectorAll('.category-section');
+            sections.forEach(section => {
+                const grid = section.querySelector('.projects-grid');
+                const sectionCards = Array.from(grid.querySelectorAll('.project-card:not(.filtered-out)'));
+                
+                sectionCards.sort((a, b) => {
+                    switch(sortBy) {
+                        case 'name': return a.dataset.project.localeCompare(b.dataset.project);
+                        case 'due': return parseInt(a.dataset.due) - parseInt(b.dataset.due);
+                        case 'progress': return parseInt(b.dataset.progress) - parseInt(a.dataset.progress);
+                        case 'tasks': return parseInt(b.dataset.tasks) - parseInt(a.dataset.tasks);
+                        default: return 0;
+                    }
+                });
+
+                sectionCards.forEach(card => grid.appendChild(card));
+            });
+
+            // Show/hide no results
+            document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // Clear Filters
+        function clearFilters() {
+            document.getElementById('filter-priority').value = '';
+            document.getElementById('filter-status').value = '';
+            document.getElementById('filter-agent').value = '';
+            document.getElementById('sort-by').value = 'name';
+            applyFilters();
+        }
+
+        // Open Project
+        function openProject(projectId) {
+            alert(`Opening project ${projectId}...`);
+        }
+
+        // Add Task
+        function addTask(projectId) {
+            alert(`Add new task to project ${projectId}...`);
         }
 
         // Initialize
