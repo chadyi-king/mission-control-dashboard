@@ -411,6 +411,43 @@
             transform: translateY(0);
         }
 
+        .mobile-menu-btn {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--crystal-border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-btn span {
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background: currentColor;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(220, 20, 60, 0.2);
+            color: var(--crimson-bright);
+            box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
+        }
+
+        .mobile-nav-menu {
+            display: none;
+        }
+
+        .mobile-nav-menu.open {
+            display: flex;
+        }
+
         /* Sidebar - Fixed z-index */
         .sidebar {
             position: fixed;
@@ -2056,6 +2093,43 @@
             .sidebar { display: none; }
         }
 
+        @media (max-width: 1024px) {
+            .mobile-menu-btn { display: flex; }
+            .sidebar { display: none; }
+            .mobile-nav-menu {
+                position: absolute;
+                top: 64px;
+                right: 16px;
+                width: 200px;
+                background: rgba(5,5,8,0.98);
+                border: 1px solid rgba(220,20,60,0.3);
+                border-radius: 12px;
+                padding: 12px;
+                box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+                flex-direction: column;
+                gap: 8px;
+                z-index: 400;
+            }
+            .mobile-nav-menu a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 12px;
+                border-radius: 8px;
+                color: var(--text-secondary);
+                font-size: 13px;
+                text-decoration: none;
+                border: 1px solid transparent;
+            }
+            .mobile-nav-menu a:hover {
+                border-color: rgba(220, 20, 60, 0.4);
+                color: var(--crimson-bright);
+                background: rgba(220, 20, 60, 0.15);
+            }
+            .mobile-nav-menu { display: none; }
+            .mobile-nav-menu.open { display: flex; }
+        }
+
         @media (max-width: 768px) {
             .sidebar { transform: translateX(-100%); top: 60px; }
             .sidebar.mobile-open { transform: translateX(0); }
@@ -2137,6 +2211,11 @@
             <a href="profile.html">👤 Profile</a>
         </div>
         <div class="topbar-right">
+            <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
@@ -2608,7 +2687,7 @@
 
 
         // Load Data
-                                function toggleMobileMenu() {
+                                        function toggleMobileMenu() {
             const menu = document.getElementById('mobile-nav-menu');
             const isOpen = menu.classList.toggle('open');
             document.body.classList.toggle('mobile-sidebar-open', isOpen);
@@ -2619,6 +2698,15 @@
             menu.classList.remove('open');
             document.body.classList.remove('mobile-sidebar-open');
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('mobile-nav-menu');
+            if (menu) {
+                menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => closeMobileMenu());
+                });
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             const links = document.querySelectorAll('.mobile-nav-menu a');
