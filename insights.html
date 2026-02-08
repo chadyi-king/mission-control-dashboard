@@ -287,6 +287,50 @@
             50% { opacity: 0.5; }
         }
 
+        .mobile-menu-btn {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--crystal-border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-btn span {
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background: currentColor;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(220, 20, 60, 0.2);
+            color: var(--crimson-bright);
+            box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 8, 0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 190;
+        }
+
+        body.mobile-sidebar-open .sidebar-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         /* Sidebar - Fixed z-index */
         .sidebar {
             position: fixed;
@@ -1374,6 +1418,155 @@
         }
         .milestone:hover .milestone-tooltip { opacity: 1; }
 
+        .project-timeline-section {
+            padding: 16px 20px 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            background: rgba(255,255,255,0.01);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .timeline-title {
+            font-size: 11px;
+            color: var(--crimson-bright);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-range {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .timeline-track {
+            position: relative;
+            height: 90px;
+            border-radius: 12px;
+            border: 1px solid var(--crystal-border);
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 14px 0;
+        }
+
+        .timeline-grid-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.07);
+            z-index: 0;
+        }
+
+        .timeline-grid-label {
+            position: absolute;
+            bottom: 4px;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .timeline-items {
+            position: relative;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: absolute;
+            top: 16px;
+            height: 58px;
+            border-radius: 10px;
+            padding: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+            font-size: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .timeline-item.pending { border-color: rgba(255,255,255,0.15); }
+        .timeline-item.active {
+            background: rgba(77, 171, 247, 0.15);
+            border-color: rgba(77, 171, 247, 0.5);
+        }
+        .timeline-item.review {
+            background: rgba(201, 169, 98, 0.15);
+            border-color: rgba(201, 169, 98, 0.5);
+        }
+        .timeline-item.done {
+            background: rgba(0, 255, 136, 0.15);
+            border-color: rgba(0, 255, 136, 0.5);
+        }
+
+        .timeline-item-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .timeline-item-meta {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .timeline-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .timeline-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timeline-legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .timeline-legend-dot.pending { background: rgba(255,255,255,0.3); }
+        .timeline-legend-dot.active { background: var(--info); box-shadow: 0 0 8px var(--info); }
+        .timeline-legend-dot.review { background: var(--warning); box-shadow: 0 0 8px var(--warning); }
+        .timeline-legend-dot.done { background: var(--success); box-shadow: 0 0 8px var(--success); }
+
+        .timeline-empty {
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px dashed var(--crystal-border);
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
         .progress-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
         .progress-header { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; }
         .progress-label { color: var(--text-muted); }
@@ -1486,11 +1679,16 @@
             .projects-grid { grid-template-columns: 1fr; }
         }
 
+        @media (max-width: 1024px) {
+            .mobile-menu-btn { display: flex; }
+        }
+
         @media (max-width: 768px) {
             .sidebar { transform: translateX(-100%); top: 60px; }
             .sidebar.mobile-open { transform: translateX(0); }
             .main-content { margin-left: 0; padding: 16px; }
             body.sidebar-expanded .main-content { margin-left: 0; }
+            body.mobile-sidebar-open { overflow: hidden; }
             .compact-widgets-bar { flex-wrap: wrap; justify-content: center; }
             .home-header { flex-direction: column; gap: 16px; }
             .stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -1510,6 +1708,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="project-tasks-modal.css">
 </head>
 <body>
     <!-- Background Effects -->
@@ -1548,6 +1747,11 @@
             <div class="mission-divider"></div>
         </div>
         <div class="topbar-right">
+            <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="status-widget">
                 <div class="status-dot"></div>
                 <span>ONLINE</span>
@@ -1637,6 +1841,8 @@
     </div>
 
     <!-- Main Content -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileMenu()"></div>
+
     <div class="main-content">
         <!-- HOME SECTION - REDESIGNED -->
         <div id="home-section" class="section">
@@ -1896,10 +2102,12 @@
         </div>
     </div>
 
+    <script src="project-tasks-modal.js"></script>
     <script>
         // Global data store
         let appData = null;
         let allProjects = [];
+        let projectLookup = {};
 
         // Sidebar Toggle
         function toggleSidebar() {
@@ -1913,6 +2121,9 @@
             toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
             document.body.classList.toggle('sidebar-expanded', isExpanded);
+            if (!isExpanded) {
+                closeMobileMenu();
+            }
         }
 
         // Section Navigation removed (multi-page navigation uses normal links)
@@ -1928,7 +2139,41 @@
             alert(`${action} - Feature coming soon!`);
         }
 
+        function syncProjectLookup() {
+            projectLookup = allProjects.reduce((map, proj) => {
+                map[proj.id] = proj;
+                return map;
+            }, {});
+            if (window.ProjectTasksModal && typeof window.ProjectTasksModal.setProjectLookup === 'function') {
+                window.ProjectTasksModal.setProjectLookup(projectLookup);
+            }
+        }
+
+
         // Load Data
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('mobile-open');
+            document.body.classList.toggle('mobile-sidebar-open');
+        }
+
+        function closeMobileMenu() {
+            document.body.classList.remove('mobile-sidebar-open');
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('mobile-open');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.sidebar-item');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        closeMobileMenu();
+                    }
+                });
+            });
+        });
+
         async function loadData() {
             try {
                 const response = await fetch('data.json');
@@ -1953,12 +2198,15 @@
                                     priorityBreakdown: getPriorityBreakdown(projTasks),
                                     timeTracking: calculateTimeTracking(projTasks),
                                     nextDeadline: getNextDeadline(projTasks),
-                                    milestones: generateMilestones(proj, projTasks)
+                                    milestones: generateMilestones(proj, projTasks),
+                                    timeline: buildProjectTimeline(projTasks)
                                 });
                             });
                         }
                     });
                 }
+
+                syncProjectLookup();
 
                 // Render both sections
                 renderHomeSection();
@@ -2045,6 +2293,91 @@
 
         // Generate milestones
         function generateMilestones(project, tasks) {
+            const milestones = [];
+            const totalTasks = tasks.length;
+            const completedTasks = tasks.filter(t => t.status === 'done').length;
+
+            for (let i = 1; i <= 4; i++) {
+                const threshold = i * 0.25;
+                const milestoneTasks = Math.floor(totalTasks * threshold);
+                const isCompleted = completedTasks >= milestoneTasks && milestoneTasks > 0;
+                const isActive = !isCompleted && completedTasks >= milestoneTasks - Math.ceil(totalTasks * 0.1);
+
+                milestones.push({
+                    number: i,
+                    label: `${i * 25}%`,
+                    completed: isCompleted,
+                    active: isActive,
+                    tasksRequired: milestoneTasks
+                });
+            }
+
+            return milestones;
+        }
+
+        function safeParseDate(value) {
+            const date = value ? new Date(value) : new Date();
+            return isNaN(date.getTime()) ? new Date() : date;
+        }
+
+        function estimateTaskDuration(task) {
+            if (task.completedAt) {
+                const start = safeParseDate(task.createdAt);
+                const end = safeParseDate(task.completedAt);
+                const diff = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)));
+                return diff;
+            }
+
+            if (task.status === 'review') return 2;
+            if (task.status === 'active') return 3;
+            if (task.status === 'done') return 2;
+
+            if (task.priority === 'high') return 5;
+            if (task.priority === 'medium') return 4;
+            return 3;
+        }
+
+        function buildProjectTimeline(tasks) {
+            if (!tasks || tasks.length === 0) {
+                return { items: [], start: null, end: null, duration: 0 };
+            }
+
+            const items = tasks.map(task => {
+                const start = safeParseDate(task.createdAt);
+                let end = task.completedAt ? safeParseDate(task.completedAt) : new Date(start);
+
+                if (!task.completedAt) {
+                    end.setDate(end.getDate() + estimateTaskDuration(task));
+                }
+
+                if (end < start) {
+                    end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+                }
+
+                return {
+                    id: task.id,
+                    title: task.title,
+                    status: task.status || 'pending',
+                    priority: task.priority || 'medium',
+                    start,
+                    end
+                };
+            }).sort((a, b) => a.start - b.start);
+
+            const startDate = items.reduce((min, item) => item.start < min ? item.start : min, items[0].start);
+            const endDate = items.reduce((max, item) => item.end > max ? item.end : max, items[0].end);
+            const duration = Math.max(1, endDate - startDate);
+
+            return { items, start: startDate, end: endDate, duration };
+        }
+
+        function formatTimelineDate(date) {
+            if (!date || isNaN(date.getTime())) return 'TBD';
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        // Format countdown
+
             const milestones = [];
             const totalTasks = tasks.length;
             const completedTasks = tasks.filter(t => t.status === 'done').length;
@@ -2502,6 +2835,8 @@
                         </div>
                     </div>
 
+                    ${renderProjectTimeline(proj)}
+
                     <div class="project-card-content">
                         ${renderTasksSection(proj)}
 
@@ -2509,6 +2844,62 @@
                             <button class="action-btn" onclick="event.stopPropagation(); openProject('${proj.id}')">Open Project</button>
                             <button class="action-btn secondary" onclick="event.stopPropagation(); addTask('${proj.id}')">Add Task</button>
                         </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProjectTimeline(proj) {
+            const timeline = proj.timeline;
+
+            if (!timeline || !timeline.items || timeline.items.length === 0) {
+                return `
+                    <div class="project-timeline-section">
+                        <div class="timeline-header">
+                            <span class="timeline-title">🗂 Project Timeline</span>
+                            <span class="timeline-range">Awaiting tasks</span>
+                        </div>
+                        <div class="timeline-empty">Add tasks to generate a timeline view.</div>
+                    </div>
+                `;
+            }
+
+            const rangeLabel = (timeline.start && timeline.end)
+                ? `${formatTimelineDate(timeline.start)} – ${formatTimelineDate(timeline.end)}`
+                : 'Schedule pending';
+            const checkpoints = [0, 25, 50, 75, 100];
+
+            const itemsHtml = timeline.items.map(item => {
+                const left = timeline.duration ? Math.min(96, Math.max(0, ((item.start - timeline.start) / timeline.duration) * 100)) : 0;
+                const width = timeline.duration ? Math.max(4, Math.min(100 - left, ((item.end - item.start) / timeline.duration) * 100)) : 100;
+                return `
+                    <div class="timeline-item ${item.status}" style="left: ${left}%; width: ${width}%">
+                        <div class="timeline-item-title">${item.title}</div>
+                        <div class="timeline-item-meta">${formatTimelineDate(item.start)} → ${formatTimelineDate(item.end)}</div>
+                    </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="project-timeline-section">
+                    <div class="timeline-header">
+                        <span class="timeline-title">🗂 Project Timeline</span>
+                        <span class="timeline-range">${rangeLabel}</span>
+                    </div>
+                    <div class="timeline-track">
+                        ${checkpoints.map(point => `
+                            <div class="timeline-grid-line" style="left: ${point}%"></div>
+                            <div class="timeline-grid-label" style="left: ${point}%"><span>${point}%</span></div>
+                        `).join('')}
+                        <div class="timeline-items">
+                            ${itemsHtml}
+                        </div>
+                    </div>
+                    <div class="timeline-legend">
+                        <div class="timeline-legend-item"><span class="timeline-legend-dot pending"></span>Pending</div>
+                        <div class="timeline-legend-item"><span class="timeline-legend-dot active"></span>Active</div>
+                        <div class="timeline-legend-item"><span class="timeline-legend-dot review"></span>Review</div>
+                        <div class="timeline-legend-item"><span class="timeline-legend-dot done"></span>Done</div>
                     </div>
                 </div>
             `;
@@ -2526,41 +2917,49 @@
                 `;
             }
 
-            let html = '';
+            const sections = [];
 
             if (pendingTasks.length > 0) {
-                html += `
+                sections.push(`
                     <div class="tasks-section">
                         <div class="tasks-section-title">📋 Pending Tasks (${pendingTasks.length})</div>
                         <div class="task-list">
                             ${pendingTasks.slice(0, 5).map(task => renderCategoryTaskItem(task)).join('')}
                             ${pendingTasks.length > 5 ? `
-                                <div class="category-task-item" style="justify-content: center; color: var(--text-muted); font-size: 11px;">
+                                <div class="category-task-item" style="justify-content: center; color: var(--text-muted); font-size: 11px; cursor: pointer;" onclick="event.stopPropagation(); openProject('${proj.id}', { status: 'pending' })">
                                     +${pendingTasks.length - 5} more tasks
                                 </div>
                             ` : ''}
                         </div>
                     </div>
-                `;
+                `);
             }
 
             if (doneTasks.length > 0) {
-                html += `
+                sections.push(`
                     <div class="tasks-section">
                         <div class="tasks-section-title">✓ Completed Tasks (${doneTasks.length})</div>
                         <div class="task-list">
                             ${doneTasks.slice(0, 3).map(task => renderCategoryTaskItem(task)).join('')}
                             ${doneTasks.length > 3 ? `
-                                <div class="category-task-item" style="justify-content: center; color: var(--success); font-size: 11px;">
+                                <div class="category-task-item" style="justify-content: center; color: var(--success); font-size: 11px; cursor: pointer;" onclick="event.stopPropagation(); openProject('${proj.id}', { status: 'done' })">
                                     +${doneTasks.length - 3} more completed
                                 </div>
                             ` : ''}
                         </div>
                     </div>
-                `;
+                `);
             }
 
-            return html;
+            sections.push(`
+                <div class="tasks-view-all-link" style="text-align: right; margin-top: 6px;">
+                    <button type="button" style="background: none; border: none; color: var(--crimson-bright); font-size: 11px; letter-spacing: 0.5px; cursor: pointer; text-transform: uppercase;" onclick="event.stopPropagation(); openProject('${proj.id}')">
+                        View full task list →
+                    </button>
+                </div>
+            `);
+
+            return sections.join('');
         }
 
         function renderCategoryTaskItem(task) {
@@ -2643,8 +3042,12 @@
         }
 
         // Open Project
-        function openProject(projectId) {
-            alert(`Opening project ${projectId}...`);
+        function openProject(projectId, options = {}) {
+            if (window.ProjectTasksModal) {
+                window.ProjectTasksModal.open(projectId, options);
+            } else {
+                alert(`Opening project ${projectId}...`);
+            }
         }
 
         // Add Task

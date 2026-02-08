@@ -28,6 +28,8 @@
             --warning: #c9a962;
             --danger: #ff4444;
             --info: #4dabf7;
+            --sidebar-collapsed: 60px;
+            --sidebar-expanded: 200px;
         }
 
         body {
@@ -117,13 +119,17 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--crimson-glow);
             box-shadow: 0 0 30px var(--crimson-glow), inset 0 1px 0 rgba(220, 20, 60, 0.1);
-            padding: 12px 24px;
+            padding: 12px 24px 12px calc(24px + var(--sidebar-collapsed));
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 210;
+        }
+
+        body.sidebar-expanded .topbar {
+            padding-left: calc(24px + var(--sidebar-expanded));
         }
 
         .topbar-left {
@@ -145,7 +151,8 @@
                 inset -8px -8px 20px rgba(0,0,0,0.4);
             animation: sunPulse 4s ease-in-out infinite;
             position: relative;
-            z-index: 202;
+            z-index: 260;
+            flex-shrink: 0;
         }
 
         .sun-avatar-enhanced::before {
@@ -175,7 +182,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        .sun-widget-header { display: flex; align-items: center; gap: 12px; }
+        .sun-widget-header { display: flex; align-items: center; gap: 12px; position: relative; overflow: visible; z-index: 270; }
         .sun-info { display: flex; flex-direction: column; gap: 2px; }
         .sun-name { font-family: var(--display-font); font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--crimson-bright); }
         .sun-status { font-size: 9px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
@@ -287,37 +294,89 @@
             50% { opacity: 0.5; }
         }
 
+        .mobile-menu-btn {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--crystal-border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-btn span {
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background: currentColor;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(220, 20, 60, 0.2);
+            color: var(--crimson-bright);
+            box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 8, 0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 190;
+        }
+
+        body.mobile-sidebar-open .sidebar-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         /* Sidebar - Fixed z-index */
         .sidebar {
             position: fixed;
             left: 0;
             top: 70px;
-            width: 60px;
+            width: var(--sidebar-collapsed);
             height: calc(100vh - 70px);
             background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
             border-right: 1px solid var(--crystal-border);
-            z-index: 90;
+            z-index: 120;
             display: flex;
             flex-direction: column;
             padding: 16px 0;
             transition: width 0.3s ease;
+            overflow: visible;
         }
 
-        .sidebar.expanded { width: 200px; }
+        .sidebar.expanded { width: var(--sidebar-expanded); }
 
         .sidebar-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 8px 16px 16px;
+            padding: 8px 10px 16px;
             border-bottom: 1px solid var(--crystal-border);
             margin-bottom: 8px;
+            overflow: visible;
+            position: relative;
+            z-index: 230;
         }
 
         .sidebar-avatar {
-            width: 34px;
-            height: 34px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
             flex-shrink: 0;
+            margin-left: -4px;
+            position: relative;
+            overflow: visible;
             box-shadow:
                 0 0 18px rgba(255, 87, 34, 0.7),
                 0 0 36px rgba(255, 87, 34, 0.35),
@@ -402,14 +461,14 @@
 
         /* Main Content */
         .main-content {
-            margin-left: 60px;
+            margin-left: var(--sidebar-collapsed);
             padding: 24px;
             transition: margin-left 0.3s ease;
             position: relative;
             z-index: 10;
         }
 
-        body.sidebar-expanded .main-content { margin-left: 200px; }
+        body.sidebar-expanded .main-content { margin-left: var(--sidebar-expanded); }
 
         /* Section Management */
         .section {
@@ -460,13 +519,163 @@
             letter-spacing: 1px;
         }
 
-        /* Compact Widgets Bar */
-        .compact-widgets-bar {
+        .home-title-row {
             display: flex;
-            gap: 16px;
             align-items: center;
-            flex-wrap: wrap;
+            gap: 14px;
         }
+
+        .home-mission-badge {
+            padding: 6px 14px;
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            border-radius: 999px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--crimson-bright);
+            background: rgba(220, 20, 60, 0.12);
+            box-shadow: 0 0 12px rgba(220, 20, 60, 0.2);
+        }
+
+        .home-header-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            min-width: 160px;
+        }
+
+        .home-live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 10px var(--success);
+            animation: pulse 2.5s infinite;
+        }
+
+        .home-focus-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .home-focus-value {
+            font-family: var(--display-font);
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            margin-left: 6px;
+        }
+
+        .home-stats-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .stat-chip {
+            flex: 1;
+            min-width: 180px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--crystal-border);
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-chip-accent { border-color: rgba(220, 20, 60, 0.4); box-shadow: 0 0 15px rgba(220, 20, 60, 0.1); }
+
+        .stat-label {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .stat-value {
+            font-family: var(--display-font);
+            font-size: 22px;
+            color: var(--text-primary);
+        }
+
+        .stat-subtext {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .action-chips-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .action-chip,
+        .system-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(220, 20, 60, 0.4);
+            background: rgba(220, 20, 60, 0.08);
+            color: var(--crimson-bright);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--tech-font);
+        }
+
+        .action-chip:hover {
+            background: rgba(220, 20, 60, 0.2);
+            box-shadow: 0 0 12px rgba(220, 20, 60, 0.2);
+        }
+
+        .system-chip {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            cursor: default;
+        }
+
+        .system-chip.warning {
+            border-color: rgba(201, 169, 98, 0.4);
+            background: rgba(201, 169, 98, 0.08);
+        }
+
+        .chip-icon {
+            font-size: 14px;
+        }
+
+        .system-chip-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .chip-value {
+            font-family: var(--display-font);
+            font-size: 13px;
+            color: var(--text-primary);
+        }
+
+        .system-chip .chip-value { color: var(--success); }
+        .system-chip.warning .chip-value { color: var(--warning); }
 
         .compact-widget {
             display: flex;
@@ -583,6 +792,128 @@
         }
 
         .quick-action-icon { font-size: 14px; }
+
+        /* Home Control + Compact Grid */
+        .home-control-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr 0.9fr;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .compact-panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            padding: 18px;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compact-panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(220, 20, 60, 0.15), transparent 55%);
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .compact-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .compact-panel-title {
+            font-family: var(--display-font);
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--crimson-bright);
+        }
+
+        .compact-panel-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .quick-actions-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quick-action-pill {
+            border: 1px solid rgba(220, 20, 60, 0.45);
+            border-radius: 999px;
+            padding: 10px 16px;
+            background: rgba(220, 20, 60, 0.12);
+            color: var(--crimson-bright);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quick-action-pill:hover {
+            background: rgba(220, 20, 60, 0.22);
+            box-shadow: 0 0 12px rgba(220, 20, 60, 0.3);
+        }
+
+        .quick-actions-footer {
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 2;
+        }
+
+        .live-dot.small {
+            width: 6px;
+            height: 6px;
+        }
+
+        .health-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+            margin-left: auto;
+        }
+
+        .health-indicator.ok { background: var(--success); }
+        .health-indicator.warning { background: var(--warning); box-shadow: 0 0 15px rgba(201, 169, 98, 0.5); }
+        .health-indicator.danger { background: var(--danger); box-shadow: 0 0 15px rgba(255, 68, 68, 0.5); }
+
+        .system-health-body { display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 2; }
+        .system-health-status { display: flex; align-items: center; gap: 8px; }
+        .metric-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+        .metric-value { font-family: var(--display-font); font-size: 16px; color: var(--text-primary); }
+        .metric-sub { font-size: 11px; color: var(--text-secondary); }
+
+        .system-health-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+        .health-meta-item { border: 1px solid var(--crystal-border); border-radius: 8px; padding: 10px 12px; background: rgba(255,255,255,0.02); }
+
+        .stat-summary-grid { display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 2; }
+        .stat-summary-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border: 1px solid var(--crystal-border); border-radius: 10px; background: rgba(255,255,255,0.02); }
+        .stat-summary-item .metric-value { font-size: 20px; }
+
+        .stats-callout { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
 
         /* Priority Sections Grid */
         .priority-grid {
@@ -1374,6 +1705,154 @@
         }
         .milestone:hover .milestone-tooltip { opacity: 1; }
 
+        .project-timeline-section {
+            padding: 16px 20px 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            background: rgba(255,255,255,0.01);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .timeline-title {
+            font-size: 11px;
+            color: var(--crimson-bright);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-range {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .timeline-track {
+            position: relative;
+            height: 90px;
+            border-radius: 12px;
+            border: 1px solid var(--crystal-border);
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 14px 0;
+        }
+
+        .timeline-grid-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.07);
+            z-index: 0;
+        }
+
+        .timeline-grid-label {
+            position: absolute;
+            bottom: 4px;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .timeline-items {
+            position: relative;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: absolute;
+            top: 16px;
+            height: 58px;
+            border-radius: 10px;
+            padding: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+            font-size: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-item.pending { border-color: rgba(255,255,255,0.15); }
+        .timeline-item.active {
+            background: rgba(77, 171, 247, 0.15);
+            border-color: rgba(77, 171, 247, 0.5);
+        }
+        .timeline-item.review {
+            background: rgba(201, 169, 98, 0.15);
+            border-color: rgba(201, 169, 98, 0.5);
+        }
+        .timeline-item.done {
+            background: rgba(0, 255, 136, 0.15);
+            border-color: rgba(0, 255, 136, 0.5);
+        }
+
+        .timeline-item-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .timeline-item-meta {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .timeline-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .timeline-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timeline-legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .timeline-legend-dot.pending { background: rgba(255,255,255,0.3); }
+        .timeline-legend-dot.active { background: var(--info); box-shadow: 0 0 8px var(--info); }
+        .timeline-legend-dot.review { background: var(--warning); box-shadow: 0 0 8px var(--warning); }
+        .timeline-legend-dot.done { background: var(--success); box-shadow: 0 0 8px var(--success); }
+
+        .timeline-empty {
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px dashed var(--crystal-border);
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
         .progress-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
         .progress-header { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; }
         .progress-label { color: var(--text-muted); }
@@ -1477,6 +1956,9 @@
             .priority-grid {
                 grid-template-columns: 1fr;
             }
+            .home-control-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
         @media (max-width: 1200px) {
@@ -1486,13 +1968,27 @@
             .projects-grid { grid-template-columns: 1fr; }
         }
 
+        @media (max-width: 1000px) {
+            .home-control-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu-btn { display: flex; }
+        }
+
         @media (max-width: 768px) {
             .sidebar { transform: translateX(-100%); top: 60px; }
             .sidebar.mobile-open { transform: translateX(0); }
             .main-content { margin-left: 0; padding: 16px; }
             body.sidebar-expanded .main-content { margin-left: 0; }
-            .compact-widgets-bar { flex-wrap: wrap; justify-content: center; }
+            body.mobile-sidebar-open { overflow: hidden; }
+            .action-chips-row { justify-content: center; }
+            .home-stats-row { flex-direction: column; }
             .home-header { flex-direction: column; gap: 16px; }
+            .topbar { padding-left: 16px; }
+            body.sidebar-expanded .topbar { padding-left: 16px; }
             .stats-row { grid-template-columns: repeat(2, 1fr); }
             .category-stats { display: none; }
             .topbar-center { display: none; }
@@ -1508,8 +2004,15 @@
             .task-time, .task-progress-ring {
                 align-self: flex-start;
             }
+            .home-control-grid {
+                grid-template-columns: 1fr;
+            }
+            .quick-actions-grid {
+                justify-content: center;
+            }
         }
     </style>
+    <link rel="stylesheet" href="project-tasks-modal.css">
 </head>
 <body>
     <!-- Background Effects -->
@@ -1548,6 +2051,11 @@
             <div class="mission-divider"></div>
         </div>
         <div class="topbar-right">
+            <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="status-widget">
                 <div class="status-dot"></div>
                 <span>ONLINE</span>
@@ -1637,70 +2145,139 @@
     </div>
 
     <!-- Main Content -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileMenu()"></div>
+
     <div class="main-content">
         <!-- HOME SECTION - REDESIGNED -->
         <div id="home-section" class="section active">
-            <!-- Header with Compact Widgets -->
+            <!-- Header -->
             <div class="home-header">
                 <div class="home-title-group">
-                    <div class="home-title">Command Center</div>
-                    <div class="home-subtitle">Real-time task and project orchestration</div>
+                    <div class="home-title-row">
+                        <div class="home-title">Mission Control</div>
+                        <span class="home-mission-badge">Solar Core · Active</span>
+                    </div>
+                    <div class="home-subtitle">Solar Core // Dual-operator flight deck for concurrent missions</div>
                 </div>
-                
-                <div class="compact-widgets-bar">
-                    <!-- Stats Summary -->
-                    <div class="compact-widget">
-                        <div class="compact-widget-icon stats">📊</div>
-                        <div class="compact-widget-content">
-                            <div class="compact-widget-value" id="compact-total-tasks">-</div>
-                            <div class="compact-widget-label">Total Tasks</div>
-                        </div>
+                <div class="home-header-meta">
+                    <div class="home-live-indicator">
+                        <span class="live-dot"></span>
+                        <span>Live Sync</span>
                     </div>
-                    
-                    <!-- Active Agents -->
-                    <div class="compact-widget">
-                        <div class="compact-widget-icon agents">🤖</div>
-                        <div class="compact-widget-content">
-                            <div class="compact-widget-value" id="compact-active-agents">-</div>
-                            <div class="compact-widget-label">Active Agents</div>
-                        </div>
+                    <div class="home-focus-label">
+                        Focus Project
+                        <span class="home-focus-value" id="home-focus-project">—</span>
                     </div>
-                    
-                    <!-- System Health -->
-                    <div class="compact-widget">
-                        <div class="compact-widget-icon health">●</div>
-                        <div class="compact-widget-content">
-                            <div class="compact-widget-value" style="color: var(--success);">100%</div>
-                            <div class="compact-widget-label">System Health</div>
+                </div>
+            </div>
+
+            <div class="home-control-grid">
+                <div class="compact-panel quick-actions-panel">
+                    <div class="compact-panel-header">
+                        <div>
+                            <div class="compact-panel-title">Quick Actions</div>
+                            <div class="compact-panel-subtitle">Launch tasks & sync agents</div>
                         </div>
-                    </div>
-                    
-                    <!-- Quick Actions Dropdown -->
-                    <div class="quick-actions-dropdown">
-                        <button class="quick-actions-btn">
-                            <span>⚡</span>
-                            <span>Quick Actions</span>
-                            <span>▼</span>
-                        </button>
-                        <div class="quick-actions-menu">
-                            <div class="quick-action-item" onclick="quickAction('Add Task')">
-                                <span class="quick-action-icon">➕</span>
-                                <span>Add Task</span>
-                            </div>
-                            <div class="quick-action-item" onclick="quickAction('Spawn Agent')">
-                                <span class="quick-action-icon">🤖</span>
-                                <span>Spawn Agent</span>
-                            </div>
-                            <div class="quick-action-item" onclick="quickAction('Export Report')">
-                                <span class="quick-action-icon">📊</span>
-                                <span>Export Report</span>
-                            </div>
-                            <div class="quick-action-item" onclick="quickAction('Deploy to GitHub')">
-                                <span class="quick-action-icon">📤</span>
-                                <span>Deploy</span>
+                        <div class="quick-actions-dropdown">
+                            <button type="button" class="quick-actions-btn">
+                                <span>Command Deck</span>
+                                <span>▾</span>
+                            </button>
+                            <div class="quick-actions-menu">
+                                <div class="quick-action-item" onclick="quickAction('Plan Sprint')">
+                                    <span class="quick-action-icon">🧭</span>
+                                    <span>Plan Sprint</span>
+                                </div>
+                                <div class="quick-action-item" onclick="quickAction('Request Update')">
+                                    <span class="quick-action-icon">📨</span>
+                                    <span>Request Update</span>
+                                </div>
+                                <div class="quick-action-item" onclick="quickAction('Deploy Update')">
+                                    <span class="quick-action-icon">🚀</span>
+                                    <span>Deploy Build</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="quick-actions-grid">
+                        <button type="button" class="quick-action-pill" onclick="quickAction('Add Task')">New Task</button>
+                        <button type="button" class="quick-action-pill" onclick="quickAction('Spawn Agent')">Spawn Agent</button>
+                        <button type="button" class="quick-action-pill" onclick="quickAction('Schedule Review')">Schedule Review</button>
+                        <button type="button" class="quick-action-pill" onclick="quickAction('Dispatch Brief')">Dispatch Brief</button>
+                    </div>
+                    <div class="quick-actions-footer">
+                        <span class="live-dot small"></span>
+                        <span>Routes to owners instantly</span>
+                    </div>
+                </div>
+                <div class="compact-panel system-health-panel">
+                    <div class="compact-panel-header">
+                        <div>
+                            <div class="compact-panel-title">System Health</div>
+                            <div class="compact-panel-subtitle">Solar Core heartbeat</div>
+                        </div>
+                        <span class="health-indicator ok" id="home-health-indicator"></span>
+                    </div>
+                    <div class="system-health-body">
+                        <div class="system-health-status">
+                            <span class="metric-label">Status</span>
+                            <span class="metric-value" id="home-system-health">Nominal</span>
+                        </div>
+                        <div class="system-health-metrics">
+                            <div class="health-meta-item">
+                                <span class="metric-label">Last Updated</span>
+                                <span class="metric-value" id="home-last-updated">—</span>
+                                <span class="metric-sub" id="home-last-updated-absolute">—</span>
+                            </div>
+                            <div class="health-meta-item">
+                                <span class="metric-label">Uptime</span>
+                                <span class="metric-value" id="home-time-active">--:--</span>
+                                <span class="metric-sub">Hours online</span>
+                            </div>
+                            <div class="health-meta-item">
+                                <span class="metric-label">Signals Today</span>
+                                <span class="metric-value" id="home-events-today">0</span>
+                                <span class="metric-sub">Interactions</span>
+                            </div>
+                            <div class="health-meta-item">
+                                <span class="metric-label">Focus Project</span>
+                                <span class="metric-value" id="home-focus-project-secondary">—</span>
+                                <span class="metric-sub">Primary track</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="compact-panel stats-summary-panel">
+                    <div class="compact-panel-header">
+                        <div>
+                            <div class="compact-panel-title">Stats Summary</div>
+                            <div class="compact-panel-subtitle">Operational throughput</div>
+                        </div>
+                    </div>
+                    <div class="stat-summary-grid">
+                        <div class="stat-summary-item">
+                            <div>
+                                <div class="metric-label">Total Tasks</div>
+                                <div class="metric-sub">Across all missions</div>
+                            </div>
+                            <div class="metric-value" id="stat-total-tasks">-</div>
+                        </div>
+                        <div class="stat-summary-item">
+                            <div>
+                                <div class="metric-label">Agents Online</div>
+                                <div class="metric-sub">Currently synced</div>
+                            </div>
+                            <div class="metric-value" id="stat-agents-online">-</div>
+                        </div>
+                        <div class="stat-summary-item">
+                            <div>
+                                <div class="metric-label">Urgent Queue</div>
+                                <div class="metric-sub">High-priority tasks</div>
+                            </div>
+                            <div class="metric-value" id="stat-urgent-tasks">-</div>
+                        </div>
+                    </div>
+                    <div class="stats-callout">Synced for dual operator workflow</div>
                 </div>
             </div>
 
@@ -1896,10 +2473,12 @@
         </div>
     </div>
 
+    <script src="project-tasks-modal.js"></script>
     <script>
         // Global data store
         let appData = null;
         let allProjects = [];
+        let projectLookup = {};
 
         // Sidebar Toggle
         function toggleSidebar() {
@@ -1913,6 +2492,9 @@
             toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
             document.body.classList.toggle('sidebar-expanded', isExpanded);
+            if (!isExpanded) {
+                closeMobileMenu();
+            }
         }
 
         // Section Navigation removed (multi-page navigation uses normal links)
@@ -1928,7 +2510,41 @@
             alert(`${action} - Feature coming soon!`);
         }
 
+        function syncProjectLookup() {
+            projectLookup = allProjects.reduce((map, proj) => {
+                map[proj.id] = proj;
+                return map;
+            }, {});
+            if (window.ProjectTasksModal && typeof window.ProjectTasksModal.setProjectLookup === 'function') {
+                window.ProjectTasksModal.setProjectLookup(projectLookup);
+            }
+        }
+
+
         // Load Data
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('mobile-open');
+            document.body.classList.toggle('mobile-sidebar-open');
+        }
+
+        function closeMobileMenu() {
+            document.body.classList.remove('mobile-sidebar-open');
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('mobile-open');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.sidebar-item');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        closeMobileMenu();
+                    }
+                });
+            });
+        });
+
         async function loadData() {
             try {
                 const response = await fetch('data.json');
@@ -1953,12 +2569,15 @@
                                     priorityBreakdown: getPriorityBreakdown(projTasks),
                                     timeTracking: calculateTimeTracking(projTasks),
                                     nextDeadline: getNextDeadline(projTasks),
-                                    milestones: generateMilestones(proj, projTasks)
+                                    milestones: generateMilestones(proj, projTasks),
+                                    timeline: buildProjectTimeline(projTasks)
                                 });
                             });
                         }
                     });
                 }
+
+                syncProjectLookup();
 
                 // Render both sections
                 renderHomeSection();
@@ -2067,6 +2686,93 @@
             return milestones;
         }
 
+        function safeParseDate(value) {
+            const date = value ? new Date(value) : new Date();
+            return isNaN(date.getTime()) ? new Date() : date;
+        }
+
+        function estimateTaskDuration(task) {
+            if (task.completedAt) {
+                const start = safeParseDate(task.createdAt);
+                const end = safeParseDate(task.completedAt);
+                const diff = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)));
+                return diff;
+            }
+
+            if (task.status === 'review') return 2;
+            if (task.status === 'active') return 3;
+            if (task.status === 'done') return 2;
+
+            if (task.priority === 'high') return 5;
+            if (task.priority === 'medium') return 4;
+            return 3;
+        }
+
+        function buildProjectTimeline(tasks) {
+            if (!tasks || tasks.length === 0) {
+                return { items: [], start: null, end: null, duration: 0 };
+            }
+
+            const items = tasks.map(task => {
+                const start = safeParseDate(task.createdAt);
+                let end = task.completedAt ? safeParseDate(task.completedAt) : new Date(start);
+
+                if (!task.completedAt) {
+                    end.setDate(end.getDate() + estimateTaskDuration(task));
+                }
+
+                if (end < start) {
+                    end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+                }
+
+                return {
+                    id: task.id,
+                    title: task.title,
+                    status: task.status || 'pending',
+                    priority: task.priority || 'medium',
+                    start,
+                    end
+                };
+            }).sort((a, b) => a.start - b.start);
+
+            const startDate = items.reduce((min, item) => item.start < min ? item.start : min, items[0].start);
+            const endDate = items.reduce((max, item) => item.end > max ? item.end : max, items[0].end);
+            const duration = Math.max(1, endDate - startDate);
+
+            return { items, start: startDate, end: endDate, duration };
+        }
+
+        function formatTimelineDate(date) {
+            if (!date || isNaN(date.getTime())) return 'TBD';
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        function formatRelativeTimestamp(value) {
+            if (!value) return '—';
+            const date = new Date(value);
+            if (isNaN(date.getTime())) return '—';
+            const diffMs = Date.now() - date.getTime();
+            if (diffMs <= 0) return 'Just now';
+            const minutes = Math.floor(diffMs / 60000);
+            if (minutes < 1) return 'Just now';
+            if (minutes < 60) return `${minutes}m ago`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) {
+                const remMinutes = minutes % 60;
+                return `${hours}h${remMinutes ? ' ' + remMinutes + 'm' : ''} ago`;
+            }
+            const days = Math.floor(hours / 24);
+            const remHours = hours % 24;
+            return `${days}d${remHours ? ' ' + remHours + 'h' : ''} ago`;
+        }
+
+        function formatAbsoluteTimestamp(value) {
+            if (!value) return '—';
+            const date = new Date(value);
+            if (isNaN(date.getTime())) return '—';
+            return date.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+        }
+
         // Format countdown
         function formatCountdown(targetDate) {
             const now = new Date();
@@ -2095,9 +2801,35 @@
             const allTasks = appData.tasks || [];
             const workflow = appData.workflow || {};
 
-            // Compact Widgets
-            document.getElementById('compact-total-tasks').textContent = allTasks.length;
-            document.getElementById('compact-active-agents').textContent = stats.activeAgents || agents.length || 0;
+            const urgentCount = stats.urgentTasks ?? allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
+
+            document.getElementById('stat-total-tasks').textContent = allTasks.length;
+            document.getElementById('stat-agents-online').textContent = stats.activeAgents || agents.length || 0;
+            document.getElementById('stat-urgent-tasks').textContent = urgentCount;
+
+            const focusProject = stats.focusProject || '—';
+            const systemHealth = stats.systemHealth || 'Nominal';
+            const eventsToday = stats.eventsToday != null ? stats.eventsToday : 0;
+            const lastUpdated = appData.lastUpdated;
+
+            const focusPrimary = document.getElementById('home-focus-project');
+            if (focusPrimary) focusPrimary.textContent = focusProject;
+            const focusSecondary = document.getElementById('home-focus-project-secondary');
+            if (focusSecondary) focusSecondary.textContent = focusProject;
+            document.getElementById('home-system-health').textContent = systemHealth;
+            document.getElementById('home-time-active').textContent = stats.timeActive || '--:--';
+            document.getElementById('home-events-today').textContent = eventsToday;
+            document.getElementById('home-last-updated').textContent = formatRelativeTimestamp(lastUpdated);
+            document.getElementById('home-last-updated-absolute').textContent = formatAbsoluteTimestamp(lastUpdated);
+
+            const healthIndicator = document.getElementById('home-health-indicator');
+            if (healthIndicator) {
+                const normalized = systemHealth.toLowerCase();
+                let indicatorState = 'ok';
+                if (normalized.includes('warn') || normalized.includes('degraded')) indicatorState = 'warning';
+                if (normalized.includes('down') || normalized.includes('critical')) indicatorState = 'danger';
+                healthIndicator.className = `health-indicator ${indicatorState}`;
+            }
 
             // Active Tasks Board
             renderActiveTasksBoard(allTasks);
@@ -2502,6 +3234,8 @@
                         </div>
                     </div>
 
+                    ${renderProjectTimeline(proj)}
+
                     <div class="project-card-content">
                         ${renderTasksSection(proj)}
 
@@ -2509,6 +3243,62 @@
                             <button class="action-btn" onclick="event.stopPropagation(); openProject('${proj.id}')">Open Project</button>
                             <button class="action-btn secondary" onclick="event.stopPropagation(); addTask('${proj.id}')">Add Task</button>
                         </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProjectTimeline(proj) {
+            const timeline = proj.timeline;
+
+            if (!timeline || !timeline.items || timeline.items.length === 0) {
+                return `
+                    <div class="project-timeline-section">
+                        <div class="timeline-header">
+                            <span class="timeline-title">🗂 Project Timeline</span>
+                            <span class="timeline-range">Awaiting tasks</span>
+                        </div>
+                        <div class="timeline-empty">Add tasks to generate a timeline view.</div>
+                    </div>
+                `;
+            }
+
+            const rangeLabel = (timeline.start && timeline.end)
+                ? `${formatTimelineDate(timeline.start)} – ${formatTimelineDate(timeline.end)}`
+                : 'Schedule pending';
+            const checkpoints = [0, 25, 50, 75, 100];
+
+            const itemsHtml = timeline.items.map(item => {
+                const left = timeline.duration ? Math.min(96, Math.max(0, ((item.start - timeline.start) / timeline.duration) * 100)) : 0;
+                const width = timeline.duration ? Math.max(4, Math.min(100 - left, ((item.end - item.start) / timeline.duration) * 100)) : 100;
+                return `
+                    <div class="timeline-item ${item.status}" style="left: ${left}%; width: ${width}%">
+                        <div class="timeline-item-title">${item.title}</div>
+                        <div class="timeline-item-meta">${formatTimelineDate(item.start)} → ${formatTimelineDate(item.end)}</div>
+                    </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="project-timeline-section">
+                    <div class="timeline-header">
+                        <span class="timeline-title">🗂 Project Timeline</span>
+                        <span class="timeline-range">${rangeLabel}</span>
+                    </div>
+                    <div class="timeline-track">
+                        ${checkpoints.map(point => `
+                            <div class="timeline-grid-line" style="left: ${point}%"></div>
+                            <div class="timeline-grid-label" style="left: ${point}%"><span>${point}%</span></div>
+                        `).join('')}
+                        <div class="timeline-items">
+                            ${itemsHtml}
+                        </div>
+                    </div>
+                    <div class="timeline-legend">
+                        <div class="timeline-legend-item"><span class="timeline-legend-dot pending"></span>Pending</div>
+                        <div class="timeline-legend-item"><span class="timeline-legend-dot active"></span>Active</div>
+                        <div class="timeline-legend-item"><span class="timeline-legend-dot review"></span>Review</div>
+                        <div class="timeline-legend-item"><span class="timeline-legend-dot done"></span>Done</div>
                     </div>
                 </div>
             `;
@@ -2526,41 +3316,49 @@
                 `;
             }
 
-            let html = '';
+            const sections = [];
 
             if (pendingTasks.length > 0) {
-                html += `
+                sections.push(`
                     <div class="tasks-section">
                         <div class="tasks-section-title">📋 Pending Tasks (${pendingTasks.length})</div>
                         <div class="task-list">
                             ${pendingTasks.slice(0, 5).map(task => renderCategoryTaskItem(task)).join('')}
                             ${pendingTasks.length > 5 ? `
-                                <div class="category-task-item" style="justify-content: center; color: var(--text-muted); font-size: 11px;">
+                                <div class="category-task-item" style="justify-content: center; color: var(--text-muted); font-size: 11px; cursor: pointer;" onclick="event.stopPropagation(); openProject('${proj.id}', { status: 'pending' })">
                                     +${pendingTasks.length - 5} more tasks
                                 </div>
                             ` : ''}
                         </div>
                     </div>
-                `;
+                `);
             }
 
             if (doneTasks.length > 0) {
-                html += `
+                sections.push(`
                     <div class="tasks-section">
                         <div class="tasks-section-title">✓ Completed Tasks (${doneTasks.length})</div>
                         <div class="task-list">
                             ${doneTasks.slice(0, 3).map(task => renderCategoryTaskItem(task)).join('')}
                             ${doneTasks.length > 3 ? `
-                                <div class="category-task-item" style="justify-content: center; color: var(--success); font-size: 11px;">
+                                <div class="category-task-item" style="justify-content: center; color: var(--success); font-size: 11px; cursor: pointer;" onclick="event.stopPropagation(); openProject('${proj.id}', { status: 'done' })">
                                     +${doneTasks.length - 3} more completed
                                 </div>
                             ` : ''}
                         </div>
                     </div>
-                `;
+                `);
             }
 
-            return html;
+            sections.push(`
+                <div class="tasks-view-all-link" style="text-align: right; margin-top: 6px;">
+                    <button type="button" style="background: none; border: none; color: var(--crimson-bright); font-size: 11px; letter-spacing: 0.5px; cursor: pointer; text-transform: uppercase;" onclick="event.stopPropagation(); openProject('${proj.id}')">
+                        View full task list →
+                    </button>
+                </div>
+            `);
+
+            return sections.join('');
         }
 
         function renderCategoryTaskItem(task) {
@@ -2643,8 +3441,12 @@
         }
 
         // Open Project
-        function openProject(projectId) {
-            alert(`Opening project ${projectId}...`);
+        function openProject(projectId, options = {}) {
+            if (window.ProjectTasksModal) {
+                window.ProjectTasksModal.open(projectId, options);
+            } else {
+                alert(`Opening project ${projectId}...`);
+            }
         }
 
         // Add Task

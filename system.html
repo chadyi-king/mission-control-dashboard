@@ -287,6 +287,50 @@
             50% { opacity: 0.5; }
         }
 
+        .mobile-menu-btn {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--crystal-border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-btn span {
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background: currentColor;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(220, 20, 60, 0.2);
+            color: var(--crimson-bright);
+            box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 8, 0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 190;
+        }
+
+        body.mobile-sidebar-open .sidebar-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         /* Sidebar - Fixed z-index */
         .sidebar {
             position: fixed;
@@ -1486,11 +1530,16 @@
             .projects-grid { grid-template-columns: 1fr; }
         }
 
+        @media (max-width: 1024px) {
+            .mobile-menu-btn { display: flex; }
+        }
+
         @media (max-width: 768px) {
             .sidebar { transform: translateX(-100%); top: 60px; }
             .sidebar.mobile-open { transform: translateX(0); }
             .main-content { margin-left: 0; padding: 16px; }
             body.sidebar-expanded .main-content { margin-left: 0; }
+            body.mobile-sidebar-open { overflow: hidden; }
             .compact-widgets-bar { flex-wrap: wrap; justify-content: center; }
             .home-header { flex-direction: column; gap: 16px; }
             .stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -1619,6 +1668,11 @@
             <div class="mission-divider"></div>
         </div>
         <div class="topbar-right">
+            <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="status-widget">
                 <div class="status-dot"></div>
                 <span>ONLINE</span>
@@ -1709,6 +1763,8 @@
 
     
     <!-- Main Content -->
+
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileMenu()"></div>
 
     <div class="main-content">
         <div class="section active">
@@ -1843,6 +1899,9 @@
             toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
             document.body.classList.toggle('sidebar-expanded', isExpanded);
+            if (!isExpanded) {
+                closeMobileMenu();
+            }
         }
     </script>
 </body>
