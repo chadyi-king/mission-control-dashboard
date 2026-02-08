@@ -1,35 +1,15 @@
 {
-  "lastUpdated": "2026-02-06T17:30:00Z",
+  "lastUpdated": "2026-02-08T09:42:00Z",
   "stats": {
-    "activeAgents": 3,
-    "spawnedToday": 47,
-    "tasksDone": 12,
-    "timeActive": "17:30",
+    "activeAgents": 4,
+    "spawnedToday": 18,
+    "tasksDone": 21,
+    "timeActive": "05:45",
     "focusProject": "A6",
-    "eventsToday": 5
+    "eventsToday": 7
   },
   "workflow": {
     "pending": [
-      {
-        "id": "A1-1",
-        "title": "Plan weekly schedule",
-        "project": "A1",
-        "priority": "medium",
-        "status": "pending",
-        "notes": "Organize personal calendar",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": null
-      },
-      {
-        "id": "A2-4",
-        "title": "Write Chapter 4",
-        "project": "A2",
-        "priority": "high",
-        "status": "pending",
-        "notes": "Continue RE:UNITE novel",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": null
-      },
       {
         "id": "A3-1",
         "title": "Script 1: Right vs Left politics",
@@ -623,22 +603,22 @@
     ],
     "active": [
       {
-        "id": "A2-3",
-        "title": "Edit Chapter 3",
-        "project": "A2",
-        "priority": "high",
-        "status": "active",
-        "notes": "Review and polish novel chapter",
-        "createdAt": "2026-02-06T00:00:00Z",
-        "completedAt": null
-      },
-      {
         "id": "A6-13",
         "title": "Project Detail Page",
         "project": "A6",
         "priority": "high",
         "status": "active",
         "notes": "Click project \u2192 full view modal",
+        "createdAt": "2026-02-06T00:00:00Z",
+        "completedAt": null
+      },
+      {
+        "id": "A1-1",
+        "title": "Plan weekly schedule",
+        "project": "A1",
+        "priority": "medium",
+        "status": "active",
+        "notes": "Organize personal calendar | Sprinting this afternoon",
         "createdAt": "2026-02-06T00:00:00Z",
         "completedAt": null
       }
@@ -651,6 +631,16 @@
         "priority": "high",
         "status": "review",
         "notes": "Editor comments to address",
+        "createdAt": "2026-02-06T00:00:00Z",
+        "completedAt": null
+      },
+      {
+        "id": "A2-4",
+        "title": "Write Chapter 4",
+        "project": "A2",
+        "priority": "high",
+        "status": "review",
+        "notes": "Continue RE:UNITE novel | Waiting for approval",
         "createdAt": "2026-02-06T00:00:00Z",
         "completedAt": null
       }
@@ -685,6 +675,16 @@
         "notes": "Website completed via Lovable",
         "createdAt": "2026-02-06T00:00:00Z",
         "completedAt": "2026-02-05T18:00:00Z"
+      },
+      {
+        "id": "A2-3",
+        "title": "Edit Chapter 3",
+        "project": "A2",
+        "priority": "high",
+        "status": "done",
+        "notes": "Review and polish novel chapter | Signed off",
+        "createdAt": "2026-02-06T00:00:00Z",
+        "completedAt": "2026-02-08T09:42:00Z"
       }
     ]
   },
