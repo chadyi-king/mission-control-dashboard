@@ -1912,11 +1912,6 @@
                 <span></span>
                 <span></span>
             </button>
-            <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
             <div class="status-widget">
                 <div class="status-dot"></div>
                 <span>ONLINE</span>
@@ -2267,6 +2262,7 @@
         </div>
     </div>
 
+    <script src="mobile-nav.js"></script>
     <script src="project-tasks-modal.js"></script>
     <script>
         // Global data store
@@ -2316,88 +2312,7 @@
 
 
         // Load Data
-                                        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-nav-menu');
-            const isOpen = menu.classList.toggle('open');
-            document.body.classList.toggle('mobile-sidebar-open', isOpen);
-        }
 
-        function closeMobileMenu() {
-            const menu = document.getElementById('mobile-nav-menu');
-            menu.classList.remove('open');
-            document.body.classList.remove('mobile-sidebar-open');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const menu = document.getElementById('mobile-nav-menu');
-            if (menu) {
-                menu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => closeMobileMenu());
-                });
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const links = document.querySelectorAll('.mobile-nav-menu a');
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    closeMobileMenu();
-                });
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const links = document.querySelectorAll('.sidebar-item');
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) {
-                        closeMobileMenu();
-                    }
-                });
-            });
-            const overlay = document.getElementById('sidebar-overlay');
-            if (overlay) {
-                overlay.addEventListener('click', closeMobileMenu);
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const links = document.querySelectorAll('.sidebar-item');
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) {
-                        closeMobileMenu();
-                    }
-                });
-            });
-            const overlay = document.getElementById('sidebar-overlay');
-            if (overlay && !overlay.onclick) {
-                overlay.addEventListener('click', closeMobileMenu);
-            }
-        });
-
-        function toggleMobileMenu() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('mobile-open');
-            document.body.classList.toggle('mobile-sidebar-open');
-        }
-
-        function closeMobileMenu() {
-            document.body.classList.remove('mobile-sidebar-open');
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.remove('mobile-open');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const links = document.querySelectorAll('.sidebar-item');
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) {
-                        closeMobileMenu();
-                    }
-                });
-            });
-        });
 
         async function loadData() {
             try {
