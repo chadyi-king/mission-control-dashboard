@@ -746,6 +746,15 @@
           "totalTasks": 12,
           "activeTasks": 3,
           "completedTasks": 6
+        },
+        {
+          "id": "A7",
+          "name": "Wedding Planning",
+          "status": "pending",
+          "progress": 10,
+          "totalTasks": 10,
+          "activeTasks": 2,
+          "completedTasks": 1
         }
       ]
     },
@@ -1549,6 +1558,26 @@
       "notes": "Website completed via Lovable",
       "createdAt": "2026-02-06T00:00:00Z",
       "completedAt": "2026-02-05T18:00:00Z"
+    },
+    {
+      "id": "A7-1",
+      "title": "Venue shortlist",
+      "project": "A7",
+      "priority": "high",
+      "status": "pending",
+      "notes": "Find 3 venues",
+      "createdAt": "2026-02-08T12:02:05.387258Z",
+      "completedAt": null
+    },
+    {
+      "id": "A7-2",
+      "title": "Invite list",
+      "project": "A7",
+      "priority": "medium",
+      "status": "pending",
+      "notes": "Draft guest list",
+      "createdAt": "2026-02-08T12:02:05.387258Z",
+      "completedAt": null
     }
   ]
 }
