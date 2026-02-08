@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MISSION CONTROL</title>
+    <title>Mission Control Dashboard</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap');
 
@@ -23,6 +23,11 @@
             --crystal-border: rgba(255, 255, 255, 0.08);
             --tech-font: 'Rajdhani', sans-serif;
             --display-font: 'Orbitron', sans-serif;
+            --panel-bg: rgba(18, 18, 26, 0.8);
+            --success: #00ff88;
+            --warning: #c9a962;
+            --danger: #ff4444;
+            --info: #4dabf7;
         }
 
         body {
@@ -35,7 +40,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* CYBER DATA STREAM BACKGROUND */
+        /* Background Effects */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -47,7 +52,6 @@
             overflow: hidden;
         }
 
-        /* Falling Data Streams */
         .data-stream {
             position: absolute;
             top: -100%;
@@ -62,16 +66,16 @@
             pointer-events: none;
         }
 
-        .data-stream:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; font-size: 12px; }
-        .data-stream:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; font-size: 10px; }
-        .data-stream:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 4s; font-size: 14px; }
-        .data-stream:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; font-size: 11px; }
-        .data-stream:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 3s; font-size: 13px; }
-        .data-stream:nth-child(6) { left: 55%; animation-duration: 14s; animation-delay: 5s; font-size: 12px; }
-        .data-stream:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 2s; font-size: 10px; }
-        .data-stream:nth-child(8) { left: 75%; animation-duration: 17s; animation-delay: 4s; font-size: 14px; }
-        .data-stream:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 1s; font-size: 11px; }
-        .data-stream:nth-child(10) { left: 95%; animation-duration: 21s; animation-delay: 3s; font-size: 12px; }
+        .data-stream:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; }
+        .data-stream:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; }
+        .data-stream:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 4s; }
+        .data-stream:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; }
+        .data-stream:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 3s; }
+        .data-stream:nth-child(6) { left: 55%; animation-duration: 14s; animation-delay: 5s; }
+        .data-stream:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 2s; }
+        .data-stream:nth-child(8) { left: 75%; animation-duration: 17s; animation-delay: 4s; }
+        .data-stream:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 1s; }
+        .data-stream:nth-child(10) { left: 95%; animation-duration: 21s; animation-delay: 3s; }
 
         @keyframes fall {
             0% { transform: translateY(0); opacity: 0; }
@@ -80,7 +84,6 @@
             100% { transform: translateY(200vh); opacity: 0; }
         }
 
-        /* Circuit Pattern Overlay */
         .circuit-overlay {
             position: fixed;
             top: 0;
@@ -96,7 +99,6 @@
             background-size: 100px 100px;
         }
 
-        /* Hex Grid Pattern */
         .hex-pattern {
             position: fixed;
             top: 0;
@@ -107,154 +109,6 @@
             pointer-events: none;
             opacity: 0.05;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dc143c' fill-opacity='0.4'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        /* Random Floating Elements */
-        .float-hex {
-            position: absolute;
-            font-family: monospace;
-            font-size: 20px;
-            color: var(--crimson-bright);
-            opacity: 0.08;
-            animation: floatHex 10s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .float-hex:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
-        .float-hex:nth-child(2) { top: 30%; left: 70%; animation-delay: 2s; }
-        .float-hex:nth-child(3) { top: 60%; left: 40%; animation-delay: 4s; }
-        .float-hex:nth-child(4) { top: 80%; left: 80%; animation-delay: 6s; }
-        .float-hex:nth-child(5) { top: 40%; left: 10%; animation-delay: 8s; }
-
-        @keyframes floatHex {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.05; }
-            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.12; }
-        }
-
-        /* Enhanced Solar Core Avatar - Textured Sun with Prominences */
-        .sun-avatar-enhanced {
-            width: 44px;
-            height: 44px;
-            position: relative;
-            flex-shrink: 0;
-            border-radius: 50%;
-            background: radial-gradient(
-                circle at 35% 35%,
-                #ffeb3b 0%,
-                #ff9800 15%,
-                #ff5722 30%,
-                #d32f2f 50%,
-                #8b0000 70%,
-                #3e0000 100%
-            );
-            box-shadow: 
-                0 0 20px rgba(255, 87, 34, 0.8),
-                0 0 40px rgba(255, 87, 34, 0.4),
-                0 0 60px rgba(139, 0, 0, 0.3),
-                inset -8px -8px 20px rgba(0,0,0,0.4),
-                inset 8px 8px 20px rgba(255,200,100,0.3);
-            animation: sunPulse 4s ease-in-out infinite;
-            overflow: visible;
-        }
-
-        .sun-avatar-enhanced::before {
-            content: '';
-            position: absolute;
-            top: 10%;
-            left: 20%;
-            width: 30%;
-            height: 30%;
-            background: radial-gradient(
-                ellipse at center,
-                rgba(255,255,200,0.9) 0%,
-                rgba(255,200,100,0.4) 40%,
-                transparent 70%
-            );
-            border-radius: 50%;
-            filter: blur(2px);
-        }
-
-        .sun-avatar-enhanced::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(139,0,0,0.6) 0%, transparent 25%),
-                radial-gradient(circle at 70% 60%, rgba(100,0,0,0.5) 0%, transparent 20%),
-                radial-gradient(circle at 40% 70%, rgba(139,0,0,0.4) 0%, transparent 15%),
-                radial-gradient(circle at 80% 20%, rgba(80,0,0,0.5) 0%, transparent 18%);
-            border-radius: 50%;
-        }
-
-        @keyframes sunPulse {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 
-                    0 0 20px rgba(255, 87, 34, 0.8),
-                    0 0 40px rgba(255, 87, 34, 0.4),
-                    0 0 60px rgba(139, 0, 0, 0.3);
-            }
-            50% { 
-                transform: scale(1.05);
-                box-shadow: 
-                    0 0 30px rgba(255, 87, 34, 1),
-                    0 0 60px rgba(255, 87, 34, 0.6),
-                    0 0 90px rgba(139, 0, 0, 0.5);
-            }
-        }
-
-        /* Red Sun Avatar (Small for Top Bar) - DEPRECATED, use .sun-avatar-enhanced */
-        .sun-avatar-small {
-            width: 40px;
-            height: 40px;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .sun-core-small {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            background: radial-gradient(circle, #fff 0%, var(--crimson-bright) 40%, var(--crimson) 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--crimson-bright), 0 0 20px var(--crimson-glow);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .sun-ray-small {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 1px;
-            height: 18px;
-            background: linear-gradient(to bottom, var(--crimson-bright), transparent);
-            transform-origin: center bottom;
-            animation: flare 3s ease-in-out infinite;
-        }
-
-        .sun-ray-small:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); animation-delay: 0s; }
-        .sun-ray-small:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg); animation-delay: 0.375s; }
-        .sun-ray-small:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg); animation-delay: 0.75s; }
-        .sun-ray-small:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg); animation-delay: 1.125s; }
-        .sun-ray-small:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg); animation-delay: 1.5s; }
-        .sun-ray-small:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg); animation-delay: 1.875s; }
-        .sun-ray-small:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg); animation-delay: 2.25s; }
-        .sun-ray-small:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg); animation-delay: 2.625s; }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        @keyframes flare {
-            0%, 100% { opacity: 0.3; height: 15px; }
-            50% { opacity: 0.8; height: 20px; }
         }
 
         /* Top Bar */
@@ -278,24 +132,24 @@
             gap: 16px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 16px;
+        .sun-avatar-enhanced {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #ffeb3b 0%, #ff9800 15%, #ff5722 30%, #d32f2f 50%, #8b0000 70%, #3e0000 100%);
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.8), 0 0 40px rgba(255, 87, 34, 0.4), inset -8px -8px 20px rgba(0,0,0,0.4);
+            animation: sunPulse 4s ease-in-out infinite;
         }
 
-        .logo-text {
-            font-family: var(--display-font);
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
+        @keyframes sunPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .logo-text span {
-            color: var(--crimson-bright);
-            text-shadow: 0 0 15px var(--crimson-glow);
-        }
+        .sun-widget-header { display: flex; align-items: center; gap: 12px; }
+        .sun-info { display: flex; flex-direction: column; gap: 2px; }
+        .sun-name { font-family: var(--display-font); font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--crimson-bright); }
+        .sun-status { font-size: 9px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
 
         .topbar-center {
             position: absolute;
@@ -314,39 +168,28 @@
             gap: 20px;
         }
 
-        /* Sun Avatar with Info in Header */
-        .sun-widget-header {
+        .status-widget {
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .sun-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .sun-name {
-            font-family: var(--display-font);
+            gap: 8px;
             font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--crimson-bright);
-        }
-
-        .sun-status {
-            font-size: 9px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .sun-mode {
-            font-size: 8px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 10px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         /* Sidebar */
@@ -365,9 +208,7 @@
             transition: width 0.3s ease;
         }
 
-        .sidebar.expanded {
-            width: 200px;
-        }
+        .sidebar.expanded { width: 200px; }
 
         .sidebar-toggle {
             width: 100%;
@@ -386,21 +227,9 @@
             transition: all 0.2s;
         }
 
-        .sidebar-toggle:hover {
-            background: var(--crimson-glow);
-        }
-
-        .sidebar-toggle-text {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .sidebar.expanded .sidebar-toggle-text {
-            opacity: 1;
-        }
+        .sidebar-toggle:hover { background: var(--crimson-glow); }
+        .sidebar-toggle-text { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transition: opacity 0.3s; }
+        .sidebar.expanded .sidebar-toggle-text { opacity: 1; }
 
         .sidebar-item {
             display: flex;
@@ -411,266 +240,105 @@
             transition: all 0.2s;
             color: var(--text-muted);
             text-decoration: none;
-        }
-
-        .sidebar-item:hover {
-            background: var(--crimson-glow);
-            color: var(--crimson-bright);
-        }
-
-        .sidebar-item.active {
-            background: var(--crimson-glow);
-            color: var(--crimson-bright);
-            border-right: 3px solid var(--crimson-bright);
-        }
-
-        .sidebar-icon {
-            width: 20px;
-            height: 20px;
-            min-width: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: currentColor;
-        }
-
-        .sidebar-icon svg {
+            border: none;
+            background: transparent;
             width: 100%;
-            height: 100%;
-        }
-
-        .sidebar-label {
+            font-family: var(--tech-font);
             font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
         }
 
-        .sidebar.expanded .sidebar-label {
-            opacity: 1;
-        }
+        .sidebar-item:hover { background: var(--crimson-glow); color: var(--crimson-bright); }
+        .sidebar-item.active { background: var(--crimson-glow); color: var(--crimson-bright); border-right: 3px solid var(--crimson-bright); }
+        .sidebar-icon { width: 20px; height: 20px; min-width: 20px; display: flex; align-items: center; justify-content: center; }
+        .sidebar-icon svg { width: 100%; height: 100%; }
+        .sidebar-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; opacity: 0; transition: opacity 0.3s; }
+        .sidebar.expanded .sidebar-label { opacity: 1; }
 
-        /* Adjust main container for sidebar */
-        .main-container {
-            padding: 16px 24px 16px 84px;
+        /* Main Content */
+        .main-content {
+            margin-left: 60px;
+            padding: 24px;
+            transition: margin-left 0.3s ease;
             position: relative;
-            z-index: 20;
-            transition: padding-left 0.3s ease;
+            z-index: 10;
         }
 
-        .main-container.sidebar-expanded {
-            padding-left: 224px;
-        }
+        body.sidebar-expanded .main-content { margin-left: 200px; }
 
-        .stats-bar {
-            padding: 10px 24px 10px 84px;
-            transition: padding-left 0.3s ease;
-            position: relative;
-            z-index: 20;
-        }
-
-        .stats-bar.sidebar-expanded {
-            padding-left: 224px;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
+        /* Section Management */
+        .section {
             display: none;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            color: var(--crimson-bright);
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 1100;
+            animation: fadeIn 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.mobile-open {
-                transform: translateX(0);
-            }
-
-            .main-container {
-                padding: 16px;
-            }
-
-            .stats-bar {
-                padding: 10px 24px;
-            }
-        }
-
-        .status-widget {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #00ff88;
-            box-shadow: 0 0 10px #00ff88;
-            animation: pulse 2s infinite;
-        }
-
-        /* Quick Actions */
-        .quick-actions {
-            position: relative;
-        }
-
-        .quick-btn {
-            padding: 8px 16px;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            border-radius: 4px;
-            color: var(--crimson-bright);
-            font-family: var(--display-font);
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .quick-btn:hover {
-            background: var(--crimson-bright);
-            color: var(--bg-primary);
-            box-shadow: 0 0 20px var(--crimson-glow);
-        }
-
-        .quick-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--crystal-border);
-            border-radius: 8px;
-            padding: 8px;
-            min-width: 200px;
-            display: none;
-            z-index: 1000;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-
-        .quick-menu.show {
+        .section.active {
             display: block;
         }
 
-        .quick-section {
-            margin-bottom: 8px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .quick-section:last-child {
-            margin-bottom: 0;
+        .page-title {
+            font-family: var(--display-font);
+            font-size: 24px;
+            margin-bottom: 24px;
+            background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .quick-section-title {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 6px 10px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-
-        .quick-item {
-            padding: 8px 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .quick-item:hover {
-            background: var(--crimson-glow);
-            color: var(--crimson-bright);
-        }
-
-        /* Compact Stats */
-        .stats-bar {
+        /* ===== HOME SECTION STYLES ===== */
+        .stats-row {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 6px;
-            padding: 10px 24px 10px 84px;
-            background: linear-gradient(180deg, rgba(10,10,15,0.8) 0%, transparent 100%);
-            position: relative;
-            z-index: 10;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
         .stat-card {
             background: var(--crystal);
             backdrop-filter: blur(10px);
             border: 1px solid var(--crystal-border);
-            border-radius: 6px;
-            padding: 8px;
+            border-radius: 8px;
+            padding: 16px;
             text-align: center;
+            transition: all 0.3s;
         }
 
-        .stat-label {
-            font-size: 8px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .stat-card:hover {
+            border-color: var(--crimson-bright);
+            box-shadow: 0 0 15px var(--crimson-glow);
         }
 
+        .stat-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
         .stat-value {
             font-family: var(--display-font);
-            font-size: 18px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--crimson-bright);
-            margin: 2px 0;
+            margin: 8px 0;
         }
+        .stat-sub { font-size: 10px; color: var(--text-secondary); }
 
-        .stat-sub {
-            font-size: 8px;
-            color: var(--text-secondary);
-        }
-
-        .row {
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         .panel {
-            background: var(--crystal);
-            backdrop-filter: blur(10px);
+            background: var(--panel-bg);
             border: 1px solid var(--crystal-border);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 200px;
+            backdrop-filter: blur(10px);
         }
 
         .panel-header {
             background: linear-gradient(90deg, var(--crimson-glow) 0%, transparent 100%);
-            padding: 10px 14px;
+            padding: 14px 18px;
             border-bottom: 1px solid var(--crystal-border);
             display: flex;
             justify-content: space-between;
@@ -679,7 +347,7 @@
 
         .panel-title {
             font-family: var(--display-font);
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -688,17 +356,12 @@
 
         .panel-value {
             font-family: var(--display-font);
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-primary);
         }
 
-        .panel-content {
-            padding: 14px;
-            max-height: 280px;
-            overflow-y: auto;
-        }
+        .panel-content { padding: 18px; }
 
-        /* All panel content styles from previous version */
         .pipeline { display: flex; gap: 8px; margin-bottom: 16px; }
         .pipeline-stage { flex: 1; text-align: center; padding: 12px 8px; background: rgba(255,255,255,0.02); border-radius: 6px; border-top: 2px solid var(--crystal-border); }
         .pipeline-stage.active { border-top-color: var(--crimson-bright); background: var(--crimson-glow); }
@@ -706,644 +369,443 @@
         .pipeline-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
         .workflow-arrow { display: flex; align-items: center; color: var(--crimson-bright); font-size: 16px; }
 
-        .project-card { background: rgba(255,255,255,0.02); border-radius: 6px; padding: 12px; margin-bottom: 10px; border-left: 3px solid var(--crimson-bright); }
-        .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .project-name { font-family: var(--display-font); font-size: 13px; font-weight: 600; }
-        .project-percent { font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright); }
-        .project-progress { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-bottom: 8px; overflow: hidden; }
-        .project-progress-fill { height: 100%; background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b); border-radius: 3px; box-shadow: 0 0 10px var(--crimson-glow); }
-        .project-meta { font-size: 10px; color: var(--text-muted); }
-
-        .calendar-section { margin-bottom: 16px; }
-        .calendar-header { font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; font-weight: 600; }
-        .calendar-item { display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.02); border-radius: 6px; margin-bottom: 8px; }
-        .calendar-date { text-align: center; min-width: 45px; }
-        .calendar-day { font-family: var(--display-font); font-size: 18px; font-weight: 700; color: var(--crimson-bright); }
-        .calendar-month { font-size: 9px; color: var(--text-muted); text-transform: uppercase; }
-        .calendar-content h4 { font-size: 12px; margin-bottom: 2px; }
-        .calendar-content p { font-size: 10px; color: var(--text-muted); }
-
-        .decision-item { background: rgba(139, 0, 0, 0.1); border: 1px solid var(--crimson-bright); border-radius: 6px; padding: 12px; margin-bottom: 10px; }
-        .decision-item.blocked { border-color: var(--crimson-bright); }
-        .decision-item.input { border-color: #c9a962; background: rgba(201, 169, 98, 0.1); }
-        .decision-type { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-        .decision-type.blocked { color: var(--crimson-bright); }
-        .decision-type.input { color: #c9a962; }
-        .decision-title { font-size: 12px; margin-bottom: 6px; }
-        .decision-reason { font-size: 10px; color: var(--text-muted); margin-bottom: 10px; }
-        .decision-btn { padding: 6px 12px; background: transparent; border: 1px solid var(--crimson-bright); border-radius: 3px; color: var(--crimson-bright); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-        .decision-btn:hover { background: var(--crimson-glow); }
-
-        .activity-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--crystal-border); }
-        .activity-item:last-child { border-bottom: none; }
-        .activity-time { font-family: var(--display-font); font-size: 10px; color: var(--text-muted); min-width: 70px; }
-        .activity-content h4 { font-size: 11px; margin-bottom: 2px; }
-        .activity-content p { font-size: 10px; color: var(--text-muted); }
-
-        .queue-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.02); border-radius: 6px; margin-bottom: 8px; border-left: 2px solid var(--crystal-border); }
-        .queue-item.high { border-left-color: var(--crimson-bright); }
-        .queue-item.medium { border-left-color: #c9a962; }
-        .queue-item.low { border-left-color: var(--text-muted); }
-        .queue-info h4 { font-size: 11px; margin-bottom: 2px; }
-        .queue-info p { font-size: 9px; color: var(--text-muted); }
-        .queue-priority { font-size: 8px; padding: 3px 8px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .queue-priority.high { background: rgba(139, 0, 0, 0.3); color: var(--crimson-bright); }
-
-        .category-card {
-            background: var(--crystal);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .category-card:hover {
-            border-color: var(--crimson-bright);
-            box-shadow: 0 0 30px var(--crimson-glow);
-        }
-
-        .category-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--crystal-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .category-title {
-            font-family: var(--display-font);
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .category-title span {
-            color: var(--crimson-bright);
-        }
-
-        .category-subtitle {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .category-count {
-            font-family: var(--display-font);
-            font-size: 32px;
-            color: var(--crimson-bright);
-        }
-
-        .category-projects {
-            padding: 16px;
-        }
-
-        .category-project-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            margin-bottom: 8px;
-            border-left: 3px solid var(--crystal-border);
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .category-project-item:hover {
-            background: var(--crimson-glow);
-            border-left-color: var(--crimson-bright);
-        }
-
-        .category-project-item.active {
-            border-left-color: var(--crimson-bright);
-            background: var(--crimson-glow);
-        }
-
-        .project-info h4 {
-            font-family: var(--display-font);
-            font-size: 13px;
-            margin-bottom: 4px;
-        }
-
-        .project-info p {
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-
-        .project-status {
-            font-size: 10px;
-            padding: 4px 10px;
-            border-radius: 3px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .project-status.active {
-            background: rgba(139, 0, 0, 0.3);
-            color: var(--crimson-bright);
-        }
-
-        .project-status.pending {
-            background: rgba(201, 169, 98, 0.2);
-            color: #c9a962;
-        }
-
-        .project-status.complete {
-            background: rgba(0, 255, 136, 0.2);
-            color: #00ff88;
-        }
-
-        /* Expandable Project Cards */
-        .expandable-project-card {
-            border: 1px solid var(--crystal-border);
-            border-radius: 8px;
-            margin-bottom: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .expandable-project-card:hover {
-            border-color: var(--crimson-bright);
-            box-shadow: 0 0 15px var(--crimson-glow);
-        }
-
-        .expandable-project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 16px;
-            background: rgba(255,255,255,0.02);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .expandable-project-header:hover {
-            background: var(--crimson-glow);
-        }
-
-        .expandable-project-info h4 {
-            font-family: var(--display-font);
-            font-size: 13px;
-            margin-bottom: 4px;
-            color: var(--text-primary);
-        }
-
-        .expandable-project-info p {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .expandable-project-meta {
+        .activity-list { display: flex; flex-direction: column; gap: 12px; }
+        .activity-item {
             display: flex;
             gap: 12px;
-            margin-top: 6px;
-            font-size: 10px;
-            color: var(--text-secondary);
+            padding: 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            border-left: 2px solid var(--crystal-border);
+            transition: all 0.2s;
         }
+        .activity-item:hover { background: var(--crimson-glow); border-left-color: var(--crimson-bright); }
+        .activity-time { font-family: var(--display-font); font-size: 10px; color: var(--text-muted); min-width: 50px; }
+        .activity-content h4 { font-size: 13px; margin-bottom: 2px; }
+        .activity-content p { font-size: 11px; color: var(--text-muted); }
 
-        .expandable-project-meta .deadline {
-            color: var(--crimson-bright);
-        }
-
-        .expand-icon {
-            font-size: 12px;
-            color: var(--text-muted);
-            transition: transform 0.3s;
-        }
-
-        .expandable-project-card.expanded .expand-icon {
-            transform: rotate(180deg);
-        }
-
-        .expandable-project-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: rgba(0,0,0,0.2);
-        }
-
-        .expandable-project-card.expanded .expandable-project-content {
-            max-height: 500px;
-        }
-
-        .next-task-preview {
-            padding: 12px 16px;
-            background: rgba(139, 0, 0, 0.1);
+        .project-list { display: flex; flex-direction: column; gap: 10px; }
+        .project-card-mini {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
             border-left: 3px solid var(--crimson-bright);
-            margin: 12px 16px;
-            border-radius: 0 6px 6px 0;
+            transition: all 0.2s;
         }
+        .project-card-mini:hover { background: var(--crimson-glow); }
+        .project-info h4 { font-family: var(--display-font); font-size: 13px; margin-bottom: 4px; }
+        .project-info p { font-size: 11px; color: var(--text-muted); }
+        .project-progress { width: 60px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .project-progress-fill { height: 100%; background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b); border-radius: 3px; }
 
-        .next-task-preview .label {
-            font-size: 10px;
-            text-transform: uppercase;
-            color: var(--crimson-bright);
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-
-        .next-task-preview .task {
-            font-size: 12px;
-            color: var(--text-primary);
-        }
-
-        .project-tasks-list {
-            padding: 0 16px 16px;
-        }
-
-        .project-task-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 6px;
-            margin-bottom: 8px;
-            border-left: 2px solid transparent;
-        }
-
-        .project-task-item.high-priority {
-            border-left-color: var(--crimson-bright);
-        }
-
-        .task-status-dot {
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-        }
-
-        .task-status-dot.inactive { color: var(--text-muted); }
-        .task-status-dot.input-needed { color: #c9a962; }
-        .task-status-dot.active { color: #00ff88; }
-        .task-status-dot.done { color: #00ff88; }
-
-        .project-task-info {
-            flex: 1;
-        }
-
-        .project-task-info h5 {
-            font-size: 12px;
-            margin-bottom: 2px;
-        }
-
-        .project-task-info p {
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-
-        .task-agent-badge {
-            font-size: 9px;
-            padding: 2px 6px;
-            border-radius: 3px;
-            background: rgba(0, 255, 136, 0.1);
-            color: #00ff88;
-        }
-
-        .subtasks-list {
-            margin: 8px 0 8px 28px;
-            padding: 8px 12px;
-            background: rgba(0,0,0,0.15);
-            border-radius: 4px;
-        }
-
-        .subtask-item {
-            font-size: 11px;
-            color: var(--text-secondary);
-            padding: 3px 0;
-        }
-
-        .project-action-buttons {
-            display: flex;
-            gap: 8px;
-            padding: 12px 16px;
-            border-top: 1px solid var(--crystal-border);
-        }
-
-        .proj-action-btn {
-            padding: 6px 12px;
+        .quick-actions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .quick-action-btn {
+            padding: 14px;
             background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 8px;
+            color: var(--crimson-bright);
+            font-family: var(--tech-font);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .quick-action-btn:hover { background: var(--crimson-bright); color: white; box-shadow: 0 0 20px var(--crimson-glow); }
+
+        .decision-item {
+            background: rgba(139, 0, 0, 0.1);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+        .decision-type { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--crimson-bright); margin-bottom: 6px; }
+        .decision-title { font-size: 13px; margin-bottom: 6px; }
+        .decision-reason { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; }
+        .decision-btn {
+            padding: 8px 14px;
+            background: transparent;
             border: 1px solid var(--crimson-bright);
             border-radius: 4px;
             color: var(--crimson-bright);
             font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.2s;
         }
+        .decision-btn:hover { background: var(--crimson-glow); }
 
-        .proj-action-btn:hover {
-            background: var(--crimson-bright);
-            color: white;
-        }
-
-        /* Progress Bar */
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b);
-            border-radius: 3px;
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            font-size: 10px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        /* Deadline Countdown */
-        .deadline-countdown {
-            font-size: 11px;
-            color: var(--crimson-bright);
-            font-weight: 600;
-        }
-
-        .deadline-countdown.urgent {
-            color: #ff4444;
-            animation: pulse 1s infinite;
-        }
-
-        /* Priority Indicator */
-        .priority-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-        }
-
-        .priority-high { background: #ff4444; box-shadow: 0 0 6px #ff4444; }
-        .priority-medium { background: #c9a962; box-shadow: 0 0 6px #c9a962; }
-        .priority-low { background: #00ff88; box-shadow: 0 0 6px #00ff88; }
-
-        /* Blocked Count */
-        .blocked-badge {
-            font-size: 10px;
-            padding: 2px 6px;
-            background: rgba(255, 68, 68, 0.2);
-            border: 1px solid #ff4444;
-            border-radius: 3px;
-            color: #ff4444;
-        }
-
-        /* Project Health */
-        .project-health {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 6px;
-            margin: 12px 16px;
-            font-size: 11px;
-        }
-
-        .health-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        .health-good { background: #00ff88; }
-        .health-warning { background: #c9a962; }
-        .health-danger { background: #ff4444; }
-
-        /* Enhanced Task Item */
-        .task-meta-row {
-            display: flex;
-            gap: 12px;
-            margin-top: 4px;
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-
-        .task-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* Section Header */
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        /* Modal Styles (Task 6) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--bg-card);
+        /* ===== CATEGORIES SECTION STYLES ===== */
+        .dashboard-stats-bar {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--panel-bg);
             border: 1px solid var(--crystal-border);
             border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
+            backdrop-filter: blur(10px);
         }
 
-        .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--crystal-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-family: var(--display-font);
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .modal-close {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .modal-close:hover {
-            color: var(--crimson-bright);
-        }
-
-        .modal-body {
-            padding: 20px;
-        }
-
-        .modal-footer {
-            padding: 20px;
-            border-top: 1px solid var(--crystal-border);
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
+        .dashboard-stat {
+            text-align: center;
             padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            border-left: 3px solid var(--crystal-border);
+            transition: all 0.3s;
+        }
+
+        .dashboard-stat:hover {
+            background: var(--crimson-glow);
+            border-left-color: var(--crimson-bright);
+        }
+
+        .dashboard-stat-icon { font-size: 20px; margin-bottom: 4px; }
+        .dashboard-stat-value {
+            font-family: var(--display-font);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--crimson-bright);
+            margin-bottom: 4px;
+        }
+        .dashboard-stat-value.success { color: var(--success); }
+        .dashboard-stat-value.warning { color: var(--warning); }
+        .dashboard-stat-value.danger { color: var(--danger); }
+        .dashboard-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-group { display: flex; align-items: center; gap: 8px; }
+        .filter-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .filter-select, .filter-btn {
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.05);
             border: 1px solid var(--crystal-border);
             border-radius: 6px;
             color: var(--text-primary);
             font-family: var(--tech-font);
-            font-size: 14px;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--crimson-bright);
-            box-shadow: 0 0 10px var(--crimson-glow);
-        }
-
-        .priority-options {
-            display: flex;
-            gap: 8px;
-        }
-
-        .priority-btn {
-            flex: 1;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--crystal-border);
-            border-radius: 6px;
-            color: var(--text-muted);
             font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.2s;
         }
-
-        .priority-btn:hover {
-            background: var(--crimson-glow);
-        }
-
-        .priority-btn.active[data-priority="high"] {
-            background: rgba(139, 0, 0, 0.3);
-            border-color: var(--crimson-bright);
-            color: var(--crimson-bright);
-        }
-
-        .priority-btn.active[data-priority="medium"] {
-            background: rgba(201, 169, 98, 0.2);
-            border-color: #c9a962;
-            color: #c9a962;
-        }
-
-        .priority-btn.active[data-priority="low"] {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--text-muted);
-            color: var(--text-secondary);
-        }
-
-        .btn-secondary,
-        .btn-primary {
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-secondary {
+        .filter-select:hover, .filter-btn:hover { border-color: var(--crimson-bright); background: var(--crimson-glow); }
+        .filter-clear {
+            margin-left: auto;
+            padding: 8px 16px;
             background: transparent;
             border: 1px solid var(--crystal-border);
+            border-radius: 6px;
             color: var(--text-muted);
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
+        .filter-clear:hover { border-color: var(--crimson-bright); color: var(--crimson-bright); }
 
-        .btn-secondary:hover {
-            border-color: var(--crimson-bright);
-            color: var(--crimson-bright);
+        .category-section { margin-bottom: 48px; }
+        .category-header-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--crystal-border);
         }
-
-        .btn-primary {
-            background: var(--crimson-bright);
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--crimson-glow);
             border: 1px solid var(--crimson-bright);
-            color: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .category-title-group h2 {
+            font-family: var(--display-font);
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .category-title-group h2 span { color: var(--crimson-bright); }
+        .category-title-group p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .category-stats { margin-left: auto; display: flex; gap: 24px; }
+        .category-stat { text-align: center; }
+        .category-stat-value { font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright); }
+        .category-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px; }
+
+        .project-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .project-card:hover { border-color: var(--crimson-bright); box-shadow: 0 0 20px var(--crimson-glow); }
+        .project-card.filtered-out { display: none; }
+
+        .project-card-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: linear-gradient(90deg, rgba(139,0,0,0.1), transparent);
+            transition: background 0.2s;
+        }
+        .project-card-header:hover { background: var(--crimson-glow); }
+
+        .project-info-main { flex: 1; }
+        .project-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+        .project-title-row h3 { font-family: var(--display-font); font-size: 15px; font-weight: 600; }
+        .project-badges { display: flex; gap: 6px; }
+        .agent-badge {
+            font-size: 9px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        .agent-badge.active { background: rgba(0, 255, 136, 0.15); color: var(--success); }
+        .agent-badge.pending { background: rgba(201, 169, 98, 0.15); color: var(--warning); }
+        .project-id { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+
+        .task-stats {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--crystal-border);
+        }
+        .task-stat { text-align: center; padding: 8px 4px; background: rgba(255,255,255,0.02); border-radius: 6px; }
+        .task-stat-value { font-family: var(--display-font); font-size: 16px; font-weight: 600; color: var(--text-primary); }
+        .task-stat-label { font-size: 8px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+        .task-stat.high-priority .task-stat-value { color: var(--danger); }
+        .task-stat.medium-priority .task-stat-value { color: var(--warning); }
+        .task-stat.low-priority .task-stat-value { color: var(--success); }
+        .task-stat.urgent .task-stat-value { color: var(--crimson-bright); }
+
+        .time-tracking-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            background: rgba(0,0,0,0.2);
+        }
+        .time-stat { display: flex; flex-direction: column; gap: 2px; }
+        .time-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .time-value { font-family: var(--display-font); font-size: 14px; color: var(--info); }
+        .time-value.over-budget { color: var(--danger); }
+        .time-progress-bar { width: 120px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .time-progress-fill { height: 100%; background: linear-gradient(90deg, var(--info), #74c0fc); border-radius: 3px; transition: width 0.3s ease; }
+        .time-progress-fill.warning { background: linear-gradient(90deg, var(--warning), #ffd43b); }
+        .time-progress-fill.danger { background: linear-gradient(90deg, var(--danger), #ff8787); }
+
+        .due-countdown {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            font-size: 12px;
+        }
+        .due-label { color: var(--text-muted); }
+        .due-value { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .due-value.urgent { color: var(--danger); animation: pulse 1.5s infinite; }
+        .due-value.warning { color: var(--warning); }
+        .due-value.success { color: var(--success); }
+        .countdown-timer {
+            font-family: var(--display-font);
+            font-size: 11px;
+            padding: 2px 8px;
+            background: rgba(139, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+
+        .milestones-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
+        .milestones-title { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .milestones-track { display: flex; align-items: center; gap: 4px; }
+        .milestone {
+            flex: 1;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .milestone.completed { background: var(--success); box-shadow: 0 0 8px var(--success); }
+        .milestone.active { background: var(--warning); box-shadow: 0 0 8px var(--warning); animation: pulse 2s infinite; }
+        .milestone.upcoming { background: rgba(255,255,255,0.05); border: 1px dashed var(--crystal-border); }
+        .milestone-tooltip {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--crystal-border);
+            border-radius: 4px;
+            font-size: 9px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 10;
+        }
+        .milestone:hover .milestone-tooltip { opacity: 1; }
+
+        .progress-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
+        .progress-header { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; }
+        .progress-label { color: var(--text-muted); }
+        .progress-value { color: var(--crimson-bright); font-weight: 600; }
+        .progress-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b); border-radius: 3px; transition: width 0.3s ease; box-shadow: 0 0 10px var(--crimson-glow); }
+
+        .expand-icon { font-size: 12px; color: var(--text-muted); transition: transform 0.3s; }
+        .project-card.expanded .expand-icon { transform: rotate(180deg); }
+
+        .project-card-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: rgba(0,0,0,0.2); }
+        .project-card.expanded .project-card-content { max-height: 800px; }
+
+        .tasks-section { padding: 16px 20px; border-bottom: 1px solid var(--crystal-border); }
+        .tasks-section-title { font-size: 11px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .task-list { display: flex; flex-direction: column; gap: 8px; }
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .task-item:hover { background: rgba(255,255,255,0.05); }
+        .task-item.high-priority { border-left-color: var(--danger); background: rgba(255, 68, 68, 0.05); }
+        .task-item.medium-priority { border-left-color: var(--warning); }
+        .task-item.low-priority { border-left-color: var(--success); }
+        .task-status { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+        .task-status.pending { color: var(--text-muted); }
+        .task-status.active { color: var(--success); }
+        .task-status.review { color: var(--warning); }
+        .task-status.done { color: var(--success); opacity: 0.6; }
+        .task-details { flex: 1; }
+        .task-title { font-size: 13px; margin-bottom: 2px; }
+        .task-notes { font-size: 11px; color: var(--text-muted); }
+        .task-meta-row { display: flex; gap: 12px; margin-top: 4px; font-size: 10px; color: var(--text-secondary); }
+        .priority-badge { font-size: 9px; padding: 2px 6px; border-radius: 3px; text-transform: uppercase; }
+        .priority-badge.high { background: rgba(255, 68, 68, 0.2); color: var(--danger); }
+        .priority-badge.medium { background: rgba(201, 169, 98, 0.2); color: var(--warning); }
+        .priority-badge.low { background: rgba(0, 255, 136, 0.1); color: var(--success); }
+
+        .project-actions { display: flex; gap: 10px; padding: 16px 20px; }
+        .action-btn {
+            flex: 1;
+            padding: 10px 16px;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 6px;
+            color: var(--crimson-bright);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--tech-font);
             font-weight: 600;
         }
+        .action-btn:hover { background: var(--crimson-bright); color: white; box-shadow: 0 0 15px var(--crimson-glow); }
+        .action-btn.secondary { background: transparent; border-color: var(--crystal-border); color: var(--text-muted); }
+        .action-btn.secondary:hover { border-color: var(--crimson-bright); color: var(--crimson-bright); }
 
-        .btn-primary:hover {
-            box-shadow: 0 0 20px var(--crimson-glow);
+        /* ===== INSIGHTS & RESOURCES PLACEHOLDER ===== */
+        .placeholder-content {
+            text-align: center;
+            padding: 80px 40px;
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
         }
+        .placeholder-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
+        .placeholder-title { font-family: var(--display-font); font-size: 18px; color: var(--crimson-bright); margin-bottom: 8px; }
+        .placeholder-text { color: var(--text-muted); font-size: 14px; }
+
+        /* Loading & Error States */
+        .loading-state { text-align: center; padding: 60px; color: var(--text-muted); }
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--crystal-border);
+            border-top-color: var(--crimson-bright);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .error-state { text-align: center; padding: 60px; color: var(--crimson-bright); }
+        .no-results { text-align: center; padding: 60px; color: var(--text-muted); }
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--crystal-border); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb { background: var(--crystal-border); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--crimson-bright); }
 
         /* Mobile Responsive */
         @media (max-width: 1200px) {
-            .stats-bar { grid-template-columns: repeat(3, 1fr); }
-            .row { grid-template-columns: 1fr; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .dashboard-stats-bar { grid-template-columns: repeat(3, 1fr); }
+            .projects-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            .topbar-center { display: none; }
             .sidebar { transform: translateX(-100%); }
             .sidebar.mobile-open { transform: translateX(0); }
-            .stats-bar { grid-template-columns: repeat(3, 1fr); padding: 10px 24px; }
-            .main-container { padding: 16px; }
-            #categories-section .row { grid-template-columns: 1fr !important; }
+            .main-content { margin-left: 0; padding: 16px; }
+            body.sidebar-expanded .main-content { margin-left: 0; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .category-stats { display: none; }
+            .topbar-center { display: none; }
+            .filter-bar { flex-direction: column; align-items: stretch; }
+            .filter-group { justify-content: space-between; }
+            .filter-clear { margin-left: 0; }
+            .task-stats { grid-template-columns: repeat(3, 1fr); }
+            .time-tracking-bar { flex-direction: column; gap: 10px; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <!-- CYBER DATA STREAM BACKGROUND -->
+    <!-- Background Effects -->
     <div class="cyber-bg">
         <div class="data-stream">01 A2 43 B3 92 C1 15 D4</div>
         <div class="data-stream">FF 23 9A 4C 7B E1 56 82</div>
@@ -1356,71 +818,22 @@
         <div class="data-stream">GITHUB_PUSH REPO_UPDATED MAIN</div>
         <div class="data-stream">11 22 33 44 55 66 77 88</div>
     </div>
-
     <div class="circuit-overlay"></div>
     <div class="hex-pattern"></div>
 
-    <div class="float-hex">0xFF</div>
-    <div class="float-hex">0xA2</div>
-    <div class="float-hex">0x7B</div>
-    <div class="float-hex">0xC3</div>
-    <div class="float-hex">0x91</div>
-
-    <!-- TOP BAR: Sun Avatar + Info | Center Title | Actions -->
+    <!-- Top Bar -->
     <div class="topbar">
         <div class="topbar-left">
-            <!-- Red Sun Avatar with Info -->
             <div class="sun-widget-header">
                 <div class="sun-avatar-enhanced"></div>
                 <div class="sun-info">
                     <div class="sun-name">CHAD_YI</div>
                     <div class="sun-status">● ACTIVE</div>
-                    <div class="sun-mode">COMMAND</div>
                 </div>
             </div>
         </div>
-
-        <div class="topbar-center">
-            MISSION CONTROL
-        </div>
-
+        <div class="topbar-center">Mission Control</div>
         <div class="topbar-right">
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-
-            <!-- Quick Actions Menu -->
-            <div class="quick-actions">
-                <button class="quick-btn" onclick="toggleQuickMenu()">
-                    ⚡ ACTIONS ▼
-                </button>
-                <div class="quick-menu" id="quickMenu">
-
-                    <div class="quick-section">
-                        <div class="quick-section-title">Control Dashboard</div>
-                        <div class="quick-item" onclick="quickAction('refresh')">
-                            🔄 Refresh Data
-                        </div>
-                        <div class="quick-item" onclick="quickAction('fullscreen')">
-                            ⛶ Toggle Fullscreen
-                        </div>
-                        <div class="quick-item" onclick="quickAction('export')">
-                            📊 Export Today's Report
-                        </div>
-                    </div>
-
-                    <div class="quick-section">
-                        <div class="quick-section-title">Create Task (Demo)</div>
-                        <div class="quick-item" onclick="quickAction('add-task')">
-                            ➕ Quick Add Task
-                        </div>
-                        <div class="quick-item" onclick="quickAction('github')">
-                            📤 Deploy to GitHub
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
             <div class="status-widget">
                 <div class="status-dot"></div>
                 <span>ONLINE</span>
@@ -1428,26 +841,26 @@
         </div>
     </div>
 
-    <!-- SIDEBAR -->
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <button class="sidebar-toggle" onclick="toggleSidebar()">
             <span>▶</span>
             <span class="sidebar-toggle-text">Expand</span>
         </button>
 
-        <a href="#" class="sidebar-item active" onclick="showSection('home', this)">
+        <button class="sidebar-item active" onclick="showSection('home')" data-section="home">
             <span class="sidebar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                     <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
             </span>
             <span class="sidebar-label">Home</span>
-        </a>
+        </button>
 
-        <a href="#" class="sidebar-item" onclick="showSection('categories', this)">
+        <button class="sidebar-item" onclick="showSection('categories')" data-section="categories">
             <span class="sidebar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="7" height="7"/>
                     <rect x="14" y="3" width="7" height="7"/>
                     <rect x="14" y="14" width="7" height="7"/>
@@ -1455,1695 +868,913 @@
                 </svg>
             </span>
             <span class="sidebar-label">Categories</span>
-        </a>
+        </button>
 
-        <a href="#" class="sidebar-item" onclick="showSection('insights', this)">
+        <button class="sidebar-item" onclick="showSection('insights')" data-section="insights">
             <span class="sidebar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="18" y1="20" x2="18" y2="10"/>
                     <line x1="12" y1="20" x2="12" y2="4"/>
                     <line x1="6" y1="20" x2="6" y2="14"/>
                 </svg>
             </span>
             <span class="sidebar-label">Insights</span>
-        </a>
+        </button>
 
-        <a href="#" class="sidebar-item" onclick="showSection('resources', this)">
+        <button class="sidebar-item" onclick="showSection('resources')" data-section="resources">
             <span class="sidebar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                     <polyline points="14 2 14 8 20 8"/>
                     <line x1="16" y1="13" x2="8" y2="13"/>
                     <line x1="16" y1="17" x2="8" y2="17"/>
-                    <polyline points="10 9 9 9 8 9"/>
                 </svg>
             </span>
             <span class="sidebar-label">Resources</span>
-        </a>
-
-        <a href="#" class="sidebar-item" onclick="showSection('system', this)">
-            <span class="sidebar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                    <line x1="8" y1="21" x2="16" y2="21"/>
-                    <line x1="12" y1="17" x2="12" y2="21"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">System</span>
-        </a>
-
-        <a href="#" class="sidebar-item" onclick="showSection('profile', this)">
-            <span class="sidebar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">Profile</span>
-        </a>
+        </button>
     </div>
 
-    <!-- COMPACT STATS BAR -->
-    <div class="stats-bar">
-        <div class="stat-card">
-            <div class="stat-label">Active</div>
-            <div class="stat-value">3</div>
-            <div class="stat-sub">Agents</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-label">Spawned</div>
-            <div class="stat-value">5</div>
-            <div class="stat-sub">Today</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-label">Done</div>
-            <div class="stat-value">7</div>
-            <div class="stat-sub">Tasks</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-label">Time</div>
-            <div class="stat-value">4:23</div>
-            <div class="stat-sub">Active</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-label">Focus</div>
-            <div class="stat-value">A2</div>
-            <div class="stat-sub">Project</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-label">Events</div>
-            <div class="stat-value">12</div>
-            <div class="stat-sub">Today</div>
-        </div>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div class="main-container">
-
+    <!-- Main Content -->
+    <div class="main-content">
         <!-- HOME SECTION -->
-        <div class="section active" id="home-section">
+        <div id="home-section" class="section active">
+            <h1 class="page-title">🎯 Mission Control Dashboard</h1>
 
-        <!-- ROW 1: WORKFLOW + PROJECTS -->
-        <div class="row">
-            <div class="panel">
-                <div class="panel-header">
-                    <span class="panel-title">Workflow Pipeline</span>
-                    <span class="panel-value">12 Total</span>
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-label">Active Agents</div>
+                    <div class="stat-value" id="home-active-agents">-</div>
+                    <div class="stat-sub" id="home-agents-sub">Loading...</div>
                 </div>
-                <div class="panel-content">
-                    <div class="pipeline">
-                        <div class="pipeline-stage">
-                            <div class="pipeline-count">5</div>
-                            <div class="pipeline-label">Pending</div>
-                        </div>
-                        <div class="workflow-arrow">→</div>
-                        <div class="pipeline-stage active">
-                            <div class="pipeline-count">3</div>
-                            <div class="pipeline-label">Active</div>
-                        </div>
-                        <div class="workflow-arrow">→</div>
-                        <div class="pipeline-stage">
-                            <div class="pipeline-count">2</div>
-                            <div class="pipeline-label">Review</div>
-                        </div>
-                        <div class="workflow-arrow">→</div>
-                        <div class="pipeline-stage">
-                            <div class="pipeline-count">7</div>
-                            <div class="pipeline-label">Done</div>
-                        </div>
-                    </div>
-
-                    <div style="font-size: 10px; color: var(--text-muted); text-align: center; margin-bottom: 16px;">2 tasks blocked · 3 waiting for you</div>
-
-                    <!-- Recent Movement -->
-                    <div style="border-top: 1px solid var(--crystal-border); padding-top: 12px;">
-                        <div style="font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Recent Movement</div>
-
-                        <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
-                                <span style="color: #00ff88;">↑</span>
-                                <span style="color: var(--text-secondary);">Chapter 4</span>
-                                <span style="color: var(--text-muted); margin-left: auto;">2m ago</span>
-                            </div>
-
-                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
-                                <span style="color: #00ff88;">↑</span>
-                                <span style="color: var(--text-secondary);">B3 Homepage</span>
-                                <span style="color: var(--text-muted); margin-left: auto;">15m ago</span>
-                            </div>
-
-                            <div style="display: flex; align-items: center; gap: 8px; font-size: 10px;">
-                                <span style="color: var(--crimson-bright);">→</span>
-                                <span style="color: var(--text-secondary);">Research Notes</span>
-                                <span style="color: var(--text-muted); margin-left: auto;">1h ago</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Throughput Metrics -->
-                    <div style="border-top: 1px solid var(--crystal-border); padding-top: 12px; margin-top: 12px;">
-                        <div style="font-size: 9px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Throughput</div>
-
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
-                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
-                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">12</div>
-                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Today</div>
-                            </div>
-
-                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
-                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">2.4</div>
-                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">/hr</div>
-                            </div>
-
-                            <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 4px;">
-                                <div style="font-family: var(--display-font); font-size: 16px; color: var(--crimson-bright);">85%</div>
-                                <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Velocity</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Tasks</div>
+                    <div class="stat-value" id="home-total-tasks">-</div>
+                    <div class="stat-sub" id="home-tasks-sub">Loading...</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Projects</div>
+                    <div class="stat-value" id="home-total-projects">-</div>
+                    <div class="stat-sub">Across all categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">System Status</div>
+                    <div class="stat-value" style="color: var(--success);">OK</div>
+                    <div class="stat-sub">All systems nominal</div>
                 </div>
             </div>
 
-            <div class="panel">
-                <div class="panel-header">
-                    <span class="panel-title">Project Progress</span>
-                    <span class="panel-value">6 Active</span>
-                </div>
-                <div class="panel-content">
-                    <div class="project-card" style="border-left-color: #00ff88;">
-                        <div class="project-header">
-                            <span class="project-name">A6 · Mission Control</span>
-                            <span class="project-percent" style="color: #00ff88;">46%</span>
-                        </div>
-                        <div class="project-progress">
-                            <div class="project-progress-fill" style="width: 46%; background: linear-gradient(90deg, #00ff88, #00cc6a);"></div>
-                        </div>
-                        <div class="project-meta">12/26 tasks · Dashboard building</div>
+            <div class="dashboard-grid">
+                <!-- Workflow Panel -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Workflow Pipeline</span>
+                        <span class="panel-value" id="workflow-total">0 Total</span>
                     </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <span class="project-name">A2 · RE:UNITE</span>
-                            <span class="project-percent">25%</span>
+                    <div class="panel-content">
+                        <div class="pipeline">
+                            <div class="pipeline-stage">
+                                <div class="pipeline-count" id="workflow-pending">0</div>
+                                <div class="pipeline-label">Pending</div>
+                            </div>
+                            <div class="workflow-arrow">→</div>
+                            <div class="pipeline-stage active">
+                                <div class="pipeline-count" id="workflow-active">0</div>
+                                <div class="pipeline-label">Active</div>
+                            </div>
+                            <div class="workflow-arrow">→</div>
+                            <div class="pipeline-stage">
+                                <div class="pipeline-count" id="workflow-review">0</div>
+                                <div class="pipeline-label">Review</div>
+                            </div>
+                            <div class="workflow-arrow">→</div>
+                            <div class="pipeline-stage">
+                                <div class="pipeline-count" id="workflow-done">0</div>
+                                <div class="pipeline-label">Done</div>
+                            </div>
                         </div>
-                        <div class="project-progress">
-                            <div class="project-progress-fill" style="width: 25%"></div>
+                        <div style="font-size: 11px; color: var(--text-muted); text-align: center;">
+                            <span id="workflow-blocked">0</span> tasks blocked · <span id="workflow-waiting">0</span> waiting for input
                         </div>
-                        <div class="project-meta">3/12 chapters · 2 tasks active</div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <span class="project-name">B3 · Team Elevate</span>
-                            <span class="project-percent">10%</span>
-                        </div>
-                        <div class="project-progress">
-                            <div class="project-progress-fill" style="width: 10%"></div>
-                        </div>
-                        <div class="project-meta">1/10 tasks · 1 task active</div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <span class="project-name">A4 · Streaming</span>
-                            <span class="project-percent">5%</span>
-                        </div>
-                        <div class="project-progress">
-                            <div class="project-progress-fill" style="width: 5%"></div>
-                        </div>
-                        <div class="project-meta">Research phase · 1 task active</div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- ROW 2: CALENDAR + DECISIONS -->
-        <div class="row">
-            <div class="panel">
-                <div class="panel-header">
-                    <span class="panel-title">Calendar</span>
-                    <span class="panel-value">Past · Present · Future</span>
+                <!-- Active Projects -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Active Projects</span>
+                        <span class="panel-value" style="cursor: pointer;" onclick="showSection('categories')">View All →</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="project-list" id="home-active-projects">
+                            <div style="text-align: center; color: var(--text-muted); padding: 20px;">Loading...</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-content">
-                    <div class="calendar-section">
-                        <div class="calendar-header">Past</div>
-                        <div class="calendar-item">
-                            <div class="calendar-date">
-                                <div class="calendar-day">05</div>
-                                <div class="calendar-month">FEB</div>
-                            </div>
-                            <div class="calendar-content">
-                                <h4>7 Tasks Completed</h4>
-                                <p>A2: 3 chapters uploaded</p>
-                            </div>
-                        </div>
+
+                <!-- Recent Activity -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Recent Activity</span>
+                        <span class="panel-value">Live</span>
                     </div>
-
-                    <div class="calendar-section">
-                        <div class="calendar-header">Today</div>
-                        <div class="calendar-item">
-                            <div class="calendar-date">
-                                <div class="calendar-day">05</div>
-                                <div class="calendar-month">FEB</div>
-                            </div>
-                            <div class="calendar-content">
-                                <h4>3 Tasks Active</h4>
-                                <p>5 agents spawned · 12 events</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="calendar-section">
-                        <div class="calendar-header">Upcoming</div>
-                        <div class="calendar-item">
-                            <div class="calendar-date">
-                                <div class="calendar-day">28</div>
-                                <div class="calendar-month">FEB</div>
-                            </div>
-                            <div class="calendar-content">
-                                <h4>B3 Homepage Due</h4>
-                                <p>23 days remaining</p>
-                            </div>
-                        </div>
-
-                        <div class="calendar-item">
-                            <div class="calendar-date">
-                                <div class="calendar-day">13</div>
-                                <div class="calendar-month">DEC</div>
-                            </div>
-                            <div class="calendar-content">
-                                <h4>💍 Wedding Day</h4>
-                                <p>311 days remaining</p>
+                    <div class="panel-content">
+                        <div class="activity-list" id="home-activity">
+                            <div class="activity-item">
+                                <div class="activity-time">Now</div>
+                                <div class="activity-content">
+                                    <h4>Dashboard Loaded</h4>
+                                    <p>Mission Control SPA initialized</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="panel">
-                <div class="panel-header">
-                    <span class="panel-title">Decisions Required</span>
-                    <span class="panel-value">3 Pending</span>
+                <!-- Quick Actions -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Quick Actions</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="quick-actions-grid">
+                            <button class="quick-action-btn" onclick="quickAction('Add Task')">➕ Add Task</button>
+                            <button class="quick-action-btn" onclick="quickAction('Spawn Agent')">🤖 Spawn Agent</button>
+                            <button class="quick-action-btn" onclick="quickAction('Export Report')">📊 Export Report</button>
+                            <button class="quick-action-btn" onclick="quickAction('Deploy to GitHub')">📤 Deploy</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-content">
-                    <div class="decision-item blocked">
-                        <div class="decision-type blocked">⚠ Blocked</div>
-                        <div class="decision-title">Setup Shopify Store</div>
-                        <div class="decision-reason">B9 · Cannot proceed without API key</div>
-                        <button class="decision-btn">Provide API Key</button>
-                    </div>
 
-                    <div class="decision-item input">
-                        <div class="decision-type input">❓ Input Needed</div>
-                        <div class="decision-title">Choose Homepage Color Scheme</div>
-                        <div class="decision-reason">B3 · Awaiting your design preference</div>
-                        <button class="decision-btn">Select Colors</button>
+                <!-- Pending Decisions -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Pending Decisions</span>
+                        <span class="panel-value" id="pending-decisions-count">0</span>
                     </div>
+                    <div class="panel-content" id="pending-decisions">
+                        <div style="text-align: center; color: var(--text-muted); padding: 20px;">No pending decisions</div>
+                    </div>
+                </div>
 
-                    <div class="decision-item blocked">
-                        <div class="decision-type blocked">⚠ Blocked</div>
-                        <div class="decision-title">Chapter 13 Outline Approval</div>
-                        <div class="decision-reason">A2 · Agent waiting for your approval</div>
-                        <button class="decision-btn">Review Outline</button>
+                <!-- System Health -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">System Health</span>
+                        <span class="panel-value" style="color: var(--success);">● Healthy</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <h4>Data Source</h4>
+                                    <p style="color: var(--success);">● data.json connected</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <h4>Dashboard SPA</h4>
+                                    <p style="color: var(--success);">● Operational</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-content">
+                                    <h4>Last Updated</h4>
+                                    <p id="last-updated" style="color: var(--warning);">● Loading...</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- ROW 3: ACTIVITY + QUEUE -->
-        <div class="row">
-            <div class="panel" id="activityFeedPanel">
-                <div class="panel-header">
-                    <span class="panel-title">Activity Feed</span>
-                    <span class="panel-value">12 Events</span>
-                </div>
-                <div class="panel-content">
-                    <div class="activity-item">
-                        <div class="activity-time">[14:32:15]</div>
-                        <div class="activity-content">
-                            <h4>Task Completed</h4>
-                            <p>K2.5-WRITER uploaded to Royal Road</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-time">[14:28:42]</div>
-                        <div class="activity-content">
-                            <h4>Task Added</h4>
-                            <p>New task added to B3 queue by you</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-time">[14:15:08]</div>
-                        <div class="activity-content">
-                            <h4>Agent Spawned</h4>
-                            <p>GPT-4-CODER started on B3 homepage</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-time">[13:52:33]</div>
-                        <div class="activity-content">
-                            <h4>GitHub Push</div>
-                            <p>Updated mission-control-dashboard</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-time">[12:15:00]</div>
-                        <div class="activity-content">
-                            <h4>Milestone Reached</h4>
-                            <p>A2: 25% complete (3/12 chapters)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel" id="taskQueuePanel">
-                <div class="panel-header">
-                    <span class="panel-title">Task Queue</span>
-                    <span class="panel-value">12 Total</span>
-                </div>
-                <div class="panel-content">
-                    <div class="queue-item high">
-                        <div class="queue-info">
-                            <h4>Upload RE:UNITE Chapters</h4>
-                            <p>A2 · ✎ Writing · Active 45m</p>
-                        </div>
-                        <span class="queue-priority high">High</span>
-                    </div>
-
-                    <div class="queue-item medium">
-                        <div class="queue-info">
-                            <h4>Design Team Elevate Homepage</h4>
-                            <p>B3 · </ > Coding · Pending</p>
-                        </div>
-                        <span class="queue-priority medium">Med</span>
-                    </div>
-
-                    <div class="queue-item medium">
-                        <div class="queue-info">
-                            <h4>Research Kick Platform</h4>
-                            <p>A4 · 🔍 Research · Active 2h</p>
-                        </div>
-                        <span class="queue-priority medium">Med</span>
-                    </div>
-
-                    <div class="queue-item low">
-                        <div class="queue-info">
-                            <h4>Update Documentation</h4>
-                            <p>A6 · ✎ Writing · Backlog</p>
-                        </div>
-                        <span class="queue-priority low">Low</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        </div>
-        <!-- END HOME SECTION -->
 
         <!-- CATEGORIES SECTION -->
-        <div class="section" id="categories-section">
-            <div class="row" style="grid-template-columns: repeat(3, 1fr);">
+        <div id="categories-section" class="section">
+            <h1 class="page-title">📁 Project Categories</h1>
 
-                <!-- A - Ambition by Calbee -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">A<span>MBITION</span></div>
-                            <div class="category-subtitle">By Calbee (Personal)</div>
-                        </div>
-                        <div class="category-count">6</div>
-                    </div>
-                    <div class="category-projects">
-                        
-                        <!-- A1 - Collapsed -->
-                        <div class="expandable-project-card" data-project="A1">
-                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
-                                <div class="expandable-project-info">
-                                    <h4>A1 · Personal Tasks</h4>
-                                    <p>General personal tasks and errands</p>
-                                    <div class="expandable-project-meta">
-                                        <span>📋 3 tasks</span>
-                                        <span>✅ 0 done</span>
-                                    </div>
-                                </div>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                            <div class="expandable-project-content">
-                                <div class="next-task-preview">
-                                    <div class="label">Next Task</div>
-                                    <div class="task">Organize digital files</div>
-                                </div>
-                                <div class="project-tasks-list">
-                                    <div class="project-task-item">
-                                        <span class="task-status-dot inactive">○</span>
-                                        <div class="project-task-info">
-                                            <h5>Organize digital files</h5>
-                                        </div>
-                                        <span class="task-agent-badge">No agent</span>
-                                    </div>
-                                </div>
-                                <div class="project-action-buttons">
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A1')">🤖 Spawn Agent</button>
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A1')">+ Add Task</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- A2 - Expanded with FULL DETAILS -->
-                        <div class="expandable-project-card expanded" data-project="A2">
-                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
-                                <div class="expandable-project-info">
-                                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                                        <span class="priority-dot priority-high"></span>
-                                        <h4>A2 · Re:Unite</h4>
-                                        <span class="task-agent-badge" style="margin-left: auto;">🤖 CHAD_YI</span>
-                                    </div>
-                                    <p>Fantasy novel - Christian allegory</p>
-                                    <div class="expandable-project-meta">
-                                        <span>📋 12 chapters</span>
-                                        <span>✅ 3 done</span>
-                                        <span class="deadline-countdown">⏰ Due Sunday (2 days)</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 25%;"></div>
-                                    </div>
-                                    <div class="progress-text">25% complete · 47 hours logged</div>
-                                </div>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                            <div class="expandable-project-content">
-                                <div class="project-health">
-                                    <span class="health-indicator health-warning"></span>
-                                    <span>🟡 At Risk - Chapter 13 behind schedule</span>
-                                    <span style="margin-left: auto; font-size: 10px;">Updated 2h ago</span>
-                                </div>
-                                
-                                <div class="next-task-preview">
-                                    <div class="label">Next (Chapter 13)</div>
-                                    <div class="task">Write "The Revelation" - Awaiting your draft</div>
-                                    <div style="font-size: 10px; color: var(--text-muted); margin-top: 4px;">
-                                        <span class="priority-dot priority-high"></span> High Priority · Due in 2 days
-                                    </div>
-                                </div>
-                                
-                                <div class="project-tasks-list">
-                                    <div class="project-task-item high-priority">
-                                        <span class="task-status-dot input-needed">!</span>
-                                        <div class="project-task-info">
-                                            <h5>Write Chapter 13</h5>
-                                            <div class="task-meta-row">
-                                                <span class="task-meta-item">🤖 CHAD_YI</span>
-                                                <span class="task-meta-item">⏰ Due Sunday</span>
-                                                <span class="task-meta-item">⏱️ Est: 4h</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="subtasks-list">
-                                        <div class="subtask-item">✅ Draft outline (complete)</div>
-                                        <div class="subtask-item">⏳ Write content (60% - 2.5h spent)</div>
-                                        <div class="subtask-item">○ Edit & polish</div>
-                                    </div>
-                                    <div class="project-task-item">
-                                        <span class="task-status-dot inactive">○</span>
-                                        <div class="project-task-info">
-                                            <h5>Upload to Google Drive</h5>
-                                            <div class="task-meta-row">
-                                                <span class="task-meta-item">🤖 Auto</span>
-                                                <span class="task-meta-item">📅 On complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="project-task-item">
-                                        <span class="task-status-dot inactive">○</span>
-                                        <div class="project-task-info">
-                                            <h5>Start Chapter 14</h5>
-                                            <div class="task-meta-row">
-                                                <span class="task-meta-item">🤖 Unassigned</span>
-                                                <span class="task-meta-item">📅 Next week</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="project-action-buttons">
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); viewDrive('A2')">📁 Open Drive</button>
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A2')">+ Add Task</button>
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A2')">🤖 Spawn Agent</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- A3 - Collapsed -->
-                        <div class="expandable-project-card" data-project="A3">
-                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
-                                <div class="expandable-project-info">
-                                    <h4>A3 · KOE</h4>
-                                    <p>Christian YouTube channel</p>
-                                    <div class="expandable-project-meta">
-                                        <span>📋 3 scripts</span>
-                                        <span>✅ 0 done</span>
-                                    </div>
-                                </div>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                            <div class="expandable-project-content">
-                                <div class="next-task-preview">
-                                    <div class="label">Next Task</div>
-                                    <div class="task">Write Script 1: Right vs Left Paradigm</div>
-                                </div>
-                                <div class="project-action-buttons">
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A3')">🤖 Spawn Agent</button>
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A3')">+ Add Task</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- A4 - Collapsed -->
-                        <div class="expandable-project-card" data-project="A4">
-                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
-                                <div class="expandable-project-info">
-                                    <h4>A4 · Streaming</h4>
-                                    <p>VTuber/Faceless streaming setup</p>
-                                    <div class="expandable-project-meta">
-                                        <span>📋 5 tasks</span>
-                                        <span>✅ 0 done</span>
-                                    </div>
-                                </div>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                            <div class="expandable-project-content">
-                                <div class="next-task-preview">
-                                    <div class="label">Next Task</div>
-                                    <div class="task">Research Kick streaming platform</div>
-                                </div>
-                                <div class="project-action-buttons">
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A4')">🤖 Spawn Agent</button>
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A4')">+ Add Task</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- A5 - Collapsed -->
-                        <div class="expandable-project-card" data-project="A5">
-                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
-                                <div class="expandable-project-info">
-                                    <h4>A5 · Trading</h4>
-                                    <p>Forex & Options trading bots</p>
-                                    <div class="expandable-project-meta">
-                                        <span>📋 6 tasks</span>
-                                        <span>✅ 0 done</span>
-                                    </div>
-                                </div>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                            <div class="expandable-project-content">
-                                <div class="next-task-preview">
-                                    <div class="label">Next Task</div>
-                                    <div class="task">Set up OANDA API connection</div>
-                                </div>
-                                <div class="project-action-buttons">
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); spawnAgent('A5')">🤖 Spawn Agent</button>
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A5')">+ Add Task</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- A6 - Collapsed -->
-                        <div class="expandable-project-card" data-project="A6">
-                            <div class="expandable-project-header" onclick="toggleProjectExpand(this)">
-                                <div class="expandable-project-info">
-                                    <h4>A6 · Mission Control</h4>
-                                    <p>This dashboard project</p>
-                                    <div class="expandable-project-meta">
-                                        <span>📋 26 tasks</span>
-                                        <span>✅ 12 done</span>
-                                    </div>
-                                </div>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                            <div class="expandable-project-content">
-                                <div class="next-task-preview">
-                                    <div class="label">Next Task</div>
-                                    <div class="task">Fix Categories page expandable cards</div>
-                                </div>
-                                <div class="project-action-buttons">
-                                    <button class="proj-action-btn" onclick="event.stopPropagation(); addTask('A6')">+ Add Task</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+            <!-- Dashboard Stats Bar -->
+            <div id="dashboard-stats-bar" class="dashboard-stats-bar" style="display: none;">
+                <div class="dashboard-stat">
+                    <div class="dashboard-stat-icon">📊</div>
+                    <div class="dashboard-stat-value" id="cat-total-projects">0</div>
+                    <div class="dashboard-stat-label">Total Projects</div>
                 </div>
-
-                <!-- B - Business Empire -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">B<span>USINESS</span></div>
-                            <div class="category-subtitle">Empire (Main Work)</div>
-                        </div>
-                        <div class="category-count">10</div>
-                    </div>
-                    <div class="category-projects">
-                        <div class="category-project-item pending" onclick="viewProject('B1')">
-                            <div class="project-info">
-                                <h4>B1 · Exstatic</h4>
-                                <p>Business unit 1 - Define scope needed</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B2')">
-                            <div class="project-info">
-                                <h4>B2 · Energize</h4>
-                                <p>Business unit 2 - Define scope needed</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item active" onclick="viewProject('B3')">
-                            <div class="project-info">
-                                <h4>B3 · Team Elevate</h4>
-                                <p>1/10 tasks · Active</p>
-                            </div>
-                            <span class="project-status active">Active</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B4')">
-                            <div class="project-info">
-                                <h4>B4 · Pesta Fiesta</h4>
-                                <p>Business unit 4 - Define scope needed</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B5')">
-                            <div class="project-info">
-                                <h4>B5 · Enticipate</h4>
-                                <p>Business unit 5 - Define scope needed</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B6')">
-                            <div class="project-info">
-                                <h4>B6 · Elluminate</h4>
-                                <p>Business unit 6 - Define scope needed</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B7')">
-                            <div class="project-info">
-                                <h4>B7 · Encompasse</h4>
-                                <p>Business unit 7 - Define scope needed</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B8')">
-                            <div class="project-info">
-                                <h4>B8 · Empyrean</h4>
-                                <p>Business unit 8 - Define scope needed</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B9')">
-                            <div class="project-info">
-                                <h4>B9 · Ethereal</h4>
-                                <p>Business unit 9 - Define scope needed</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('B10')">
-                            <div class="project-info">
-                                <h4>B10 · Epitaph</h4>
-                                <p>Business unit 10 - YOU DEFINE THIS</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                    </div>
+                <div class="dashboard-stat">
+                    <div class="dashboard-stat-icon">📋</div>
+                    <div class="dashboard-stat-value" id="cat-total-tasks">0</div>
+                    <div class="dashboard-stat-label">Total Tasks</div>
                 </div>
-
-                <!-- C - Callings -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">C<span>ALLINGS</span></div>
-                            <div class="category-subtitle">On The Side (Other Jobs)</div>
-                        </div>
-                        <div class="category-count">2</div>
-                    </div>
-                    <div class="category-projects">
-                        <div class="category-project-item pending" onclick="viewProject('C1')">
-                            <div class="project-info">
-                                <h4>C1 · Real Estate</h4>
-                                <p>Property investments</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="viewProject('C2')">
-                            <div class="project-info">
-                                <h4>C2 · Side Sales Jobs</h4>
-                                <p>Additional sales work</p>
-                            </div>
-                            <span class="project-status pending">Pending</span>
-                        </div>
-                    </div>
+                <div class="dashboard-stat">
+                    <div class="dashboard-stat-icon">✓</div>
+                    <div class="dashboard-stat-value success" id="cat-tasks-done">0</div>
+                    <div class="dashboard-stat-label">Tasks Done</div>
                 </div>
-
+                <div class="dashboard-stat">
+                    <div class="dashboard-stat-icon">⏳</div>
+                    <div class="dashboard-stat-value warning" id="cat-tasks-pending">0</div>
+                    <div class="dashboard-stat-label">Pending</div>
+                </div>
+                <div class="dashboard-stat">
+                    <div class="dashboard-stat-icon">🎯</div>
+                    <div class="dashboard-stat-value" id="cat-completion-rate">0%</div>
+                    <div class="dashboard-stat-label">Completion</div>
+                </div>
+                <div class="dashboard-stat">
+                    <div class="dashboard-stat-icon">🚨</div>
+                    <div class="dashboard-stat-value danger" id="cat-urgent-tasks">0</div>
+                    <div class="dashboard-stat-label">Urgent Tasks</div>
+                </div>
             </div>
-        </div>
-        <!-- END CATEGORIES SECTION -->
 
-        <!-- INSIGHTS SECTION (Task 28) -->
-        <div class="section" id="insights-section">
-            <div class="row" style="grid-template-columns: repeat(2, 1fr);">
-                
-                <div class="panel">
-                    <div class="panel-header">
-                        <span class="panel-title">Productivity Overview</span>
-                        <span class="panel-value">Tasks Over Time</span>
-                    </div>
-                    <div class="panel-content">
-                        <div id="productivityChart" style="text-align: center; padding: 40px; color: var(--text-muted);">
-                            📊 Chart: Tasks completed per day
-                            <br><br>
-                            <div style="font-size: 48px; color: var(--crimson-bright);">12</div>
-                            <div>Tasks completed today</div>
-                        </div>
-                    </div>
+            <!-- Filter Bar -->
+            <div class="filter-bar" id="filter-bar" style="display: none;">
+                <div class="filter-group">
+                    <span class="filter-label">Filter by:</span>
                 </div>
-
-                <div class="panel">
-                    <div class="panel-header">
-                        <span class="panel-title">Project Velocity</span>
-                        <span class="panel-value">Speed Metrics</span>
-                    </div>
-                    <div class="panel-content">
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-                            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; text-align: center;">
-                                <div style="font-family: var(--display-font); font-size: 32px; color: var(--crimson-bright);">2.4</div>
-                                <div style="font-size: 11px; color: var(--text-muted);">Tasks/hour</div>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; text-align: center;">
-                                <div style="font-family: var(--display-font); font-size: 32px; color: var(--crimson-bright);">85%</div>
-                                <div style="font-size: 11px; color: var(--text-muted);">Efficiency</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="filter-group">
+                    <select class="filter-select" id="filter-priority" onchange="applyFilters()">
+                        <option value="">All Priorities</option>
+                        <option value="high">High Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="low">Low Priority</option>
+                    </select>
                 </div>
-
-                <div class="panel">
-                    <div class="panel-header">
-                        <span class="panel-title">Time Distribution</span>
-                        <span class="panel-value">Where Time Goes</span>
-                    </div>
-                    <div class="panel-content">
-                        <div style="padding: 20px;">
-                            <div style="margin-bottom: 12px;">
-                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                                    <span>A6 · Mission Control</span>
-                                    <span>46%</span>
-                                </div>
-                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                    <div style="width: 46%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 12px;">
-                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                                    <span>A2 · Re:Unite</span>
-                                    <span>25%</span>
-                                </div>
-                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                    <div style="width: 25%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                                    <span>B3 · Team Elevate</span>
-                                    <span>10%</span>
-                                </div>
-                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                    <div style="width: 10%; height: 100%; background: var(--crimson-bright); border-radius: 4px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="filter-group">
+                    <select class="filter-select" id="filter-status" onchange="applyFilters()">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="done">Done</option>
+                    </select>
                 </div>
-
-                <div class="panel">
-                    <div class="panel-header">
-                        <span class="panel-title">Agent Performance</span>
-                        <span class="panel-value">AI Efficiency</span>
-                    </div>
-                    <div class="panel-content">
-                        <div id="agentPerformance" style="text-align: center; padding: 40px; color: var(--text-muted);">
-                            🤖 Agent analytics coming soon
-                            <br><br>
-                            <div style="font-size: 48px; color: var(--crimson-bright);">CHAD_YI</div>
-                            <div>Currently active</div>
-                        </div>
-                    </div>
+                <div class="filter-group">
+                    <select class="filter-select" id="filter-agent" onchange="applyFilters()">
+                        <option value="">All Agents</option>
+                        <option value="CHAD_YI">CHAD_YI</option>
+                    </select>
                 </div>
-
+                <div class="filter-group">
+                    <span class="filter-label">Sort:</span>
+                    <select class="filter-select" id="sort-by" onchange="applyFilters()">
+                        <option value="name">Project Name</option>
+                        <option value="due">Due Date</option>
+                        <option value="progress">Progress</option>
+                        <option value="tasks">Task Count</option>
+                    </select>
+                </div>
+                <button class="filter-clear" onclick="clearFilters()">Clear Filters</button>
             </div>
-        </div>
-        <!-- END INSIGHTS SECTION -->
 
-        <!-- RESOURCES SECTION (Task 29) -->
-        <div class="section" id="resources-section">
-            <div class="row" style="grid-template-columns: repeat(3, 1fr);">
-
-                <!-- Quick Links -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">🔗 <span>LINKS</span></div>
-                            <div class="category-subtitle">Quick Access</div>
-                        </div>
-                    </div>
-                    <div class="category-projects">
-                        <a href="https://github.com/chadyi-king/mission-control-dashboard" target="_blank" class="category-project-item pending" style="text-decoration: none; color: inherit;">
-                            <div class="project-info">
-                                <h4>GitHub Repository</h4>
-                                <p>Source code & commits</p>
-                            </div>
-                            <span class="project-status pending">→</span>
-                        </a>
-                        <a href="https://chadyi-king.github.io/mission-control-dashboard/" target="_blank" class="category-project-item pending" style="text-decoration: none; color: inherit;">
-                            <div class="project-info">
-                                <h4>Live Dashboard</h4>
-                                <p>Production deployment</p>
-                            </div>
-                            <span class="project-status pending">→</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Documentation -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">📚 <span>DOCS</span></div>
-                            <div class="category-subtitle">References</div>
-                        </div>
-                    </div>
-                    <div class="category-projects">
-                        <div class="category-project-item pending">
-                            <div class="project-info">
-                                <h4>Project Structure</h4>
-                                <p>A/B/C organization</p>
-                            </div>
-                            <span class="project-status pending">View</span>
-                        </div>
-                        <div class="category-project-item pending">
-                            <div class="project-info">
-                                <h4>Task Guidelines</h4>
-                                <p>How to use dashboard</p>
-                            </div>
-                            <span class="project-status pending">View</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tools -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <div>
-                            <div class="category-title">🛠️ <span>TOOLS</span></div>
-                            <div class="category-subtitle">Utilities</div>
-                        </div>
-                    </div>
-                    <div class="category-projects">
-                        <div class="category-project-item pending" onclick="exportReport()">
-                            <div class="project-info">
-                                <h4>Export Data</h4>
-                                <p>Download JSON report</p>
-                            </div>
-                            <span class="project-status pending">↗</span>
-                        </div>
-                        <div class="category-project-item pending" onclick="backupData()">
-                            <div class="project-info">
-                                <h4>Backup</h4>
-                                <p>Save localStorage data</p>
-                            </div>
-                            <span class="project-status pending">↗</span>
-                        </div>
-                    </div>
-                </div>
-
+            <div id="cat-loading-state" class="loading-state">
+                <div class="loading-spinner"></div>
+                <div>Loading mission data...</div>
             </div>
+
+            <div id="cat-error-state" class="error-state" style="display: none;">
+                <div>⚠️ Failed to load data</div>
+            </div>
+
+            <div id="cat-no-results" class="no-results" style="display: none;">
+                <div>🔍 No projects match your filters</div>
+                <button class="filter-clear" onclick="clearFilters()" style="margin-top: 16px;">Clear Filters</button>
+            </div>
+
+            <div id="categories-container"></div>
         </div>
-        <!-- END RESOURCES SECTION -->
 
-        <!-- ADD TASK MODAL (Task 6) -->
-        <div class="modal" id="addTaskModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span class="modal-title">➕ Add New Task</span>
-                    <button class="modal-close" onclick="closeModal()">✕</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Task Title</label>
-                        <input type="text" id="taskTitle" placeholder="Enter task name...">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Project</label>
-                        <select id="taskProject">
-                            <optgroup label="A - Ambition">
-                                <option value="A1">A1 · Personal Tasks</option>
-                                <option value="A2">A2 · Re:Unite</option>
-                                <option value="A3">A3 · KOE</option>
-                                <option value="A4">A4 · Streaming</option>
-                                <option value="A5">A5 · Trading</option>
-                            </optgroup>
-                            <optgroup label="B - Business">
-                                <option value="B1">B1 · Exstatic</option>
-                                <option value="B2">B2 · Energize</option>
-                                <option value="B3" selected>B3 · Team Elevate</option>
-                                <option value="B4">B4 · Pesta Fiesta</option>
-                                <option value="B5">B5 · Enticipate</option>
-                                <option value="B6">B6 · Elluminate</option>
-                                <option value="B7">B7 · Encompasse</option>
-                                <option value="B8">B8 · Empyrean</option>
-                                <option value="B9">B9 · Ethereal</option>
-                                <option value="B10">B10 · Epitaph</option>
-                            </optgroup>
-                            <optgroup label="C - Callings">
-                                <option value="C1">C1 · Real Estate</option>
-                                <option value="C2">C2 · Side Sales Jobs</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Priority</label>
-                        <div class="priority-options">
-                            <button type="button" class="priority-btn" data-priority="high">High</button>
-                            <button type="button" class="priority-btn active" data-priority="medium">Medium</button>
-                            <button type="button" class="priority-btn" data-priority="low">Low</button>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Status</label>
-                        <select id="taskStatus">
-                            <option value="pending">Pending</option>
-                            <option value="active">Active</option>
-                            <option value="review">Review</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Notes (optional)</label>
-                        <textarea id="taskNotes" rows="3" placeholder="Add details..."></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn-secondary" onclick="closeModal()">Cancel</button>
-                    <button class="btn-primary" onclick="submitTask()">Add Task</button>
-                </div>
+        <!-- INSIGHTS SECTION -->
+        <div id="insights-section" class="section">
+            <h1 class="page-title">📈 Insights</h1>
+            <div class="placeholder-content">
+                <div class="placeholder-icon">📊</div>
+                <div class="placeholder-title">Insights Coming Soon</div>
+                <div class="placeholder-text">Analytics, trends, and performance metrics will appear here.</div>
             </div>
         </div>
 
-        <!-- PROJECT DETAIL MODAL (Task 13) -->
-        <div class="modal" id="projectModal">
-            <div class="modal-content" style="max-width: 700px;">
-                <div class="modal-header">
-                    <span class="modal-title" id="projectModalTitle">📁 Project</span>
-                    <button class="modal-close" onclick="closeProjectModal()">✕</button>
-                </div>
-                <div class="modal-body">
-                    <div class="project-stats-row" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px;">
-                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
-                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatTotal">0</div>
-                            <div style="font-size: 10px; color: var(--text-muted);">Total Tasks</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
-                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatActive">0</div>
-                            <div style="font-size: 10px; color: var(--text-muted);">Active</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
-                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatDone">0</div>
-                            <div style="font-size: 10px; color: var(--text-muted);">Completed</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center;">
-                            <div style="font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright);" id="projStatProgress">0%</div>
-                            <div style="font-size: 10px; color: var(--text-muted);">Progress</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Project Tasks</label>
-                        <div id="projectTasksList" style="max-height: 300px; overflow-y: auto;">
-                            <!-- Tasks populated dynamically -->
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn-secondary" onclick="closeProjectModal()">Close</button>
-                    <button class="btn-primary" onclick="addTaskToCurrentProject()">+ Add Task</button>
-                </div>
+        <!-- RESOURCES SECTION -->
+        <div id="resources-section" class="section">
+            <h1 class="page-title">📚 Resources</h1>
+            <div class="placeholder-content">
+                <div class="placeholder-icon">📁</div>
+                <div class="placeholder-title">Resources Coming Soon</div>
+                <div class="placeholder-text">Documents, templates, and reference materials will appear here.</div>
             </div>
         </div>
-
     </div>
 
     <script>
-        // Quick Actions Menu
-        function toggleQuickMenu() {
-            document.getElementById('quickMenu').classList.toggle('show');
-        }
-
-        function quickAction(action) {
-            if (action === 'refresh') {
-                location.reload();
-            } else if (action === 'fullscreen') {
-                if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen();
-                } else {
-                    document.exitFullscreen();
-                }
-            } else if (action === 'export') {
-                exportReport();
-            } else if (action === 'add-task') {
-                openModal();
-            } else if (action === 'github') {
-                alert('📤 Deploying to GitHub Pages...\n\n(This would trigger a git push in real setup)');
-            }
-
-            document.getElementById('quickMenu').classList.remove('show');
-        }
-
-        // Section Navigation
-        function showSection(sectionName, element) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // Show selected section
-            const sectionId = sectionName + '-section';
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.classList.add('active');
-            }
-
-            // Update sidebar active state
-            document.querySelectorAll('.sidebar-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            if (element) {
-                element.classList.add('active');
-            }
-        }
+        // Global data store
+        let appData = null;
+        let allProjects = [];
 
         // Sidebar Toggle
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const toggleArrow = document.querySelector('.sidebar-toggle span:first-child');
             const toggleText = document.querySelector('.sidebar-toggle-text');
-            const mainContainer = document.querySelector('.main-container');
-            const statsBar = document.querySelector('.stats-bar');
 
             sidebar.classList.toggle('expanded');
             const isExpanded = sidebar.classList.contains('expanded');
 
             toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
-
-            // Shift content when sidebar expands
-            if (mainContainer) {
-                mainContainer.classList.toggle('sidebar-expanded', isExpanded);
-            }
-            if (statsBar) {
-                statsBar.classList.toggle('sidebar-expanded', isExpanded);
-            }
+            document.body.classList.toggle('sidebar-expanded', isExpanded);
         }
 
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('mobile-open');
+        // Section Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target section
+            document.getElementById(sectionName + '-section').classList.add('active');
+
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.section === sectionName) {
+                    item.classList.add('active');
+                }
+            });
         }
 
-        // Toggle Project Expand
-        function toggleProjectExpand(header) {
-            const card = header.closest('.expandable-project-card');
+        // Project Card Toggle
+        function toggleProject(header) {
+            const card = header.closest('.project-card');
             card.classList.toggle('expanded');
         }
 
-        function setActive(element) {
-            document.querySelectorAll('.sidebar-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            element.classList.add('active');
+        // Quick Actions
+        function quickAction(action) {
+            alert(`${action} - Feature coming soon!`);
         }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const menu = document.getElementById('quickMenu');
-            const btn = document.querySelector('.quick-btn');
-            if (!menu.contains(e.target) && !btn.contains(e.target)) {
-                menu.classList.remove('show');
-            }
-        });
+        // Load Data
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                appData = await response.json();
+                allProjects = [];
 
-        // ==========================================
-        // TASK MANAGEMENT (Tasks 6-12)
-        // ==========================================
+                // Process all projects
+                if (appData.projects) {
+                    Object.keys(appData.projects).forEach(catKey => {
+                        const cat = appData.projects[catKey];
+                        if (cat.projects) {
+                            cat.projects.forEach(proj => {
+                                const projTasks = appData.tasks ? appData.tasks.filter(t => t.project === proj.id) : [];
+                                const taskStats = calculateTaskStats(projTasks);
 
-        let selectedPriority = 'medium';
-
-        // Priority button selection
-        document.querySelectorAll('.priority-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                selectedPriority = this.dataset.priority;
-            });
-        });
-
-        function openModal() {
-            document.getElementById('addTaskModal').classList.add('show');
-            document.getElementById('taskTitle').focus();
-        }
-
-        function closeModal() {
-            document.getElementById('addTaskModal').classList.remove('show');
-            // Reset form
-            document.getElementById('taskTitle').value = '';
-            document.getElementById('taskNotes').value = '';
-            document.getElementById('taskStatus').value = 'pending';
-            selectedPriority = 'medium';
-            document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
-            document.querySelector('[data-priority="medium"]').classList.add('active');
-        }
-
-        function submitTask() {
-            const title = document.getElementById('taskTitle').value.trim();
-            const project = document.getElementById('taskProject').value;
-            const status = document.getElementById('taskStatus').value;
-            const notes = document.getElementById('taskNotes').value.trim();
-
-            if (!title) {
-                alert('Please enter a task title');
-                return;
-            }
-
-            const task = {
-                id: 'TASK-' + Date.now(),
-                title: title,
-                project: project,
-                priority: selectedPriority,
-                status: status,
-                notes: notes,
-                createdAt: new Date().toISOString(),
-                completedAt: null
-            };
-
-            // Add to dashboardData
-            if (dashboardData) {
-                dashboardData.tasks.push(task);
-                dashboardData.workflow[status].push(task);
-
-                // Update stats
-                dashboardData.stats.spawnedToday++;
-                if (status === 'active') {
-                    dashboardData.stats.activeAgents++;
-                    dashboardData.stats.focusProject = project;
+                                allProjects.push({
+                                    ...proj,
+                                    category: catKey,
+                                    categoryName: cat.name,
+                                    tasks: projTasks,
+                                    stats: taskStats,
+                                    priorityBreakdown: getPriorityBreakdown(projTasks),
+                                    timeTracking: calculateTimeTracking(projTasks),
+                                    nextDeadline: getNextDeadline(projTasks),
+                                    milestones: generateMilestones(proj, projTasks)
+                                });
+                            });
+                        }
+                    });
                 }
 
-                // Save to localStorage (temporary until backend)
-                localStorage.setItem('missionControlData', JSON.stringify(dashboardData));
+                // Render both sections
+                renderHomeSection();
+                renderCategoriesSection();
 
-                // Update UI
-                updateDashboard();
-                alert('✅ Task added: ' + title);
-                closeModal();
+            } catch (error) {
+                console.error('Failed to load data:', error);
+                document.getElementById('cat-loading-state').style.display = 'none';
+                document.getElementById('cat-error-state').style.display = 'block';
             }
         }
 
-        // Close modal on outside click
-        document.getElementById('addTaskModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Task Filters (Task 11)
-        function filterTasks(filterType, filterValue) {
-            if (!dashboardData || !dashboardData.tasks) return;
-
-            let filtered = dashboardData.tasks;
-
-            if (filterType === 'project') {
-                filtered = filtered.filter(t => t.project === filterValue);
-            } else if (filterType === 'priority') {
-                filtered = filtered.filter(t => t.priority === filterValue);
-            } else if (filterType === 'status') {
-                filtered = filtered.filter(t => t.status === filterValue);
-            }
-
-            renderFilteredTasks(filtered);
-        }
-
-        function renderFilteredTasks(tasks) {
-            const container = document.querySelector('#taskQueuePanel .panel-content');
-            if (!container) return;
-
-            container.innerHTML = tasks.map(task => `
-                <div class="queue-item ${task.priority}" onclick="viewTask('${task.id}')">
-                    <div class="queue-info">
-                        <h4>${task.title}</h4>
-                        <p>${task.project} · ${formatStatus(task.status)}</p>
-                    </div>
-                    <span class="queue-priority ${task.priority}">${task.priority}</span>
-                </div>
-            `).join('');
-        }
-
-        // Task Search (Task 12)
-        function searchTasks(query) {
-            if (!dashboardData || !dashboardData.tasks) return;
-
-            const lowerQuery = query.toLowerCase();
-            const filtered = dashboardData.tasks.filter(t =>
-                t.title.toLowerCase().includes(lowerQuery) ||
-                t.project.toLowerCase().includes(lowerQuery) ||
-                (t.notes && t.notes.toLowerCase().includes(lowerQuery))
-            );
-
-            renderFilteredTasks(filtered);
-        }
-
-        // Make functions global
-        window.filterTasks = filterTasks;
-        window.searchTasks = searchTasks;
-        window.viewTask = viewTask;
-        window.completeTask = completeTask;
-        window.deleteTask = deleteTask;
-
-        // Export Report (Task 23)
-        function exportReport() {
-            if (!dashboardData) {
-                alert('No data available to export');
-                return;
-            }
-
-            const report = {
-                generatedAt: new Date().toISOString(),
-                summary: dashboardData.stats,
-                tasks: dashboardData.tasks,
-                projects: dashboardData.projects
+        // Calculate comprehensive task statistics
+        function calculateTaskStats(tasks) {
+            return {
+                total: tasks.length,
+                pending: tasks.filter(t => t.status === 'pending').length,
+                active: tasks.filter(t => t.status === 'active').length,
+                review: tasks.filter(t => t.status === 'review').length,
+                done: tasks.filter(t => t.status === 'done').length,
+                highPriority: tasks.filter(t => t.priority === 'high' && t.status !== 'done').length,
+                mediumPriority: tasks.filter(t => t.priority === 'medium' && t.status !== 'done').length,
+                lowPriority: tasks.filter(t => t.priority === 'low' && t.status !== 'done').length,
+                urgent: tasks.filter(t => t.priority === 'high' && t.status !== 'done').length
             };
-
-            const dataStr = JSON.stringify(report, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `mission-control-report-${new Date().toISOString().split('T')[0]}.json`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-
-            alert('📊 Report exported! Check your downloads.');
         }
 
-        // Data Backup (Task 24)
-        function backupData() {
-            const data = localStorage.getItem('missionControlData');
-            if (!data) {
-                alert('No data to backup');
-                return;
-            }
-
-            const blob = new Blob([data], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `mission-control-backup-${new Date().toISOString().split('T')[0]}.json`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-
-            alert('💾 Data backup complete!');
+        // Get priority breakdown
+        function getPriorityBreakdown(tasks) {
+            return {
+                high: tasks.filter(t => t.priority === 'high').length,
+                medium: tasks.filter(t => t.priority === 'medium').length,
+                low: tasks.filter(t => t.priority === 'low').length
+            };
         }
 
-        window.exportReport = exportReport;
-        window.backupData = backupData;
-
-        // ==========================================
-        // PROJECT MANAGEMENT (Tasks 13-16)
-        // ==========================================
-
-        let currentProjectId = null;
-
-        // Project Detail View (Task 13)
-        function viewProject(projectId) {
-            if (!dashboardData) return;
-
-            currentProjectId = projectId;
-
-            // Find project data
-            let project = null;
-            let category = '';
-            for (const cat of ['A', 'B', 'C']) {
-                const found = dashboardData.projects[cat].projects.find(p => p.id === projectId);
-                if (found) {
-                    project = found;
-                    category = cat;
-                    break;
+        // Calculate time tracking (simulated based on task data)
+        function calculateTimeTracking(tasks) {
+            const estimatedHours = tasks.reduce((sum, t) => {
+                if (t.notes && t.notes.includes('hr')) {
+                    const match = t.notes.match(/(\d+)[\s-]*(\d*)\s*hr/i);
+                    if (match) {
+                        const hours = match[2] ? (parseInt(match[1]) + parseInt(match[2])) / 2 : parseInt(match[1]);
+                        return sum + hours;
+                    }
                 }
+                return sum + 2; // Default 2 hours per task
+            }, 0);
+
+            const completedTasks = tasks.filter(t => t.status === 'done').length;
+            const totalTasks = tasks.length;
+            const spentHours = totalTasks > 0 ? (completedTasks / totalTasks) * estimatedHours * 0.8 : 0;
+
+            return {
+                estimated: Math.round(estimatedHours),
+                spent: Math.round(spentHours),
+                remaining: Math.max(0, Math.round(estimatedHours - spentHours))
+            };
+        }
+
+        // Get next deadline
+        function getNextDeadline(tasks) {
+            const pendingTasks = tasks.filter(t => t.status !== 'done');
+            if (pendingTasks.length === 0) return null;
+
+            const sorted = pendingTasks.sort((a, b) => {
+                if (a.priority === 'high' && b.priority !== 'high') return -1;
+                if (b.priority === 'high' && a.priority !== 'high') return 1;
+                return new Date(a.createdAt) - new Date(b.createdAt);
+            });
+
+            const task = sorted[0];
+            const created = new Date(task.createdAt);
+            const daysToAdd = task.priority === 'high' ? 3 : (task.priority === 'medium' ? 7 : 14);
+            const deadline = new Date(created);
+            deadline.setDate(deadline.getDate() + daysToAdd);
+
+            return {
+                task: task,
+                date: deadline,
+                priority: task.priority
+            };
+        }
+
+        // Generate milestones
+        function generateMilestones(project, tasks) {
+            const milestones = [];
+            const totalTasks = tasks.length;
+            const completedTasks = tasks.filter(t => t.status === 'done').length;
+
+            for (let i = 1; i <= 4; i++) {
+                const threshold = i * 0.25;
+                const milestoneTasks = Math.floor(totalTasks * threshold);
+                const isCompleted = completedTasks >= milestoneTasks && milestoneTasks > 0;
+                const isActive = !isCompleted && completedTasks >= milestoneTasks - Math.ceil(totalTasks * 0.1);
+
+                milestones.push({
+                    number: i,
+                    label: `${i * 25}%`,
+                    completed: isCompleted,
+                    active: isActive,
+                    tasksRequired: milestoneTasks
+                });
             }
 
-            if (!project) return;
+            return milestones;
+        }
 
-            // Get project tasks
-            const projectTasks = dashboardData.tasks.filter(t => t.project === projectId);
-            const activeTasks = projectTasks.filter(t => t.status === 'active').length;
-            const doneTasks = projectTasks.filter(t => t.status === 'done').length;
-            const totalTasks = projectTasks.length;
-            const progress = totalTasks > 0 ? Math.round((doneTasks / totalTasks) * 100) : 0;
+        // Format countdown
+        function formatCountdown(targetDate) {
+            const now = new Date();
+            const diff = targetDate - now;
 
-            // Update modal
-            document.getElementById('projectModalTitle').textContent = `📁 ${project.id} · ${project.name}`;
-            document.getElementById('projStatTotal').textContent = totalTasks;
-            document.getElementById('projStatActive').textContent = activeTasks;
-            document.getElementById('projStatDone').textContent = doneTasks;
-            document.getElementById('projStatProgress').textContent = progress + '%';
+            if (diff < 0) return 'OVERDUE';
 
-            // Render tasks
-            const tasksList = document.getElementById('projectTasksList');
-            if (projectTasks.length === 0) {
-                tasksList.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);">No tasks yet</div>';
-            } else {
-                tasksList.innerHTML = projectTasks.map(task => `
-                    <div class="category-project-item ${task.status}" style="margin-bottom: 8px;" onclick="viewTask('${task.id}')">
-                        <div class="project-info">
-                            <h4>${task.title}</h4>
-                            <p>${formatStatus(task.status)} · ${task.priority}</p>
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            if (days > 0) return `${days}d ${hours}h`;
+            return `${hours}h`;
+        }
+
+        // ===== HOME SECTION RENDERING =====
+        function renderHomeSection() {
+            const stats = appData.stats || {};
+            const workflow = appData.workflow || {};
+            const agents = appData.agents || [];
+            const allTasks = appData.tasks || [];
+
+            // Stats
+            document.getElementById('home-active-agents').textContent = stats.activeAgents || agents.length || 0;
+            document.getElementById('home-agents-sub').textContent = `${stats.spawnedToday || 0} spawned today`;
+            document.getElementById('home-total-tasks').textContent = allTasks.length;
+            document.getElementById('home-tasks-sub').textContent = `${stats.tasksDone || 0} done · ${allTasks.filter(t => t.status === 'pending').length} pending`;
+            document.getElementById('home-total-projects').textContent = allProjects.length;
+
+            // Workflow
+            const pending = workflow.pending || [];
+            const active = workflow.active || [];
+            const review = workflow.review || [];
+            const done = workflow.done || [];
+            const total = pending.length + active.length + review.length + done.length;
+
+            document.getElementById('workflow-total').textContent = `${total} Total`;
+            document.getElementById('workflow-pending').textContent = pending.length;
+            document.getElementById('workflow-active').textContent = active.length;
+            document.getElementById('workflow-review').textContent = review.length;
+            document.getElementById('workflow-done').textContent = done.length;
+            document.getElementById('workflow-blocked').textContent = Math.floor(pending.length * 0.3);
+            document.getElementById('workflow-waiting').textContent = Math.floor(pending.length * 0.2);
+
+            // Active Projects
+            const activeProjects = allProjects.filter(p => p.status === 'active').slice(0, 5);
+            const activeProjectsContainer = document.getElementById('home-active-projects');
+            if (activeProjects.length > 0) {
+                activeProjectsContainer.innerHTML = activeProjects.map(proj => {
+                    const progress = proj.stats.total > 0 ? Math.round((proj.stats.done / proj.stats.total) * 100) : 0;
+                    return `
+                        <div class="project-card-mini">
+                            <div class="project-info">
+                                <h4>${proj.id} · ${proj.name}</h4>
+                                <p>${proj.stats.active} active tasks · ${proj.stats.pending} pending</p>
+                            </div>
+                            <div class="project-progress">
+                                <div class="project-progress-fill" style="width: ${progress}%;"></div>
+                            </div>
                         </div>
-                        <span class="project-status ${task.status}">${task.status}</span>
+                    `;
+                }).join('');
+            } else {
+                activeProjectsContainer.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">No active projects</div>';
+            }
+
+            // Pending Decisions
+            const highPriorityPending = pending.filter(t => t.priority === 'high').slice(0, 2);
+            document.getElementById('pending-decisions-count').textContent = highPriorityPending.length;
+            const decisionsContainer = document.getElementById('pending-decisions');
+            if (highPriorityPending.length > 0) {
+                decisionsContainer.innerHTML = highPriorityPending.map(task => `
+                    <div class="decision-item">
+                        <div class="decision-type">⚠️ High Priority</div>
+                        <div class="decision-title">${task.title}</div>
+                        <div class="decision-reason">${task.notes || 'No notes'}</div>
+                        <button class="decision-btn" onclick="showSection('categories')">View Project</button>
                     </div>
                 `).join('');
             }
 
-            document.getElementById('projectModal').classList.add('show');
+            // Last Updated
+            if (appData.lastUpdated) {
+                const lastUpdated = new Date(appData.lastUpdated);
+                document.getElementById('last-updated').textContent = `● ${lastUpdated.toLocaleString()}`;
+            }
         }
 
-        function closeProjectModal() {
-            document.getElementById('projectModal').classList.remove('show');
-            currentProjectId = null;
+        // ===== CATEGORIES SECTION RENDERING =====
+        function renderCategoriesSection() {
+            const allTasks = appData.tasks || [];
+            const totalProjects = allProjects.length;
+            const totalTasks = allTasks.length;
+            const tasksDone = allTasks.filter(t => t.status === 'done').length;
+            const tasksPending = allTasks.filter(t => t.status === 'pending').length;
+            const urgentTasks = allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
+            const completionRate = totalTasks > 0 ? Math.round((tasksDone / totalTasks) * 100) : 0;
+
+            document.getElementById('cat-total-projects').textContent = totalProjects;
+            document.getElementById('cat-total-tasks').textContent = totalTasks;
+            document.getElementById('cat-tasks-done').textContent = tasksDone;
+            document.getElementById('cat-tasks-pending').textContent = tasksPending;
+            document.getElementById('cat-completion-rate').textContent = completionRate + '%';
+            document.getElementById('cat-urgent-tasks').textContent = urgentTasks;
+
+            renderCategoriesList();
+
+            document.getElementById('cat-loading-state').style.display = 'none';
+            document.getElementById('dashboard-stats-bar').style.display = 'grid';
+            document.getElementById('filter-bar').style.display = 'flex';
         }
 
-        function addTaskToCurrentProject() {
-            closeProjectModal();
-            if (currentProjectId) {
-                document.getElementById('taskProject').value = currentProjectId;
-            }
-            openModal();
-        }
+        function renderCategoriesList() {
+            const container = document.getElementById('categories-container');
 
-        // Make project functions global
-        window.viewProject = viewProject;
-        window.closeProjectModal = closeProjectModal;
-        window.addTaskToCurrentProject = addTaskToCurrentProject;
+            const categories = {
+                A: { icon: '🔥', name: 'Ambition', subtitle: 'By Calbee (Personal)', projects: [] },
+                B: { icon: '💼', name: 'Business', subtitle: 'Empire (Main Work)', projects: [] },
+                C: { icon: '⚡', name: 'Callings', subtitle: 'On The Side (Other Jobs)', projects: [] }
+            };
 
-        // ==========================================
-        // LIVE DATA SYSTEM (Tasks 1-5)
-        // ==========================================
-
-        function ensureTasksStructure(data) {
-            if (!data) return data;
-            const stages = ['pending', 'active', 'review', 'done'];
-            const byId = new Map();
-            if (Array.isArray(data.tasks)) {
-                data.tasks.forEach(task => {
-                    if (task && task.id) {
-                        byId.set(task.id, { ...task });
-                    }
-                });
-            }
-            if (!data.workflow) {
-                data.workflow = { pending: [], active: [], review: [], done: [] };
-            }
-            if (!Array.isArray(data.activity)) {
-                data.activity = [];
-            }
-            stages.forEach(stage => {
-                if (!Array.isArray(data.workflow[stage])) {
-                    data.workflow[stage] = [];
+            allProjects.forEach(proj => {
+                if (categories[proj.category]) {
+                    categories[proj.category].projects.push(proj);
                 }
-                data.workflow[stage].forEach(item => {
-                    if (item && item.id) {
-                        byId.set(item.id, { ...item, status: stage });
-                    }
-                });
             });
-            data.tasks = Array.from(byId.values());
-            return data;
+
+            container.innerHTML = Object.keys(categories).map(catKey => {
+                const cat = categories[catKey];
+                const totalTasks = cat.projects.reduce((sum, p) => sum + p.stats.total, 0);
+                const completedTasks = cat.projects.reduce((sum, p) => sum + p.stats.done, 0);
+                const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+                return `
+                    <div class="category-section" data-category="${catKey}">
+                        <div class="category-header-bar">
+                            <div class="category-icon">${cat.icon}</div>
+                            <div class="category-title-group">
+                                <h2>${catKey} <span>${cat.name.toUpperCase().slice(1)}</span></h2>
+                                <p>${cat.subtitle}</p>
+                            </div>
+                            <div class="category-stats">
+                                <div class="category-stat">
+                                    <div class="category-stat-value">${cat.projects.length}</div>
+                                    <div class="category-stat-label">Projects</div>
+                                </div>
+                                <div class="category-stat">
+                                    <div class="category-stat-value">${totalTasks}</div>
+                                    <div class="category-stat-label">Tasks</div>
+                                </div>
+                                <div class="category-stat">
+                                    <div class="category-stat-value">${completionRate}%</div>
+                                    <div class="category-stat-label">Complete</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="projects-grid">
+                            ${cat.projects.map(proj => renderProjectCard(proj)).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
-        let dashboardData = null;
+        function renderProjectCard(proj) {
+            const progress = proj.stats.total > 0 ? Math.round((proj.stats.done / proj.stats.total) * 100) : 0;
+            const statusClass = proj.status === 'active' ? 'active' : (proj.status === 'pending' ? 'pending' : '');
+            const timePercent = proj.timeTracking.estimated > 0
+                ? Math.min(100, Math.round((proj.timeTracking.spent / proj.timeTracking.estimated) * 100))
+                : 0;
+            const timeClass = timePercent > 100 ? 'danger' : (timePercent > 80 ? 'warning' : '');
 
-        async function loadData() {
-            try {
-                // Try localStorage first
-                const saved = localStorage.getItem('missionControlData');
-                if (saved) {
-                    dashboardData = JSON.parse(saved);
+            const deadline = proj.nextDeadline;
+            let dueDisplay = 'No pending tasks';
+            let dueClass = 'success';
+            let countdown = '';
+
+            if (deadline) {
+                countdown = formatCountdown(deadline.date);
+                dueDisplay = deadline.task.title.substring(0, 30) + (deadline.task.title.length > 30 ? '...' : '');
+                dueClass = deadline.priority === 'high' || countdown === 'OVERDUE' ? 'urgent' :
+                          (countdown.includes('d') && parseInt(countdown) <= 2 ? 'warning' : 'success');
+            }
+
+            return `
+                <div class="project-card" data-project="${proj.id}" data-status="${proj.status}"
+                     data-priority="${proj.stats.urgent > 0 ? 'high' : (proj.stats.mediumPriority > 0 ? 'medium' : 'low')}"
+                     data-agent="CHAD_YI" data-due="${deadline ? deadline.date.getTime() : 9999999999999}"
+                     data-progress="${progress}" data-tasks="${proj.stats.total}">
+                    <div class="project-card-header" onclick="toggleProject(this)">
+                        <div class="project-info-main">
+                            <div class="project-title-row">
+                                <h3>${proj.id} · ${proj.name}</h3>
+                                <div class="project-badges">
+                                    <span class="agent-badge ${statusClass}">${proj.status}</span>
+                                    ${proj.stats.urgent > 0 ? '<span class="agent-badge" style="background: rgba(255,68,68,0.3); color: #ff4444;">URGENT</span>' : ''}
+                                </div>
+                            </div>
+                            <div class="project-id">${proj.stats.total} tasks · ${proj.stats.done} completed · ${proj.stats.active} active</div>
+                        </div>
+                        <span class="expand-icon">▼</span>
+                    </div>
+
+                    <div class="task-stats">
+                        <div class="task-stat">
+                            <div class="task-stat-value">${proj.stats.total}</div>
+                            <div class="task-stat-label">Total</div>
+                        </div>
+                        <div class="task-stat high-priority">
+                            <div class="task-stat-value">${proj.priorityBreakdown.high}</div>
+                            <div class="task-stat-label">High</div>
+                        </div>
+                        <div class="task-stat medium-priority">
+                            <div class="task-stat-value">${proj.priorityBreakdown.medium}</div>
+                            <div class="task-stat-label">Med</div>
+                        </div>
+                        <div class="task-stat low-priority">
+                            <div class="task-stat-value">${proj.priorityBreakdown.low}</div>
+                            <div class="task-stat-label">Low</div>
+                        </div>
+                        <div class="task-stat urgent">
+                            <div class="task-stat-value">${proj.stats.active}</div>
+                            <div class="task-stat-label">Active</div>
+                        </div>
+                        <div class="task-stat">
+                            <div class="task-stat-value">${proj.stats.done}</div>
+                            <div class="task-stat-label">Done</div>
+                        </div>
+                    </div>
+
+                    <div class="time-tracking-bar">
+                        <div class="time-stat">
+                            <span class="time-label">Time Spent</span>
+                            <span class="time-value ${timeClass}">${proj.timeTracking.spent}h / ${proj.timeTracking.estimated}h</span>
+                        </div>
+                        <div class="time-progress-bar">
+                            <div class="time-progress-fill ${timeClass}" style="width: ${Math.min(100, timePercent)}%"></div>
+                        </div>
+                        <div class="time-stat">
+                            <span class="time-label">Remaining</span>
+                            <span class="time-value">${proj.timeTracking.remaining}h</span>
+                        </div>
+                    </div>
+
+                    <div class="due-countdown">
+                        <span class="due-label">🕐 Next Due:</span>
+                        <div class="due-value ${dueClass}">
+                            ${dueDisplay}
+                            ${countdown ? `<span class="countdown-timer">${countdown}</span>` : ''}
+                        </div>
+                    </div>
+
+                    <div class="milestones-section">
+                        <div class="milestones-title">📍 Milestones</div>
+                        <div class="milestones-track">
+                            ${proj.milestones.map(m => `
+                                <div class="milestone ${m.completed ? 'completed' : (m.active ? 'active' : 'upcoming')}">
+                                    <div class="milestone-tooltip">${m.label} (${m.tasksRequired} tasks)</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="progress-section">
+                        <div class="progress-header">
+                            <span class="progress-label">Overall Progress</span>
+                            <span class="progress-value">${progress}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="project-card-content">
+                        ${renderTasksSection(proj)}
+
+                        <div class="project-actions">
+                            <button class="action-btn" onclick="event.stopPropagation(); openProject('${proj.id}')">Open Project</button>
+                            <button class="action-btn secondary" onclick="event.stopPropagation(); addTask('${proj.id}')">Add Task</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTasksSection(proj) {
+            const pendingTasks = proj.tasks.filter(t => t.status !== 'done');
+            const doneTasks = proj.tasks.filter(t => t.status === 'done');
+
+            if (pendingTasks.length === 0 && doneTasks.length === 0) {
+                return `
+                    <div class="tasks-section" style="text-align: center; color: var(--success);">
+                        ✓ No tasks yet. Ready to start!
+                    </div>
+                `;
+            }
+
+            let html = '';
+
+            if (pendingTasks.length > 0) {
+                html += `
+                    <div class="tasks-section">
+                        <div class="tasks-section-title">📋 Pending Tasks (${pendingTasks.length})</div>
+                        <div class="task-list">
+                            ${pendingTasks.slice(0, 5).map(task => renderTaskItem(task)).join('')}
+                            ${pendingTasks.length > 5 ? `
+                                <div class="task-item" style="justify-content: center; color: var(--text-muted); font-size: 11px;">
+                                    +${pendingTasks.length - 5} more tasks
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (doneTasks.length > 0) {
+                html += `
+                    <div class="tasks-section">
+                        <div class="tasks-section-title">✓ Completed Tasks (${doneTasks.length})</div>
+                        <div class="task-list">
+                            ${doneTasks.slice(0, 3).map(task => renderTaskItem(task)).join('')}
+                            ${doneTasks.length > 3 ? `
+                                <div class="task-item" style="justify-content: center; color: var(--success); font-size: 11px;">
+                                    +${doneTasks.length - 3} more completed
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            return html;
+        }
+
+        function renderTaskItem(task) {
+            const priorityClass = task.priority === 'high' ? 'high-priority' : (task.priority === 'medium' ? 'medium-priority' : 'low-priority');
+            const statusIcon = task.status === 'active' ? '▶' : (task.status === 'review' ? '👁' : (task.status === 'done' ? '✓' : '○'));
+
+            return `
+                <div class="task-item ${priorityClass}">
+                    <div class="task-status ${task.status}">${statusIcon}</div>
+                    <div class="task-details">
+                        <div class="task-title">${task.title}</div>
+                        ${task.notes ? `<div class="task-notes">${task.notes}</div>` : ''}
+                        <div class="task-meta-row">
+                            <span class="priority-badge ${task.priority}">${task.priority}</span>
+                            <span>${task.status}</span>
+                            <span>👤 CHAD_YI</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Apply Filters
+        function applyFilters() {
+            const priorityFilter = document.getElementById('filter-priority').value;
+            const statusFilter = document.getElementById('filter-status').value;
+            const agentFilter = document.getElementById('filter-agent').value;
+            const sortBy = document.getElementById('sort-by').value;
+
+            const cards = document.querySelectorAll('.project-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const cardPriority = card.dataset.priority;
+                const cardStatus = card.dataset.status;
+                const cardAgent = card.dataset.agent;
+
+                let visible = true;
+                if (priorityFilter && cardPriority !== priorityFilter) visible = false;
+                if (statusFilter && cardStatus !== statusFilter) visible = false;
+                if (agentFilter && cardAgent !== agentFilter) visible = false;
+
+                if (visible) {
+                    card.classList.remove('filtered-out');
+                    visibleCount++;
                 } else {
-                    // Load from file
-                    const response = await fetch('data.json?t=' + Date.now());
-                    dashboardData = await response.json();
+                    card.classList.add('filtered-out');
                 }
-                dashboardData = ensureTasksStructure(dashboardData);
-                updateDashboard();
-                console.log('✅ Data loaded:', new Date().toLocaleTimeString());
-            } catch (error) {
-                console.error('❌ Failed to load data:', error);
-            }
-        }
-
-        function updateDashboard() {
-            if (!dashboardData) return;
-
-            // Update Stats Bar (Task 2)
-            const stats = dashboardData.stats;
-            const statValues = document.querySelectorAll('.stat-value');
-            if (statValues.length >= 6) {
-                statValues[0].textContent = stats.activeAgents;
-                statValues[1].textContent = stats.spawnedToday;
-                statValues[2].textContent = stats.tasksDone;
-                statValues[3].textContent = stats.timeActive;
-                statValues[4].textContent = stats.focusProject;
-                statValues[5].textContent = stats.eventsToday;
-            }
-
-            // Update Workflow Pipeline (Task 3)
-            const workflow = dashboardData.workflow;
-            const pipelineCounts = document.querySelectorAll('.pipeline-count');
-            if (pipelineCounts.length >= 4) {
-                pipelineCounts[0].textContent = workflow.pending.length;
-                pipelineCounts[1].textContent = workflow.active.length;
-                pipelineCounts[2].textContent = workflow.review.length;
-                pipelineCounts[3].textContent = workflow.done.length;
-            }
-
-            // Update Activity Feed
-            updateActivityFeed();
-
-            // Update Task Queue
-            updateTaskQueue();
-        }
-
-        function updateActivityFeed() {
-            if (!dashboardData || !dashboardData.activity) return;
-
-            const container = document.querySelector('#activityFeedPanel .panel-content');
-            if (!container) return;
-
-            container.innerHTML = dashboardData.activity.slice(0, 5).map(event => `
-                <div class="activity-item">
-                    <div class="activity-time">[${formatTime(event.timestamp)}]</div>
-                    <div class="activity-content">
-                        <h4>${event.title}</h4>
-                        <p>${event.description}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function updateTaskQueue() {
-            if (!dashboardData || !dashboardData.tasks) return;
-
-            const container = document.querySelector('#taskQueuePanel .panel-content');
-            if (!container) return;
-
-            const activeTasks = dashboardData.tasks
-                .filter(t => t.status !== 'done')
-                .sort((a, b) => priorityWeight(b.priority) - priorityWeight(a.priority))
-                .slice(0, 5);
-
-            container.innerHTML = activeTasks.map(task => `
-                <div class="queue-item ${task.priority}" onclick="viewTask('${task.id}')">
-                    <div class="queue-info">
-                        <h4>${task.title}</h4>
-                        <p>${task.project} · ${formatStatus(task.status)}</p>
-                    </div>
-                    <span class="queue-priority ${task.priority}">${task.priority}</span>
-                </div>
-            `).join('');
-
-            // Update count
-            const countEl = document.querySelector('#taskQueuePanel .panel-value');
-            if (countEl) countEl.textContent = activeTasks.length + ' Total';
-        }
-
-        function priorityWeight(p) {
-            return { high: 3, medium: 2, low: 1 }[p] || 0;
-        }
-
-        function formatStatus(s) {
-            return { pending: 'Pending', active: 'Active', review: 'Review', done: 'Done' }[s] || s;
-        }
-
-        function formatTime(iso) {
-            const d = new Date(iso);
-            return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
-        }
-
-        // Complete Task (Task 8)
-        function completeTask(taskId) {
-            if (!dashboardData) return;
-
-            const task = dashboardData.tasks.find(t => t.id === taskId);
-            if (task) {
-                task.status = 'done';
-                task.completedAt = new Date().toISOString();
-
-                // Move from workflow
-                ['pending', 'active', 'review'].forEach(stage => {
-                    dashboardData.workflow[stage] = dashboardData.workflow[stage].filter(t => t.id !== taskId);
-                });
-                dashboardData.workflow.done.push(task);
-
-                // Update stats
-                dashboardData.stats.tasksDone++;
-
-                // Add activity
-                if (!Array.isArray(dashboardData.activity)) {
-                    dashboardData.activity = [];
-                }
-                dashboardData.activity.unshift({
-                    timestamp: new Date().toISOString(),
-                    title: 'Task Completed',
-                    description: `${task.title} in ${task.project}`
-                });
-
-                saveData();
-                updateDashboard();
-                alert('✅ Task completed!');
-            }
-        }
-
-        // Delete Task (Task 9)
-        function deleteTask(taskId) {
-            if (!confirm('Are you sure you want to delete this task?')) return;
-
-            if (!dashboardData) return;
-
-            dashboardData.tasks = dashboardData.tasks.filter(t => t.id !== taskId);
-            ['pending', 'active', 'review', 'done'].forEach(stage => {
-                dashboardData.workflow[stage] = dashboardData.workflow[stage].filter(t => t.id !== taskId);
             });
 
-            saveData();
-            updateDashboard();
-            alert('🗑️ Task deleted');
+            // Sort visible cards
+            const sections = document.querySelectorAll('.category-section');
+            sections.forEach(section => {
+                const grid = section.querySelector('.projects-grid');
+                const sectionCards = Array.from(grid.querySelectorAll('.project-card:not(.filtered-out)'));
+
+                sectionCards.sort((a, b) => {
+                    switch(sortBy) {
+                        case 'name': return a.dataset.project.localeCompare(b.dataset.project);
+                        case 'due': return parseInt(a.dataset.due) - parseInt(b.dataset.due);
+                        case 'progress': return parseInt(b.dataset.progress) - parseInt(a.dataset.progress);
+                        case 'tasks': return parseInt(b.dataset.tasks) - parseInt(a.dataset.tasks);
+                        default: return 0;
+                    }
+                });
+
+                sectionCards.forEach(card => grid.appendChild(card));
+            });
+
+            document.getElementById('cat-no-results').style.display = visibleCount === 0 ? 'block' : 'none';
         }
 
-        // View/Edit Task (Task 10)
-        function viewTask(taskId) {
-            if (!dashboardData) return;
-
-            const task = dashboardData.tasks.find(t => t.id === taskId);
-            if (!task) return;
-
-            // Populate edit modal (reuse add modal with values)
-            document.getElementById('taskTitle').value = task.title;
-            document.getElementById('taskProject').value = task.project;
-            document.getElementById('taskStatus').value = task.status;
-            document.getElementById('taskNotes').value = task.notes || '';
-
-            // Set priority
-            document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
-            document.querySelector(`[data-priority="${task.priority}"]`).classList.add('active');
-            selectedPriority = task.priority;
-
-            // Change submit to update
-            const submitBtn = document.querySelector('.modal-footer .btn-primary');
-            submitBtn.textContent = 'Update Task';
-            submitBtn.onclick = () => updateTask(taskId);
-
-            openModal();
+        // Clear Filters
+        function clearFilters() {
+            document.getElementById('filter-priority').value = '';
+            document.getElementById('filter-status').value = '';
+            document.getElementById('filter-agent').value = '';
+            document.getElementById('sort-by').value = 'name';
+            applyFilters();
         }
 
-        function updateTask(taskId) {
-            if (!dashboardData) return;
-
-            const task = dashboardData.tasks.find(t => t.id === taskId);
-            if (!task) return;
-
-            const oldStatus = task.status;
-            const newStatus = document.getElementById('taskStatus').value;
-
-            task.title = document.getElementById('taskTitle').value;
-            task.project = document.getElementById('taskProject').value;
-            task.status = newStatus;
-            task.priority = selectedPriority;
-            task.notes = document.getElementById('taskNotes').value;
-
-            // Move between workflow stages if status changed
-            if (oldStatus !== newStatus) {
-                dashboardData.workflow[oldStatus] = dashboardData.workflow[oldStatus].filter(t => t.id !== taskId);
-                dashboardData.workflow[newStatus].push(task);
-            }
-
-            saveData();
-            updateDashboard();
-            closeModal();
-
-            // Reset submit button
-            const submitBtn = document.querySelector('.modal-footer .btn-primary');
-            submitBtn.textContent = 'Add Task';
-            submitBtn.onclick = submitTask;
-
-            alert('✅ Task updated');
+        // Open Project
+        function openProject(projectId) {
+            alert(`Opening project ${projectId}...`);
         }
 
-        // Save data helper
-        function saveData() {
-            localStorage.setItem('missionControlData', JSON.stringify(dashboardData));
+        // Add Task
+        function addTask(projectId) {
+            alert(`Add new task to project ${projectId}...`);
         }
 
-        // Auto-refresh every 30 seconds (Task 5)
-        setInterval(loadData, 30000);
-
-        // Initial load
-        loadData();
-
-        // Make loadData available globally
-        window.loadData = loadData;
+        // Initialize
+        document.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>
