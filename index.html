@@ -2831,6 +2831,9 @@
             if (!data.workflow) {
                 data.workflow = { pending: [], active: [], review: [], done: [] };
             }
+            if (!Array.isArray(data.activity)) {
+                data.activity = [];
+            }
             stages.forEach(stage => {
                 if (!Array.isArray(data.workflow[stage])) {
                     data.workflow[stage] = [];
@@ -2973,6 +2976,9 @@
                 dashboardData.stats.tasksDone++;
 
                 // Add activity
+                if (!Array.isArray(dashboardData.activity)) {
+                    dashboardData.activity = [];
+                }
                 dashboardData.activity.unshift({
                     timestamp: new Date().toISOString(),
                     title: 'Task Completed',
