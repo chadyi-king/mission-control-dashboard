@@ -1712,7 +1712,7 @@
 
         <!-- ROW 3: ACTIVITY + QUEUE -->
         <div class="row">
-            <div class="panel">
+            <div class="panel" id="activityFeedPanel">
                 <div class="panel-header">
                     <span class="panel-title">Activity Feed</span>
                     <span class="panel-value">12 Events</span>
@@ -1760,7 +1760,7 @@
                 </div>
             </div>
 
-            <div class="panel">
+            <div class="panel" id="taskQueuePanel">
                 <div class="panel-header">
                     <span class="panel-title">Task Queue</span>
                     <span class="panel-value">12 Total</span>
@@ -2649,7 +2649,7 @@
         }
 
         function renderFilteredTasks(tasks) {
-            const container = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-content');
+            const container = document.querySelector('#taskQueuePanel .panel-content');
             if (!container) return;
 
             container.innerHTML = tasks.map(task => `
@@ -2817,6 +2817,34 @@
         // LIVE DATA SYSTEM (Tasks 1-5)
         // ==========================================
 
+        function ensureTasksStructure(data) {
+            if (!data) return data;
+            const stages = ['pending', 'active', 'review', 'done'];
+            const byId = new Map();
+            if (Array.isArray(data.tasks)) {
+                data.tasks.forEach(task => {
+                    if (task && task.id) {
+                        byId.set(task.id, { ...task });
+                    }
+                });
+            }
+            if (!data.workflow) {
+                data.workflow = { pending: [], active: [], review: [], done: [] };
+            }
+            stages.forEach(stage => {
+                if (!Array.isArray(data.workflow[stage])) {
+                    data.workflow[stage] = [];
+                }
+                data.workflow[stage].forEach(item => {
+                    if (item && item.id) {
+                        byId.set(item.id, { ...item, status: stage });
+                    }
+                });
+            });
+            data.tasks = Array.from(byId.values());
+            return data;
+        }
+
         let dashboardData = null;
 
         async function loadData() {
@@ -2830,6 +2858,7 @@
                     const response = await fetch('data.json?t=' + Date.now());
                     dashboardData = await response.json();
                 }
+                dashboardData = ensureTasksStructure(dashboardData);
                 updateDashboard();
                 console.log('✅ Data loaded:', new Date().toLocaleTimeString());
             } catch (error) {
@@ -2872,7 +2901,7 @@
         function updateActivityFeed() {
             if (!dashboardData || !dashboardData.activity) return;
 
-            const container = document.querySelector('.panel:has(.panel-title:contains("Activity Feed")) .panel-content');
+            const container = document.querySelector('#activityFeedPanel .panel-content');
             if (!container) return;
 
             container.innerHTML = dashboardData.activity.slice(0, 5).map(event => `
@@ -2889,7 +2918,7 @@
         function updateTaskQueue() {
             if (!dashboardData || !dashboardData.tasks) return;
 
-            const container = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-content');
+            const container = document.querySelector('#taskQueuePanel .panel-content');
             if (!container) return;
 
             const activeTasks = dashboardData.tasks
@@ -2908,7 +2937,7 @@
             `).join('');
 
             // Update count
-            const countEl = document.querySelector('.panel:has(.panel-title:contains("Task Queue")) .panel-value');
+            const countEl = document.querySelector('#taskQueuePanel .panel-value');
             if (countEl) countEl.textContent = activeTasks.length + ' Total';
         }
 
