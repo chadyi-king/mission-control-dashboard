@@ -708,10 +708,11 @@
               "project": "A1",
               "priority": "high",
               "status": "pending",
-              "notes": "Rebook travel arrangements by Friday",
+              "notes": "Rebook flights and hotel to 15-19 April (due by Friday).",
               "deadline": "2026-02-13",
               "createdAt": "2026-02-09T10:56:35Z",
-              "completedAt": null
+              "completedAt": null,
+              "updatedAt": "2026-02-09T15:41:23Z"
             },
             {
               "id": "A1-2",
