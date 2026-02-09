@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-09T13:15:05Z",
+  "lastUpdated": "2026-02-09T15:49:00Z",
   "stats": {
     "activeAgents": 4,
     "spawnedToday": 18,
@@ -724,13 +724,24 @@
               "deadline": null,
               "createdAt": "2026-02-09T13:15:05Z",
               "completedAt": null
+            },
+            {
+              "id": "A1-3",
+              "title": "Call Disney Cruise to rebook dates",
+              "project": "A1",
+              "priority": "medium",
+              "status": "pending",
+              "notes": "Call +65 6228-3728 (SG) to change cruise dates. Hours: Mon-Fri 8AM-10PM, Sat-Sun 9AM-8PM.",
+              "deadline": null,
+              "createdAt": "2026-02-09T15:49:00Z",
+              "completedAt": null
             }
           ],
           "stats": {
-            "total": 2,
+            "total": 3,
             "done": 0,
-            "active": 2,
-            "pending": 2,
+            "active": 3,
+            "pending": 3,
             "urgent": 1
           }
         },
