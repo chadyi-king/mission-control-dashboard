@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-09T10:56:35Z",
+  "lastUpdated": "2026-02-09T13:15:05Z",
   "stats": {
     "activeAgents": 4,
     "spawnedToday": 18,
@@ -712,13 +712,24 @@
               "deadline": "2026-02-13",
               "createdAt": "2026-02-09T10:56:35Z",
               "completedAt": null
+            },
+            {
+              "id": "A1-2",
+              "title": "Text Wei Ern about Small Claims Court (Kathir)",
+              "project": "A1",
+              "priority": "medium",
+              "status": "pending",
+              "notes": "Follow up on lawsuit details with Wei Ern.",
+              "deadline": null,
+              "createdAt": "2026-02-09T13:15:05Z",
+              "completedAt": null
             }
           ],
           "stats": {
-            "total": 1,
+            "total": 2,
             "done": 0,
-            "active": 1,
-            "pending": 1,
+            "active": 2,
+            "pending": 2,
             "urgent": 1
           }
         },
