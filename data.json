@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-09T14:27:30.005224Z",
+  "lastUpdated": "2026-02-09T10:56:35Z",
   "stats": {
     "activeAgents": 4,
     "spawnedToday": 18,
@@ -700,7 +700,27 @@
           "progress": 25,
           "totalTasks": 12,
           "activeTasks": 3,
-          "completedTasks": 6
+          "completedTasks": 6,
+          "tasks": [
+            {
+              "id": "A1-1",
+              "title": "Change Taiwan flights and hotel",
+              "project": "A1",
+              "priority": "high",
+              "status": "pending",
+              "notes": "Rebook travel arrangements by Friday",
+              "deadline": "2026-02-13",
+              "createdAt": "2026-02-09T10:56:35Z",
+              "completedAt": null
+            }
+          ],
+          "stats": {
+            "total": 1,
+            "done": 0,
+            "active": 1,
+            "pending": 1,
+            "urgent": 1
+          }
         },
         {
           "id": "A2",
