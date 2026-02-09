@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAD_YI Bot Organization Chart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #0d0d14 100%);
+            min-height: 100vh;
+            color: #e4e4e7;
+            padding: 40px 20px;
+            overflow-x: auto;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #71717a;
+            font-size: 1.1rem;
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        /* Level 1 - CEO */
+        .level-1 {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .ceo-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            border-radius: 20px;
+            padding: 30px 50px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .ceo-card::before {
+            content: '🧠';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .ceo-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .ceo-card .role {
+            font-size: 1rem;
+            color: #a855f7;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Connector Line Down from CEO */
+        .connector-down {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.6) 0%, rgba(168, 85, 247, 0.4) 100%);
+            margin: 0 auto;
+        }
+
+        /* Level 2 - Operations Layer */
+        .level-2 {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .helios-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(234, 88, 12, 0.12) 100%);
+            border: 2px solid rgba(245, 158, 11, 0.4);
+            border-radius: 16px;
+            padding: 25px 40px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .helios-card::before {
+            content: '🚀';
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .helios-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .helios-card .tags {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* Horizontal connector */
+        .connector-horizontal {
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.4) 20%, rgba(168, 85, 247, 0.4) 80%, transparent 100%);
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .connector-horizontal::before,
+        .connector-horizontal::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: rgba(168, 85, 247, 0.3);
+            top: 0;
+        }
+
+        .connector-horizontal::before {
+            left: 10%;
+        }
+
+        .connector-horizontal::after {
+            right: 10%;
+        }
+
+        /* Level 3 - Agent Grid */
+        .level-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .agent-card {
+            background: rgba(30, 30, 40, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-color);
+            opacity: 0.6;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 20px var(--glow-color);
+        }
+
+        .agent-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .agent-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .agent-code {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .agent-role {
+            font-size: 0.85rem;
+            color: #a1a1aa;
+            line-height: 1.4;
+        }
+
+        /* Color Themes for Different Agents */
+        .agent-escritor { --accent-color: #ec4899; --glow-color: rgba(236, 72, 153, 0.2); }
+        .agent-autour { --accent-color: #8b5cf6; --glow-color: rgba(139, 92, 246, 0.2); }
+        .agent-clair { --accent-color: #06b6d4; --glow-color: rgba(6, 182, 212, 0.2); }
+        .agent-quanta { --accent-color: #10b981; --glow-color: rgba(16, 185, 129, 0.2); }
+        .agent-eplusplus { --accent-color: #f59e0b; --glow-color: rgba(245, 158, 11, 0.2); }
+        .agent-kotler { --accent-color: #ef4444; --glow-color: rgba(239, 68, 68, 0.2); }
+        .agent-ledger { --accent-color: #6366f1; --glow-color: rgba(99, 102, 241, 0.2); }
+        .agent-atlas { --accent-color: #14b8a6; --glow-color: rgba(20, 184, 166, 0.2); }
+        .agent-pulsar { --accent-color: #f97316; --glow-color: rgba(249, 115, 22, 0.2); }
+        .agent-mensamusa { --accent-color: #84cc16; --glow-color: rgba(132, 204, 22, 0.2); }
+        .agent-abed { --accent-color: #d946ef; --glow-color: rgba(217, 70, 239, 0.2); }
+
+        /* Status Indicator */
+        .status {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        .status.pending {
+            background: #f59e0b;
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(20, 20, 30, 0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #a1a1aa;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.active { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+        .legend-dot.pending { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .level-3 { grid-template-columns: repeat(2, 1fr); }
+            .agent-card { padding: 15px; }
+            .legend { flex-direction: column; gap: 15px; }
+        }
+
+        /* Floating particles background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Bot Organization Chart</h1>
+            <p>Mission Control Dashboard - Agent Hierarchy</p>
+        </div>
+
+        <div class="org-chart">
+            <!-- Level 1: CEO -->
+            <div class="level-1">
+                <div class="ceo-card">
+                    <h2>CHAD_YI</h2>
+                    <div class="role">Brain & CEO</div>
+                </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="connector-down"></div>
+
+            <!-- Level 2: Operations -->
+            <div class="level-2">
+                <div class="helios-card">
+                    <h3>Helios</h3>
+                    <div class="tags">
+                        <span class="tag">Task Tracking</span>
+                        <span class="tag">Delegation</span>
+                        <span class="tag">Mission Control</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Connector -->
+            <div class="connector-horizontal"></div>
+
+            <!-- Level 3: Agent Teams -->
+            <div class="level-3">
+                <!-- A-Series: Core -->
+                <div class="agent-card agent-escritor">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">✍️</span>
+                    <div class="agent-name">Escritor</div>
+                    <div class="agent-code">A2</div>
+                    <div class="agent-role">Story Agent<br>Creative Writing</div>
+                </div>
+
+                <div class="agent-card agent-autour">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">🎬</span>
+                    <div class="agent-name">Autour</div>
+                    <div class="agent-code">A3</div>
+                    <div class="agent-role">Script Agent<br>Screenplay & Dialogue</div>
+                </div>
+
+                <div class="agent-card agent-clair">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">📺</span>
+                    <div class="agent-name">Clair</div>
+                    <div class="agent-code">A4</div>
+                    <div class="agent-role">Streaming Scout<br>Trend Monitoring</div>
+                </div>
+
+                <div class="agent-card agent-quanta">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">📈</span>
+                    <div class="agent-name">Quanta</div>
+                    <div class="agent-code">A5</div>
+                    <div class="agent-role">Trading Dev<br>Algorithm Development</div>
+                </div>
+
+                <div class="agent-card agent-eplusplus">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">⚡</span>
+                    <div class="agent-name">E++</div>
+                    <div class="agent-code">CORE</div>
+                    <div class="agent-role">Core Dev Specialist<br>Heavy Engineering</div>
+                </div>
+
+                <!-- B-Series: Operations -->
+                <div class="agent-card agent-kotler">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">📢</span>
+                    <div class="agent-name">Kotler</div>
+                    <div class="agent-code">B-OPS</div>
+                    <div class="agent-role">Marketing Ops<br>Campaign Strategy</div>
+                </div>
+
+                <div class="agent-card agent-ledger">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">📚</span>
+                    <div class="agent-name">Ledger</div>
+                    <div class="agent-code">B-DOC</div>
+                    <div class="agent-role">CRM & Docs<br>Information Mgmt</div>
+                </div>
+
+                <!-- C-Series: Research -->
+                <div class="agent-card agent-atlas">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">🔍</span>
+                    <div class="agent-name">Atlas</div>
+                    <div class="agent-code">C-RES</div>
+                    <div class="agent-role">Callings Research<br>Deep Analysis</div>
+                </div>
+
+                <!-- Utility -->
+                <div class="agent-card agent-pulsar">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">🔔</span>
+                    <div class="agent-name">Pulsar</div>
+                    <div class="agent-code">UTIL</div>
+                    <div class="agent-role">Data Sentinel<br>Reminders & Alerts</div>
+                </div>
+
+                <div class="agent-card agent-mensamusa">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">💰</span>
+                    <div class="agent-name">MensaMusa</div>
+                    <div class="agent-code">TRADE</div>
+                    <div class="agent-role">Trading Agent<br>Market Operations</div>
+                </div>
+
+                <div class="agent-card agent-abed">
+                    <div class="status pending"></div>
+                    <span class="agent-emoji">👥</span>
+                    <div class="agent-name">Abed</div>
+                    <div class="agent-code">COMM</div>
+                    <div class="agent-role">Community Manager<br>Engagement</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot active"></div>
+                <span>Active</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot pending"></div>
+                <span>Ready to Spawn</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Add subtle hover effect to cards
+        document.querySelectorAll('.agent-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -2053,6 +2053,11 @@
             <span class="sidebar-label">System</span>
         </a>
 
+        <a class="sidebar-item" href="agent-roster.html">
+            <span class="sidebar-icon">🤖</span>
+            <span class="sidebar-label">Agent Roster</span>
+        </a>
+
         <a class="sidebar-item" href="profile.html">
             <span class="sidebar-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2279,6 +2284,7 @@
                 <div class="filter-group">
                     <span class="filter-label">Sort:</span>
                     <select class="filter-select" id="sort-by" onchange="applyFilters()">
+                        <option value="id" selected>Project ID (A1, A2...)</option>
                         <option value="name">Project Name</option>
                         <option value="due">Due Date</option>
                         <option value="progress">Progress</option>
@@ -2808,10 +2814,12 @@
             return Math.round((proj.stats.done / proj.stats.total) * 100);
         }
 
-        function sortProjects(projects, sortKey = 'name') {
+        function sortProjects(projects, sortKey = 'id') {
             const sorted = [...projects];
             sorted.sort((a, b) => {
                 switch (sortKey) {
+                    case 'id':
+                        return (a.id || '').localeCompare(b.id || '');
                     case 'due':
                         return getDueTimestamp(a) - getDueTimestamp(b);
                     case 'progress':
@@ -3151,7 +3159,7 @@
             document.getElementById('filter-priority').value = '';
             document.getElementById('filter-status').value = '';
             document.getElementById('filter-agent').value = '';
-            document.getElementById('sort-by').value = 'name';
+            document.getElementById('sort-by').value = 'id';
             applyFilters();
         }
 
