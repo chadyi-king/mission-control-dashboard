@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-02-09T15:49:00Z",
+  "lastUpdated": "2026-02-10T16:33:29.853Z",
   "stats": {
-    "activeAgents": 4,
+    "activeAgents": 1,
     "spawnedToday": 18,
     "tasksDone": 21,
-    "timeActive": "05:45",
+    "timeActive": "00:00",
     "focusProject": "A6",
     "eventsToday": 7
   },
@@ -72,7 +72,7 @@
       },
       {
         "id": "A5-1",
-        "title": "Trading Bot: Forex/Commodities (Telegram \u2192 OANDA)",
+        "title": "Trading Bot: Forex/Commodities (Telegram → OANDA)",
         "project": "A5",
         "priority": "high",
         "status": "pending",
@@ -82,7 +82,7 @@
       },
       {
         "id": "A5-2",
-        "title": "Trading Bot: Options Flow (Twitter \u2192 Moomoo)",
+        "title": "Trading Bot: Options Flow (Twitter → Moomoo)",
         "project": "A5",
         "priority": "high",
         "status": "pending",
@@ -608,7 +608,7 @@
         "project": "A6",
         "priority": "high",
         "status": "active",
-        "notes": "Click project \u2192 full view modal",
+        "notes": "Click project → full view modal",
         "createdAt": "2026-02-06T00:00:00Z",
         "completedAt": null
       },
@@ -1056,7 +1056,7 @@
     },
     {
       "id": "A5-1",
-      "title": "Trading Bot: Forex/Commodities (Telegram \u2192 OANDA)",
+      "title": "Trading Bot: Forex/Commodities (Telegram → OANDA)",
       "project": "A5",
       "priority": "high",
       "status": "pending",
@@ -1066,7 +1066,7 @@
     },
     {
       "id": "A5-2",
-      "title": "Trading Bot: Options Flow (Twitter \u2192 Moomoo)",
+      "title": "Trading Bot: Options Flow (Twitter → Moomoo)",
       "project": "A5",
       "priority": "high",
       "status": "pending",
@@ -1600,7 +1600,7 @@
       "project": "A6",
       "priority": "high",
       "status": "active",
-      "notes": "Click project \u2192 full view modal",
+      "notes": "Click project → full view modal",
       "createdAt": "2026-02-06T00:00:00Z",
       "completedAt": null
     },
