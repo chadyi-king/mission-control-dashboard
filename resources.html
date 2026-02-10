@@ -1754,6 +1754,61 @@
         .placeholder-title { font-family: var(--display-font); font-size: 18px; color: var(--crimson-bright); margin-bottom: 8px; }
         .placeholder-text { color: var(--text-muted); font-size: 14px; }
 
+        /* Resources Section Styles */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .resource-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.2s;
+        }
+        .resource-card:hover {
+            border-color: var(--crimson-bright);
+            transform: translateY(-4px);
+        }
+        .resource-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        .resource-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: white;
+        }
+        .resource-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .resource-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--crimson-bright);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .resource-link:hover {
+            background: #ff1a4c;
+        }
+        .resource-soon {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
         /* Loading & Error States */
         .loading-state { text-align: center; padding: 60px; color: var(--text-muted); }
         .loading-spinner {
@@ -2259,10 +2314,35 @@
         <!-- RESOURCES SECTION -->
         <div id="resources-section" class="section active">
             <h1 class="page-title">📚 Resources</h1>
-            <div class="placeholder-content">
-                <div class="placeholder-icon">📁</div>
-                <div class="placeholder-title">Resources Coming Soon</div>
-                <div class="placeholder-text">Documents, templates, and reference materials will appear here.</div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📖</div>
+                    <h3>Story Bible</h3>
+                    <p>Re:Unite novel world-building, characters, magic system</p>
+                    <a href="projects/A2-reunite/STORY-BIBLE-COMPLETE.md" target="_blank" class="resource-link">View →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🎬</div>
+                    <h3>KOE Scripts</h3>
+                    <p>YouTube short scripts, thumbnails, posting schedule</p>
+                    <span class="resource-soon">Coming Soon</span>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">📊</div>
+                    <h3>Trading Templates</h3>
+                    <p>Bot configs, strategy docs, API references</p>
+                    <span class="resource-soon">Coming Soon</span>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">📝</div>
+                    <h3>Project Templates</h3>
+                    <p>Task templates, checklists, workflows</p>
+                    <span class="resource-soon">Coming Soon</span>
+                </div>
             </div>
         </div>
     </div>
