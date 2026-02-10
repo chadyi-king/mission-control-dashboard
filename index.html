@@ -2209,6 +2209,7 @@
             <a href="categories.html">📁 Categories</a>
             <a href="insights.html">📈 Insights</a>
             <a href="resources.html">📚 Resources</a>
+            <a href="agent-roster.html">🤖 Agent Roster</a>
             <a href="system.html">⚙️ System</a>
             <a href="profile.html">👤 Profile</a>
         </div>
@@ -2285,6 +2286,11 @@
             <span class="sidebar-label">Resources</span>
         </a>
 
+        <a class="sidebar-item" href="agent-roster.html">
+            <span class="sidebar-icon">🤖</span>
+            <span class="sidebar-label">Agent Roster</span>
+        </a>
+
         <a class="sidebar-item" href="system.html">
             <span class="sidebar-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2293,6 +2299,11 @@
                 </svg>
             </span>
             <span class="sidebar-label">System</span>
+        </a>
+
+        <a class="sidebar-item" href="agent-roster.html">
+            <span class="sidebar-icon">🤖</span>
+            <span class="sidebar-label">Agent Roster</span>
         </a>
 
         <a class="sidebar-item" href="profile.html">
@@ -2386,16 +2397,16 @@
                             <div class="agent-status-task">Drafting Chapter 13 outline...</div>
                             <button class="agent-status-btn" onclick="checkAgent('escritor')">Give Feedback</button>
                         </div>
-                        <div class="agent-status-item">
+                        <div class="agent-status-item" style="opacity: 0.6;">
                             <div class="agent-status-header">
-                                <div class="agent-avatar-small">QU</div>
+                                <div class="agent-avatar-small" style="background: #555;">QU</div>
                                 <div class="agent-status-info">
                                     <div class="agent-status-name">Quanta</div>
-                                    <div class="agent-status-state">Researching</div>
+                                    <div class="agent-status-state" style="color: var(--text-muted);">Standby</div>
                                 </div>
                             </div>
-                            <div class="agent-status-task">Analyzing trading APIs...</div>
-                            <button class="agent-status-btn" onclick="checkAgent('quanta')">Review Findings</button>
+                            <div class="agent-status-task" style="color: var(--text-muted);">Waiting for task assignment...</div>
+                            <button class="agent-status-btn" style="border-color: var(--text-muted); color: var(--text-muted);" disabled>Not Active</button>
                         </div>
                     </div>
                 </div>
@@ -3497,10 +3508,17 @@
             const stats = data.stats || {};
             document.getElementById('mini-wins').textContent = stats.tasksDone || 0;
             
-            // Calculate velocity (tasks done / total * 100)
-            const total = stats.totalTasks || 1;
-            const done = stats.tasksDone || 0;
-            const velocity = Math.round((done / total) * 100);
+            // Calculate velocity properly from workflow data
+            const workflow = data.workflow || {};
+            const pending = workflow.pending?.length || 0;
+            const active = workflow.active?.length || 0;
+            const review = workflow.review?.length || 0;
+            const done = workflow.done?.length || 0;
+            const total = pending + active + review + done;
+            
+            let velocity = total > 0 ? Math.round((done / total) * 100) : 0;
+            // Cap at 100% for sanity
+            velocity = Math.min(velocity, 100);
             document.getElementById('mini-velocity').textContent = velocity + '%';
         }
 
@@ -3680,10 +3698,45 @@
         }
 
         function searchTasks(query) {
-            if (!query || query.length < 2) return;
+            if (!query || query.length < 2) {
+                // Reset to default view
+                renderNewHomepage(appData);
+                return;
+            }
             
-            // Would implement actual search logic here
-            console.log('Searching for:', query);
+            const workflow = appData.workflow || {};
+            const allTasks = [
+                ...(workflow.pending || []),
+                ...(workflow.active || []),
+                ...(workflow.review || []),
+                ...(workflow.done || [])
+            ];
+            
+            const lowerQuery = query.toLowerCase();
+            const matches = allTasks.filter(t => 
+                t.title?.toLowerCase().includes(lowerQuery) ||
+                t.project?.toLowerCase().includes(lowerQuery) ||
+                t.notes?.toLowerCase().includes(lowerQuery)
+            );
+            
+            // Update urgent queue column to show search results
+            const container = document.getElementById('urgent-queue');
+            if (matches.length === 0) {
+                container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 40px;">No tasks found</div>';
+                return;
+            }
+            
+            container.innerHTML = matches.slice(0, 10).map(task => `
+                <div class="column-task-item" onclick="openTask('${task.id}')">
+                    <div class="column-task-title">${task.title}</div>
+                    <div class="column-task-meta">
+                        <span class="column-task-project">${task.project || 'General'}</span>
+                        <span class="column-task-due">${task.priority?.toUpperCase()}</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('urgent-count').textContent = matches.length + ' found';
         }
 
         function checkAgent(agentId) {

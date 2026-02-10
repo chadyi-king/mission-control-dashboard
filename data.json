@@ -1,12 +1,14 @@
 {
   "lastUpdated": "2026-02-11T02:00:00Z",
   "stats": {
-    "activeAgents": 3,
+    "activeAgents": 1,
     "spawnedToday": 18,
     "tasksDone": 21,
+    "totalTasks": 115,
     "timeActive": "00:00",
     "focusProject": "A6",
-    "eventsToday": 7
+    "eventsToday": 7,
+    "velocity": 18
   },
   "workflow": {
     "pending": [
