@@ -3664,26 +3664,44 @@
             const container = document.getElementById('day-tasks');
             const dayName = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
             
-            // Mock tasks for now - would be filtered from real data
+            // Get real tasks from data
+            const workflow = appData.workflow || {};
+            const allTasks = [
+                ...(workflow.pending || []),
+                ...(workflow.active || []),
+                ...(workflow.review || [])
+            ];
+            
+            // Filter tasks that have deadlines matching this date
+            const dayStr = date.toISOString().split('T')[0];
+            const tasksForDay = allTasks.filter(t => {
+                if (!t.deadline) return false;
+                return t.deadline === dayStr;
+            });
+            
+            if (tasksForDay.length === 0) {
+                container.innerHTML = `
+                    <div class="day-tasks-header">${dayName}</div>
+                    <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+                        No tasks due on this day
+                    </div>
+                `;
+                return;
+            }
+            
             container.innerHTML = `
                 <div class="day-tasks-header">${dayName}</div>
                 <div class="day-tasks-list">
-                    <div class="day-task-item">
-                        <span class="day-task-time">09:00</span>
-                        <div class="day-task-content">
-                            <div class="day-task-title">Review Chapter 13 outline</div>
-                            <div class="day-task-project">A2 · Re:Unite</div>
+                    ${tasksForDay.map(task => `
+                        <div class="day-task-item">
+                            <span class="day-task-time">${task.deadline || 'TBD'}</span>
+                            <div class="day-task-content">
+                                <div class="day-task-title">${task.title}</div>
+                                <div class="day-task-project">${task.project || 'General'}</div>
+                            </div>
+                            <span class="day-task-priority ${task.priority}">${task.priority.toUpperCase()}</span>
                         </div>
-                        <span class="day-task-priority high">HIGH</span>
-                    </div>
-                    <div class="day-task-item">
-                        <span class="day-task-time">14:00</span>
-                        <div class="day-task-content">
-                            <div class="day-task-title">Finalize Taiwan flights</div>
-                            <div class="day-task-project">Personal</div>
-                        </div>
-                        <span class="day-task-priority medium">MED</span>
-                    </div>
+                    `).join('')}
                 </div>
             `;
         }
