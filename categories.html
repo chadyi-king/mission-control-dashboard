@@ -2463,7 +2463,8 @@
                         const cat = appData.projects[catKey];
                         if (cat.projects) {
                             cat.projects.forEach(proj => {
-                                const projTasks = appData.tasks ? appData.tasks.filter(t => t.project === proj.id) : [];
+                                // Use nested tasks if available, otherwise filter from top-level tasks
+                                const projTasks = proj.tasks || (appData.tasks ? appData.tasks.filter(t => t.project === proj.id) : []);
                                 const taskStats = calculateTaskStats(projTasks);
 
                                 allProjects.push({
