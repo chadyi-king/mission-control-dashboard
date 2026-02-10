@@ -3705,13 +3705,8 @@
                 return;
             }
             
-            const workflow = appData.workflow || {};
-            const allTasks = [
-                ...(workflow.pending || []),
-                ...(workflow.active || []),
-                ...(workflow.review || []),
-                ...(workflow.done || [])
-            ];
+            // Search across ALL tasks in data
+            const allTasks = appData.tasks || [];
             
             const lowerQuery = query.toLowerCase();
             const matches = allTasks.filter(t => 
@@ -3720,24 +3715,37 @@
                 t.notes?.toLowerCase().includes(lowerQuery)
             );
             
-            // Update urgent queue column to show search results
+            // Show search results in urgent queue column with highlight
             const container = document.getElementById('urgent-queue');
+            const countBadge = document.getElementById('urgent-count');
+            
             if (matches.length === 0) {
-                container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 40px;">No tasks found</div>';
+                container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 40px;">No tasks found matching "' + query + '"</div>';
+                countBadge.textContent = '0 found';
                 return;
             }
             
-            container.innerHTML = matches.slice(0, 10).map(task => `
-                <div class="column-task-item" onclick="openTask('${task.id}')">
+            container.innerHTML = `
+                <div style="padding: 10px; background: rgba(220,20,60,0.1); border-radius: 8px; margin-bottom: 12px; font-size: 12px; color: var(--text-muted);">
+                    🔍 Search: "${query}" - ${matches.length} results
+                    <button onclick="resetSearch()" style="float: right; background: none; border: none; color: var(--crimson-bright); cursor: pointer;">Clear</button>
+                </div>
+                ${matches.slice(0, 10).map(task => `
+                <div class="column-task-item" onclick="openTask('${task.id}')" style="cursor: pointer;">
                     <div class="column-task-title">${task.title}</div>
                     <div class="column-task-meta">
                         <span class="column-task-project">${task.project || 'General'}</span>
-                        <span class="column-task-due">${task.priority?.toUpperCase()}</span>
+                        <span class="column-task-due" style="color: ${task.priority === 'high' ? '#ff6b6b' : 'var(--text-muted)'};">${task.priority?.toUpperCase()}</span>
                     </div>
                 </div>
-            `).join('');
+            `).join('')}`;
             
-            document.getElementById('urgent-count').textContent = matches.length + ' found';
+            countBadge.textContent = matches.length + ' found';
+        }
+        
+        function resetSearch() {
+            document.getElementById('task-search').value = '';
+            renderNewHomepage(appData);
         }
 
         function checkAgent(agentId) {
