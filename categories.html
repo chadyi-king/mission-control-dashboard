@@ -1121,10 +1121,10 @@
         .decision-btn {
             flex: 1;
             padding: 8px 12px;
-            background: transparent;
-            border: 1px solid var(--crimson-bright);
+            background: rgba(220, 20, 60, 0.25) !important;
+            border: 1px solid var(--crimson-bright) !important;
             border-radius: 6px;
-            color: var(--crimson-bright);
+            color: #ffffff !important;
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -1132,19 +1132,23 @@
             transition: all 0.2s;
             font-family: var(--tech-font);
             font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         .decision-btn:hover {
-            background: var(--crimson-glow);
+            background: rgba(220, 20, 60, 0.45) !important;
+            box-shadow: 0 0 10px var(--crimson-glow);
+            transform: translateY(-1px);
         }
 
         .decision-btn.primary {
-            background: var(--crimson-glow);
+            background: var(--crimson-bright) !important;
+            color: white !important;
         }
 
         .decision-btn.primary:hover {
-            background: var(--crimson-bright);
-            color: white;
+            background: #ff1a4c !important;
+            box-shadow: 0 0 15px var(--crimson-glow);
         }
 
         /* Recent Activity */
@@ -1559,6 +1563,23 @@
             background: rgba(139, 0, 0, 0.3);
             border-radius: 4px;
         }
+        
+        /* Overdue text visibility fix */
+        .countdown-timer:contains("OVERDUE"),
+        .countdown-overdue,
+        .due-value:contains("OVERDUE") {
+            color: #ff6b6b !important;
+            font-weight: 700 !important;
+            text-shadow: 0 0 8px rgba(255, 107, 107, 0.6) !important;
+            background: rgba(139, 0, 0, 0.5) !important;
+            border: 1px solid rgba(220, 20, 60, 0.5) !important;
+            animation: pulse-overdue 1.5s infinite !important;
+        }
+        
+        @keyframes pulse-overdue {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
+            50% { box-shadow: 0 0 8px 2px rgba(255, 107, 107, 0.2); }
+        }
 
         .milestones-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
         .milestones-title { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
@@ -1925,6 +1946,7 @@
         }
     </style>
     <link rel="stylesheet" href="project-tasks-modal.css">
+    <link rel="stylesheet" href="dashboard-fixes.css">
 </head>
 <body>
     <!-- Background Effects -->
@@ -2819,7 +2841,25 @@
             sorted.sort((a, b) => {
                 switch (sortKey) {
                     case 'id':
-                        return (a.id || '').localeCompare(b.id || '');
+                        // Proper alphanumeric sort: A1, A2, B1, B2, B10 (not B1, B10, B2)
+                        const aId = a.id || '';
+                        const bId = b.id || '';
+                        // Extract letter prefix and number
+                        const aMatch = aId.match(/^([A-Za-z]+)(\d+)$/);
+                        const bMatch = bId.match(/^([A-Za-z]+)(\d+)$/);
+                        if (aMatch && bMatch) {
+                            const aPrefix = aMatch[1];
+                            const bPrefix = bMatch[1];
+                            const aNum = parseInt(aMatch[2], 10);
+                            const bNum = parseInt(bMatch[2], 10);
+                            // First compare prefixes (A vs B)
+                            const prefixCompare = aPrefix.localeCompare(bPrefix);
+                            if (prefixCompare !== 0) return prefixCompare;
+                            // Then compare numbers numerically (1 vs 2 vs 10)
+                            return aNum - bNum;
+                        }
+                        // Fallback to localeCompare if pattern doesn't match
+                        return aId.localeCompare(bId);
                     case 'due':
                         return getDueTimestamp(a) - getDueTimestamp(b);
                     case 'progress':

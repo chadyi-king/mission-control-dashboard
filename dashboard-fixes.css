@@ -1,0 +1,198 @@
+/* DASHBOARD FIXES - Phase 1 & 2 */
+
+/* ============================================
+   FIX 1: Button Contrast - Input Needed Section
+   ============================================ */
+
+/* Make Review/Delegate buttons more visible */
+.decision-btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: rgba(220, 20, 60, 0.2) !important; /* More visible background */
+    border: 1px solid var(--crimson-bright) !important;
+    border-radius: 6px;
+    color: #ffffff !important; /* White text for contrast */
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--tech-font);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Text shadow for readability */
+}
+
+.decision-btn:hover {
+    background: rgba(220, 20, 60, 0.4) !important;
+    box-shadow: 0 0 10px var(--crimson-glow);
+    transform: translateY(-1px);
+}
+
+.decision-btn.primary {
+    background: var(--crimson-bright) !important;
+    color: white !important;
+}
+
+.decision-btn.primary:hover {
+    background: #ff1a4c !important; /* Brighter on hover */
+    box-shadow: 0 0 15px var(--crimson-glow);
+}
+
+/* ============================================
+   FIX 2: Overdue Text Visibility
+   ============================================ */
+
+/* Make OVERDUE text highly visible */
+.countdown-overdue, .overdue, [class*="overdue"] {
+    color: #ff6b6b !important; /* Bright red */
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5) !important;
+    animation: pulse-overdue 2s infinite !important;
+}
+
+@keyframes pulse-overdue {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* ============================================
+   FIX 3: Hover States - Quick Actions
+   ============================================ */
+
+/* Better hover states for buttons */
+.quick-actions-btn:hover,
+.action-btn:hover,
+button[class*="btn"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
+}
+
+/* Command Deck dropdown hover */
+.command-deck-btn:hover,
+.dropdown-toggle:hover {
+    background: rgba(220, 20, 60, 0.15) !important;
+    border-color: var(--crimson-bright) !important;
+}
+
+/* ============================================
+   FIX 4: Progress Ring Contrast
+   ============================================ */
+
+/* Better contrast for circular progress */
+.progress-ring-circle {
+    stroke: var(--crimson-bright) !important;
+    stroke-width: 3 !important;
+}
+
+.progress-ring-bg {
+    stroke: rgba(255, 255, 255, 0.1) !important;
+}
+
+.progress-text {
+    fill: white !important;
+    font-weight: 700 !important;
+}
+
+/* ============================================
+   FIX 5: Agent Count Display
+   ============================================ */
+
+/* Agent count badge - make it pop */
+.agent-count {
+    color: var(--success) !important; /* Green for active */
+    font-weight: 700 !important;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.4) !important;
+}
+
+/* ============================================
+   FIX 6: Status Badges Contrast
+   ============================================ */
+
+/* Priority badges */
+.priority-badge.high {
+    background: rgba(220, 20, 60, 0.3) !important;
+    color: #ff6b6b !important;
+    border: 1px solid rgba(220, 20, 60, 0.5) !important;
+}
+
+.priority-badge.urgent {
+    background: rgba(255, 68, 68, 0.3) !important;
+    color: #ff8888 !important;
+    border: 1px solid rgba(255, 68, 68, 0.5) !important;
+    animation: pulse-urgent 1.5s infinite !important;
+}
+
+@keyframes pulse-urgent {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4); }
+    50% { box-shadow: 0 0 0 4px rgba(255, 68, 68, 0); }
+}
+
+/* ============================================
+   FIX 7: Dropdown Menu Visibility
+   ============================================ */
+
+/* Dropdown menu items */
+.dropdown-menu {
+    background: var(--bg-elevated) !important;
+    border: 1px solid var(--crystal-border) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dropdown-item {
+    color: var(--text-primary) !important;
+    transition: all 0.15s !important;
+}
+
+.dropdown-item:hover {
+    background: rgba(220, 20, 60, 0.15) !important;
+    color: white !important;
+}
+
+/* ============================================
+   FIX 8: Filter Select Visibility
+   ============================================ */
+
+/* Better dropdown selects */
+.filter-select {
+    background: rgba(10, 10, 15, 0.8) !important;
+    border: 1px solid var(--crystal-border) !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.filter-select:hover {
+    border-color: var(--crimson-bright) !important;
+}
+
+.filter-select option {
+    background: var(--bg-elevated) !important;
+    color: white !important;
+}
+
+/* ============================================
+   FIX 9: Task Card Hover Effects
+   ============================================ */
+
+/* Task row hover */
+.task-row:hover,
+.project-card:hover {
+    background: rgba(220, 20, 60, 0.08) !important;
+    border-color: rgba(220, 20, 60, 0.3) !important;
+    transform: translateX(4px);
+}
+
+/* ============================================
+   FIX 10: Navigation Hover
+   ============================================ */
+
+/* Sidebar nav items */
+.sidebar-nav a:hover,
+.sidebar-nav button:hover {
+    background: rgba(220, 20, 60, 0.15) !important;
+    color: white !important;
+}
+
+.sidebar-nav a.active {
+    background: rgba(220, 20, 60, 0.25) !important;
+    border-right: 3px solid var(--crimson-bright);
+}
