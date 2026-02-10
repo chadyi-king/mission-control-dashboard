@@ -2966,7 +2966,7 @@
 
             const pendingTasks = allTasks.filter(t => t.status !== 'done');
             
-            // Assign fake deadlines to tasks for demo (in real app, tasks would have due dates)
+            // NOTE: These are estimated deadlines for demo (tasks don't have real due dates yet)
             const tasksWithDeadlines = pendingTasks.slice(0, 5).map((task, i) => {
                 const dueDate = new Date(now);
                 dueDate.setDate(dueDate.getDate() + i + 1);
@@ -3058,12 +3058,13 @@
         }
 
         function renderRecentActivity() {
+            // NOTE: This is simulated activity data for demo purposes
             const activities = [
-                { type: 'chad', text: 'Completed task <strong>Update Documentation</strong>', time: '2 min ago', project: 'Project A' },
-                { type: 'agent', text: 'Started working on <strong>Code Review</strong>', time: '15 min ago', project: 'Project B' },
+                { type: 'system', text: '<strong>Dashboard loaded</strong> - Activity feed is simulated', time: 'Just now', project: 'System' },
+                { type: 'chad', text: 'Completed task <strong>Review Dashboard</strong>', time: '2 min ago', project: 'A6' },
+                { type: 'agent', text: 'Agent <strong>Helios</strong> spawned for task tracking', time: '15 min ago', project: 'System' },
                 { type: 'system', text: 'Auto-saved progress for <strong>3 tasks</strong>', time: '1 hour ago', project: 'System' },
-                { type: 'chad', text: 'Created new task <strong>Design Review</strong>', time: '2 hours ago', project: 'Project C' },
-                { type: 'agent', text: 'Completed milestone <strong>Phase 1</strong>', time: '3 hours ago', project: 'Project A' }
+                { type: 'chad', text: 'Created new task <strong>Taiwan trip planning</strong>', time: '2 hours ago', project: 'A1' }
             ];
 
             const activityList = document.getElementById('recent-activity');
