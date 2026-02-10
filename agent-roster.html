@@ -549,5 +549,30 @@
             </div>
         </div>
     </div>
+    <script>
+        // Load agent status from data.json
+        async function loadAgentStatus() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                
+                // Update CHAD_YI status
+                if (data.agents && data.agents.length > 0) {
+                    const chad = data.agents.find(a => a.id === 'CHAD_YI');
+                    if (chad) {
+                        // Could update CHAD_YI card with current task
+                        console.log('CHAD_YI current task:', chad.currentTask);
+                    }
+                }
+                
+                // Log active agents
+                console.log('Active agents:', data.stats?.activeAgents || 0);
+            } catch (err) {
+                console.error('Failed to load agent status:', err);
+            }
+        }
+        
+        loadAgentStatus();
+    </script>
 </body>
 </html>
