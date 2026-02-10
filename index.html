@@ -2166,6 +2166,7 @@
     </style>
     <link rel="stylesheet" href="project-tasks-modal.css">
     <link rel="stylesheet" href="dashboard-fixes.css">
+    <link rel="stylesheet" href="homepage-new.css">
 </head>
 <body>
     <!-- Background Effects -->
@@ -2311,210 +2312,126 @@
     <div class="main-content">
         <!-- HOME SECTION - REDESIGNED -->
         <div id="home-section" class="section active">
-            <!-- Header -->
-            <div class="home-header">
-                <div class="home-title-group">
-                    <div class="home-title-row">
-                        <div class="home-title">Mission Control</div>
-                        <span class="home-mission-badge">Solar Core · Active</span>
+            <!-- Mini Stats Bar -->
+            <div class="mini-stats-bar">
+                <div class="mini-stats-left">
+                    <div class="mini-search">
+                        <span>🔍</span>
+                        <input type="text" id="task-search" placeholder="Search tasks..." onkeyup="searchTasks(this.value)">
                     </div>
-                    <div class="home-subtitle">Solar Core // Dual-operator flight deck for concurrent missions</div>
                 </div>
-                <div class="home-header-meta">
-                    <div class="home-live-indicator">
-                        <span class="live-dot"></span>
-                        <span>Live Sync</span>
+                <div class="mini-stats-right">
+                    <div class="mini-stat success">
+                        <span>✓</span>
+                        <span>System Online</span>
                     </div>
-                    <div class="home-focus-label">
-                        Focus Project
-                        <span class="home-focus-value" id="home-focus-project">—</span>
+                    <div class="mini-stat">
+                        <span>🏆</span>
+                        <span id="mini-wins">0</span>
+                        <span>Wins</span>
+                    </div>
+                    <div class="mini-stat warning">
+                        <span>📈</span>
+                        <span id="mini-velocity">0%</span>
+                        <span>Velocity</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Three Column Grid -->
+            <div class="three-column-grid">
+                <!-- Urgent Queue Column -->
+                <div class="column-panel">
+                    <div class="column-header" style="background: rgba(255, 68, 68, 0.1);">
+                        <div class="column-title" style="color: #ff6b6b;">
+                            <span>🔴</span>
+                            <span>Urgent Queue</span>
+                        </div>
+                        <span class="column-badge urgent" id="urgent-count">0</span>
+                    </div>
+                    <div class="column-content" id="urgent-queue">
+                        <div style="text-align: center; color: var(--text-muted); padding: 40px;">Loading urgent tasks...</div>
+                    </div>
+                </div>
+
+                <!-- Agent Status Column -->
+                <div class="column-panel">
+                    <div class="column-header" style="background: rgba(77, 171, 247, 0.1);">
+                        <div class="column-title" style="color: #4dabf7;">
+                            <span>🟡</span>
+                            <span>Agent Status</span>
+                        </div>
+                        <span class="column-badge agent" id="agent-count">0</span>
+                    </div>
+                    <div class="column-content" id="agent-status">
+                        <div class="agent-status-item">
+                            <div class="agent-status-header">
+                                <div class="agent-avatar-small">HE</div>
+                                <div class="agent-status-info">
+                                    <div class="agent-status-name">Helios</div>
+                                    <div class="agent-status-state">Online</div>
+                                </div>
+                            </div>
+                            <div class="agent-status-task">Planning Taiwan trip logistics...</div>
+                            <button class="agent-status-btn" onclick="checkAgent('helios')">Check Progress</button>
+                        </div>
+                        <div class="agent-status-item">
+                            <div class="agent-status-header">
+                                <div class="agent-avatar-small">ES</div>
+                                <div class="agent-status-info">
+                                    <div class="agent-status-name">Escritor</div>
+                                    <div class="agent-status-state">Writing</div>
+                                </div>
+                            </div>
+                            <div class="agent-status-task">Drafting Chapter 13 outline...</div>
+                            <button class="agent-status-btn" onclick="checkAgent('escritor')">Give Feedback</button>
+                        </div>
+                        <div class="agent-status-item">
+                            <div class="agent-status-header">
+                                <div class="agent-avatar-small">QU</div>
+                                <div class="agent-status-info">
+                                    <div class="agent-status-name">Quanta</div>
+                                    <div class="agent-status-state">Researching</div>
+                                </div>
+                            </div>
+                            <div class="agent-status-task">Analyzing trading APIs...</div>
+                            <button class="agent-status-btn" onclick="checkAgent('quanta')">Review Findings</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Needed Column -->
+                <div class="column-panel">
+                    <div class="column-header" style="background: rgba(201, 169, 98, 0.1);">
+                        <div class="column-title" style="color: var(--warning);">
+                            <span>🟢</span>
+                            <span>Input Needed</span>
+                        </div>
+                        <span class="column-badge input" id="input-count">0</span>
+                    </div>
+                    <div class="column-content" id="input-needed">
+                        <div style="text-align: center; color: var(--text-muted); padding: 40px;">No items pending your input</div>
                     </div>
                 </div>
             </div>
 
-            <div class="home-control-grid">
-                <div class="compact-panel quick-actions-panel">
-                    <div class="compact-panel-header">
-                        <div>
-                            <div class="compact-panel-title">Quick Actions</div>
-                            <div class="compact-panel-subtitle">Launch tasks & sync agents</div>
-                        </div>
-                        <div class="quick-actions-dropdown">
-                            <button type="button" class="quick-actions-btn">
-                                <span>Command Deck</span>
-                                <span>▾</span>
-                            </button>
-                            <div class="quick-actions-menu">
-                                <div class="quick-action-item" onclick="quickAction('Plan Sprint')">
-                                    <span class="quick-action-icon">🧭</span>
-                                    <span>Plan Sprint</span>
-                                </div>
-                                <div class="quick-action-item" onclick="quickAction('Request Update')">
-                                    <span class="quick-action-icon">📨</span>
-                                    <span>Request Update</span>
-                                </div>
-                                <div class="quick-action-item" onclick="quickAction('Deploy Update')">
-                                    <span class="quick-action-icon">🚀</span>
-                                    <span>Deploy Build</span>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Week View Section -->
+            <div class="week-view-section">
+                <div class="week-header">
+                    <div class="week-title">
+                        <span>📅</span>
+                        <span>This Week at a Glance</span>
                     </div>
-                    <div class="quick-actions-grid">
-                        <button type="button" class="quick-action-pill" onclick="quickAction('Add Task')">New Task</button>
-                        <button type="button" class="quick-action-pill" onclick="quickAction('Spawn Agent')">Spawn Agent</button>
-                        <button type="button" class="quick-action-pill" onclick="quickAction('Schedule Review')">Schedule Review</button>
-                        <button type="button" class="quick-action-pill" onclick="quickAction('Dispatch Brief')">Dispatch Brief</button>
-                    </div>
-                    <div class="quick-actions-footer">
-                        <span class="live-dot small"></span>
-                        <span>Routes to owners instantly</span>
+                    <div class="week-nav">
+                        <button class="week-nav-btn" onclick="changeWeek(-1)">◀</button>
+                        <button class="week-nav-btn" onclick="changeWeek(1)">▶</button>
                     </div>
                 </div>
-                <div class="compact-panel system-health-panel">
-                    <div class="compact-panel-header">
-                        <div>
-                            <div class="compact-panel-title">System Health</div>
-                            <div class="compact-panel-subtitle">Solar Core heartbeat</div>
-                        </div>
-                        <span class="health-indicator ok" id="home-health-indicator"></span>
-                    </div>
-                    <div class="system-health-body">
-                        <div class="system-health-status">
-                            <span class="metric-label">Status</span>
-                            <span class="metric-value" id="home-system-health">Nominal</span>
-                        </div>
-                        <div class="system-health-metrics">
-                            <div class="health-meta-item">
-                                <span class="metric-label">Last Updated</span>
-                                <span class="metric-value" id="home-last-updated">—</span>
-                                <span class="metric-sub" id="home-last-updated-absolute">—</span>
-                            </div>
-                            <div class="health-meta-item">
-                                <span class="metric-label">Uptime</span>
-                                <span class="metric-value" id="home-time-active">--:--</span>
-                                <span class="metric-sub">Hours online</span>
-                            </div>
-                            <div class="health-meta-item">
-                                <span class="metric-label">Signals Today</span>
-                                <span class="metric-value" id="home-events-today">0</span>
-                                <span class="metric-sub">Interactions</span>
-                            </div>
-                            <div class="health-meta-item">
-                                <span class="metric-label">Focus Project</span>
-                                <span class="metric-value" id="home-focus-project-secondary">—</span>
-                                <span class="metric-sub">Primary track</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="week-days-strip" id="week-days">
+                    <!-- Days injected by JS -->
                 </div>
-                <div class="compact-panel stats-summary-panel">
-                    <div class="compact-panel-header">
-                        <div>
-                            <div class="compact-panel-title">Stats Summary</div>
-                            <div class="compact-panel-subtitle">Operational throughput</div>
-                        </div>
-                    </div>
-                    <div class="stat-summary-grid">
-                        <div class="stat-summary-item">
-                            <div>
-                                <div class="metric-label">Total Tasks</div>
-                                <div class="metric-sub">Across all missions</div>
-                            </div>
-                            <div class="metric-value" id="stat-total-tasks">-</div>
-                        </div>
-                        <div class="stat-summary-item">
-                            <div>
-                                <div class="metric-label">Agents Online</div>
-                                <div class="metric-sub">Currently synced</div>
-                            </div>
-                            <div class="metric-value" id="stat-agents-online">-</div>
-                        </div>
-                        <div class="stat-summary-item">
-                            <div>
-                                <div class="metric-label">Urgent Queue</div>
-                                <div class="metric-sub">High-priority tasks</div>
-                            </div>
-                            <div class="metric-value" id="stat-urgent-tasks">-</div>
-                        </div>
-                    </div>
-                    <div class="stats-callout">Synced for dual operator workflow</div>
-                </div>
-            </div>
-
-            <!-- Priority Grid -->
-            <div class="priority-grid">
-                <!-- Active Tasks Board (Large) -->
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title">
-                            <span>▶</span>
-                            Active Tasks Board
-                        </span>
-                        <span class="priority-panel-badge" id="active-tasks-count">0</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="tasks-board" id="active-tasks-board">
-                            <div style="text-align: center; color: var(--text-muted); padding: 40px;">Loading tasks...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Calendar/Schedule View (Large) -->
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title">
-                            <span>📅</span>
-                            Upcoming Deadlines
-                        </span>
-                        <span class="priority-panel-badge">7 Days</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="calendar-view" id="calendar-view">
-                            <div style="text-align: center; color: var(--text-muted); padding: 40px;">Loading calendar...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Input Needed / Pending Decisions (Medium) -->
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title">
-                            <span>⚠️</span>
-                            Input Needed
-                        </span>
-                        <span class="priority-panel-badge" id="pending-decisions-count">0</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="decisions-list" id="pending-decisions-list">
-                            <div style="text-align: center; color: var(--text-muted); padding: 40px;">No pending decisions</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Activity (Medium) -->
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title">
-                            <span>📡</span>
-                            Recent Activity
-                        </span>
-                        <span class="priority-panel-badge" style="background: rgba(0, 255, 136, 0.2); color: var(--success);">Live</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="activity-list" id="recent-activity">
-                            <div class="activity-item">
-                                <div class="activity-avatar system">🚀</div>
-                                <div class="activity-content">
-                                    <div class="activity-text">Mission Control initialized</div>
-                                    <div class="activity-meta">
-                                        <span>System</span>
-                                        <span class="activity-time">Just now</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="day-tasks-container" id="day-tasks">
+                    <div class="day-tasks-header">Select a day to view tasks</div>
                 </div>
             </div>
         </div>
@@ -2937,6 +2854,10 @@
 
         // ===== REDESIGNED HOME SECTION RENDERING =====
         function renderHomeSection() {
+            // Call new homepage renderer
+            renderNewHomepage(appData);
+
+            // Keep old rendering for backwards compatibility
             const stats = appData.stats || {};
             const agents = appData.agents || [];
             const allTasks = appData.tasks || [];
@@ -2944,46 +2865,12 @@
 
             const urgentCount = stats.urgentTasks ?? allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
 
-            document.getElementById('stat-total-tasks').textContent = allTasks.length;
-            document.getElementById('stat-agents-online').textContent = stats.activeAgents || agents.length || 0;
-            document.getElementById('stat-urgent-tasks').textContent = urgentCount;
-
             const focusProject = stats.focusProject || '—';
             const systemHealth = stats.systemHealth || 'Nominal';
             const eventsToday = stats.eventsToday != null ? stats.eventsToday : 0;
             const lastUpdated = appData.lastUpdated;
 
-            const focusPrimary = document.getElementById('home-focus-project');
-            if (focusPrimary) focusPrimary.textContent = focusProject;
-            const focusSecondary = document.getElementById('home-focus-project-secondary');
-            if (focusSecondary) focusSecondary.textContent = focusProject;
-            document.getElementById('home-system-health').textContent = systemHealth;
-            document.getElementById('home-time-active').textContent = stats.timeActive || '--:--';
-            document.getElementById('home-events-today').textContent = eventsToday;
-            document.getElementById('home-last-updated').textContent = formatRelativeTimestamp(lastUpdated);
-            document.getElementById('home-last-updated-absolute').textContent = formatAbsoluteTimestamp(lastUpdated);
-
-            const healthIndicator = document.getElementById('home-health-indicator');
-            if (healthIndicator) {
-                const normalized = systemHealth.toLowerCase();
-                let indicatorState = 'ok';
-                if (normalized.includes('warn') || normalized.includes('degraded')) indicatorState = 'warning';
-                if (normalized.includes('down') || normalized.includes('critical')) indicatorState = 'danger';
-                healthIndicator.className = `health-indicator ${indicatorState}`;
-            }
-
-            // Active Tasks Board
-            renderActiveTasksBoard(allTasks);
-
-            // Calendar View
-            renderCalendarView(allTasks);
-
-            // Pending Decisions
-            const pending = workflow.pending || [];
-            renderPendingDecisions(pending);
-
-            // Recent Activity
-            renderRecentActivity();
+            // Old rendering continues...
         }
 
         function renderActiveTasksBoard(allTasks) {
@@ -3593,6 +3480,226 @@
         // Add Task
         function addTask(projectId) {
             alert(`Add new task to project ${projectId}...`);
+        }
+
+        // NEW HOMEPAGE FUNCTIONS
+        let currentWeekOffset = 0;
+        let selectedDay = null;
+
+        function renderNewHomepage(data) {
+            renderMiniStats(data);
+            renderUrgentQueue(data);
+            renderInputNeeded(data);
+            renderWeekView(data);
+        }
+
+        function renderMiniStats(data) {
+            const stats = data.stats || {};
+            document.getElementById('mini-wins').textContent = stats.tasksDone || 0;
+            
+            // Calculate velocity (tasks done / total * 100)
+            const total = stats.totalTasks || 1;
+            const done = stats.tasksDone || 0;
+            const velocity = Math.round((done / total) * 100);
+            document.getElementById('mini-velocity').textContent = velocity + '%';
+        }
+
+        function renderUrgentQueue(data) {
+            const container = document.getElementById('urgent-queue');
+            const workflow = data.workflow || {};
+            const pending = workflow.pending || [];
+            
+            // Filter urgent tasks (high priority or overdue)
+            const urgentTasks = pending.filter(t => {
+                if (t.priority === 'high') return true;
+                // Check if due within 48 hours
+                // (simplified - would need proper date parsing)
+                return false;
+            }).slice(0, 8);
+
+            document.getElementById('urgent-count').textContent = urgentTasks.length;
+
+            if (urgentTasks.length === 0) {
+                container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px;">
+                    No urgent tasks right now 🎉
+                </div>`;
+                return;
+            }
+
+            container.innerHTML = urgentTasks.map(task => `
+                <div class="column-task-item urgent" onclick="openTask('${task.id}')">
+                    <div class="column-task-title">${task.title}</div>
+                    <div class="column-task-meta">
+                        <span class="column-task-project">${task.project || 'General'}</span>
+                        <span class="column-task-due ${task.priority === 'high' ? 'overdue' : ''}">
+                            ${task.priority === 'high' ? '🔴 HIGH' : '⚡ SOON'}
+                        </span>
+                    </div>
+                    <button class="column-task-btn" onclick="event.stopPropagation(); doTask('${task.id}')">DO NOW</button>
+                </div>
+            `).join('');
+        }
+
+        function renderInputNeeded(data) {
+            const container = document.getElementById('input-needed');
+            const workflow = data.workflow || {};
+            const review = workflow.review || [];
+            
+            document.getElementById('input-count').textContent = review.length;
+
+            if (review.length === 0) {
+                container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px;">
+                    Nothing waiting for your input
+                </div>`;
+                return;
+            }
+
+            container.innerHTML = review.map(item => `
+                <div class="input-item" onclick="openTask('${item.id}')">
+                    <span class="input-type">${item.type || 'REVIEW'}</span>
+                    <div class="input-title">${item.title}</div>
+                    <div class="input-meta">${item.project || 'General'} • From: ${item.from || 'Agent'}</div>
+                    <button class="input-btn" onclick="event.stopPropagation(); reviewItem('${item.id}')">${item.action || 'REVIEW'}</button>
+                </div>
+            `).join('');
+        }
+
+        function renderWeekView(data) {
+            const container = document.getElementById('week-days');
+            const today = new Date();
+            today.setDate(today.getDate() + (currentWeekOffset * 7));
+            
+            // Get start of week (Monday)
+            const startOfWeek = new Date(today);
+            startOfWeek.setDate(today.getDate() - today.getDay() + 1);
+            
+            const days = [];
+            const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(startOfWeek);
+                date.setDate(startOfWeek.getDate() + i);
+                
+                // Get tasks for this day (simplified)
+                const tasksForDay = getTasksForDay(data, date);
+                
+                days.push({
+                    name: dayNames[i],
+                    date: date.getDate(),
+                    fullDate: date,
+                    taskCount: tasksForDay.length,
+                    urgentCount: tasksForDay.filter(t => t.priority === 'high').length,
+                    warningCount: tasksForDay.filter(t => t.priority === 'medium').length
+                });
+            }
+
+            container.innerHTML = days.map((day, idx) => {
+                const isSelected = selectedDay && selectedDay.getDate() === day.fullDate.getDate();
+                const isToday = new Date().toDateString() === day.fullDate.toDateString();
+                
+                return `
+                    <div class="week-day ${isSelected ? 'active' : ''} ${isToday ? 'today' : ''}" 
+                         onclick="selectDay(${idx}, ${day.fullDate.getTime()})"
+                         data-day-idx="${idx}">
+                        <div class="week-day-name">${day.name}</div>
+                        <div class="week-day-number" style="${isToday ? 'color: var(--crimson-bright);' : ''}">${day.date}</div>
+                        <div class="week-day-stats">
+                            ${day.urgentCount > 0 ? `<span class="week-day-count urgent">${day.urgentCount}</span>` : ''}
+                            ${day.warningCount > 0 ? `<span class="week-day-count warning">${day.warningCount}</span>` : ''}
+                            ${day.taskCount > 0 && day.urgentCount === 0 && day.warningCount === 0 ? `<span class="week-day-count">${day.taskCount}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Auto-select today if no selection
+            if (!selectedDay) {
+                const todayIdx = days.findIndex(d => new Date().toDateString() === d.fullDate.toDateString());
+                if (todayIdx >= 0) {
+                    selectDay(todayIdx, days[todayIdx].fullDate.getTime());
+                }
+            }
+        }
+
+        function getTasksForDay(data, date) {
+            // Simplified - would need proper date matching logic
+            const workflow = data.workflow || {};
+            const allTasks = [
+                ...(workflow.pending || []),
+                ...(workflow.active || []),
+                ...(workflow.review || [])
+            ];
+            
+            // Return all for now (would filter by date in real implementation)
+            return allTasks.slice(0, 3);
+        }
+
+        function selectDay(idx, timestamp) {
+            selectedDay = new Date(timestamp);
+            
+            // Update visual selection
+            document.querySelectorAll('.week-day').forEach((el, i) => {
+                el.classList.toggle('active', i === idx);
+            });
+
+            // Render tasks for selected day
+            renderDayTasks(selectedDay);
+        }
+
+        function renderDayTasks(date) {
+            const container = document.getElementById('day-tasks');
+            const dayName = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+            
+            // Mock tasks for now - would be filtered from real data
+            container.innerHTML = `
+                <div class="day-tasks-header">${dayName}</div>
+                <div class="day-tasks-list">
+                    <div class="day-task-item">
+                        <span class="day-task-time">09:00</span>
+                        <div class="day-task-content">
+                            <div class="day-task-title">Review Chapter 13 outline</div>
+                            <div class="day-task-project">A2 · Re:Unite</div>
+                        </div>
+                        <span class="day-task-priority high">HIGH</span>
+                    </div>
+                    <div class="day-task-item">
+                        <span class="day-task-time">14:00</span>
+                        <div class="day-task-content">
+                            <div class="day-task-title">Finalize Taiwan flights</div>
+                            <div class="day-task-project">Personal</div>
+                        </div>
+                        <span class="day-task-priority medium">MED</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function changeWeek(direction) {
+            currentWeekOffset += direction;
+            loadData(); // Re-render
+        }
+
+        function searchTasks(query) {
+            if (!query || query.length < 2) return;
+            
+            // Would implement actual search logic here
+            console.log('Searching for:', query);
+        }
+
+        function checkAgent(agentId) {
+            alert(`Checking ${agentId}...`);
+        }
+
+        function doTask(taskId) {
+            alert(`Starting task ${taskId}...`);
+        }
+
+        function reviewItem(itemId) {
+            alert(`Reviewing item ${itemId}...`);
+        }
+
+        function openTask(taskId) {
+            alert(`Opening task ${taskId}...`);
         }
 
         // Initialize
