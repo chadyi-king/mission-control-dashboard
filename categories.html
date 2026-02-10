@@ -2397,10 +2397,10 @@
             getPriorityClass = noopPriorityClass
         } = sharedHelpers;
 
-        const CATEGORY_ICON_MAP = { A: '☀️', B: '🌅', C: '🌞' };
+        const CATEGORY_ICON_MAP = { A: '🎯', B: '💼', C: '⚡' };
         const DEFAULT_AGENT = 'CHAD_YI';
         const filterState = { priority: '', status: '', agent: '' };
-        let currentSort = 'name';
+        let currentSort = 'id';
 
         // Global data store
         let appData = null;
@@ -2900,146 +2900,82 @@
         function renderProjectCard(proj) {
             const progress = getProjectProgress(proj);
             const statusClass = proj.status === 'active' ? 'active' : (proj.status === 'pending' ? 'pending' : '');
-            const timePercent = proj.timeTracking.estimated > 0
-                ? Math.round((proj.timeTracking.spent / proj.timeTracking.estimated) * 100)
-                : 0;
-            const clampedTimePercent = Math.min(100, Math.max(0, timePercent));
-            const timeSeverity = timePercent > 100 ? 'danger' : (timePercent > 80 ? 'warning' : '');
             const assignedAgent = proj.assignedAgent || DEFAULT_AGENT;
             const agentInitials = assignedAgent.split(/[\s_]/).filter(Boolean).map(part => part[0]).join('').slice(0, 2).toUpperCase() || 'AI';
-            const projectPriorityLevel = determineProjectPriority(proj);
 
             const deadline = proj.nextDeadline;
-            let dueDisplay = 'No pending tasks';
+            let dueDisplay = 'No deadline';
             let dueClass = 'success';
             let countdown = '';
 
             if (deadline) {
                 countdown = formatCountdown(deadline.date);
-                const title = (deadline.task && deadline.task.title) ? deadline.task.title : 'Next milestone';
-                dueDisplay = title.length > 30 ? `${title.substring(0, 30)}…` : title;
+                const title = (deadline.task && deadline.task.title) ? deadline.task.title : 'Next task';
+                dueDisplay = title.length > 25 ? `${title.substring(0, 25)}…` : title;
 
-                if (countdown === 'OVERDUE' || deadline.priority === 'high') {
+                if (countdown === 'OVERDUE') {
                     dueClass = 'urgent';
-                } else if (deadline.priority === 'medium' || isDueSoon(countdown)) {
+                } else if (deadline.priority === 'high') {
                     dueClass = 'warning';
                 }
             }
 
             const isUrgent = proj.stats.urgent > 0 || countdown === 'OVERDUE';
             const cardClasses = ['project-card'];
-            if (isUrgent) {
-                cardClasses.push('urgent-project');
-            }
+            if (isUrgent) cardClasses.push('urgent-project');
+
+            // Simplified: Just show what matters
+            const pendingCount = proj.stats.total - proj.stats.done;
+            const highPending = proj.priorityBreakdown.high;
 
             return `
                 <div class="${cardClasses.join(' ')}" data-project="${proj.id}" data-status="${proj.status}"
-                     data-priority="${projectPriorityLevel}"
-                     data-agent="${assignedAgent}" data-due="${getDueTimestamp(proj)}"
-                     data-progress="${progress}" data-tasks="${proj.stats.total}">
+                     data-priority="${proj.priority}" data-agent="${assignedAgent}">
+                    
+                    <!-- Header: ID + Name + Status -->
                     <div class="project-card-header" onclick="toggleProject(this)">
                         <div class="project-info-main">
                             <div class="project-title-row">
-                                <h3>${proj.id} · ${proj.name}</h3>
+                                <h3 style="font-size: 18px; margin: 0;">${proj.id} · ${proj.name}</h3>
                                 <div class="project-badges">
                                     <span class="agent-badge ${statusClass}">${proj.status}</span>
                                     ${isUrgent ? '<span class="agent-badge" style="background: rgba(255,68,68,0.3); color: #ff4444;">URGENT</span>' : ''}
                                 </div>
                             </div>
-                            <div class="project-id">${proj.stats.total} tasks · ${proj.stats.done} completed · ${proj.stats.active} active</div>
+                            <div style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">
+                                ${pendingCount} pending · ${proj.stats.done} done
+                                ${highPending > 0 ? ` · <span style="color: #ff6b6b; font-weight: 600;">${highPending} HIGH</span>` : ''}
+                            </div>
                         </div>
                         <span class="expand-icon">▼</span>
                     </div>
 
-                    <div class="project-meta-row">
-                        <div class="project-agent-chip">
-                            <div class="agent-avatar">${agentInitials}</div>
-                            <div class="agent-details">
-                                <span class="agent-label">Lead Agent</span>
-                                <span class="agent-name">${assignedAgent}</span>
-                            </div>
+                    <!-- Simple Progress Bar -->
+                    <div style="padding: 12px 16px; border-bottom: 1px solid var(--crystal-border);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12px;">
+                            <span style="color: var(--text-muted);">Progress</span>
+                            <span style="color: white; font-weight: 600;">${progress}%</span>
                         </div>
-                        <div class="spacer"></div>
-                        <div class="project-priority-chip ${projectPriorityLevel}">Priority · ${projectPriorityLevel.toUpperCase()}</div>
-                        <div class="project-deadline-chip ${dueClass}">Next · ${deadline ? formatTimelineDate(deadline.date) : 'Clear'}</div>
-                    </div>
-
-                    <div class="task-stats">
-                        <div class="task-stat">
-                            <div class="task-stat-value">${proj.stats.total}</div>
-                            <div class="task-stat-label">Total</div>
-                        </div>
-                        <div class="task-stat high-priority">
-                            <div class="task-stat-value">${proj.priorityBreakdown.high}</div>
-                            <div class="task-stat-label">High</div>
-                        </div>
-                        <div class="task-stat medium-priority">
-                            <div class="task-stat-value">${proj.priorityBreakdown.medium}</div>
-                            <div class="task-stat-label">Med</div>
-                        </div>
-                        <div class="task-stat low-priority">
-                            <div class="task-stat-value">${proj.priorityBreakdown.low}</div>
-                            <div class="task-stat-label">Low</div>
-                        </div>
-                        <div class="task-stat urgent">
-                            <div class="task-stat-value">${proj.stats.active}</div>
-                            <div class="task-stat-label">Active</div>
-                        </div>
-                        <div class="task-stat">
-                            <div class="task-stat-value">${proj.stats.done}</div>
-                            <div class="task-stat-label">Done</div>
+                        <div class="progress-bar" style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                            <div style="width: ${progress}%; height: 100%; background: ${progress === 100 ? 'var(--success)' : 'var(--crimson-bright)'}; border-radius: 4px; transition: width 0.3s;"></div>
                         </div>
                     </div>
 
-                    <div class="time-tracking-bar">
-                        <div class="time-stat">
-                            <span class="time-label">Time Spent</span>
-                            <span class="time-value ${timeSeverity === 'danger' ? 'over-budget' : ''}">${proj.timeTracking.spent}h / ${proj.timeTracking.estimated}h</span>
-                        </div>
-                        <div class="time-progress-bar">
-                            <div class="time-progress-fill ${timeSeverity}" style="width: ${clampedTimePercent}%"></div>
-                        </div>
-                        <div class="time-stat">
-                            <span class="time-label">Remaining</span>
-                            <span class="time-value">${proj.timeTracking.remaining}h</span>
-                        </div>
+                    <!-- Due Date (if any) -->
+                    ${deadline ? `
+                    <div style="padding: 10px 16px; border-bottom: 1px solid var(--crystal-border); display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                        <span>🕐</span>
+                        <span style="color: var(--text-muted);">Next:</span>
+                        <span style="${dueClass === 'urgent' ? 'color: #ff6b6b; font-weight: 600;' : 'color: var(--text-secondary)'};">${dueDisplay}</span>
+                        ${countdown ? `<span style="margin-left: auto; padding: 2px 8px; background: ${dueClass === 'urgent' ? 'rgba(255,107,107,0.2)' : 'rgba(255,255,255,0.05)'}; border-radius: 4px; font-size: 11px; color: ${dueClass === 'urgent' ? '#ff6b6b' : 'var(--text-secondary)'}; ${dueClass === 'urgent' ? 'animation: pulse-overdue 1.5s infinite;' : ''}">${countdown}</span>` : ''}
                     </div>
+                    ` : ''}
 
-                    <div class="due-countdown">
-                        <span class="due-label">🕐 Next Due:</span>
-                        <div class="due-value ${dueClass}">
-                            ${dueDisplay}
-                            ${countdown ? `<span class="countdown-timer">${countdown}</span>` : ''}
-                        </div>
-                    </div>
-
-                    <div class="milestones-section">
-                        <div class="milestones-title">📍 Milestones</div>
-                        <div class="milestones-track">
-                            ${proj.milestones.map(m => `
-                                <div class="milestone ${m.completed ? 'completed' : (m.active ? 'active' : 'upcoming')}">
-                                    <div class="milestone-tooltip">${m.label} (${m.tasksRequired} tasks)</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="progress-section">
-                        <div class="progress-header">
-                            <span class="progress-label">Overall Progress</span>
-                            <span class="progress-value">${progress}%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${progress}%"></div>
-                        </div>
-                    </div>
-
-                    ${renderProjectTimeline(proj)}
-
+                    <!-- Expanded Content: Tasks -->
                     <div class="project-card-content">
                         ${renderTasksSection(proj)}
-
-                        <div class="project-actions">
+                        
+                        <div class="project-actions" style="padding: 12px 16px; border-top: 1px solid var(--crystal-border);">
                             <button class="action-btn" onclick="event.stopPropagation(); openProject('${proj.id}')">Open Project</button>
                             <button class="action-btn secondary" onclick="event.stopPropagation(); addTask('${proj.id}')">Add Task</button>
                         </div>
@@ -3164,17 +3100,19 @@
         function renderCategoryTaskItem(task) {
             const priorityClass = task.priority === 'high' ? 'high-priority' : (task.priority === 'medium' ? 'medium-priority' : 'low-priority');
             const statusIcon = task.status === 'active' ? '▶' : (task.status === 'review' ? '👁' : (task.status === 'done' ? '✓' : '○'));
+            const priorityColor = task.priority === 'high' ? '#ff6b6b' : (task.priority === 'medium' ? '#c9a962' : '#888');
 
             return `
-                <div class="category-task-item ${priorityClass}">
-                    <div class="task-status ${task.status}">${statusIcon}</div>
-                    <div class="task-details">
-                        <div class="category-task-title">${task.title}</div>
-                        ${task.notes ? `<div class="task-notes">${task.notes}</div>` : ''}
-                        <div class="task-meta-row">
-                            <span class="priority-badge ${task.priority}">${task.priority}</span>
-                            <span>${task.status}</span>
-                            <span>👤 CHAD_YI</span>
+                <div class="category-task-item ${priorityClass}" style="padding: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid ${priorityColor};">
+                    <div style="display: flex; align-items: flex-start; gap: 12px;">
+                        <div style="font-size: 16px; margin-top: 2px;">${statusIcon}</div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 14px; font-weight: 600; color: white; margin-bottom: 4px;">${task.title}</div>
+                            ${task.notes ? `<div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">${task.notes}</div>` : ''}
+                            <div style="display: flex; gap: 8px; align-items: center; font-size: 11px;">
+                                <span style="padding: 2px 8px; background: ${priorityColor}20; color: ${priorityColor}; border-radius: 4px; font-weight: 600;">${task.priority.toUpperCase()}</span>
+                                <span style="color: var(--text-muted); text-transform: uppercase;">${task.status}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
