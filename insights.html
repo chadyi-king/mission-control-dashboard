@@ -1754,6 +1754,110 @@
         .placeholder-title { font-family: var(--display-font); font-size: 18px; color: var(--crimson-bright); margin-bottom: 8px; }
         .placeholder-text { color: var(--text-muted); font-size: 14px; }
 
+        /* Insights Section Styles */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .insight-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+        .insight-value {
+            font-family: var(--display-font);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--crimson-bright);
+            margin-bottom: 8px;
+        }
+        .insight-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .insights-section {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .insights-section h2 {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .status-bars { display: flex; flex-direction: column; gap: 16px; }
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .status-label {
+            width: 80px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .status-track {
+            flex: 1;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .status-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .status-fill.done { background: var(--success); }
+        .status-fill.active { background: var(--warning); }
+        .status-fill.pending { background: var(--crimson-bright); }
+        .status-fill.review { background: #4dabf7; }
+        .status-count {
+            width: 40px;
+            text-align: right;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+        .priority-grid { display: flex; gap: 24px; }
+        .priority-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            flex: 1;
+        }
+        .priority-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .priority-item.high .priority-dot { background: #ff6b6b; }
+        .priority-item.medium .priority-dot { background: var(--warning); }
+        .priority-item.low .priority-dot { background: var(--success); }
+        .priority-name {
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .priority-count {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+        }
+
         /* Loading & Error States */
         .loading-state { text-align: center; padding: 60px; color: var(--text-muted); }
         .loading-spinner {
@@ -2249,10 +2353,74 @@
         <!-- INSIGHTS SECTION -->
         <div id="insights-section" class="section active">
             <h1 class="page-title">📈 Insights</h1>
-            <div class="placeholder-content">
-                <div class="placeholder-icon">📊</div>
-                <div class="placeholder-title">Insights Coming Soon</div>
-                <div class="placeholder-text">Analytics, trends, and performance metrics will appear here.</div>
+            
+            <!-- Stats Overview -->
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-value" id="insight-total-tasks">0</div>
+                    <div class="insight-label">Total Tasks</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-value" id="insight-completion">0%</div>
+                    <div class="insight-label">Completion Rate</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-value" id="insight-high-priority">0</div>
+                    <div class="insight-label">High Priority</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-value" id="insight-urgent">0</div>
+                    <div class="insight-label">Urgent</div>
+                </div>
+            </div>
+            
+            <!-- Task Status Breakdown -->
+            <div class="insights-section">
+                <h2>Task Status</h2>
+                <div class="status-bars" id="status-bars">
+                    <div class="status-bar">
+                        <span class="status-label">Done</span>
+                        <div class="status-track"><div class="status-fill done" id="bar-done" style="width: 0%"></div></div>
+                        <span class="status-count" id="count-done">0</span>
+                    </div>
+                    <div class="status-bar">
+                        <span class="status-label">Active</span>
+                        <div class="status-track"><div class="status-fill active" id="bar-active" style="width: 0%"></div></div>
+                        <span class="status-count" id="count-active">0</span>
+                    </div>
+                    <div class="status-bar">
+                        <span class="status-label">Pending</span>
+                        <div class="status-track"><div class="status-fill pending" id="bar-pending" style="width: 0%"></div></div>
+                        <span class="status-count" id="count-pending">0</span>
+                    </div>
+                    <div class="status-bar">
+                        <span class="status-label">Review</span>
+                        <div class="status-track"><div class="status-fill review" id="bar-review" style="width: 0%"></div></div>
+                        <span class="status-count" id="count-review">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Priority Breakdown -->
+            <div class="insights-section">
+                <h2>By Priority</h2>
+                <div class="priority-grid" id="priority-grid">
+                    <div class="priority-item high">
+                        <span class="priority-dot"></span>
+                        <span class="priority-name">High</span>
+                        <span class="priority-count" id="priority-high">0</span>
+                    </div>
+                    <div class="priority-item medium">
+                        <span class="priority-dot"></span>
+                        <span class="priority-name">Medium</span>
+                        <span class="priority-count" id="priority-medium">0</span>
+                    </div>
+                    <div class="priority-item low">
+                        <span class="priority-dot"></span>
+                        <span class="priority-name">Low</span>
+                        <span class="priority-count" id="priority-low">0</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -2356,6 +2524,7 @@
                 // Render both sections
                 renderHomeSection();
                 renderCategoriesSection();
+                renderInsights();
 
             } catch (error) {
                 console.error('Failed to load data:', error);
@@ -3198,6 +3367,58 @@
         // Add Task
         function addTask(projectId) {
             alert(`Add new task to project ${projectId}...`);
+        }
+
+        // Render Insights Section
+        function renderInsights() {
+            if (!appData) return;
+            
+            const tasks = appData.tasks || [];
+            const workflow = appData.workflow || {};
+            
+            // Combine all tasks
+            const allTasks = [
+                ...tasks,
+                ...(workflow.pending || []),
+                ...(workflow.active || []),
+                ...(workflow.review || []),
+                ...(workflow.done || [])
+            ];
+            
+            // Stats
+            const total = allTasks.length;
+            const done = allTasks.filter(t => t.status === 'done').length;
+            const active = allTasks.filter(t => t.status === 'active').length;
+            const pending = allTasks.filter(t => t.status === 'pending').length;
+            const review = allTasks.filter(t => t.status === 'review').length;
+            const high = allTasks.filter(t => t.priority === 'high').length;
+            const medium = allTasks.filter(t => t.priority === 'medium').length;
+            const low = allTasks.filter(t => t.priority === 'low').length;
+            const urgent = allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
+            
+            const completion = total > 0 ? Math.round((done / total) * 100) : 0;
+            
+            // Update DOM
+            document.getElementById('insight-total-tasks').textContent = total;
+            document.getElementById('insight-completion').textContent = completion + '%';
+            document.getElementById('insight-high-priority').textContent = high;
+            document.getElementById('insight-urgent').textContent = urgent;
+            
+            // Status bars
+            document.getElementById('count-done').textContent = done;
+            document.getElementById('count-active').textContent = active;
+            document.getElementById('count-pending').textContent = pending;
+            document.getElementById('count-review').textContent = review;
+            
+            document.getElementById('bar-done').style.width = total > 0 ? (done / total * 100) + '%' : '0%';
+            document.getElementById('bar-active').style.width = total > 0 ? (active / total * 100) + '%' : '0%';
+            document.getElementById('bar-pending').style.width = total > 0 ? (pending / total * 100) + '%' : '0%';
+            document.getElementById('bar-review').style.width = total > 0 ? (review / total * 100) + '%' : '0%';
+            
+            // Priority
+            document.getElementById('priority-high').textContent = high;
+            document.getElementById('priority-medium').textContent = medium;
+            document.getElementById('priority-low').textContent = low;
         }
 
         // Initialize
