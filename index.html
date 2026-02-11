@@ -2640,12 +2640,14 @@
         async function loadData() {
             try {
                 console.log('Loading data...');
-                const response = await fetch('data.json');
+                const response = await fetch('data.json?t=' + Date.now()); // Cache busting
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 appData = await response.json();
                 console.log('Data loaded:', Object.keys(appData));
+                console.log('Stats:', appData.stats);
+                console.log('Tasks count:', Object.keys(appData.tasks || {}).length);
                 allProjects = [];
 
                 // Process all projects
@@ -2688,6 +2690,9 @@
 
             } catch (error) {
                 console.error('Failed to load data:', error);
+                // Show error in all sections
+                document.getElementById('urgent-queue').innerHTML = '<div style="text-align: center; color: #ff6b6b; padding: 40px;">Error loading data. Check console.</div>';
+                document.getElementById('agent-status').innerHTML = '<div style="text-align: center; color: #ff6b6b; padding: 40px;">Error loading agents. Check console.</div>';
                 document.getElementById('cat-loading-state').style.display = 'none';
                 document.getElementById('cat-error-state').style.display = 'block';
             }
@@ -3620,18 +3625,23 @@
                 return;
             }
 
-            container.innerHTML = urgentTasks.map(task => `
-                <div class="column-task-item urgent" onclick="openTask('${task.id}')">
+            container.innerHTML = urgentTasks.map(task => {
+                const projectInfo = appData.projectDetails && appData.projectDetails[task.project] ? appData.projectDetails[task.project] : { name: task.project };
+                const deadline = task.deadline ? `Due: ${new Date(task.deadline).toLocaleDateString()}` : '';
+                return `
+                <div class="column-task-item urgent">
                     <div class="column-task-title">${task.title}</div>
                     <div class="column-task-meta">
-                        <span class="column-task-project">${task.project || 'General'}</span>
+                        <span class="column-task-project">${task.project} · ${projectInfo.name}</span>
                         <span class="column-task-due ${task.priority === 'high' ? 'overdue' : ''}">
-                            ${task.priority === 'high' ? 'HIGH' : 'SOON'}
+                            ${task.priority === 'high' ? 'HIGH' : 'MEDIUM'}
                         </span>
                     </div>
-                    <button class="column-task-btn" onclick="event.stopPropagation(); doTask('${task.id}')">DO NOW</button>
+                    ${task.notes ? `<div style="font-size: 11px; color: var(--text-muted); margin-top: 6px; line-height: 1.4;">${task.notes}</div>` : ''}
+                    ${deadline ? `<div style="font-size: 10px; color: #ff6b6b; margin-top: 4px;">${deadline}</div>` : ''}
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function renderInputNeeded(data) {
