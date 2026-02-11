@@ -2950,10 +2950,10 @@
                 const project = allProjects.find(p => p.id === task.project);
                 const projectName = project ? project.name : task.project;
                 
-                // Calculate simulated time spent/progress
-                const progress = Math.floor(Math.random() * 40) + 30; // 30-70% for demo
-                const timeSpent = Math.floor(Math.random() * 3) + 1;
-                const timeEstimated = Math.floor(Math.random() * 2) + 3;
+                // Real progress calculation based on task status
+                const progress = task.status === 'done' ? 100 : (task.status === 'active' ? 60 : 20);
+                const timeSpent = task.status === 'done' ? 4 : (task.status === 'active' ? 2 : 0);
+                const timeEstimated = 4; // Default estimate
 
                 return `
                     <div class="task-card ${priorityClass}">
@@ -3002,12 +3002,16 @@
 
             const pendingTasks = allTasks.filter(t => t.status !== 'done');
             
-            // NOTE: These are estimated deadlines for demo (tasks don't have real due dates yet)
-            const tasksWithDeadlines = pendingTasks.slice(0, 5).map((task, i) => {
-                const dueDate = new Date(now);
-                dueDate.setDate(dueDate.getDate() + i + 1);
-                return { ...task, dueDate };
-            });
+            // Only use REAL deadlines from data.json (not generated ones)
+            const tasksWithDeadlines = pendingTasks.filter(t => {
+                if (!t.deadline) return false;
+                const dueDate = new Date(t.deadline);
+                const daysUntil = Math.floor((dueDate - now) / (1000 * 60 * 60 * 24));
+                return daysUntil >= 0 && daysUntil < 7; // Within next 7 days
+            }).map(t => ({
+                ...t,
+                dueDate: new Date(t.deadline)
+            }));
 
             const calendar = document.getElementById('calendar-view');
             
@@ -3094,14 +3098,39 @@
         }
 
         function renderRecentActivity() {
-            // NOTE: This is simulated activity data for demo purposes
-            const activities = [
-                { type: 'system', text: '<strong>Dashboard loaded</strong> - Activity feed is simulated', time: 'Just now', project: 'System' },
-                { type: 'chad', text: 'Completed task <strong>Review Dashboard</strong>', time: '2 min ago', project: 'A6' },
-                { type: 'agent', text: 'Agent <strong>Helios</strong> spawned for task tracking', time: '15 min ago', project: 'System' },
-                { type: 'system', text: 'Auto-saved progress for <strong>3 tasks</strong>', time: '1 hour ago', project: 'System' },
-                { type: 'chad', text: 'Created new task <strong>Taiwan trip planning</strong>', time: '2 hours ago', project: 'A1' }
-            ];
+            // Real activity from workflow data
+            const activities = [];
+            
+            // Add recently done tasks
+            const doneTasks = allTasks.filter(t => t.status === 'done').slice(0, 3);
+            doneTasks.forEach(task => {
+                activities.push({
+                    type: 'chad',
+                    text: `Completed task <strong>${task.title}</strong>`,
+                    time: task.completedAt ? new Date(task.completedAt).toLocaleDateString() : 'Recently',
+                    project: task.project
+                });
+            });
+            
+            // Add pending high priority tasks
+            const pendingHigh = allTasks.filter(t => t.status === 'pending' && t.priority === 'high').slice(0, 2);
+            pendingHigh.forEach(task => {
+                activities.push({
+                    type: 'system',
+                    text: `Task pending: <strong>${task.title}</strong>`,
+                    time: 'Pending',
+                    project: task.project
+                });
+            });
+            
+            if (activities.length === 0) {
+                activities.push({
+                    type: 'system',
+                    text: 'No recent activity',
+                    time: '-',
+                    project: 'System'
+                });
+            }
 
             const activityList = document.getElementById('recent-activity');
             
@@ -3844,6 +3873,230 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', loadData);
+
+        // ===== SMART POLLING FOR REAL-TIME UPDATES =====
+        (function() {
+            const POLL_INTERVAL = 30000; // 30 seconds
+            let lastKnownUpdate = null;
+            let pollingActive = true;
+            let pollTimer = null;
+
+            // Create subtle updating indicator
+            function createUpdatingIndicator() {
+                const indicator = document.createElement('div');
+                indicator.id = 'updating-indicator';
+                indicator.innerHTML = `
+                    <span class="update-dot"></span>
+                    <span class="update-text">checking...</span>
+                `;
+                indicator.style.cssText = `
+                    position: fixed;
+                    bottom: 16px;
+                    right: 16px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 8px 14px;
+                    background: rgba(10, 10, 15, 0.9);
+                    border: 1px solid rgba(220, 20, 60, 0.3);
+                    border-radius: 20px;
+                    font-size: 11px;
+                    color: var(--text-muted);
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    opacity: 0;
+                    transform: translateY(10px);
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    backdrop-filter: blur(10px);
+                `;
+
+                // Add styles for the dot animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    .update-dot {
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: var(--crimson-bright);
+                        animation: updatePulse 1s ease-in-out infinite;
+                    }
+                    @keyframes updatePulse {
+                        0%, 100% { opacity: 0.4; transform: scale(1); }
+                        50% { opacity: 1; transform: scale(1.2); }
+                    }
+                    #updating-indicator.visible {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                    #updating-indicator.updated {
+                        border-color: var(--success);
+                        color: var(--success);
+                    }
+                    #updating-indicator.updated .update-dot {
+                        background: var(--success);
+                        animation: none;
+                    }
+                `;
+                document.head.appendChild(style);
+                document.body.appendChild(indicator);
+                return indicator;
+            }
+
+            const indicator = createUpdatingIndicator();
+
+            // Show updating indicator
+            function showUpdating() {
+                indicator.classList.add('visible');
+                indicator.classList.remove('updated');
+                indicator.querySelector('.update-text').textContent = 'checking...';
+            }
+
+            // Show updated indicator briefly
+            function showUpdated() {
+                indicator.classList.add('visible', 'updated');
+                indicator.querySelector('.update-text').textContent = 'updated';
+                setTimeout(() => {
+                    indicator.classList.remove('visible');
+                }, 2000);
+            }
+
+            // Generate simple hash of data for comparison
+            function generateDataHash(data) {
+                // Use lastUpdated timestamp as primary comparison
+                if (data && data.lastUpdated) {
+                    return data.lastUpdated;
+                }
+                // Fallback: hash of JSON string (simplified)
+                return JSON.stringify(data).length.toString();
+            }
+
+            // Fetch only headers to check if data changed (using cache-busting)
+            async function checkForUpdates() {
+                if (!pollingActive) return;
+
+                try {
+                    showUpdating();
+
+                    // Fetch with cache-busting to get fresh data
+                    const cacheBuster = `?t=${Date.now()}`;
+                    const response = await fetch('data.json' + cacheBuster, {
+                        method: 'GET',
+                        cache: 'no-store'
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const newData = await response.json();
+                    const newHash = generateDataHash(newData);
+
+                    // Compare with last known update
+                    if (lastKnownUpdate === null) {
+                        // First poll, just store the hash
+                        lastKnownUpdate = newHash;
+                    } else if (newHash !== lastKnownUpdate) {
+                        // Data has changed!
+                        console.log('[Smart Poll] Data changed, updating dashboard...', {
+                            old: lastKnownUpdate,
+                            new: newHash
+                        });
+
+                        // Update stored hash
+                        lastKnownUpdate = newHash;
+
+                        // Update global app data
+                        appData = newData;
+
+                        // Rebuild project data
+                        allProjects = [];
+                        if (appData.projects) {
+                            Object.keys(appData.projects).forEach(catKey => {
+                                const cat = appData.projects[catKey];
+                                if (cat.projects) {
+                                    cat.projects.forEach(projId => {
+                                        const tasks = appData.tasks || {};
+                                        const projTasks = Object.values(tasks).filter(t => t.project === projId);
+                                        const taskStats = calculateTaskStats(projTasks);
+                                        const projDetails = appData.projectDetails && appData.projectDetails[projId];
+
+                                        allProjects.push({
+                                            id: projId,
+                                            category: catKey,
+                                            categoryName: cat.name,
+                                            name: projDetails ? projDetails.name : projId,
+                                            description: projDetails ? projDetails.description : '',
+                                            tasks: projTasks,
+                                            stats: taskStats,
+                                            priorityBreakdown: getPriorityBreakdown(projTasks),
+                                            timeTracking: calculateTimeTracking(projTasks),
+                                            nextDeadline: getNextDeadline(projTasks),
+                                            milestones: generateMilestones({id: projId}, projTasks),
+                                            timeline: buildProjectTimeline(projTasks)
+                                        });
+                                    });
+                                }
+                            });
+                        }
+
+                        syncProjectLookup();
+
+                        // Re-render all sections
+                        renderHomeSection();
+                        renderCategoriesSection();
+
+                        showUpdated();
+                    } else {
+                        // No change
+                        console.log('[Smart Poll] No changes detected');
+                        indicator.classList.remove('visible');
+                    }
+
+                } catch (error) {
+                    console.error('[Smart Poll] Error checking for updates:', error);
+                    indicator.classList.remove('visible');
+                }
+            }
+
+            // Start polling after initial load
+            function startPolling() {
+                if (pollTimer) clearInterval(pollTimer);
+
+                // Set initial hash from loaded data
+                if (appData) {
+                    lastKnownUpdate = generateDataHash(appData);
+                }
+
+                // Poll every 30 seconds
+                pollTimer = setInterval(checkForUpdates, POLL_INTERVAL);
+                console.log('[Smart Poll] Started polling every', POLL_INTERVAL, 'ms');
+            }
+
+            // Stop polling (for cleanup)
+            function stopPolling() {
+                pollingActive = false;
+                if (pollTimer) {
+                    clearInterval(pollTimer);
+                    pollTimer = null;
+                }
+            }
+
+            // Start polling after a short delay to ensure initial load is complete
+            setTimeout(startPolling, 5000);
+
+            // Expose controls for debugging
+            window.smartPoll = {
+                start: startPolling,
+                stop: stopPolling,
+                checkNow: checkForUpdates,
+                getStatus: () => ({
+                    active: pollingActive,
+                    interval: POLL_INTERVAL,
+                    lastKnownUpdate: lastKnownUpdate
+                })
+            };
+        })();
     </script>
 </body>
 </html>
