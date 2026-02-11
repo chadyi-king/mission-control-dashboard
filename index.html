@@ -3636,7 +3636,6 @@
         }
 
         function getTasksForDay(data, date) {
-            // Simplified - would need proper date matching logic
             const workflow = data.workflow || {};
             const allTasks = [
                 ...(workflow.pending || []),
@@ -3644,8 +3643,21 @@
                 ...(workflow.review || [])
             ];
             
-            // Return all for now (would filter by date in real implementation)
-            return allTasks.slice(0, 3);
+            // Also check project tasks for deadlines
+            const projects = data.projects || {};
+            Object.values(projects).forEach(category => {
+                if (category.projects) {
+                    category.projects.forEach(project => {
+                        if (project.tasks) {
+                            allTasks.push(...project.tasks);
+                        }
+                    });
+                }
+            });
+            
+            // Filter tasks by deadline matching this date
+            const dayStr = date.toISOString().split('T')[0];
+            return allTasks.filter(t => t.deadline && t.deadline === dayStr);
         }
 
         function selectDay(idx, timestamp) {
