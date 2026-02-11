@@ -3613,7 +3613,11 @@
 
         function renderMiniStats(data) {
             const stats = data.stats || {};
-            document.getElementById('mini-wins').textContent = stats.tasksDone || 0;
+            
+            const miniWins = document.getElementById('mini-wins');
+            const miniVelocity = document.getElementById('mini-velocity');
+            
+            if (miniWins) miniWins.textContent = stats.tasksDone || 0;
             
             // Calculate velocity properly from workflow data
             const workflow = data.workflow || {};
@@ -3626,11 +3630,16 @@
             let velocity = total > 0 ? Math.round((done / total) * 100) : 0;
             // Cap at 100% for sanity
             velocity = Math.min(velocity, 100);
-            document.getElementById('mini-velocity').textContent = velocity + '%';
+            if (miniVelocity) miniVelocity.textContent = velocity + '%';
         }
 
         function renderUrgentQueue(data) {
             const container = document.getElementById('urgent-queue');
+            const countBadge = document.getElementById('urgent-count');
+            
+            // Exit if element doesn't exist on this page
+            if (!container) return;
+            
             const workflow = data.workflow || {};
             const tasks = data.tasks || {};
             const pendingIds = workflow.pending || [];
@@ -3651,11 +3660,11 @@
                 return false;
             }).slice(0, 8);
 
-            document.getElementById('urgent-count').textContent = urgentTasks.length;
+            if (countBadge) countBadge.textContent = urgentTasks.length;
 
             if (urgentTasks.length === 0) {
                 container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px;">
-                    No urgent tasks right now
+                    ✓ No urgent tasks right now
                 </div>`;
                 return;
             }
@@ -3681,6 +3690,10 @@
 
         function renderInputNeeded(data) {
             const container = document.getElementById('input-needed');
+            const countBadge = document.getElementById('input-count');
+            
+            // Exit if element doesn't exist on this page
+            if (!container) return;
             
             // Get inputs from the new inputsNeeded array
             const inputsNeeded = data.inputsNeeded || [];
@@ -3709,7 +3722,7 @@
                 }))
             ];
             
-            document.getElementById('input-count').textContent = allInputs.length;
+            if (countBadge) countBadge.textContent = allInputs.length;
 
             if (allInputs.length === 0) {
                 container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px;">
@@ -3730,6 +3743,10 @@
 
         function renderWeekView(data) {
             const container = document.getElementById('week-days');
+            
+            // Exit if element doesn't exist on this page
+            if (!container) return;
+            
             const today = new Date();
             today.setDate(today.getDate() + (currentWeekOffset * 7));
             
