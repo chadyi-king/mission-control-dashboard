@@ -250,11 +250,12 @@
         }
 
         .mission-subtitle {
-            font-size: 9px;
+            font-size: 11px;
             color: var(--text-muted);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-family: var(--tech-font);
+            margin-top: 4px;
         }
 
         .mission-divider {
@@ -2322,22 +2323,37 @@
             <div class="mini-stats-bar">
                 <div class="mini-stats-left">
                     <div class="mini-search">
-                        <span>🔍</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6;">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
                         <input type="text" id="task-search" placeholder="Search tasks..." onkeyup="searchTasks(this.value)">
                     </div>
                 </div>
                 <div class="mini-stats-right">
                     <div class="mini-stat success">
-                        <span>✓</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color: var(--success);">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
                         <span>System Online</span>
                     </div>
                     <div class="mini-stat">
-                        <span>🏆</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--warning);">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                            <path d="M4 22h16"></path>
+                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                        </svg>
                         <span id="mini-wins">0</span>
                         <span>Wins</span>
                     </div>
                     <div class="mini-stat warning">
-                        <span>📈</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--warning);">
+                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                            <polyline points="16 7 22 7 22 13"></polyline>
+                        </svg>
                         <span id="mini-velocity">0%</span>
                         <span>Velocity</span>
                     </div>
@@ -2372,36 +2388,25 @@
                     <div class="column-content" id="agent-status">
                         <div class="agent-status-item">
                             <div class="agent-status-header">
-                                <div class="agent-avatar-small">HE</div>
+                                <div class="agent-avatar-small" style="background: linear-gradient(135deg, #ff6b6b 0%, #dc143c 100%);">CY</div>
                                 <div class="agent-status-info">
-                                    <div class="agent-status-name">Helios</div>
-                                    <div class="agent-status-state">Online</div>
+                                    <div class="agent-status-name">CHAD_YI</div>
+                                    <div class="agent-status-state" style="color: var(--success);">Active</div>
                                 </div>
                             </div>
-                            <div class="agent-status-task">Planning Taiwan trip logistics...</div>
-                            <button class="agent-status-btn" onclick="checkAgent('helios')">Check Progress</button>
+                            <div class="agent-status-task">Orchestrating dashboard and coordinating tasks</div>
+                            <button class="agent-status-btn" onclick="checkAgent('chad_yi')">View Status</button>
                         </div>
                         <div class="agent-status-item">
                             <div class="agent-status-header">
-                                <div class="agent-avatar-small">ES</div>
+                                <div class="agent-avatar-small" style="background: linear-gradient(135deg, #ffa500 0%, #ff6347 100%);">HE</div>
                                 <div class="agent-status-info">
-                                    <div class="agent-status-name">Escritor</div>
-                                    <div class="agent-status-state">Writing</div>
+                                    <div class="agent-status-name">Helios</div>
+                                    <div class="agent-status-state" style="color: var(--success);">Auditing</div>
                                 </div>
                             </div>
-                            <div class="agent-status-task">Drafting Chapter 13 outline...</div>
-                            <button class="agent-status-btn" onclick="checkAgent('escritor')">Give Feedback</button>
-                        </div>
-                        <div class="agent-status-item" style="opacity: 0.6;">
-                            <div class="agent-status-header">
-                                <div class="agent-avatar-small" style="background: #555;">QU</div>
-                                <div class="agent-status-info">
-                                    <div class="agent-status-name">Quanta</div>
-                                    <div class="agent-status-state" style="color: var(--text-muted);">Standby</div>
-                                </div>
-                            </div>
-                            <div class="agent-status-task" style="color: var(--text-muted);">Waiting for task assignment...</div>
-                            <button class="agent-status-btn" style="border-color: var(--text-muted); color: var(--text-muted);" disabled>Not Active</button>
+                            <div class="agent-status-task">Running 15-minute system audits and data validation</div>
+                            <button class="agent-status-btn" onclick="checkAgent('helios')">View Audit Log</button>
                         </div>
                     </div>
                 </div>
@@ -2425,12 +2430,25 @@
             <div class="week-view-section">
                 <div class="week-header">
                     <div class="week-title">
-                        <span>📅</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
                         <span>This Week at a Glance</span>
                     </div>
                     <div class="week-nav">
-                        <button class="week-nav-btn" onclick="changeWeek(-1)">◀</button>
-                        <button class="week-nav-btn" onclick="changeWeek(1)">▶</button>
+                        <button class="week-nav-btn" onclick="changeWeek(-1)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="week-nav-btn" onclick="changeWeek(1)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
                     </div>
                 </div>
                 <div class="week-days-strip" id="week-days">
