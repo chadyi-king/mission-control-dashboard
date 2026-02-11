@@ -2639,7 +2639,8 @@
                         const cat = appData.projects[catKey];
                         if (cat.projects) {
                             cat.projects.forEach(proj => {
-                                const projTasks = appData.tasks ? appData.tasks.filter(t => t.project === proj.id) : [];
+                                const tasks = appData.tasks || {};
+                                const projTasks = Object.values(tasks).filter(t => t.project === proj.id);
                                 const taskStats = calculateTaskStats(projTasks);
 
                                 allProjects.push({
@@ -2884,7 +2885,7 @@
             // Keep old rendering for backwards compatibility
             const stats = appData.stats || {};
             const agents = appData.agents || [];
-            const allTasks = appData.tasks || [];
+            const allTasks = Object.values(appData.tasks || {});
             const workflow = appData.workflow || {};
 
             const urgentCount = stats.urgentTasks ?? allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
@@ -3104,7 +3105,7 @@
 
         // ===== CATEGORIES SECTION RENDERING (UNCHANGED) =====
         function renderCategoriesSection() {
-            const allTasks = appData.tasks || [];
+            const allTasks = Object.values(appData.tasks || {});
             const totalProjects = allProjects.length;
             const totalTasks = allTasks.length;
             const tasksDone = allTasks.filter(t => t.status === 'done').length;
@@ -3747,7 +3748,7 @@
             }
             
             // Search across ALL tasks in data
-            const allTasks = appData.tasks || [];
+            const allTasks = Object.values(appData.tasks || {});
             
             const lowerQuery = query.toLowerCase();
             const matches = allTasks.filter(t => 
