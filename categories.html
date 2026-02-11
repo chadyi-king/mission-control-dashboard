@@ -2928,7 +2928,7 @@
                 }
             }
 
-            const isUrgent = proj.stats.urgent > 0 || countdown === 'OVERDUE';
+            const isUrgent = countdown === 'OVERDUE' || (deadline && deadline.priority === 'high' && countdown && countdown.includes('d') && parseInt(countdown) <= 2);
             const cardClasses = ['project-card'];
             if (isUrgent) cardClasses.push('urgent-project');
 
@@ -2948,6 +2948,7 @@
                                 <div class="project-badges">
                                     <span class="agent-badge ${statusClass}">${proj.status}</span>
                                     ${isUrgent ? '<span class="agent-badge" style="background: rgba(255,68,68,0.3); color: #ff4444;">URGENT</span>' : ''}
+                                    ${!isUrgent && highPending > 0 ? '<span class="agent-badge" style="background: rgba(255,107,107,0.2); color: #ff6b6b;">HIGH</span>' : ''}
                                 </div>
                             </div>
                             ${proj.description ? `<div style="color: var(--text-muted); font-size: 12px; margin-top: 2px; font-style: italic;">${proj.description}</div>` : ''}
