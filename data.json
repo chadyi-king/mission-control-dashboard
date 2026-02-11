@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-11T08:21:00Z",
+  "lastUpdated": "2026-02-11T08:27:00Z",
   "stats": {
     "activeAgents": 2,
     "spawnedToday": 0,
@@ -838,7 +838,8 @@
       "role": "Orchestrator",
       "status": "active",
       "currentTask": "Coordinating",
-      "lastActive": "2026-02-11T15:20:00Z"
+      "lastActive": "2026-02-11T15:20:00Z",
+      "model": "kimi-coding/kimi-k2-thinking"
     },
     {
       "id": "Helios",
@@ -846,7 +847,8 @@
       "role": "Mission Control Engineer",
       "status": "active",
       "currentTask": "15-min audits",
-      "lastActive": "2026-02-11T07:51:00Z"
+      "lastActive": "2026-02-11T07:51:00Z",
+      "model": "kimi-coding/kimi-k2-thinking"
     },
     {
       "id": "Escritor",
@@ -854,29 +856,36 @@
       "role": "Story Agent (A2)",
       "status": "not_spawned",
       "currentTask": "Awaiting spawn by CHAD_YI",
-      "lastActive": null
+      "lastActive": null,
+      "model": "qwen2.5:7b (Ollama)"
     }
   ],
   "configuredAgents": [
     {
       "id": "Escritor",
       "role": "Story Agent (A2)",
-      "status": "waiting_for_input"
+      "status": "not_spawned",
+      "model": "qwen2.5:7b (Ollama)"
     },
     {
       "id": "Quanta",
       "role": "Trading Dev (A5)",
-      "status": "not_spawned"
+      "status": "not_spawned",
+      "model": "codellama:7b (Ollama)"
     },
     {
       "id": "MensaMusa",
       "role": "Trading Agent (A5)",
-      "status": "not_spawned"
+      "status": "not_spawned",
+      "model": "TBD (Ollama)"
     },
     {
       "id": "Autour",
       "role": "Script Agent (A3)",
-      "status": "not_spawned"
+      "status": "not_spawned",
+      "model": "TBD (Ollama)"
+    }
+  ]
     }
   ],
   "agentActivityLog": [
