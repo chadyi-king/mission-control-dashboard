@@ -2462,25 +2462,26 @@
                     Object.keys(appData.projects).forEach(catKey => {
                         const cat = appData.projects[catKey];
                         if (cat.projects) {
-                            cat.projects.forEach(proj => {
-                                // Use nested tasks if available, otherwise filter from top-level tasks
+                            cat.projects.forEach(projId => {
+                                // projId is a string (e.g., "A1"), not an object
                                 const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
-                                const projTasks = proj.tasks || allTasks.filter(t => t.project === proj.id);
+                                const projTasks = allTasks.filter(t => t.project === projId);
                                 const taskStats = calculateTaskStats(projTasks);
 
                                 allProjects.push({
-                                    ...proj,
+                                    id: projId,
                                     category: catKey,
                                     categoryName: cat.name,
+                                    name: projId,
                                     categorySubtitle: cat.subtitle || '',
                                     tasks: projTasks,
                                     stats: taskStats,
                                     priorityBreakdown: getPriorityBreakdown(projTasks),
                                     timeTracking: calculateTimeTracking(projTasks),
                                     nextDeadline: getNextDeadline(projTasks),
-                                    milestones: generateMilestones(proj, projTasks),
+                                    milestones: generateMilestones({id: projId}, projTasks),
                                     timeline: buildProjectTimeline(projTasks),
-                                    assignedAgent: proj.assignedAgent || DEFAULT_AGENT
+                                    assignedAgent: DEFAULT_AGENT
                                 });
                             });
                         }
