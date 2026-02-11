@@ -2694,9 +2694,19 @@
 
             } catch (error) {
                 console.error('Failed to load data:', error);
-                // Show error in all sections
-                document.getElementById('urgent-queue').innerHTML = '<div style="text-align: center; color: #ff6b6b; padding: 40px;">Error loading data. Check console.</div>';
-                document.getElementById('agent-status').innerHTML = '<div style="text-align: center; color: #ff6b6b; padding: 40px;">Error loading agents. Check console.</div>';
+                console.error('Error stack:', error.stack);
+                
+                const errorMessage = `
+                    <div style="text-align: center; color: #ff6b6b; padding: 40px;">
+                        <div style="font-weight: 600; margin-bottom: 8px;">⚠️ Error loading data</div>
+                        <div style="font-size: 11px; color: var(--text-muted);">${error.message}</div>
+                        <div style="font-size: 10px; margin-top: 12px; color: var(--text-secondary);">Check browser console (F12) for details</div>
+                    </div>
+                `;
+                
+                document.getElementById('urgent-queue').innerHTML = errorMessage;
+                document.getElementById('agent-activity').innerHTML = errorMessage;
+                document.getElementById('input-needed').innerHTML = errorMessage;
                 document.getElementById('cat-loading-state').style.display = 'none';
                 document.getElementById('cat-error-state').style.display = 'block';
             }
@@ -3650,28 +3660,49 @@
 
         function renderInputNeeded(data) {
             const container = document.getElementById('input-needed');
+            
+            // Get inputs from the new inputsNeeded array
+            const inputsNeeded = data.inputsNeeded || [];
+            
+            // Also check review tasks
             const workflow = data.workflow || {};
             const tasks = data.tasks || {};
             const reviewIds = workflow.review || [];
-            
-            // Look up actual task objects from IDs (tasks is now an object, not array)
             const reviewTasks = reviewIds.map(id => tasks[id]).filter(t => t);
             
-            document.getElementById('input-count').textContent = reviewTasks.length;
+            // Combine both sources
+            const allInputs = [
+                ...inputsNeeded.map(item => ({
+                    type: 'INPUT',
+                    title: item.taskTitle,
+                    taskId: item.taskId,
+                    meta: item.inputRequired,
+                    action: 'PROVIDE'
+                })),
+                ...reviewTasks.map(task => ({
+                    type: 'REVIEW',
+                    title: task.title,
+                    taskId: task.id,
+                    meta: `${task.project || 'General'} • From: ${task.from || 'Agent'}`,
+                    action: 'REVIEW'
+                }))
+            ];
+            
+            document.getElementById('input-count').textContent = allInputs.length;
 
-            if (reviewTasks.length === 0) {
+            if (allInputs.length === 0) {
                 container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px;">
-                    Nothing waiting for your input
+                    ✓ Nothing waiting for your input
                 </div>`;
                 return;
             }
 
-            container.innerHTML = reviewTasks.map(task => `
-                <div class="input-item" onclick="openTask('${task.id}')">
-                    <span class="input-type">REVIEW</span>
-                    <div class="input-title">${task.title}</div>
-                    <div class="input-meta">${task.project || 'General'} • From: ${task.from || 'Agent'}</div>
-                    <button class="input-btn" onclick="event.stopPropagation(); reviewItem('${task.id}')">REVIEW</button>
+            container.innerHTML = allInputs.map(item => `
+                <div class="input-item" style="padding: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid ${item.type === 'INPUT' ? '#ff6b6b' : '#c9a962'}; cursor: pointer;">
+                    <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: ${item.type === 'INPUT' ? '#ff6b6b' : '#c9a962'};">${item.type}</span>
+                    <div style="font-weight: 600; margin: 4px 0;">${item.title}</div>
+                    <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">${item.meta}</div>
+                    <button style="background: ${item.type === 'INPUT' ? 'rgba(255,107,107,0.2)' : 'rgba(201,169,98,0.2)'}; color: ${item.type === 'INPUT' ? '#ff6b6b' : '#c9a962'}; border: none; padding: 6px 12px; border-radius: 4px; font-size: 11px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">${item.action}</button>
                 </div>
             `).join('');
         }
