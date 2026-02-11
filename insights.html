@@ -2697,30 +2697,6 @@
         }
 
         // Format countdown
-
-            const milestones = [];
-            const totalTasks = tasks.length;
-            const completedTasks = tasks.filter(t => t.status === 'done').length;
-
-            for (let i = 1; i <= 4; i++) {
-                const threshold = i * 0.25;
-                const milestoneTasks = Math.floor(totalTasks * threshold);
-                const isCompleted = completedTasks >= milestoneTasks && milestoneTasks > 0;
-                const isActive = !isCompleted && completedTasks >= milestoneTasks - Math.ceil(totalTasks * 0.1);
-
-                milestones.push({
-                    number: i,
-                    label: `${i * 25}%`,
-                    completed: isCompleted,
-                    active: isActive,
-                    tasksRequired: milestoneTasks
-                });
-            }
-
-            return milestones;
-        }
-
-        // Format countdown
         function formatCountdown(targetDate) {
             const now = new Date();
             const diff = targetDate - now;
