@@ -3896,80 +3896,99 @@
 
         function renderWeekView(data) {
             const container = document.getElementById('week-days');
-            const dayTasksContainer = document.getElementById('day-tasks');
-            
-            // Exit if element doesn't exist on this page
             if (!container) return;
-            
-            // Reset selected day to ensure today is highlighted correctly
-            selectedDay = null;
-            
+
             const calendarTasks = data.calendarTasks || {};
             const tasks = data.tasks || {};
+            const workflow = data.workflow || {};
+            const previousSelected = selectedDay ? new Date(selectedDay) : null;
+
+            const pendingIds = workflow.pending || [];
+            const highPriorityPending = pendingIds
+                .map(id => tasks[id])
+                .filter(t => t && t.priority === 'high');
+
             const today = new Date();
             today.setHours(0, 0, 0, 0);
-            
-            // Generate next 7 days
+
+            const dayOfWeek = today.getDay();
+            const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+            const baseMonday = new Date(today);
+            baseMonday.setDate(today.getDate() + diffToMonday + (currentWeekOffset * 7));
+            const weekStart = new Date(baseMonday);
+            const weekEnd = new Date(baseMonday);
+            weekEnd.setDate(weekEnd.getDate() + 6);
+
+            const todayInCurrentWeek = today >= weekStart && today <= weekEnd;
+            let newSelected = todayInCurrentWeek ? new Date(today) : new Date(weekStart);
+            if (previousSelected && previousSelected >= weekStart && previousSelected <= weekEnd) {
+                newSelected = previousSelected;
+            }
+            selectedDay = newSelected;
+
             const days = [];
             for (let i = 0; i < 7; i++) {
-                const date = new Date(today);
-                date.setDate(date.getDate() + i);
+                const date = new Date(weekStart);
+                date.setDate(weekStart.getDate() + i);
                 const dateStr = date.toISOString().split('T')[0];
-                
-                // Get tasks for this date
+
                 const taskIdsForDay = calendarTasks[dateStr] || [];
-                const tasksForDay = taskIdsForDay
+                const deadlineTasks = taskIdsForDay
                     .map(id => tasks[id])
                     .filter(t => t);
-                
-                // Also get high priority pending tasks for today if no specific tasks
-                if (i === 0 && tasksForDay.length === 0) {
-                    const workflow = data.workflow || {};
-                    const pendingIds = workflow.pending || [];
-                    const highPriorityPending = pendingIds
-                        .map(id => tasks[id])
-                        .filter(t => t && t.priority === 'high')
-                        .slice(0, 3);
-                    tasksForDay.push(...highPriorityPending);
-                }
-                
+
+                const extraUrgentTasks = highPriorityPending.filter(task => !taskIdsForDay.includes(task.id));
+                const urgentCount = deadlineTasks.filter(t => t && t.priority === 'high').length + extraUrgentTasks.length;
+                const mediumCount = deadlineTasks.filter(t => t && t.priority === 'medium').length;
+
                 const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
                 const dayNum = date.getDate();
-                const isToday = i === 0;
+                const isToday = date.toDateString() === today.toDateString();
                 const isSelected = selectedDay && selectedDay.toDateString() === date.toDateString();
-                
+                const hasDeadline = deadlineTasks.length > 0;
+
                 days.push({
-                    date: date,
-                    dateStr: dateStr,
-                    dayName: dayName,
-                    dayNum: dayNum,
-                    tasks: tasksForDay,
-                    isToday: isToday,
-                    isSelected: isSelected,
-                    hasDeadline: taskIdsForDay.length > 0
+                    date,
+                    dateStr,
+                    dayName,
+                    dayNum,
+                    deadlineCount: deadlineTasks.length,
+                    urgentCount,
+                    mediumCount,
+                    isToday,
+                    isSelected,
+                    hasDeadline
                 });
             }
-            
-            container.innerHTML = days.map((day, idx) => `
-                <div class="week-day ${day.isSelected ? 'active' : ''} ${day.isToday ? 'today' : ''}" 
+
+            container.innerHTML = days.map((day, idx) => {
+                let badgeText = '';
+                if (day.hasDeadline && day.isToday) {
+                    badgeText = 'DEADLINE TODAY';
+                } else if (day.hasDeadline) {
+                    badgeText = `DUE ${day.dayName.toUpperCase()}`;
+                } else if (day.urgentCount > 0) {
+                    badgeText = `${day.urgentCount} URGENT`;
+                }
+
+                return `
+                <div class="week-day ${day.isSelected ? 'active' : ''} ${day.isToday ? 'today' : ''}"
                      onclick="selectDay(${idx}, '${day.dateStr}')"
-                     data-day-idx="${idx}">
+                     data-day-idx="${idx}"
+                     style="${badgeText ? 'border: 1px solid var(--danger);' : ''}">
                     <div class="week-day-name">${day.dayName}</div>
                     <div class="week-day-number" style="${day.isToday ? 'color: var(--crimson-bright);' : ''} ${day.hasDeadline ? 'font-weight: 700;' : ''}">${day.dayNum}</div>
                     <div class="week-day-stats">
-                        ${day.tasks.filter(t => t.priority === 'high').length > 0 ? `<span class="week-day-count urgent">${day.tasks.filter(t => t.priority === 'high').length}</span>` : ''}
-                        ${day.tasks.filter(t => t.priority === 'medium').length > 0 ? `<span class="week-day-count warning">${day.tasks.filter(t => t.priority === 'medium').length}</span>` : ''}
-                        ${day.tasks.length > 0 && day.tasks.filter(t => t.priority === 'high' || t.priority === 'medium').length === 0 ? `<span class="week-day-count">${day.tasks.length}</span>` : ''}
+                        ${day.urgentCount > 0 ? `<span class="week-day-count urgent">${day.urgentCount}</span>` : ''}
+                        ${day.mediumCount > 0 ? `<span class="week-day-count warning">${day.mediumCount}</span>` : ''}
+                        ${day.deadlineCount > 0 && day.urgentCount === 0 && day.mediumCount === 0 ? `<span class="week-day-count">${day.deadlineCount}</span>` : ''}
                     </div>
-                    ${day.hasDeadline ? '<div style="position: absolute; bottom: 4px; width: 4px; height: 4px; border-radius: 50%; background: var(--danger);"></div>' : ''}
+                    ${badgeText ? `<div style="position: absolute; bottom: 2px; font-size: 8px; color: var(--danger); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${badgeText}</div>` : ''}
                 </div>
-            `).join('');
-            
-            // Auto-select today
-            if (!selectedDay) {
-                selectedDay = today;
-                renderDayTasks(today.toISOString().split('T')[0]);
-            }
+            `;
+            }).join('');
+
+            renderDayTasks(selectedDay.toISOString().split('T')[0]);
         }
 
         function selectDay(idx, dateStr) {
@@ -3989,29 +4008,32 @@
             const data = appData;
             const calendarTasks = data.calendarTasks || {};
             const tasks = data.tasks || {};
-            
+            const workflow = data.workflow || {};
+
             const date = new Date(dateStr);
             const dayName = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-            
-            // Get tasks for this date
+
             const taskIdsForDay = calendarTasks[dateStr] || [];
-            let tasksForDay = taskIdsForDay
+            const deadlineTasks = taskIdsForDay
                 .map(id => tasks[id])
                 .filter(t => t);
-            
-            // For today, also show high priority pending tasks
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            if (date.toDateString() === today.toDateString() && tasksForDay.length === 0) {
-                const workflow = data.workflow || {};
-                const pendingIds = workflow.pending || [];
-                tasksForDay = pendingIds
-                    .map(id => tasks[id])
-                    .filter(t => t && t.priority === 'high')
-                    .slice(0, 3);
-            }
-            
-            if (tasksForDay.length === 0) {
+
+            const pendingIds = workflow.pending || [];
+            const highPriorityPending = pendingIds
+                .map(id => tasks[id])
+                .filter(t => t && t.priority === 'high');
+
+            const combinedTasks = [...deadlineTasks];
+            const addedIds = new Set(deadlineTasks.map(t => t.id));
+
+            highPriorityPending.forEach(task => {
+                if (!addedIds.has(task.id)) {
+                    combinedTasks.push({ ...task, __urgentOverlay: true });
+                    addedIds.add(task.id);
+                }
+            });
+
+            if (combinedTasks.length === 0) {
                 container.innerHTML = `
                     <div class="day-tasks-header">${dayName}</div>
                     <div style="text-align: center; padding: 40px; color: var(--text-muted);">
@@ -4020,20 +4042,33 @@
                 `;
                 return;
             }
-            
+
             container.innerHTML = `
                 <div class="day-tasks-header">${dayName}</div>
                 <div class="day-tasks-list">
-                    ${tasksForDay.map(task => `
-                        <div class="day-task-item">
-                            <span class="day-task-time">${task.deadline || 'TBD'}</span>
-                            <div class="day-task-content">
-                                <div class="day-task-title">${task.title}</div>
-                                <div class="day-task-project">${task.project || 'General'}</div>
+                    ${combinedTasks.map(task => {
+                        const isUrgentOverlay = task.__urgentOverlay === true;
+                        let deadlineLabel = 'TBD';
+                        if (task.deadline) {
+                            const due = new Date(task.deadline);
+                            deadlineLabel = isNaN(due) ? 'Deadline TBC' : due.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                        } else if (isUrgentOverlay) {
+                            deadlineLabel = 'URGENT';
+                        }
+                        const priorityClass = isUrgentOverlay ? 'high' : (task.priority || 'medium');
+                        const priorityLabel = isUrgentOverlay ? 'URGENT' : (task.priority ? task.priority.toUpperCase() : 'NORMAL');
+                        const projectLabel = task.project || 'General';
+                        return `
+                            <div class="day-task-item ${isUrgentOverlay ? 'urgent-task' : ''}">
+                                <span class="day-task-time">${deadlineLabel}</span>
+                                <div class="day-task-content">
+                                    <div class="day-task-title">${task.title}</div>
+                                    <div class="day-task-project">${projectLabel}${isUrgentOverlay ? ' • High priority pending' : ''}</div>
+                                </div>
+                                <span class="day-task-priority ${priorityClass}">${priorityLabel}</span>
                             </div>
-                            <span class="day-task-priority ${task.priority}">${task.priority.toUpperCase()}</span>
-                        </div>
-                    `).join('')}
+                        `;
+                    }).join('')}
                 </div>
             `;
         }
