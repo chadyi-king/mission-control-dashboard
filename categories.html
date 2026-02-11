@@ -2949,6 +2949,7 @@
                                     ${isUrgent ? '<span class="agent-badge" style="background: rgba(255,68,68,0.3); color: #ff4444;">URGENT</span>' : ''}
                                 </div>
                             </div>
+                            ${proj.description ? `<div style="color: var(--text-muted); font-size: 12px; margin-top: 2px; font-style: italic;">${proj.description}</div>` : ''}
                             <div style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">
                                 ${pendingCount} pending · ${proj.stats.done} done
                                 ${highPending > 0 ? ` · <span style="color: #ff6b6b; font-weight: 600;">${highPending} HIGH</span>` : ''}
