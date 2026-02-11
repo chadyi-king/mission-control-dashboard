@@ -2753,9 +2753,11 @@
             // Calendar View
             renderCalendarView(allTasks);
 
-            // Pending Decisions
-            const pending = workflow.pending || [];
-            renderPendingDecisions(pending);
+            // Pending Decisions - map IDs to task objects
+            const tasksObj = appData.tasks || {};
+            const pendingIds = workflow.pending || [];
+            const pendingTasks = pendingIds.map(id => tasksObj[id]).filter(t => t);
+            renderPendingDecisions(pendingTasks);
 
             // Recent Activity
             renderRecentActivity();

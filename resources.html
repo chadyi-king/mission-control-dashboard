@@ -2411,7 +2411,9 @@
                         const cat = appData.projects[catKey];
                         if (cat.projects) {
                             cat.projects.forEach(proj => {
-                                const projTasks = appData.tasks ? appData.tasks.filter(t => t.project === proj.id) : [];
+                                // Note: tasks is now an object, not array - use Object.values()
+                                const tasksObj = appData.tasks || {};
+                                const projTasks = Object.values(tasksObj).filter(t => t.project === proj.id);
                                 const taskStats = calculateTaskStats(projTasks);
 
                                 allProjects.push({
@@ -2650,7 +2652,8 @@
         function renderHomeSection() {
             const stats = appData.stats || {};
             const agents = appData.agents || [];
-            const allTasks = appData.tasks || [];
+            // Convert tasks object to array
+            const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
             const workflow = appData.workflow || {};
 
             // Compact Widgets
@@ -2663,9 +2666,11 @@
             // Calendar View
             renderCalendarView(allTasks);
 
-            // Pending Decisions
-            const pending = workflow.pending || [];
-            renderPendingDecisions(pending);
+            // Pending Decisions - map IDs to task objects
+            const tasksObj = appData.tasks || {};
+            const pendingIds = workflow.pending || [];
+            const pendingTasks = pendingIds.map(id => tasksObj[id]).filter(t => t);
+            renderPendingDecisions(pendingTasks);
 
             // Recent Activity
             renderRecentActivity();
@@ -2877,7 +2882,8 @@
 
         // ===== CATEGORIES SECTION RENDERING (UNCHANGED) =====
         function renderCategoriesSection() {
-            const allTasks = appData.tasks || [];
+            // Convert tasks object to array
+            const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
             const totalProjects = allProjects.length;
             const totalTasks = allTasks.length;
             const tasksDone = allTasks.filter(t => t.status === 'done').length;
