@@ -2207,9 +2207,9 @@
         </div>
         <div class="mobile-nav-menu" id="mobile-nav-menu">
             <a href="index.html">🏠 Home</a>
-            <a href="categories.html">📁 Categories</a>
-            <a href="insights.html">📈 Insights</a>
-            <a href="resources.html">📚 Resources</a>
+            <a href="categories.html">Folder Categories</a>
+            <a href="insights.html">Chart Insights</a>
+            <a href="resources.html">Books Resources</a>
             <a href="agent-roster.html">🤖 Agent Roster</a>
             <a href="system.html">⚙️ System</a>
             <a href="profile.html">👤 Profile</a>
@@ -2366,7 +2366,7 @@
                 <div class="column-panel">
                     <div class="column-header" style="background: rgba(255, 68, 68, 0.1);">
                         <div class="column-title" style="color: #ff6b6b;">
-                            <span>🔴</span>
+                            <span>Urgent</span>
                             <span>Urgent Queue</span>
                         </div>
                         <span class="column-badge urgent" id="urgent-count">0</span>
@@ -2380,7 +2380,7 @@
                 <div class="column-panel">
                     <div class="column-header" style="background: rgba(77, 171, 247, 0.1);">
                         <div class="column-title" style="color: #4dabf7;">
-                            <span>🟡</span>
+                            <span>Agent</span>
                             <span>Agent Status</span>
                         </div>
                         <span class="column-badge agent" id="agent-count">0</span>
@@ -2415,7 +2415,7 @@
                 <div class="column-panel">
                     <div class="column-header" style="background: rgba(201, 169, 98, 0.1);">
                         <div class="column-title" style="color: var(--warning);">
-                            <span>🟢</span>
+                            <span>Input</span>
                             <span>Input Needed</span>
                         </div>
                         <span class="column-badge input" id="input-count">0</span>
@@ -2462,12 +2462,12 @@
 
         <!-- CATEGORIES SECTION (UNCHANGED) -->
         <div id="categories-section" class="section">
-            <h1 class="page-title">📁 Project Categories</h1>
+            <h1 class="page-title">Folder Project Categories</h1>
 
             <!-- Dashboard Stats Bar -->
             <div id="dashboard-stats-bar" class="dashboard-stats-bar" style="display: none;">
                 <div class="dashboard-stat">
-                    <div class="dashboard-stat-icon">📊</div>
+                    <div class="dashboard-stat-icon">Stats</div>
                     <div class="dashboard-stat-value" id="cat-total-projects">0</div>
                     <div class="dashboard-stat-label">Total Projects</div>
                 </div>
@@ -2477,7 +2477,7 @@
                     <div class="dashboard-stat-label">Total Tasks</div>
                 </div>
                 <div class="dashboard-stat">
-                    <div class="dashboard-stat-icon">✓</div>
+                    <div class="dashboard-stat-icon">Done</div>
                     <div class="dashboard-stat-value success" id="cat-tasks-done">0</div>
                     <div class="dashboard-stat-label">Tasks Done</div>
                 </div>
@@ -2556,9 +2556,9 @@
 
         <!-- INSIGHTS SECTION -->
         <div id="insights-section" class="section">
-            <h1 class="page-title">📈 Insights</h1>
+            <h1 class="page-title">Chart Insights</h1>
             <div class="placeholder-content">
-                <div class="placeholder-icon">📊</div>
+                <div class="placeholder-icon">Stats</div>
                 <div class="placeholder-title">Insights Coming Soon</div>
                 <div class="placeholder-text">Analytics, trends, and performance metrics will appear here.</div>
             </div>
@@ -2566,9 +2566,9 @@
 
         <!-- RESOURCES SECTION -->
         <div id="resources-section" class="section">
-            <h1 class="page-title">📚 Resources</h1>
+            <h1 class="page-title">Books Resources</h1>
             <div class="placeholder-content">
-                <div class="placeholder-icon">📁</div>
+                <div class="placeholder-icon">Folder</div>
                 <div class="placeholder-title">Resources Coming Soon</div>
                 <div class="placeholder-text">Documents, templates, and reference materials will appear here.</div>
             </div>
@@ -2912,7 +2912,7 @@
             if (activeTasks.length === 0) {
                 board.innerHTML = `
                     <div style="text-align: center; color: var(--text-muted); padding: 40px;">
-                        <div style="font-size: 32px; margin-bottom: 12px;">✓</div>
+                        <div style="font-size: 32px; margin-bottom: 12px;">Done</div>
                         <div>No active tasks</div>
                         <div style="font-size: 11px; margin-top: 8px;">All caught up!</div>
                     </div>
@@ -3043,7 +3043,7 @@
             if (highPriorityPending.length === 0) {
                 list.innerHTML = `
                     <div style="text-align: center; color: var(--text-muted); padding: 40px;">
-                        <div style="font-size: 32px; margin-bottom: 12px;">✓</div>
+                        <div style="font-size: 32px; margin-bottom: 12px;">Done</div>
                         <div>All clear!</div>
                         <div style="font-size: 11px; margin-top: 8px;">No decisions pending</div>
                     </div>
@@ -3364,7 +3364,7 @@
             if (pendingTasks.length === 0 && doneTasks.length === 0) {
                 return `
                     <div class="tasks-section" style="text-align: center; color: var(--success);">
-                        ✓ No tasks yet. Ready to start!
+                        Done No tasks yet. Ready to start!
                     </div>
                 `;
             }
@@ -3390,7 +3390,7 @@
             if (doneTasks.length > 0) {
                 sections.push(`
                     <div class="tasks-section">
-                        <div class="tasks-section-title">✓ Completed Tasks (${doneTasks.length})</div>
+                        <div class="tasks-section-title">Done Completed Tasks (${doneTasks.length})</div>
                         <div class="task-list">
                             ${doneTasks.slice(0, 3).map(task => renderCategoryTaskItem(task)).join('')}
                             ${doneTasks.length > 3 ? `
@@ -3416,7 +3416,7 @@
 
         function renderCategoryTaskItem(task) {
             const priorityClass = task.priority === 'high' ? 'high-priority' : (task.priority === 'medium' ? 'medium-priority' : 'low-priority');
-            const statusIcon = task.status === 'active' ? '▶' : (task.status === 'review' ? '👁' : (task.status === 'done' ? '✓' : '○'));
+            const statusIcon = task.status === 'active' ? '▶' : (task.status === 'review' ? '👁' : (task.status === 'done' ? 'Done' : '○'));
 
             return `
                 <div class="category-task-item ${priorityClass}">
@@ -3564,7 +3564,7 @@
                     <div class="column-task-meta">
                         <span class="column-task-project">${task.project || 'General'}</span>
                         <span class="column-task-due ${task.priority === 'high' ? 'overdue' : ''}">
-                            ${task.priority === 'high' ? '🔴 HIGH' : '⚡ SOON'}
+                            ${task.priority === 'high' ? 'Urgent HIGH' : '⚡ SOON'}
                         </span>
                     </div>
                     <button class="column-task-btn" onclick="event.stopPropagation(); doTask('${task.id}')">DO NOW</button>
