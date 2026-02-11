@@ -67,24 +67,24 @@
     }
 
     function getNextDeadline(tasks) {
-        const pendingTasks = tasks.filter(t => t.status !== 'done');
-        if (pendingTasks.length === 0) return null;
+        // Only use REAL deadlines from task.deadline field (not generated ones)
+        const pendingTasksWithDeadlines = tasks.filter(t => {
+            if (t.status === 'done') return false;
+            return t.deadline && t.deadline.trim() !== '';
+        });
+        
+        if (pendingTasksWithDeadlines.length === 0) return null;
 
-        const sorted = pendingTasks.sort((a, b) => {
-            if (a.priority === 'high' && b.priority !== 'high') return -1;
-            if (b.priority === 'high' && a.priority !== 'high') return 1;
-            return new Date(a.createdAt) - new Date(b.createdAt);
+        // Sort by deadline date (soonest first)
+        const sorted = pendingTasksWithDeadlines.sort((a, b) => {
+            return new Date(a.deadline) - new Date(b.deadline);
         });
 
         const task = sorted[0];
-        const created = new Date(task.createdAt);
-        const daysToAdd = task.priority === 'high' ? 3 : (task.priority === 'medium' ? 7 : 14);
-        const deadline = new Date(created);
-        deadline.setDate(deadline.getDate() + daysToAdd);
 
         return {
             task: task,
-            date: deadline,
+            date: new Date(task.deadline),
             priority: task.priority
         };
     }

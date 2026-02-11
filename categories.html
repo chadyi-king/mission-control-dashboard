@@ -2600,7 +2600,7 @@
         }
 
         function renderCalendarView(allTasks) {
-            // Get tasks with upcoming deadlines (next 7 days)
+            // Get tasks with REAL deadlines only (from data.json deadline field)
             const now = new Date();
             const next7Days = [];
             
@@ -2610,13 +2610,13 @@
                 next7Days.push(date);
             }
 
-            const pendingTasks = allTasks.filter(t => t.status !== 'done');
-            
-            // Assign fake deadlines to tasks for demo (in real app, tasks would have due dates)
-            const tasksWithDeadlines = pendingTasks.slice(0, 5).map((task, i) => {
-                const dueDate = new Date(now);
-                dueDate.setDate(dueDate.getDate() + i + 1);
-                return { ...task, dueDate };
+            // Only show tasks that have actual deadline fields in data.json
+            const tasksWithRealDeadlines = allTasks.filter(t => {
+                if (t.status === 'done') return false;
+                if (!t.deadline) return false;
+                const dueDate = new Date(t.deadline);
+                const daysUntil = Math.floor((dueDate - now) / (1000 * 60 * 60 * 24));
+                return daysUntil >= 0 && daysUntil < 7; // Only show deadlines within next 7 days
             });
 
             const calendar = document.getElementById('calendar-view');
@@ -2634,8 +2634,9 @@
                 <div class="calendar-timeline">
                     ${next7Days.map((date, i) => {
                         const isToday = i === 0;
-                        const dayTasks = tasksWithDeadlines.filter(t => {
-                            const taskDay = Math.floor((t.dueDate - now) / (1000 * 60 * 60 * 24));
+                        const dayTasks = tasksWithRealDeadlines.filter(t => {
+                            const dueDate = new Date(t.deadline);
+                            const taskDay = Math.floor((dueDate - now) / (1000 * 60 * 60 * 24));
                             return taskDay === i;
                         });
                         
