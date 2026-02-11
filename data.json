@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-02-11T09:05:00Z",
+  "lastUpdated": "2026-02-11T09:15:00Z",
   "stats": {
-    "activeAgents": 6,
+    "activeAgents": 2,
     "spawnedToday": 18,
     "tasksDone": 21,
     "totalTasks": 115,
@@ -350,49 +350,23 @@
       "name": "Chad_YI",
       "role": "Orchestrator",
       "status": "active",
-      "currentTask": "Coordinating dashboard improvements",
-      "lastActive": "2026-02-11T09:05:00Z"
+      "currentTask": "Coordinating",
+      "lastActive": "2026-02-11T09:15:00Z"
     },
     {
       "id": "Helios",
       "name": "Helios",
       "role": "Mission Control Engineer",
       "status": "active",
-      "currentTask": "15-min dashboard audits",
-      "lastActive": "2026-02-11T09:00:00Z"
-    },
-    {
-      "id": "Escritor",
-      "name": "Escritor",
-      "role": "Story Agent (A2)",
-      "status": "waiting_for_input",
-      "currentTask": "Chapter 13 - waiting for user content",
-      "lastActive": "2026-02-11T09:05:00Z"
-    },
-    {
-      "id": "Quanta",
-      "name": "Quanta",
-      "role": "Trading Dev (A5)",
-      "status": "waiting_for_input",
-      "currentTask": "Trading bot setup - waiting for account credentials",
-      "lastActive": "2026-02-11T09:05:00Z"
-    },
-    {
-      "id": "MensaMusa",
-      "name": "MensaMusa",
-      "role": "Trading Agent (A5)",
-      "status": "waiting_for_input",
-      "currentTask": "Trading ops - waiting for same credentials as Quanta",
-      "lastActive": "2026-02-11T09:05:00Z"
-    },
-    {
-      "id": "Autour",
-      "name": "Autour",
-      "role": "Script Agent (A3)",
-      "status": "idle",
-      "currentTask": null,
-      "lastActive": null
+      "currentTask": "15-min audits",
+      "lastActive": "2026-02-11T09:15:00Z"
     }
+  ],
+  "configuredAgents": [
+    { "id": "Escritor", "role": "Story Agent (A2)", "status": "not_spawned" },
+    { "id": "Quanta", "role": "Trading Dev (A5)", "status": "not_spawned" },
+    { "id": "MensaMusa", "role": "Trading Agent (A5)", "status": "not_spawned" },
+    { "id": "Autour", "role": "Script Agent (A3)", "status": "not_spawned" }
   ],
   "tasks": [
     {
