@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-02-11T09:30:00Z",
+  "lastUpdated": "2026-02-11T09:36:00Z",
   "stats": {
-    "activeAgents": 2,
+    "activeAgents": 3,
     "spawnedToday": 0,
-    "tasksDone": 1,
+    "tasksDone": 2,
     "totalTasks": 47,
     "timeActive": "4d 19h",
     "focusProject": "A1",
@@ -11,8 +11,8 @@
     "velocity": 18
   },
   "workflow": {
-    "pending": ["A1-1", "A1-2", "A1-3", "B6-1", "B6-2", "B6-3", "B6-4", "B6-5"],
-    "active": ["A2-13"],
+    "pending": ["A1-1", "A1-2", "A1-3", "A2-13", "B6-1", "B6-2", "B6-3", "B6-4", "B6-5"],
+    "active": ["A6-13"],
     "review": ["A2-12"],
     "done": ["A2-1", "B3-1"]
   },
@@ -71,7 +71,7 @@
       "title": "Edit Chapter 13",
       "project": "A2",
       "priority": "high",
-      "status": "active",
+      "status": "pending",
       "notes": "Continue RE:UNITE novel - user has provided chapters 1-12",
       "createdAt": "2026-02-06T00:00:00Z",
       "completedAt": null
@@ -231,6 +231,7 @@
       "createdAt": "2026-02-08T12:02:05Z",
       "completedAt": null
     },
+    "A7-3": {
       "id": "A7-3",
       "title": "Contact Pastor Raymond",
       "project": "A7",
@@ -561,10 +562,18 @@
       "status": "active",
       "currentTask": "15-min audits",
       "lastActive": "2026-02-11T09:30:00Z"
+    },
+    {
+      "id": "Escritor",
+      "name": "Escritor",
+      "role": "Story Agent (A2)",
+      "status": "waiting_for_input",
+      "currentTask": "Edit Chapter 13",
+      "lastActive": "2026-02-11T09:05:00Z"
     }
   ],
   "configuredAgents": [
-    { "id": "Escritor", "role": "Story Agent (A2)", "status": "not_spawned" },
+    { "id": "Escritor", "role": "Story Agent (A2)", "status": "waiting_for_input" },
     { "id": "Quanta", "role": "Trading Dev (A5)", "status": "not_spawned" },
     { "id": "MensaMusa", "role": "Trading Agent (A5)", "status": "not_spawned" },
     { "id": "Autour", "role": "Script Agent (A3)", "status": "not_spawned" }

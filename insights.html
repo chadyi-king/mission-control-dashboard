@@ -2499,7 +2499,8 @@
                         const cat = appData.projects[catKey];
                         if (cat.projects) {
                             cat.projects.forEach(proj => {
-                                const projTasks = appData.tasks ? appData.tasks.filter(t => t.project === proj.id) : [];
+                                const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
+                                const projTasks = allTasks.filter(t => t.project === proj.id);
                                 const taskStats = calculateTaskStats(projTasks);
 
                                 allProjects.push({
@@ -2739,7 +2740,7 @@
         function renderHomeSection() {
             const stats = appData.stats || {};
             const agents = appData.agents || [];
-            const allTasks = appData.tasks || [];
+            const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
             const workflow = appData.workflow || {};
 
             // Compact Widgets
@@ -2966,7 +2967,7 @@
 
         // ===== CATEGORIES SECTION RENDERING (UNCHANGED) =====
         function renderCategoriesSection() {
-            const allTasks = appData.tasks || [];
+            const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
             const totalProjects = allProjects.length;
             const totalTasks = allTasks.length;
             const tasksDone = allTasks.filter(t => t.status === 'done').length;
@@ -3373,17 +3374,18 @@
         function renderInsights() {
             if (!appData) return;
             
-            const tasks = appData.tasks || [];
+            const tasks = appData.tasks ? Object.values(appData.tasks) : [];
             const workflow = appData.workflow || {};
+            const tasksById = appData.tasks || {};
             
-            // Combine all tasks
-            const allTasks = [
-                ...tasks,
+            // Combine all tasks (look up workflow IDs from tasks dictionary)
+            const allTaskIds = [
                 ...(workflow.pending || []),
                 ...(workflow.active || []),
                 ...(workflow.review || []),
                 ...(workflow.done || [])
             ];
+            const allTasks = allTaskIds.map(id => tasksById[id]).filter(t => t);
             
             // Stats
             const total = allTasks.length;

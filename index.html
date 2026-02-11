@@ -2903,6 +2903,7 @@
             // Keep old rendering for backwards compatibility
             const stats = appData.stats || {};
             const agents = appData.agents || [];
+            // Convert tasks object to array for iteration
             const allTasks = Object.values(appData.tasks || {});
             const workflow = appData.workflow || {};
 
@@ -2917,6 +2918,7 @@
         }
 
         function renderActiveTasksBoard(allTasks) {
+            // allTasks is now passed as an array from Object.values()
             // Get active tasks (status = active, or pending high priority, or review)
             const activeTasks = allTasks.filter(t => 
                 t.status === 'active' || 
@@ -3123,6 +3125,7 @@
 
         // ===== CATEGORIES SECTION RENDERING (UNCHANGED) =====
         function renderCategoriesSection() {
+            // Convert tasks object to array for iteration
             const allTasks = Object.values(appData.tasks || {});
             const totalProjects = allProjects.length;
             const totalTasks = allTasks.length;
@@ -3561,7 +3564,7 @@
             const tasks = data.tasks || {};
             const pendingIds = workflow.pending || [];
             
-            // Look up actual task objects from IDs
+            // Look up actual task objects from IDs (tasks is now an object, not array)
             const pendingTasks = pendingIds.map(id => tasks[id]).filter(t => t);
             
             // Filter urgent tasks (high priority or overdue)
@@ -3606,7 +3609,7 @@
             const tasks = data.tasks || {};
             const reviewIds = workflow.review || [];
             
-            // Look up actual task objects from IDs
+            // Look up actual task objects from IDs (tasks is now an object, not array)
             const reviewTasks = reviewIds.map(id => tasks[id]).filter(t => t);
             
             document.getElementById('input-count').textContent = reviewTasks.length;
@@ -3689,7 +3692,7 @@
             const tasks = data.tasks || {};
             const workflow = data.workflow || {};
             
-            // Get all task IDs from workflow
+            // Get all task IDs from workflow and look up full task objects
             const allTaskIds = [
                 ...(workflow.pending || []),
                 ...(workflow.active || []),
@@ -3697,7 +3700,7 @@
                 ...(workflow.done || [])
             ];
             
-            // Look up full task objects
+            // Look up full task objects from tasks object (not array)
             const allTasks = allTaskIds.map(id => tasks[id]).filter(t => t);
             
             // Filter tasks by deadline matching this date
@@ -3721,11 +3724,11 @@
             const container = document.getElementById('day-tasks');
             const dayName = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
             
-            // Get tasks from data
+            // Get tasks from data (tasks is now an object, not array)
             const tasks = appData.tasks || {};
             const workflow = appData.workflow || {};
             
-            // Get all task IDs from workflow
+            // Get all task IDs from workflow and look up full task objects
             const allTaskIds = [
                 ...(workflow.pending || []),
                 ...(workflow.active || []),
@@ -3733,7 +3736,7 @@
                 ...(workflow.done || [])
             ];
             
-            // Look up full task objects and filter by deadline
+            // Look up full task objects from tasks object and filter by deadline
             const dayStr = date.toISOString().split('T')[0];
             const tasksForDay = allTaskIds
                 .map(id => tasks[id])
@@ -3778,7 +3781,7 @@
                 return;
             }
             
-            // Search across ALL tasks in data
+            // Search across ALL tasks in data (tasks is now an object, not array)
             const allTasks = Object.values(appData.tasks || {});
             
             const lowerQuery = query.toLowerCase();

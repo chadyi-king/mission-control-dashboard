@@ -2464,7 +2464,8 @@
                         if (cat.projects) {
                             cat.projects.forEach(proj => {
                                 // Use nested tasks if available, otherwise filter from top-level tasks
-                                const projTasks = proj.tasks || (appData.tasks ? appData.tasks.filter(t => t.project === proj.id) : []);
+                                const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
+                                const projTasks = proj.tasks || allTasks.filter(t => t.project === proj.id);
                                 const taskStats = calculateTaskStats(projTasks);
 
                                 allProjects.push({
@@ -2503,7 +2504,7 @@
         function renderHomeSection() {
             const stats = appData.stats || {};
             const agents = appData.agents || [];
-            const allTasks = appData.tasks || [];
+            const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
             const workflow = appData.workflow || {};
 
             // Compact Widgets
@@ -2730,7 +2731,7 @@
 
         // ===== CATEGORIES SECTION RENDERING =====
         function renderCategoriesSection() {
-            const allTasks = appData.tasks || [];
+            const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
             const stats = buildDashboardStats(allProjects, allTasks);
             updateDashboardStatsBar(stats);
 
