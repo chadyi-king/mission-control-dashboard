@@ -2525,9 +2525,12 @@
                 syncProjectLookup();
 
                 // Render both sections
+                console.log('Rendering sections...');
                 renderHomeSection();
                 renderCategoriesSection();
+                console.log('Calling renderInsights...');
                 renderInsights();
+                console.log('Render complete');
 
             } catch (error) {
                 console.error('Failed to load data:', error);
