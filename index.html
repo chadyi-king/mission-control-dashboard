@@ -2337,17 +2337,19 @@
                         </svg>
                         <span>System Online</span>
                     </div>
-                    <div class="mini-stat">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--warning);">
-                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                            <path d="M4 22h16"></path>
-                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                    <div class="mini-stat warning" id="agent-dropdown" style="cursor: pointer; position: relative;" onclick="toggleAgentDropdown()">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--info);">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
-                        <span id="mini-wins">0</span>
-                        <span>Wins</span>
+                        <span id="active-agent-count">2</span>
+                        <span>Agents</span>
+                        <div id="agent-dropdown-menu" style="display: none; position: absolute; top: 100%; right: 0; background: var(--bg-card); border: 1px solid var(--crystal-border); border-radius: 8px; padding: 12px; min-width: 220px; z-index: 100; margin-top: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px; border-bottom: 1px solid var(--crystal-border); padding-bottom: 8px;">Active Agents</div>
+                            <div id="agent-dropdown-content"></div>
+                        </div>
                     </div>
                     <div class="mini-stat warning">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--warning);">
@@ -2380,7 +2382,7 @@
                     </div>
                 </div>
 
-                <!-- Agent Status Column -->
+                <!-- Agent Activity Column -->
                 <div class="column-panel">
                     <div class="column-header" style="background: rgba(77, 171, 247, 0.1);">
                         <div class="column-title" style="color: #4dabf7;">
@@ -2389,32 +2391,34 @@
                                 <line x1="8" y1="21" x2="16" y2="21"></line>
                                 <line x1="12" y1="17" x2="12" y2="21"></line>
                             </svg>
-                            <span>Agent Status</span>
+                            <span>Agent Activity</span>
                         </div>
-                        <span class="column-badge agent" id="agent-count">0</span>
+                        <span class="column-badge agent" id="agent-activity-count">2</span>
                     </div>
-                    <div class="column-content" id="agent-status">
-                        <div class="agent-status-item">
-                            <div class="agent-status-header">
-                                <div class="agent-avatar-small" style="background: linear-gradient(135deg, #ff6b6b 0%, #dc143c 100%);">CY</div>
-                                <div class="agent-status-info">
-                                    <div class="agent-status-name">CHAD_YI</div>
-                                    <div class="agent-status-state" style="color: var(--success);">Active</div>
-                                </div>
+                    <div class="column-content" id="agent-activity">
+                        <div class="agent-activity-item" style="padding: 12px; border-bottom: 1px solid var(--crystal-border);">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite;"></div>
+                                <span style="font-weight: 600; color: #4dabf7;">CHAD_YI</span>
+                                <span style="font-size: 11px; color: var(--text-muted); margin-left: auto;">Now</span>
                             </div>
-                            <div class="agent-status-task">Orchestrating dashboard and coordinating tasks</div>
-                            <button class="agent-status-btn" onclick="checkAgent('chad_yi')">View Status</button>
+                            <div style="font-size: 12px; color: var(--text-secondary); padding-left: 18px;">Coordinating dashboard updates and user requests</div>
                         </div>
-                        <div class="agent-status-item">
-                            <div class="agent-status-header">
-                                <div class="agent-avatar-small" style="background: linear-gradient(135deg, #ffa500 0%, #ff6347 100%);">HE</div>
-                                <div class="agent-status-info">
-                                    <div class="agent-status-name">Helios</div>
-                                    <div class="agent-status-state" style="color: var(--success);">Auditing</div>
-                                </div>
+                        <div class="agent-activity-item" style="padding: 12px; border-bottom: 1px solid var(--crystal-border);">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite;"></div>
+                                <span style="font-weight: 600; color: #4dabf7;">Helios</span>
+                                <span style="font-size: 11px; color: var(--text-muted); margin-left: auto;">15 min ago</span>
                             </div>
-                            <div class="agent-status-task">Running 15-minute system audits and data validation</div>
-                            <button class="agent-status-btn" onclick="checkAgent('helios')">View Audit Log</button>
+                            <div style="font-size: 12px; color: var(--text-secondary); padding-left: 18px;">Running data audit - checked 64 tasks, 2 active agents</div>
+                        </div>
+                        <div class="agent-activity-item" style="padding: 12px; opacity: 0.6;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted);"></div>
+                                <span style="font-weight: 600; color: var(--text-muted);">Escritor</span>
+                                <span style="font-size: 11px; color: var(--text-muted); margin-left: auto;">Idle</span>
+                            </div>
+                            <div style="font-size: 12px; color: var(--text-muted); padding-left: 18px;">Waiting for Chapter 13 task assignment</div>
                         </div>
                     </div>
                 </div>
@@ -3879,6 +3883,44 @@
 
         function openTask(taskId) {
             alert(`Opening task ${taskId}...`);
+        }
+
+        // Toggle Agent Dropdown
+        function toggleAgentDropdown() {
+            const menu = document.getElementById('agent-dropdown-menu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'block';
+                renderAgentDropdown();
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+
+        // Render Agent Dropdown Content
+        function renderAgentDropdown() {
+            const container = document.getElementById('agent-dropdown-content');
+            if (!appData || !appData.agents) {
+                container.innerHTML = '<div style="color: var(--text-muted); padding: 8px;">No agent data</div>';
+                return;
+            }
+            
+            const activeAgents = appData.agents.filter(a => a.status === 'active');
+            document.getElementById('active-agent-count').textContent = activeAgents.length;
+            
+            if (activeAgents.length === 0) {
+                container.innerHTML = '<div style="color: var(--text-muted); padding: 8px;">No active agents</div>';
+                return;
+            }
+            
+            container.innerHTML = activeAgents.map(agent => `
+                <div style="display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--crystal-border);">
+                    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--success);"></div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 12px; font-weight: 600; color: white;">${agent.name}</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">${agent.currentTask || 'Idle'}</div>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Initialize
