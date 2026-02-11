@@ -3376,11 +3376,15 @@
 
         // Render Insights Section
         function renderInsights() {
+            console.log('renderInsights called, appData:', !!appData);
             if (!appData) return;
             
             const tasks = appData.tasks ? Object.values(appData.tasks) : [];
             const workflow = appData.workflow || {};
             const tasksById = appData.tasks || {};
+            
+            console.log('Tasks count:', tasks.length);
+            console.log('Workflow:', workflow);
             
             // Combine all tasks (look up workflow IDs from tasks dictionary)
             const allTaskIds = [
@@ -3389,7 +3393,10 @@
                 ...(workflow.review || []),
                 ...(workflow.done || [])
             ];
+            console.log('All task IDs:', allTaskIds.length);
+            
             const allTasks = allTaskIds.map(id => tasksById[id]).filter(t => t);
+            console.log('Found tasks:', allTasks.length);
             
             // Stats
             const total = allTasks.length;
