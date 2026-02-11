@@ -3901,6 +3901,9 @@
             // Exit if element doesn't exist on this page
             if (!container) return;
             
+            // Reset selected day to ensure today is highlighted correctly
+            selectedDay = null;
+            
             const calendarTasks = data.calendarTasks || {};
             const tasks = data.tasks || {};
             const today = new Date();
