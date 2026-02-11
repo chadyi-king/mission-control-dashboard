@@ -1824,8 +1824,8 @@
             <a href="categories.html">Folder Categories</a>
             <a href="insights.html">Chart Insights</a>
             <a href="resources.html">Books Resources</a>
-            <a href="system.html">⚙️ System</a>
-            <a href="profile.html">👤 Profile</a>
+            <a href="system.html">System</a>
+            <a href="profile.html">Profile</a>
         </div>
         <div class="topbar-right">
             <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
@@ -1911,7 +1911,7 @@
         </a>
 
         <a class="sidebar-item" href="agent-roster.html">
-            <span class="sidebar-icon">🤖</span>
+            <span class="sidebar-icon">Agent</span>
             <span class="sidebar-label">Agent Roster</span>
         </a>
 
@@ -1947,10 +1947,10 @@
                         </div>
                     </div>
                     <div class="compact-widget">
-                        <div class="compact-widget-icon agents">🤖</div>
+                        <div class="compact-widget-icon agents">AGENTS</div>
                         <div class="compact-widget-content">
-                            <div class="compact-widget-value">11</div>
-                            <div class="compact-widget-label">Total Agents</div>
+                            <div class="compact-widget-value" id="system-agent-count">2</div>
+                            <div class="compact-widget-label">Active Agents</div>
                         </div>
                     </div>
                 </div>
@@ -1959,7 +1959,7 @@
             <div class="priority-grid" style="grid-template-columns: 1fr 1fr;">
                 <div class="priority-panel">
                     <div class="priority-panel-header">
-                        <span class="priority-panel-title"><span>📤</span> GitHub Pages Deploy</span>
+                        <span class="priority-panel-title"><span>Deploy</span> GitHub Pages Deploy</span>
                         <span class="pill warn">UNKNOWN</span>
                     </div>
                     <div class="priority-panel-content">
@@ -1989,7 +1989,7 @@
             <div class="content-grid">
                 <div class="priority-panel">
                     <div class="priority-panel-header">
-                        <span class="priority-panel-title"><span>🧠</span> Agent Roster</span>
+                        <span class="priority-panel-title"><span>Brain</span> Agent Roster</span>
                         <span class="priority-panel-badge">Directory</span>
                     </div>
                     <div class="priority-panel-content">
@@ -2034,12 +2034,12 @@
 
                 <div class="priority-panel">
                     <div class="priority-panel-header">
-                        <span class="priority-panel-title"><span>🛠</span> Settings</span>
+                        <span class="priority-panel-title"><span>Tools</span> Settings</span>
                         <span class="priority-panel-badge">Coming Soon</span>
                     </div>
                     <div class="priority-panel-content">
                         <div class="placeholder-content" style="padding: 40px 30px;">
-                            <div class="placeholder-icon">🔧</div>
+                            <div class="placeholder-icon">Wrench</div>
                             <div class="placeholder-title">System settings panel</div>
                             <div class="placeholder-text">Placeholders for runtime toggles, data sources, and UI preferences.</div>
                         </div>
@@ -2062,13 +2062,27 @@
             sidebar.classList.toggle('expanded');
             const isExpanded = sidebar.classList.contains('expanded');
 
-            toggleArrow.textContent = isExpanded ? '◀' : '▶';
+            toggleArrow.textContent = isExpanded ? '<' : '>';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
             document.body.classList.toggle('sidebar-expanded', isExpanded);
             if (!isExpanded) {
                 closeMobileMenu();
             }
         }
+
+        // Load actual agent count from data.json
+        async function loadSystemData() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) throw new Error('Failed to load data');
+                const data = await response.json();
+                const activeAgents = data.agents?.length || 0;
+                document.getElementById('system-agent-count').textContent = activeAgents;
+            } catch (error) {
+                console.error('Error loading system data:', error);
+            }
+        }
+        loadSystemData();
     </script>
 </body>
 </html>
