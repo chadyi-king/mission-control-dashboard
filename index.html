@@ -3654,24 +3654,19 @@
         }
 
         function getTasksForDay(data, date) {
+            const tasks = data.tasks || {};
             const workflow = data.workflow || {};
-            const allTasks = [
+            
+            // Get all task IDs from workflow
+            const allTaskIds = [
                 ...(workflow.pending || []),
                 ...(workflow.active || []),
-                ...(workflow.review || [])
+                ...(workflow.review || []),
+                ...(workflow.done || [])
             ];
             
-            // Also check project tasks for deadlines
-            const projects = data.projects || {};
-            Object.values(projects).forEach(category => {
-                if (category.projects) {
-                    category.projects.forEach(project => {
-                        if (project.tasks) {
-                            allTasks.push(...project.tasks);
-                        }
-                    });
-                }
-            });
+            // Look up full task objects
+            const allTasks = allTaskIds.map(id => tasks[id]).filter(t => t);
             
             // Filter tasks by deadline matching this date
             const dayStr = date.toISOString().split('T')[0];
@@ -3694,20 +3689,23 @@
             const container = document.getElementById('day-tasks');
             const dayName = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
             
-            // Get real tasks from data
+            // Get tasks from data
+            const tasks = appData.tasks || {};
             const workflow = appData.workflow || {};
-            const allTasks = [
+            
+            // Get all task IDs from workflow
+            const allTaskIds = [
                 ...(workflow.pending || []),
                 ...(workflow.active || []),
-                ...(workflow.review || [])
+                ...(workflow.review || []),
+                ...(workflow.done || [])
             ];
             
-            // Filter tasks that have deadlines matching this date
+            // Look up full task objects and filter by deadline
             const dayStr = date.toISOString().split('T')[0];
-            const tasksForDay = allTasks.filter(t => {
-                if (!t.deadline) return false;
-                return t.deadline === dayStr;
-            });
+            const tasksForDay = allTaskIds
+                .map(id => tasks[id])
+                .filter(t => t && t.deadline && t.deadline === dayStr);
             
             if (tasksForDay.length === 0) {
                 container.innerHTML = `
