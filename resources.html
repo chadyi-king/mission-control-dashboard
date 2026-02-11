@@ -28,6 +28,8 @@
             --warning: #c9a962;
             --danger: #ff4444;
             --info: #4dabf7;
+            --sidebar-collapsed: 60px;
+            --sidebar-expanded: 200px;
         }
 
         body {
@@ -43,10 +45,8 @@
         /* Background Effects */
         .cyber-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 0;
             background: var(--bg-primary);
             overflow: hidden;
@@ -86,10 +86,8 @@
 
         .circuit-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 1;
             pointer-events: none;
             opacity: 0.08;
@@ -101,29 +99,31 @@
 
         .hex-pattern {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 1;
             pointer-events: none;
             opacity: 0.05;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dc143c' fill-opacity='0.4'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        /* Top Bar - Redesigned */
+        /* Top Bar */
         .topbar {
             background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--crimson-glow);
             box-shadow: 0 0 30px var(--crimson-glow), inset 0 1px 0 rgba(220, 20, 60, 0.1);
-            padding: 12px 24px;
+            padding: 12px 24px 12px calc(24px + var(--sidebar-collapsed));
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 210;
+        }
+
+        body.sidebar-expanded .topbar {
+            padding-left: calc(24px + var(--sidebar-expanded));
         }
 
         .topbar-left {
@@ -145,16 +145,14 @@
                 inset -8px -8px 20px rgba(0,0,0,0.4);
             animation: sunPulse 4s ease-in-out infinite;
             position: relative;
-            z-index: 202;
+            z-index: 260;
+            flex-shrink: 0;
         }
 
         .sun-avatar-enhanced::before {
             content: '';
             position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
             border-radius: 50%;
             border: 2px solid transparent;
             background: linear-gradient(135deg, rgba(255, 152, 0, 0.6), rgba(220, 20, 60, 0.6)) border-box;
@@ -175,12 +173,11 @@
             100% { transform: rotate(360deg); }
         }
 
-        .sun-widget-header { display: flex; align-items: center; gap: 12px; }
+        .sun-widget-header { display: flex; align-items: center; gap: 12px; position: relative; overflow: visible; z-index: 270; }
         .sun-info { display: flex; flex-direction: column; gap: 2px; }
         .sun-name { font-family: var(--display-font); font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--crimson-bright); }
         .sun-status { font-size: 9px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Redesigned Mission Control Header */
         .topbar-center {
             position: absolute;
             left: 50%;
@@ -206,10 +203,8 @@
         .mission-control-badge::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             animation: shimmer 3s infinite;
         }
@@ -219,10 +214,7 @@
             50%, 100% { left: 100%; }
         }
 
-        .mission-icon {
-            font-size: 16px;
-            animation: pulse 2s infinite;
-        }
+        .mission-icon { font-size: 16px; animation: pulse 2s infinite; }
 
         .mission-title {
             font-family: var(--display-font);
@@ -243,11 +235,12 @@
         }
 
         .mission-subtitle {
-            font-size: 9px;
+            font-size: 11px;
             color: var(--text-muted);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-family: var(--tech-font);
+            margin-top: 4px;
         }
 
         .mission-divider {
@@ -316,50 +309,6 @@
             box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
         }
 
-        .sidebar-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(5, 5, 8, 0.85);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-            z-index: 190;
-        }
-
-        body.mobile-sidebar-open .sidebar-overlay {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            width: 38px;
-            height: 38px;
-            border: 1px solid var(--crystal-border);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-primary);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .mobile-menu-btn span {
-            width: 18px;
-            height: 2px;
-            border-radius: 2px;
-            background: currentColor;
-        }
-
-        .mobile-menu-btn:hover {
-            background: rgba(220, 20, 60, 0.2);
-            color: var(--crimson-bright);
-            box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
-        }
-
         .mobile-nav-menu {
             position: absolute;
             top: 60px;
@@ -380,6 +329,12 @@
             z-index: 400;
         }
 
+        .mobile-nav-menu.open {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
         .mobile-nav-menu a {
             display: flex;
             align-items: center;
@@ -398,80 +353,45 @@
             background: rgba(220, 20, 60, 0.15);
         }
 
-        .mobile-nav-menu.open {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            width: 38px;
-            height: 38px;
-            border: 1px solid var(--crystal-border);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-primary);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .mobile-menu-btn span {
-            width: 18px;
-            height: 2px;
-            border-radius: 2px;
-            background: currentColor;
-        }
-
-        .mobile-menu-btn:hover {
-            background: rgba(220, 20, 60, 0.2);
-            color: var(--crimson-bright);
-            box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
-        }
-
-        .mobile-nav-menu {
-            display: none;
-        }
-
-        .mobile-nav-menu.open {
-            display: flex;
-        }
-
-        /* Sidebar - Fixed z-index */
+        /* Sidebar */
         .sidebar {
             position: fixed;
             left: 0;
             top: 70px;
-            width: 60px;
+            width: var(--sidebar-collapsed);
             height: calc(100vh - 70px);
             background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
             border-right: 1px solid var(--crystal-border);
-            z-index: 90;
+            z-index: 120;
             display: flex;
             flex-direction: column;
             padding: 16px 0;
             transition: width 0.3s ease;
+            overflow: visible;
         }
 
-        .sidebar.expanded { width: 200px; }
+        .sidebar.expanded { width: var(--sidebar-expanded); }
 
         .sidebar-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 8px 16px 16px;
+            padding: 8px 10px 16px;
             border-bottom: 1px solid var(--crystal-border);
             margin-bottom: 8px;
+            overflow: visible;
+            position: relative;
+            z-index: 230;
         }
 
         .sidebar-avatar {
-            width: 34px;
-            height: 34px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
             flex-shrink: 0;
+            margin-left: -4px;
+            position: relative;
+            overflow: visible;
             box-shadow:
                 0 0 18px rgba(255, 87, 34, 0.7),
                 0 0 36px rgba(255, 87, 34, 0.35),
@@ -556,49 +476,17 @@
 
         /* Main Content */
         .main-content {
-            margin-left: 60px;
+            margin-left: var(--sidebar-collapsed);
             padding: 24px;
             transition: margin-left 0.3s ease;
             position: relative;
             z-index: 10;
         }
 
-        body.sidebar-expanded .main-content { margin-left: 200px; }
+        body.sidebar-expanded .main-content { margin-left: var(--sidebar-expanded); }
 
-        /* Section Management */
-        .section {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== REDESIGNED HOME SECTION ===== */
-        
-        /* Home Header */
-        .home-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-
-        .home-title-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .home-title {
+        /* Page Title */
+        .page-title {
             font-family: var(--display-font);
             font-size: 22px;
             font-weight: 700;
@@ -606,156 +494,20 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
+            margin-bottom: 24px;
         }
 
-        .home-subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        /* Compact Widgets Bar */
-        .compact-widgets-bar {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .compact-widget {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 16px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .compact-widget-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-        }
-
-        .compact-widget-icon.stats { background: rgba(0, 255, 136, 0.1); color: var(--success); }
-        .compact-widget-icon.health { background: rgba(77, 171, 247, 0.1); color: var(--info); }
-        .compact-widget-icon.agents { background: rgba(201, 169, 98, 0.1); color: var(--warning); }
-
-        .compact-widget-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .compact-widget-value {
-            font-family: var(--display-font);
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .compact-widget-label {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Quick Actions Dropdown */
-        .quick-actions-dropdown {
-            position: relative;
-        }
-
-        .quick-actions-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            border-radius: 8px;
-            color: var(--crimson-bright);
-            font-family: var(--tech-font);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .quick-actions-btn:hover {
-            background: var(--crimson-bright);
-            color: white;
-            box-shadow: 0 0 20px var(--crimson-glow);
-        }
-
-        .quick-actions-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            min-width: 180px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.2s;
-            z-index: 50;
-            overflow: hidden;
-        }
-
-        .quick-actions-dropdown:hover .quick-actions-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .quick-action-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 16px;
-            font-size: 12px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-
-        .quick-action-item:last-child { border-bottom: none; }
-        .quick-action-item:hover {
-            background: var(--crimson-glow);
-            color: var(--crimson-bright);
-        }
-
-        .quick-action-icon { font-size: 14px; }
-
-        /* Priority Sections Grid */
-        .priority-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            grid-template-rows: auto auto;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .priority-panel {
+        /* Section Panel */
+        .section-panel {
             background: var(--panel-bg);
             border: 1px solid var(--crystal-border);
             border-radius: 12px;
             overflow: hidden;
             backdrop-filter: blur(10px);
+            margin-bottom: 24px;
         }
 
-        .priority-panel-header {
+        .section-header {
             background: linear-gradient(90deg, var(--crimson-glow) 0%, transparent 100%);
             padding: 16px 20px;
             border-bottom: 1px solid var(--crystal-border);
@@ -764,9 +516,9 @@
             align-items: center;
         }
 
-        .priority-panel-title {
+        .section-title {
             font-family: var(--display-font);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -776,1053 +528,278 @@
             gap: 10px;
         }
 
-        .priority-panel-badge {
-            padding: 4px 10px;
-            background: rgba(139, 0, 0, 0.3);
-            border-radius: 12px;
-            font-size: 10px;
-            font-family: var(--display-font);
-        }
+        .section-content { padding: 20px; }
 
-        .priority-panel-content { padding: 16px 20px; }
-
-        /* Active Tasks Board */
-        .tasks-board {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .task-card {
+        /* Upload Zone */
+        .upload-grid {
             display: grid;
-            grid-template-columns: auto 1fr auto auto;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 16px;
-            align-items: center;
-            padding: 16px;
+        }
+
+        .upload-card {
             background: rgba(255,255,255,0.02);
+            border: 1px solid var(--crystal-border);
             border-radius: 10px;
-            border-left: 3px solid transparent;
+            padding: 20px;
             transition: all 0.2s;
-            cursor: pointer;
         }
 
-        .task-card:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateX(4px);
+        .upload-card:hover {
+            border-color: rgba(220, 20, 60, 0.3);
         }
 
-        .task-card.high-priority { border-left-color: var(--danger); }
-        .task-card.medium-priority { border-left-color: var(--warning); }
-        .task-card.low-priority { border-left-color: var(--success); }
-
-        .task-assignee {
+        .upload-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 11px;
-            font-weight: 700;
-            font-family: var(--display-font);
-        }
-
-        .task-assignee.chad {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(220, 20, 60, 0.2));
-            color: #ff9800;
-            border: 2px solid rgba(255, 152, 0, 0.4);
-        }
-
-        .task-assignee.agent {
-            background: linear-gradient(135deg, rgba(77, 171, 247, 0.2), rgba(139, 0, 0, 0.2));
-            color: var(--info);
-            border: 2px solid rgba(77, 171, 247, 0.4);
-        }
-
-        .task-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .task-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .task-meta {
-            display: flex;
             gap: 12px;
-            font-size: 11px;
-            color: var(--text-muted);
+            margin-bottom: 16px;
         }
 
-        .task-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .task-meta-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-        }
-
-        .task-meta-dot.high { background: var(--danger); }
-        .task-meta-dot.medium { background: var(--warning); }
-        .task-meta-dot.low { background: var(--success); }
-
-        .task-project-tag {
-            padding: 3px 10px;
-            background: var(--crimson-glow);
-            border-radius: 4px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--crimson-bright);
-        }
-
-        .task-time {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
-            min-width: 80px;
-        }
-
-        .task-time-value {
-            font-family: var(--display-font);
-            font-size: 14px;
-            color: var(--info);
-        }
-
-        .task-time-label {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .task-progress-ring {
+        .upload-icon {
             width: 44px;
             height: 44px;
-            position: relative;
-        }
-
-        .task-progress-ring svg {
-            transform: rotate(-90deg);
-        }
-
-        .task-progress-ring-bg {
-            fill: none;
-            stroke: rgba(255,255,255,0.1);
-            stroke-width: 3;
-        }
-
-        .task-progress-ring-fill {
-            fill: none;
-            stroke: var(--crimson-bright);
-            stroke-width: 3;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.3s ease;
-        }
-
-        .task-progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: var(--display-font);
-            font-size: 10px;
-            color: var(--text-primary);
-        }
-
-        /* Calendar View */
-        .calendar-view {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-
-        .calendar-range {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .calendar-nav {
-            display: flex;
-            gap: 8px;
-        }
-
-        .calendar-nav-btn {
-            width: 28px;
-            height: 28px;
-            background: transparent;
-            border: 1px solid var(--crystal-border);
-            border-radius: 4px;
-            color: var(--text-muted);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            transition: all 0.2s;
-        }
-
-        .calendar-nav-btn:hover {
-            border-color: var(--crimson-bright);
-            color: var(--crimson-bright);
-        }
-
-        .calendar-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .calendar-day {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        .calendar-day:hover {
-            background: rgba(255,255,255,0.04);
-        }
-
-        .calendar-day.today {
-            background: rgba(139, 0, 0, 0.1);
-            border: 1px solid rgba(220, 20, 60, 0.3);
-        }
-
-        .calendar-day-date {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 40px;
-        }
-
-        .calendar-day-weekday {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .calendar-day-number {
-            font-family: var(--display-font);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .calendar-day-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .calendar-deadline {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-
-        .calendar-deadline-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--danger);
-            animation: pulse 2s infinite;
-        }
-
-        .calendar-deadline-dot.medium { background: var(--warning); animation: none; }
-        .calendar-deadline-dot.low { background: var(--success); animation: none; }
-
-        /* Pending Decisions */
-        .decisions-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .decision-card {
-            padding: 16px;
-            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(139, 0, 0, 0.05));
-            border: 1px solid rgba(220, 20, 60, 0.3);
             border-radius: 10px;
-            transition: all 0.2s;
-        }
-
-        .decision-card:hover {
-            border-color: var(--crimson-bright);
-            box-shadow: 0 0 15px var(--crimson-glow);
-        }
-
-        .decision-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .decision-type {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--crimson-bright);
-        }
-
-        .decision-urgency {
-            padding: 3px 8px;
-            background: rgba(255, 68, 68, 0.2);
-            border-radius: 4px;
-            font-size: 9px;
-            color: var(--danger);
-        }
-
-        .decision-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .decision-reason {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-
-        .decision-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .decision-btn {
-            flex: 1;
-            padding: 8px 12px;
-            background: transparent;
-            border: 1px solid var(--crimson-bright);
-            border-radius: 6px;
-            color: var(--crimson-bright);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: var(--tech-font);
-            font-weight: 600;
-        }
-
-        .decision-btn:hover {
-            background: var(--crimson-glow);
-        }
-
-        .decision-btn.primary {
-            background: var(--crimson-glow);
-        }
-
-        .decision-btn.primary:hover {
-            background: var(--crimson-bright);
-            color: white;
-        }
-
-        /* Recent Activity */
-        .activity-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .activity-item {
-            display: flex;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-            border-left: 2px solid var(--crystal-border);
-            transition: all 0.2s;
-        }
-
-        .activity-item:hover {
-            background: rgba(255,255,255,0.04);
-            border-left-color: var(--crimson-bright);
-        }
-
-        .activity-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            font-family: var(--display-font);
-            flex-shrink: 0;
+            font-size: 20px;
         }
 
-        .activity-avatar.chad {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(220, 20, 60, 0.2));
-            color: #ff9800;
-            border: 1px solid rgba(255, 152, 0, 0.4);
-        }
+        .upload-icon.a2 { background: rgba(139, 0, 0, 0.15); color: var(--crimson-bright); }
+        .upload-icon.a3 { background: rgba(77, 171, 247, 0.15); color: var(--info); }
+        .upload-icon.a5 { background: rgba(0, 255, 136, 0.15); color: var(--success); }
+        .upload-icon.a6 { background: rgba(201, 169, 98, 0.15); color: var(--warning); }
+        .upload-icon.general { background: rgba(255, 255, 255, 0.08); color: var(--text-secondary); }
 
-        .activity-avatar.agent {
-            background: linear-gradient(135deg, rgba(77, 171, 247, 0.2), rgba(139, 0, 0, 0.2));
-            color: var(--info);
-            border: 1px solid rgba(77, 171, 247, 0.4);
-        }
-
-        .activity-avatar.system {
-            background: rgba(255,255,255,0.05);
-            color: var(--text-muted);
-        }
-
-        .activity-content {
+        .upload-title-group {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
         }
 
-        .activity-text {
+        .upload-title {
+            font-family: var(--display-font);
             font-size: 13px;
-            color: var(--text-primary);
-        }
-
-        .activity-text strong {
-            color: var(--crimson-bright);
             font-weight: 600;
-        }
-
-        .activity-meta {
-            display: flex;
-            gap: 12px;
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-
-        .activity-time {
-            font-family: var(--display-font);
-            color: var(--text-muted);
-        }
-
-        /* System Health Widget */
-        .health-widget {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .health-indicator {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .health-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--success);
-            box-shadow: 0 0 10px var(--success);
-            animation: pulse 2s infinite;
-        }
-
-        .health-dot.warning { background: var(--warning); box-shadow: 0 0 10px var(--warning); }
-        .health-dot.danger { background: var(--danger); box-shadow: 0 0 10px var(--danger); }
-
-        .health-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .health-value {
-            font-family: var(--display-font);
-            font-size: 14px;
-            color: var(--success);
-            margin-left: auto;
-        }
-
-        .health-bar {
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .health-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--success), #00ffaa);
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-
-        .health-bar-fill.warning { background: linear-gradient(90deg, var(--warning), #ffd43b); }
-        .health-bar-fill.danger { background: linear-gradient(90deg, var(--danger), #ff8787); }
-
-        .health-last-update {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-align: right;
-            margin-top: 4px;
-        }
-
-        /* ===== CATEGORIES SECTION STYLES (UNCHANGED) ===== */
-        .dashboard-stats-bar {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
-            padding: 20px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .dashboard-stat {
-            text-align: center;
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-            border-left: 3px solid var(--crystal-border);
-            transition: all 0.3s;
-        }
-
-        .dashboard-stat:hover {
-            background: var(--crimson-glow);
-            border-left-color: var(--crimson-bright);
-        }
-
-        .dashboard-stat-icon { font-size: 20px; margin-bottom: 4px; }
-        .dashboard-stat-value {
-            font-family: var(--display-font);
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--crimson-bright);
-            margin-bottom: 4px;
-        }
-        .dashboard-stat-value.success { color: var(--success); }
-        .dashboard-stat-value.warning { color: var(--warning); }
-        .dashboard-stat-value.danger { color: var(--danger); }
-        .dashboard-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: center;
-            padding: 16px 20px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-        }
-
-        .filter-group { display: flex; align-items: center; gap: 8px; }
-        .filter-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .filter-select, .filter-btn {
-            padding: 8px 14px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--crystal-border);
-            border-radius: 6px;
             color: var(--text-primary);
-            font-family: var(--tech-font);
-            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .upload-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--crystal-border);
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
             cursor: pointer;
             transition: all 0.2s;
-        }
-        .filter-select:hover, .filter-btn:hover { border-color: var(--crimson-bright); background: var(--crimson-glow); }
-        .filter-clear {
-            margin-left: auto;
-            padding: 8px 16px;
-            background: transparent;
-            border: 1px solid var(--crystal-border);
-            border-radius: 6px;
-            color: var(--text-muted);
-            font-size: 11px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .filter-clear:hover { border-color: var(--crimson-bright); color: var(--crimson-bright); }
-
-        .category-section { margin-bottom: 48px; }
-        .category-header-bar {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-        .category-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        .category-title-group h2 {
-            font-family: var(--display-font);
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
-        }
-        .category-title-group h2 span { color: var(--crimson-bright); }
-        .category-title-group p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .category-stats { margin-left: auto; display: flex; gap: 24px; }
-        .category-stat { text-align: center; }
-        .category-stat-value { font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright); }
-        .category-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px; }
-
-        .project-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-        .project-card:hover { border-color: var(--crimson-bright); box-shadow: 0 0 20px var(--crimson-glow); }
-        .project-card.filtered-out { display: none; }
-
-        .project-card-header {
-            padding: 16px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            background: linear-gradient(90deg, rgba(139,0,0,0.1), transparent);
-            transition: background 0.2s;
-        }
-        .project-card-header:hover { background: var(--crimson-glow); }
-
-        .project-info-main { flex: 1; }
-        .project-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-        .project-title-row h3 { font-family: var(--display-font); font-size: 15px; font-weight: 600; }
-        .project-badges { display: flex; gap: 6px; }
-        .agent-badge {
-            font-size: 9px;
-            padding: 3px 8px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.1);
-            color: var(--text-muted);
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-        .agent-badge.active { background: rgba(0, 255, 136, 0.15); color: var(--success); }
-        .agent-badge.pending { background: rgba(201, 169, 98, 0.15); color: var(--warning); }
-        .project-id { font-size: 11px; color: var(--text-muted); font-family: monospace; }
-
-        .task-stats {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 8px;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-        .task-stat { text-align: center; padding: 8px 4px; background: rgba(255,255,255,0.02); border-radius: 6px; }
-        .task-stat-value { font-family: var(--display-font); font-size: 16px; font-weight: 600; color: var(--text-primary); }
-        .task-stat-label { font-size: 8px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
-        .task-stat.high-priority .task-stat-value { color: var(--danger); }
-        .task-stat.medium-priority .task-stat-value { color: var(--warning); }
-        .task-stat.low-priority .task-stat-value { color: var(--success); }
-        .task-stat.urgent .task-stat-value { color: var(--crimson-bright); }
-
-        .time-tracking-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            border-bottom: 1px solid var(--crystal-border);
-            background: rgba(0,0,0,0.2);
-        }
-        .time-stat { display: flex; flex-direction: column; gap: 2px; }
-        .time-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .time-value { font-family: var(--display-font); font-size: 14px; color: var(--info); }
-        .time-value.over-budget { color: var(--danger); }
-        .time-progress-bar { width: 120px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-        .time-progress-fill { height: 100%; background: linear-gradient(90deg, var(--info), #74c0fc); border-radius: 3px; transition: width 0.3s ease; }
-        .time-progress-fill.warning { background: linear-gradient(90deg, var(--warning), #ffd43b); }
-        .time-progress-fill.danger { background: linear-gradient(90deg, var(--danger), #ff8787); }
-
-        .due-countdown {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            border-bottom: 1px solid var(--crystal-border);
-            font-size: 12px;
-        }
-        .due-label { color: var(--text-muted); }
-        .due-value { display: flex; align-items: center; gap: 8px; font-weight: 600; }
-        .due-value.urgent { color: var(--danger); animation: pulse 1.5s infinite; }
-        .due-value.warning { color: var(--warning); }
-        .due-value.success { color: var(--success); }
-        .countdown-timer {
-            font-family: var(--display-font);
-            font-size: 11px;
-            padding: 2px 8px;
-            background: rgba(139, 0, 0, 0.3);
-            border-radius: 4px;
-        }
-
-        .milestones-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
-        .milestones-title { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .milestones-track { display: flex; align-items: center; gap: 4px; }
-        .milestone {
-            flex: 1;
-            height: 8px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-            position: relative;
-            transition: all 0.3s;
-        }
-        .milestone.completed { background: var(--success); box-shadow: 0 0 8px var(--success); }
-        .milestone.active { background: var(--warning); box-shadow: 0 0 8px var(--warning); animation: pulse 2s infinite; }
-        .milestone.upcoming { background: rgba(255,255,255,0.05); border: 1px dashed var(--crystal-border); }
-        .milestone-tooltip {
-            position: absolute;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 4px 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--crystal-border);
-            border-radius: 4px;
-            font-size: 9px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-            z-index: 10;
-        }
-        .milestone:hover .milestone-tooltip { opacity: 1; }
-
-        .project-timeline-section {
-            padding: 16px 20px 20px;
-            border-bottom: 1px solid var(--crystal-border);
             background: rgba(255,255,255,0.01);
         }
 
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .drop-zone:hover {
+            border-color: var(--crimson-bright);
+            background: rgba(220, 20, 60, 0.05);
+        }
+
+        .drop-zone.drag-over {
+            border-color: var(--success);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .drop-icon {
+            font-size: 32px;
             margin-bottom: 12px;
+            opacity: 0.6;
         }
 
-        .timeline-title {
+        .drop-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .drop-hint {
             font-size: 11px;
-            color: var(--crimson-bright);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .upload-info {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--crystal-border);
+        }
+
+        .upload-info-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
         }
 
-        .timeline-range {
-            font-size: 11px;
+        .upload-info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .upload-info-label {
             color: var(--text-muted);
-        }
-
-        .timeline-track {
-            position: relative;
-            height: 90px;
-            border-radius: 12px;
-            border: 1px solid var(--crystal-border);
-            background: rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            padding: 14px 0;
-        }
-
-        .timeline-grid-line {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: rgba(255,255,255,0.07);
-            z-index: 0;
-        }
-
-        .timeline-grid-label {
-            position: absolute;
-            bottom: 4px;
-            transform: translateX(-50%);
-            font-size: 9px;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
+            min-width: 100px;
+            font-size: 10px;
             text-transform: uppercase;
-            z-index: 2;
-            pointer-events: none;
+            letter-spacing: 0.5px;
         }
 
-        .timeline-items {
-            position: relative;
-            height: 100%;
-            z-index: 1;
+        .upload-info-value {
+            flex: 1;
         }
 
-        .timeline-item {
-            position: absolute;
-            top: 16px;
-            height: 58px;
-            border-radius: 10px;
-            padding: 8px 12px;
+        /* Recent Uploads */
+        .uploads-list {
             display: flex;
             flex-direction: column;
+            gap: 10px;
+        }
+
+        .upload-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .upload-item:hover {
+            border-color: rgba(220, 20, 60, 0.2);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 4px;
-            font-size: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(6px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            z-index: 1;
+            font-size: 18px;
+            flex-shrink: 0;
         }
 
-        .timeline-item.pending { border-color: rgba(255,255,255,0.15); }
-        .timeline-item.active {
-            background: rgba(77, 171, 247, 0.15);
-            border-color: rgba(77, 171, 247, 0.5);
-        }
-        .timeline-item.review {
-            background: rgba(201, 169, 98, 0.15);
-            border-color: rgba(201, 169, 98, 0.5);
-        }
-        .timeline-item.done {
-            background: rgba(0, 255, 136, 0.15);
-            border-color: rgba(0, 255, 136, 0.5);
+        .file-icon.pdf { background: rgba(255, 68, 68, 0.1); color: #ff6b6b; }
+        .file-icon.doc { background: rgba(77, 171, 247, 0.1); color: var(--info); }
+        .file-icon.img { background: rgba(201, 169, 98, 0.1); color: var(--warning); }
+        .file-icon.txt { background: rgba(150, 150, 150, 0.1); color: var(--text-muted); }
+
+        .file-info {
+            flex: 1;
         }
 
-        .timeline-item-title {
-            font-size: 12px;
+        .file-name {
+            font-size: 13px;
             font-weight: 600;
             color: var(--text-primary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            margin-bottom: 2px;
         }
 
-        .timeline-item-meta {
-            font-size: 10px;
+        .file-meta {
+            font-size: 11px;
             color: var(--text-muted);
         }
 
-        .timeline-legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 12px;
+        .upload-status {
+            padding: 4px 10px;
+            border-radius: 12px;
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: var(--text-muted);
+            font-weight: 600;
         }
 
-        .timeline-legend-item {
+        .upload-status.processed {
+            background: rgba(0, 255, 136, 0.15);
+            color: var(--success);
+        }
+
+        .upload-status.pending {
+            background: rgba(201, 169, 98, 0.15);
+            color: var(--warning);
+        }
+
+        /* Agent Needs Table */
+        .needs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .needs-table th,
+        .needs-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--crystal-border);
+        }
+
+        .needs-table th {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .needs-table td {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .needs-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .agent-cell {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 10px;
         }
 
-        .timeline-legend-dot {
+        .agent-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
         }
 
-        .timeline-legend-dot.pending { background: rgba(255,255,255,0.3); }
-        .timeline-legend-dot.active { background: var(--info); box-shadow: 0 0 8px var(--info); }
-        .timeline-legend-dot.review { background: var(--warning); box-shadow: 0 0 8px var(--warning); }
-        .timeline-legend-dot.done { background: var(--success); box-shadow: 0 0 8px var(--success); }
+        .agent-dot.waiting { background: var(--text-muted); }
+        .agent-dot.blocked { background: var(--danger); box-shadow: 0 0 8px var(--danger); }
 
-        .timeline-empty {
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px dashed var(--crystal-border);
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        .progress-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
-        .progress-header { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; }
-        .progress-label { color: var(--text-muted); }
-        .progress-value { color: var(--crimson-bright); font-weight: 600; }
-        .progress-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b); border-radius: 3px; transition: width 0.3s ease; box-shadow: 0 0 10px var(--crimson-glow); }
-
-        .expand-icon { font-size: 12px; color: var(--text-muted); transition: transform 0.3s; }
-        .project-card.expanded .expand-icon { transform: rotate(180deg); }
-
-        .project-card-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: rgba(0,0,0,0.2); }
-        .project-card.expanded .project-card-content { max-height: 800px; }
-
-        .tasks-section { padding: 16px 20px; border-bottom: 1px solid var(--crystal-border); }
-        .tasks-section-title { font-size: 11px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .task-list { display: flex; flex-direction: column; gap: 8px; }
-        .category-task-item {
-            display: flex;
+        .status-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 6px;
-            border-left: 2px solid transparent;
-            transition: all 0.2s;
-        }
-        .category-task-item:hover { background: rgba(255,255,255,0.05); }
-        .category-task-item.high-priority { border-left-color: var(--danger); background: rgba(255, 68, 68, 0.05); }
-        .category-task-item.medium-priority { border-left-color: var(--warning); }
-        .category-task-item.low-priority { border-left-color: var(--success); }
-        .task-status { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
-        .task-status.pending { color: var(--text-muted); }
-        .task-status.active { color: var(--success); }
-        .task-status.review { color: var(--warning); }
-        .task-status.done { color: var(--success); opacity: 0.6; }
-        .task-details { flex: 1; }
-        .category-task-title { font-size: 13px; margin-bottom: 2px; }
-        .task-notes { font-size: 11px; color: var(--text-muted); }
-        .task-meta-row { display: flex; gap: 12px; margin-top: 4px; font-size: 10px; color: var(--text-secondary); }
-        .priority-badge { font-size: 9px; padding: 2px 6px; border-radius: 3px; text-transform: uppercase; }
-        .priority-badge.high { background: rgba(255, 68, 68, 0.2); color: var(--danger); }
-        .priority-badge.medium { background: rgba(201, 169, 98, 0.2); color: var(--warning); }
-        .priority-badge.low { background: rgba(0, 255, 136, 0.1); color: var(--success); }
-
-        .project-actions { display: flex; gap: 10px; padding: 16px 20px; }
-        .action-btn {
-            flex: 1;
-            padding: 10px 16px;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            border-radius: 6px;
-            color: var(--crimson-bright);
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 12px;
             font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: var(--tech-font);
             font-weight: 600;
         }
-        .action-btn:hover { background: var(--crimson-bright); color: white; box-shadow: 0 0 15px var(--crimson-glow); }
-        .action-btn.secondary { background: transparent; border-color: var(--crystal-border); color: var(--text-muted); }
-        .action-btn.secondary:hover { border-color: var(--crimson-bright); color: var(--crimson-bright); }
 
-        /* ===== INSIGHTS & RESOURCES PLACEHOLDER ===== */
-        .placeholder-content {
-            text-align: center;
-            padding: 80px 40px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        .placeholder-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
-        .placeholder-title { font-family: var(--display-font); font-size: 18px; color: var(--crimson-bright); margin-bottom: 8px; }
-        .placeholder-text { color: var(--text-muted); font-size: 14px; }
-
-        /* Resources Section Styles */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        .resource-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            padding: 28px;
-            transition: all 0.2s;
-        }
-        .resource-card:hover {
-            border-color: var(--crimson-bright);
-            transform: translateY(-4px);
-        }
-        .resource-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-        .resource-card h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: white;
-        }
-        .resource-card p {
-            font-size: 14px;
+        .status-badge.waiting {
+            background: rgba(150, 150, 150, 0.15);
             color: var(--text-muted);
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-        .resource-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--crimson-bright);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        .resource-link:hover {
-            background: #ff1a4c;
-        }
-        .resource-soon {
-            display: inline-block;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.1);
-            color: var(--text-muted);
-            border-radius: 6px;
-            font-size: 13px;
         }
 
-        /* Loading & Error States */
-        .loading-state { text-align: center; padding: 60px; color: var(--text-muted); }
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--crystal-border);
-            border-top-color: var(--crimson-bright);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 16px;
+        .status-badge.blocked {
+            background: rgba(255, 68, 68, 0.15);
+            color: var(--danger);
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .error-state { text-align: center; padding: 60px; color: var(--crimson-bright); }
-        .no-results { text-align: center; padding: 60px; color: var(--text-muted); }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
@@ -1831,91 +808,24 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--crimson-bright); }
 
         /* Mobile Responsive */
-        @media (max-width: 1400px) {
-            .priority-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
-            .dashboard-stats-bar { grid-template-columns: repeat(3, 1fr); }
-            .projects-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 1024px) {
-            .mobile-menu-btn { display: flex; }
-        }
-
         @media (max-width: 1024px) {
             .mobile-menu-btn { display: flex; }
             .sidebar { display: none; }
-        }
-
-        @media (max-width: 1024px) {
-            .mobile-menu-btn { display: flex; }
-            .sidebar { display: none; }
-            .mobile-nav-menu {
-                position: absolute;
-                top: 64px;
-                right: 16px;
-                width: 200px;
-                background: rgba(5,5,8,0.98);
-                border: 1px solid rgba(220,20,60,0.3);
-                border-radius: 12px;
-                padding: 12px;
-                box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-                flex-direction: column;
-                gap: 8px;
-                z-index: 400;
-            }
-            .mobile-nav-menu a {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 10px 12px;
-                border-radius: 8px;
-                color: var(--text-secondary);
-                font-size: 13px;
-                text-decoration: none;
-                border: 1px solid transparent;
-            }
-            .mobile-nav-menu a:hover {
-                border-color: rgba(220, 20, 60, 0.4);
-                color: var(--crimson-bright);
-                background: rgba(220, 20, 60, 0.15);
-            }
-            .mobile-nav-menu { display: none; }
-            .mobile-nav-menu.open { display: flex; }
+            .topbar { padding-left: 16px; }
+            body.sidebar-expanded .topbar { padding-left: 16px; }
+            .topbar-center { display: none; }
         }
 
         @media (max-width: 768px) {
-            .sidebar { transform: translateX(-100%); top: 60px; }
-            .sidebar.mobile-open { transform: translateX(0); }
             .main-content { margin-left: 0; padding: 16px; }
-            body.sidebar-expanded .main-content { margin-left: 0; }
-            body.mobile-sidebar-open { overflow: hidden; }
-            .compact-widgets-bar { flex-wrap: wrap; justify-content: center; }
-            .home-header { flex-direction: column; gap: 16px; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
-            .category-stats { display: none; }
-            .topbar-center { display: none; }
-            .filter-bar { flex-direction: column; align-items: stretch; }
-            .filter-group { justify-content: space-between; }
-            .filter-clear { margin-left: 0; }
-            .task-stats { grid-template-columns: repeat(3, 1fr); }
-            .time-tracking-bar { flex-direction: column; gap: 10px; align-items: flex-start; }
-            .task-card {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .task-time, .task-progress-ring {
-                align-self: flex-start;
-            }
+            .upload-grid { grid-template-columns: 1fr; }
+            .needs-table { font-size: 12px; }
+            .needs-table th,
+            .needs-table td { padding: 10px 12px; }
+            .upload-item { flex-wrap: wrap; }
+            .upload-status { margin-left: auto; }
         }
     </style>
-    <link rel="stylesheet" href="project-tasks-modal.css">
 </head>
 <body>
     <!-- Background Effects -->
@@ -1953,14 +863,6 @@
             <div class="mission-subtitle">Orchestrate. Execute. Dominate.</div>
             <div class="mission-divider"></div>
         </div>
-        <div class="mobile-nav-menu" id="mobile-nav-menu">
-            <a href="index.html">🏠 Home</a>
-            <a href="categories.html">Folder Categories</a>
-            <a href="insights.html">Chart Insights</a>
-            <a href="resources.html">Books Resources</a>
-            <a href="system.html">⚙️ System</a>
-            <a href="profile.html">👤 Profile</a>
-        </div>
         <div class="topbar-right">
             <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
                 <span></span>
@@ -1972,6 +874,14 @@
                 <span>ONLINE</span>
             </div>
         </div>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div class="mobile-nav-menu" id="mobile-nav-menu">
+        <a href="index.html">🏠 Home</a>
+        <a href="categories.html">📁 Categories</a>
+        <a href="system.html">⚙️ System</a>
+        <a href="resources.html">📚 Resources</a>
     </div>
 
     <!-- Sidebar -->
@@ -2011,15 +921,14 @@
             <span class="sidebar-label">Categories</span>
         </a>
 
-        <a class="sidebar-item" href="insights.html">
+        <a class="sidebar-item" href="system.html">
             <span class="sidebar-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="20" x2="18" y2="10"/>
-                    <line x1="12" y1="20" x2="12" y2="4"/>
-                    <line x1="6" y1="20" x2="6" y2="14"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                 </svg>
             </span>
-            <span class="sidebar-label">Insights</span>
+            <span class="sidebar-label">System</span>
         </a>
 
         <a class="sidebar-item active" href="resources.html">
@@ -2033,327 +942,294 @@
             </span>
             <span class="sidebar-label">Resources</span>
         </a>
-
-        <a class="sidebar-item" href="system.html">
-            <span class="sidebar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">System</span>
-        </a>
-
-        <a class="sidebar-item" href="agent-roster.html">
-            <span class="sidebar-icon">🤖</span>
-            <span class="sidebar-label">Agent Roster</span>
-        </a>
-
-        <a class="sidebar-item" href="profile.html">
-            <span class="sidebar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">Profile</span>
-        </a>
     </div>
 
     <!-- Main Content -->
-    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileMenu()"></div>
-
     <div class="main-content">
-        <!-- HOME SECTION - REDESIGNED -->
-        <div id="home-section" class="section">
-            <!-- Header with Compact Widgets -->
-            <div class="home-header">
-                <div class="home-title-group">
-                    <div class="home-title">Command Center</div>
-                    <div class="home-subtitle">Real-time task and project orchestration</div>
-                </div>
-                
-                <div class="compact-widgets-bar">
-                    <!-- Stats Summary -->
-                    <div class="compact-widget">
-                        <div class="compact-widget-icon stats">Stats</div>
-                        <div class="compact-widget-content">
-                            <div class="compact-widget-value" id="compact-total-tasks">-</div>
-                            <div class="compact-widget-label">Total Tasks</div>
+        <h1 class="page-title">📚 Document Resources</h1>
+
+        <!-- Section 1: Upload Documents -->
+        <div class="section-panel">
+            <div class="section-header">
+                <div class="section-title">📁 Upload Documents</div>
+                <span class="section-badge" style="background: rgba(77, 171, 247, 0.2); color: var(--info);">5 Drop Zones</span>
+            </div>
+            <div class="section-content">
+                <div class="upload-grid">
+                    <!-- A2 - Escritor -->
+                    <div class="upload-card">
+                        <div class="upload-header">
+                            <div class="upload-icon a2">📝</div>
+                            <div class="upload-title-group">
+                                <div class="upload-title">A2 - RE:UNITE Novel (Escritor)</div>
+                                <div class="upload-subtitle">Creative Writing Agent</div>
+                            </div>
+                        </div>
+                        <div class="drop-zone" onclick="triggerUpload('a2')" ondrop="handleDrop(event, 'a2')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                            <div class="drop-icon">📁</div>
+                            <div class="drop-text">Click or drop files here</div>
+                            <div class="drop-hint">PDF, DOCX, TXT, MD up to 50MB</div>
+                        </div>
+                        <input type="file" class="upload-input" id="upload-a2" multiple onchange="handleFileSelect(event, 'a2')">
+                        <div class="upload-info">
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">What they need:</span>
+                                <span class="upload-info-value">Novel chapters, character sheets, plot outlines, feedback</span>
+                            </div>
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">Current memory:</span>
+                                <span class="upload-info-value" style="color: var(--success);">✅ Chapter 1-12 analyzed</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Active Agents -->
-                    <div class="compact-widget">
-                        <div class="compact-widget-icon agents">🤖</div>
-                        <div class="compact-widget-content">
-                            <div class="compact-widget-value" id="compact-active-agents">-</div>
-                            <div class="compact-widget-label">Active Agents</div>
+
+                    <!-- A3 - Autour -->
+                    <div class="upload-card">
+                        <div class="upload-header">
+                            <div class="upload-icon a3">🎬</div>
+                            <div class="upload-title-group">
+                                <div class="upload-title">A3 - KOE YouTube/TikTok (Autour)</div>
+                                <div class="upload-subtitle">Script Writing Agent</div>
+                            </div>
+                        </div>
+                        <div class="drop-zone" onclick="triggerUpload('a3')" ondrop="handleDrop(event, 'a3')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                            <div class="drop-icon">📁</div>
+                            <div class="drop-text">Click or drop files here</div>
+                            <div class="drop-hint">PDF, DOCX, TXT, MD up to 50MB</div>
+                        </div>
+                        <input type="file" class="upload-input" id="upload-a3" multiple onchange="handleFileSelect(event, 'a3')">
+                        <div class="upload-info">
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">What they need:</span>
+                                <span class="upload-info-value">Research articles, video scripts, content ideas, competitor analysis</span>
+                            </div>
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">Current memory:</span>
+                                <span class="upload-info-value" style="color: var(--text-muted);">⏸️ None (agent not spawned)</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- System Health -->
-                    <div class="compact-widget">
-                        <div class="compact-widget-icon health">●</div>
-                        <div class="compact-widget-content">
-                            <div class="compact-widget-value" style="color: var(--success);">100%</div>
-                            <div class="compact-widget-label">System Health</div>
+
+                    <!-- A5 - Quanta/MensaMusa -->
+                    <div class="upload-card">
+                        <div class="upload-header">
+                            <div class="upload-icon a5">📈</div>
+                            <div class="upload-title-group">
+                                <div class="upload-title">A5 - Trading (Quanta/MensaMusa)</div>
+                                <div class="upload-subtitle">Trading Development Agents</div>
+                            </div>
+                        </div>
+                        <div class="drop-zone" onclick="triggerUpload('a5')" ondrop="handleDrop(event, 'a5')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                            <div class="drop-icon">📁</div>
+                            <div class="drop-text">Click or drop files here</div>
+                            <div class="drop-hint">PDF, XLSX, CSV, TXT up to 50MB</div>
+                        </div>
+                        <input type="file" class="upload-input" id="upload-a5" multiple onchange="handleFileSelect(event, 'a5')">
+                        <div class="upload-info">
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">What they need:</span>
+                                <span class="upload-info-value">Trading strategies, market analysis, backtest results</span>
+                            </div>
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">Current memory:</span>
+                                <span class="upload-info-value" style="color: var(--success);">✅ Bot framework configured</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Quick Actions Dropdown -->
-                    <div class="quick-actions-dropdown">
-                        <button class="quick-actions-btn">
-                            <span>⚡</span>
-                            <span>Quick Actions</span>
-                            <span>▼</span>
-                        </button>
-                        <div class="quick-actions-menu">
-                            <div class="quick-action-item" onclick="quickAction('Add Task')">
-                                <span class="quick-action-icon">➕</span>
-                                <span>Add Task</span>
+
+                    <!-- A6 - Helios -->
+                    <div class="upload-card">
+                        <div class="upload-header">
+                            <div class="upload-icon a6">🔍</div>
+                            <div class="upload-title-group">
+                                <div class="upload-title">A6 - Mission Control (Helios)</div>
+                                <div class="upload-subtitle">System Engineer Agent</div>
                             </div>
-                            <div class="quick-action-item" onclick="quickAction('Spawn Agent')">
-                                <span class="quick-action-icon">🤖</span>
-                                <span>Spawn Agent</span>
+                        </div>
+                        <div class="drop-zone" onclick="triggerUpload('a6')" ondrop="handleDrop(event, 'a6')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                            <div class="drop-icon">📁</div>
+                            <div class="drop-text">Click or drop files here</div>
+                            <div class="drop-hint">PDF, DOCX, JSON, MD up to 50MB</div>
+                        </div>
+                        <input type="file" class="upload-input" id="upload-a6" multiple onchange="handleFileSelect(event, 'a6')">
+                        <div class="upload-info">
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">What they need:</span>
+                                <span class="upload-info-value">System configs, audit reports, documentation</span>
                             </div>
-                            <div class="quick-action-item" onclick="quickAction('Export Report')">
-                                <span class="quick-action-icon">Stats</span>
-                                <span>Export Report</span>
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">Current memory:</span>
+                                <span class="upload-info-value" style="color: var(--success);">✅ Dashboard architecture docs</span>
                             </div>
-                            <div class="quick-action-item" onclick="quickAction('Deploy to GitHub')">
-                                <span class="quick-action-icon">📤</span>
-                                <span>Deploy</span>
+                        </div>
+                    </div>
+
+                    <!-- General Resources -->
+                    <div class="upload-card">
+                        <div class="upload-header">
+                            <div class="upload-icon general">📚</div>
+                            <div class="upload-title-group">
+                                <div class="upload-title">General Resources</div>
+                                <div class="upload-subtitle">Shared Documents</div>
+                            </div>
+                        </div>
+                        <div class="drop-zone" onclick="triggerUpload('general')" ondrop="handleDrop(event, 'general')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                            <div class="drop-icon">📁</div>
+                            <div class="drop-text">Click or drop files here</div>
+                            <div class="drop-hint">Any file type up to 50MB</div>
+                        </div>
+                        <input type="file" class="upload-input" id="upload-general" multiple onchange="handleFileSelect(event, 'general')">
+                        <div class="upload-info">
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">What this is:</span>
+                                <span class="upload-info-value">Shared documents all agents can access</span>
+                            </div>
+                            <div class="upload-info-item">
+                                <span class="upload-info-label">Examples:</span>
+                                <span class="upload-info-value">Templates, guidelines, reference materials</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Priority Grid -->
-            <div class="priority-grid">
-                <!-- Active Tasks Board (Large) -->
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title">
-                            <span>▶</span>
-                            Active Tasks Board
-                        </span>
-                        <span class="priority-panel-badge" id="active-tasks-count">0</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="tasks-board" id="active-tasks-board">
-                            <div style="text-align: center; color: var(--text-muted); padding: 40px;">Loading tasks...</div>
-                        </div>
-                    </div>
+        <!-- Section 2: Recent Uploads -->
+        <div class="section-panel">
+            <div class="section-header">
+                <div class="section-title">📋 Recent Uploads</div>
+                <span class="section-badge" id="upload-count">5 files</span>
+            </div>
+            <div class="section-content">
+                <div class="uploads-list" id="recent-uploads">
+                    <!-- Uploads loaded by JS -->
                 </div>
+            </div>
+        </div>
 
-                <!-- Calendar/Schedule View (Large) -->
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title">
-                            <span>📅</span>
-                            Upcoming Deadlines
-                        </span>
-                        <span class="priority-panel-badge">7 Days</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="calendar-view" id="calendar-view">
-                            <div style="text-align: center; color: var(--text-muted); padding: 40px;">Loading calendar...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Input Needed / Pending Decisions (Medium) -->
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title">
-                            <span>⚠️</span>
-                            Input Needed
-                        </span>
-                        <span class="priority-panel-badge" id="pending-decisions-count">0</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="decisions-list" id="pending-decisions-list">
-                            <div style="text-align: center; color: var(--text-muted); padding: 40px;">No pending decisions</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Activity (Medium) -->
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title">
-                            <span>📡</span>
-                            Recent Activity
-                        </span>
-                        <span class="priority-panel-badge" style="background: rgba(0, 255, 136, 0.2); color: var(--success);">Live</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="activity-list" id="recent-activity">
-                            <div class="activity-item">
-                                <div class="activity-avatar system">Launch</div>
-                                <div class="activity-content">
-                                    <div class="activity-text">Mission Control initialized</div>
-                                    <div class="activity-meta">
-                                        <span>System</span>
-                                        <span class="activity-time">Just now</span>
-                                    </div>
+        <!-- Section 3: What Each Agent Needs -->
+        <div class="section-panel">
+            <div class="section-header">
+                <div class="section-title">🎯 What Each Agent Needs</div>
+                <span class="section-badge" style="background: rgba(201, 169, 98, 0.2); color: var(--warning);">4 Pending</span>
+            </div>
+            <div class="section-content">
+                <table class="needs-table">
+                    <thead>
+                        <tr>
+                            <th>Agent</th>
+                            <th>What They Need</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="agent-cell">
+                                    <span class="agent-dot waiting"></span>
+                                    <span>Escritor</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CATEGORIES SECTION (UNCHANGED) -->
-        <div id="categories-section" class="section">
-            <h1 class="page-title">Folder Project Categories</h1>
-
-            <!-- Dashboard Stats Bar -->
-            <div id="dashboard-stats-bar" class="dashboard-stats-bar" style="display: none;">
-                <div class="dashboard-stat">
-                    <div class="dashboard-stat-icon">Stats</div>
-                    <div class="dashboard-stat-value" id="cat-total-projects">0</div>
-                    <div class="dashboard-stat-label">Total Projects</div>
-                </div>
-                <div class="dashboard-stat">
-                    <div class="dashboard-stat-icon">📋</div>
-                    <div class="dashboard-stat-value" id="cat-total-tasks">0</div>
-                    <div class="dashboard-stat-label">Total Tasks</div>
-                </div>
-                <div class="dashboard-stat">
-                    <div class="dashboard-stat-icon">Done</div>
-                    <div class="dashboard-stat-value success" id="cat-tasks-done">0</div>
-                    <div class="dashboard-stat-label">Tasks Done</div>
-                </div>
-                <div class="dashboard-stat">
-                    <div class="dashboard-stat-icon">⏳</div>
-                    <div class="dashboard-stat-value warning" id="cat-tasks-pending">0</div>
-                    <div class="dashboard-stat-label">Pending</div>
-                </div>
-                <div class="dashboard-stat">
-                    <div class="dashboard-stat-icon">🎯</div>
-                    <div class="dashboard-stat-value" id="cat-completion-rate">0%</div>
-                    <div class="dashboard-stat-label">Completion</div>
-                </div>
-                <div class="dashboard-stat">
-                    <div class="dashboard-stat-icon">🚨</div>
-                    <div class="dashboard-stat-value danger" id="cat-urgent-tasks">0</div>
-                    <div class="dashboard-stat-label">Urgent Tasks</div>
-                </div>
-            </div>
-
-            <!-- Filter Bar -->
-            <div class="filter-bar" id="filter-bar" style="display: none;">
-                <div class="filter-group">
-                    <span class="filter-label">Filter by:</span>
-                </div>
-                <div class="filter-group">
-                    <select class="filter-select" id="filter-priority" onchange="applyFilters()">
-                        <option value="">All Priorities</option>
-                        <option value="high">High Priority</option>
-                        <option value="medium">Medium Priority</option>
-                        <option value="low">Low Priority</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <select class="filter-select" id="filter-status" onchange="applyFilters()">
-                        <option value="">All Status</option>
-                        <option value="active">Active</option>
-                        <option value="pending">Pending</option>
-                        <option value="done">Done</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <select class="filter-select" id="filter-agent" onchange="applyFilters()">
-                        <option value="">All Agents</option>
-                        <option value="CHAD_YI">CHAD_YI</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <span class="filter-label">Sort:</span>
-                    <select class="filter-select" id="sort-by" onchange="applyFilters()">
-                        <option value="name">Project Name</option>
-                        <option value="due">Due Date</option>
-                        <option value="progress">Progress</option>
-                        <option value="tasks">Task Count</option>
-                    </select>
-                </div>
-                <button class="filter-clear" onclick="clearFilters()">Clear Filters</button>
-            </div>
-
-            <div id="cat-loading-state" class="loading-state">
-                <div class="loading-spinner"></div>
-                <div>Loading mission data...</div>
-            </div>
-
-            <div id="cat-error-state" class="error-state" style="display: none;">
-                <div>⚠️ Failed to load data</div>
-            </div>
-
-            <div id="cat-no-results" class="no-results" style="display: none;">
-                <div>🔍 No projects match your filters</div>
-                <button class="filter-clear" onclick="clearFilters()" style="margin-top: 16px;">Clear Filters</button>
-            </div>
-
-            <div id="categories-container"></div>
-        </div>
-
-        <!-- INSIGHTS SECTION -->
-        <div id="insights-section" class="section">
-            <h1 class="page-title">Chart Insights</h1>
-            <div class="placeholder-content">
-                <div class="placeholder-icon">Stats</div>
-                <div class="placeholder-title">Insights Coming Soon</div>
-                <div class="placeholder-text">Analytics, trends, and performance metrics will appear here.</div>
-            </div>
-        </div>
-
-        <!-- RESOURCES SECTION -->
-        <div id="resources-section" class="section active">
-            <h1 class="page-title">Books Resources</h1>
-            
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-icon">📖</div>
-                    <h3>Story Bible</h3>
-                    <p>Re:Unite novel world-building, characters, magic system</p>
-                    <a href="projects/A2-reunite/STORY-BIBLE-COMPLETE.md" target="_blank" class="resource-link">View →</a>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">🎬</div>
-                    <h3>KOE Scripts</h3>
-                    <p>YouTube short scripts, thumbnails, posting schedule</p>
-                    <span class="resource-soon">Coming Soon</span>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">Stats</div>
-                    <h3>Trading Templates</h3>
-                    <p>Bot configs, strategy docs, API references</p>
-                    <span class="resource-soon">Coming Soon</span>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">📝</div>
-                    <h3>Project Templates</h3>
-                    <p>Task templates, checklists, workflows</p>
-                    <span class="resource-soon">Coming Soon</span>
-                </div>
+                            </td>
+                            <td>Chapter 13 to edit</td>
+                            <td><span class="status-badge waiting">⏸️ Waiting</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="agent-cell">
+                                    <span class="agent-dot waiting"></span>
+                                    <span>Autour</span>
+                                </div>
+                            </td>
+                            <td>Script topics assigned</td>
+                            <td><span class="status-badge waiting">⏸️ Waiting</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="agent-cell">
+                                    <span class="agent-dot blocked"></span>
+                                    <span>Quanta</span>
+                                </div>
+                            </td>
+                            <td>OANDA credentials</td>
+                            <td><span class="status-badge blocked">🚫 Blocked</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="agent-cell">
+                                    <span class="agent-dot blocked"></span>
+                                    <span>MensaMusa</span>
+                                </div>
+                            </td>
+                            <td>Moomoo credentials</td>
+                            <td><span class="status-badge blocked">🚫 Blocked</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
     <script src="mobile-nav.js"></script>
-    <script src="project-tasks-modal.js"></script>
     <script>
-        // Global data store
-        let appData = null;
-        let allProjects = [];
-        let projectLookup = {};
+        // Recent uploads data
+        const recentUploads = [
+            { name: "Chapter_12_Feedback.pdf", agent: "A2 - Escritor", date: "2026-02-11 14:30", status: "processed", type: "pdf" },
+            { name: "Character_Sheet_Template.docx", agent: "A2 - Escritor", date: "2026-02-11 13:15", status: "processed", type: "doc" },
+            { name: "Trading_Strategy_v2.pdf", agent: "A5 - Quanta", date: "2026-02-10 18:45", status: "processed", type: "pdf" },
+            { name: "Dashboard_Architecture.md", agent: "A6 - Helios", date: "2026-02-10 16:20", status: "processed", type: "txt" },
+            { name: "YouTube_Script_Guide.pdf", agent: "A3 - Autour", date: "2026-02-10 11:00", status: "pending", type: "pdf" }
+        ];
+
+        // Render recent uploads
+        function renderRecentUploads() {
+            const container = document.getElementById('recent-uploads');
+            container.innerHTML = recentUploads.map(upload => {
+                const iconClass = upload.type === 'pdf' ? 'pdf' : upload.type === 'doc' ? 'doc' : upload.type === 'img' ? 'img' : 'txt';
+                const icon = upload.type === 'pdf' ? '📄' : upload.type === 'doc' ? '📝' : upload.type === 'img' ? '🖼️' : '📃';
+                return `
+                    <div class="upload-item">
+                        <div class="file-icon ${iconClass}">${icon}</div>
+                        <div class="file-info">
+                            <div class="file-name">${upload.name}</div>
+                            <div class="file-meta">${upload.agent} • ${upload.date}</div>
+                        </div>
+                        <span class="upload-status ${upload.status}">${upload.status === 'processed' ? '✅ Processed' : '⏳ Pending'}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // File upload handling
+        function triggerUpload(agent) {
+            document.getElementById(`upload-${agent}`).click();
+        }
+
+        function handleFileSelect(event, agent) {
+            const files = event.target.files;
+            if (files.length > 0) {
+                const fileNames = Array.from(files).map(f => f.name).join(', ');
+                alert(`📤 Uploading to ${agent.toUpperCase()}:\n${fileNames}\n\n(Feature: Files will be processed by the agent)`);
+            }
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(event) {
+            event.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(event, agent) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('drag-over');
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                const fileNames = Array.from(files).map(f => f.name).join(', ');
+                alert(`📤 Dropped files for ${agent.toUpperCase()}:\n${fileNames}\n\n(Feature: Files will be processed by the agent)`);
+            }
+        }
 
         // Sidebar Toggle
         function toggleSidebar() {
@@ -2367,927 +1243,18 @@
             toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
             document.body.classList.toggle('sidebar-expanded', isExpanded);
-            if (!isExpanded) {
-                closeMobileMenu();
-            }
         }
 
-        // Section Navigation removed (multi-page navigation uses normal links)
-
-        // Project Card Toggle
-        function toggleProject(header) {
-            const card = header.closest('.project-card');
-            card.classList.toggle('expanded');
-        }
-
-        // Quick Actions
-        function quickAction(action) {
-            alert(`${action} - Feature coming soon!`);
-        }
-
-        function syncProjectLookup() {
-            projectLookup = allProjects.reduce((map, proj) => {
-                map[proj.id] = proj;
-                return map;
-            }, {});
-            if (window.ProjectTasksModal && typeof window.ProjectTasksModal.setProjectLookup === 'function') {
-                window.ProjectTasksModal.setProjectLookup(projectLookup);
-            }
-        }
-
-
-        // Load Data
-
-
-        async function loadData() {
-            try {
-                const response = await fetch('data.json');
-                appData = await response.json();
-                allProjects = [];
-
-                // Process all projects
-                if (appData.projects) {
-                    Object.keys(appData.projects).forEach(catKey => {
-                        const cat = appData.projects[catKey];
-                        if (cat.projects) {
-                            cat.projects.forEach(proj => {
-                                // Note: tasks is now an object, not array - use Object.values()
-                                const tasksObj = appData.tasks || {};
-                                const projTasks = Object.values(tasksObj).filter(t => t.project === proj.id);
-                                const taskStats = calculateTaskStats(projTasks);
-
-                                allProjects.push({
-                                    ...proj,
-                                    category: catKey,
-                                    categoryName: cat.name,
-                                    tasks: projTasks,
-                                    stats: taskStats,
-                                    priorityBreakdown: getPriorityBreakdown(projTasks),
-                                    timeTracking: calculateTimeTracking(projTasks),
-                                    nextDeadline: getNextDeadline(projTasks),
-                                    milestones: generateMilestones(proj, projTasks),
-                                    timeline: buildProjectTimeline(projTasks)
-                                });
-                            });
-                        }
-                    });
-                }
-
-                syncProjectLookup();
-
-                // Render both sections
-                renderHomeSection();
-                renderCategoriesSection();
-
-            } catch (error) {
-                console.error('Failed to load data:', error);
-                document.getElementById('cat-loading-state').style.display = 'none';
-                document.getElementById('cat-error-state').style.display = 'block';
-            }
-        }
-
-        // Calculate comprehensive task statistics
-        function calculateTaskStats(tasks) {
-            return {
-                total: tasks.length,
-                pending: tasks.filter(t => t.status === 'pending').length,
-                active: tasks.filter(t => t.status === 'active').length,
-                review: tasks.filter(t => t.status === 'review').length,
-                done: tasks.filter(t => t.status === 'done').length,
-                highPriority: tasks.filter(t => t.priority === 'high' && t.status !== 'done').length,
-                mediumPriority: tasks.filter(t => t.priority === 'medium' && t.status !== 'done').length,
-                lowPriority: tasks.filter(t => t.priority === 'low' && t.status !== 'done').length,
-                urgent: tasks.filter(t => t.priority === 'high' && t.status !== 'done').length
-            };
-        }
-
-        // Get priority breakdown
-        function getPriorityBreakdown(tasks) {
-            return {
-                high: tasks.filter(t => t.priority === 'high').length,
-                medium: tasks.filter(t => t.priority === 'medium').length,
-                low: tasks.filter(t => t.priority === 'low').length
-            };
-        }
-
-        // Calculate time tracking (simulated based on task data)
-        function calculateTimeTracking(tasks) {
-            const estimatedHours = tasks.reduce((sum, t) => {
-                if (t.notes && t.notes.includes('hr')) {
-                    const match = t.notes.match(/(\d+)[\s-]*(\d*)\s*hr/i);
-                    if (match) {
-                        const hours = match[2] ? (parseInt(match[1]) + parseInt(match[2])) / 2 : parseInt(match[1]);
-                        return sum + hours;
-                    }
-                }
-                return sum + 2; // Default 2 hours per task
-            }, 0);
-
-            const completedTasks = tasks.filter(t => t.status === 'done').length;
-            const totalTasks = tasks.length;
-            const spentHours = totalTasks > 0 ? (completedTasks / totalTasks) * estimatedHours * 0.8 : 0;
-
-            return {
-                estimated: Math.round(estimatedHours),
-                spent: Math.round(spentHours),
-                remaining: Math.max(0, Math.round(estimatedHours - spentHours))
-            };
-        }
-
-        // Get next deadline
-        function getNextDeadline(tasks) {
-            const pendingTasks = tasks.filter(t => t.status !== 'done');
-            if (pendingTasks.length === 0) return null;
-
-            const sorted = pendingTasks.sort((a, b) => {
-                if (a.priority === 'high' && b.priority !== 'high') return -1;
-                if (b.priority === 'high' && a.priority !== 'high') return 1;
-                return new Date(a.createdAt) - new Date(b.createdAt);
-            });
-
-            const task = sorted[0];
-            const created = new Date(task.createdAt);
-            const daysToAdd = task.priority === 'high' ? 3 : (task.priority === 'medium' ? 7 : 14);
-            const deadline = new Date(created);
-            deadline.setDate(deadline.getDate() + daysToAdd);
-
-            return {
-                task: task,
-                date: deadline,
-                priority: task.priority
-            };
-        }
-
-        // Generate milestones
-        function generateMilestones(project, tasks) {
-            const milestones = [];
-            const totalTasks = tasks.length;
-            const completedTasks = tasks.filter(t => t.status === 'done').length;
-
-            for (let i = 1; i <= 4; i++) {
-                const threshold = i * 0.25;
-                const milestoneTasks = Math.floor(totalTasks * threshold);
-                const isCompleted = completedTasks >= milestoneTasks && milestoneTasks > 0;
-                const isActive = !isCompleted && completedTasks >= milestoneTasks - Math.ceil(totalTasks * 0.1);
-
-                milestones.push({
-                    number: i,
-                    label: `${i * 25}%`,
-                    completed: isCompleted,
-                    active: isActive,
-                    tasksRequired: milestoneTasks
-                });
-            }
-
-            return milestones;
-        }
-
-        function safeParseDate(value) {
-            const date = value ? new Date(value) : new Date();
-            return isNaN(date.getTime()) ? new Date() : date;
-        }
-
-        function estimateTaskDuration(task) {
-            if (task.completedAt) {
-                const start = safeParseDate(task.createdAt);
-                const end = safeParseDate(task.completedAt);
-                const diff = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)));
-                return diff;
-            }
-
-            if (task.status === 'review') return 2;
-            if (task.status === 'active') return 3;
-            if (task.status === 'done') return 2;
-
-            if (task.priority === 'high') return 5;
-            if (task.priority === 'medium') return 4;
-            return 3;
-        }
-
-        function buildProjectTimeline(tasks) {
-            if (!tasks || tasks.length === 0) {
-                return { items: [], start: null, end: null, duration: 0 };
-            }
-
-            const items = tasks.map(task => {
-                const start = safeParseDate(task.createdAt);
-                let end = task.completedAt ? safeParseDate(task.completedAt) : new Date(start);
-
-                if (!task.completedAt) {
-                    end.setDate(end.getDate() + estimateTaskDuration(task));
-                }
-
-                if (end < start) {
-                    end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
-                }
-
-                return {
-                    id: task.id,
-                    title: task.title,
-                    status: task.status || 'pending',
-                    priority: task.priority || 'medium',
-                    start,
-                    end
-                };
-            }).sort((a, b) => a.start - b.start);
-
-            const startDate = items.reduce((min, item) => item.start < min ? item.start : min, items[0].start);
-            const endDate = items.reduce((max, item) => item.end > max ? item.end : max, items[0].end);
-            const duration = Math.max(1, endDate - startDate);
-
-            return { items, start: startDate, end: endDate, duration };
-        }
-
-        function formatTimelineDate(date) {
-            if (!date || isNaN(date.getTime())) return 'TBD';
-            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        }
-
-        // Format countdown
-
-            const milestones = [];
-            const totalTasks = tasks.length;
-            const completedTasks = tasks.filter(t => t.status === 'done').length;
-
-            for (let i = 1; i <= 4; i++) {
-                const threshold = i * 0.25;
-                const milestoneTasks = Math.floor(totalTasks * threshold);
-                const isCompleted = completedTasks >= milestoneTasks && milestoneTasks > 0;
-                const isActive = !isCompleted && completedTasks >= milestoneTasks - Math.ceil(totalTasks * 0.1);
-
-                milestones.push({
-                    number: i,
-                    label: `${i * 25}%`,
-                    completed: isCompleted,
-                    active: isActive,
-                    tasksRequired: milestoneTasks
-                });
-            }
-
-            return milestones;
-        }
-
-        // Format countdown
-        function formatCountdown(targetDate) {
-            const now = new Date();
-            const diff = targetDate - now;
-
-            if (diff < 0) return 'OVERDUE';
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-            if (days > 0) return `${days}d ${hours}h`;
-            return `${hours}h`;
-        }
-
-        // Get priority class
-        function getPriorityClass(priority) {
-            if (priority === 'high') return 'high-priority';
-            if (priority === 'medium') return 'medium-priority';
-            return 'low-priority';
-        }
-
-        // ===== REDESIGNED HOME SECTION RENDERING =====
-        function renderHomeSection() {
-            const stats = appData.stats || {};
-            const agents = appData.agents || [];
-            // Convert tasks object to array
-            const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
-            const workflow = appData.workflow || {};
-
-            // Compact Widgets
-            document.getElementById('compact-total-tasks').textContent = allTasks.length;
-            document.getElementById('compact-active-agents').textContent = stats.activeAgents || agents.length || 0;
-
-            // Active Tasks Board
-            renderActiveTasksBoard(allTasks);
-
-            // Calendar View
-            renderCalendarView(allTasks);
-
-            // Pending Decisions - map IDs to task objects
-            const tasksObj = appData.tasks || {};
-            const pendingIds = workflow.pending || [];
-            const pendingTasks = pendingIds.map(id => tasksObj[id]).filter(t => t);
-            renderPendingDecisions(pendingTasks);
-
-            // Recent Activity
-            renderRecentActivity();
-        }
-
-        function renderActiveTasksBoard(allTasks) {
-            // Get active tasks (status = active, or pending high priority, or review)
-            const activeTasks = allTasks.filter(t => 
-                t.status === 'active' || 
-                (t.status === 'pending' && t.priority === 'high') ||
-                t.status === 'review'
-            ).slice(0, 6);
-
-            document.getElementById('active-tasks-count').textContent = activeTasks.length;
-
-            const board = document.getElementById('active-tasks-board');
-
-            if (activeTasks.length === 0) {
-                board.innerHTML = `
-                    <div style="text-align: center; color: var(--text-muted); padding: 40px;">
-                        <div style="font-size: 32px; margin-bottom: 12px;">Done</div>
-                        <div>No active tasks</div>
-                        <div style="font-size: 11px; margin-top: 8px;">All caught up!</div>
-                    </div>
-                `;
-                return;
-            }
-
-            board.innerHTML = activeTasks.map(task => {
-                const priorityClass = getPriorityClass(task.priority);
-                const assigneeClass = task.assignedTo === 'CHAD_YI' ? 'chad' : 'agent';
-                const assigneeInitial = task.assignedTo === 'CHAD_YI' ? 'C' : 'A';
-                const project = allProjects.find(p => p.id === task.project);
-                const projectName = project ? project.name : task.project;
-                
-                // Calculate simulated time spent/progress
-                const progress = Math.floor(Math.random() * 40) + 30; // 30-70% for demo
-                const timeSpent = Math.floor(Math.random() * 3) + 1;
-                const timeEstimated = Math.floor(Math.random() * 2) + 3;
-
-                return `
-                    <div class="task-card ${priorityClass}">
-                        <div class="task-assignee ${assigneeClass}">${assigneeInitial}</div>
-                        <div class="task-info">
-                            <div class="task-title">${task.title}</div>
-                            <div class="task-meta">
-                                <div class="task-meta-item">
-                                    <div class="task-meta-dot ${task.priority}"></div>
-                                    <span>${task.priority} priority</span>
-                                </div>
-                                <div class="task-meta-item">●</div>
-                                <div class="task-meta-item">${task.status}</div>
-                                <div class="task-meta-item">●</div>
-                                <div class="task-project-tag">${projectName}</div>
-                            </div>
-                        </div>
-                        <div class="task-time">
-                            <div class="task-time-value">${timeSpent}h/${timeEstimated}h</div>
-                            <div class="task-time-label">time spent</div>
-                        </div>
-                        <div class="task-progress-ring">
-                            <svg width="44" height="44" viewBox="0 0 44 44">
-                                <circle class="task-progress-ring-bg" cx="22" cy="22" r="18"/>
-                                <circle class="task-progress-ring-fill" cx="22" cy="22" r="18"
-                                    stroke-dasharray="113.1" 
-                                    stroke-dashoffset="${113.1 - (113.1 * progress / 100)}"/>
-                            </svg>
-                            <div class="task-progress-text">${progress}%</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function renderCalendarView(allTasks) {
-            // Get tasks with upcoming deadlines (next 7 days)
-            const now = new Date();
-            const next7Days = [];
-            
-            for (let i = 0; i < 7; i++) {
-                const date = new Date(now);
-                date.setDate(date.getDate() + i);
-                next7Days.push(date);
-            }
-
-            const pendingTasks = allTasks.filter(t => t.status !== 'done');
-            
-            // Assign fake deadlines to tasks for demo (in real app, tasks would have due dates)
-            const tasksWithDeadlines = pendingTasks.slice(0, 5).map((task, i) => {
-                const dueDate = new Date(now);
-                dueDate.setDate(dueDate.getDate() + i + 1);
-                return { ...task, dueDate };
-            });
-
-            const calendar = document.getElementById('calendar-view');
-            
-            const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            
-            calendar.innerHTML = `
-                <div class="calendar-header">
-                    <span class="calendar-range">Next 7 Days</span>
-                    <div class="calendar-nav">
-                        <button class="calendar-nav-btn">◀</button>
-                        <button class="calendar-nav-btn">▶</button>
-                    </div>
-                </div>
-                <div class="calendar-timeline">
-                    ${next7Days.map((date, i) => {
-                        const isToday = i === 0;
-                        const dayTasks = tasksWithDeadlines.filter(t => {
-                            const taskDay = Math.floor((t.dueDate - now) / (1000 * 60 * 60 * 24));
-                            return taskDay === i;
-                        });
-                        
-                        const hasDeadlines = dayTasks.length > 0;
-                        const urgencyClass = hasDeadlines && dayTasks[0].priority === 'high' ? '' : 
-                                            (hasDeadlines && dayTasks[0].priority === 'medium' ? 'medium' : 'low');
-                        
-                        return `
-                            <div class="calendar-day ${isToday ? 'today' : ''}">
-                                <div class="calendar-day-date">
-                                    <span class="calendar-day-weekday">${weekdays[date.getDay()]}</span>
-                                    <span class="calendar-day-number">${date.getDate()}</span>
-                                </div>
-                                <div class="calendar-day-content">
-                                    ${dayTasks.length > 0 ? dayTasks.map(task => `
-                                        <div class="calendar-deadline">
-                                            <div class="calendar-deadline-dot ${urgencyClass}"></div>
-                                            <span>${task.title.substring(0, 35)}${task.title.length > 35 ? '...' : ''}</span>
-                                        </div>
-                                    `).join('') : `
-                                        <div style="font-size: 11px; color: var(--text-muted); padding: 4px 0;">No deadlines</div>
-                                    `}
-                                </div>
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
-            `;
-        }
-
-        function renderPendingDecisions(pending) {
-            // High priority pending tasks that need user input
-            const highPriorityPending = pending.filter(t => t.priority === 'high').slice(0, 3);
-            
-            document.getElementById('pending-decisions-count').textContent = highPriorityPending.length;
-            const list = document.getElementById('pending-decisions-list');
-
-            if (highPriorityPending.length === 0) {
-                list.innerHTML = `
-                    <div style="text-align: center; color: var(--text-muted); padding: 40px;">
-                        <div style="font-size: 32px; margin-bottom: 12px;">Done</div>
-                        <div>All clear!</div>
-                        <div style="font-size: 11px; margin-top: 8px;">No decisions pending</div>
-                    </div>
-                `;
-                return;
-            }
-
-            list.innerHTML = highPriorityPending.map(task => `
-                <div class="decision-card">
-                    <div class="decision-card-header">
-                        <div class="decision-type">
-                            <span>⚠️</span>
-                            <span>Decision Required</span>
-                        </div>
-                        <span class="decision-urgency">High Priority</span>
-                    </div>
-                    <div class="decision-title">${task.title}</div>
-                    <div class="decision-reason">${task.notes || 'This task requires your input before proceeding. Please review and provide guidance.'}</div>
-                    <div class="decision-actions">
-                        <button class="decision-btn primary" onclick="showSection('categories')">Review</button>
-                        <button class="decision-btn" onclick="quickAction('Delegate')">Delegate</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function renderRecentActivity() {
-            const activities = [
-                { type: 'chad', text: 'Completed task <strong>Update Documentation</strong>', time: '2 min ago', project: 'Project A' },
-                { type: 'agent', text: 'Started working on <strong>Code Review</strong>', time: '15 min ago', project: 'Project B' },
-                { type: 'system', text: 'Auto-saved progress for <strong>3 tasks</strong>', time: '1 hour ago', project: 'System' },
-                { type: 'chad', text: 'Created new task <strong>Design Review</strong>', time: '2 hours ago', project: 'Project C' },
-                { type: 'agent', text: 'Completed milestone <strong>Phase 1</strong>', time: '3 hours ago', project: 'Project A' }
-            ];
-
-            const activityList = document.getElementById('recent-activity');
-            
-            activityList.innerHTML = activities.map(act => {
-                const avatarClass = act.type === 'chad' ? 'chad' : (act.type === 'agent' ? 'agent' : 'system');
-                const avatarText = act.type === 'chad' ? 'C' : (act.type === 'agent' ? 'A' : '⚙');
-                
-                return `
-                    <div class="activity-item">
-                        <div class="activity-avatar ${avatarClass}">${avatarText}</div>
-                        <div class="activity-content">
-                            <div class="activity-text">${act.text}</div>
-                            <div class="activity-meta">
-                                <span>${act.project}</span>
-                                <span>●</span>
-                                <span class="activity-time">${act.time}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // ===== CATEGORIES SECTION RENDERING (UNCHANGED) =====
-        function renderCategoriesSection() {
-            // Convert tasks object to array
-            const allTasks = appData.tasks ? Object.values(appData.tasks) : [];
-            const totalProjects = allProjects.length;
-            const totalTasks = allTasks.length;
-            const tasksDone = allTasks.filter(t => t.status === 'done').length;
-            const tasksPending = allTasks.filter(t => t.status === 'pending').length;
-            const urgentTasks = allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
-            const completionRate = totalTasks > 0 ? Math.round((tasksDone / totalTasks) * 100) : 0;
-
-            document.getElementById('cat-total-projects').textContent = totalProjects;
-            document.getElementById('cat-total-tasks').textContent = totalTasks;
-            document.getElementById('cat-tasks-done').textContent = tasksDone;
-            document.getElementById('cat-tasks-pending').textContent = tasksPending;
-            document.getElementById('cat-completion-rate').textContent = completionRate + '%';
-            document.getElementById('cat-urgent-tasks').textContent = urgentTasks;
-
-            renderCategoriesList();
-
-            document.getElementById('cat-loading-state').style.display = 'none';
-            document.getElementById('dashboard-stats-bar').style.display = 'grid';
-            document.getElementById('filter-bar').style.display = 'flex';
-        }
-
-        function renderCategoriesList() {
-            const container = document.getElementById('categories-container');
-
-            const categories = {
-                A: { icon: '☀️', name: 'Ambition', subtitle: 'By Calbee (Personal)', projects: [] },
-                B: { icon: '🌅', name: 'Business', subtitle: 'Empire (Main Work)', projects: [] },
-                C: { icon: '🌞', name: 'Callings', subtitle: 'On The Side (Other Jobs)', projects: [] }
-            };
-
-            allProjects.forEach(proj => {
-                if (categories[proj.category]) {
-                    categories[proj.category].projects.push(proj);
-                }
-            });
-
-            container.innerHTML = Object.keys(categories).map(catKey => {
-                const cat = categories[catKey];
-                const totalTasks = cat.projects.reduce((sum, p) => sum + p.stats.total, 0);
-                const completedTasks = cat.projects.reduce((sum, p) => sum + p.stats.done, 0);
-                const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
-
-                return `
-                    <div class="category-section" data-category="${catKey}">
-                        <div class="category-header-bar">
-                            <div class="category-icon">${cat.icon}</div>
-                            <div class="category-title-group">
-                                <h2><span>${catKey}</span>${cat.name.toUpperCase().slice(1)}</h2>
-                                <p>${cat.subtitle}</p>
-                            </div>
-                            <div class="category-stats">
-                                <div class="category-stat">
-                                    <div class="category-stat-value">${cat.projects.length}</div>
-                                    <div class="category-stat-label">Projects</div>
-                                </div>
-                                <div class="category-stat">
-                                    <div class="category-stat-value">${totalTasks}</div>
-                                    <div class="category-stat-label">Tasks</div>
-                                </div>
-                                <div class="category-stat">
-                                    <div class="category-stat-value">${completionRate}%</div>
-                                    <div class="category-stat-label">Complete</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="projects-grid">
-                            ${cat.projects.map(proj => renderProjectCard(proj)).join('')}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function renderProjectCard(proj) {
-            const progress = proj.stats.total > 0 ? Math.round((proj.stats.done / proj.stats.total) * 100) : 0;
-            const statusClass = proj.status === 'active' ? 'active' : (proj.status === 'pending' ? 'pending' : '');
-            const timePercent = proj.timeTracking.estimated > 0
-                ? Math.min(100, Math.round((proj.timeTracking.spent / proj.timeTracking.estimated) * 100))
-                : 0;
-            const timeClass = timePercent > 100 ? 'danger' : (timePercent > 80 ? 'warning' : '');
-
-            const deadline = proj.nextDeadline;
-            let dueDisplay = 'No pending tasks';
-            let dueClass = 'success';
-            let countdown = '';
-
-            if (deadline) {
-                countdown = formatCountdown(deadline.date);
-                dueDisplay = deadline.task.title.substring(0, 30) + (deadline.task.title.length > 30 ? '...' : '');
-                dueClass = deadline.priority === 'high' || countdown === 'OVERDUE' ? 'urgent' :
-                          (countdown.includes('d') && parseInt(countdown) <= 2 ? 'warning' : 'success');
-            }
-
-            return `
-                <div class="project-card" data-project="${proj.id}" data-status="${proj.status}"
-                     data-priority="${proj.stats.urgent > 0 ? 'high' : (proj.stats.mediumPriority > 0 ? 'medium' : 'low')}"
-                     data-agent="CHAD_YI" data-due="${deadline ? deadline.date.getTime() : 9999999999999}"
-                     data-progress="${progress}" data-tasks="${proj.stats.total}">
-                    <div class="project-card-header" onclick="toggleProject(this)">
-                        <div class="project-info-main">
-                            <div class="project-title-row">
-                                <h3>${proj.id} · ${proj.name}</h3>
-                                <div class="project-badges">
-                                    <span class="agent-badge ${statusClass}">${proj.status}</span>
-                                    ${proj.stats.urgent > 0 ? '<span class="agent-badge" style="background: rgba(255,68,68,0.3); color: #ff4444;">URGENT</span>' : ''}
-                                </div>
-                            </div>
-                            <div class="project-id">${proj.stats.total} tasks · ${proj.stats.done} completed · ${proj.stats.active} active</div>
-                        </div>
-                        <span class="expand-icon">▼</span>
-                    </div>
-
-                    <div class="task-stats">
-                        <div class="task-stat">
-                            <div class="task-stat-value">${proj.stats.total}</div>
-                            <div class="task-stat-label">Total</div>
-                        </div>
-                        <div class="task-stat high-priority">
-                            <div class="task-stat-value">${proj.priorityBreakdown.high}</div>
-                            <div class="task-stat-label">High</div>
-                        </div>
-                        <div class="task-stat medium-priority">
-                            <div class="task-stat-value">${proj.priorityBreakdown.medium}</div>
-                            <div class="task-stat-label">Med</div>
-                        </div>
-                        <div class="task-stat low-priority">
-                            <div class="task-stat-value">${proj.priorityBreakdown.low}</div>
-                            <div class="task-stat-label">Low</div>
-                        </div>
-                        <div class="task-stat urgent">
-                            <div class="task-stat-value">${proj.stats.active}</div>
-                            <div class="task-stat-label">Active</div>
-                        </div>
-                        <div class="task-stat">
-                            <div class="task-stat-value">${proj.stats.done}</div>
-                            <div class="task-stat-label">Done</div>
-                        </div>
-                    </div>
-
-                    <div class="time-tracking-bar">
-                        <div class="time-stat">
-                            <span class="time-label">Time Spent</span>
-                            <span class="time-value ${timeClass}">${proj.timeTracking.spent}h / ${proj.timeTracking.estimated}h</span>
-                        </div>
-                        <div class="time-progress-bar">
-                            <div class="time-progress-fill ${timeClass}" style="width: ${Math.min(100, timePercent)}%"></div>
-                        </div>
-                        <div class="time-stat">
-                            <span class="time-label">Remaining</span>
-                            <span class="time-value">${proj.timeTracking.remaining}h</span>
-                        </div>
-                    </div>
-
-                    <div class="due-countdown">
-                        <span class="due-label">🕐 Next Due:</span>
-                        <div class="due-value ${dueClass}">
-                            ${dueDisplay}
-                            ${countdown ? `<span class="countdown-timer">${countdown}</span>` : ''}
-                        </div>
-                    </div>
-
-                    <div class="milestones-section">
-                        <div class="milestones-title">📍 Milestones</div>
-                        <div class="milestones-track">
-                            ${proj.milestones.map(m => `
-                                <div class="milestone ${m.completed ? 'completed' : (m.active ? 'active' : 'upcoming')}">
-                                    <div class="milestone-tooltip">${m.label} (${m.tasksRequired} tasks)</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="progress-section">
-                        <div class="progress-header">
-                            <span class="progress-label">Overall Progress</span>
-                            <span class="progress-value">${progress}%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${progress}%"></div>
-                        </div>
-                    </div>
-
-                    ${renderProjectTimeline(proj)}
-
-                    <div class="project-card-content">
-                        ${renderTasksSection(proj)}
-
-                        <div class="project-actions">
-                            <button class="action-btn" onclick="event.stopPropagation(); openProject('${proj.id}')">Open Project</button>
-                            <button class="action-btn secondary" onclick="event.stopPropagation(); addTask('${proj.id}')">Add Task</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderProjectTimeline(proj) {
-            const timeline = proj.timeline;
-
-            if (!timeline || !timeline.items || timeline.items.length === 0) {
-                return `
-                    <div class="project-timeline-section">
-                        <div class="timeline-header">
-                            <span class="timeline-title">🗂 Project Timeline</span>
-                            <span class="timeline-range">Awaiting tasks</span>
-                        </div>
-                        <div class="timeline-empty">Add tasks to generate a timeline view.</div>
-                    </div>
-                `;
-            }
-
-            const rangeLabel = (timeline.start && timeline.end)
-                ? `${formatTimelineDate(timeline.start)} – ${formatTimelineDate(timeline.end)}`
-                : 'Schedule pending';
-            const checkpoints = [0, 25, 50, 75, 100];
-
-            const itemsHtml = timeline.items.map(item => {
-                const left = timeline.duration ? Math.min(96, Math.max(0, ((item.start - timeline.start) / timeline.duration) * 100)) : 0;
-                const width = timeline.duration ? Math.max(4, Math.min(100 - left, ((item.end - item.start) / timeline.duration) * 100)) : 100;
-                return `
-                    <div class="timeline-item ${item.status}" style="left: ${left}%; width: ${width}%">
-                        <div class="timeline-item-title">${item.title}</div>
-                        <div class="timeline-item-meta">${formatTimelineDate(item.start)} → ${formatTimelineDate(item.end)}</div>
-                    </div>
-                `;
-            }).join('');
-
-            return `
-                <div class="project-timeline-section">
-                    <div class="timeline-header">
-                        <span class="timeline-title">🗂 Project Timeline</span>
-                        <span class="timeline-range">${rangeLabel}</span>
-                    </div>
-                    <div class="timeline-track">
-                        ${checkpoints.map(point => `
-                            <div class="timeline-grid-line" style="left: ${point}%"></div>
-                            <div class="timeline-grid-label" style="left: ${point}%"><span>${point}%</span></div>
-                        `).join('')}
-                        <div class="timeline-items">
-                            ${itemsHtml}
-                        </div>
-                    </div>
-                    <div class="timeline-legend">
-                        <div class="timeline-legend-item"><span class="timeline-legend-dot pending"></span>Pending</div>
-                        <div class="timeline-legend-item"><span class="timeline-legend-dot active"></span>Active</div>
-                        <div class="timeline-legend-item"><span class="timeline-legend-dot review"></span>Review</div>
-                        <div class="timeline-legend-item"><span class="timeline-legend-dot done"></span>Done</div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderTasksSection(proj) {
-            const pendingTasks = proj.tasks.filter(t => t.status !== 'done');
-            const doneTasks = proj.tasks.filter(t => t.status === 'done');
-
-            if (pendingTasks.length === 0 && doneTasks.length === 0) {
-                return `
-                    <div class="tasks-section" style="text-align: center; color: var(--success);">
-                        Done No tasks yet. Ready to start!
-                    </div>
-                `;
-            }
-
-            const sections = [];
-
-            if (pendingTasks.length > 0) {
-                sections.push(`
-                    <div class="tasks-section">
-                        <div class="tasks-section-title">📋 Pending Tasks (${pendingTasks.length})</div>
-                        <div class="task-list">
-                            ${pendingTasks.slice(0, 5).map(task => renderCategoryTaskItem(task)).join('')}
-                            ${pendingTasks.length > 5 ? `
-                                <div class="category-task-item" style="justify-content: center; color: var(--text-muted); font-size: 11px; cursor: pointer;" onclick="event.stopPropagation(); openProject('${proj.id}', { status: 'pending' })">
-                                    +${pendingTasks.length - 5} more tasks
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                `);
-            }
-
-            if (doneTasks.length > 0) {
-                sections.push(`
-                    <div class="tasks-section">
-                        <div class="tasks-section-title">Done Completed Tasks (${doneTasks.length})</div>
-                        <div class="task-list">
-                            ${doneTasks.slice(0, 3).map(task => renderCategoryTaskItem(task)).join('')}
-                            ${doneTasks.length > 3 ? `
-                                <div class="category-task-item" style="justify-content: center; color: var(--success); font-size: 11px; cursor: pointer;" onclick="event.stopPropagation(); openProject('${proj.id}', { status: 'done' })">
-                                    +${doneTasks.length - 3} more completed
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                `);
-            }
-
-            sections.push(`
-                <div class="tasks-view-all-link" style="text-align: right; margin-top: 6px;">
-                    <button type="button" style="background: none; border: none; color: var(--crimson-bright); font-size: 11px; letter-spacing: 0.5px; cursor: pointer; text-transform: uppercase;" onclick="event.stopPropagation(); openProject('${proj.id}')">
-                        View full task list →
-                    </button>
-                </div>
-            `);
-
-            return sections.join('');
-        }
-
-        function renderCategoryTaskItem(task) {
-            const priorityClass = task.priority === 'high' ? 'high-priority' : (task.priority === 'medium' ? 'medium-priority' : 'low-priority');
-            const statusIcon = task.status === 'active' ? '▶' : (task.status === 'review' ? '👁' : (task.status === 'done' ? 'Done' : '○'));
-
-            return `
-                <div class="category-task-item ${priorityClass}">
-                    <div class="task-status ${task.status}">${statusIcon}</div>
-                    <div class="task-details">
-                        <div class="category-task-title">${task.title}</div>
-                        ${task.notes ? `<div class="task-notes">${task.notes}</div>` : ''}
-                        <div class="task-meta-row">
-                            <span class="priority-badge ${task.priority}">${task.priority}</span>
-                            <span>${task.status}</span>
-                            <span>👤 CHAD_YI</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Apply Filters
-        function applyFilters() {
-            const priorityFilter = document.getElementById('filter-priority').value;
-            const statusFilter = document.getElementById('filter-status').value;
-            const agentFilter = document.getElementById('filter-agent').value;
-            const sortBy = document.getElementById('sort-by').value;
-
-            const cards = document.querySelectorAll('.project-card');
-            let visibleCount = 0;
-
-            cards.forEach(card => {
-                const cardPriority = card.dataset.priority;
-                const cardStatus = card.dataset.status;
-                const cardAgent = card.dataset.agent;
-
-                let visible = true;
-                if (priorityFilter && cardPriority !== priorityFilter) visible = false;
-                if (statusFilter && cardStatus !== statusFilter) visible = false;
-                if (agentFilter && cardAgent !== agentFilter) visible = false;
-
-                if (visible) {
-                    card.classList.remove('filtered-out');
-                    visibleCount++;
-                } else {
-                    card.classList.add('filtered-out');
-                }
-            });
-
-            // Sort visible cards
-            const sections = document.querySelectorAll('.category-section');
-            sections.forEach(section => {
-                const grid = section.querySelector('.projects-grid');
-                const sectionCards = Array.from(grid.querySelectorAll('.project-card:not(.filtered-out)'));
-
-                sectionCards.sort((a, b) => {
-                    switch(sortBy) {
-                        case 'name': return a.dataset.project.localeCompare(b.dataset.project);
-                        case 'due': return parseInt(a.dataset.due) - parseInt(b.dataset.due);
-                        case 'progress': return parseInt(b.dataset.progress) - parseInt(a.dataset.progress);
-                        case 'tasks': return parseInt(b.dataset.tasks) - parseInt(a.dataset.tasks);
-                        default: return 0;
-                    }
-                });
-
-                sectionCards.forEach(card => grid.appendChild(card));
-            });
-
-            document.getElementById('cat-no-results').style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-
-        // Clear Filters
-        function clearFilters() {
-            document.getElementById('filter-priority').value = '';
-            document.getElementById('filter-status').value = '';
-            document.getElementById('filter-agent').value = '';
-            document.getElementById('sort-by').value = 'name';
-            applyFilters();
-        }
-
-        // Open Project
-        function openProject(projectId, options = {}) {
-            if (window.ProjectTasksModal) {
-                window.ProjectTasksModal.open(projectId, options);
-            } else {
-                alert(`Opening project ${projectId}...`);
-            }
-        }
-
-        // Add Task
-        function addTask(projectId) {
-            alert(`Add new task to project ${projectId}...`);
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-nav-menu');
+            menu.classList.toggle('open');
         }
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', loadData);
+        document.addEventListener('DOMContentLoaded', () => {
+            renderRecentUploads();
+        });
     </script>
 </body>
 </html>

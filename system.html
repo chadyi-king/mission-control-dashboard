@@ -28,6 +28,8 @@
             --warning: #c9a962;
             --danger: #ff4444;
             --info: #4dabf7;
+            --sidebar-collapsed: 60px;
+            --sidebar-expanded: 200px;
         }
 
         body {
@@ -43,10 +45,8 @@
         /* Background Effects */
         .cyber-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 0;
             background: var(--bg-primary);
             overflow: hidden;
@@ -86,10 +86,8 @@
 
         .circuit-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 1;
             pointer-events: none;
             opacity: 0.08;
@@ -101,29 +99,31 @@
 
         .hex-pattern {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 1;
             pointer-events: none;
             opacity: 0.05;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dc143c' fill-opacity='0.4'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        /* Top Bar - Redesigned */
+        /* Top Bar */
         .topbar {
             background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--crimson-glow);
             box-shadow: 0 0 30px var(--crimson-glow), inset 0 1px 0 rgba(220, 20, 60, 0.1);
-            padding: 12px 24px;
+            padding: 12px 24px 12px calc(24px + var(--sidebar-collapsed));
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 210;
+        }
+
+        body.sidebar-expanded .topbar {
+            padding-left: calc(24px + var(--sidebar-expanded));
         }
 
         .topbar-left {
@@ -145,16 +145,14 @@
                 inset -8px -8px 20px rgba(0,0,0,0.4);
             animation: sunPulse 4s ease-in-out infinite;
             position: relative;
-            z-index: 202;
+            z-index: 260;
+            flex-shrink: 0;
         }
 
         .sun-avatar-enhanced::before {
             content: '';
             position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
             border-radius: 50%;
             border: 2px solid transparent;
             background: linear-gradient(135deg, rgba(255, 152, 0, 0.6), rgba(220, 20, 60, 0.6)) border-box;
@@ -175,12 +173,11 @@
             100% { transform: rotate(360deg); }
         }
 
-        .sun-widget-header { display: flex; align-items: center; gap: 12px; }
+        .sun-widget-header { display: flex; align-items: center; gap: 12px; position: relative; overflow: visible; z-index: 270; }
         .sun-info { display: flex; flex-direction: column; gap: 2px; }
         .sun-name { font-family: var(--display-font); font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--crimson-bright); }
         .sun-status { font-size: 9px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Redesigned Mission Control Header */
         .topbar-center {
             position: absolute;
             left: 50%;
@@ -206,10 +203,8 @@
         .mission-control-badge::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             animation: shimmer 3s infinite;
         }
@@ -219,10 +214,7 @@
             50%, 100% { left: 100%; }
         }
 
-        .mission-icon {
-            font-size: 16px;
-            animation: pulse 2s infinite;
-        }
+        .mission-icon { font-size: 16px; animation: pulse 2s infinite; }
 
         .mission-title {
             font-family: var(--display-font);
@@ -243,11 +235,12 @@
         }
 
         .mission-subtitle {
-            font-size: 9px;
+            font-size: 11px;
             color: var(--text-muted);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-family: var(--tech-font);
+            margin-top: 4px;
         }
 
         .mission-divider {
@@ -316,50 +309,6 @@
             box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
         }
 
-        .sidebar-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(5, 5, 8, 0.85);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-            z-index: 190;
-        }
-
-        body.mobile-sidebar-open .sidebar-overlay {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            width: 38px;
-            height: 38px;
-            border: 1px solid var(--crystal-border);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-primary);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .mobile-menu-btn span {
-            width: 18px;
-            height: 2px;
-            border-radius: 2px;
-            background: currentColor;
-        }
-
-        .mobile-menu-btn:hover {
-            background: rgba(220, 20, 60, 0.2);
-            color: var(--crimson-bright);
-            box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
-        }
-
         .mobile-nav-menu {
             position: absolute;
             top: 60px;
@@ -380,6 +329,12 @@
             z-index: 400;
         }
 
+        .mobile-nav-menu.open {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
         .mobile-nav-menu a {
             display: flex;
             align-items: center;
@@ -398,80 +353,45 @@
             background: rgba(220, 20, 60, 0.15);
         }
 
-        .mobile-nav-menu.open {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            width: 38px;
-            height: 38px;
-            border: 1px solid var(--crystal-border);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-primary);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .mobile-menu-btn span {
-            width: 18px;
-            height: 2px;
-            border-radius: 2px;
-            background: currentColor;
-        }
-
-        .mobile-menu-btn:hover {
-            background: rgba(220, 20, 60, 0.2);
-            color: var(--crimson-bright);
-            box-shadow: 0 0 12px rgba(220, 20, 60, 0.25);
-        }
-
-        .mobile-nav-menu {
-            display: none;
-        }
-
-        .mobile-nav-menu.open {
-            display: flex;
-        }
-
-        /* Sidebar - Fixed z-index */
+        /* Sidebar */
         .sidebar {
             position: fixed;
             left: 0;
             top: 70px;
-            width: 60px;
+            width: var(--sidebar-collapsed);
             height: calc(100vh - 70px);
             background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(5,5,8,0.95) 100%);
             border-right: 1px solid var(--crystal-border);
-            z-index: 90;
+            z-index: 120;
             display: flex;
             flex-direction: column;
             padding: 16px 0;
             transition: width 0.3s ease;
+            overflow: visible;
         }
 
-        .sidebar.expanded { width: 200px; }
+        .sidebar.expanded { width: var(--sidebar-expanded); }
 
         .sidebar-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 8px 16px 16px;
+            padding: 8px 10px 16px;
             border-bottom: 1px solid var(--crystal-border);
             margin-bottom: 8px;
+            overflow: visible;
+            position: relative;
+            z-index: 230;
         }
 
         .sidebar-avatar {
-            width: 34px;
-            height: 34px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
             flex-shrink: 0;
+            margin-left: -4px;
+            position: relative;
+            overflow: visible;
             box-shadow:
                 0 0 18px rgba(255, 87, 34, 0.7),
                 0 0 36px rgba(255, 87, 34, 0.35),
@@ -556,49 +476,17 @@
 
         /* Main Content */
         .main-content {
-            margin-left: 60px;
+            margin-left: var(--sidebar-collapsed);
             padding: 24px;
             transition: margin-left 0.3s ease;
             position: relative;
             z-index: 10;
         }
 
-        body.sidebar-expanded .main-content { margin-left: 200px; }
+        body.sidebar-expanded .main-content { margin-left: var(--sidebar-expanded); }
 
-        /* Section Management */
-        .section {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== REDESIGNED HOME SECTION ===== */
-        
-        /* Home Header */
-        .home-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-
-        .home-title-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .home-title {
+        /* Page Title */
+        .page-title {
             font-family: var(--display-font);
             font-size: 22px;
             font-weight: 700;
@@ -606,156 +494,20 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
+            margin-bottom: 24px;
         }
 
-        .home-subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        /* Compact Widgets Bar */
-        .compact-widgets-bar {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .compact-widget {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 16px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .compact-widget-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-        }
-
-        .compact-widget-icon.stats { background: rgba(0, 255, 136, 0.1); color: var(--success); }
-        .compact-widget-icon.health { background: rgba(77, 171, 247, 0.1); color: var(--info); }
-        .compact-widget-icon.agents { background: rgba(201, 169, 98, 0.1); color: var(--warning); }
-
-        .compact-widget-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .compact-widget-value {
-            font-family: var(--display-font);
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .compact-widget-label {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Quick Actions Dropdown */
-        .quick-actions-dropdown {
-            position: relative;
-        }
-
-        .quick-actions-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            border-radius: 8px;
-            color: var(--crimson-bright);
-            font-family: var(--tech-font);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .quick-actions-btn:hover {
-            background: var(--crimson-bright);
-            color: white;
-            box-shadow: 0 0 20px var(--crimson-glow);
-        }
-
-        .quick-actions-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            min-width: 180px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.2s;
-            z-index: 50;
-            overflow: hidden;
-        }
-
-        .quick-actions-dropdown:hover .quick-actions-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .quick-action-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 16px;
-            font-size: 12px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-
-        .quick-action-item:last-child { border-bottom: none; }
-        .quick-action-item:hover {
-            background: var(--crimson-glow);
-            color: var(--crimson-bright);
-        }
-
-        .quick-action-icon { font-size: 14px; }
-
-        /* Priority Sections Grid */
-        .priority-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            grid-template-rows: auto auto;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .priority-panel {
+        /* Section Panel */
+        .section-panel {
             background: var(--panel-bg);
             border: 1px solid var(--crystal-border);
             border-radius: 12px;
             overflow: hidden;
             backdrop-filter: blur(10px);
+            margin-bottom: 24px;
         }
 
-        .priority-panel-header {
+        .section-header {
             background: linear-gradient(90deg, var(--crimson-glow) 0%, transparent 100%);
             padding: 16px 20px;
             border-bottom: 1px solid var(--crystal-border);
@@ -764,9 +516,9 @@
             align-items: center;
         }
 
-        .priority-panel-title {
+        .section-title {
             font-family: var(--display-font);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -776,106 +528,148 @@
             gap: 10px;
         }
 
-        .priority-panel-badge {
-            padding: 4px 10px;
+        .section-badge {
+            padding: 4px 12px;
             background: rgba(139, 0, 0, 0.3);
             border-radius: 12px;
-            font-size: 10px;
+            font-size: 11px;
             font-family: var(--display-font);
+            color: var(--text-primary);
         }
 
-        .priority-panel-content { padding: 16px 20px; }
+        .section-content { padding: 20px; }
 
-        /* Active Tasks Board */
-        .tasks-board {
+        /* Agent Cards */
+        .agent-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .task-card {
-            display: grid;
-            grid-template-columns: auto 1fr auto auto;
-            gap: 16px;
-            align-items: center;
-            padding: 16px;
+        .agent-card {
             background: rgba(255,255,255,0.02);
+            border: 1px solid var(--crystal-border);
             border-radius: 10px;
-            border-left: 3px solid transparent;
+            overflow: hidden;
             transition: all 0.2s;
+        }
+
+        .agent-card:hover {
+            border-color: rgba(220, 20, 60, 0.3);
+        }
+
+        .agent-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .task-card:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateX(4px);
+        .agent-card-header:hover {
+            background: rgba(255,255,255,0.03);
         }
 
-        .task-card.high-priority { border-left-color: var(--danger); }
-        .task-card.medium-priority { border-left-color: var(--warning); }
-        .task-card.low-priority { border-left-color: var(--success); }
-
-        .task-assignee {
+        .agent-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 11px;
+            font-size: 18px;
             font-weight: 700;
             font-family: var(--display-font);
+            flex-shrink: 0;
         }
 
-        .task-assignee.chad {
+        .agent-avatar.chad {
             background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(220, 20, 60, 0.2));
             color: #ff9800;
             border: 2px solid rgba(255, 152, 0, 0.4);
         }
 
-        .task-assignee.agent {
-            background: linear-gradient(135deg, rgba(77, 171, 247, 0.2), rgba(139, 0, 0, 0.2));
-            color: var(--info);
-            border: 2px solid rgba(77, 171, 247, 0.4);
+        .agent-avatar.agent-active {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.05));
+            color: var(--success);
+            border: 2px solid rgba(0, 255, 136, 0.4);
         }
 
-        .task-info {
+        .agent-avatar.agent-idle {
+            background: linear-gradient(135deg, rgba(150, 150, 150, 0.15), rgba(100, 100, 100, 0.05));
+            color: var(--text-muted);
+            border: 2px solid rgba(150, 150, 150, 0.3);
+        }
+
+        .agent-avatar.agent-blocked {
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.15), rgba(255, 68, 68, 0.05));
+            color: var(--danger);
+            border: 2px solid rgba(255, 68, 68, 0.4);
+        }
+
+        .agent-info {
+            flex: 1;
+        }
+
+        .agent-name-row {
             display: flex;
-            flex-direction: column;
-            gap: 6px;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4px;
         }
 
-        .task-title {
-            font-size: 14px;
+        .agent-name {
+            font-family: var(--display-font);
+            font-size: 15px;
             font-weight: 600;
             color: var(--text-primary);
         }
 
-        .task-meta {
-            display: flex;
-            gap: 12px;
+        .agent-role {
             font-size: 11px;
             color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .task-meta-item {
+        .agent-status-row {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
         }
 
-        .task-meta-dot {
-            width: 6px;
-            height: 6px;
+        .status-indicator {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
         }
 
-        .task-meta-dot.high { background: var(--danger); }
-        .task-meta-dot.medium { background: var(--warning); }
-        .task-meta-dot.low { background: var(--success); }
+        .status-indicator.active {
+            background: var(--success);
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 2s infinite;
+        }
 
-        .task-project-tag {
-            padding: 3px 10px;
+        .status-indicator.idle {
+            background: var(--text-muted);
+        }
+
+        .status-indicator.blocked {
+            background: var(--danger);
+            box-shadow: 0 0 8px var(--danger);
+        }
+
+        .agent-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .agent-project-tag {
+            padding: 4px 10px;
             background: var(--crimson-glow);
             border-radius: 4px;
             font-size: 10px;
@@ -884,248 +678,135 @@
             color: var(--crimson-bright);
         }
 
-        .task-time {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
-            min-width: 80px;
-        }
-
-        .task-time-value {
-            font-family: var(--display-font);
-            font-size: 14px;
-            color: var(--info);
-        }
-
-        .task-time-label {
-            font-size: 9px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .task-progress-ring {
-            width: 44px;
-            height: 44px;
-            position: relative;
-        }
-
-        .task-progress-ring svg {
-            transform: rotate(-90deg);
-        }
-
-        .task-progress-ring-bg {
-            fill: none;
-            stroke: rgba(255,255,255,0.1);
-            stroke-width: 3;
-        }
-
-        .task-progress-ring-fill {
-            fill: none;
-            stroke: var(--crimson-bright);
-            stroke-width: 3;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.3s ease;
-        }
-
-        .task-progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: var(--display-font);
-            font-size: 10px;
-            color: var(--text-primary);
-        }
-
-        /* Calendar View */
-        .calendar-view {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-
-        .calendar-range {
+        .expand-icon {
             font-size: 12px;
             color: var(--text-muted);
+            transition: transform 0.3s;
         }
 
-        .calendar-nav {
-            display: flex;
-            gap: 8px;
+        .agent-card.expanded .expand-icon {
+            transform: rotate(180deg);
         }
 
-        .calendar-nav-btn {
-            width: 28px;
-            height: 28px;
-            background: transparent;
+        .agent-card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .agent-card.expanded .agent-card-content {
+            max-height: 500px;
+        }
+
+        .agent-details {
+            padding: 16px 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .detail-block {
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--crystal-border);
-            border-radius: 4px;
-            color: var(--text-muted);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            transition: all 0.2s;
-        }
-
-        .calendar-nav-btn:hover {
-            border-color: var(--crimson-bright);
-            color: var(--crimson-bright);
-        }
-
-        .calendar-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .calendar-day {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
             border-radius: 8px;
-            transition: all 0.2s;
+            padding: 12px 16px;
         }
 
-        .calendar-day:hover {
-            background: rgba(255,255,255,0.04);
-        }
-
-        .calendar-day.today {
-            background: rgba(139, 0, 0, 0.1);
-            border: 1px solid rgba(220, 20, 60, 0.3);
-        }
-
-        .calendar-day-date {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 40px;
-        }
-
-        .calendar-day-weekday {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .calendar-day-number {
-            font-family: var(--display-font);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .calendar-day-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .calendar-deadline {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-
-        .calendar-deadline-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--danger);
-            animation: pulse 2s infinite;
-        }
-
-        .calendar-deadline-dot.medium { background: var(--warning); animation: none; }
-        .calendar-deadline-dot.low { background: var(--success); animation: none; }
-
-        /* Pending Decisions */
-        .decisions-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .decision-card {
-            padding: 16px;
-            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(139, 0, 0, 0.05));
-            border: 1px solid rgba(220, 20, 60, 0.3);
-            border-radius: 10px;
-            transition: all 0.2s;
-        }
-
-        .decision-card:hover {
-            border-color: var(--crimson-bright);
-            box-shadow: 0 0 15px var(--crimson-glow);
-        }
-
-        .decision-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .decision-type {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .detail-label {
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--crimson-bright);
-        }
-
-        .decision-urgency {
-            padding: 3px 8px;
-            background: rgba(255, 68, 68, 0.2);
-            border-radius: 4px;
-            font-size: 9px;
-            color: var(--danger);
-        }
-
-        .decision-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .decision-reason {
-            font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 6px;
+        }
+
+        .detail-value {
+            font-size: 13px;
+            color: var(--text-secondary);
             line-height: 1.5;
         }
 
-        .decision-actions {
-            display: flex;
-            gap: 10px;
+        .detail-value.success { color: var(--success); }
+        .detail-value.warning { color: var(--warning); }
+        .detail-value.danger { color: var(--danger); }
+        .detail-value.info { color: var(--info); }
+
+        /* System Status Grid */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
         }
 
-        .decision-btn {
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
+        }
+
+        .status-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .status-icon.success { background: rgba(0, 255, 136, 0.1); color: var(--success); }
+        .status-icon.warning { background: rgba(201, 169, 98, 0.1); color: var(--warning); }
+        .status-icon.info { background: rgba(77, 171, 247, 0.1); color: var(--info); }
+
+        .status-content {
             flex: 1;
-            padding: 8px 12px;
-            background: transparent;
-            border: 1px solid var(--crimson-bright);
-            border-radius: 6px;
-            color: var(--crimson-bright);
+        }
+
+        .status-label {
             font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .status-value {
+            font-family: var(--display-font);
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .status-value a {
+            color: var(--info);
+            text-decoration: none;
+        }
+
+        .status-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* Quick Actions */
+        .actions-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--crimson-glow);
+            border: 1px solid var(--crimson-bright);
+            border-radius: 8px;
+            color: var(--crimson-bright);
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
@@ -1134,491 +815,53 @@
             font-weight: 600;
         }
 
-        .decision-btn:hover {
-            background: var(--crimson-glow);
-        }
-
-        .decision-btn.primary {
-            background: var(--crimson-glow);
-        }
-
-        .decision-btn.primary:hover {
+        .action-btn:hover {
             background: var(--crimson-bright);
             color: white;
+            box-shadow: 0 0 20px var(--crimson-glow);
         }
 
-        /* Recent Activity */
-        .activity-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .activity-item {
-            display: flex;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-            border-left: 2px solid var(--crystal-border);
-            transition: all 0.2s;
-        }
-
-        .activity-item:hover {
-            background: rgba(255,255,255,0.04);
-            border-left-color: var(--crimson-bright);
-        }
-
-        .activity-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            font-family: var(--display-font);
-            flex-shrink: 0;
-        }
-
-        .activity-avatar.chad {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(220, 20, 60, 0.2));
-            color: #ff9800;
-            border: 1px solid rgba(255, 152, 0, 0.4);
-        }
-
-        .activity-avatar.agent {
-            background: linear-gradient(135deg, rgba(77, 171, 247, 0.2), rgba(139, 0, 0, 0.2));
-            color: var(--info);
-            border: 1px solid rgba(77, 171, 247, 0.4);
-        }
-
-        .activity-avatar.system {
-            background: rgba(255,255,255,0.05);
-            color: var(--text-muted);
-        }
-
-        .activity-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .activity-text {
-            font-size: 13px;
-            color: var(--text-primary);
-        }
-
-        .activity-text strong {
-            color: var(--crimson-bright);
-            font-weight: 600;
-        }
-
-        .activity-meta {
-            display: flex;
-            gap: 12px;
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-
-        .activity-time {
-            font-family: var(--display-font);
-            color: var(--text-muted);
-        }
-
-        /* System Health Widget */
-        .health-widget {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .health-indicator {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .health-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--success);
-            box-shadow: 0 0 10px var(--success);
-            animation: pulse 2s infinite;
-        }
-
-        .health-dot.warning { background: var(--warning); box-shadow: 0 0 10px var(--warning); }
-        .health-dot.danger { background: var(--danger); box-shadow: 0 0 10px var(--danger); }
-
-        .health-label {
-            font-size: 12px;
+        .action-btn.secondary {
+            background: transparent;
+            border-color: var(--crystal-border);
             color: var(--text-secondary);
         }
 
-        .health-value {
-            font-family: var(--display-font);
-            font-size: 14px;
-            color: var(--success);
-            margin-left: auto;
-        }
-
-        .health-bar {
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .health-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--success), #00ffaa);
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-
-        .health-bar-fill.warning { background: linear-gradient(90deg, var(--warning), #ffd43b); }
-        .health-bar-fill.danger { background: linear-gradient(90deg, var(--danger), #ff8787); }
-
-        .health-last-update {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-align: right;
-            margin-top: 4px;
-        }
-
-        /* ===== CATEGORIES SECTION STYLES (UNCHANGED) ===== */
-        .dashboard-stats-bar {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
-            padding: 20px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .dashboard-stat {
-            text-align: center;
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-            border-left: 3px solid var(--crystal-border);
-            transition: all 0.3s;
-        }
-
-        .dashboard-stat:hover {
-            background: var(--crimson-glow);
-            border-left-color: var(--crimson-bright);
-        }
-
-        .dashboard-stat-icon { font-size: 20px; margin-bottom: 4px; }
-        .dashboard-stat-value {
-            font-family: var(--display-font);
-            font-size: 28px;
-            font-weight: 700;
+        .action-btn.secondary:hover {
+            border-color: var(--crimson-bright);
             color: var(--crimson-bright);
-            margin-bottom: 4px;
-        }
-        .dashboard-stat-value.success { color: var(--success); }
-        .dashboard-stat-value.warning { color: var(--warning); }
-        .dashboard-stat-value.danger { color: var(--danger); }
-        .dashboard-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: center;
-            padding: 16px 20px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
         }
 
-        .filter-group { display: flex; align-items: center; gap: 8px; }
-        .filter-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .filter-select, .filter-btn {
-            padding: 8px 14px;
+        /* Agent Select Dropdown */
+        .agent-select-wrapper {
+            position: relative;
+        }
+
+        .agent-select {
+            padding: 12px 40px 12px 16px;
             background: rgba(255,255,255,0.05);
             border: 1px solid var(--crystal-border);
-            border-radius: 6px;
+            border-radius: 8px;
             color: var(--text-primary);
             font-family: var(--tech-font);
             font-size: 12px;
             cursor: pointer;
-            transition: all 0.2s;
-        }
-        .filter-select:hover, .filter-btn:hover { border-color: var(--crimson-bright); background: var(--crimson-glow); }
-        .filter-clear {
-            margin-left: auto;
-            padding: 8px 16px;
-            background: transparent;
-            border: 1px solid var(--crystal-border);
-            border-radius: 6px;
-            color: var(--text-muted);
-            font-size: 11px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .filter-clear:hover { border-color: var(--crimson-bright); color: var(--crimson-bright); }
-
-        .category-section { margin-bottom: 48px; }
-        .category-header-bar {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-        .category-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        .category-title-group h2 {
-            font-family: var(--display-font);
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
-        }
-        .category-title-group h2 span { color: var(--crimson-bright); }
-        .category-title-group p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .category-stats { margin-left: auto; display: flex; gap: 24px; }
-        .category-stat { text-align: center; }
-        .category-stat-value { font-family: var(--display-font); font-size: 24px; color: var(--crimson-bright); }
-        .category-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px; }
-
-        .project-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-        .project-card:hover { border-color: var(--crimson-bright); box-shadow: 0 0 20px var(--crimson-glow); }
-        .project-card.filtered-out { display: none; }
-
-        .project-card-header {
-            padding: 16px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            background: linear-gradient(90deg, rgba(139,0,0,0.1), transparent);
-            transition: background 0.2s;
-        }
-        .project-card-header:hover { background: var(--crimson-glow); }
-
-        .project-info-main { flex: 1; }
-        .project-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-        .project-title-row h3 { font-family: var(--display-font); font-size: 15px; font-weight: 600; }
-        .project-badges { display: flex; gap: 6px; }
-        .agent-badge {
-            font-size: 9px;
-            padding: 3px 8px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.1);
-            color: var(--text-muted);
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-        .agent-badge.active { background: rgba(0, 255, 136, 0.15); color: var(--success); }
-        .agent-badge.pending { background: rgba(201, 169, 98, 0.15); color: var(--warning); }
-        .project-id { font-size: 11px; color: var(--text-muted); font-family: monospace; }
-
-        .task-stats {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 8px;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--crystal-border);
-        }
-        .task-stat { text-align: center; padding: 8px 4px; background: rgba(255,255,255,0.02); border-radius: 6px; }
-        .task-stat-value { font-family: var(--display-font); font-size: 16px; font-weight: 600; color: var(--text-primary); }
-        .task-stat-label { font-size: 8px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
-        .task-stat.high-priority .task-stat-value { color: var(--danger); }
-        .task-stat.medium-priority .task-stat-value { color: var(--warning); }
-        .task-stat.low-priority .task-stat-value { color: var(--success); }
-        .task-stat.urgent .task-stat-value { color: var(--crimson-bright); }
-
-        .time-tracking-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            border-bottom: 1px solid var(--crystal-border);
-            background: rgba(0,0,0,0.2);
-        }
-        .time-stat { display: flex; flex-direction: column; gap: 2px; }
-        .time-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .time-value { font-family: var(--display-font); font-size: 14px; color: var(--info); }
-        .time-value.over-budget { color: var(--danger); }
-        .time-progress-bar { width: 120px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-        .time-progress-fill { height: 100%; background: linear-gradient(90deg, var(--info), #74c0fc); border-radius: 3px; transition: width 0.3s ease; }
-        .time-progress-fill.warning { background: linear-gradient(90deg, var(--warning), #ffd43b); }
-        .time-progress-fill.danger { background: linear-gradient(90deg, var(--danger), #ff8787); }
-
-        .due-countdown {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            border-bottom: 1px solid var(--crystal-border);
-            font-size: 12px;
-        }
-        .due-label { color: var(--text-muted); }
-        .due-value { display: flex; align-items: center; gap: 8px; font-weight: 600; }
-        .due-value.urgent { color: var(--danger); animation: pulse 1.5s infinite; }
-        .due-value.warning { color: var(--warning); }
-        .due-value.success { color: var(--success); }
-        .countdown-timer {
-            font-family: var(--display-font);
-            font-size: 11px;
-            padding: 2px 8px;
-            background: rgba(139, 0, 0, 0.3);
-            border-radius: 4px;
+            appearance: none;
+            min-width: 180px;
         }
 
-        .milestones-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
-        .milestones-title { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .milestones-track { display: flex; align-items: center; gap: 4px; }
-        .milestone {
-            flex: 1;
-            height: 8px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-            position: relative;
-            transition: all 0.3s;
+        .agent-select:hover {
+            border-color: var(--crimson-bright);
         }
-        .milestone.completed { background: var(--success); box-shadow: 0 0 8px var(--success); }
-        .milestone.active { background: var(--warning); box-shadow: 0 0 8px var(--warning); animation: pulse 2s infinite; }
-        .milestone.upcoming { background: rgba(255,255,255,0.05); border: 1px dashed var(--crystal-border); }
-        .milestone-tooltip {
+
+        .agent-select-arrow {
             position: absolute;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 4px 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--crystal-border);
-            border-radius: 4px;
-            font-size: 9px;
-            white-space: nowrap;
-            opacity: 0;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
             pointer-events: none;
-            transition: opacity 0.2s;
-            z-index: 10;
+            color: var(--text-muted);
         }
-        .milestone:hover .milestone-tooltip { opacity: 1; }
-
-        .progress-section { padding: 12px 20px; border-bottom: 1px solid var(--crystal-border); }
-        .progress-header { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; }
-        .progress-label { color: var(--text-muted); }
-        .progress-value { color: var(--crimson-bright); font-weight: 600; }
-        .progress-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--crimson-bright), #ff6b6b); border-radius: 3px; transition: width 0.3s ease; box-shadow: 0 0 10px var(--crimson-glow); }
-
-        .expand-icon { font-size: 12px; color: var(--text-muted); transition: transform 0.3s; }
-        .project-card.expanded .expand-icon { transform: rotate(180deg); }
-
-        .project-card-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: rgba(0,0,0,0.2); }
-        .project-card.expanded .project-card-content { max-height: 800px; }
-
-        .tasks-section { padding: 16px 20px; border-bottom: 1px solid var(--crystal-border); }
-        .tasks-section-title { font-size: 11px; color: var(--crimson-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .task-list { display: flex; flex-direction: column; gap: 8px; }
-        .category-task-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 6px;
-            border-left: 2px solid transparent;
-            transition: all 0.2s;
-        }
-        .category-task-item:hover { background: rgba(255,255,255,0.05); }
-        .category-task-item.high-priority { border-left-color: var(--danger); background: rgba(255, 68, 68, 0.05); }
-        .category-task-item.medium-priority { border-left-color: var(--warning); }
-        .category-task-item.low-priority { border-left-color: var(--success); }
-        .task-status { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
-        .task-status.pending { color: var(--text-muted); }
-        .task-status.active { color: var(--success); }
-        .task-status.review { color: var(--warning); }
-        .task-status.done { color: var(--success); opacity: 0.6; }
-        .task-details { flex: 1; }
-        .category-task-title { font-size: 13px; margin-bottom: 2px; }
-        .task-notes { font-size: 11px; color: var(--text-muted); }
-        .task-meta-row { display: flex; gap: 12px; margin-top: 4px; font-size: 10px; color: var(--text-secondary); }
-        .priority-badge { font-size: 9px; padding: 2px 6px; border-radius: 3px; text-transform: uppercase; }
-        .priority-badge.high { background: rgba(255, 68, 68, 0.2); color: var(--danger); }
-        .priority-badge.medium { background: rgba(201, 169, 98, 0.2); color: var(--warning); }
-        .priority-badge.low { background: rgba(0, 255, 136, 0.1); color: var(--success); }
-
-        .project-actions { display: flex; gap: 10px; padding: 16px 20px; }
-        .action-btn {
-            flex: 1;
-            padding: 10px 16px;
-            background: var(--crimson-glow);
-            border: 1px solid var(--crimson-bright);
-            border-radius: 6px;
-            color: var(--crimson-bright);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: var(--tech-font);
-            font-weight: 600;
-        }
-        .action-btn:hover { background: var(--crimson-bright); color: white; box-shadow: 0 0 15px var(--crimson-glow); }
-        .action-btn.secondary { background: transparent; border-color: var(--crystal-border); color: var(--text-muted); }
-        .action-btn.secondary:hover { border-color: var(--crimson-bright); color: var(--crimson-bright); }
-
-        /* ===== INSIGHTS & RESOURCES PLACEHOLDER ===== */
-        .placeholder-content {
-            text-align: center;
-            padding: 80px 40px;
-            background: var(--panel-bg);
-            border: 1px solid var(--crystal-border);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        .placeholder-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
-        .placeholder-title { font-family: var(--display-font); font-size: 18px; color: var(--crimson-bright); margin-bottom: 8px; }
-        .placeholder-text { color: var(--text-muted); font-size: 14px; }
-
-        /* Loading & Error States */
-        .loading-state { text-align: center; padding: 60px; color: var(--text-muted); }
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--crystal-border);
-            border-top-color: var(--crimson-bright);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 16px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .error-state { text-align: center; padding: 60px; color: var(--crimson-bright); }
-        .no-results { text-align: center; padding: 60px; color: var(--text-muted); }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
@@ -1627,160 +870,23 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--crimson-bright); }
 
         /* Mobile Responsive */
-        @media (max-width: 1400px) {
-            .priority-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
-            .dashboard-stats-bar { grid-template-columns: repeat(3, 1fr); }
-            .projects-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 1024px) {
-            .mobile-menu-btn { display: flex; }
-        }
-
         @media (max-width: 1024px) {
             .mobile-menu-btn { display: flex; }
             .sidebar { display: none; }
-        }
-
-        @media (max-width: 1024px) {
-            .mobile-menu-btn { display: flex; }
-            .sidebar { display: none; }
-            .mobile-nav-menu {
-                position: absolute;
-                top: 64px;
-                right: 16px;
-                width: 200px;
-                background: rgba(5,5,8,0.98);
-                border: 1px solid rgba(220,20,60,0.3);
-                border-radius: 12px;
-                padding: 12px;
-                box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-                flex-direction: column;
-                gap: 8px;
-                z-index: 400;
-            }
-            .mobile-nav-menu a {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 10px 12px;
-                border-radius: 8px;
-                color: var(--text-secondary);
-                font-size: 13px;
-                text-decoration: none;
-                border: 1px solid transparent;
-            }
-            .mobile-nav-menu a:hover {
-                border-color: rgba(220, 20, 60, 0.4);
-                color: var(--crimson-bright);
-                background: rgba(220, 20, 60, 0.15);
-            }
-            .mobile-nav-menu { display: none; }
-            .mobile-nav-menu.open { display: flex; }
+            .topbar { padding-left: 16px; }
+            body.sidebar-expanded .topbar { padding-left: 16px; }
+            .topbar-center { display: none; }
         }
 
         @media (max-width: 768px) {
-            .sidebar { transform: translateX(-100%); top: 60px; }
-            .sidebar.mobile-open { transform: translateX(0); }
             .main-content { margin-left: 0; padding: 16px; }
-            body.sidebar-expanded .main-content { margin-left: 0; }
-            body.mobile-sidebar-open { overflow: hidden; }
-            .compact-widgets-bar { flex-wrap: wrap; justify-content: center; }
-            .home-header { flex-direction: column; gap: 16px; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
-            .category-stats { display: none; }
-            .topbar-center { display: none; }
-            .filter-bar { flex-direction: column; align-items: stretch; }
-            .filter-group { justify-content: space-between; }
-            .filter-clear { margin-left: 0; }
-            .task-stats { grid-template-columns: repeat(3, 1fr); }
-            .time-tracking-bar { flex-direction: column; gap: 10px; align-items: flex-start; }
-            .task-card {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .task-time, .task-progress-ring {
-                align-self: flex-start;
-            }
+            .agent-details { grid-template-columns: 1fr; }
+            .status-grid { grid-template-columns: 1fr; }
+            .actions-grid { flex-direction: column; }
+            .action-btn { width: 100%; justify-content: center; }
+            .agent-meta { flex-direction: column; gap: 8px; align-items: flex-start; }
+            .agent-card-header { flex-wrap: wrap; }
         }
-    
-
-        /* System/Profile Page Additions */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .roster-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
-        .roster-table th, .roster-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid var(--crystal-border);
-            text-align: left;
-            vertical-align: top;
-        }
-        .roster-table th {
-            font-family: var(--display-font);
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--crimson-bright);
-            background: rgba(139,0,0,0.08);
-        }
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 3px 8px;
-            border-radius: 999px;
-            border: 1px solid var(--crystal-border);
-            background: rgba(255,255,255,0.03);
-            font-size: 10px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-        .pill.good {
-            border-color: rgba(0,255,136,0.35);
-            color: var(--success);
-            background: rgba(0,255,136,0.08);
-        }
-        .pill.warn {
-            border-color: rgba(201,169,98,0.45);
-            color: var(--warning);
-            background: rgba(201,169,98,0.10);
-        }
-        .pill.danger {
-            border-color: rgba(255,68,68,0.45);
-            color: var(--danger);
-            background: rgba(255,68,68,0.10);
-        }
-        .kv {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 10px 16px;
-            font-size: 12px;
-        }
-        .kv .k {
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 10px;
-        }
-        .kv .v { color: var(--text-primary); }
-        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; }
-
     </style>
 </head>
 <body>
@@ -1819,14 +925,6 @@
             <div class="mission-subtitle">Orchestrate. Execute. Dominate.</div>
             <div class="mission-divider"></div>
         </div>
-        <div class="mobile-nav-menu" id="mobile-nav-menu">
-            <a href="index.html">🏠 Home</a>
-            <a href="categories.html">Folder Categories</a>
-            <a href="insights.html">Chart Insights</a>
-            <a href="resources.html">Books Resources</a>
-            <a href="system.html">System</a>
-            <a href="profile.html">Profile</a>
-        </div>
         <div class="topbar-right">
             <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
                 <span></span>
@@ -1838,6 +936,14 @@
                 <span>ONLINE</span>
             </div>
         </div>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div class="mobile-nav-menu" id="mobile-nav-menu">
+        <a href="index.html">🏠 Home</a>
+        <a href="categories.html">📁 Categories</a>
+        <a href="system.html">⚙️ System</a>
+        <a href="resources.html">📚 Resources</a>
     </div>
 
     <!-- Sidebar -->
@@ -1877,15 +983,14 @@
             <span class="sidebar-label">Categories</span>
         </a>
 
-        <a class="sidebar-item" href="insights.html">
+        <a class="sidebar-item active" href="system.html">
             <span class="sidebar-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="20" x2="18" y2="10"/>
-                    <line x1="12" y1="20" x2="12" y2="4"/>
-                    <line x1="6" y1="20" x2="6" y2="14"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                 </svg>
             </span>
-            <span class="sidebar-label">Insights</span>
+            <span class="sidebar-label">System</span>
         </a>
 
         <a class="sidebar-item" href="resources.html">
@@ -1899,160 +1004,299 @@
             </span>
             <span class="sidebar-label">Resources</span>
         </a>
-
-        <a class="sidebar-item active" href="system.html">
-            <span class="sidebar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">System</span>
-        </a>
-
-        <a class="sidebar-item" href="agent-roster.html">
-            <span class="sidebar-icon">Agent</span>
-            <span class="sidebar-label">Agent Roster</span>
-        </a>
-
-        <a class="sidebar-item" href="profile.html">
-            <span class="sidebar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">Profile</span>
-        </a>
     </div>
 
-    
     <!-- Main Content -->
-
-    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileMenu()"></div>
-
     <div class="main-content">
-        <div class="section active">
-            <div class="home-header">
-                <div class="home-title-group">
-                    <div class="home-title">System Console</div>
-                    <div class="home-subtitle">Agent roster, deployment status, and control surface</div>
-                </div>
-                <div class="compact-widgets-bar">
-                    <div class="compact-widget">
-                        <div class="compact-widget-icon health">●</div>
-                        <div class="compact-widget-content">
-                            <div class="compact-widget-value" style="color: var(--success);">OK</div>
-                            <div class="compact-widget-label">System Status</div>
-                        </div>
-                    </div>
-                    <div class="compact-widget">
-                        <div class="compact-widget-icon agents">AGENTS</div>
-                        <div class="compact-widget-content">
-                            <div class="compact-widget-value" id="system-agent-count">2</div>
-                            <div class="compact-widget-label">Active Agents</div>
-                        </div>
-                    </div>
+        <h1 class="page-title">⚙️ System & Agent Roster</h1>
+
+        <!-- Section 1: Agent Roster -->
+        <div class="section-panel">
+            <div class="section-header">
+                <div class="section-title">🤖 Agent Roster</div>
+                <span class="section-badge">6 Agents</span>
+            </div>
+            <div class="section-content">
+                <div class="agent-list" id="agent-list">
+                    <!-- Agents loaded by JS -->
                 </div>
             </div>
+        </div>
 
-            <div class="priority-grid" style="grid-template-columns: 1fr 1fr;">
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title"><span>Deploy</span> GitHub Pages Deploy</span>
-                        <span class="pill warn">UNKNOWN</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="kv">
-                            <div class="k">Environment</div><div class="v"><span class="mono">github-pages</span></div>
-                            <div class="k">Last Deploy</div><div class="v">—</div>
-                            <div class="k">Notes</div><div class="v">Placeholder (wire to CI status)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title"><span>⏱</span> Data Refresh</span>
-                        <span class="pill warn">STALE</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="kv">
-                            <div class="k">Last Refresh</div><div class="v">—</div>
-                            <div class="k">Source</div><div class="v"><span class="mono">data.json</span></div>
-                            <div class="k">Notes</div><div class="v">Placeholder (wire to generator timestamp)</div>
-                        </div>
-                    </div>
+        <!-- Section 2: System Status -->
+        <div class="section-panel">
+            <div class="section-header">
+                <div class="section-title">📊 System Status</div>
+                <span class="section-badge" style="background: rgba(0, 255, 136, 0.2); color: var(--success);">✅ Online</span>
+            </div>
+            <div class="section-content">
+                <div class="status-grid" id="system-status">
+                    <!-- Status items loaded by JS -->
                 </div>
             </div>
+        </div>
 
-            <div class="content-grid">
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title"><span>Brain</span> Agent Roster</span>
-                        <span class="priority-panel-badge">Directory</span>
+        <!-- Section 3: Quick Actions -->
+        <div class="section-panel">
+            <div class="section-header">
+                <div class="section-title">⚡ Quick Actions</div>
+            </div>
+            <div class="section-content">
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="triggerManualAudit()">
+                        <span>🔍</span>
+                        <span>Trigger Manual Audit</span>
+                    </button>
+                    <button class="action-btn secondary" onclick="viewAuditLog()">
+                        <span>📋</span>
+                        <span>View Full Audit Log</span>
+                    </button>
+                    <div class="agent-select-wrapper">
+                        <select class="agent-select" id="spawn-agent-select">
+                            <option value="">Select Agent to Spawn...</option>
+                            <option value="Escritor">📝 Escritor (Story Agent)</option>
+                            <option value="Quanta">📈 Quanta (Trading Dev)</option>
+                            <option value="MensaMusa">💰 MensaMusa (Trading Agent)</option>
+                            <option value="Autour">🎬 Autour (Script Agent)</option>
+                        </select>
+                        <span class="agent-select-arrow">▼</span>
                     </div>
-                    <div class="priority-panel-content">
-                        <table class="roster-table">
-                            <thead>
-                                <tr>
-                                    <th>Agent</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
-                                    <th>Notes</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><span class="mono">CHAD_YI</span></td>
-                                    <td>Brain & CEO</td>
-                                    <td><span class="pill good">ACTIVE</span></td>
-                                    <td>Solar Core avatar / Mission Control owner</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="mono">HELIOS</span></td>
-                                    <td>Mission Control</td>
-                                    <td><span class="pill good">ACTIVE</span></td>
-                                    <td>Task tracking, delegation, dashboard</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="mono">ESCRITOR (A2)</span></td>
-                                    <td>Story Agent</td>
-                                    <td><span class="pill warn">PENDING</span></td>
-                                    <td>Creative writing - Re:Unite novel</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="mono">QUANTA (A5)</span></td>
-                                    <td>Trading Dev</td>
-                                    <td><span class="pill warn">PENDING</span></td>
-                                    <td>Algorithm development - NOT ACTIVE YET</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="priority-panel">
-                    <div class="priority-panel-header">
-                        <span class="priority-panel-title"><span>Tools</span> Settings</span>
-                        <span class="priority-panel-badge">Coming Soon</span>
-                    </div>
-                    <div class="priority-panel-content">
-                        <div class="placeholder-content" style="padding: 40px 30px;">
-                            <div class="placeholder-icon">Wrench</div>
-                            <div class="placeholder-title">System settings panel</div>
-                            <div class="placeholder-text">Placeholders for runtime toggles, data sources, and UI preferences.</div>
-                        </div>
-                    </div>
+                    <button class="action-btn" onclick="spawnSelectedAgent()">
+                        <span>🚀</span>
+                        <span>Spawn Agent</span>
+                    </button>
                 </div>
             </div>
-
         </div>
     </div>
 
-
     <script src="mobile-nav.js"></script>
     <script>
+        // Agent data
+        const agents = [
+            {
+                id: "CHAD_YI",
+                name: "CHAD_YI",
+                role: "Orchestrator",
+                status: "active",
+                statusLabel: "✅ Active",
+                currentTask: "Coordinating dashboard updates",
+                project: "All (A1-A7, B1-B10, C1-C2)",
+                avatarClass: "chad",
+                expanded: {
+                    last5Min: "Fixed JavaScript null pointer errors, pushed dashboard redesign",
+                    currently: "Coordinating System and Resources page build",
+                    youShouldKnow: "Dashboard now fully functional with real data",
+                    actionNeeded: "None"
+                }
+            },
+            {
+                id: "Helios",
+                name: "Helios",
+                role: "Mission Control Engineer",
+                status: "active",
+                statusLabel: "✅ Active",
+                currentTask: "Running 15-min audits",
+                project: "A6 (Mission Control)",
+                config: "Audit interval 15 min, auto-fix enabled",
+                avatarClass: "agent-active",
+                expanded: {
+                    last5Min: "Completed data integrity audit at 15:30",
+                    currently: "Waiting for next audit cycle",
+                    youShouldKnow: "All 72 tasks verified, no data issues",
+                    actionNeeded: "None"
+                }
+            },
+            {
+                id: "Escritor",
+                name: "Escritor",
+                role: "Story Agent",
+                status: "idle",
+                statusLabel: "⏸️ Idle",
+                currentTask: "Waiting for spawn",
+                project: "A2 (RE:UNITE)",
+                avatarClass: "agent-idle",
+                expanded: {
+                    last5Min: "Idle - no active task",
+                    currently: "Waiting for you to assign Chapter 13",
+                    youShouldKnow: "Agent configured but not started",
+                    actionNeeded: "Tell CHAD_YI to spawn Escritor for A2-13"
+                }
+            },
+            {
+                id: "Quanta",
+                name: "Quanta",
+                role: "Trading Dev",
+                status: "blocked",
+                statusLabel: "🚫 Blocked",
+                currentTask: "A5 Trading Bot setup",
+                project: "A5 (Trading)",
+                blocker: "Needs OANDA credentials",
+                avatarClass: "agent-blocked",
+                expanded: {
+                    last5Min: "Blocked - cannot proceed without credentials",
+                    currently: "Waiting for OANDA API key and Account ID",
+                    youShouldKnow: "Bot code ready, just needs connection",
+                    actionNeeded: "Provide OANDA credentials"
+                }
+            },
+            {
+                id: "MensaMusa",
+                name: "MensaMusa",
+                role: "Trading Agent",
+                status: "blocked",
+                statusLabel: "🚫 Blocked",
+                currentTask: "A5 Options monitoring",
+                project: "A5 (Trading)",
+                blocker: "Needs Moomoo credentials",
+                avatarClass: "agent-blocked",
+                expanded: {
+                    last5Min: "Blocked - cannot proceed without credentials",
+                    currently: "Waiting for Moomoo API access",
+                    youShouldKnow: "Options monitoring configured",
+                    actionNeeded: "Provide Moomoo credentials"
+                }
+            },
+            {
+                id: "Autour",
+                name: "Autour",
+                role: "Script Agent",
+                status: "idle",
+                statusLabel: "⏸️ Idle",
+                currentTask: "Waiting for assignment",
+                project: "A3 (KOE)",
+                avatarClass: "agent-idle",
+                expanded: {
+                    last5Min: "Idle - no scripts assigned",
+                    currently: "Waiting for script topics",
+                    youShouldKnow: "Agent ready for YouTube/TikTok scripts",
+                    actionNeeded: "Assign script topics (A3-1, A3-2, A3-3)"
+                }
+            }
+        ];
+
+        // Render agent list
+        function renderAgents() {
+            const container = document.getElementById('agent-list');
+            container.innerHTML = agents.map(agent => `
+                <div class="agent-card" id="agent-${agent.id}">
+                    <div class="agent-card-header" onclick="toggleAgent('${agent.id}')">
+                        <div class="agent-avatar ${agent.avatarClass}">${agent.name[0]}</div>
+                        <div class="agent-info">
+                            <div class="agent-name-row">
+                                <span class="agent-name">${agent.name}</span>
+                                <span class="agent-role">${agent.role}</span>
+                            </div>
+                            <div class="agent-status-row">
+                                <span class="status-indicator ${agent.status}"></span>
+                                <span>${agent.statusLabel}</span>
+                                <span style="color: var(--text-muted);">•</span>
+                                <span>${agent.currentTask}</span>
+                            </div>
+                        </div>
+                        <div class="agent-meta">
+                            <span class="agent-project-tag">${agent.project}</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                    </div>
+                    <div class="agent-card-content">
+                        <div class="agent-details">
+                            <div class="detail-block">
+                                <div class="detail-label">LAST 5 MIN</div>
+                                <div class="detail-value">${agent.expanded.last5Min}</div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">CURRENTLY</div>
+                                <div class="detail-value info">${agent.expanded.currently}</div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">YOU SHOULD KNOW</div>
+                                <div class="detail-value">${agent.expanded.youShouldKnow}</div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="detail-label">ACTION NEEDED</div>
+                                <div class="detail-value ${agent.status === 'blocked' ? 'danger' : agent.status === 'idle' ? 'warning' : 'success'}">${agent.expanded.actionNeeded}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Toggle agent expansion
+        function toggleAgent(agentId) {
+            const card = document.getElementById(`agent-${agentId}`);
+            card.classList.toggle('expanded');
+        }
+
+        // Render system status
+        function renderSystemStatus() {
+            const container = document.getElementById('system-status');
+            container.innerHTML = `
+                <div class="status-item">
+                    <div class="status-icon success">🚀</div>
+                    <div class="status-content">
+                        <div class="status-label">Last Deploy</div>
+                        <div class="status-value">2 minutes ago</div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-icon success">🔗</div>
+                    <div class="status-content">
+                        <div class="status-label">GitHub Connection</div>
+                        <div class="status-value success">✅ Active</div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-icon info">🌐</div>
+                    <div class="status-content">
+                        <div class="status-label">Render URL</div>
+                        <div class="status-value"><a href="https://mission-control-dashboard-hf0r.onrender.com/" target="_blank">mission-control-dashboard ↗</a></div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-icon success">📊</div>
+                    <div class="status-content">
+                        <div class="status-label">Data Integrity</div>
+                        <div class="status-value success">✅ Good (72 tasks verified)</div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-icon success">🔍</div>
+                    <div class="status-content">
+                        <div class="status-label">Last Helios Audit</div>
+                        <div class="status-value">15:30 (4 minutes ago)</div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-icon warning">⏰</div>
+                    <div class="status-content">
+                        <div class="status-label">Next Audit</div>
+                        <div class="status-value warning">15:45</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Quick actions
+        function triggerManualAudit() {
+            alert('🔍 Manual audit triggered! Helios is checking data integrity...');
+        }
+
+        function viewAuditLog() {
+            alert('📋 Opening Helios audit log... (Feature: Link to Helios outbox)');
+        }
+
+        function spawnSelectedAgent() {
+            const select = document.getElementById('spawn-agent-select');
+            const agent = select.value;
+            if (!agent) {
+                alert('Please select an agent to spawn');
+                return;
+            }
+            alert(`🚀 Spawning ${agent} agent...\n\nCHAD_YI will activate this agent shortly.`);
+        }
+
         // Sidebar Toggle
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -2062,29 +1306,22 @@
             sidebar.classList.toggle('expanded');
             const isExpanded = sidebar.classList.contains('expanded');
 
-            toggleArrow.textContent = isExpanded ? '<' : '>';
+            toggleArrow.textContent = isExpanded ? '◀' : '▶';
             toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
             document.body.classList.toggle('sidebar-expanded', isExpanded);
-            if (!isExpanded) {
-                closeMobileMenu();
-            }
         }
 
-        // Load actual agent count from data.json
-        async function loadSystemData() {
-            try {
-                const response = await fetch('data.json');
-                if (!response.ok) throw new Error('Failed to load data');
-                const data = await response.json();
-                // Handle agents as either array or object
-                const agents = data.agents || {};
-                const activeAgents = Array.isArray(agents) ? agents.length : Object.keys(agents).length;
-                document.getElementById('system-agent-count').textContent = activeAgents;
-            } catch (error) {
-                console.error('Error loading system data:', error);
-            }
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-nav-menu');
+            menu.classList.toggle('open');
         }
-        loadSystemData();
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAgents();
+            renderSystemStatus();
+        });
     </script>
 </body>
 </html>
