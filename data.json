@@ -72,7 +72,7 @@
       "project": "A2",
       "priority": "high",
       "status": "pending",
-      "notes": "Continue RE:UNITE novel - user has provided chapters 1-12",
+      "notes": "Continue RE:UNITE novel",
       "createdAt": "2026-02-06T00:00:00Z",
       "completedAt": null
     },
@@ -141,7 +141,7 @@
     },
     "A5-1": {
       "id": "A5-1",
-      "title": "Trading Bot: Forex/Commodities (Telegram → OANDA)",
+      "title": "Trading Bot: Forex/Commodities",
       "project": "A5",
       "priority": "high",
       "status": "pending",
@@ -150,7 +150,7 @@
     },
     "A5-2": {
       "id": "A5-2",
-      "title": "Trading Bot: Options Flow (Twitter → Moomoo)",
+      "title": "Trading Bot: Options Flow",
       "project": "A5",
       "priority": "high",
       "status": "pending",
@@ -241,96 +241,6 @@
       "createdAt": "2026-02-08T12:06:04Z",
       "completedAt": null
     },
-    "B1-1": {
-      "id": "B1-1",
-      "title": "B1: Website design/redesign",
-      "project": "B1",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-2": {
-      "id": "B1-2",
-      "title": "B1: SEO setup",
-      "project": "B1",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-3": {
-      "id": "B1-3",
-      "title": "B1: Google Ads management",
-      "project": "B1",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-4": {
-      "id": "B1-4",
-      "title": "B1: Social media management",
-      "project": "B1",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-5": {
-      "id": "B1-5",
-      "title": "B1: Client management setup",
-      "project": "B1",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-1": {
-      "id": "B2-1",
-      "title": "B2: Website design/redesign",
-      "project": "B2",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-2": {
-      "id": "B2-2",
-      "title": "B2: SEO setup",
-      "project": "B2",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-3": {
-      "id": "B2-3",
-      "title": "B2: Google Ads management",
-      "project": "B2",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-4": {
-      "id": "B2-4",
-      "title": "B2: Social media management",
-      "project": "B2",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-5": {
-      "id": "B2-5",
-      "title": "B2: Client management setup",
-      "project": "B2",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
     "B3-1": {
       "id": "B3-1",
       "title": "Team Elevate website (Lovable)",
@@ -340,132 +250,6 @@
       "notes": "Website completed via Lovable",
       "createdAt": "2026-02-06T00:00:00Z",
       "completedAt": "2026-02-05T18:00:00Z"
-    },
-    "B3-2": {
-      "id": "B3-2",
-      "title": "B3: SEO optimization",
-      "project": "B3",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-3": {
-      "id": "B3-3",
-      "title": "B3: Google Ads setup",
-      "project": "B3",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-4": {
-      "id": "B3-4",
-      "title": "B3: Social media management",
-      "project": "B3",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-5": {
-      "id": "B3-5",
-      "title": "B3: Client management",
-      "project": "B3",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-1": {
-      "id": "B4-1",
-      "title": "B4: Website design/redesign",
-      "project": "B4",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-2": {
-      "id": "B4-2",
-      "title": "B4: SEO setup",
-      "project": "B4",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-3": {
-      "id": "B4-3",
-      "title": "B4: Google Ads management",
-      "project": "B4",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-4": {
-      "id": "B4-4",
-      "title": "B4: Social media management",
-      "project": "B4",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-5": {
-      "id": "B4-5",
-      "title": "B4: Client management setup",
-      "project": "B4",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-1": {
-      "id": "B5-1",
-      "title": "B5: Website design/redesign",
-      "project": "B5",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-2": {
-      "id": "B5-2",
-      "title": "B5: SEO setup",
-      "project": "B5",
-      "priority": "high",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-3": {
-      "id": "B5-3",
-      "title": "B5: Google Ads management",
-      "project": "B5",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-4": {
-      "id": "B5-4",
-      "title": "B5: Social media management",
-      "project": "B5",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-5": {
-      "id": "B5-5",
-      "title": "B5: Client management setup",
-      "project": "B5",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
     },
     "B6-1": {
       "id": "B6-1",
@@ -499,34 +283,6 @@
       "deadline": "2026-02-17",
       "createdAt": "2026-02-09T00:00:00Z",
       "completedAt": null
-    },
-    "B6-4": {
-      "id": "B6-4",
-      "title": "B6: Social media management",
-      "project": "B6",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-5": {
-      "id": "B6-5",
-      "title": "B6: Client management",
-      "project": "B6",
-      "priority": "medium",
-      "status": "pending",
-      "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
-    },
-    "B10-1": {
-      "id": "B10-1",
-      "title": "B10: [NEED DETAILS]",
-      "project": "B10",
-      "priority": "low",
-      "status": "pending",
-      "notes": "Waiting for user to define B10 task",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
     }
   },
   "projects": {
@@ -536,7 +292,7 @@
       "projects": ["A1", "A2", "A3", "A4", "A5", "A6", "A7"]
     },
     "B": {
-      "name": "Business", 
+      "name": "Business",
       "subtitle": "Empire (Main Work)",
       "projects": ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"]
     },
@@ -545,6 +301,27 @@
       "subtitle": "On The Side (Other Jobs)",
       "projects": ["C1", "C2"]
     }
+  },
+  "projectDetails": {
+    "A1": { "name": "Personal Tasks", "description": "Travel, legal, personal admin" },
+    "A2": { "name": "RE:UNITE Novel", "description": "Novel writing project" },
+    "A3": { "name": "Politics Scripts", "description": "YouTube/TikTok political content" },
+    "A4": { "name": "Streaming/VTuber", "description": "VTuber agency research and setup" },
+    "A5": { "name": "Trading Bots", "description": "Forex and options trading automation" },
+    "A6": { "name": "Mission Control", "description": "Dashboard and automation systems" },
+    "A7": { "name": "Wedding Planning", "description": "Venue, guests, officiant" },
+    "B1": { "name": "Client B1", "description": "Business client project" },
+    "B2": { "name": "Client B2", "description": "Business client project" },
+    "B3": { "name": "Team Elevate", "description": "Website via Lovable" },
+    "B4": { "name": "Client B4", "description": "Business client project" },
+    "B5": { "name": "Client B5", "description": "Business client project" },
+    "B6": { "name": "ESU/MENDAKI/SPH", "description": "Facilitators and equipment" },
+    "B7": { "name": "Client B7", "description": "Business client project" },
+    "B8": { "name": "Client B8", "description": "Business client project" },
+    "B9": { "name": "Client B9", "description": "Business client project" },
+    "B10": { "name": "TBD", "description": "Need to define" },
+    "C1": { "name": "Calling C1", "description": "Side project" },
+    "C2": { "name": "Calling C2", "description": "Side project" }
   },
   "agents": [
     {

@@ -2658,12 +2658,14 @@
                                 const tasks = appData.tasks || {};
                                 const projTasks = Object.values(tasks).filter(t => t.project === projId);
                                 const taskStats = calculateTaskStats(projTasks);
+                                const projDetails = appData.projectDetails && appData.projectDetails[projId];
 
                                 allProjects.push({
                                     id: projId,
                                     category: catKey,
                                     categoryName: cat.name,
-                                    name: projId, // Use ID as name for now
+                                    name: projDetails ? projDetails.name : projId,
+                                    description: projDetails ? projDetails.description : '',
                                     tasks: projTasks,
                                     stats: taskStats,
                                     priorityBreakdown: getPriorityBreakdown(projTasks),
