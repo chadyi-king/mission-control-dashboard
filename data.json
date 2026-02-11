@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-02-11T09:15:00Z",
   "stats": {
-    "activeAgents": 2,
+    "activeAgents": 3,
     "spawnedToday": 18,
     "tasksDone": 21,
     "totalTasks": 115,
@@ -359,7 +359,15 @@
       "role": "Mission Control Engineer",
       "status": "active",
       "currentTask": "15-min audits",
-      "lastActive": "2026-02-11T09:15:00Z"
+      "lastActive": "2026-02-11T09:21:00Z"
+    },
+    {
+      "id": "Escritor",
+      "name": "Escritor",
+      "role": "Story Agent (A2)",
+      "status": "waiting_for_input",
+      "currentTask": "Edit Chapter 13 - awaiting user content",
+      "lastActive": "2026-02-11T09:05:00Z"
     }
   ],
   "configuredAgents": [
