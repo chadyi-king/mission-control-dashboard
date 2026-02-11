@@ -1,20 +1,21 @@
 {
-  "lastUpdated": "2026-02-11T14:48:00Z",
+  "lastUpdated": "2026-02-11T15:15:00Z",
   "stats": {
     "activeAgents": 2,
     "spawnedToday": 0,
     "tasksDone": 2,
-    "totalTasks": 64,
+    "totalTasks": 72,
     "timeActive": "4d 19h",
     "focusProject": "A1",
     "eventsToday": 3,
-    "velocity": 18
+    "velocity": 18,
+    "urgentTasks": 4
   },
   "workflow": {
     "pending": ["A1-1", "A6-16", "A6-18", "A7-2", "A7-3", "B6-1", "B6-3"],
     "active": [],
     "review": [],
-    "done": ["B3-1"]
+    "done": ["A2-1", "B3-1"]
   },
   "tasks": {
     "A1-1": { "id": "A1-1", "title": "Change Taiwan flights and hotel", "project": "A1", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Rebook flights and hotel to 15-19 April", "deadline": "2026-02-13", "createdAt": "2026-02-09T10:56:35Z", "completedAt": null },
@@ -119,7 +120,7 @@
   "agents": [
     { "id": "CHAD_YI", "name": "Chad_YI", "role": "Orchestrator", "status": "active", "currentTask": "Coordinating", "lastActive": "2026-02-11T09:30:00Z" },
     { "id": "Helios", "name": "Helios", "role": "Mission Control Engineer", "status": "active", "currentTask": "15-min audits", "lastActive": "2026-02-11T09:30:00Z" },
-    { "id": "Escritor", "name": "Escritor", "role": "Story Agent (A2)", "status": "waiting_for_input", "currentTask": "Awaiting spawn by CHAD_YI", "lastActive": null }
+    { "id": "Escritor", "name": "Escritor", "role": "Story Agent (A2)", "status": "not_spawned", "currentTask": "Awaiting spawn by CHAD_YI", "lastActive": null }
   ],
   "configuredAgents": [
     { "id": "Escritor", "role": "Story Agent (A2)", "status": "waiting_for_input" },
