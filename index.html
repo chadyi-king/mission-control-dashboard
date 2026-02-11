@@ -2629,8 +2629,13 @@
 
         async function loadData() {
             try {
+                console.log('Loading data...');
                 const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 appData = await response.json();
+                console.log('Data loaded:', Object.keys(appData));
                 allProjects = [];
 
                 // Process all projects
@@ -2667,6 +2672,7 @@
                 // Render both sections
                 renderHomeSection();
                 renderCategoriesSection();
+                console.log('Rendering complete. allProjects:', allProjects.length);
 
             } catch (error) {
                 console.error('Failed to load data:', error);
@@ -3542,13 +3548,22 @@
         function renderUrgentQueue(data) {
             const container = document.getElementById('urgent-queue');
             const workflow = data.workflow || {};
-            const pending = workflow.pending || [];
+            const tasks = data.tasks || {};
+            const pendingIds = workflow.pending || [];
+            
+            // Look up actual task objects from IDs
+            const pendingTasks = pendingIds.map(id => tasks[id]).filter(t => t);
             
             // Filter urgent tasks (high priority or overdue)
-            const urgentTasks = pending.filter(t => {
+            const urgentTasks = pendingTasks.filter(t => {
                 if (t.priority === 'high') return true;
                 // Check if due within 48 hours
-                // (simplified - would need proper date parsing)
+                if (t.deadline) {
+                    const due = new Date(t.deadline);
+                    const now = new Date();
+                    const hoursUntilDue = (due - now) / (1000 * 60 * 60);
+                    return hoursUntilDue <= 48 && hoursUntilDue > 0;
+                }
                 return false;
             }).slice(0, 8);
 
@@ -3556,7 +3571,7 @@
 
             if (urgentTasks.length === 0) {
                 container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px;">
-                    No urgent tasks right now 🎉
+                    No urgent tasks right now
                 </div>`;
                 return;
             }
@@ -3567,7 +3582,7 @@
                     <div class="column-task-meta">
                         <span class="column-task-project">${task.project || 'General'}</span>
                         <span class="column-task-due ${task.priority === 'high' ? 'overdue' : ''}">
-                            ${task.priority === 'high' ? 'Urgent HIGH' : '⚡ SOON'}
+                            ${task.priority === 'high' ? 'HIGH' : 'SOON'}
                         </span>
                     </div>
                     <button class="column-task-btn" onclick="event.stopPropagation(); doTask('${task.id}')">DO NOW</button>
@@ -3578,23 +3593,27 @@
         function renderInputNeeded(data) {
             const container = document.getElementById('input-needed');
             const workflow = data.workflow || {};
-            const review = workflow.review || [];
+            const tasks = data.tasks || {};
+            const reviewIds = workflow.review || [];
             
-            document.getElementById('input-count').textContent = review.length;
+            // Look up actual task objects from IDs
+            const reviewTasks = reviewIds.map(id => tasks[id]).filter(t => t);
+            
+            document.getElementById('input-count').textContent = reviewTasks.length;
 
-            if (review.length === 0) {
+            if (reviewTasks.length === 0) {
                 container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px;">
                     Nothing waiting for your input
                 </div>`;
                 return;
             }
 
-            container.innerHTML = review.map(item => `
-                <div class="input-item" onclick="openTask('${item.id}')">
-                    <span class="input-type">${item.type || 'REVIEW'}</span>
-                    <div class="input-title">${item.title}</div>
-                    <div class="input-meta">${item.project || 'General'} • From: ${item.from || 'Agent'}</div>
-                    <button class="input-btn" onclick="event.stopPropagation(); reviewItem('${item.id}')">${item.action || 'REVIEW'}</button>
+            container.innerHTML = reviewTasks.map(task => `
+                <div class="input-item" onclick="openTask('${task.id}')">
+                    <span class="input-type">REVIEW</span>
+                    <div class="input-title">${task.title}</div>
+                    <div class="input-meta">${task.project || 'General'} • From: ${task.from || 'Agent'}</div>
+                    <button class="input-btn" onclick="event.stopPropagation(); reviewItem('${task.id}')">REVIEW</button>
                 </div>
             `).join('');
         }
