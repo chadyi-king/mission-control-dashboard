@@ -2704,11 +2704,18 @@
                     </div>
                 `;
                 
-                document.getElementById('urgent-queue').innerHTML = errorMessage;
-                document.getElementById('agent-activity').innerHTML = errorMessage;
-                document.getElementById('input-needed').innerHTML = errorMessage;
-                document.getElementById('cat-loading-state').style.display = 'none';
-                document.getElementById('cat-error-state').style.display = 'block';
+                // Safe element updates with null checks
+                const urgentQueue = document.getElementById('urgent-queue');
+                const agentActivity = document.getElementById('agent-activity');
+                const inputNeeded = document.getElementById('input-needed');
+                const catLoading = document.getElementById('cat-loading-state');
+                const catError = document.getElementById('cat-error-state');
+                
+                if (urgentQueue) urgentQueue.innerHTML = errorMessage;
+                if (agentActivity) agentActivity.innerHTML = errorMessage;
+                if (inputNeeded) inputNeeded.innerHTML = errorMessage;
+                if (catLoading) catLoading.style.display = 'none';
+                if (catError) catError.style.display = 'block';
             }
         }
 
@@ -3175,6 +3182,10 @@
 
         // ===== CATEGORIES SECTION RENDERING (UNCHANGED) =====
         function renderCategoriesSection() {
+            // Check if we're on the categories page by looking for categories elements
+            const catTotalProjects = document.getElementById('cat-total-projects');
+            if (!catTotalProjects) return; // Not on categories page, skip
+            
             // Convert tasks object to array for iteration
             const allTasks = Object.values(appData.tasks || {});
             const totalProjects = allProjects.length;
@@ -3184,18 +3195,28 @@
             const urgentTasks = allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
             const completionRate = totalTasks > 0 ? Math.round((tasksDone / totalTasks) * 100) : 0;
 
-            document.getElementById('cat-total-projects').textContent = totalProjects;
-            document.getElementById('cat-total-tasks').textContent = totalTasks;
-            document.getElementById('cat-tasks-done').textContent = tasksDone;
-            document.getElementById('cat-tasks-pending').textContent = tasksPending;
-            document.getElementById('cat-completion-rate').textContent = completionRate + '%';
-            document.getElementById('cat-urgent-tasks').textContent = urgentTasks;
+            catTotalProjects.textContent = totalProjects;
+            
+            const catTotalTasks = document.getElementById('cat-total-tasks');
+            const catTasksDone = document.getElementById('cat-tasks-done');
+            const catTasksPending = document.getElementById('cat-tasks-pending');
+            const catCompletionRate = document.getElementById('cat-completion-rate');
+            const catUrgentTasks = document.getElementById('cat-urgent-tasks');
+            const catLoading = document.getElementById('cat-loading-state');
+            const catStatsBar = document.getElementById('dashboard-stats-bar');
+            const catFilterBar = document.getElementById('filter-bar');
+            
+            if (catTotalTasks) catTotalTasks.textContent = totalTasks;
+            if (catTasksDone) catTasksDone.textContent = tasksDone;
+            if (catTasksPending) catTasksPending.textContent = tasksPending;
+            if (catCompletionRate) catCompletionRate.textContent = completionRate + '%';
+            if (catUrgentTasks) catUrgentTasks.textContent = urgentTasks;
 
             renderCategoriesList();
 
-            document.getElementById('cat-loading-state').style.display = 'none';
-            document.getElementById('dashboard-stats-bar').style.display = 'grid';
-            document.getElementById('filter-bar').style.display = 'flex';
+            if (catLoading) catLoading.style.display = 'none';
+            if (catStatsBar) catStatsBar.style.display = 'grid';
+            if (catFilterBar) catFilterBar.style.display = 'flex';
         }
 
         function renderCategoriesList() {
