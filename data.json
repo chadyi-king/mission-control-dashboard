@@ -1,20 +1,20 @@
 {
-  "lastUpdated": "2026-02-11T11:35:00Z",
+  "lastUpdated": "2026-02-11T13:40:00Z",
   "stats": {
     "activeAgents": 3,
     "spawnedToday": 0,
     "tasksDone": 2,
-    "totalTasks": 47,
+    "totalTasks": 65,
     "timeActive": "4d 19h",
     "focusProject": "A1",
     "eventsToday": 3,
     "velocity": 18
   },
   "workflow": {
-    "pending": ["A1-1", "A1-2", "A1-3", "A2-13", "B6-1", "B6-2", "B6-3", "B6-4", "B6-5"],
-    "active": ["A6-13"],
-    "review": ["A2-12"],
-    "done": ["A2-1", "B3-1"]
+    "pending": ["A1-1", "A1-2", "A1-3", "A2-13", "B6-1", "B6-2", "B6-3", "B6-4", "B6-5", "A6-16", "A6-18", "A7-2", "A7-3"],
+    "active": [],
+    "review": [],
+    "done": ["B3-1"]
   },
   "tasks": {
     "A1-1": { "id": "A1-1", "title": "Change Taiwan flights and hotel", "project": "A1", "priority": "high", "status": "pending", "notes": "Rebook flights and hotel to 15-19 April", "deadline": "2026-02-13", "createdAt": "2026-02-09T10:56:35Z", "completedAt": null },
@@ -32,7 +32,7 @@
     "A4-3": { "id": "A4-3", "title": "Research streaming equipment", "project": "A4", "priority": "medium", "status": "pending", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A5-1": { "id": "A5-1", "title": "Trading Bot: Forex/Commodities", "project": "A5", "priority": "high", "status": "pending", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A5-2": { "id": "A5-2", "title": "Trading Bot: Options Flow", "project": "A5", "priority": "high", "status": "pending", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
-    "A6-13": { "id": "A6-13", "title": "Project Detail Page", "project": "A6", "priority": "high", "status": "active", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
+    "A6-13": { "id": "A6-13", "title": "Project Detail Page", "project": "A6", "priority": "high", "status": "pending", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-14": { "id": "A6-14", "title": "Project Tasks List enhancement", "project": "A6", "priority": "high", "status": "pending", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-15": { "id": "A6-15", "title": "Project Timeline view", "project": "A6", "priority": "medium", "status": "pending", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-16": { "id": "A6-16", "title": "Document upload system", "project": "A6", "priority": "high", "status": "pending", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
@@ -119,7 +119,7 @@
   "agents": [
     { "id": "CHAD_YI", "name": "Chad_YI", "role": "Orchestrator", "status": "active", "currentTask": "Coordinating", "lastActive": "2026-02-11T09:30:00Z" },
     { "id": "Helios", "name": "Helios", "role": "Mission Control Engineer", "status": "active", "currentTask": "15-min audits", "lastActive": "2026-02-11T09:30:00Z" },
-    { "id": "Escritor", "name": "Escritor", "role": "Story Agent (A2)", "status": "waiting_for_input", "currentTask": "Edit Chapter 13", "lastActive": "2026-02-11T09:05:00Z" }
+    { "id": "Escritor", "name": "Escritor", "role": "Story Agent (A2)", "status": "waiting_for_input", "currentTask": "Awaiting spawn by CHAD_YI", "lastActive": null }
   ],
   "configuredAgents": [
     { "id": "Escritor", "role": "Story Agent (A2)", "status": "waiting_for_input" },
