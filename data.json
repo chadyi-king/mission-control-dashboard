@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-11T15:15:00Z",
+  "lastUpdated": "2026-02-11T15:24:00Z",
   "stats": {
     "activeAgents": 2,
     "spawnedToday": 0,
@@ -118,8 +118,8 @@
     "C2": { "name": "Side Sales", "description": "Remote commission sales" }
   },
   "agents": [
-    { "id": "CHAD_YI", "name": "Chad_YI", "role": "Orchestrator", "status": "active", "currentTask": "Coordinating", "lastActive": "2026-02-11T09:30:00Z" },
-    { "id": "Helios", "name": "Helios", "role": "Mission Control Engineer", "status": "active", "currentTask": "15-min audits", "lastActive": "2026-02-11T09:30:00Z" },
+    { "id": "CHAD_YI", "name": "Chad_YI", "role": "Orchestrator", "status": "active", "currentTask": "Coordinating", "lastActive": "2026-02-11T15:20:00Z" },
+    { "id": "Helios", "name": "Helios", "role": "Mission Control Engineer", "status": "active", "currentTask": "15-min audits", "lastActive": "2026-02-11T15:15:00Z" },
     { "id": "Escritor", "name": "Escritor", "role": "Story Agent (A2)", "status": "not_spawned", "currentTask": "Awaiting spawn by CHAD_YI", "lastActive": null }
   ],
   "configuredAgents": [
@@ -128,6 +128,153 @@
     { "id": "MensaMusa", "role": "Trading Agent (A5)", "status": "not_spawned" },
     { "id": "Autour", "role": "Script Agent (A3)", "status": "not_spawned" }
   ],
+  "agentActivityLog": [
+    {"agent": "CHAD_YI", "time": "2026-02-11T15:20:00Z", "action": "Fixed dashboard JavaScript errors", "status": "completed"},
+    {"agent": "Helios", "time": "2026-02-11T15:15:00Z", "action": "Completed 15-min data audit", "status": "completed"},
+    {"agent": "Escritor", "time": "2026-02-11T14:00:00Z", "action": "Idle - waiting for task assignment", "status": "waiting"}
+  ],
+  "calendarTasks": {
+    "2026-02-13": ["A1-1"],
+    "2026-02-17": ["B6-1", "B6-3"],
+    "2026-02-28": ["B6-2"]
+  },
+  "inputDetails": {
+    "A5-1": {
+      "title": "Trading Bot Forex",
+      "brief": "OANDA trading account credentials needed",
+      "whatINeed": "OANDA trading account API key and Account ID",
+      "why": "To connect the trading bot to live forex markets for automated trading",
+      "steps": [
+        "Go to oanda.com and sign in/create account",
+        "Navigate to 'Manage API Access' in account settings",
+        "Generate a new API key",
+        "Copy your Account ID (starts with 001-)",
+        "Give me both the API key and Account ID"
+      ],
+      "currentStatus": "Bot code ready, waiting for credentials to connect"
+    },
+    "A5-2": {
+      "title": "Trading Bot Options",
+      "brief": "Moomoo trading account credentials needed",
+      "whatINeed": "Moomoo app API access credentials",
+      "why": "To monitor options flow and execute options trades automatically",
+      "steps": [
+        "Open Moomoo app on your phone",
+        "Go to Account → Settings → API Management",
+        "Enable API access and generate API key",
+        "Note your Account ID and API key",
+        "Send me both credentials securely"
+      ],
+      "currentStatus": "Options flow monitoring configured, needs account connection"
+    },
+    "A2-13": {
+      "title": "Edit Chapter 13",
+      "brief": "Spawn Escritor agent to work on novel",
+      "whatINeed": "You to tell me to spawn Escritor agent",
+      "why": "Escritor is the creative writing agent that edits your RE:UNITE novel chapters",
+      "steps": [
+        "Tell me 'spawn Escritor agent for A2-13'",
+        "I'll activate the agent",
+        "Escritor will start editing Chapter 13",
+        "Check back in 1-2 hours for progress"
+      ],
+      "currentStatus": "Escritor idle, waiting for your command to start"
+    }
+  },
+  "urgentTaskDetails": {
+    "A1-1": {
+      "title": "Change Taiwan flights",
+      "brief": "Call airline to rebook flights to April 15-19",
+      "deadline": "Feb 13",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Find your original booking confirmation email",
+        "Call airline customer service",
+        "Reference your booking number",
+        "Request change to dates: April 15-19, 2026",
+        "Ask about any change fees",
+        "Confirm new flights match your schedule",
+        "Get new confirmation number"
+      ],
+      "deadlineText": "Feb 13 (2 days away - URGENT)",
+      "priorityReason": "HIGH - affects April travel plans",
+      "ifNotDone": "You'll need to cancel and rebook entirely"
+    },
+    "A7-3": {
+      "title": "Contact Pastor Raymond",
+      "brief": "Confirm wedding officiant availability for Dec 12-13",
+      "deadline": "No hard deadline but book early",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Find Pastor Raymond's contact (phone/email)",
+        "Call or message him",
+        "Ask if he's available Dec 12-13, 2026",
+        "Mention it's for your wedding",
+        "If yes: ask about pre-marital counseling requirements",
+        "If no: ask for recommendations of other officiants",
+        "Update me with his response"
+      ],
+      "deadlineText": "No hard deadline but book early",
+      "priorityReason": "HIGH - core wedding planning",
+      "ifNotDone": "May lose preferred officiant"
+    },
+    "B6-1": {
+      "title": "Find facilitator for ESU",
+      "brief": "Need 120 facilitators by Feb 17 for ESU event",
+      "deadline": "Feb 17",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Review your current facilitator database/contact list",
+        "Send recruitment message to potential facilitators",
+        "Target: minimum 120 people",
+        "Include: date, time, location, payment details",
+        "Track confirmations in spreadsheet",
+        "Follow up with non-responders",
+        "Send confirmed list to ESU coordinator"
+      ],
+      "deadlineText": "Feb 17 (6 days - CRITICAL)",
+      "priorityReason": "HIGH - 120 people needed, hard deadline",
+      "ifNotDone": "Event cannot proceed, contractual issue"
+    },
+    "B6-3": {
+      "title": "SPH items to order",
+      "brief": "Place equipment order for SPH event by Feb 17",
+      "deadline": "Feb 17",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Review SPH equipment requirements list",
+        "Check current inventory vs needed",
+        "Create purchase order for missing items",
+        "Submit to procurement/supplier",
+        "Confirm delivery date before Feb 17",
+        "Track shipping/confirmation",
+        "Notify B6 team when items arrive"
+      ],
+      "deadlineText": "Feb 17 (6 days - CRITICAL)",
+      "priorityReason": "HIGH - equipment must arrive on time",
+      "ifNotDone": "Event cannot proceed as planned"
+    }
+  },
+  "agentDetails": {
+    "CHAD_YI": {
+      "last5Min": "Fixed dashboard JavaScript null pointer errors",
+      "currently": "Coordinating dashboard updates per your instructions",
+      "youShouldKnow": "Dashboard now shows real data correctly",
+      "actionNeeded": "None - all systems operational"
+    },
+    "Helios": {
+      "last5Min": "Completed data integrity audit at 15:15",
+      "currently": "Waiting for next 15-minute audit cycle",
+      "youShouldKnow": "All 72 tasks verified, data consistent",
+      "actionNeeded": "None - monitoring continues automatically"
+    },
+    "Escritor": {
+      "last5Min": "Idle - no active task assigned",
+      "currently": "Waiting for you to spawn for Chapter 13",
+      "youShouldKnow": "Agent configured but not started",
+      "actionNeeded": "Tell CHAD_YI to spawn Escritor for A2-13"
+    }
+  },
   "inputsNeeded": [
     {"taskId": "A5-1", "taskTitle": "Trading Bot: Forex/Commodities", "inputRequired": "OANDA credentials"},
     {"taskId": "A5-2", "taskTitle": "Trading Bot: Options Flow", "inputRequired": "Moomoo credentials"},

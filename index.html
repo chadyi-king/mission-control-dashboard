@@ -1226,6 +1226,64 @@
             color: var(--text-primary);
         }
 
+        /* Expandable Items */
+        .expandable-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .expandable-item:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .expandable-content.expanded {
+            max-height: 500px;
+            padding-top: 12px;
+        }
+        .expandable-details {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .expandable-details-row {
+            margin-bottom: 10px;
+        }
+        .expandable-details-row:last-child {
+            margin-bottom: 0;
+        }
+        .expandable-details-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .expandable-details-value {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .expandable-details-value ol {
+            margin: 0;
+            padding-left: 16px;
+        }
+        .expandable-details-value li {
+            margin-bottom: 4px;
+        }
+        .expandable-arrow {
+            transition: transform 0.3s ease;
+            margin-left: auto;
+            font-size: 12px;
+        }
+        .expandable-item.expanded .expandable-arrow {
+            transform: rotate(180deg);
+        }
+
         /* Calendar View */
         .calendar-view {
             display: flex;
@@ -2396,30 +2454,7 @@
                         <span class="column-badge agent" id="agent-activity-count">2</span>
                     </div>
                     <div class="column-content" id="agent-activity">
-                        <div class="agent-activity-item" style="padding: 12px; border-bottom: 1px solid var(--crystal-border);">
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite;"></div>
-                                <span style="font-weight: 600; color: #4dabf7;">CHAD_YI</span>
-                                <span style="font-size: 11px; color: var(--text-muted); margin-left: auto;">Now</span>
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-secondary); padding-left: 18px;">Coordinating dashboard updates and user requests</div>
-                        </div>
-                        <div class="agent-activity-item" style="padding: 12px; border-bottom: 1px solid var(--crystal-border);">
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite;"></div>
-                                <span style="font-weight: 600; color: #4dabf7;">Helios</span>
-                                <span style="font-size: 11px; color: var(--text-muted); margin-left: auto;">15 min ago</span>
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-secondary); padding-left: 18px;">Running data audit - checked 64 tasks, 2 active agents</div>
-                        </div>
-                        <div class="agent-activity-item" style="padding: 12px; opacity: 0.6;">
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted);"></div>
-                                <span style="font-weight: 600; color: var(--text-muted);">Escritor</span>
-                                <span style="font-size: 11px; color: var(--text-muted); margin-left: auto;">Idle</span>
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-muted); padding-left: 18px;">Waiting for Chapter 13 task assignment</div>
-                        </div>
+                        <!-- Injected by JS -->
                     </div>
                 </div>
 
@@ -3607,8 +3642,72 @@
         function renderNewHomepage(data) {
             renderMiniStats(data);
             renderUrgentQueue(data);
+            renderAgentActivity(data);
             renderInputNeeded(data);
             renderWeekView(data);
+        }
+
+        function renderAgentActivity(data) {
+            const container = document.getElementById('agent-activity');
+            const countBadge = document.getElementById('agent-activity-count');
+            
+            if (!container) return;
+            
+            const agents = data.agents || [];
+            const agentDetails = data.agentDetails || {};
+            
+            if (countBadge) countBadge.textContent = agents.length;
+            
+            container.innerHTML = agents.map(agent => {
+                const details = agentDetails[agent.id] || {};
+                const isExpanded = window.expandedState && window.expandedState['agent-' + agent.id];
+                const statusColor = agent.status === 'active' ? 'var(--success)' : 'var(--text-muted)';
+                const timeDisplay = agent.lastActive ? formatRelativeTimestamp(agent.lastActive) : (agent.status === 'active' ? 'Now' : 'Idle');
+                
+                return `
+                <div class="agent-activity-item expandable-item ${isExpanded ? 'expanded' : ''}" 
+                     onclick="toggleExpand('agent-${agent.id}')"
+                     style="padding: 12px; border-bottom: 1px solid var(--crystal-border);">
+                    <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+                        <div style="width: 8px; height: 8px; border-radius: 50%; background: ${statusColor}; ${agent.status === 'active' ? 'animation: pulse 2s infinite;' : ''}"></div>
+                        <span style="font-weight: 600; color: #4dabf7;">${agent.name}</span>
+                        <span style="font-size: 11px; color: var(--text-muted); margin-left: auto;">${timeDisplay}</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-secondary); padding-left: 18px; margin-top: 4px;">
+                        ${agent.currentTask}
+                    </div>
+                    <div class="expandable-content ${isExpanded ? 'expanded' : ''}" id="agent-${agent.id}-content">
+                        <div class="expandable-details" style="margin-left: 18px;">
+                            ${details.last5Min ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">LAST 5 MIN:</div>
+                                <div class="expandable-details-value">${details.last5Min}</div>
+                            </div>
+                            ` : ''}
+                            ${details.currently ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">CURRENTLY:</div>
+                                <div class="expandable-details-value">${details.currently}</div>
+                            </div>
+                            ` : ''}
+                            ${details.youShouldKnow ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">YOU SHOULD KNOW:</div>
+                                <div class="expandable-details-value" style="color: var(--success);">${details.youShouldKnow}</div>
+                            </div>
+                            ` : ''}
+                            ${details.actionNeeded ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">ACTION NEEDED:</div>
+                                <div class="expandable-details-value" style="color: ${details.actionNeeded.includes('None') ? 'var(--text-secondary)' : '#ff6b6b'};">${details.actionNeeded}</div>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
         }
 
         function renderMiniStats(data) {
@@ -3642,6 +3741,7 @@
             
             const workflow = data.workflow || {};
             const tasks = data.tasks || {};
+            const urgentDetails = data.urgentTaskDetails || {};
             const pendingIds = workflow.pending || [];
             
             // Look up actual task objects from IDs (tasks is now an object, not array)
@@ -3672,17 +3772,56 @@
             container.innerHTML = urgentTasks.map(task => {
                 const projectInfo = appData.projectDetails && appData.projectDetails[task.project] ? appData.projectDetails[task.project] : { name: task.project };
                 const deadline = task.deadline ? `Due: ${new Date(task.deadline).toLocaleDateString()}` : '';
+                const details = urgentDetails[task.id] || {};
+                const isExpanded = window.expandedState && window.expandedState['urgent-' + task.id];
+                
                 return `
-                <div class="column-task-item urgent">
-                    <div class="column-task-title">${task.title}</div>
-                    <div class="column-task-meta">
-                        <span class="column-task-project">${task.project} · ${projectInfo.name}</span>
-                        <span class="column-task-due ${task.priority === 'high' ? 'overdue' : ''}">
-                            ${task.priority === 'high' ? 'HIGH' : 'MEDIUM'}
-                        </span>
+                <div class="column-task-item urgent expandable-item ${isExpanded ? 'expanded' : ''}" onclick="toggleExpand('urgent-${task.id}')">
+                    <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+                        <div style="flex: 1;">
+                            <div class="column-task-title">${details.title || task.title}</div>
+                            <div class="column-task-meta">
+                                <span class="column-task-project">${task.project} · ${projectInfo.name}</span>
+                                <span class="column-task-due ${task.priority === 'high' ? 'overdue' : ''}">
+                                    ${details.deadline || deadline || (task.priority === 'high' ? 'HIGH' : 'MEDIUM')}
+                                </span>
+                            </div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 6px; line-height: 1.4;">${details.brief || task.notes || ''}</div>
+                        </div>
+                        <span class="expandable-arrow">▼</span>
                     </div>
-                    ${task.notes ? `<div style="font-size: 11px; color: var(--text-muted); margin-top: 6px; line-height: 1.4;">${task.notes}</div>` : ''}
-                    ${deadline ? `<div style="font-size: 10px; color: #ff6b6b; margin-top: 4px;">${deadline}</div>` : ''}
+                    <div class="expandable-content ${isExpanded ? 'expanded' : ''}" id="urgent-${task.id}-content">
+                        <div class="expandable-details">
+                            ${details.specificSteps ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">SPECIFIC STEPS:</div>
+                                <div class="expandable-details-value">
+                                    <ol>
+                                        ${details.specificSteps.map(step => `<li>${step}</li>`).join('')}
+                                    </ol>
+                                </div>
+                            </div>
+                            ` : ''}
+                            ${details.deadlineText ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">DEADLINE:</div>
+                                <div class="expandable-details-value" style="color: #ff6b6b;">${details.deadlineText}</div>
+                            </div>
+                            ` : ''}
+                            ${details.priorityReason ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">PRIORITY:</div>
+                                <div class="expandable-details-value">${details.priorityReason}</div>
+                            </div>
+                            ` : ''}
+                            ${details.ifNotDone ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">IF NOT DONE:</div>
+                                <div class="expandable-details-value" style="color: #ff6b6b;">${details.ifNotDone}</div>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
                 </div>
                 `;
             }).join('');
@@ -3697,6 +3836,7 @@
             
             // Get inputs from the new inputsNeeded array
             const inputsNeeded = data.inputsNeeded || [];
+            const inputDetails = data.inputDetails || {};
             
             // Also check review tasks
             const workflow = data.workflow || {};
@@ -3708,17 +3848,18 @@
             const allInputs = [
                 ...inputsNeeded.map(item => ({
                     type: 'INPUT',
-                    title: item.taskTitle,
-                    taskId: item.taskId,
-                    meta: item.inputRequired,
-                    action: 'PROVIDE'
+                    ...item,
+                    ...inputDetails[item.taskId]
                 })),
                 ...reviewTasks.map(task => ({
                     type: 'REVIEW',
                     title: task.title,
                     taskId: task.id,
-                    meta: `${task.project || 'General'} • From: ${task.from || 'Agent'}`,
-                    action: 'REVIEW'
+                    brief: `${task.project || 'General'} • From: ${task.from || 'Agent'}`,
+                    whatINeed: 'Review and approve this task',
+                    why: 'Task is waiting for your approval to proceed',
+                    steps: ['Open the task details', 'Review the work done', 'Approve or request changes'],
+                    currentStatus: 'Waiting for your review'
                 }))
             ];
             
@@ -3731,99 +3872,134 @@
                 return;
             }
 
-            container.innerHTML = allInputs.map(item => `
-                <div class="input-item" style="padding: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid ${item.type === 'INPUT' ? '#ff6b6b' : '#c9a962'}; cursor: pointer;">
-                    <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: ${item.type === 'INPUT' ? '#ff6b6b' : '#c9a962'};">${item.type}</span>
-                    <div style="font-weight: 600; margin: 4px 0;">${item.title}</div>
-                    <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">${item.meta}</div>
-                    <button style="background: ${item.type === 'INPUT' ? 'rgba(255,107,107,0.2)' : 'rgba(201,169,98,0.2)'}; color: ${item.type === 'INPUT' ? '#ff6b6b' : '#c9a962'}; border: none; padding: 6px 12px; border-radius: 4px; font-size: 11px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">${item.action}</button>
+            container.innerHTML = allInputs.map(item => {
+                const isExpanded = window.expandedState && window.expandedState['input-' + item.taskId];
+                return `
+                <div class="input-item expandable-item ${isExpanded ? 'expanded' : ''}" 
+                     onclick="toggleExpand('input-${item.taskId}')"
+                     style="padding: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid ${item.type === 'INPUT' ? '#ff6b6b' : '#c9a962'}; cursor: pointer;">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <div style="flex: 1;">
+                            <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: ${item.type === 'INPUT' ? '#ff6b6b' : '#c9a962'};">${item.type}</span>
+                            <div style="font-weight: 600; margin: 4px 0;">${item.title}</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">${item.brief}</div>
+                        </div>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content ${isExpanded ? 'expanded' : ''}" id="input-${item.taskId}-content">
+                        <div class="expandable-details">
+                            ${item.whatINeed ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">WHAT I NEED:</div>
+                                <div class="expandable-details-value">${item.whatINeed}</div>
+                            </div>
+                            ` : ''}
+                            ${item.why ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">WHY:</div>
+                                <div class="expandable-details-value">${item.why}</div>
+                            </div>
+                            ` : ''}
+                            ${item.steps ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">STEPS:</div>
+                                <div class="expandable-details-value">
+                                    <ol>
+                                        ${item.steps.map(step => `<li>${step}</li>`).join('')}
+                                    </ol>
+                                </div>
+                            </div>
+                            ` : ''}
+                            ${item.currentStatus ? `
+                            <div class="expandable-details-row">
+                                <div class="expandable-details-label">CURRENT STATUS:</div>
+                                <div class="expandable-details-value" style="color: var(--info);">${item.currentStatus}</div>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function renderWeekView(data) {
             const container = document.getElementById('week-days');
+            const dayTasksContainer = document.getElementById('day-tasks');
             
             // Exit if element doesn't exist on this page
             if (!container) return;
             
+            const calendarTasks = data.calendarTasks || {};
+            const tasks = data.tasks || {};
             const today = new Date();
-            today.setDate(today.getDate() + (currentWeekOffset * 7));
+            today.setHours(0, 0, 0, 0);
             
-            // Get start of week (Monday)
-            const startOfWeek = new Date(today);
-            startOfWeek.setDate(today.getDate() - today.getDay() + 1);
-            
+            // Generate next 7 days
             const days = [];
-            const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-            
             for (let i = 0; i < 7; i++) {
-                const date = new Date(startOfWeek);
-                date.setDate(startOfWeek.getDate() + i);
+                const date = new Date(today);
+                date.setDate(date.getDate() + i);
+                const dateStr = date.toISOString().split('T')[0];
                 
-                // Get tasks for this day (simplified)
-                const tasksForDay = getTasksForDay(data, date);
+                // Get tasks for this date
+                const taskIdsForDay = calendarTasks[dateStr] || [];
+                const tasksForDay = taskIdsForDay
+                    .map(id => tasks[id])
+                    .filter(t => t);
+                
+                // Also get high priority pending tasks for today if no specific tasks
+                if (i === 0 && tasksForDay.length === 0) {
+                    const workflow = data.workflow || {};
+                    const pendingIds = workflow.pending || [];
+                    const highPriorityPending = pendingIds
+                        .map(id => tasks[id])
+                        .filter(t => t && t.priority === 'high')
+                        .slice(0, 3);
+                    tasksForDay.push(...highPriorityPending);
+                }
+                
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                const dayNum = date.getDate();
+                const isToday = i === 0;
+                const isSelected = selectedDay && selectedDay.toDateString() === date.toDateString();
                 
                 days.push({
-                    name: dayNames[i],
-                    date: date.getDate(),
-                    fullDate: date,
-                    taskCount: tasksForDay.length,
-                    urgentCount: tasksForDay.filter(t => t.priority === 'high').length,
-                    warningCount: tasksForDay.filter(t => t.priority === 'medium').length
+                    date: date,
+                    dateStr: dateStr,
+                    dayName: dayName,
+                    dayNum: dayNum,
+                    tasks: tasksForDay,
+                    isToday: isToday,
+                    isSelected: isSelected,
+                    hasDeadline: taskIdsForDay.length > 0
                 });
             }
-
-            container.innerHTML = days.map((day, idx) => {
-                const isSelected = selectedDay && selectedDay.getDate() === day.fullDate.getDate();
-                const isToday = new Date().toDateString() === day.fullDate.toDateString();
-                
-                return `
-                    <div class="week-day ${isSelected ? 'active' : ''} ${isToday ? 'today' : ''}" 
-                         onclick="selectDay(${idx}, ${day.fullDate.getTime()})"
-                         data-day-idx="${idx}">
-                        <div class="week-day-name">${day.name}</div>
-                        <div class="week-day-number" style="${isToday ? 'color: var(--crimson-bright);' : ''}">${day.date}</div>
-                        <div class="week-day-stats">
-                            ${day.urgentCount > 0 ? `<span class="week-day-count urgent">${day.urgentCount}</span>` : ''}
-                            ${day.warningCount > 0 ? `<span class="week-day-count warning">${day.warningCount}</span>` : ''}
-                            ${day.taskCount > 0 && day.urgentCount === 0 && day.warningCount === 0 ? `<span class="week-day-count">${day.taskCount}</span>` : ''}
-                        </div>
+            
+            container.innerHTML = days.map((day, idx) => `
+                <div class="week-day ${day.isSelected ? 'active' : ''} ${day.isToday ? 'today' : ''}" 
+                     onclick="selectDay(${idx}, '${day.dateStr}')"
+                     data-day-idx="${idx}">
+                    <div class="week-day-name">${day.dayName}</div>
+                    <div class="week-day-number" style="${day.isToday ? 'color: var(--crimson-bright);' : ''} ${day.hasDeadline ? 'font-weight: 700;' : ''}">${day.dayNum}</div>
+                    <div class="week-day-stats">
+                        ${day.tasks.filter(t => t.priority === 'high').length > 0 ? `<span class="week-day-count urgent">${day.tasks.filter(t => t.priority === 'high').length}</span>` : ''}
+                        ${day.tasks.filter(t => t.priority === 'medium').length > 0 ? `<span class="week-day-count warning">${day.tasks.filter(t => t.priority === 'medium').length}</span>` : ''}
+                        ${day.tasks.length > 0 && day.tasks.filter(t => t.priority === 'high' || t.priority === 'medium').length === 0 ? `<span class="week-day-count">${day.tasks.length}</span>` : ''}
                     </div>
-                `;
-            }).join('');
-
-            // Auto-select today if no selection
+                    ${day.hasDeadline ? '<div style="position: absolute; bottom: 4px; width: 4px; height: 4px; border-radius: 50%; background: var(--danger);"></div>' : ''}
+                </div>
+            `).join('');
+            
+            // Auto-select today
             if (!selectedDay) {
-                const todayIdx = days.findIndex(d => new Date().toDateString() === d.fullDate.toDateString());
-                if (todayIdx >= 0) {
-                    selectDay(todayIdx, days[todayIdx].fullDate.getTime());
-                }
+                selectedDay = today;
+                renderDayTasks(today.toISOString().split('T')[0]);
             }
         }
 
-        function getTasksForDay(data, date) {
-            const tasks = data.tasks || {};
-            const workflow = data.workflow || {};
-            
-            // Get all task IDs from workflow and look up full task objects
-            const allTaskIds = [
-                ...(workflow.pending || []),
-                ...(workflow.active || []),
-                ...(workflow.review || []),
-                ...(workflow.done || [])
-            ];
-            
-            // Look up full task objects from tasks object (not array)
-            const allTasks = allTaskIds.map(id => tasks[id]).filter(t => t);
-            
-            // Filter tasks by deadline matching this date
-            const dayStr = date.toISOString().split('T')[0];
-            return allTasks.filter(t => t.deadline && t.deadline === dayStr);
-        }
-
-        function selectDay(idx, timestamp) {
-            selectedDay = new Date(timestamp);
+        function selectDay(idx, dateStr) {
+            selectedDay = new Date(dateStr);
             
             // Update visual selection
             document.querySelectorAll('.week-day').forEach((el, i) => {
@@ -3831,36 +4007,41 @@
             });
 
             // Render tasks for selected day
-            renderDayTasks(selectedDay);
+            renderDayTasks(dateStr);
         }
 
-        function renderDayTasks(date) {
+        function renderDayTasks(dateStr) {
             const container = document.getElementById('day-tasks');
+            const data = appData;
+            const calendarTasks = data.calendarTasks || {};
+            const tasks = data.tasks || {};
+            
+            const date = new Date(dateStr);
             const dayName = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
             
-            // Get tasks from data (tasks is now an object, not array)
-            const tasks = appData.tasks || {};
-            const workflow = appData.workflow || {};
-            
-            // Get all task IDs from workflow and look up full task objects
-            const allTaskIds = [
-                ...(workflow.pending || []),
-                ...(workflow.active || []),
-                ...(workflow.review || []),
-                ...(workflow.done || [])
-            ];
-            
-            // Look up full task objects from tasks object and filter by deadline
-            const dayStr = date.toISOString().split('T')[0];
-            const tasksForDay = allTaskIds
+            // Get tasks for this date
+            const taskIdsForDay = calendarTasks[dateStr] || [];
+            let tasksForDay = taskIdsForDay
                 .map(id => tasks[id])
-                .filter(t => t && t.deadline && t.deadline === dayStr);
+                .filter(t => t);
+            
+            // For today, also show high priority pending tasks
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (date.toDateString() === today.toDateString() && tasksForDay.length === 0) {
+                const workflow = data.workflow || {};
+                const pendingIds = workflow.pending || [];
+                tasksForDay = pendingIds
+                    .map(id => tasks[id])
+                    .filter(t => t && t.priority === 'high')
+                    .slice(0, 3);
+            }
             
             if (tasksForDay.length === 0) {
                 container.innerHTML = `
                     <div class="day-tasks-header">${dayName}</div>
                     <div style="text-align: center; padding: 40px; color: var(--text-muted);">
-                        No tasks due on this day
+                        No tasks scheduled for this day
                     </div>
                 `;
                 return;
@@ -3993,7 +4174,34 @@
         }
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', loadData);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize expanded state tracking
+            window.expandedState = {};
+            loadData();
+        });
+
+        // Toggle expand/collapse for dashboard items
+        function toggleExpand(key) {
+            // Prevent event bubbling
+            event.stopPropagation();
+            
+            // Toggle state
+            window.expandedState[key] = !window.expandedState[key];
+            
+            // Find the content element
+            const content = document.getElementById(key + '-content');
+            const item = content ? content.closest('.expandable-item') : null;
+            
+            if (content && item) {
+                if (window.expandedState[key]) {
+                    content.classList.add('expanded');
+                    item.classList.add('expanded');
+                } else {
+                    content.classList.remove('expanded');
+                    item.classList.remove('expanded');
+                }
+            }
+        }
 
         // ===== SMART POLLING FOR REAL-TIME UPDATES =====
         (function() {
