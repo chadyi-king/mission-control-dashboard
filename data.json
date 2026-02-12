@@ -25,9 +25,9 @@
       { "id": "res-hel-003", "name": "Data Integrity Checklist", "type": "doc", "url": "#" }
     ],
     "escritor": [
-      { "id": "res-esc-001", "name": "RE_UNITE_Story_Bible.md", "type": "md", "url": "/projects/A2-reunite/STORY-BIBLE-COMPLETE.md" },
-      { "id": "res-esc-002", "name": "Chapter 12 Draft", "type": "md", "url": "#" },
-      { "id": "res-esc-003", "name": "Character Voice Guide", "type": "doc", "url": "#" }
+      { "id": "res-esc-001", "name": "RE_UNITE_Story_Bible.md", "type": "md", "url": "/projects/A2-reunite/STORY-BIBLE-COMPLETE.md", "description": "Complete story bible for continuity reference" },
+      { "id": "res-esc-002", "name": "Chapter 13 Draft", "type": "md", "url": "#", "description": "Current chapter being edited" },
+      { "id": "res-esc-003", "name": "Character Voice Guide", "type": "doc", "url": "#", "description": "Voice and style reference for characters" }
     ],
     "quanta": [
       { "id": "res-q-001", "name": "OANDA API Documentation", "type": "link", "url": "https://developer.oanda.com/" },
