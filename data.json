@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T14:15:56.291969",
+  "lastUpdated": "2026-02-12T14:23:26.998641",
   "updatedBy": "chad_yi",
   "resources": {
     "general": [
@@ -229,8 +229,8 @@
   },
   "stats": {
     "total": 80,
-    "pending": 14,
-    "active": 1,
+    "pending": 13,
+    "active": 2,
     "review": 0,
     "done": 2,
     "backlog": 63
@@ -238,7 +238,6 @@
   "workflow": {
     "pending": [
       "A1-1",
-      "A5-3",
       "A5-4",
       "A6-16",
       "A6-18",
@@ -253,7 +252,8 @@
       "A1-4"
     ],
     "active": [
-      "A6-3"
+      "A6-3",
+      "A5-3"
     ],
     "review": [],
     "done": [
@@ -284,9 +284,9 @@
       "lastActive": "2026-02-09T12:00:00+08:00"
     },
     "quanta": {
-      "status": "blocked",
+      "status": "active",
       "blocker": "OANDA credentials needed",
-      "currentTask": "A5-1: Trading signal automation",
+      "currentTask": "A5-1: Awaiting Telegram auth to complete setup",
       "lastActive": null
     },
     "mensamusa": {
@@ -830,7 +830,8 @@
       "notes": "Create OANDA account, generate API key, get Account ID for trading bot",
       "deadline": "2026-02-15",
       "createdAt": "2026-02-12T03:19:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "currentStatus": "OANDA connected, LIVE account ready, awaiting CALLISTOFX auth"
     },
     "A6-13": {
       "id": "A6-13",
