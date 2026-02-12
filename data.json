@@ -849,14 +849,34 @@
       "agent": "Quanta",
       "waitingFor": "OANDA API credentials",
       "idleHours": 102,
-      "priority": "MEDIUM"
+      "priority": "MEDIUM",
+      "title": "Trading Bot: Forex/Commodities",
+      "brief": "A5 \u2022 From: Quanta",
+      "whatINeed": "OANDA API credentials",
+      "why": "Quanta has been blocked for 102 hours waiting for this",
+      "steps": [
+        "Review the blocker",
+        "Provide the required information/credentials",
+        "Agent will resume work"
+      ],
+      "currentStatus": "Waiting for OANDA API credentials"
     },
     "A5-2": {
       "taskId": "A5-2",
       "agent": "MensaMusa",
       "waitingFor": "Moomoo account credentials",
       "idleHours": 102,
-      "priority": "MEDIUM"
+      "priority": "MEDIUM",
+      "title": "Trading Bot: Options Flow",
+      "brief": "A5 \u2022 From: MensaMusa",
+      "whatINeed": "Moomoo account credentials",
+      "why": "MensaMusa has been blocked for 102 hours waiting for this",
+      "steps": [
+        "Review the blocker",
+        "Provide the required information/credentials",
+        "Agent will resume work"
+      ],
+      "currentStatus": "Waiting for Moomoo account credentials"
     }
   },
   "urgentTaskDetails": {
