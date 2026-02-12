@@ -19,6 +19,11 @@
       { "id": "res-chad-001", "name": "Orchestration Playbook", "type": "doc", "url": "#" },
       { "id": "res-chad-002", "name": "Agent Coordination Templates", "type": "doc", "url": "#" }
     ],
+    "helios": [
+      { "id": "res-hel-001", "name": "Audit Protocol Guide", "type": "doc", "url": "#" },
+      { "id": "res-hel-002", "name": "Dashboard Monitoring Scripts", "type": "github", "url": "#" },
+      { "id": "res-hel-003", "name": "Data Integrity Checklist", "type": "doc", "url": "#" }
+    ],
     "escritor": [
       { "id": "res-esc-001", "name": "RE_UNITE_Story_Bible.md", "type": "md", "url": "/projects/A2-reunite/STORY-BIBLE-COMPLETE.md" },
       { "id": "res-esc-002", "name": "Chapter 12 Draft", "type": "md", "url": "#" },
@@ -78,6 +83,11 @@
       "status": "active",
       "currentTask": "A6-3: Dashboard audit infrastructure setup",
       "lastActive": "2026-02-12T07:21:00+08:00"
+    },
+    "helios": {
+      "status": "active",
+      "currentTask": "15-min dashboard audits",
+      "lastActive": "2026-02-12T11:30:00+08:00"
     },
     "escritor": {
       "status": "waiting_for_input",
@@ -306,6 +316,12 @@
       "currently": "Restoring missing data structures",
       "youShouldKnow": "Dashboard JS expects inputsNeeded, urgentTaskDetails, agentDetails",
       "actionNeeded": "Continue monitoring dashboard fixes"
+    },
+    "helios": {
+      "last5Min": "Completed 15-min audit, all systems nominal",
+      "currently": "Monitoring dashboard data integrity",
+      "youShouldKnow": "Running automated audits every 15 minutes",
+      "actionNeeded": "None - automated monitoring active"
     },
     "escritor": {
       "last5Min": "Idle - waiting for task",
