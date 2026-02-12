@@ -86,8 +86,10 @@
     },
     "helios": {
       "status": "active",
-      "currentTask": "15-min dashboard audits",
-      "lastActive": "2026-02-12T11:30:00+08:00"
+      "currentTask": "Proactive visual audits every 15 min",
+      "lastActive": "2026-02-12T11:38:00+08:00",
+      "model": "ollama/qwen2.5:7b",
+      "capabilities": ["browser", "screenshot", "agent-messaging"]
     },
     "escritor": {
       "status": "waiting_for_input",
@@ -318,10 +320,12 @@
       "actionNeeded": "Continue monitoring dashboard fixes"
     },
     "helios": {
-      "last5Min": "Completed 15-min audit, all systems nominal",
-      "currently": "Monitoring dashboard data integrity",
-      "youShouldKnow": "Running automated audits every 15 minutes",
-      "actionNeeded": "None - automated monitoring active"
+      "last5Min": "Screenshot captured - all systems nominal",
+      "currently": "Proactive visual audits every 15 min",
+      "youShouldKnow": "Now running on Ollama with full browser capabilities. I screenshot, verify, and alert.",
+      "actionNeeded": "None - autonomous monitoring active",
+      "model": "ollama/qwen2.5:7b",
+      "type": "Proactive Auditor"
     },
     "escritor": {
       "last5Min": "Idle - waiting for task",
