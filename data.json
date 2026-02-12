@@ -1,17 +1,17 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T11:25:00+08:00",
+  "lastUpdated": "2026-02-12T11:30:00+08:00",
   "updatedBy": "chad_yi",
   "stats": {
-    "total": 72,
-    "pending": 7,
+    "total": 74,
+    "pending": 9,
     "active": 8,
     "review": 2,
     "done": 2,
     "backlog": 53
   },
   "workflow": {
-    "pending": ["A1-1", "A6-16", "A6-18", "A7-2", "A7-3", "B6-1", "B6-3"],
+    "pending": ["A1-1", "A5-3", "A6-16", "A6-18", "A6-19", "A7-2", "A7-3", "B6-1", "B6-3"],
     "active": [],
     "review": [],
     "done": ["A2-1", "B3-1"]
@@ -53,6 +53,18 @@
       "hoursRemaining": 26
     },
     {
+      "id": "A5-3",
+      "title": "Set up OANDA account and API credentials",
+      "deadline": "2026-02-15",
+      "hoursRemaining": 74
+    },
+    {
+      "id": "A6-19",
+      "title": "Connect agent to Telegram group/channel",
+      "deadline": "2026-02-15",
+      "hoursRemaining": 74
+    },
+    {
       "id": "B6-1",
       "title": "Elluminate proposal - School A",
       "deadline": "2026-02-17",
@@ -66,11 +78,43 @@
     }
   ],
   "inputsNeeded": [
+    { "taskId": "A5-3", "title": "Set up OANDA account and API credentials", "brief": "Create OANDA trading account and generate API credentials for Quanta" },
+    { "taskId": "A6-19", "title": "Connect agent to Telegram group/channel", "brief": "Set up Helios or Quanta to monitor and respond in Telegram group chat" },
     { "taskId": "A5-1", "title": "Trading Bot Forex", "brief": "OANDA trading account credentials needed" },
     { "taskId": "A5-2", "title": "Trading Bot Options", "brief": "Moomoo trading account credentials needed" },
     { "taskId": "A2-13", "title": "Edit Chapter 13", "brief": "Spawn Escritor agent to work on novel" }
   ],
   "inputDetails": {
+    "A5-3": {
+      "title": "Set up OANDA account and API credentials",
+      "brief": "Create OANDA trading account and generate API credentials for Quanta",
+      "whatINeed": "OANDA trading account with API key and Account ID",
+      "why": "Quanta needs credentials to connect trading bot to live forex markets",
+      "steps": [
+        "Go to oanda.com and sign up for an account",
+        "Complete account verification (KYC)",
+        "Navigate to 'Manage API Access' in account settings",
+        "Generate a new API key",
+        "Copy your Account ID (starts with 001-)",
+        "Store credentials securely for Quanta to use"
+      ],
+      "currentStatus": "Quanta blocked - waiting for OANDA account setup"
+    },
+    "A6-19": {
+      "title": "Connect agent to Telegram group/channel",
+      "brief": "Set up Helios or Quanta to monitor and respond in Telegram group chat",
+      "whatINeed": "Telegram bot token and group/channel access",
+      "why": "Enable agents to send alerts, receive commands, and communicate via Telegram",
+      "steps": [
+        "Decide which agent needs Telegram access (Helios for alerts, Quanta for trading)",
+        "Create Telegram bot via BotFather if needed",
+        "Get bot API token",
+        "Add bot to target group/channel",
+        "Configure agent to read/send messages",
+        "Test message delivery"
+      ],
+      "currentStatus": "Not started - waiting for you to set up Telegram integration"
+    },
     "A5-1": {
       "title": "Trading Bot Forex",
       "brief": "OANDA trading account credentials needed",
@@ -163,6 +207,40 @@
       "deadlineText": "Feb 17 (5 days)",
       "priorityReason": "HIGH - equipment needed for event",
       "ifNotDone": "Event may lack required equipment"
+    },
+    "A5-3": {
+      "title": "Set up OANDA account and API credentials",
+      "brief": "Create OANDA trading account and generate API credentials for Quanta",
+      "deadline": "Feb 15",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Go to oanda.com and sign up for an account",
+        "Complete account verification (KYC)",
+        "Navigate to 'Manage API Access' in account settings",
+        "Generate a new API key",
+        "Copy your Account ID (starts with 001-)",
+        "Store credentials securely for Quanta to use"
+      ],
+      "deadlineText": "Feb 15 (3 days)",
+      "priorityReason": "HIGH - unblocks A5-1 trading bot development",
+      "ifNotDone": "Quanta remains blocked, trading bot cannot proceed"
+    },
+    "A6-19": {
+      "title": "Connect agent to Telegram group/channel",
+      "brief": "Set up Helios or Quanta to monitor and respond in Telegram group chat",
+      "deadline": "Feb 15",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Decide which agent needs Telegram access (Helios for alerts, Quanta for trading)",
+        "Create Telegram bot via BotFather if needed",
+        "Get bot API token",
+        "Add bot to target group/channel",
+        "Configure agent to read/send messages",
+        "Test message delivery"
+      ],
+      "deadlineText": "Feb 15 (3 days)",
+      "priorityReason": "HIGH - enables agent monitoring and notifications",
+      "ifNotDone": "Agents cannot communicate via Telegram, manual monitoring required"
     }
   },
   "agentDetails": {
@@ -239,12 +317,14 @@
     "A4-3": { "id": "A4-3", "title": "Research streaming equipment", "project": "A4", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A5-1": { "id": "A5-1", "title": "Trading Bot: Forex/Commodities", "project": "A5", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A5-2": { "id": "A5-2", "title": "Trading Bot: Options Flow", "project": "A5", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
+    "A5-3": { "id": "A5-3", "title": "Set up OANDA account and API credentials", "project": "A5", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Create OANDA account, generate API key, get Account ID for trading bot", "deadline": "2026-02-15", "createdAt": "2026-02-12T03:19:00Z", "completedAt": null },
     "A6-13": { "id": "A6-13", "title": "Project Detail Page", "project": "A6", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-14": { "id": "A6-14", "title": "Project Tasks List enhancement", "project": "A6", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-15": { "id": "A6-15", "title": "Project Timeline view", "project": "A6", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-16": { "id": "A6-16", "title": "Document upload system", "project": "A6", "priority": "medium", "status": "pending", "assignedAgent": "CHAD_YI", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-17": { "id": "A6-17", "title": "Voice/chat integration", "project": "A6", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-18": { "id": "A6-18", "title": "Security hardening", "project": "A6", "priority": "medium", "status": "pending", "assignedAgent": "CHAD_YI", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
+    "A6-19": { "id": "A6-19", "title": "Connect agent to Telegram group/channel", "project": "A6", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Set up Helios or Quanta to monitor and respond in Telegram group chat", "deadline": "2026-02-15", "createdAt": "2026-02-12T03:19:00Z", "completedAt": null },
     "A7-1": { "id": "A7-1", "title": "Venue shortlist", "project": "A7", "priority": "high", "status": "backlog", "notes": "Find 3 venues", "createdAt": "2026-02-08T12:02:05Z", "completedAt": null },
     "A7-2": { "id": "A7-2", "title": "Invite list", "project": "A7", "priority": "medium", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Draft guest list", "createdAt": "2026-02-08T12:02:05Z", "completedAt": null },
     "A7-3": { "id": "A7-3", "title": "Contact Pastor Raymond", "project": "A7", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Confirm wedding officiant availability", "createdAt": "2026-02-08T12:06:04Z", "completedAt": null },
