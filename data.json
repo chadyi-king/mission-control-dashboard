@@ -1,7 +1,64 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T11:30:00+08:00",
+  "lastUpdated": "2026-02-12T11:35:00+08:00",
   "updatedBy": "chad_yi",
+  "resources": {
+    "general": [
+      { "id": "res-001", "name": "Agent Workflow Guide", "type": "pdf", "url": "#", "description": "How to work with CHAD_YI and other agents", "agents": ["all"] },
+      { "id": "res-002", "name": "Project Naming Convention", "type": "doc", "url": "#", "description": "A1-A7, B1-B10, C1-C2 naming standards", "agents": ["all"] },
+      { "id": "res-003", "name": "Dashboard User Manual", "type": "pdf", "url": "#", "description": "How to navigate and use Mission Control", "agents": ["all"] }
+    ],
+    "recentUploads": [
+      { "id": "up-001", "name": "Chapter 12 Feedback.docx", "agent": "Escritor", "date": "2026-02-09", "project": "A2" },
+      { "id": "up-002", "name": "Trading Bot Architecture.pdf", "agent": "Quanta", "date": "2026-02-08", "project": "A5" },
+      { "id": "up-003", "name": "RE_UNITE_Story_Bible.md", "agent": "Escritor", "date": "2026-02-06", "project": "A2" }
+    ]
+  },
+  "agentResources": {
+    "chad_yi": [
+      { "id": "res-chad-001", "name": "Orchestration Playbook", "type": "doc", "url": "#" },
+      { "id": "res-chad-002", "name": "Agent Coordination Templates", "type": "doc", "url": "#" }
+    ],
+    "escritor": [
+      { "id": "res-esc-001", "name": "RE_UNITE_Story_Bible.md", "type": "md", "url": "/projects/A2-reunite/STORY-BIBLE-COMPLETE.md" },
+      { "id": "res-esc-002", "name": "Chapter 12 Draft", "type": "md", "url": "#" },
+      { "id": "res-esc-003", "name": "Character Voice Guide", "type": "doc", "url": "#" }
+    ],
+    "quanta": [
+      { "id": "res-q-001", "name": "OANDA API Documentation", "type": "link", "url": "https://developer.oanda.com/" },
+      { "id": "res-q-002", "name": "Trading Bot Codebase", "type": "github", "url": "#" }
+    ],
+    "mensamusa": [
+      { "id": "res-mm-001", "name": "Options Flow Analysis Guide", "type": "doc", "url": "#" },
+      { "id": "res-mm-002", "name": "Moomoo API Reference", "type": "link", "url": "#" }
+    ],
+    "autour": [
+      { "id": "res-aut-001", "name": "KOE Content Strategy", "type": "doc", "url": "#" },
+      { "id": "res-aut-002", "name": "YouTube Script Templates", "type": "doc", "url": "#" }
+    ]
+  },
+  "projectResources": {
+    "A1": [],
+    "A2": [
+      { "id": "res-a2-001", "name": "Story Bible", "type": "md", "url": "/projects/A2-reunite/STORY-BIBLE-COMPLETE.md" },
+      { "id": "res-a2-002", "name": "Chapter Outlines", "type": "folder", "url": "#" }
+    ],
+    "A3": [
+      { "id": "res-a3-001", "name": "Script Templates", "type": "doc", "url": "#" }
+    ],
+    "A4": [],
+    "A5": [
+      { "id": "res-a5-001", "name": "OANDA Setup Guide", "type": "doc", "url": "#" },
+      { "id": "res-a5-002", "name": "Trading Strategy Doc", "type": "pdf", "url": "#" }
+    ],
+    "A6": [
+      { "id": "res-a6-001", "name": "Dashboard Architecture", "type": "pdf", "url": "#" },
+      { "id": "res-a6-002", "name": "Agent Protocols", "type": "doc", "url": "#" }
+    ],
+    "A7": [],
+    "B1": [], "B2": [], "B3": [], "B4": [], "B5": [], "B6": [], "B7": [], "B8": [], "B9": [], "B10": [],
+    "C1": [], "C2": []
+  },
   "stats": {
     "total": 74,
     "pending": 9,
