@@ -2425,8 +2425,15 @@
 
         async function loadData() {
             try {
-                const response = await fetch('data.json');
+                console.log('Loading data...');
+                const response = await fetch('data.json?t=' + Date.now()); // Cache busting
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 appData = await response.json();
+                console.log('Data loaded:', Object.keys(appData));
+                console.log('Projects:', Object.keys(appData.projects || {}));
+                console.log('Tasks:', Object.keys(appData.tasks || {}).length);
                 allProjects = [];
 
                 // Process all projects
