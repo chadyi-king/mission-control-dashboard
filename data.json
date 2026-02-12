@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T11:20:00+08:00",
+  "lastUpdated": "2026-02-12T11:25:00+08:00",
   "updatedBy": "chad_yi",
   "stats": {
     "total": 72,
@@ -65,6 +65,138 @@
       "hoursRemaining": 121
     }
   ],
+  "inputsNeeded": [
+    { "taskId": "A5-1", "title": "Trading Bot Forex", "brief": "OANDA trading account credentials needed" },
+    { "taskId": "A5-2", "title": "Trading Bot Options", "brief": "Moomoo trading account credentials needed" },
+    { "taskId": "A2-13", "title": "Edit Chapter 13", "brief": "Spawn Escritor agent to work on novel" }
+  ],
+  "inputDetails": {
+    "A5-1": {
+      "title": "Trading Bot Forex",
+      "brief": "OANDA trading account credentials needed",
+      "whatINeed": "OANDA trading account API key and Account ID",
+      "why": "To connect the trading bot to live forex markets for automated trading",
+      "steps": [
+        "Go to oanda.com and sign in/create account",
+        "Navigate to 'Manage API Access' in account settings",
+        "Generate a new API key",
+        "Copy your Account ID (starts with 001-)",
+        "Give me both the API key and Account ID"
+      ],
+      "currentStatus": "Bot code ready, waiting for credentials to connect"
+    },
+    "A5-2": {
+      "title": "Trading Bot Options",
+      "brief": "Moomoo trading account credentials needed",
+      "whatINeed": "Moomoo app API access credentials",
+      "why": "To monitor options flow and execute options trades automatically",
+      "steps": [
+        "Open Moomoo app on your phone",
+        "Go to Account → Settings → API Management",
+        "Enable API access and generate API key",
+        "Note your Account ID and API key",
+        "Send me both credentials securely"
+      ],
+      "currentStatus": "Options flow monitoring configured, needs account connection"
+    },
+    "A2-13": {
+      "title": "Edit Chapter 13",
+      "brief": "Spawn Escritor agent to work on novel",
+      "whatINeed": "You to tell me to spawn Escritor agent",
+      "why": "Escritor is the creative writing agent that edits your RE:UNITE novel chapters",
+      "steps": [
+        "Tell me 'spawn Escritor agent for A2-13'",
+        "I'll activate the agent",
+        "Escritor will start editing Chapter 13",
+        "Check back in 1-2 hours for progress"
+      ],
+      "currentStatus": "Escritor idle, waiting for your command to start"
+    }
+  },
+  "urgentTaskDetails": {
+    "A1-1": {
+      "title": "Change Taiwan flights",
+      "brief": "Call airline to rebook flights to April 15-19",
+      "deadline": "Feb 13",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Find your original booking confirmation email",
+        "Call airline customer service",
+        "Reference your booking number",
+        "Request change to dates: April 15-19, 2026",
+        "Ask about any change fees",
+        "Confirm new flights match your schedule",
+        "Get new confirmation number"
+      ],
+      "deadlineText": "Feb 13 (DUE TOMORROW - URGENT)",
+      "priorityReason": "HIGH - affects April travel plans",
+      "ifNotDone": "Flights may sell out or prices increase significantly"
+    },
+    "B6-1": {
+      "title": "Find facilitator for ESU",
+      "brief": "Need minimum 120 facilitators by 17 Feb",
+      "deadline": "Feb 17",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Contact ESU coordinator for requirements",
+        "Reach out to facilitator network",
+        "Post on relevant forums/groups",
+        "Follow up with confirmed facilitators",
+        "Create final roster"
+      ],
+      "deadlineText": "Feb 17 (5 days)",
+      "priorityReason": "HIGH - 120 facilitators needed for event",
+      "ifNotDone": "Event may be understaffed"
+    },
+    "B6-3": {
+      "title": "SPH items to order",
+      "brief": "Order equipment for SPH event by 17 February",
+      "deadline": "Feb 17",
+      "priority": "HIGH",
+      "specificSteps": [
+        "Review SPH equipment requirements",
+        "Check vendor availability",
+        "Place orders with confirmed vendors",
+        "Schedule delivery for event day",
+        "Confirm order receipts"
+      ],
+      "deadlineText": "Feb 17 (5 days)",
+      "priorityReason": "HIGH - equipment needed for event",
+      "ifNotDone": "Event may lack required equipment"
+    }
+  },
+  "agentDetails": {
+    "chad_yi": {
+      "last5Min": "Fixed dashboard data.json structure",
+      "currently": "Restoring missing data structures",
+      "youShouldKnow": "Dashboard JS expects inputsNeeded, urgentTaskDetails, agentDetails",
+      "actionNeeded": "Continue monitoring dashboard fixes"
+    },
+    "escritor": {
+      "last5Min": "Idle - waiting for task",
+      "currently": "A2: Awaiting chapter outline",
+      "youShouldKnow": "Chapter 12 feedback provided, Chapter 13 pending",
+      "actionNeeded": "Spawn agent when ready to work on novel"
+    },
+    "quanta": {
+      "last5Min": "Blocked - no OANDA credentials",
+      "currently": "A5-1: Trading signal automation",
+      "youShouldKnow": "Bot code ready, needs API credentials",
+      "actionNeeded": "Provide OANDA API key and Account ID"
+    },
+    "mensamusa": {
+      "last5Min": "Blocked - no Moomoo account",
+      "currently": "A5-2: Options flow monitoring",
+      "youShouldKnow": "Options monitoring configured, needs account",
+      "actionNeeded": "Provide Moomoo API credentials"
+    },
+    "autour": {
+      "last5Min": "Not spawned",
+      "currently": "A3: KOE scripts waiting",
+      "youShouldKnow": "Ready to spawn for YouTube/TikTok scripts",
+      "actionNeeded": "Spawn agent when ready to work on scripts"
+    }
+  },
   "projects": {
     "A": { "name": "Ambition", "subtitle": "By Calbee (Personal)", "projects": ["A1", "A2", "A3", "A4", "A5", "A6", "A7"] },
     "B": { "name": "Business", "subtitle": "Empire (Main Work)", "projects": ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"] },
