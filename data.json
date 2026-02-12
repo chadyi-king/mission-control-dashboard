@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T11:35:00+08:00",
+  "lastUpdated": "2026-02-12T12:10:00+08:00",
   "updatedBy": "chad_yi",
   "resources": {
     "general": [
@@ -65,15 +65,15 @@
     "C1": [], "C2": []
   },
   "stats": {
-    "total": 74,
-    "pending": 9,
+    "total": 77,
+    "pending": 12,
     "active": 8,
     "review": 2,
     "done": 2,
     "backlog": 53
   },
   "workflow": {
-    "pending": ["A1-1", "A5-3", "A6-16", "A6-18", "A6-19", "A7-2", "A7-3", "B6-1", "B6-3"],
+    "pending": ["A1-1", "A5-3", "A6-16", "A6-18", "A6-19", "A6-20", "A6-21", "A6-22", "A7-2", "A7-3", "B6-1", "B6-3"],
     "active": [],
     "review": [],
     "done": ["A2-1", "B3-1"]
@@ -402,6 +402,9 @@
     "A6-15": { "id": "A6-15", "title": "Project Timeline view", "project": "A6", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-16": { "id": "A6-16", "title": "Document upload system", "project": "A6", "priority": "medium", "status": "pending", "assignedAgent": "CHAD_YI", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-17": { "id": "A6-17", "title": "Voice/chat integration", "project": "A6", "priority": "medium", "status": "backlog", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
+    "A6-20": { "id": "A6-20", "title": "Document Telegram CLI for Caleb", "project": "A6", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Create comprehensive Telegram CLI guide with examples for sending messages, reactions, files, etc.", "deadline": "2026-02-13", "createdAt": "2026-02-12T04:00:00Z", "completedAt": null },
+    "A6-21": { "id": "A6-21", "title": "Fix Week at a Glance segregation", "project": "A6", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Separate deadlines due today vs urgent tasks vs agent tasks. Currently showing mixed.", "deadline": "2026-02-13", "createdAt": "2026-02-12T04:00:00Z", "completedAt": null },
+    "A6-22": { "id": "A6-22", "title": "Configure Helios agent hook system", "project": "A6", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Set up Helios to ping other agents for status updates and report to CHAD_YI", "deadline": "2026-02-14", "createdAt": "2026-02-12T04:00:00Z", "completedAt": null },
     "A6-18": { "id": "A6-18", "title": "Security hardening", "project": "A6", "priority": "medium", "status": "pending", "assignedAgent": "CHAD_YI", "createdAt": "2026-02-06T00:00:00Z", "completedAt": null },
     "A6-19": { "id": "A6-19", "title": "Connect agent to Telegram group/channel", "project": "A6", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Set up Helios or Quanta to monitor and respond in Telegram group chat", "deadline": "2026-02-15", "createdAt": "2026-02-12T03:19:00Z", "completedAt": null },
     "A7-1": { "id": "A7-1", "title": "Venue shortlist", "project": "A7", "priority": "high", "status": "backlog", "notes": "Find 3 venues", "createdAt": "2026-02-08T12:02:05Z", "completedAt": null },
