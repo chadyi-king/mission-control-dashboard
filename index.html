@@ -3627,9 +3627,16 @@
             const agents = data.agents || [];
             const agentDetails = data.agentDetails || {};
             
-            if (countBadge) countBadge.textContent = agents.length;
+            // Convert agents object to array if needed
+            const agentsArray = Array.isArray(agents) ? agents : Object.entries(agents).map(([id, data]) => ({
+                id,
+                name: id.charAt(0).toUpperCase() + id.slice(1).replace('_', ' '),
+                ...data
+            }));
             
-            container.innerHTML = agents.map(agent => {
+            if (countBadge) countBadge.textContent = agentsArray.length;
+            
+            container.innerHTML = agentsArray.map(agent => {
                 const details = agentDetails[agent.id] || {};
                 const isExpanded = window.expandedState && window.expandedState['agent-' + agent.id];
                 const statusColor = agent.status === 'active' ? 'var(--success)' : 'var(--text-muted)';
