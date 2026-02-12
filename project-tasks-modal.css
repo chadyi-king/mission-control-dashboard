@@ -143,7 +143,7 @@ body.modal-open {
 }
 
 .project-modal-progress {
-    padding: 0 32px 24px;
+    padding: 0 32px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -173,61 +173,63 @@ body.modal-open {
 
 .project-modal-quick-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-    padding: 20px 32px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+    padding: 12px 32px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .project-modal-quick-stat {
-    padding: 14px;
-    border-radius: 16px;
+    padding: 10px 12px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(6px);
 }
 
 .project-modal-quick-stat-label {
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-muted, rgba(255, 255, 255, 0.5));
 }
 
 .project-modal-quick-stat-value {
-    font-size: 20px;
-    margin-top: 6px;
+    font-size: 18px;
+    margin-top: 4px;
     font-weight: 600;
 }
 
 .project-modal-filters {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    padding: 20px 32px 16px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    padding: 10px 32px 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    max-height: 70px;
+    overflow: hidden;
 }
 
 .modal-filter-label {
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-muted, rgba(255, 255, 255, 0.5));
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .modal-chip-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 4px;
 }
 
 .modal-chip {
-    padding: 6px 14px;
+    padding: 3px 8px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.02);
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-secondary, rgba(255, 255, 255, 0.75));
     cursor: pointer;
     transition: background 0.2s ease, color 0.2s ease;
@@ -245,29 +247,32 @@ body.modal-open {
 
 .modal-search-field input {
     width: 100%;
-    padding: 10px 12px;
-    border-radius: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.02);
     color: var(--text-primary, #fff);
     font-family: inherit;
+    font-size: 12px;
 }
 
 .modal-select {
     width: 100%;
-    padding: 10px 12px;
-    border-radius: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(0, 0, 0, 0.2);
     color: var(--text-primary, #fff);
     font-family: inherit;
+    font-size: 12px;
 }
 
 .project-modal-body {
     flex: 1;
     overflow-y: auto;
-    padding: 24px 32px 16px;
+    padding: 12px 32px 16px;
     position: relative;
+    min-height: 350px;
 }
 
 .project-modal-task-group {
