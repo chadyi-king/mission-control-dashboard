@@ -1945,7 +1945,7 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="project-tasks-modal.css?v=5">
+    <link rel="stylesheet" href="project-tasks-modal.css?v=6">
     <link rel="stylesheet" href="dashboard-fixes.css?v=3">
 </head>
 <body>
@@ -3076,7 +3076,7 @@
             }
 
             sections.push(`
-                <div class="tasks-view-all-link" style="text-align: right; margin-top: 6px;">
+                <div class="tasks-view-all-link" style="text-align: right; margin-top: 6px; display: none;">
                     <button type="button" style="background: none; border: none; color: var(--crimson-bright); font-size: 11px; letter-spacing: 0.5px; cursor: pointer; text-transform: uppercase;" onclick="event.stopPropagation(); openProject('${proj.id}')">
                         View full task list →
                     </button>
