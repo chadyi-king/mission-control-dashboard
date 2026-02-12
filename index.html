@@ -2988,7 +2988,8 @@
 
             // Keep old rendering for backwards compatibility
             const stats = appData.stats || {};
-            const agents = appData.agents || [];
+            // Convert agents object to array (fix infrastructure bug)
+            const agents = appData.agents ? Object.entries(appData.agents).map(([id, data]) => ({id, ...data})) : [];
             // Convert tasks object to array for iteration
             const allTasks = Object.values(appData.tasks || {});
             const workflow = appData.workflow || {};
@@ -4228,7 +4229,14 @@
                 return;
             }
             
-            const activeAgents = appData.agents.filter(a => a.status === 'active');
+            // Convert agents object to array
+            const agents = Object.entries(appData.agents).map(([id, data]) => ({
+                id,
+                name: data.name || id.charAt(0).toUpperCase() + id.slice(1).replace('_', ' '),
+                ...data
+            }));
+            
+            const activeAgents = agents.filter(a => a.status === 'active');
             document.getElementById('active-agent-count').textContent = activeAgents.length;
             
             if (activeAgents.length === 0) {
