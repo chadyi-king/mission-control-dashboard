@@ -320,12 +320,14 @@
       "actionNeeded": "Continue monitoring dashboard fixes"
     },
     "helios": {
-      "last5Min": "Screenshot captured - all systems nominal",
-      "currently": "Proactive visual audits every 15 min",
-      "youShouldKnow": "Now running on Ollama with full browser capabilities. I screenshot, verify, and alert.",
+      "last5Min": "Configured reporting hierarchy",
+      "currently": "Audits all pages every 15 min, reports to CHAD_YI",
+      "youShouldKnow": "Now audits CHAD_YI too. All reports go to CHAD_YI first.",
       "actionNeeded": "None - autonomous monitoring active",
       "model": "ollama/qwen2.5:7b",
-      "type": "Proactive Auditor"
+      "type": "Proactive Auditor",
+      "reportsTo": "CHAD_YI",
+      "audits": "All agents including CHAD_YI"
     },
     "escritor": {
       "last5Min": "Idle - waiting for task",
