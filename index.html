@@ -3721,13 +3721,19 @@
             const workflow = data.workflow || {};
             const tasks = data.tasks || {};
             const urgentDetails = data.urgentTaskDetails || {};
-            const pendingIds = workflow.pending || [];
             
-            // Look up actual task objects from IDs (tasks is now an object, not array)
-            const pendingTasks = pendingIds.map(id => tasks[id]).filter(t => t);
+            // Get ALL task IDs from all workflow statuses (not just pending)
+            const allTaskIds = [
+                ...(workflow.pending || []),
+                ...(workflow.active || []),
+                ...(workflow.review || [])
+            ];
+            
+            // Look up actual task objects from IDs
+            const allTasks = allTaskIds.map(id => tasks[id]).filter(t => t);
             
             // Filter urgent tasks (high priority or overdue)
-            const urgentTasks = pendingTasks.filter(t => {
+            const urgentTasks = allTasks.filter(t => {
                 if (t.priority === 'high') return true;
                 // Check if due within 48 hours
                 if (t.deadline) {
