@@ -40,7 +40,8 @@
       "notes": "Rebook flights and hotel to 15-19 April",
       "deadline": "2026-02-13",
       "createdAt": "2026-02-09T10:56:35Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A1-2": {
       "id": "A1-2",
@@ -49,7 +50,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-09T13:15:05Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A1-3": {
       "id": "A1-3",
@@ -58,7 +60,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-09T15:49:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A2-1": {
       "id": "A2-1",
@@ -67,7 +70,8 @@
       "priority": "high",
       "status": "done",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-02-05T20:00:00Z"
+      "completedAt": "2026-02-05T20:00:00Z",
+      "category": "A"
     },
     "A2-12": {
       "id": "A2-12",
@@ -78,7 +82,8 @@
       "notes": "Escritor analysis of Chapter 12 provided",
       "from": "Escritor",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A2-13": {
       "id": "A2-13",
@@ -88,7 +93,8 @@
       "status": "backlog",
       "notes": "Continue RE:UNITE novel",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A2-4": {
       "id": "A2-4",
@@ -97,7 +103,8 @@
       "priority": "high",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A3-1": {
       "id": "A3-1",
@@ -106,7 +113,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A3-2": {
       "id": "A3-2",
@@ -115,7 +123,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A3-3": {
       "id": "A3-3",
@@ -124,7 +133,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A4-1": {
       "id": "A4-1",
@@ -133,7 +143,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A4-2": {
       "id": "A4-2",
@@ -142,7 +153,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A4-3": {
       "id": "A4-3",
@@ -151,7 +163,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A5-1": {
       "id": "A5-1",
@@ -160,7 +173,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A5-2": {
       "id": "A5-2",
@@ -169,7 +183,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A6-13": {
       "id": "A6-13",
@@ -178,7 +193,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A6-14": {
       "id": "A6-14",
@@ -187,7 +203,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A6-15": {
       "id": "A6-15",
@@ -196,7 +213,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A6-16": {
       "id": "A6-16",
@@ -206,7 +224,8 @@
       "status": "pending",
       "assignedAgent": "CHAD_YI",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A6-17": {
       "id": "A6-17",
@@ -215,7 +234,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A6-18": {
       "id": "A6-18",
@@ -225,7 +245,8 @@
       "status": "pending",
       "assignedAgent": "CHAD_YI",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A7-1": {
       "id": "A7-1",
@@ -235,7 +256,8 @@
       "status": "backlog",
       "notes": "Find 3 venues",
       "createdAt": "2026-02-08T12:02:05Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A7-2": {
       "id": "A7-2",
@@ -246,7 +268,8 @@
       "assignedAgent": "CHAD_YI",
       "notes": "Draft guest list",
       "createdAt": "2026-02-08T12:02:05Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "A7-3": {
       "id": "A7-3",
@@ -257,7 +280,8 @@
       "assignedAgent": "CHAD_YI",
       "notes": "Confirm wedding officiant availability",
       "createdAt": "2026-02-08T12:06:04Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "A"
     },
     "B1-1": {
       "id": "B1-1",
@@ -266,7 +290,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B1-2": {
       "id": "B1-2",
@@ -275,7 +300,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B1-3": {
       "id": "B1-3",
@@ -284,7 +310,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B1-4": {
       "id": "B1-4",
@@ -293,7 +320,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B1-5": {
       "id": "B1-5",
@@ -302,7 +330,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B2-1": {
       "id": "B2-1",
@@ -311,7 +340,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B2-2": {
       "id": "B2-2",
@@ -320,7 +350,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B2-3": {
       "id": "B2-3",
@@ -329,7 +360,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B2-4": {
       "id": "B2-4",
@@ -338,7 +370,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B2-5": {
       "id": "B2-5",
@@ -347,7 +380,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B3-1": {
       "id": "B3-1",
@@ -357,7 +391,8 @@
       "status": "done",
       "notes": "Website completed via Lovable",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-02-05T18:00:00Z"
+      "completedAt": "2026-02-05T18:00:00Z",
+      "category": "B"
     },
     "B3-2": {
       "id": "B3-2",
@@ -366,7 +401,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B3-3": {
       "id": "B3-3",
@@ -375,7 +411,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B3-4": {
       "id": "B3-4",
@@ -384,7 +421,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B3-5": {
       "id": "B3-5",
@@ -393,7 +431,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B4-1": {
       "id": "B4-1",
@@ -402,7 +441,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B4-2": {
       "id": "B4-2",
@@ -411,7 +451,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B4-3": {
       "id": "B4-3",
@@ -420,7 +461,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B4-4": {
       "id": "B4-4",
@@ -429,7 +471,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B4-5": {
       "id": "B4-5",
@@ -438,7 +481,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B5-1": {
       "id": "B5-1",
@@ -447,7 +491,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B5-2": {
       "id": "B5-2",
@@ -456,7 +501,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B5-3": {
       "id": "B5-3",
@@ -465,7 +511,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B5-4": {
       "id": "B5-4",
@@ -474,7 +521,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B5-5": {
       "id": "B5-5",
@@ -483,7 +531,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B6-1": {
       "id": "B6-1",
@@ -495,7 +544,8 @@
       "notes": "Need minimum 120 facilitators by 17 Feb",
       "deadline": "2026-02-17",
       "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B6-2": {
       "id": "B6-2",
@@ -506,7 +556,8 @@
       "notes": "Equipment needed by end of February",
       "deadline": "2026-02-28",
       "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B6-3": {
       "id": "B6-3",
@@ -518,7 +569,8 @@
       "notes": "Order by 17 February",
       "deadline": "2026-02-17",
       "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B6-4": {
       "id": "B6-4",
@@ -527,7 +579,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B6-5": {
       "id": "B6-5",
@@ -536,7 +589,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B7-1": {
       "id": "B7-1",
@@ -545,7 +599,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B7-2": {
       "id": "B7-2",
@@ -554,7 +609,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B7-3": {
       "id": "B7-3",
@@ -563,7 +619,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B7-4": {
       "id": "B7-4",
@@ -572,7 +629,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B7-5": {
       "id": "B7-5",
@@ -581,7 +639,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B8-1": {
       "id": "B8-1",
@@ -590,7 +649,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B8-2": {
       "id": "B8-2",
@@ -599,7 +659,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B8-3": {
       "id": "B8-3",
@@ -608,7 +669,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B8-4": {
       "id": "B8-4",
@@ -617,7 +679,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B8-5": {
       "id": "B8-5",
@@ -626,7 +689,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B9-1": {
       "id": "B9-1",
@@ -635,7 +699,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B9-2": {
       "id": "B9-2",
@@ -644,7 +709,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B9-3": {
       "id": "B9-3",
@@ -653,7 +719,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B9-4": {
       "id": "B9-4",
@@ -662,7 +729,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B9-5": {
       "id": "B9-5",
@@ -671,7 +739,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "B10-1": {
       "id": "B10-1",
@@ -681,7 +750,8 @@
       "status": "backlog",
       "notes": "Waiting for user to define B10 task",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "B"
     },
     "C1-1": {
       "id": "C1-1",
@@ -691,7 +761,8 @@
       "status": "backlog",
       "notes": "Start April 2026, exam June 2026",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "C"
     },
     "C2-1": {
       "id": "C2-1",
@@ -701,7 +772,8 @@
       "status": "backlog",
       "notes": "High commission, leads provided",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "category": "C"
     }
   },
   "agents": {
@@ -842,18 +914,43 @@
   "projects": {
     "A": {
       "name": "Ambition (Personal)",
-      "count": 6,
-      "icon": "\u2b50"
+      "subtitle": "By Calbee (Personal)",
+      "icon": "\ud83c\udfaf",
+      "projects": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7"
+      ]
     },
     "B": {
       "name": "Business (Empire)",
-      "count": 10,
-      "icon": "\ud83d\udcbc"
+      "subtitle": "Empire (Main Work)",
+      "icon": "\ud83c\udfe2",
+      "projects": [
+        "B1",
+        "B10",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9"
+      ]
     },
     "C": {
       "name": "Callings (Side Jobs)",
-      "count": 2,
-      "icon": "\ud83c\udfaf"
+      "subtitle": "On The Side (Other Jobs)",
+      "icon": "\u2694\ufe0f",
+      "projects": [
+        "C1",
+        "C2"
+      ]
     }
   },
   "projectDetails": {
