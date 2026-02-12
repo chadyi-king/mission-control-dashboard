@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T14:23:26.998641",
+  "lastUpdated": "2026-02-12T14:40:32.046428",
   "updatedBy": "chad_yi",
   "resources": {
     "general": [
@@ -230,7 +230,7 @@
   "stats": {
     "total": 80,
     "pending": 13,
-    "active": 2,
+    "active": 3,
     "review": 0,
     "done": 2,
     "backlog": 63
@@ -253,7 +253,8 @@
     ],
     "active": [
       "A6-3",
-      "A5-3"
+      "A5-3",
+      "A2-13"
     ],
     "review": [],
     "done": [
@@ -270,7 +271,7 @@
     "helios": {
       "status": "active",
       "currentTask": "Proactive visual audits every 15 min",
-      "lastActive": "2026-02-12T11:38:00+08:00",
+      "lastActive": "2026-02-12T14:21:00+08:00",
       "model": "ollama/qwen2.5:7b",
       "capabilities": [
         "browser",
@@ -279,12 +280,12 @@
       ]
     },
     "escritor": {
-      "status": "waiting_for_input",
-      "currentTask": "A2: Awaiting chapter outline",
-      "lastActive": "2026-02-09T12:00:00+08:00"
+      "status": "active",
+      "currentTask": "A2-13: Writing Chapter 13 - Captivity",
+      "lastActive": "2026-02-12T14:40:32.046412"
     },
     "quanta": {
-      "status": "active",
+      "status": "blocked",
       "blocker": "OANDA credentials needed",
       "currentTask": "A5-1: Awaiting Telegram auth to complete setup",
       "lastActive": null
@@ -737,7 +738,8 @@
       "status": "backlog",
       "notes": "Continue RE:UNITE novel",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "currentStatus": "Escritor spawned, beginning Chapter 13 draft"
     },
     "A2-4": {
       "id": "A2-4",
