@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T20:06:09.940487",
+  "lastUpdated": "2026-02-12T21:30:00.000000",
   "stats": {
     "totalTasks": 8,
     "pending": 1,
@@ -122,19 +122,16 @@
       "project": "B6"
     },
     "B6-4": {
+      "id": "B6-4",
       "title": "MENDAKI Program Flow & Scavenger Hunt Brief",
-      "brief": "Create program flow for facilitators, timeline, and scavenger hunt brief for MENDAKI event",
-      "whatINeed": "Complete facilitator guide, event timeline, and scavenger hunt logistics",
-      "why": "MENDAKI event preparation - need structured program for facilitators and clear activity brief",
-      "steps": [
-        "Design program flow for facilitators (sequence, transitions, key moments)",
-        "Create detailed timeline with timing for each segment",
-        "Develop scavenger hunt brief (objectives, rules, checkpoints, materials)",
-        "Review and finalize all documents"
-      ],
-      "currentStatus": "Just assigned - needs immediate work",
-      "deadline": "Feb 13",
+      "category": "B6",
       "priority": "HIGH",
+      "status": "pending",
+      "deadline": "2026-02-13",
+      "agent": "CHAD_YI",
+      "description": "Create program flow for facilitators, timeline, and scavenger hunt brief for MENDAKI event. Complete facilitator guide, event timeline, and scavenger hunt logistics.",
+      "createdAt": "2026-02-12T20:00:00+08:00",
+      "updatedAt": "2026-02-12T20:30:00+08:00",
       "project": "B6"
     }
   },
@@ -145,7 +142,7 @@
       "role": "orchestrator",
       "status": "active",
       "currentTask": "A6-3: Dashboard audit infrastructure",
-      "taskCount": 3,
+      "taskCount": 4,
       "lastActive": "2026-02-12T15:51:00+08:00"
     },
     "helios": {
@@ -222,7 +219,15 @@
       "id": "A1-1",
       "title": "Change Taiwan flights and hotel",
       "deadline": "2026-02-13",
-      "hoursRemaining": 18,
+      "hoursRemaining": 17,
+      "agent": "CHAD_YI",
+      "severity": "critical"
+    },
+    {
+      "id": "B6-4",
+      "title": "MENDAKI Program Flow & Scavenger Hunt Brief",
+      "deadline": "2026-02-13",
+      "hoursRemaining": 17,
       "agent": "CHAD_YI",
       "severity": "critical"
     },
@@ -230,7 +235,7 @@
       "id": "B6-1",
       "title": "Elluminate urgent deliverable 1",
       "deadline": "2026-02-17",
-      "hoursRemaining": 98,
+      "hoursRemaining": 97,
       "agent": "CHAD_YI",
       "severity": "high"
     },
@@ -238,7 +243,7 @@
       "id": "B6-3",
       "title": "Elluminate urgent deliverable 3",
       "deadline": "2026-02-17",
-      "hoursRemaining": 98,
+      "hoursRemaining": 97,
       "agent": "CHAD_YI",
       "severity": "high"
     }
