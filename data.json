@@ -1,15 +1,17 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T21:30:00.000000",
+  "lastUpdated": "2026-02-12T21:40:00+08:00",
+  "updatedBy": "chad_yi",
   "stats": {
-    "totalTasks": 8,
-    "pending": 1,
-    "active": 7,
-    "review": 0,
-    "done": 0,
-    "urgent": 1,
-    "highPriority": 5,
-    "completionRate": 0.0
+    "totalTasks": 72,
+    "pending": 7,
+    "active": 8,
+    "review": 2,
+    "done": 2,
+    "backlog": 53,
+    "urgent": 3,
+    "highPriority": 15,
+    "completionRate": 2.8
   },
   "workflow": {
     "pending": [
@@ -31,108 +33,675 @@
     "A1-1": {
       "id": "A1-1",
       "title": "Change Taiwan flights and hotel",
-      "category": "A1",
-      "priority": "HIGH",
-      "status": "active",
+      "project": "A1",
+      "priority": "high",
+      "status": "pending",
+      "assignedAgent": "CHAD_YI",
+      "notes": "Rebook flights and hotel to 15-19 April",
       "deadline": "2026-02-13",
-      "agent": "CHAD_YI",
-      "description": "Modify travel arrangements for Taiwan trip",
-      "createdAt": "2026-02-10T10:00:00+08:00",
-      "updatedAt": "2026-02-12T15:51:00+08:00",
-      "project": "A1"
+      "createdAt": "2026-02-09T10:56:35Z",
+      "completedAt": null
+    },
+    "A1-2": {
+      "id": "A1-2",
+      "title": "Text Wei Ern about Small Claims Court",
+      "project": "A1",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-09T13:15:05Z",
+      "completedAt": null
+    },
+    "A1-3": {
+      "id": "A1-3",
+      "title": "Call Disney Cruise to rebook dates",
+      "project": "A1",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-09T15:49:00Z",
+      "completedAt": null
+    },
+    "A2-1": {
+      "id": "A2-1",
+      "title": "Complete Chapter 1",
+      "project": "A2",
+      "priority": "high",
+      "status": "done",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": "2026-02-05T20:00:00Z"
+    },
+    "A2-12": {
+      "id": "A2-12",
+      "title": "Review Chapter 12 feedback",
+      "project": "A2",
+      "priority": "high",
+      "status": "backlog",
+      "notes": "Escritor analysis of Chapter 12 provided",
+      "from": "Escritor",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
     },
     "A2-13": {
       "id": "A2-13",
-      "title": "Study Phase: 90 questions",
-      "category": "A2",
-      "priority": "MEDIUM",
-      "status": "active",
-      "deadline": null,
-      "agent": "Escritor",
-      "description": "Study RE:UNITE universe by answering 90 questions before writing Chapter 13",
-      "createdAt": "2026-02-12T16:00:00+08:00",
-      "updatedAt": "2026-02-12T16:30:00+08:00",
-      "project": "A2"
+      "title": "Edit Chapter 13",
+      "project": "A2",
+      "priority": "medium",
+      "status": "backlog",
+      "notes": "Continue RE:UNITE novel",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A2-4": {
+      "id": "A2-4",
+      "title": "Write Chapter 4",
+      "project": "A2",
+      "priority": "high",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A3-1": {
+      "id": "A3-1",
+      "title": "Script 1: Right vs Left politics",
+      "project": "A3",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A3-2": {
+      "id": "A3-2",
+      "title": "Script 2: Left is stupid and evil",
+      "project": "A3",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A3-3": {
+      "id": "A3-3",
+      "title": "Script 3: Spiritual warfare in America",
+      "project": "A3",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A4-1": {
+      "id": "A4-1",
+      "title": "Research VTuber agencies hiring",
+      "project": "A4",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A4-2": {
+      "id": "A4-2",
+      "title": "Research Kick platform setup",
+      "project": "A4",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A4-3": {
+      "id": "A4-3",
+      "title": "Research streaming equipment",
+      "project": "A4",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
     },
     "A5-1": {
       "id": "A5-1",
-      "title": "Trading signal automation",
-      "category": "A5",
-      "priority": "MEDIUM",
-      "status": "active",
-      "deadline": null,
-      "agent": "Quanta",
-      "description": "OANDA API integration for forex/gold signals",
-      "blocker": "OANDA credentials needed",
-      "createdAt": "2026-02-08T10:00:00+08:00",
-      "updatedAt": "2026-02-08T10:00:00+08:00",
-      "project": "A5"
+      "title": "Trading Bot: Forex/Commodities",
+      "project": "A5",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
     },
     "A5-2": {
       "id": "A5-2",
-      "title": "Options flow monitoring",
-      "category": "A5",
-      "priority": "MEDIUM",
-      "status": "active",
-      "deadline": null,
-      "agent": "MensaMusa",
-      "description": "Moomoo API for options flow tracking",
-      "blocker": "Moomoo credentials needed",
-      "createdAt": "2026-02-08T10:00:00+08:00",
-      "updatedAt": "2026-02-08T10:00:00+08:00",
-      "project": "A5"
+      "title": "Trading Bot: Options Flow",
+      "project": "A5",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
     },
-    "A6-3": {
-      "id": "A6-3",
-      "title": "Dashboard audit infrastructure",
-      "category": "A6",
-      "priority": "HIGH",
-      "status": "active",
-      "deadline": null,
-      "agent": "CHAD_YI",
-      "description": "Set up Helios 15-minute audit system",
-      "createdAt": "2026-02-12T05:30:00+08:00",
-      "updatedAt": "2026-02-12T15:51:00+08:00",
-      "project": "A6"
+    "A6-13": {
+      "id": "A6-13",
+      "title": "Project Detail Page",
+      "project": "A6",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A6-14": {
+      "id": "A6-14",
+      "title": "Project Tasks List enhancement",
+      "project": "A6",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A6-15": {
+      "id": "A6-15",
+      "title": "Project Timeline view",
+      "project": "A6",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A6-16": {
+      "id": "A6-16",
+      "title": "Document upload system",
+      "project": "A6",
+      "priority": "medium",
+      "status": "pending",
+      "assignedAgent": "CHAD_YI",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A6-17": {
+      "id": "A6-17",
+      "title": "Voice/chat integration",
+      "project": "A6",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A6-18": {
+      "id": "A6-18",
+      "title": "Security hardening",
+      "project": "A6",
+      "priority": "medium",
+      "status": "pending",
+      "assignedAgent": "CHAD_YI",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A7-1": {
+      "id": "A7-1",
+      "title": "Venue shortlist",
+      "project": "A7",
+      "priority": "high",
+      "status": "backlog",
+      "notes": "Find 3 venues",
+      "createdAt": "2026-02-08T12:02:05Z",
+      "completedAt": null
+    },
+    "A7-2": {
+      "id": "A7-2",
+      "title": "Invite list",
+      "project": "A7",
+      "priority": "medium",
+      "status": "pending",
+      "assignedAgent": "CHAD_YI",
+      "notes": "Draft guest list",
+      "createdAt": "2026-02-08T12:02:05Z",
+      "completedAt": null
+    },
+    "A7-3": {
+      "id": "A7-3",
+      "title": "Contact Pastor Raymond",
+      "project": "A7",
+      "priority": "high",
+      "status": "pending",
+      "assignedAgent": "CHAD_YI",
+      "notes": "Confirm wedding officiant availability",
+      "createdAt": "2026-02-08T12:06:04Z",
+      "completedAt": null
+    },
+    "B1-1": {
+      "id": "B1-1",
+      "title": "B1: Website design/redesign",
+      "project": "B1",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B1-2": {
+      "id": "B1-2",
+      "title": "B1: SEO setup",
+      "project": "B1",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B1-3": {
+      "id": "B1-3",
+      "title": "B1: Google Ads management",
+      "project": "B1",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B1-4": {
+      "id": "B1-4",
+      "title": "B1: Social media management",
+      "project": "B1",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B1-5": {
+      "id": "B1-5",
+      "title": "B1: Client management setup",
+      "project": "B1",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B2-1": {
+      "id": "B2-1",
+      "title": "B2: Website design/redesign",
+      "project": "B2",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B2-2": {
+      "id": "B2-2",
+      "title": "B2: SEO setup",
+      "project": "B2",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B2-3": {
+      "id": "B2-3",
+      "title": "B2: Google Ads management",
+      "project": "B2",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B2-4": {
+      "id": "B2-4",
+      "title": "B2: Social media management",
+      "project": "B2",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B2-5": {
+      "id": "B2-5",
+      "title": "B2: Client management setup",
+      "project": "B2",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B3-1": {
+      "id": "B3-1",
+      "title": "Team Elevate website (Lovable)",
+      "project": "B3",
+      "priority": "high",
+      "status": "done",
+      "notes": "Website completed via Lovable",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": "2026-02-05T18:00:00Z"
+    },
+    "B3-2": {
+      "id": "B3-2",
+      "title": "B3: SEO optimization",
+      "project": "B3",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B3-3": {
+      "id": "B3-3",
+      "title": "B3: Google Ads setup",
+      "project": "B3",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B3-4": {
+      "id": "B3-4",
+      "title": "B3: Social media management",
+      "project": "B3",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B3-5": {
+      "id": "B3-5",
+      "title": "B3: Client management",
+      "project": "B3",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B4-1": {
+      "id": "B4-1",
+      "title": "B4: Website design/redesign",
+      "project": "B4",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B4-2": {
+      "id": "B4-2",
+      "title": "B4: SEO setup",
+      "project": "B4",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B4-3": {
+      "id": "B4-3",
+      "title": "B4: Google Ads management",
+      "project": "B4",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B4-4": {
+      "id": "B4-4",
+      "title": "B4: Social media management",
+      "project": "B4",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B4-5": {
+      "id": "B4-5",
+      "title": "B4: Client management setup",
+      "project": "B4",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B5-1": {
+      "id": "B5-1",
+      "title": "B5: Website design/redesign",
+      "project": "B5",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B5-2": {
+      "id": "B5-2",
+      "title": "B5: SEO setup",
+      "project": "B5",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B5-3": {
+      "id": "B5-3",
+      "title": "B5: Google Ads management",
+      "project": "B5",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B5-4": {
+      "id": "B5-4",
+      "title": "B5: Social media management",
+      "project": "B5",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B5-5": {
+      "id": "B5-5",
+      "title": "B5: Client management setup",
+      "project": "B5",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
     },
     "B6-1": {
       "id": "B6-1",
-      "title": "Elluminate urgent deliverable 1",
-      "category": "B6",
-      "priority": "HIGH",
-      "status": "active",
+      "title": "Find facilitator for ESU",
+      "project": "B6",
+      "priority": "high",
+      "status": "pending",
+      "assignedAgent": "CHAD_YI",
+      "notes": "Need minimum 120 facilitators by 17 Feb",
       "deadline": "2026-02-17",
-      "agent": "CHAD_YI",
-      "description": "Corporate team building proposal",
-      "createdAt": "2026-02-11T09:00:00+08:00",
-      "updatedAt": "2026-02-11T09:00:00+08:00",
-      "project": "B6"
+      "createdAt": "2026-02-09T00:00:00Z",
+      "completedAt": null
+    },
+    "B6-2": {
+      "id": "B6-2",
+      "title": "MENDAKI - Get gel guns and archery tag",
+      "project": "B6",
+      "priority": "medium",
+      "status": "backlog",
+      "notes": "Equipment needed by end of February",
+      "deadline": "2026-02-28",
+      "createdAt": "2026-02-09T00:00:00Z",
+      "completedAt": null
     },
     "B6-3": {
       "id": "B6-3",
-      "title": "Elluminate urgent deliverable 3",
-      "category": "B6",
-      "priority": "HIGH",
-      "status": "active",
+      "title": "SPH items to order",
+      "project": "B6",
+      "priority": "high",
+      "status": "pending",
+      "assignedAgent": "CHAD_YI",
+      "notes": "Order by 17 February",
       "deadline": "2026-02-17",
-      "agent": "CHAD_YI",
-      "description": "School program outline",
-      "createdAt": "2026-02-11T09:00:00+08:00",
-      "updatedAt": "2026-02-11T09:00:00+08:00",
-      "project": "B6"
+      "createdAt": "2026-02-09T00:00:00Z",
+      "completedAt": null
     },
     "B6-4": {
       "id": "B6-4",
-      "title": "MENDAKI Program Flow & Scavenger Hunt Brief",
-      "category": "B6",
-      "priority": "HIGH",
-      "status": "pending",
-      "deadline": "2026-02-13",
-      "agent": "CHAD_YI",
-      "description": "Create program flow for facilitators, timeline, and scavenger hunt brief for MENDAKI event. Complete facilitator guide, event timeline, and scavenger hunt logistics.",
-      "createdAt": "2026-02-12T20:00:00+08:00",
-      "updatedAt": "2026-02-12T20:30:00+08:00",
-      "project": "B6"
+      "title": "B6: Social media management",
+      "project": "B6",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-09T00:00:00Z",
+      "completedAt": null
+    },
+    "B6-5": {
+      "id": "B6-5",
+      "title": "B6: Client management",
+      "project": "B6",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-09T00:00:00Z",
+      "completedAt": null
+    },
+    "B7-1": {
+      "id": "B7-1",
+      "title": "B7: Website design/redesign",
+      "project": "B7",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B7-2": {
+      "id": "B7-2",
+      "title": "B7: SEO setup",
+      "project": "B7",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B7-3": {
+      "id": "B7-3",
+      "title": "B7: Google Ads management",
+      "project": "B7",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B7-4": {
+      "id": "B7-4",
+      "title": "B7: Social media management",
+      "project": "B7",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B7-5": {
+      "id": "B7-5",
+      "title": "B7: Client management setup",
+      "project": "B7",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B8-1": {
+      "id": "B8-1",
+      "title": "B8: Website design/redesign",
+      "project": "B8",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B8-2": {
+      "id": "B8-2",
+      "title": "B8: SEO setup",
+      "project": "B8",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B8-3": {
+      "id": "B8-3",
+      "title": "B8: Google Ads management",
+      "project": "B8",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B8-4": {
+      "id": "B8-4",
+      "title": "B8: Social media management",
+      "project": "B8",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B8-5": {
+      "id": "B8-5",
+      "title": "B8: Client management setup",
+      "project": "B8",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B9-1": {
+      "id": "B9-1",
+      "title": "B9: Website design/redesign",
+      "project": "B9",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B9-2": {
+      "id": "B9-2",
+      "title": "B9: SEO setup",
+      "project": "B9",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B9-3": {
+      "id": "B9-3",
+      "title": "B9: Google Ads management",
+      "project": "B9",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B9-4": {
+      "id": "B9-4",
+      "title": "B9: Social media management",
+      "project": "B9",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B9-5": {
+      "id": "B9-5",
+      "title": "B9: Client management setup",
+      "project": "B9",
+      "priority": "medium",
+      "status": "backlog",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "B10-1": {
+      "id": "B10-1",
+      "title": "B10: [NEED DETAILS]",
+      "project": "B10",
+      "priority": "low",
+      "status": "backlog",
+      "notes": "Waiting for user to define B10 task",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "C1-1": {
+      "id": "C1-1",
+      "title": "C1: Study for RES exam",
+      "project": "C1",
+      "priority": "medium",
+      "status": "backlog",
+      "notes": "Start April 2026, exam June 2026",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "C2-1": {
+      "id": "C2-1",
+      "title": "C2: Find remote sales roles",
+      "project": "C2",
+      "priority": "medium",
+      "status": "backlog",
+      "notes": "High commission, leads provided",
+      "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
     }
   },
   "agents": {
@@ -367,11 +936,22 @@
   },
   "urgentDeadlines": [
     {
-      "id": "B6-4",
-      "title": "MENDAKI Program Flow & Scavenger Hunt Brief",
-      "deadline": "Feb 13",
-      "hoursRemaining": 17,
-      "priority": "HIGH"
+      "id": "A1-1",
+      "title": "Change Taiwan flights and hotel",
+      "deadline": "2026-02-13",
+      "hoursRemaining": 26
+    },
+    {
+      "id": "B6-1",
+      "title": "Elluminate proposal - School A",
+      "deadline": "2026-02-17",
+      "hoursRemaining": 121
+    },
+    {
+      "id": "B6-3",
+      "title": "Elluminate pitch deck",
+      "deadline": "2026-02-17",
+      "hoursRemaining": 121
     }
   ]
 }
