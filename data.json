@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T22:04:01.843518",
+  "lastUpdated": "2026-02-12T22:09:53.266714",
   "updatedBy": "chad_yi",
   "stats": {
     "totalTasks": 72,
@@ -15,10 +15,10 @@
   },
   "workflow": {
     "pending": [
+      "A1-1",
       "B6-4"
     ],
     "active": [
-      "A1-1",
       "A2-13",
       "A5-1",
       "A5-2",
