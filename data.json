@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T14:41:27.618375",
+  "lastUpdated": "2026-02-12T14:54:32.230054",
   "updatedBy": "chad_yi",
   "resources": {
     "general": [
@@ -265,41 +265,78 @@
   "agents": {
     "chad_yi": {
       "status": "active",
-      "currentTask": "A6-3: Dashboard audit infrastructure setup",
-      "lastActive": "2026-02-12T13:06:00+08:00"
+      "currentTask": "Orchestration - All projects",
+      "lastActive": "2026-02-12T14:54:32.230038",
+      "role": "Orchestrator"
     },
     "helios": {
       "status": "active",
-      "currentTask": "Proactive visual audits every 15 min",
-      "lastActive": "2026-02-12T14:21:00+08:00",
-      "model": "ollama/qwen2.5:7b",
-      "capabilities": [
-        "browser",
-        "screenshot",
-        "agent-messaging"
-      ]
-    },
-    "escritor": {
-      "status": "active",
-      "currentTask": "A2-13: Writing Chapter 13 - Captivity",
-      "lastActive": "2026-02-12T14:40:32.046412"
+      "currentTask": "COO - Audits all agents every 15 min",
+      "lastActive": "2026-02-12T14:54:32.230050",
+      "role": "COO / Auditor",
+      "model": "ollama/qwen2.5:7b"
     },
     "quanta": {
-      "status": "blocked",
-      "blocker": "OANDA credentials needed",
-      "currentTask": "A5-1: Awaiting Telegram auth to complete setup",
-      "lastActive": null
+      "status": "active",
+      "currentTask": "A5-1: Forex/Gold trading (OANDA LIVE ready, awaiting Telegram auth)",
+      "lastActive": "2026-02-12T14:54:32.230051",
+      "role": "Trading Dev (Forex/Gold)",
+      "audits": "MensaMusa"
+    },
+    "escritor": {
+      "status": "being_built",
+      "currentTask": "A2-13: Story knowledge base construction",
+      "lastActive": "2026-02-12T14:54:32.230052",
+      "role": "Storywriting Agent"
     },
     "mensamusa": {
       "status": "not_spawned",
-      "blocker": "Moomoo credentials needed",
       "currentTask": "A5-2: Options flow monitoring (on hold)",
-      "lastActive": null
+      "lastActive": null,
+      "role": "Trading Agent (Options)"
     },
     "autour": {
       "status": "not_spawned",
-      "currentTask": null,
-      "lastActive": null
+      "currentTask": "A3: Scriptwriting for KOE YouTube/TikTok",
+      "lastActive": null,
+      "role": "Scriptwriting Agent",
+      "depends_on": "Clair"
+    },
+    "clair": {
+      "status": "not_spawned",
+      "currentTask": "Streaming Scout - Find winning content",
+      "lastActive": null,
+      "role": "Content Scout"
+    },
+    "kotler": {
+      "status": "not_spawned",
+      "currentTask": "Marketing Ops - Content distribution",
+      "lastActive": null,
+      "role": "Marketing Ops"
+    },
+    "ledger": {
+      "status": "not_spawned",
+      "currentTask": "Finance - Budget/accounting",
+      "lastActive": null,
+      "role": "Finance"
+    },
+    "atlas": {
+      "status": "not_spawned",
+      "currentTask": "Research - Skills and improvements",
+      "lastActive": null,
+      "role": "High-Level Researcher"
+    },
+    "eplusplus": {
+      "status": "not_spawned",
+      "currentTask": "Core Dev - Heavy engineering",
+      "lastActive": null,
+      "role": "Core Coding/Dev Specialist"
+    },
+    "abed": {
+      "status": "not_spawned",
+      "currentTask": "Community Manager - Group chats",
+      "lastActive": null,
+      "role": "Community Manager"
     }
   },
   "urgentDeadlines": [
@@ -735,11 +772,12 @@
       "title": "Edit Chapter 13",
       "project": "A2",
       "priority": "medium",
-      "status": "backlog",
+      "status": "active",
+      "assignedAgent": "escritor",
       "notes": "Continue RE:UNITE novel",
       "createdAt": "2026-02-06T00:00:00Z",
       "completedAt": null,
-      "currentStatus": "Escritor spawned, beginning Chapter 13 draft"
+      "currentStatus": "Chapter 13 'Captivity' in progress - Ryfel prison arc"
     },
     "A2-4": {
       "id": "A2-4",
@@ -828,7 +866,7 @@
       "title": "Set up OANDA account and API credentials",
       "project": "A5",
       "priority": "high",
-      "status": "pending",
+      "status": "active",
       "assignedAgent": "CHAD_YI",
       "notes": "Create OANDA account, generate API key, get Account ID for trading bot",
       "deadline": "2026-02-15",
