@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T14:40:32.046428",
+  "lastUpdated": "2026-02-12T14:41:27.618375",
   "updatedBy": "chad_yi",
   "resources": {
     "general": [
@@ -291,9 +291,9 @@
       "lastActive": null
     },
     "mensamusa": {
-      "status": "blocked",
+      "status": "not_spawned",
       "blocker": "Moomoo credentials needed",
-      "currentTask": "A5-2: Options flow monitoring",
+      "currentTask": "A5-2: Options flow monitoring (on hold)",
       "lastActive": null
     },
     "autour": {
@@ -820,7 +820,8 @@
       "priority": "medium",
       "status": "backlog",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": null,
+      "currentStatus": "On hold - MensaMusa not spawned yet"
     },
     "A5-3": {
       "id": "A5-3",
