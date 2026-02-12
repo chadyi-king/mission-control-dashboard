@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T12:10:00+08:00",
+  "lastUpdated": "2026-02-12T12:15:00+08:00",
   "updatedBy": "chad_yi",
   "resources": {
     "general": [
@@ -67,10 +67,10 @@
   "stats": {
     "total": 78,
     "pending": 13,
-    "active": 8,
-    "review": 2,
+    "active": 0,
+    "review": 0,
     "done": 2,
-    "backlog": 53
+    "backlog": 63
   },
   "workflow": {
     "pending": ["A1-1", "A5-3", "A5-4", "A6-16", "A6-18", "A6-19", "A6-20", "A6-21", "A6-22", "A7-2", "A7-3", "B6-1", "B6-3"],
