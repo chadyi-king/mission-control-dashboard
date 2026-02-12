@@ -1,26 +1,18 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T19:05:31.907571",
+  "lastUpdated": "2026-02-12T20:06:09.940487",
   "stats": {
-    "totalTasks": 73,
-    "pending": 8,
-    "active": 8,
-    "review": 2,
-    "done": 2,
-    "backlog": 53,
-    "completionRate": 2.8,
-    "highPriority": 12,
-    "urgent": 5
+    "totalTasks": 8,
+    "pending": 1,
+    "active": 7,
+    "review": 0,
+    "done": 0,
+    "urgent": 1,
+    "highPriority": 5,
+    "completionRate": 0.0
   },
   "workflow": {
     "pending": [
-      "A1-3",
-      "A2-12",
-      "A3-1",
-      "A4-1",
-      "B1-1",
-      "B2-1",
-      "A1-2",
       "B6-4"
     ],
     "active": [
@@ -30,17 +22,10 @@
       "A5-2",
       "A6-3",
       "B6-1",
-      "B6-3",
-      "B8-1"
+      "B6-3"
     ],
-    "review": [
-      "A2-11",
-      "B6-2"
-    ],
-    "done": [
-      "A6-1",
-      "A6-2"
-    ]
+    "review": [],
+    "done": []
   },
   "tasks": {
     "A1-1": {
@@ -53,7 +38,8 @@
       "agent": "CHAD_YI",
       "description": "Modify travel arrangements for Taiwan trip",
       "createdAt": "2026-02-10T10:00:00+08:00",
-      "updatedAt": "2026-02-12T15:51:00+08:00"
+      "updatedAt": "2026-02-12T15:51:00+08:00",
+      "project": "A1"
     },
     "A2-13": {
       "id": "A2-13",
@@ -65,7 +51,8 @@
       "agent": "Escritor",
       "description": "Study RE:UNITE universe by answering 90 questions before writing Chapter 13",
       "createdAt": "2026-02-12T16:00:00+08:00",
-      "updatedAt": "2026-02-12T16:30:00+08:00"
+      "updatedAt": "2026-02-12T16:30:00+08:00",
+      "project": "A2"
     },
     "A5-1": {
       "id": "A5-1",
@@ -78,7 +65,8 @@
       "description": "OANDA API integration for forex/gold signals",
       "blocker": "OANDA credentials needed",
       "createdAt": "2026-02-08T10:00:00+08:00",
-      "updatedAt": "2026-02-08T10:00:00+08:00"
+      "updatedAt": "2026-02-08T10:00:00+08:00",
+      "project": "A5"
     },
     "A5-2": {
       "id": "A5-2",
@@ -91,7 +79,8 @@
       "description": "Moomoo API for options flow tracking",
       "blocker": "Moomoo credentials needed",
       "createdAt": "2026-02-08T10:00:00+08:00",
-      "updatedAt": "2026-02-08T10:00:00+08:00"
+      "updatedAt": "2026-02-08T10:00:00+08:00",
+      "project": "A5"
     },
     "A6-3": {
       "id": "A6-3",
@@ -103,7 +92,8 @@
       "agent": "CHAD_YI",
       "description": "Set up Helios 15-minute audit system",
       "createdAt": "2026-02-12T05:30:00+08:00",
-      "updatedAt": "2026-02-12T15:51:00+08:00"
+      "updatedAt": "2026-02-12T15:51:00+08:00",
+      "project": "A6"
     },
     "B6-1": {
       "id": "B6-1",
@@ -115,7 +105,8 @@
       "agent": "CHAD_YI",
       "description": "Corporate team building proposal",
       "createdAt": "2026-02-11T09:00:00+08:00",
-      "updatedAt": "2026-02-11T09:00:00+08:00"
+      "updatedAt": "2026-02-11T09:00:00+08:00",
+      "project": "B6"
     },
     "B6-3": {
       "id": "B6-3",
@@ -127,7 +118,8 @@
       "agent": "CHAD_YI",
       "description": "School program outline",
       "createdAt": "2026-02-11T09:00:00+08:00",
-      "updatedAt": "2026-02-11T09:00:00+08:00"
+      "updatedAt": "2026-02-11T09:00:00+08:00",
+      "project": "B6"
     },
     "B6-4": {
       "title": "MENDAKI Program Flow & Scavenger Hunt Brief",
