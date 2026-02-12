@@ -1,30 +1,31 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T16:18:10.163143",
+  "lastUpdated": "2026-02-12T19:03:07.321190",
   "stats": {
-    "totalTasks": 72,
-    "pending": 7,
+    "totalTasks": 73,
+    "pending": 8,
     "active": 8,
     "review": 2,
     "done": 2,
     "backlog": 53,
     "completionRate": 2.8,
     "highPriority": 12,
-    "urgent": 4
+    "urgent": 5
   },
   "workflow": {
     "pending": [
       "A1-2",
       "A1-3",
-      "A2-13",
+      "A2-12",
       "A3-1",
       "A4-1",
       "B1-1",
-      "B2-1"
+      "B2-1",
+      "A1-2"
     ],
     "active": [
       "A1-1",
-      "A2-12",
+      "A2-13",
       "A5-1",
       "A5-2",
       "A6-3",
@@ -54,17 +55,17 @@
       "createdAt": "2026-02-10T10:00:00+08:00",
       "updatedAt": "2026-02-12T15:51:00+08:00"
     },
-    "A2-12": {
-      "id": "A2-12",
-      "title": "Chapter outline for RE:UNITE",
+    "A2-13": {
+      "id": "A2-13",
+      "title": "Study Phase: 90 questions",
       "category": "A2",
       "priority": "MEDIUM",
       "status": "active",
       "deadline": null,
       "agent": "Escritor",
-      "description": "Create chapter 4 outline for R21 Isekai novel",
-      "createdAt": "2026-02-09T12:00:00+08:00",
-      "updatedAt": "2026-02-09T12:00:00+08:00"
+      "description": "Study RE:UNITE universe by answering 90 questions before writing Chapter 13",
+      "createdAt": "2026-02-12T16:00:00+08:00",
+      "updatedAt": "2026-02-12T16:30:00+08:00"
     },
     "A5-1": {
       "id": "A5-1",
@@ -127,6 +128,22 @@
       "description": "School program outline",
       "createdAt": "2026-02-11T09:00:00+08:00",
       "updatedAt": "2026-02-11T09:00:00+08:00"
+    },
+    "A1-2": {
+      "title": "MENDAKI Program Flow & Scavenger Hunt Brief",
+      "brief": "Create program flow for facilitators, timeline, and scavenger hunt brief for MENDAKI event",
+      "whatINeed": "Complete facilitator guide, event timeline, and scavenger hunt logistics",
+      "why": "MENDAKI event preparation - need structured program for facilitators and clear activity brief",
+      "steps": [
+        "Design program flow for facilitators (sequence, transitions, key moments)",
+        "Create detailed timeline with timing for each segment",
+        "Develop scavenger hunt brief (objectives, rules, checkpoints, materials)",
+        "Review and finalize all documents"
+      ],
+      "currentStatus": "Just assigned - needs immediate work",
+      "deadline": "Feb 13",
+      "priority": "HIGH",
+      "project": "A1"
     }
   },
   "agents": {
@@ -146,17 +163,17 @@
       "status": "active",
       "currentTask": "15-minute audit cycle",
       "taskCount": 0,
-      "lastActive": "2026-02-12T15:51:00+08:00"
+      "lastActive": "2026-02-12T18:51:00+08:00"
     },
     "escritor": {
       "id": "escritor",
       "name": "Escritor",
       "role": "story_agent",
-      "status": "ready_to_answer",
-      "currentTask": "Study phase: Read materials, answer 90 questions for review",
+      "status": "active",
+      "currentTask": "A2-13: Study Phase (90 questions)",
       "taskCount": 1,
-      "lastActive": "2026-02-12T16:18:10.163131",
-      "idleHours": 78
+      "lastActive": "2026-02-12T18:51:00+08:00",
+      "idleHours": 0
     },
     "quanta": {
       "id": "quanta",
@@ -189,18 +206,10 @@
     }
   },
   "inputsNeeded": [
-    "A2-12",
     "A5-1",
     "A5-2"
   ],
   "inputDetails": {
-    "A2-12": {
-      "taskId": "A2-12",
-      "agent": "Escritor",
-      "waitingFor": "User direction on chapter 4 plot",
-      "idleHours": 78,
-      "priority": "MEDIUM"
-    },
     "A5-1": {
       "taskId": "A5-1",
       "agent": "Quanta",
@@ -252,8 +261,8 @@
       "state": "Active"
     },
     "escritor": {
-      "activity": "Waiting for Caleb's input",
-      "state": "Idle 3 days"
+      "activity": "A2-13 Study Phase: answering 90 questions",
+      "state": "Active"
     },
     "quanta": {
       "activity": "Needs API credentials",
@@ -358,5 +367,14 @@
       "name": "Side Sales",
       "description": "Remote sales"
     }
-  }
+  },
+  "urgentDeadlines": [
+    {
+      "id": "A1-2",
+      "title": "MENDAKI Program Flow & Scavenger Hunt Brief",
+      "deadline": "Feb 13",
+      "hoursRemaining": 18,
+      "priority": "HIGH"
+    }
+  ]
 }
