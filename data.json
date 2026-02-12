@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T10:00:00+08:00",
+  "lastUpdated": "2026-02-12T11:15:00+08:00",
   "updatedBy": "chad_yi",
   "stats": {
     "total": 72,
@@ -59,6 +59,32 @@
       "hoursRemaining": 121
     }
   ],
+  "projects": {
+    "A": { "name": "Ambition", "subtitle": "By Calbee (Personal)", "projects": ["A1", "A2", "A3", "A4", "A5", "A6", "A7"] },
+    "B": { "name": "Business", "subtitle": "Empire (Main Work)", "projects": ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"] },
+    "C": { "name": "Callings", "subtitle": "On The Side (Other Jobs)", "projects": ["C1", "C2"] }
+  },
+  "projectDetails": {
+    "A1": { "name": "Personal", "description": "Personal admin tasks and follow-ups" },
+    "A2": { "name": "RE:UNITE", "description": "R21 Isekai novel - weekly chapters" },
+    "A3": { "name": "KOE", "description": "YouTube/TikTok Christian content" },
+    "A4": { "name": "Streaming", "description": "VTuber agency research" },
+    "A5": { "name": "Trading", "description": "Forex/Gold trading signals" },
+    "A6": { "name": "Mission Control", "description": "This dashboard" },
+    "A7": { "name": "Wedding", "description": "Dec 12-13 wedding planning" },
+    "B1": { "name": "Exstatic", "description": "Umbrella company website" },
+    "B2": { "name": "Energize", "description": "Equipment events - laser tag, archery" },
+    "B3": { "name": "Team Elevate", "description": "Large scale events - golden goose" },
+    "B4": { "name": "Pesta Fiesta", "description": "Birthdays and small events" },
+    "B5": { "name": "Enticipate", "description": "Travel and overseas retreats" },
+    "B6": { "name": "Elluminate", "description": "Team building and trainings" },
+    "B7": { "name": "Encompasse", "description": "Schools and corporate training" },
+    "B8": { "name": "Empyrean", "description": "Video marketing and viral content" },
+    "B9": { "name": "Ethereal", "description": "3D printing e-commerce" },
+    "B10": { "name": "Epitaph", "description": "Corporate data tracking" },
+    "C1": { "name": "Real Estate", "description": "RES exam June 2026" },
+    "C2": { "name": "Side Sales", "description": "Remote commission sales" }
+  },
   "tasks": {
     "A1-1": { "id": "A1-1", "title": "Change Taiwan flights and hotel", "project": "A1", "priority": "high", "status": "pending", "assignedAgent": "CHAD_YI", "notes": "Rebook flights and hotel to 15-19 April", "deadline": "2026-02-13", "createdAt": "2026-02-09T10:56:35Z", "completedAt": null },
     "A1-2": { "id": "A1-2", "title": "Text Wei Ern about Small Claims Court", "project": "A1", "priority": "medium", "status": "backlog", "createdAt": "2026-02-09T13:15:05Z", "completedAt": null },
