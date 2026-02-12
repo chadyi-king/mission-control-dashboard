@@ -200,8 +200,15 @@ body.modal-open {
     font-weight: 600;
 }
 
-.project-modal-filters {
+.project-modal-filters,
+.project-tasks-modal-panel .project-modal-filters,
+#project-tasks-modal .project-modal-filters {
     display: none !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
 }
 
 .modal-filter-label {
@@ -502,10 +509,17 @@ body.modal-open {
 
     .project-modal-body {
         padding: 12px 16px;
-        flex: 1;
-        min-height: auto;
+        flex: 1 1 auto;
+        min-height: 0;
+        max-height: none;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        display: block;
+    }
+
+    .project-modal-task-list {
+        display: block;
+        width: 100%;
     }
 
     .project-modal-footer {
@@ -515,8 +529,9 @@ body.modal-open {
 
     .project-modal-task-row {
         flex-direction: column;
-        padding: 12px;
-        margin-bottom: 8px;
+        padding: 10px 12px;
+        margin-bottom: 6px;
+        border-radius: 8px;
     }
 
     .project-modal-task-main {
