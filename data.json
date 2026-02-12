@@ -1,651 +1,294 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-12T14:54:32.230054",
-  "updatedBy": "chad_yi",
-  "resources": {
-    "general": [
-      {
-        "id": "res-001",
-        "name": "Agent Workflow Guide",
-        "type": "pdf",
-        "url": "#",
-        "description": "How to work with CHAD_YI and other agents",
-        "agents": [
-          "all"
-        ]
-      },
-      {
-        "id": "res-002",
-        "name": "Project Naming Convention",
-        "type": "doc",
-        "url": "#",
-        "description": "A1-A7, B1-B10, C1-C2 naming standards",
-        "agents": [
-          "all"
-        ]
-      },
-      {
-        "id": "res-003",
-        "name": "Dashboard User Manual",
-        "type": "pdf",
-        "url": "#",
-        "description": "How to navigate and use Mission Control",
-        "agents": [
-          "all"
-        ]
-      }
-    ],
-    "recentUploads": [
-      {
-        "id": "up-001",
-        "name": "Chapter 12 Feedback.docx",
-        "agent": "Escritor",
-        "date": "2026-02-09",
-        "project": "A2"
-      },
-      {
-        "id": "up-002",
-        "name": "Trading Bot Architecture.pdf",
-        "agent": "Quanta",
-        "date": "2026-02-08",
-        "project": "A5"
-      },
-      {
-        "id": "up-003",
-        "name": "RE_UNITE_Story_Bible.md",
-        "agent": "Escritor",
-        "date": "2026-02-06",
-        "project": "A2"
-      }
-    ]
-  },
-  "agentResources": {
-    "chad_yi": [
-      {
-        "id": "res-chad-001",
-        "name": "Orchestration Playbook",
-        "type": "doc",
-        "url": "#"
-      },
-      {
-        "id": "res-chad-002",
-        "name": "Agent Coordination Templates",
-        "type": "doc",
-        "url": "#"
-      }
-    ],
-    "helios": [
-      {
-        "id": "res-hel-001",
-        "name": "Audit Protocol Guide",
-        "type": "doc",
-        "url": "#"
-      },
-      {
-        "id": "res-hel-002",
-        "name": "Dashboard Monitoring Scripts",
-        "type": "github",
-        "url": "#"
-      },
-      {
-        "id": "res-hel-003",
-        "name": "Data Integrity Checklist",
-        "type": "doc",
-        "url": "#"
-      }
-    ],
-    "escritor": [
-      {
-        "id": "res-esc-001",
-        "name": "RE_UNITE_Story_Bible.md",
-        "type": "md",
-        "url": "/projects/A2-reunite/STORY-BIBLE-COMPLETE.md",
-        "description": "Complete story bible for continuity reference"
-      },
-      {
-        "id": "res-esc-002",
-        "name": "Chapter 13 Draft",
-        "type": "md",
-        "url": "#",
-        "description": "Current chapter being edited"
-      },
-      {
-        "id": "res-esc-003",
-        "name": "Character Voice Guide",
-        "type": "doc",
-        "url": "#",
-        "description": "Voice and style reference for characters"
-      }
-    ],
-    "quanta": [
-      {
-        "id": "res-q-001",
-        "name": "OANDA API Documentation",
-        "type": "link",
-        "url": "https://developer.oanda.com/"
-      },
-      {
-        "id": "res-q-002",
-        "name": "Trading Bot Codebase",
-        "type": "github",
-        "url": "#"
-      }
-    ],
-    "mensamusa": [
-      {
-        "id": "res-mm-001",
-        "name": "Options Flow Analysis Guide",
-        "type": "doc",
-        "url": "#"
-      },
-      {
-        "id": "res-mm-002",
-        "name": "Moomoo API Reference",
-        "type": "link",
-        "url": "#"
-      }
-    ],
-    "autour": [
-      {
-        "id": "res-aut-001",
-        "name": "KOE Content Strategy",
-        "type": "doc",
-        "url": "#"
-      },
-      {
-        "id": "res-aut-002",
-        "name": "YouTube Script Templates",
-        "type": "doc",
-        "url": "#"
-      }
-    ]
-  },
-  "projectResources": {
-    "A1": [],
-    "A2": [
-      {
-        "id": "res-a2-001",
-        "name": "Story Bible",
-        "type": "md",
-        "url": "/projects/A2-reunite/STORY-BIBLE-COMPLETE.md"
-      },
-      {
-        "id": "res-a2-002",
-        "name": "Chapter Outlines",
-        "type": "folder",
-        "url": "#"
-      }
-    ],
-    "A3": [
-      {
-        "id": "res-a3-001",
-        "name": "Script Templates",
-        "type": "doc",
-        "url": "#"
-      }
-    ],
-    "A4": [],
-    "A5": [
-      {
-        "id": "res-a5-001",
-        "name": "OANDA Setup Guide",
-        "type": "doc",
-        "url": "#"
-      },
-      {
-        "id": "res-a5-002",
-        "name": "Trading Strategy Doc",
-        "type": "pdf",
-        "url": "#"
-      }
-    ],
-    "A6": [
-      {
-        "id": "res-a6-001",
-        "name": "Dashboard Architecture",
-        "type": "pdf",
-        "url": "#"
-      },
-      {
-        "id": "res-a6-002",
-        "name": "Agent Protocols",
-        "type": "doc",
-        "url": "#"
-      }
-    ],
-    "A7": [],
-    "B1": [],
-    "B2": [],
-    "B3": [],
-    "B4": [],
-    "B5": [],
-    "B6": [],
-    "B7": [],
-    "B8": [],
-    "B9": [],
-    "B10": [],
-    "C1": [],
-    "C2": []
-  },
+  "lastUpdated": "2026-02-12T16:05:39.873099",
   "stats": {
-    "total": 80,
-    "pending": 13,
-    "active": 3,
-    "review": 0,
+    "totalTasks": 72,
+    "pending": 7,
+    "active": 8,
+    "review": 2,
     "done": 2,
-    "backlog": 63
+    "backlog": 53,
+    "completionRate": 2.8,
+    "highPriority": 12,
+    "urgent": 4
   },
   "workflow": {
     "pending": [
-      "A1-1",
-      "A5-4",
-      "A6-16",
-      "A6-18",
-      "A6-19",
-      "A6-20",
-      "A6-21",
-      "A6-22",
-      "A7-2",
-      "A7-3",
-      "B6-1",
-      "B6-3",
-      "A1-4"
+      "A1-2",
+      "A1-3",
+      "A2-13",
+      "A3-1",
+      "A4-1",
+      "B1-1",
+      "B2-1"
     ],
     "active": [
+      "A1-1",
+      "A2-12",
+      "A5-1",
+      "A5-2",
       "A6-3",
-      "A5-3",
-      "A2-13"
+      "B6-1",
+      "B6-3",
+      "B8-1"
     ],
-    "review": [],
+    "review": [
+      "A2-11",
+      "B6-2"
+    ],
     "done": [
-      "A2-1",
-      "B3-1"
+      "A6-1",
+      "A6-2"
     ]
+  },
+  "tasks": {
+    "A1-1": {
+      "id": "A1-1",
+      "title": "Change Taiwan flights and hotel",
+      "category": "A1",
+      "priority": "HIGH",
+      "status": "active",
+      "deadline": "2026-02-13",
+      "agent": "CHAD_YI",
+      "description": "Modify travel arrangements for Taiwan trip",
+      "createdAt": "2026-02-10T10:00:00+08:00",
+      "updatedAt": "2026-02-12T15:51:00+08:00"
+    },
+    "A2-12": {
+      "id": "A2-12",
+      "title": "Chapter outline for RE:UNITE",
+      "category": "A2",
+      "priority": "MEDIUM",
+      "status": "active",
+      "deadline": null,
+      "agent": "Escritor",
+      "description": "Create chapter 4 outline for R21 Isekai novel",
+      "createdAt": "2026-02-09T12:00:00+08:00",
+      "updatedAt": "2026-02-09T12:00:00+08:00"
+    },
+    "A5-1": {
+      "id": "A5-1",
+      "title": "Trading signal automation",
+      "category": "A5",
+      "priority": "MEDIUM",
+      "status": "active",
+      "deadline": null,
+      "agent": "Quanta",
+      "description": "OANDA API integration for forex/gold signals",
+      "blocker": "OANDA credentials needed",
+      "createdAt": "2026-02-08T10:00:00+08:00",
+      "updatedAt": "2026-02-08T10:00:00+08:00"
+    },
+    "A5-2": {
+      "id": "A5-2",
+      "title": "Options flow monitoring",
+      "category": "A5",
+      "priority": "MEDIUM",
+      "status": "active",
+      "deadline": null,
+      "agent": "MensaMusa",
+      "description": "Moomoo API for options flow tracking",
+      "blocker": "Moomoo credentials needed",
+      "createdAt": "2026-02-08T10:00:00+08:00",
+      "updatedAt": "2026-02-08T10:00:00+08:00"
+    },
+    "A6-3": {
+      "id": "A6-3",
+      "title": "Dashboard audit infrastructure",
+      "category": "A6",
+      "priority": "HIGH",
+      "status": "active",
+      "deadline": null,
+      "agent": "CHAD_YI",
+      "description": "Set up Helios 15-minute audit system",
+      "createdAt": "2026-02-12T05:30:00+08:00",
+      "updatedAt": "2026-02-12T15:51:00+08:00"
+    },
+    "B6-1": {
+      "id": "B6-1",
+      "title": "Elluminate urgent deliverable 1",
+      "category": "B6",
+      "priority": "HIGH",
+      "status": "active",
+      "deadline": "2026-02-17",
+      "agent": "CHAD_YI",
+      "description": "Corporate team building proposal",
+      "createdAt": "2026-02-11T09:00:00+08:00",
+      "updatedAt": "2026-02-11T09:00:00+08:00"
+    },
+    "B6-3": {
+      "id": "B6-3",
+      "title": "Elluminate urgent deliverable 3",
+      "category": "B6",
+      "priority": "HIGH",
+      "status": "active",
+      "deadline": "2026-02-17",
+      "agent": "CHAD_YI",
+      "description": "School program outline",
+      "createdAt": "2026-02-11T09:00:00+08:00",
+      "updatedAt": "2026-02-11T09:00:00+08:00"
+    }
   },
   "agents": {
     "chad_yi": {
+      "id": "chad_yi",
+      "name": "CHAD_YI",
+      "role": "orchestrator",
       "status": "active",
-      "currentTask": "Orchestration - All projects",
-      "lastActive": "2026-02-12T14:54:32.230038",
-      "role": "Orchestrator"
+      "currentTask": "A6-3: Dashboard audit infrastructure",
+      "taskCount": 3,
+      "lastActive": "2026-02-12T15:51:00+08:00"
     },
     "helios": {
+      "id": "helios",
+      "name": "Helios",
+      "role": "mission_control_engineer",
       "status": "active",
-      "currentTask": "COO - Audits all agents every 15 min",
-      "lastActive": "2026-02-12T14:54:32.230050",
-      "role": "COO / Auditor",
-      "model": "ollama/qwen2.5:7b"
-    },
-    "quanta": {
-      "status": "active",
-      "currentTask": "A5-1: Forex/Gold trading (OANDA LIVE ready, awaiting Telegram auth)",
-      "lastActive": "2026-02-12T14:54:32.230051",
-      "role": "Trading Dev (Forex/Gold)",
-      "audits": "MensaMusa"
+      "currentTask": "15-minute audit cycle",
+      "taskCount": 0,
+      "lastActive": "2026-02-12T15:51:00+08:00"
     },
     "escritor": {
-      "status": "being_built",
-      "currentTask": "A2-13: Story knowledge base construction",
-      "lastActive": "2026-02-12T14:54:32.230052",
-      "role": "Storywriting Agent"
+      "id": "escritor",
+      "name": "Escritor",
+      "role": "story_agent",
+      "status": "studying",
+      "currentTask": "A2 Study Phase: Reading Story Bible, generating questions for validation",
+      "taskCount": 1,
+      "lastActive": "2026-02-12T16:05:39.873086",
+      "idleHours": 78
+    },
+    "quanta": {
+      "id": "quanta",
+      "name": "Quanta",
+      "role": "trading_agent",
+      "status": "blocked",
+      "currentTask": "A5-1: Trading signals",
+      "taskCount": 1,
+      "blocker": "OANDA credentials needed",
+      "lastActive": "2026-02-08T10:00:00+08:00"
     },
     "mensamusa": {
-      "status": "not_spawned",
-      "currentTask": "A5-2: Options flow monitoring (on hold)",
-      "lastActive": null,
-      "role": "Trading Agent (Options)"
+      "id": "mensamusa",
+      "name": "MensaMusa",
+      "role": "trading_agent",
+      "status": "blocked",
+      "currentTask": "A5-2: Options flow",
+      "taskCount": 1,
+      "blocker": "Moomoo credentials needed",
+      "lastActive": "2026-02-08T10:00:00+08:00"
     },
     "autour": {
+      "id": "autour",
+      "name": "Autour",
+      "role": "content_agent",
       "status": "not_spawned",
-      "currentTask": "A3: Scriptwriting for KOE YouTube/TikTok",
-      "lastActive": null,
-      "role": "Scriptwriting Agent",
-      "depends_on": "Clair"
-    },
-    "clair": {
-      "status": "not_spawned",
-      "currentTask": "Streaming Scout - Find winning content",
-      "lastActive": null,
-      "role": "Content Scout"
-    },
-    "kotler": {
-      "status": "not_spawned",
-      "currentTask": "Marketing Ops - Content distribution",
-      "lastActive": null,
-      "role": "Marketing Ops"
-    },
-    "ledger": {
-      "status": "not_spawned",
-      "currentTask": "Finance - Budget/accounting",
-      "lastActive": null,
-      "role": "Finance"
-    },
-    "atlas": {
-      "status": "not_spawned",
-      "currentTask": "Research - Skills and improvements",
-      "lastActive": null,
-      "role": "High-Level Researcher"
-    },
-    "eplusplus": {
-      "status": "not_spawned",
-      "currentTask": "Core Dev - Heavy engineering",
-      "lastActive": null,
-      "role": "Core Coding/Dev Specialist"
-    },
-    "abed": {
-      "status": "not_spawned",
-      "currentTask": "Community Manager - Group chats",
-      "lastActive": null,
-      "role": "Community Manager"
+      "currentTask": null,
+      "taskCount": 0,
+      "lastActive": null
     }
   },
-  "urgentDeadlines": [
+  "inputsNeeded": [
+    "A2-12",
+    "A5-1",
+    "A5-2"
+  ],
+  "inputDetails": {
+    "A2-12": {
+      "taskId": "A2-12",
+      "agent": "Escritor",
+      "waitingFor": "User direction on chapter 4 plot",
+      "idleHours": 78,
+      "priority": "MEDIUM"
+    },
+    "A5-1": {
+      "taskId": "A5-1",
+      "agent": "Quanta",
+      "waitingFor": "OANDA API credentials",
+      "idleHours": 102,
+      "priority": "MEDIUM"
+    },
+    "A5-2": {
+      "taskId": "A5-2",
+      "agent": "MensaMusa",
+      "waitingFor": "Moomoo account credentials",
+      "idleHours": 102,
+      "priority": "MEDIUM"
+    }
+  },
+  "urgentTaskDetails": [
     {
       "id": "A1-1",
       "title": "Change Taiwan flights and hotel",
       "deadline": "2026-02-13",
-      "hoursRemaining": 26
-    },
-    {
-      "id": "A5-3",
-      "title": "Set up OANDA account and API credentials",
-      "deadline": "2026-02-15",
-      "hoursRemaining": 74
-    },
-    {
-      "id": "A6-19",
-      "title": "Connect agent to Telegram group/channel",
-      "deadline": "2026-02-15",
-      "hoursRemaining": 74
+      "hoursRemaining": 18,
+      "agent": "CHAD_YI",
+      "severity": "critical"
     },
     {
       "id": "B6-1",
-      "title": "Elluminate proposal - School A",
+      "title": "Elluminate urgent deliverable 1",
       "deadline": "2026-02-17",
-      "hoursRemaining": 121
+      "hoursRemaining": 98,
+      "agent": "CHAD_YI",
+      "severity": "high"
     },
     {
       "id": "B6-3",
-      "title": "Elluminate pitch deck",
+      "title": "Elluminate urgent deliverable 3",
       "deadline": "2026-02-17",
-      "hoursRemaining": 121
+      "hoursRemaining": 98,
+      "agent": "CHAD_YI",
+      "severity": "high"
     }
   ],
-  "inputsNeeded": [
-    {
-      "taskId": "A5-3",
-      "title": "Set up OANDA account and API credentials",
-      "brief": "Create OANDA trading account and generate API credentials for Quanta"
-    },
-    {
-      "taskId": "A6-19",
-      "title": "Connect agent to Telegram group/channel",
-      "brief": "Set up Helios or Quanta to monitor and respond in Telegram group chat"
-    },
-    {
-      "taskId": "A5-1",
-      "title": "Trading Bot Forex",
-      "brief": "OANDA trading account credentials needed"
-    },
-    {
-      "taskId": "A5-2",
-      "title": "Trading Bot Options",
-      "brief": "Moomoo trading account credentials needed"
-    },
-    {
-      "taskId": "A2-13",
-      "title": "Edit Chapter 13",
-      "brief": "Spawn Escritor agent to work on novel"
-    }
-  ],
-  "inputDetails": {
-    "A5-3": {
-      "title": "Set up OANDA account and API credentials",
-      "brief": "Create OANDA trading account and generate API credentials for Quanta",
-      "whatINeed": "OANDA trading account with API key and Account ID",
-      "why": "Quanta needs credentials to connect trading bot to live forex markets",
-      "steps": [
-        "Go to oanda.com and sign up for an account",
-        "Complete account verification (KYC)",
-        "Navigate to 'Manage API Access' in account settings",
-        "Generate a new API key",
-        "Copy your Account ID (starts with 001-)",
-        "Store credentials securely for Quanta to use"
-      ],
-      "currentStatus": "Quanta blocked - waiting for OANDA account setup"
-    },
-    "A6-19": {
-      "title": "Connect agent to Telegram group/channel",
-      "brief": "Set up Helios or Quanta to monitor and respond in Telegram group chat",
-      "whatINeed": "Telegram bot token and group/channel access",
-      "why": "Enable agents to send alerts, receive commands, and communicate via Telegram",
-      "steps": [
-        "Decide which agent needs Telegram access (Helios for alerts, Quanta for trading)",
-        "Create Telegram bot via BotFather if needed",
-        "Get bot API token",
-        "Add bot to target group/channel",
-        "Configure agent to read/send messages",
-        "Test message delivery"
-      ],
-      "currentStatus": "Not started - waiting for you to set up Telegram integration"
-    },
-    "A5-1": {
-      "title": "Trading Bot Forex",
-      "brief": "OANDA trading account credentials needed",
-      "whatINeed": "OANDA trading account API key and Account ID",
-      "why": "To connect the trading bot to live forex markets for automated trading",
-      "steps": [
-        "Go to oanda.com and sign in/create account",
-        "Navigate to 'Manage API Access' in account settings",
-        "Generate a new API key",
-        "Copy your Account ID (starts with 001-)",
-        "Give me both the API key and Account ID"
-      ],
-      "currentStatus": "Bot code ready, waiting for credentials to connect"
-    },
-    "A5-2": {
-      "title": "Trading Bot Options",
-      "brief": "Moomoo trading account credentials needed",
-      "whatINeed": "Moomoo app API access credentials",
-      "why": "To monitor options flow and execute options trades automatically",
-      "steps": [
-        "Open Moomoo app on your phone",
-        "Go to Account \u2192 Settings \u2192 API Management",
-        "Enable API access and generate API key",
-        "Note your Account ID and API key",
-        "Send me both credentials securely"
-      ],
-      "currentStatus": "Options flow monitoring configured, needs account connection"
-    },
-    "A2-13": {
-      "title": "Edit Chapter 13",
-      "brief": "Spawn Escritor agent to work on novel",
-      "whatINeed": "You to tell me to spawn Escritor agent",
-      "why": "Escritor is the creative writing agent that edits your RE:UNITE novel chapters",
-      "steps": [
-        "Tell me 'spawn Escritor agent for A2-13'",
-        "I'll activate the agent",
-        "Escritor will start editing Chapter 13",
-        "Check back in 1-2 hours for progress"
-      ],
-      "currentStatus": "Escritor idle, waiting for your command to start"
-    }
-  },
-  "urgentTaskDetails": {
-    "A1-1": {
-      "title": "Change Taiwan flights",
-      "brief": "Call airline to rebook flights to April 15-19",
-      "deadline": "Feb 13",
-      "priority": "HIGH",
-      "specificSteps": [
-        "Find your original booking confirmation email",
-        "Call airline customer service",
-        "Reference your booking number",
-        "Request change to dates: April 15-19, 2026",
-        "Ask about any change fees",
-        "Confirm new flights match your schedule",
-        "Get new confirmation number"
-      ],
-      "deadlineText": "Feb 13 (DUE TOMORROW - URGENT)",
-      "priorityReason": "HIGH - affects April travel plans",
-      "ifNotDone": "Flights may sell out or prices increase significantly"
-    },
-    "B6-1": {
-      "title": "Find facilitator for ESU",
-      "brief": "Need minimum 120 facilitators by 17 Feb",
-      "deadline": "Feb 17",
-      "priority": "HIGH",
-      "specificSteps": [
-        "Contact ESU coordinator for requirements",
-        "Reach out to facilitator network",
-        "Post on relevant forums/groups",
-        "Follow up with confirmed facilitators",
-        "Create final roster"
-      ],
-      "deadlineText": "Feb 17 (5 days)",
-      "priorityReason": "HIGH - 120 facilitators needed for event",
-      "ifNotDone": "Event may be understaffed"
-    },
-    "B6-3": {
-      "title": "SPH items to order",
-      "brief": "Order equipment for SPH event by 17 February",
-      "deadline": "Feb 17",
-      "priority": "HIGH",
-      "specificSteps": [
-        "Review SPH equipment requirements",
-        "Check vendor availability",
-        "Place orders with confirmed vendors",
-        "Schedule delivery for event day",
-        "Confirm order receipts"
-      ],
-      "deadlineText": "Feb 17 (5 days)",
-      "priorityReason": "HIGH - equipment needed for event",
-      "ifNotDone": "Event may lack required equipment"
-    },
-    "A5-3": {
-      "title": "Set up OANDA account and API credentials",
-      "brief": "Create OANDA trading account and generate API credentials for Quanta",
-      "deadline": "Feb 15",
-      "priority": "HIGH",
-      "specificSteps": [
-        "Go to oanda.com and sign up for an account",
-        "Complete account verification (KYC)",
-        "Navigate to 'Manage API Access' in account settings",
-        "Generate a new API key",
-        "Copy your Account ID (starts with 001-)",
-        "Store credentials securely for Quanta to use"
-      ],
-      "deadlineText": "Feb 15 (3 days)",
-      "priorityReason": "HIGH - unblocks A5-1 trading bot development",
-      "ifNotDone": "Quanta remains blocked, trading bot cannot proceed"
-    },
-    "A6-19": {
-      "title": "Connect agent to Telegram group/channel",
-      "brief": "Set up Helios or Quanta to monitor and respond in Telegram group chat",
-      "deadline": "Feb 15",
-      "priority": "HIGH",
-      "specificSteps": [
-        "Decide which agent needs Telegram access (Helios for alerts, Quanta for trading)",
-        "Create Telegram bot via BotFather if needed",
-        "Get bot API token",
-        "Add bot to target group/channel",
-        "Configure agent to read/send messages",
-        "Test message delivery"
-      ],
-      "deadlineText": "Feb 15 (3 days)",
-      "priorityReason": "HIGH - enables agent monitoring and notifications",
-      "ifNotDone": "Agents cannot communicate via Telegram, manual monitoring required"
-    }
-  },
   "agentDetails": {
     "chad_yi": {
-      "last5Min": "Fixed dashboard data.json structure",
-      "currently": "Restoring missing data structures",
-      "youShouldKnow": "Dashboard JS expects inputsNeeded, urgentTaskDetails, agentDetails",
-      "actionNeeded": "Continue monitoring dashboard fixes"
+      "activity": "Verifying agent audit logs",
+      "state": "Active"
     },
     "helios": {
-      "last5Min": "Configured reporting hierarchy",
-      "currently": "Audits all pages every 15 min, reports to CHAD_YI",
-      "youShouldKnow": "Now audits CHAD_YI too. All reports go to CHAD_YI first.",
-      "actionNeeded": "None - autonomous monitoring active",
-      "model": "ollama/qwen2.5:7b",
-      "type": "Proactive Auditor",
-      "reportsTo": "CHAD_YI",
-      "audits": "All agents including CHAD_YI"
+      "activity": "Running 15-minute audit",
+      "state": "Active"
     },
     "escritor": {
-      "last5Min": "Idle - waiting for task",
-      "currently": "A2: Awaiting chapter outline",
-      "youShouldKnow": "Chapter 12 feedback provided, Chapter 13 pending",
-      "actionNeeded": "Spawn agent when ready to work on novel"
+      "activity": "Waiting for Caleb's input",
+      "state": "Idle 3 days"
     },
     "quanta": {
-      "last5Min": "Blocked - no OANDA credentials",
-      "currently": "A5-1: Trading signal automation",
-      "youShouldKnow": "Bot code ready, needs API credentials",
-      "actionNeeded": "Provide OANDA API key and Account ID"
+      "activity": "Needs API credentials",
+      "state": "Blocked"
     },
     "mensamusa": {
-      "last5Min": "Blocked - no Moomoo account",
-      "currently": "A5-2: Options flow monitoring",
-      "youShouldKnow": "Options monitoring configured, needs account",
-      "actionNeeded": "Provide Moomoo API credentials"
-    },
-    "autour": {
-      "last5Min": "Not spawned",
-      "currently": "A3: KOE scripts waiting",
-      "youShouldKnow": "Ready to spawn for YouTube/TikTok scripts",
-      "actionNeeded": "Spawn agent when ready to work on scripts"
+      "activity": "Needs Moomoo account",
+      "state": "Blocked"
     }
   },
   "projects": {
     "A": {
-      "name": "Ambition",
-      "subtitle": "By Calbee (Personal)",
-      "projects": [
-        "A1",
-        "A2",
-        "A3",
-        "A4",
-        "A5",
-        "A6",
-        "A7"
-      ]
+      "name": "Ambition (Personal)",
+      "count": 6,
+      "icon": "\u2b50"
     },
     "B": {
-      "name": "Business",
-      "subtitle": "Empire (Main Work)",
-      "projects": [
-        "B1",
-        "B2",
-        "B3",
-        "B4",
-        "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
-        "B10"
-      ]
+      "name": "Business (Empire)",
+      "count": 10,
+      "icon": "\ud83d\udcbc"
     },
     "C": {
-      "name": "Callings",
-      "subtitle": "On The Side (Other Jobs)",
-      "projects": [
-        "C1",
-        "C2"
-      ]
+      "name": "Callings (Side Jobs)",
+      "count": 2,
+      "icon": "\ud83c\udfaf"
     }
   },
   "projectDetails": {
     "A1": {
       "name": "Personal",
-      "description": "Personal admin tasks and follow-ups"
+      "description": "One-off personal tasks"
     },
     "A2": {
       "name": "RE:UNITE",
-      "description": "R21 Isekai novel - weekly chapters"
+      "description": "R21 Isekai novel"
     },
     "A3": {
       "name": "KOE",
@@ -657,7 +300,7 @@
     },
     "A5": {
       "name": "Trading",
-      "description": "Forex/Gold trading signals"
+      "description": "Forex/Gold signals, options flow"
     },
     "A6": {
       "name": "Mission Control",
@@ -665,7 +308,7 @@
     },
     "A7": {
       "name": "Wedding",
-      "description": "Dec 12-13 wedding planning"
+      "description": "Dec 12-13 planning"
     },
     "B1": {
       "name": "Exstatic",
@@ -673,31 +316,31 @@
     },
     "B2": {
       "name": "Energize",
-      "description": "Equipment events - laser tag, archery"
+      "description": "Equipment events"
     },
     "B3": {
       "name": "Team Elevate",
-      "description": "Large scale events - golden goose"
+      "description": "Large scale events"
     },
     "B4": {
       "name": "Pesta Fiesta",
-      "description": "Birthdays and small events"
+      "description": "Birthdays, d\u00e9cor"
     },
     "B5": {
       "name": "Enticipate",
-      "description": "Travel and overseas retreats"
+      "description": "Travel + retreats"
     },
     "B6": {
       "name": "Elluminate",
-      "description": "Team building and trainings"
+      "description": "Team building (URGENT)"
     },
     "B7": {
       "name": "Encompasse",
-      "description": "Schools and corporate training"
+      "description": "Schools + training"
     },
     "B8": {
       "name": "Empyrean",
-      "description": "Video marketing and viral content"
+      "description": "Video marketing"
     },
     "B9": {
       "name": "Ethereal",
@@ -705,7 +348,7 @@
     },
     "B10": {
       "name": "Epitaph",
-      "description": "Corporate data tracking"
+      "description": "Data tracking"
     },
     "C1": {
       "name": "Real Estate",
@@ -713,792 +356,7 @@
     },
     "C2": {
       "name": "Side Sales",
-      "description": "Remote commission sales"
-    }
-  },
-  "tasks": {
-    "A1-1": {
-      "id": "A1-1",
-      "title": "Change Taiwan flights and hotel",
-      "project": "A1",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Rebook flights and hotel to 15-19 April",
-      "deadline": "2026-02-13",
-      "createdAt": "2026-02-09T10:56:35Z",
-      "completedAt": null
-    },
-    "A1-2": {
-      "id": "A1-2",
-      "title": "Text Wei Ern about Small Claims Court",
-      "project": "A1",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-09T13:15:05Z",
-      "completedAt": null
-    },
-    "A1-3": {
-      "id": "A1-3",
-      "title": "Call Disney Cruise to rebook dates",
-      "project": "A1",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-09T15:49:00Z",
-      "completedAt": null
-    },
-    "A2-1": {
-      "id": "A2-1",
-      "title": "Complete Chapter 1",
-      "project": "A2",
-      "priority": "high",
-      "status": "done",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-02-05T20:00:00Z"
-    },
-    "A2-12": {
-      "id": "A2-12",
-      "title": "Review Chapter 12 feedback",
-      "project": "A2",
-      "priority": "high",
-      "status": "backlog",
-      "notes": "Escritor analysis of Chapter 12 provided",
-      "from": "Escritor",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A2-13": {
-      "id": "A2-13",
-      "title": "Edit Chapter 13",
-      "project": "A2",
-      "priority": "medium",
-      "status": "active",
-      "assignedAgent": "escritor",
-      "notes": "Continue RE:UNITE novel",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null,
-      "currentStatus": "Chapter 13 'Captivity' in progress - Ryfel prison arc"
-    },
-    "A2-4": {
-      "id": "A2-4",
-      "title": "Write Chapter 4",
-      "project": "A2",
-      "priority": "high",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A3-1": {
-      "id": "A3-1",
-      "title": "Script 1: Right vs Left politics",
-      "project": "A3",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A3-2": {
-      "id": "A3-2",
-      "title": "Script 2: Left is stupid and evil",
-      "project": "A3",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A3-3": {
-      "id": "A3-3",
-      "title": "Script 3: Spiritual warfare in America",
-      "project": "A3",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A4-1": {
-      "id": "A4-1",
-      "title": "Research VTuber agencies hiring",
-      "project": "A4",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A4-2": {
-      "id": "A4-2",
-      "title": "Research Kick platform setup",
-      "project": "A4",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A4-3": {
-      "id": "A4-3",
-      "title": "Research streaming equipment",
-      "project": "A4",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A5-1": {
-      "id": "A5-1",
-      "title": "Trading Bot: Forex/Commodities",
-      "project": "A5",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A5-2": {
-      "id": "A5-2",
-      "title": "Trading Bot: Options Flow",
-      "project": "A5",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null,
-      "currentStatus": "On hold - MensaMusa not spawned yet"
-    },
-    "A5-3": {
-      "id": "A5-3",
-      "title": "Set up OANDA account and API credentials",
-      "project": "A5",
-      "priority": "high",
-      "status": "active",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Create OANDA account, generate API key, get Account ID for trading bot",
-      "deadline": "2026-02-15",
-      "createdAt": "2026-02-12T03:19:00Z",
-      "completedAt": null,
-      "currentStatus": "OANDA connected, LIVE account ready, awaiting CALLISTOFX auth"
-    },
-    "A6-13": {
-      "id": "A6-13",
-      "title": "Project Detail Page",
-      "project": "A6",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-14": {
-      "id": "A6-14",
-      "title": "Project Tasks List enhancement",
-      "project": "A6",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-15": {
-      "id": "A6-15",
-      "title": "Project Timeline view",
-      "project": "A6",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-16": {
-      "id": "A6-16",
-      "title": "Document upload system",
-      "project": "A6",
-      "priority": "medium",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-17": {
-      "id": "A6-17",
-      "title": "Voice/chat integration",
-      "project": "A6",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A5-4": {
-      "id": "A5-4",
-      "title": "Configure Quanta to read CALLISTOFX Telegram channel",
-      "project": "A5",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Set up Telegram API access for Quanta to monitor CALLISTOFX channel for trading signals. Requires: Telegram API ID, API hash, phone authentication.",
-      "deadline": "2026-02-15",
-      "createdAt": "2026-02-12T04:11:00Z",
-      "completedAt": null
-    },
-    "A6-3": {
-      "id": "A6-3",
-      "title": "Dashboard audit infrastructure setup",
-      "project": "A6",
-      "priority": "high",
-      "status": "active",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Set up Helios agent with 15-min cron audits, reporting, and auto-fixes",
-      "deadline": "2026-02-13",
-      "createdAt": "2026-02-12T09:36:00Z",
-      "completedAt": null
-    },
-    "A6-20": {
-      "id": "A6-20",
-      "title": "Document Telegram CLI for Caleb",
-      "project": "A6",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Create comprehensive Telegram CLI guide with examples for sending messages, reactions, files, etc.",
-      "deadline": "2026-02-13",
-      "createdAt": "2026-02-12T04:00:00Z",
-      "completedAt": null
-    },
-    "A6-21": {
-      "id": "A6-21",
-      "title": "Fix Week at a Glance segregation",
-      "project": "A6",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Separate deadlines due today vs urgent tasks vs agent tasks. Currently showing mixed.",
-      "deadline": "2026-02-13",
-      "createdAt": "2026-02-12T04:00:00Z",
-      "completedAt": null
-    },
-    "A6-22": {
-      "id": "A6-22",
-      "title": "Configure Helios agent hook system",
-      "project": "A6",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Set up Helios to ping other agents for status updates and report to CHAD_YI",
-      "deadline": "2026-02-14",
-      "createdAt": "2026-02-12T04:00:00Z",
-      "completedAt": null
-    },
-    "A6-18": {
-      "id": "A6-18",
-      "title": "Security hardening",
-      "project": "A6",
-      "priority": "medium",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-19": {
-      "id": "A6-19",
-      "title": "Connect agent to Telegram group/channel",
-      "project": "A6",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Set up Helios or Quanta to monitor and respond in Telegram group chat",
-      "deadline": "2026-02-15",
-      "createdAt": "2026-02-12T03:19:00Z",
-      "completedAt": null
-    },
-    "A7-1": {
-      "id": "A7-1",
-      "title": "Venue shortlist",
-      "project": "A7",
-      "priority": "high",
-      "status": "backlog",
-      "notes": "Find 3 venues",
-      "createdAt": "2026-02-08T12:02:05Z",
-      "completedAt": null
-    },
-    "A7-2": {
-      "id": "A7-2",
-      "title": "Invite list",
-      "project": "A7",
-      "priority": "medium",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Draft guest list",
-      "createdAt": "2026-02-08T12:02:05Z",
-      "completedAt": null
-    },
-    "A7-3": {
-      "id": "A7-3",
-      "title": "Contact Pastor Raymond",
-      "project": "A7",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Confirm wedding officiant availability",
-      "createdAt": "2026-02-08T12:06:04Z",
-      "completedAt": null
-    },
-    "B1-1": {
-      "id": "B1-1",
-      "title": "B1: Website design/redesign",
-      "project": "B1",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-2": {
-      "id": "B1-2",
-      "title": "B1: SEO setup",
-      "project": "B1",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-3": {
-      "id": "B1-3",
-      "title": "B1: Google Ads management",
-      "project": "B1",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-4": {
-      "id": "B1-4",
-      "title": "B1: Social media management",
-      "project": "B1",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-5": {
-      "id": "B1-5",
-      "title": "B1: Client management setup",
-      "project": "B1",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-1": {
-      "id": "B2-1",
-      "title": "B2: Website design/redesign",
-      "project": "B2",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-2": {
-      "id": "B2-2",
-      "title": "B2: SEO setup",
-      "project": "B2",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-3": {
-      "id": "B2-3",
-      "title": "B2: Google Ads management",
-      "project": "B2",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-4": {
-      "id": "B2-4",
-      "title": "B2: Social media management",
-      "project": "B2",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-5": {
-      "id": "B2-5",
-      "title": "B2: Client management setup",
-      "project": "B2",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-1": {
-      "id": "B3-1",
-      "title": "Team Elevate website (Lovable)",
-      "project": "B3",
-      "priority": "high",
-      "status": "done",
-      "notes": "Website completed via Lovable",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-02-05T18:00:00Z"
-    },
-    "B3-2": {
-      "id": "B3-2",
-      "title": "B3: SEO optimization",
-      "project": "B3",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-3": {
-      "id": "B3-3",
-      "title": "B3: Google Ads setup",
-      "project": "B3",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-4": {
-      "id": "B3-4",
-      "title": "B3: Social media management",
-      "project": "B3",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-5": {
-      "id": "B3-5",
-      "title": "B3: Client management",
-      "project": "B3",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-1": {
-      "id": "B4-1",
-      "title": "B4: Website design/redesign",
-      "project": "B4",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-2": {
-      "id": "B4-2",
-      "title": "B4: SEO setup",
-      "project": "B4",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-3": {
-      "id": "B4-3",
-      "title": "B4: Google Ads management",
-      "project": "B4",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-4": {
-      "id": "B4-4",
-      "title": "B4: Social media management",
-      "project": "B4",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-5": {
-      "id": "B4-5",
-      "title": "B4: Client management setup",
-      "project": "B4",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-1": {
-      "id": "B5-1",
-      "title": "B5: Website design/redesign",
-      "project": "B5",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-2": {
-      "id": "B5-2",
-      "title": "B5: SEO setup",
-      "project": "B5",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-3": {
-      "id": "B5-3",
-      "title": "B5: Google Ads management",
-      "project": "B5",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-4": {
-      "id": "B5-4",
-      "title": "B5: Social media management",
-      "project": "B5",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-5": {
-      "id": "B5-5",
-      "title": "B5: Client management setup",
-      "project": "B5",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-1": {
-      "id": "B6-1",
-      "title": "Find facilitator for ESU",
-      "project": "B6",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Need minimum 120 facilitators by 17 Feb",
-      "deadline": "2026-02-17",
-      "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-2": {
-      "id": "B6-2",
-      "title": "MENDAKI - Get gel guns and archery tag",
-      "project": "B6",
-      "priority": "medium",
-      "status": "backlog",
-      "notes": "Equipment needed by end of February",
-      "deadline": "2026-02-28",
-      "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-3": {
-      "id": "B6-3",
-      "title": "SPH items to order",
-      "project": "B6",
-      "priority": "high",
-      "status": "pending",
-      "assignedAgent": "CHAD_YI",
-      "notes": "Order by 17 February",
-      "deadline": "2026-02-17",
-      "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-4": {
-      "id": "B6-4",
-      "title": "B6: Social media management",
-      "project": "B6",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-5": {
-      "id": "B6-5",
-      "title": "B6: Client management",
-      "project": "B6",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-09T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-1": {
-      "id": "B7-1",
-      "title": "B7: Website design/redesign",
-      "project": "B7",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-2": {
-      "id": "B7-2",
-      "title": "B7: SEO setup",
-      "project": "B7",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-3": {
-      "id": "B7-3",
-      "title": "B7: Google Ads management",
-      "project": "B7",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-4": {
-      "id": "B7-4",
-      "title": "B7: Social media management",
-      "project": "B7",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-5": {
-      "id": "B7-5",
-      "title": "B7: Client management setup",
-      "project": "B7",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-1": {
-      "id": "B8-1",
-      "title": "B8: Website design/redesign",
-      "project": "B8",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-2": {
-      "id": "B8-2",
-      "title": "B8: SEO setup",
-      "project": "B8",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-3": {
-      "id": "B8-3",
-      "title": "B8: Google Ads management",
-      "project": "B8",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-4": {
-      "id": "B8-4",
-      "title": "B8: Social media management",
-      "project": "B8",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-5": {
-      "id": "B8-5",
-      "title": "B8: Client management setup",
-      "project": "B8",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-1": {
-      "id": "B9-1",
-      "title": "B9: Website design/redesign",
-      "project": "B9",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-2": {
-      "id": "B9-2",
-      "title": "B9: SEO setup",
-      "project": "B9",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-3": {
-      "id": "B9-3",
-      "title": "B9: Google Ads management",
-      "project": "B9",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-4": {
-      "id": "B9-4",
-      "title": "B9: Social media management",
-      "project": "B9",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-5": {
-      "id": "B9-5",
-      "title": "B9: Client management setup",
-      "project": "B9",
-      "priority": "medium",
-      "status": "backlog",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B10-1": {
-      "id": "B10-1",
-      "title": "B10: [NEED DETAILS]",
-      "project": "B10",
-      "priority": "low",
-      "status": "backlog",
-      "notes": "Waiting for user to define B10 task",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "C1-1": {
-      "id": "C1-1",
-      "title": "C1: Study for RES exam",
-      "project": "C1",
-      "priority": "medium",
-      "status": "backlog",
-      "notes": "Start April 2026, exam June 2026",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "C2-1": {
-      "id": "C2-1",
-      "title": "C2: Find remote sales roles",
-      "project": "C2",
-      "priority": "medium",
-      "status": "backlog",
-      "notes": "High commission, leads provided",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A1-4": {
-      "title": "Daily transfer to Devspace - 5 days",
-      "brief": "Send money to Devspace FZCO bank account daily for 5 days",
-      "whatINeed": "Complete 5 daily transfers to Citibank account",
-      "why": "Business payment to Devspace (Exstatic/Energize/Team Elevate)",
-      "steps": [
-        "Day 1: Transfer to Devspace (Account: 390207465, SWIFT: CITIHKHX)",
-        "Day 2: Transfer to Devspace",
-        "Day 3: Transfer to Devspace",
-        "Day 4: Transfer to Devspace",
-        "Day 5: Transfer to Devspace - FINAL"
-      ],
-      "currentStatus": "Bank details captured, ready to start transfers",
-      "progress": {
-        "daysCompleted": 0,
-        "daysTotal": 5,
-        "bankName": "Citibank N.A., Hong Kong",
-        "accountName": "Devspace Fzco",
-        "accountNumber": "390207465",
-        "swift": "CITIHKHX"
-      }
+      "description": "Remote sales"
     }
   }
 }
