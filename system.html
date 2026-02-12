@@ -1083,6 +1083,46 @@
                             <div style="font-size: 10px; color: var(--text-muted);">Script Agent</div>
                             <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">⏸️ Not Built Yet</div>
                         </div>
+                        <div style="padding: 10px 16px; background: var(--bg-elevated); border: 1px dashed var(--text-muted); border-radius: 6px; text-align: center; min-width: 140px; opacity: 0.7;">
+                            <div style="font-weight: 600; font-size: 12px; color: var(--text-secondary);">👁️ Clair</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Streaming Scout</div>
+                            <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">⏸️ Not Built Yet</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 4: More Configured -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="font-size: 10px; color: var(--text-muted); text-align: center; margin-bottom: 4px;">CONFIGURED (NOT BUILT)</div>
+                        <div style="padding: 10px 16px; background: var(--bg-elevated); border: 1px dashed var(--text-muted); border-radius: 6px; text-align: center; min-width: 140px; opacity: 0.7;">
+                            <div style="font-weight: 600; font-size: 12px; color: var(--text-secondary);">📢 Kotler</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Marketing Ops</div>
+                            <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">⏸️ Not Built Yet</div>
+                        </div>
+                        <div style="padding: 10px 16px; background: var(--bg-elevated); border: 1px dashed var(--text-muted); border-radius: 6px; text-align: center; min-width: 140px; opacity: 0.7;">
+                            <div style="font-weight: 600; font-size: 12px; color: var(--text-secondary);">📒 Ledger</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Finance</div>
+                            <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">⏸️ Not Built Yet</div>
+                        </div>
+                        <div style="padding: 10px 16px; background: var(--bg-elevated); border: 1px dashed var(--text-muted); border-radius: 6px; text-align: center; min-width: 140px; opacity: 0.7;">
+                            <div style="font-weight: 600; font-size: 12px; color: var(--text-secondary);">🌍 Atlas</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Researcher</div>
+                            <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">⏸️ Not Built Yet</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 5: More Configured -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="font-size: 10px; color: var(--text-muted); text-align: center; margin-bottom: 4px;">CONFIGURED (NOT BUILT)</div>
+                        <div style="padding: 10px 16px; background: var(--bg-elevated); border: 1px dashed var(--text-muted); border-radius: 6px; text-align: center; min-width: 140px; opacity: 0.7;">
+                            <div style="font-weight: 600; font-size: 12px; color: var(--text-secondary);">⚙️ E++</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Core Dev</div>
+                            <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">⏸️ Not Built Yet</div>
+                        </div>
+                        <div style="padding: 10px 16px; background: var(--bg-elevated); border: 1px dashed var(--text-muted); border-radius: 6px; text-align: center; min-width: 140px; opacity: 0.7;">
+                            <div style="font-weight: 600; font-size: 12px; color: var(--text-secondary);">👥 Abed</div>
+                            <div style="font-size: 10px; color: var(--text-muted);">Community Manager</div>
+                            <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">⏸️ Not Built Yet</div>
+                        </div>
                     </div>
                     
                 </div>
@@ -1093,7 +1133,7 @@
         <div class="section-panel">
             <div class="section-header">
                 <div class="section-title">🤖 Agent Roster</div>
-                <span class="section-badge">6 Agents</span>
+                <span class="section-badge">12 Agents</span>
             </div>
             <div class="section-content">
                 <div class="agent-list" id="agent-list">
@@ -1217,6 +1257,102 @@
                     currently: "Waiting to be spawned",
                     youShouldKnow: "Agent ready for YouTube/TikTok scripts",
                     actionNeeded: "Request agent spawn when ready"
+                }
+            },
+            {
+                id: "Clair",
+                name: "Clair",
+                role: "Streaming Scout",
+                status: "idle",
+                statusLabel: "⏸️ Not Built Yet",
+                currentTask: "Agent configuration exists but not implemented",
+                project: "A3 (KOE)",
+                avatarClass: "agent-idle",
+                expanded: {
+                    last5Min: "Idle - not built yet",
+                    currently: "Waiting to be spawned",
+                    youShouldKnow: "Finds winning content for Autour",
+                    actionNeeded: "Spawn first (enables Autour)"
+                }
+            },
+            {
+                id: "Kotler",
+                name: "Kotler",
+                role: "Marketing Ops",
+                status: "idle",
+                statusLabel: "⏸️ Not Built Yet",
+                currentTask: "Agent configuration exists but not implemented",
+                project: "B8 (Empyrean)",
+                avatarClass: "agent-idle",
+                expanded: {
+                    last5Min: "Idle - not built yet",
+                    currently: "Waiting to be spawned",
+                    youShouldKnow: "Content splicer and distributor",
+                    actionNeeded: "Spawn when content pipeline ready"
+                }
+            },
+            {
+                id: "Ledger",
+                name: "Ledger",
+                role: "Finance",
+                status: "idle",
+                statusLabel: "⏸️ Not Built Yet",
+                currentTask: "Agent configuration exists but not implemented",
+                project: "B1-B10 (All Businesses)",
+                avatarClass: "agent-idle",
+                expanded: {
+                    last5Min: "Idle - not built yet",
+                    currently: "Waiting to be spawned",
+                    youShouldKnow: "Budget and accounting for all businesses",
+                    actionNeeded: "Spawn when financial tracking needed"
+                }
+            },
+            {
+                id: "Atlas",
+                name: "Atlas",
+                role: "Researcher",
+                status: "idle",
+                statusLabel: "⏸️ Not Built Yet",
+                currentTask: "Agent configuration exists but not implemented",
+                project: "All Projects",
+                avatarClass: "agent-idle",
+                expanded: {
+                    last5Min: "Idle - not built yet",
+                    currently: "Waiting to be spawned",
+                    youShouldKnow: "Finds skills and improvements for agents",
+                    actionNeeded: "Spawn for high-level research tasks"
+                }
+            },
+            {
+                id: "Eplusplus",
+                name: "E++",
+                role: "Core Dev",
+                status: "idle",
+                statusLabel: "⏸️ Not Built Yet",
+                currentTask: "Agent configuration exists but not implemented",
+                project: "All Projects",
+                avatarClass: "agent-idle",
+                expanded: {
+                    last5Min: "Idle - not built yet",
+                    currently: "Waiting to be spawned",
+                    youShouldKnow: "Heavy engineering and complex coding",
+                    actionNeeded: "Spawn for complex dev tasks"
+                }
+            },
+            {
+                id: "Abed",
+                name: "Abed",
+                role: "Community Manager",
+                status: "idle",
+                statusLabel: "⏸️ Not Built Yet",
+                currentTask: "Agent configuration exists but not implemented",
+                project: "Future Communities",
+                avatarClass: "agent-idle",
+                expanded: {
+                    last5Min: "Idle - not built yet",
+                    currently: "Waiting for communities to exist",
+                    youShouldKnow: "Manages group chats and community",
+                    actionNeeded: "Spawn when community built"
                 }
             }
         ];
