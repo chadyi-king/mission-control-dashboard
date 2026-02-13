@@ -1,16 +1,16 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-13T08:50:00+08:00",
+  "lastUpdated": "2026-02-13T12:40:00+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 71,
+    "totalTasks": 72,
     "pending": 2,
-    "active": 5,
+    "active": 6,
     "review": 1,
     "done": 3,
     "backlog": 53,
     "urgent": 2,
-    "highPriority": 15,
+    "highPriority": 16,
     "completionRate": 4.2
   },
   "workflow": {
@@ -19,6 +19,7 @@
       "B6-6"
     ],
     "active": [
+      "A1-2",
       "A2-3",
       "A2-13",
       "A6-3",
@@ -41,12 +42,26 @@
       "project": "A1",
       "category": "A",
       "priority": "critical",
-      "status": "pending",
+      "status": "in_progress",
       "agent": "CHAD_YI",
-      "notes": "URGENT: Deadline today (Feb 13)",
+      "notes": "Caleb handling personally",
       "description": "Reschedule Taiwan trip flights and accommodation",
       "deadline": "2026-02-13",
       "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A1-2": {
+      "id": "A1-2",
+      "title": "Daily payments - DEVSPACE and Findit Sen",
+      "project": "A1",
+      "category": "A",
+      "priority": "high",
+      "status": "active",
+      "agent": "CHAD_YI",
+      "notes": "Daily payments for 5-6 days starting today (Feb 13)",
+      "description": "Process daily payments for DEVSPACE and Findit Sen services",
+      "deadline": "2026-02-19",
+      "createdAt": "2026-02-13T12:39:00Z",
       "completedAt": null
     },
     "A2-4": {
