@@ -1089,14 +1089,14 @@
     },
     "A7-4": {
       "id": "A7-4",
-      "title": "Check Chiang gas transport",
+      "title": "Check Shangri-La transport",
       "project": "A7",
       "category": "A",
       "priority": "high",
       "status": "pending",
       "agent": "CHAD_YI",
-      "notes": "Check if Chiang has transport for gas, if not arrange transport",
-      "description": "Verify gas transport logistics for wedding",
+      "notes": "Check if Shangri-La has transport for gas, if not arrange transport",
+      "description": "Verify Shangri-La gas transport logistics for wedding",
       "deadline": null,
       "createdAt": "2026-02-13T14:48:00Z",
       "completedAt": null
