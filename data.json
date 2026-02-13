@@ -1061,7 +1061,7 @@
       "status": "active",
       "currentTask": "15-minute audit cycle",
       "taskCount": 0,
-      "lastActive": "2026-02-13T06:51:00+08:00"
+      "lastActive": "2026-02-13T10:06:00+08:00"
     },
     "escritor": {
       "id": "escritor",
@@ -1105,10 +1105,30 @@
   },
   "inputsNeeded": [
     {
+      "taskId": "A5-1"
+    },
+    {
       "taskId": "A5-2"
     }
   ],
   "inputDetails": {
+    "A5-1": {
+      "taskId": "A5-1",
+      "agent": "Quanta",
+      "waitingFor": "OANDA API credentials",
+      "idleHours": 120,
+      "priority": "MEDIUM",
+      "title": "Trading Bot: Forex/Commodities",
+      "brief": "A5 • From: Quanta",
+      "whatINeed": "OANDA API credentials",
+      "why": "Quanta has been blocked for 120 hours waiting for this",
+      "steps": [
+        "Review the blocker",
+        "Provide the required credentials",
+        "Agent will resume work"
+      ],
+      "currentStatus": "Waiting for OANDA API credentials"
+    },
     "A5-2": {
       "taskId": "A5-2",
       "agent": "MensaMusa",
@@ -1116,9 +1136,9 @@
       "idleHours": 120,
       "priority": "MEDIUM",
       "title": "Trading Bot: Options Flow",
-      "brief": "A5 \u2022 From: MensaMusa",
+      "brief": "A5 • From: MensaMusa",
       "whatINeed": "Moomoo account credentials",
-      "why": "MensaMusa has been blocked for 102 hours waiting for this",
+      "why": "MensaMusa has been blocked for 120 hours waiting for this",
       "steps": [
         "Review the blocker",
         "Provide the required information/credentials",
@@ -1169,8 +1189,8 @@
       "state": "Active"
     },
     "quanta": {
-      "activity": "OANDA connected, ready for live trading",
-      "state": "Active"
+      "activity": "Needs OANDA API credentials",
+      "state": "Blocked"
     },
     "mensamusa": {
       "activity": "Needs Moomoo account",
