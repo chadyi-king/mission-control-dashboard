@@ -3,14 +3,14 @@
   "lastUpdated": "2026-02-13T14:48:00+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 74,
+    "totalTasks": 75,
     "pending": 2,
     "active": 7,
     "review": 1,
     "done": 3,
-    "backlog": 54,
+    "backlog": 55,
     "urgent": 2,
-    "highPriority": 18,
+    "highPriority": 19,
     "completionRate": 4.2
   },
   "workflow": {
@@ -1031,6 +1031,20 @@
       "createdAt": "2026-02-12T07:30:00Z",
       "completedAt": null
     },
+    "B6-7": {
+      "id": "B6-7",
+      "title": "Check insurance for SMU event",
+      "project": "B6",
+      "category": "B",
+      "priority": "high",
+      "status": "pending",
+      "agent": "CHAD_YI",
+      "notes": "Verify event insurance coverage for SMU event",
+      "description": "Check and confirm insurance requirements for SMU event",
+      "deadline": "2026-02-17",
+      "createdAt": "2026-02-13T14:48:00Z",
+      "completedAt": null
+    },
     "A7-1": {
       "id": "A7-1",
       "title": "Venue shortlist",
@@ -1039,7 +1053,7 @@
       "priority": "high",
       "status": "pending",
       "agent": "CHAD_YI",
-      "notes": "Find 3 venues",
+      "notes": "Find 3 venues - Shangri-La is one option",
       "description": "",
       "deadline": null,
       "createdAt": "2026-02-08T12:02:05.387258Z",
