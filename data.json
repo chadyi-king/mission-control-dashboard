@@ -7,11 +7,11 @@
     "pending": 2,
     "active": 7,
     "review": 1,
-    "done": 3,
-    "backlog": 55,
+    "done": 4,
+    "backlog": 54,
     "urgent": 2,
     "highPriority": 19,
-    "completionRate": 4.2
+    "completionRate": 5.3
   },
   "workflow": {
     "pending": [
@@ -32,6 +32,7 @@
     ],
     "done": [
       "A2-1",
+      "A7-1",
       "B3-1",
       "B6-1"
     ]
@@ -1047,17 +1048,17 @@
     },
     "A7-1": {
       "id": "A7-1",
-      "title": "Venue shortlist",
+      "title": "Venue confirmed - Shangri-La",
       "project": "A7",
       "category": "A",
       "priority": "high",
-      "status": "pending",
+      "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Find 3 venues - Shangri-La is one option",
-      "description": "",
+      "notes": "Venue confirmed: Shangri-La. Now working on venue logistics.",
+      "description": "Wedding venue confirmed at Shangri-La",
       "deadline": null,
       "createdAt": "2026-02-08T12:02:05.387258Z",
-      "completedAt": null
+      "completedAt": "2026-02-13T14:51:00Z"
     },
     "A7-2": {
       "id": "A7-2",
