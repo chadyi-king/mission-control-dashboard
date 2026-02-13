@@ -1,27 +1,27 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-13T23:17:00+08:00",
+  "lastUpdated": "2026-02-14T00:05:00+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 76,
-    "pending": 3,
-    "active": 7,
+    "totalTasks": 77,
+    "pending": 4,
+    "active": 6,
     "review": 1,
-    "done": 4,
+    "done": 5,
     "backlog": 54,
     "urgent": 2,
     "highPriority": 20,
-    "completionRate": 5.3
+    "completionRate": 6.5
   },
   "workflow": {
     "pending": [
       "A1-1",
       "A1-3",
+      "A2-14",
       "B6-6"
     ],
     "active": [
       "A1-2",
-      "A2-3",
       "A2-13",
       "A6-3",
       "A6-13",
@@ -33,6 +33,7 @@
     ],
     "done": [
       "A2-1",
+      "A2-3",
       "A7-1",
       "B3-1",
       "B6-1"
@@ -923,30 +924,44 @@
     },
     "A2-3": {
       "id": "A2-3",
-      "title": "Edit Chapter 3",
+      "title": "Chapters 1-12 COMPLETE",
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "active",
+      "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Review and polish novel chapter",
-      "description": "",
+      "notes": "All chapters 1-12 written and complete. Ready for Chapter 13.",
+      "description": "RE:UNITE chapters 1-12 are done",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": "2026-02-14T00:00:00Z"
     },
     "A2-13": {
       "id": "A2-13",
-      "title": "Study Phase - 90 question knowledge check",
+      "title": "Escritor Study Phase - Understand Story",
       "project": "A2",
       "category": "A",
       "priority": "high",
       "status": "active",
       "agent": "Escritor",
-      "notes": "Answer Story Bible questions before drafting Chapter 13",
-      "description": "Complete the 90-question RE:UNITE knowledge test stored in escritor/inbox/study-questions.md",
+      "notes": "Escritor reads chapters 1-12 and Story Bible to understand RE:UNITE universe before collaborating on Chapter 13",
+      "description": "Study all existing content to prepare for Chapter 13 collaboration",
       "deadline": null,
       "createdAt": "2026-02-12T07:30:00Z",
+      "completedAt": null
+    },
+    "A2-14": {
+      "id": "A2-14",
+      "title": "Write Chapter 13 WITH Caleb",
+      "project": "A2",
+      "category": "A",
+      "priority": "high",
+      "status": "pending",
+      "agent": "Escritor",
+      "notes": "Collaborative writing - Escritor drafts, Caleb reviews and guides. Start after Study Phase complete.",
+      "description": "Chapter 13 written in collaboration with Caleb",
+      "deadline": null,
+      "createdAt": "2026-02-14T00:00:00Z",
       "completedAt": null
     },
     "A6-13": {
@@ -1142,9 +1157,9 @@
       "name": "Escritor",
       "role": "story_agent",
       "status": "active",
-      "currentTask": "A2-13: Study Phase (90 questions)",
-      "taskCount": 1,
-      "lastActive": "2026-02-12T18:51:00+08:00",
+      "currentTask": "A2-13: Study chapters 1-12 to understand RE:UNITE",
+      "taskCount": 2,
+      "lastActive": "2026-02-14T00:00:00+08:00",
       "idleHours": 0
     },
     "quanta": {
