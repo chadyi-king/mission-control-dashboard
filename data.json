@@ -1,16 +1,16 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-13T12:40:00+08:00",
+  "lastUpdated": "2026-02-13T12:45:00+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 72,
+    "totalTasks": 73,
     "pending": 2,
-    "active": 6,
+    "active": 7,
     "review": 1,
     "done": 3,
     "backlog": 53,
     "urgent": 2,
-    "highPriority": 16,
+    "highPriority": 17,
     "completionRate": 4.2
   },
   "workflow": {
@@ -24,6 +24,7 @@
       "A2-13",
       "A6-3",
       "A6-13",
+      "A6-14",
       "B6-3"
     ],
     "review": [
@@ -940,10 +941,24 @@
       "priority": "high",
       "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Click project \u2192 full view modal",
+      "notes": "Click project → full view modal",
       "description": "",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
+      "completedAt": null
+    },
+    "A6-14": {
+      "id": "A6-14",
+      "title": "Dashboard design changes + fix System/Resources pages",
+      "project": "A6",
+      "category": "A",
+      "priority": "high",
+      "status": "active",
+      "agent": "CHAD_YI",
+      "notes": "Minor design updates to dashboard. Fix System and Resources pages. Requires planning first.",
+      "description": "Update dashboard UI design and fix non-functional System and Resources pages",
+      "deadline": null,
+      "createdAt": "2026-02-13T12:42:00Z",
       "completedAt": null
     },
     "A2-2": {
