@@ -1,22 +1,24 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-14T00:05:00+08:00",
+  "lastUpdated": "2026-02-14T00:06:00+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 77,
-    "pending": 4,
+    "totalTasks": 79,
+    "pending": 6,
     "active": 6,
     "review": 1,
     "done": 5,
     "backlog": 54,
-    "urgent": 2,
-    "highPriority": 20,
-    "completionRate": 6.5
+    "urgent": 3,
+    "highPriority": 21,
+    "completionRate": 6.3
   },
   "workflow": {
     "pending": [
       "A1-1",
       "A1-3",
+      "A1-4",
+      "A1-5",
       "A2-14",
       "B6-6"
     ],
@@ -80,6 +82,34 @@
       "description": "Rebook Disney Cruise",
       "deadline": "2026-02-27",
       "createdAt": "2026-02-13T23:16:00Z",
+      "completedAt": null
+    },
+    "A1-4": {
+      "id": "A1-4",
+      "title": "Send ACLP homework",
+      "project": "A1",
+      "category": "A",
+      "priority": "critical",
+      "status": "pending",
+      "agent": "CHAD_YI",
+      "notes": "Due tomorrow night (Feb 15)",
+      "description": "Submit ACLP homework assignment",
+      "deadline": "2026-02-15",
+      "createdAt": "2026-02-14T00:05:00Z",
+      "completedAt": null
+    },
+    "A1-5": {
+      "id": "A1-5",
+      "title": "Rebook ACLP reassessment",
+      "project": "A1",
+      "category": "A",
+      "priority": "high",
+      "status": "pending",
+      "agent": "CHAD_YI",
+      "notes": "Rebook by next Wednesday (Feb 19). Date given for assessment.",
+      "description": "Rebook ACLP reassessment slot",
+      "deadline": "2026-02-19",
+      "createdAt": "2026-02-14T00:05:00Z",
       "completedAt": null
     },
     "A2-4": {
@@ -1244,6 +1274,15 @@
       "hoursRemaining": 20,
       "agent": "CHAD_YI",
       "severity": "critical"
+    },
+    "A1-4": {
+      "id": "A1-4",
+      "title": "Send ACLP homework",
+      "deadline": "2026-02-15",
+      "hoursRemaining": 48,
+      "agent": "CHAD_YI",
+      "severity": "critical",
+      "description": "Due tomorrow night"
     },
     "B6-6": {
       "id": "B6-6",
