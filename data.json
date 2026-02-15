@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-16T00:29:49.426989",
+  "lastUpdated": "2026-02-16T00:35:38.474706",
   "updatedBy": "CHAD_YI",
   "stats": {
     "totalTasks": 81,
@@ -1336,43 +1336,43 @@
       "status": "active",
       "currentTask": "A6-3 Dashboard infrastructure",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "Active"
+      "state": "\u2705 Active now"
     },
     "Helios": {
       "status": "active",
       "currentTask": "15-minute audits",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "Active"
+      "state": "\u2705 Active now"
     },
     "Escritor": {
       "status": "idle",
       "currentTask": "A2-13 Chapter outline",
       "lastActive": "2026-02-14T20:00:00+08:00",
-      "state": "Idle 2 days"
+      "state": "\u26a0\ufe0f Idle 1d - needs input"
     },
     "Quanta": {
       "status": "active",
       "currentTask": "A5-1 LIVE trading - OANDA connected ($2,004.68)",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "Active - monitoring CallistoFx"
+      "state": "\u2705 Active now"
     },
     "MensaMusa": {
       "status": "blocked",
       "currentTask": "A5-2 Options monitoring",
       "lastActive": "2026-02-08T10:00:00+08:00",
-      "state": "Blocked - needs Moomoo credentials"
+      "state": "\ud83d\udd34 Blocked 7d - waiting for credentials"
     },
     "Autour": {
       "status": "not_spawned",
       "currentTask": "A3 KOE scripts",
       "lastActive": null,
-      "state": "Not spawned"
+      "state": "\u26aa Not started"
     },
     "Forger": {
       "status": "active",
       "currentTask": "B6 Elluminate website complete",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "Active"
+      "state": "\u2705 Active now"
     }
   },
   "projects": {
