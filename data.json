@@ -1,28 +1,28 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-15T18:40:00+08:00",
+  "lastUpdated": "2026-02-16T00:29:49.426989",
   "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 80,
+    "totalTasks": 81,
     "pending": 7,
     "active": 6,
     "review": 1,
-    "done": 5,
+    "done": 6,
     "backlog": 54,
     "urgent": 3,
     "highPriority": 21,
-    "completionRate": 6.3,
+    "completionRate": 7.5,
     "totalAgents": 7
   },
   "workflow": {
     "pending": [
       "A1-1",
       "A1-3",
-      "A1-4",
       "A1-5",
       "A2-14",
       "B6-6",
-      "B6-8"
+      "B6-8",
+      "A5-3"
     ],
     "active": [
       "A1-2",
@@ -40,7 +40,8 @@
       "A2-3",
       "A7-1",
       "B3-1",
-      "B6-1"
+      "B6-1",
+      "A1-4"
     ]
   },
   "tasks": {
@@ -92,13 +93,13 @@
       "project": "A1",
       "category": "A",
       "priority": "critical",
-      "status": "pending",
+      "status": "done",
       "agent": "CHAD_YI",
       "notes": "DUE TODAY (Feb 15) - Submit before end of day",
       "description": "Submit ACLP homework assignment",
       "deadline": "2026-02-15",
       "createdAt": "2026-02-14T00:05:00Z",
-      "completedAt": null
+      "completedAt": "2026-02-16T00:18:51.442797"
     },
     "A1-5": {
       "id": "A1-5",
@@ -1163,6 +1164,23 @@
       "deadline": null,
       "createdAt": "2026-02-13T14:48:00Z",
       "completedAt": null
+    },
+    "A5-3": {
+      "id": "A5-3",
+      "title": "Update Quanta symbol list - add BTC, ETH, AUD, CAD, CHF, NZD",
+      "project": "A5",
+      "status": "pending",
+      "priority": "medium",
+      "description": "Expand monitoring symbols from 7 to 13. Add: BTCUSD, ETHUSD, AUDUSD, USDCAD, USDCHF, NZDUSD. Code already edited in monitor_callistofx.py - just needs restart to apply.",
+      "notes": "User wants to test current setup first before restarting. Apply when ready.",
+      "created": "2026-02-16T00:29:04.876474",
+      "deadline": null,
+      "assignee": "CHAD_YI",
+      "tags": [
+        "quanta",
+        "trading",
+        "enhancement"
+      ]
     }
   },
   "agents": {
@@ -1226,10 +1244,18 @@
   },
   "inputsNeeded": [
     {
-      "taskId": "A5-1"
+      "id": "A5-2",
+      "agent": "MensaMusa",
+      "task": "Options flow monitoring",
+      "blockedFor": "7 days",
+      "needs": "Moomoo account credentials"
     },
     {
-      "taskId": "A5-2"
+      "id": "A3",
+      "agent": "Autour",
+      "task": "KOE scripts",
+      "blockedFor": "Not started",
+      "needs": "Spawn agent + YouTube API"
     }
   ],
   "inputDetails": {
@@ -1306,28 +1332,46 @@
     }
   },
   "agentDetails": {
-    "chad_yi": {
-      "activity": "Verifying agent audit logs",
+    "CHAD_YI": {
+      "status": "active",
+      "currentTask": "A6-3 Dashboard infrastructure",
+      "lastActive": "2026-02-16T00:29:49.426989",
       "state": "Active"
     },
-    "helios": {
-      "activity": "Running 15-minute audit",
+    "Helios": {
+      "status": "active",
+      "currentTask": "15-minute audits",
+      "lastActive": "2026-02-16T00:29:49.426989",
       "state": "Active"
     },
-    "escritor": {
-      "activity": "A2-13 Study Phase: answering 90 questions",
-      "state": "Active"
+    "Escritor": {
+      "status": "idle",
+      "currentTask": "A2-13 Chapter outline",
+      "lastActive": "2026-02-14T20:00:00+08:00",
+      "state": "Idle 2 days"
     },
-    "quanta": {
-      "activity": "Needs OANDA API credentials",
-      "state": "Blocked"
+    "Quanta": {
+      "status": "active",
+      "currentTask": "A5-1 LIVE trading - OANDA connected ($2,004.68)",
+      "lastActive": "2026-02-16T00:29:49.426989",
+      "state": "Active - monitoring CallistoFx"
     },
-    "mensamusa": {
-      "activity": "Needs Moomoo account",
-      "state": "Blocked"
+    "MensaMusa": {
+      "status": "blocked",
+      "currentTask": "A5-2 Options monitoring",
+      "lastActive": "2026-02-08T10:00:00+08:00",
+      "state": "Blocked - needs Moomoo credentials"
     },
-    "forger": {
-      "activity": "Awaiting first website project",
+    "Autour": {
+      "status": "not_spawned",
+      "currentTask": "A3 KOE scripts",
+      "lastActive": null,
+      "state": "Not spawned"
+    },
+    "Forger": {
+      "status": "active",
+      "currentTask": "B6 Elluminate website complete",
+      "lastActive": "2026-02-16T00:29:49.426989",
       "state": "Active"
     }
   },
