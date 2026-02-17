@@ -1,17 +1,17 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-17T12:13:40.139204",
+  "lastUpdated": "2026-02-18T02:48:55.018843",
   "updatedBy": "CHAD_YI",
   "stats": {
     "totalTasks": 82,
-    "pending": 7,
+    "pending": 8,
     "active": 6,
     "review": 0,
     "done": 8,
     "backlog": 54,
     "urgent": 2,
     "highPriority": 22,
-    "completionRate": 8.6,
+    "completionRate": 9.8,
     "totalAgents": 7
   },
   "workflow": {
@@ -19,10 +19,11 @@
       "A1-3",
       "A1-5",
       "A2-14",
-      "B6-6",
       "B6-8",
       "A5-3",
-      "B8-6"
+      "B8-6",
+      "B6-6",
+      "B6-7"
     ],
     "active": [
       "A1-2",
@@ -879,7 +880,7 @@
       "priority": "high",
       "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Order by 17 February",
+      "notes": "PENDING: Items to order - REVERTED",
       "description": "Order by 17 February",
       "deadline": "2026-02-17",
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1075,7 +1076,7 @@
       "priority": "high",
       "status": "pending",
       "agent": "CHAD_YI",
-      "notes": "Need minimum 120 facilitators confirmed by 17 Feb",
+      "notes": "PENDING: 120 facilitators needed - REVERTED",
       "description": "Source, confirm, and schedule facilitators for the ESU program",
       "deadline": "2026-02-17",
       "createdAt": "2026-02-12T07:30:00Z",
@@ -1089,7 +1090,7 @@
       "priority": "high",
       "status": "pending",
       "agent": "CHAD_YI",
-      "notes": "Verify event insurance coverage for SMU event",
+      "notes": "PENDING: Insurance check - REVERTED",
       "description": "Check and confirm insurance requirements for SMU event",
       "deadline": "2026-02-17",
       "createdAt": "2026-02-13T14:48:00Z",
@@ -1198,61 +1199,39 @@
     }
   },
   "agents": {
-    "chad_yi": {
-      "id": "chad_yi",
-      "name": "CHAD_YI",
-      "role": "orchestrator",
+    "forger": {
       "status": "active",
-      "currentTask": "A6-3: Dashboard audit infrastructure",
-      "taskCount": 4,
-      "lastActive": "2026-02-12T15:51:00+08:00"
+      "currentTask": "Awaiting first project assignment",
+      "lastActive": "2026-02-14T17:45:00+08:00"
     },
     "helios": {
-      "id": "helios",
-      "name": "Helios",
-      "role": "mission_control_engineer",
+      "status": null,
+      "currentTask": null,
+      "lastActive": null
+    },
+    "chad-yi": {
       "status": "active",
-      "currentTask": "15-minute audit cycle",
-      "taskCount": 0,
-      "lastActive": "2026-02-13T10:06:00+08:00"
+      "currentTask": null,
+      "lastActive": null
+    },
+    "null": {
+      "status": "active",
+      "currentTask": null,
+      "lastActive": null
     },
     "escritor": {
-      "id": "escritor",
-      "name": "Escritor",
-      "role": "story_agent",
       "status": "active",
-      "currentTask": "A2-13: Study Phase - Reading chapters 1-12 + answering 80 questions",
-      "taskCount": 2,
-      "lastActive": "2026-02-14T01:16:00+08:00",
-      "idleHours": 0
-    },
-    "quanta": {
-      "id": "quanta",
-      "name": "Quanta",
-      "role": "trading_agent",
-      "status": "blocked",
-      "currentTask": "A5-1: Trading signals",
-      "taskCount": 1,
-      "blocker": "OANDA credentials needed",
-      "lastActive": "2026-02-08T10:00:00+08:00"
-    },
-    "mensamusa": {
-      "id": "mensamusa",
-      "name": "MensaMusa",
-      "role": "trading_agent",
-      "status": "blocked",
-      "currentTask": "A5-2: Options flow",
-      "taskCount": 1,
-      "blocker": "Moomoo credentials needed",
-      "lastActive": "2026-02-08T10:00:00+08:00"
+      "currentTask": null,
+      "lastActive": "2026-02-17T23:57:19.775829"
     },
     "autour": {
-      "id": "autour",
-      "name": "Autour",
-      "role": "content_agent",
-      "status": "not_spawned",
+      "status": "active",
       "currentTask": null,
-      "taskCount": 0,
+      "lastActive": "2026-02-17T23:57:19.776608"
+    },
+    "quanta": {
+      "status": "blocked",
+      "currentTask": "A5-1: Trading Bot - Forex/Commodities",
       "lastActive": null
     }
   },
