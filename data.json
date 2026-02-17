@@ -1,28 +1,28 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-16T17:25:00.000000",
+  "lastUpdated": "2026-02-17T12:13:40.139204",
   "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 81,
+    "totalTasks": 82,
     "pending": 7,
     "active": 6,
     "review": 0,
-    "done": 7,
+    "done": 8,
     "backlog": 54,
-    "urgent": 3,
-    "highPriority": 21,
+    "urgent": 2,
+    "highPriority": 22,
     "completionRate": 8.6,
     "totalAgents": 7
   },
   "workflow": {
     "pending": [
-      "A1-1",
       "A1-3",
       "A1-5",
       "A2-14",
       "B6-6",
       "B6-8",
-      "A5-3"
+      "A5-3",
+      "B8-6"
     ],
     "active": [
       "A1-2",
@@ -40,7 +40,8 @@
       "A7-1",
       "B3-1",
       "B6-1",
-      "A1-4"
+      "A1-4",
+      "A1-1"
     ]
   },
   "tasks": {
@@ -50,13 +51,13 @@
       "project": "A1",
       "category": "A",
       "priority": "critical",
-      "status": "overdue",
+      "status": "done",
       "agent": "CHAD_YI",
-      "notes": "OVERDUE: Deadline was Feb 13. Caleb handling personally - needs immediate action.",
+      "notes": "COMPLETED: Taiwan flights and hotel successfully rescheduled by Caleb.",
       "description": "Reschedule Taiwan trip flights and accommodation",
       "deadline": "2026-02-13",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": "2026-02-16T17:30:00Z"
     },
     "A1-2": {
       "id": "A1-2",
@@ -1180,6 +1181,20 @@
         "trading",
         "enhancement"
       ]
+    },
+    "B8-6": {
+      "id": "B8-6",
+      "title": "Finish Andre's video",
+      "project": "B8",
+      "category": "B",
+      "priority": "high",
+      "status": "pending",
+      "agent": "CHAD_YI",
+      "notes": "Get clips from EC and pay him. Video due next Monday.",
+      "description": "Complete Andre's video for Empyrean",
+      "deadline": "2026-02-23",
+      "createdAt": "2026-02-17T12:13:40.139189Z",
+      "completedAt": null
     }
   },
   "agents": {
@@ -1489,12 +1504,6 @@
     }
   },
   "urgentDeadlines": [
-    {
-      "id": "A1-1",
-      "title": "Change Taiwan flights and hotel",
-      "deadline": "2026-02-13",
-      "hoursRemaining": 20
-    },
     {
       "id": "B6-6",
       "title": "Find facilitators for ESU",
