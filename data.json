@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-18T15:37:00.000000+08:00",
+  "lastUpdated": "2026-02-18T15:53:14+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
     "totalTasks": 82,
@@ -1199,40 +1199,38 @@
     }
   },
   "agents": {
-    "forger": {
-      "status": "active",
-      "currentTask": "Awaiting first project assignment",
-      "lastActive": "2026-02-14T17:45:00+08:00"
-    },
-    "helios": {
-      "status": null,
-      "currentTask": null,
-      "lastActive": null
-    },
     "chad-yi": {
       "status": "active",
-      "currentTask": null,
-      "lastActive": null
+      "currentTask": "Infrastructure coordination",
+      "lastActive": "2026-02-18T15:53:14"
     },
-    "null": {
+    "helios": {
       "status": "active",
-      "currentTask": null,
-      "lastActive": null
+      "currentTask": "Redis communication",
+      "lastActive": "2026-02-18T15:53:14"
     },
     "escritor": {
       "status": "active",
-      "currentTask": null,
-      "lastActive": "2026-02-17T23:57:19.775829"
-    },
-    "autour": {
-      "status": "active",
-      "currentTask": null,
-      "lastActive": "2026-02-17T23:57:19.776608"
+      "currentTask": "A2-13 Study Phase",
+      "lastActive": "2026-02-17"
     },
     "quanta": {
       "status": "blocked",
-      "currentTask": "A5-1: Trading Bot - Forex/Commodities",
-      "lastActive": null
+      "blocker": "OANDA credentials",
+      "idleHours": 120
+    },
+    "mensamusa": {
+      "status": "blocked",
+      "blocker": "Moomoo credentials",
+      "idleHours": 120
+    },
+    "autour": {
+      "status": "not_spawned",
+      "reason": "awaiting_koe_scripts"
+    },
+    "forger": {
+      "status": "active",
+      "currentTask": "Awaiting assignment"
     }
   },
   "inputsNeeded": [],
