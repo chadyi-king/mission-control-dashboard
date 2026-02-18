@@ -225,10 +225,10 @@
       "project": "A5",
       "category": "A",
       "priority": "high",
-      "status": "blocked",
+      "status": "active",
       "agent": "Quanta",
-      "notes": "BLOCKED: Needs OANDA API credentials (102h idle)",
-      "description": "",
+      "notes": "LIVE TESTING: Bot is running in final validation phase. Last laps of testing.",
+      "description": "Telegram signal forwarding to OANDA - final testing",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
       "completedAt": null
@@ -1223,10 +1223,9 @@
       "role": "Writer"
     },
     "quanta": {
-      "status": "blocked",
-      "blocker": "OANDA API credentials needed",
-      "idleHours": 120,
-      "currentTask": "A5-1 Trading Bot",
+      "status": "active",
+      "currentTask": "A5-1 Trading Bot - LIVE testing phase",
+      "lastActive": "2026-02-19T04:00:00",
       "role": "Trading"
     },
     "mensamusa": {
@@ -1344,9 +1343,9 @@
     },
     "Quanta": {
       "status": "active",
-      "currentTask": "A5-1 LIVE trading - OANDA connected ($2,004.68)",
-      "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "\u2705 Active now"
+      "currentTask": "A5-1 LIVE testing - final validation phase",
+      "lastActive": "2026-02-19T04:00:00",
+      "state": "\u2705 Testing in progress"
     },
     "MensaMusa": {
       "status": "blocked",
