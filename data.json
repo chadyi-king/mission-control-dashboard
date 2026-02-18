@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-18T15:53:14+08:00",
+  "lastUpdated": "2026-02-18T18:02:35+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
     "totalTasks": 82,
@@ -43,6 +43,11 @@
       "B6-1",
       "A1-4",
       "A1-1"
+    ],
+    "urgent": [
+      "B6-3",
+      "B6-6",
+      "B6-7"
     ]
   },
   "tasks": {
@@ -1201,36 +1206,47 @@
   "agents": {
     "chad-yi": {
       "status": "active",
-      "currentTask": "Infrastructure coordination",
-      "lastActive": "2026-02-18T15:53:14"
+      "currentTask": "A6-14 Infrastructure coordination",
+      "lastActive": "2026-02-18T18:02:35",
+      "role": "CEO/Brain"
     },
     "helios": {
       "status": "active",
-      "currentTask": "Redis communication",
-      "lastActive": "2026-02-18T15:53:14"
+      "currentTask": "Redis communication + Dashboard audit",
+      "lastActive": "2026-02-18T18:02:35",
+      "role": "Mission Control"
     },
     "escritor": {
       "status": "active",
-      "currentTask": "A2-13 Study Phase",
-      "lastActive": "2026-02-17"
+      "currentTask": "A2-13 Study Phase - Reading chapters 1-12",
+      "lastActive": "2026-02-17T20:00:00",
+      "role": "Writer"
     },
     "quanta": {
       "status": "blocked",
-      "blocker": "OANDA credentials",
-      "idleHours": 120
+      "blocker": "OANDA API credentials needed",
+      "idleHours": 120,
+      "currentTask": "A5-1 Trading Bot",
+      "role": "Trading"
     },
     "mensamusa": {
       "status": "blocked",
-      "blocker": "Moomoo credentials",
-      "idleHours": 120
+      "blocker": "Moomoo account needed",
+      "idleHours": 120,
+      "currentTask": "A5-2 Options monitoring",
+      "role": "Options"
     },
     "autour": {
       "status": "not_spawned",
-      "reason": "awaiting_koe_scripts"
+      "reason": "Awaiting KOE scripts task assignment",
+      "currentTask": "A3 KOE content",
+      "role": "Content"
     },
     "forger": {
       "status": "active",
-      "currentTask": "Awaiting assignment"
+      "currentTask": "B6 Elluminate - website complete",
+      "lastActive": "2026-02-18T18:02:35",
+      "role": "Builder"
     }
   },
   "inputsNeeded": [],
