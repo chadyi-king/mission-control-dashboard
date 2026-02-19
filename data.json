@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-19T17:07:00+08:00",
+  "lastUpdated": "2026-02-18T18:02:35+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
     "totalTasks": 83,
@@ -9,22 +9,23 @@
     "review": 0,
     "done": 8,
     "backlog": 54,
-    "urgent": 3,
+    "urgent": 4,
     "highPriority": 22,
-    "completionRate": 9.6,
-    "totalAgents": 7
+    "completionRate": 9.8,
+    "totalAgents": 7,
+    "lastUpdated": "2026-02-19T17:07:00+08:00"
   },
   "workflow": {
     "pending": [
       "A1-3",
       "A1-5",
-      "A1-6",
       "A2-14",
       "B6-8",
       "A5-3",
       "B8-6",
       "B6-6",
-      "B6-7"
+      "B6-7",
+      "A1-6"
     ],
     "active": [
       "A1-2",
@@ -123,20 +124,7 @@
       "createdAt": "2026-02-14T00:05:00Z",
       "completedAt": null
     },
-    "A1-6": {
-      "id": "A1-6",
-      "title": "Finalize and send Lisa's contract",
-      "project": "A1",
-      "category": "A",
-      "priority": "critical",
-      "status": "pending",
-      "agent": "CHAD_YI",
-      "notes": "Contract mostly done - need to add final details and send signed copy to Lisa. URGENT - due tonight.",
-      "description": "Complete Lisa's employment contract and send signed version",
-      "deadline": "2026-02-19",
-      "createdAt": "2026-02-19T17:07:00+08:00",
-      "completedAt": null
-    }, {
+    "A2-4": {
       "id": "A2-4",
       "title": "Write Chapter 4",
       "project": "A2",
@@ -1215,6 +1203,20 @@
       "description": "Complete Andre's video for Empyrean",
       "deadline": "2026-02-23",
       "createdAt": "2026-02-17T12:13:40.139189Z",
+      "completedAt": null
+    },
+    "A1-6": {
+      "id": "A1-6",
+      "title": "Finalize and send Lisa's contract",
+      "project": "A1",
+      "category": "A",
+      "priority": "critical",
+      "status": "pending",
+      "agent": "CHAD_YI",
+      "notes": "Contract mostly done - need to add final details and send signed copy to Lisa. URGENT - due tonight.",
+      "description": "Complete Lisa's employment contract and send signed version",
+      "deadline": "2026-02-19",
+      "createdAt": "2026-02-19T17:07:00+08:00",
       "completedAt": null
     }
   },
