@@ -2654,6 +2654,22 @@
         let appData = null;
         let allProjects = [];
         let projectLookup = {};
+        const HELIOS_API_BASE = (
+            window.HELIOS_API_BASE ||
+            localStorage.getItem('HELIOS_API_BASE') ||
+            'http://localhost:8000'
+        ).replace(/\/+$/, '');
+        const HELIOS_WS_URL = (() => {
+            const configured = window.HELIOS_WS_URL || localStorage.getItem('HELIOS_WS_URL');
+            if (configured) return configured.replace(/\/+$/, '');
+            if (HELIOS_API_BASE.startsWith('https://')) return HELIOS_API_BASE.replace(/^https:\/\//, 'wss://');
+            if (HELIOS_API_BASE.startsWith('http://')) return HELIOS_API_BASE.replace(/^http:\/\//, 'ws://');
+            return 'ws://localhost:8000';
+        })();
+        let heliosSocket = null;
+        let heliosSocketRetryTimer = null;
+        let heliosSocketHeartbeatTimer = null;
+        let lastRealtimeRefreshMs = 0;
 
         // Sidebar Toggle
         function toggleSidebar() {
@@ -2693,6 +2709,101 @@
             if (window.ProjectTasksModal && typeof window.ProjectTasksModal.setProjectLookup === 'function') {
                 window.ProjectTasksModal.setProjectLookup(projectLookup);
             }
+        }
+
+        async function loadHeliosSyncBootstrap() {
+            const url = `${HELIOS_API_BASE}/api/sync?t=${Date.now()}`;
+            try {
+                const response = await fetch(url, { method: 'GET', cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Helios sync failed (${response.status})`);
+                }
+                const sync = await response.json();
+                console.log('[Helios] sync bootstrap ok:', {
+                    apiBase: HELIOS_API_BASE,
+                    wsBase: HELIOS_WS_URL,
+                    agents: Array.isArray(sync?.agents) ? sync.agents.length : 'n/a',
+                    events: Array.isArray(sync?.recent_events) ? sync.recent_events.length : 'n/a'
+                });
+            } catch (error) {
+                console.warn('[Helios] sync bootstrap unavailable, using polling fallback:', error.message || error);
+            }
+        }
+
+        function triggerImmediateRefresh(reason = 'realtime') {
+            const now = Date.now();
+            if (now - lastRealtimeRefreshMs < 1000) {
+                return;
+            }
+            lastRealtimeRefreshMs = now;
+            console.log(`[Helios WS] trigger refresh: ${reason}`);
+            if (window.smartPoll && typeof window.smartPoll.checkNow === 'function') {
+                window.smartPoll.checkNow();
+                return;
+            }
+            loadData();
+        }
+
+        function connectHeliosDashboardSocket() {
+            if (heliosSocket && (heliosSocket.readyState === WebSocket.OPEN || heliosSocket.readyState === WebSocket.CONNECTING)) {
+                return;
+            }
+
+            const wsUrl = `${HELIOS_WS_URL}/ws/dashboard`;
+            try {
+                heliosSocket = new WebSocket(wsUrl);
+            } catch (error) {
+                console.warn('[Helios WS] failed to create websocket:', error.message || error);
+                scheduleHeliosSocketReconnect();
+                return;
+            }
+
+            heliosSocket.onopen = () => {
+                console.log('[Helios WS] connected:', wsUrl);
+                if (heliosSocketRetryTimer) {
+                    clearTimeout(heliosSocketRetryTimer);
+                    heliosSocketRetryTimer = null;
+                }
+                if (heliosSocketHeartbeatTimer) clearInterval(heliosSocketHeartbeatTimer);
+                heliosSocketHeartbeatTimer = setInterval(() => {
+                    if (heliosSocket && heliosSocket.readyState === WebSocket.OPEN) {
+                        heliosSocket.send('ping');
+                    }
+                }, 25000);
+            };
+
+            heliosSocket.onmessage = (evt) => {
+                try {
+                    const payload = JSON.parse(evt.data);
+                    const type = payload?.type;
+                    if (type === 'event' || type === 'heartbeat') {
+                        triggerImmediateRefresh(type);
+                    }
+                } catch (_) {
+                    // ignore non-JSON or heartbeat echoes
+                }
+            };
+
+            heliosSocket.onerror = (error) => {
+                console.warn('[Helios WS] socket error:', error);
+            };
+
+            heliosSocket.onclose = () => {
+                console.warn('[Helios WS] disconnected, fallback polling remains active');
+                if (heliosSocketHeartbeatTimer) {
+                    clearInterval(heliosSocketHeartbeatTimer);
+                    heliosSocketHeartbeatTimer = null;
+                }
+                scheduleHeliosSocketReconnect();
+            };
+        }
+
+        function scheduleHeliosSocketReconnect() {
+            if (heliosSocketRetryTimer) return;
+            heliosSocketRetryTimer = setTimeout(() => {
+                heliosSocketRetryTimer = null;
+                connectHeliosDashboardSocket();
+            }, 3000);
         }
 
 
@@ -4260,6 +4371,8 @@
             // Initialize expanded state tracking
             window.expandedState = {};
             loadData();
+            loadHeliosSyncBootstrap();
+            connectHeliosDashboardSocket();
         });
 
         // Toggle expand/collapse for dashboard items
