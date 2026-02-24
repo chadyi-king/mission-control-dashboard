@@ -12,11 +12,14 @@
 
         :root {
             --bg-primary: #050508;
-            --bg-card: #0a0a0f;
+            --bg-card: #0d0008;
             --bg-elevated: #12121a;
             --crimson: #8B0000;
             --crimson-bright: #DC143C;
             --crimson-glow: rgba(139, 0, 0, 0.4);
+            --solar-orange: #FF6B00;
+            --solar-gold: #FFD700;
+            --solar-white: rgba(255, 240, 220, 0.95);
             --text-primary: rgba(255, 255, 255, 0.95);
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-muted: rgba(255, 255, 255, 0.4);
@@ -2250,6 +2253,8 @@
 <body>
     <!-- Solar Corona Background -->
     <div class="solar-corona"></div>
+    <!-- Animated Red Sun (subtle, centred behind content) -->
+    <div class="rs-bg-sun"></div>
 
     <!-- Background Effects -->
     <div class="cyber-bg">
@@ -2293,10 +2298,15 @@
             <a href="resources.html">📚 Resources</a>
         </div>
         <div class="topbar-right">
-            <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="last-audit-badge">
+                <span class="lad-label">Last audit</span>
+                <span class="lad-value" id="last-audit-time">—</span>
+            </div>
+            <button class="topbar-actions-btn" type="button" onclick="window.location.href='system.html'">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="6" y1="18" x2="18" y2="6"/>
+                </svg>
+                ACTIONS
             </button>
             <div class="status-widget">
                 <div class="status-dot"></div>
@@ -2412,64 +2422,223 @@
                 </div>
             </div>
 
-            <!-- Three Column Grid -->
-            <div class="three-column-grid">
-                <!-- Urgent Queue Column -->
-                <div class="column-panel rs-panel">
-                    <div class="column-header" style="background: rgba(255, 68, 68, 0.1);">
-                        <div class="column-title" style="color: #ff6b6b;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                                <line x1="12" y1="9" x2="12" y2="13"></line>
-                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                            </svg>
-                            <span>Urgent Queue</span>
+            <!-- Zone 2: Main Content Grid -->
+            <div class="rs-home-grid">
+
+                <!-- Col 1: Alert Queue + Live Feed -->
+                <div class="rs-col">
+                    <!-- Alert Queue -->
+                    <div class="rs-card rs-card-half" id="alert-queue-panel">
+                        <div class="rs-card-header rs-header-alert">
+                            <div class="rs-card-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                    <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                                </svg>
+                                Alert Queue
+                            </div>
+                            <span class="rs-badge rs-badge-alert" id="alert-count">0</span>
                         </div>
-                        <span class="column-badge urgent" id="urgent-count">0</span>
+                        <div class="rs-card-body" id="alert-queue">
+                            <div style="text-align:center;color:var(--text-muted);padding:30px;font-size:10px;">Loading...</div>
+                        </div>
+                        <div class="rs-card-footer">
+                            <a href="categories.html" class="rs-see-all">See all overdue tasks →</a>
+                        </div>
                     </div>
-                    <div class="column-content" id="urgent-queue">
-                        <div style="text-align: center; color: var(--text-muted); padding: 40px;">Loading urgent tasks...</div>
+                    <!-- Live Feed -->
+                    <div class="rs-card rs-card-half" id="live-feed-panel">
+                        <div class="rs-card-header rs-header-feed">
+                            <div class="rs-card-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                                Live Feed
+                            </div>
+                            <span class="rs-badge" id="feed-event-count">0</span>
+                        </div>
+                        <div class="rs-feed-body rs-card-body" id="live-feed">
+                            <div class="feed-line"><span class="feed-time">--:--:--</span><span class="feed-text heartbeat">Connecting to Helios...</span></div>
+                        </div>
+                        <div class="rs-feed-status">
+                            <span class="feed-dot" id="feed-dot">●</span>
+                            <span id="feed-status-text">Initialising WS...</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Agent Activity Column -->
-                <div class="column-panel rs-panel">
-                    <div class="column-header" style="background: rgba(77, 171, 247, 0.1);">
-                        <div class="column-title" style="color: #4dabf7;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
-                            <span>Agent Activity</span>
+                <!-- Col 2: Agent Fleet + Workflow Status -->
+                <div class="rs-col">
+                    <!-- Agent Fleet -->
+                    <div class="rs-card rs-card-half" id="agent-fleet-panel">
+                        <div class="rs-card-header rs-header-fleet">
+                            <div class="rs-card-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                Agent Fleet
+                            </div>
+                            <span class="rs-badge rs-badge-fleet" id="fleet-count">0</span>
                         </div>
-                        <span class="column-badge agent" id="agent-activity-count">2</span>
+                        <div class="rs-card-body" id="agent-fleet">
+                            <div style="text-align:center;color:var(--text-muted);padding:30px;font-size:10px;">Loading agents...</div>
+                        </div>
                     </div>
-                    <div class="column-content" id="agent-activity">
-                        <!-- Injected by JS -->
+                    <!-- Workflow Status -->
+                    <div class="rs-card rs-card-half" id="workflow-panel">
+                        <div class="rs-card-header rs-header-wf">
+                            <div class="rs-card-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                                    <polyline points="16 7 22 7 22 13"/>
+                                </svg>
+                                Workflow
+                            </div>
+                        </div>
+                        <div class="workflow-columns" id="workflow-cols">
+                            <div class="wf-col">
+                                <div class="wf-count" id="wf-pending">0</div>
+                                <div class="wf-label">Pending</div>
+                                <div class="wf-pills" id="wf-pending-pills"></div>
+                            </div>
+                            <div class="wf-col">
+                                <div class="wf-count" id="wf-active">0</div>
+                                <div class="wf-label">Active</div>
+                                <div class="wf-pills" id="wf-active-pills"></div>
+                            </div>
+                            <div class="wf-col">
+                                <div class="wf-count" id="wf-review">0</div>
+                                <div class="wf-label">Review</div>
+                                <div class="wf-pills" id="wf-review-pills"></div>
+                            </div>
+                            <div class="wf-col done">
+                                <div class="wf-count" id="wf-done">0</div>
+                                <div class="wf-label">Done</div>
+                                <div class="wf-pills" id="wf-done-pills"></div>
+                            </div>
+                        </div>
+                        <div class="rs-progress-row">
+                            <div class="rs-progress-label">
+                                <span>Completion</span>
+                                <span id="wf-pct">0%</span>
+                            </div>
+                            <div class="rs-progress-track">
+                                <div class="rs-progress-fill" id="wf-progress-fill" style="width:0%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Today's Focus Column -->
-                <div class="column-panel rs-panel">
-                    <div class="column-header" style="background: rgba(139, 0, 0, 0.15);">
-                        <div class="column-title" style="color: var(--crimson-bright);">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <span>Today's Focus</span>
+                <!-- Col 3: Today's Focus (full height) -->
+                <div class="rs-col">
+                    <div class="rs-card rs-card-full" id="focus-panel">
+                        <div class="rs-card-header rs-header-focus">
+                            <div class="rs-card-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <circle cx="12" cy="12" r="4"/>
+                                    <line x1="12" y1="2" x2="12" y2="4"/>
+                                    <line x1="12" y1="20" x2="12" y2="22"/>
+                                    <line x1="2" y1="12" x2="4" y2="12"/>
+                                    <line x1="20" y1="12" x2="22" y2="12"/>
+                                </svg>
+                                Today's Focus
+                            </div>
+                            <span class="rs-badge rs-badge-focus" id="focus-count">0</span>
                         </div>
-                        <span class="column-badge urgent" id="focus-count">0</span>
+                        <div class="focus-filter-bar">
+                            <button class="focus-filter-btn active" id="ff-urgent" onclick="setFocusFilter('urgent',this)">URGENT</button>
+                            <button class="focus-filter-btn" id="ff-high"   onclick="setFocusFilter('high',this)">HIGH</button>
+                            <button class="focus-filter-btn" id="ff-all"    onclick="setFocusFilter('all',this)">ALL</button>
+                            <button class="focus-filter-btn" id="ff-active" onclick="setFocusFilter('active',this)">MY TASKS</button>
+                        </div>
+                        <div class="rs-card-body" id="focus-task-list" style="overflow-y:auto;">
+                            <div style="text-align:center;color:var(--text-muted);padding:30px;font-size:10px;">Loading...</div>
+                        </div>
                     </div>
-                    <div class="focus-filter-bar">
-                        <button class="focus-filter-btn active" id="ff-urgent" onclick="setFocusFilter('urgent', this)">Urgent</button>
-                        <button class="focus-filter-btn" id="ff-high" onclick="setFocusFilter('high', this)">High</button>
-                        <button class="focus-filter-btn" id="ff-active" onclick="setFocusFilter('active', this)">Active</button>
-                        <button class="focus-filter-btn" id="ff-all" onclick="setFocusFilter('all', this)">All</button>
+                </div>
+
+            </div>
+
+            <!-- Zone 2 Extra: Below-grid scrolling cards -->
+            <div class="rs-extra-grid">
+                <!-- Decisions Required -->
+                <div class="rs-card" id="decisions-panel">
+                    <div class="rs-card-header" style="border-bottom-color:rgba(255,215,0,0.2);">
+                        <div class="rs-card-title" style="color:var(--solar-gold);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            Decisions Required
+                        </div>
+                        <span class="rs-badge" id="decisions-count" style="color:var(--solar-gold);border-color:var(--solar-gold);">0</span>
                     </div>
-                    <div class="column-content" id="focus-task-list">
-                        <div id="focus-empty" style="text-align:center;color:var(--text-muted);padding:32px 12px;font-size:11px;">Loading...</div>
+                    <div class="rs-card-body" id="decisions-list">
+                        <div style="text-align:center;color:var(--text-muted);padding:20px;font-size:10px;">Loading...</div>
+                    </div>
+                </div>
+                <!-- Recently Completed -->
+                <div class="rs-card" id="completed-panel">
+                    <div class="rs-card-header" style="border-bottom-color:rgba(0,255,136,0.2);">
+                        <div class="rs-card-title" style="color:var(--success);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Recently Completed
+                        </div>
+                    </div>
+                    <div class="rs-card-body" id="completed-list">
+                        <div style="text-align:center;color:var(--text-muted);padding:20px;font-size:10px;">Loading...</div>
+                    </div>
+                </div>
+                <!-- Agent Assignments -->
+                <div class="rs-card" id="assignments-panel">
+                    <div class="rs-card-header" style="border-bottom-color:rgba(77,171,247,0.2);">
+                        <div class="rs-card-title" style="color:#4dabf7;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            Agent Assignments
+                        </div>
+                    </div>
+                    <div class="rs-card-body" style="overflow-x:auto;" id="assignments-table">
+                        <div style="text-align:center;color:var(--text-muted);padding:20px;font-size:10px;">Loading...</div>
+                    </div>
+                </div>
+                <!-- Backlog Spotlight -->
+                <div class="rs-card" id="backlog-panel">
+                    <div class="rs-card-header" style="border-bottom-color:rgba(255,215,0,0.15);">
+                        <div class="rs-card-title" style="color:var(--solar-gold);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                            Backlog Spotlight
+                        </div>
+                        <button onclick="renderBacklogSpotlight(appData)" style="font-size:8px;background:none;border:none;color:var(--text-muted);cursor:pointer;letter-spacing:1px;">↻ SHUFFLE</button>
+                    </div>
+                    <div class="rs-card-body" id="backlog-spotlight">
+                        <div style="text-align:center;color:var(--text-muted);padding:20px;font-size:10px;">Loading...</div>
+                    </div>
+                </div>
+                <!-- System Comms -->
+                <div class="rs-card" id="comms-panel">
+                    <div class="rs-card-header" style="border-bottom-color:rgba(0,255,136,0.15);">
+                        <div class="rs-card-title" style="color:var(--success);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            System Comms
+                        </div>
+                    </div>
+                    <div class="rs-card-body" id="system-comms">
+                        <div style="text-align:center;color:var(--text-muted);padding:20px;font-size:10px;">Loading...</div>
                     </div>
                 </div>
             </div>
@@ -2701,10 +2870,12 @@
                     agents: Array.isArray(sync?.agents) ? sync.agents.length : 'n/a',
                     events: Array.isArray(sync?.recent_events) ? sync.recent_events.length : 'n/a'
                 });
-                // Populate agent rail
+                // Populate agent rail + fleet
                 if (Array.isArray(sync.agents) && sync.agents.length) {
                     renderAgentRail(sync.agents);
+                    renderAgentFleet(sync.agents);
                 }
+                appendLiveFeedLine('HELIOS', 'heartbeat', 'sync bootstrap ok — ' + (sync.agents?.length || 0) + ' agents online');
             } catch (error) {
                 console.warn('[Helios] sync bootstrap unavailable, using polling fallback:', error.message || error);
             }
@@ -2764,6 +2935,8 @@
 
             heliosSocket.onopen = () => {
                 console.log('[Helios WS] connected:', wsUrl);
+                setFeedStatus(true);
+                appendLiveFeedLine('HELIOS', 'heartbeat', 'WebSocket connected');
                 if (heliosSocketRetryTimer) {
                     clearTimeout(heliosSocketRetryTimer);
                     heliosSocketRetryTimer = null;
@@ -2780,11 +2953,17 @@
                 try {
                     const payload = JSON.parse(evt.data);
                     const type = payload?.type;
+                    const agent = payload?.agent || payload?.source || '';
+                    const text  = payload?.message || payload?.event || payload?.data || type || 'event';
+                    if (type !== 'heartbeat') {
+                        const evtClass = (type === 'error') ? 'error' : (type === 'task_done' || type === 'complete') ? 'done' : 'heartbeat';
+                        appendLiveFeedLine(agent, evtClass, String(text).slice(0, 80));
+                    }
                     if (type === 'event' || type === 'heartbeat') {
                         triggerImmediateRefresh(type);
                     }
                 } catch (_) {
-                    // ignore non-JSON or heartbeat echoes
+                    // ignore non-JSON
                 }
             };
 
@@ -2794,6 +2973,8 @@
 
             heliosSocket.onclose = () => {
                 console.warn('[Helios WS] disconnected, fallback polling remains active');
+                setFeedStatus(false);
+                appendLiveFeedLine('HELIOS', 'error', 'WebSocket disconnected — polling fallback active');
                 if (heliosSocketHeartbeatTimer) {
                     clearInterval(heliosSocketHeartbeatTimer);
                     heliosSocketHeartbeatTimer = null;
@@ -3780,12 +3961,347 @@
 
         function renderNewHomepage(data) {
             renderRedSunStats(data);
-            renderUrgentQueue(data);
-            renderAgentActivity(data);
+            renderAlertQueue(data);
+            renderWorkflowStatus(data);
             renderTodaysFocus(window._focusFilter || 'urgent');
+            renderDecisionsRequired(data);
+            renderRecentlyCompleted(data);
+            renderAgentAssignments(data);
+            renderBacklogSpotlight(data);
+            renderSystemComms();
             renderWeekView(data);
-            // legacy compat
-            renderMiniStats(data);
+            // legacy compat — keep old agent-activity container populated in case other code refs it
+            renderAgentActivity(data);
+        }
+
+        // ─── ALERT QUEUE ─────────────────────────────────────────────────────
+        function renderAlertQueue(data) {
+            const container = document.getElementById('alert-queue');
+            const countBadge = document.getElementById('alert-count');
+            if (!container) return;
+
+            const allTasks = Object.entries(data.tasks || {}).map(([id, t]) => ({...t, id}));
+            const today = new Date(); today.setHours(0, 0, 0, 0);
+
+            const alerts = allTasks.filter(t => {
+                if (t.status === 'done') return false;
+                if (t.status === 'blocked') return true;
+                if (t.deadline) {
+                    const dl = new Date(t.deadline); dl.setHours(0,0,0,0);
+                    return dl < today;
+                }
+                return false;
+            }).slice(0, 4);
+
+            if (countBadge) countBadge.textContent = alerts.length;
+
+            const panel = document.getElementById('alert-queue-panel');
+            if (panel && alerts.length > 0) {
+                panel.style.borderLeft = '3px solid #ff4444';
+                panel.classList.add('alert-pulse');
+            }
+
+            if (alerts.length === 0) {
+                container.innerHTML = '<div style="text-align:center;color:var(--success);padding:20px;font-size:10px;">✓ No overdue or blocked tasks</div>';
+                return;
+            }
+
+            container.innerHTML = alerts.map(t => {
+                const kind = t.status === 'blocked' ? 'blocked' : 'overdue';
+                const dl = t.deadline ? new Date(t.deadline).toLocaleDateString('en-SG', {month:'short', day:'numeric'}) : '';
+                const assignee = t.assignedTo || '—';
+                return `<div class="alert-item ${kind}">
+                    <div>
+                        <span class="alert-task-id">${t.id}</span>
+                        <div class="alert-task-title" style="margin-top:4px;">${t.title}</div>
+                        ${dl ? `<div class="alert-task-deadline">⚠ ${kind.toUpperCase()} · ${dl}</div>` : `<div class="alert-task-deadline">⚑ BLOCKED</div>`}
+                        <div class="alert-task-assignee">${assignee}</div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // ─── AGENT FLEET ─────────────────────────────────────────────────────
+        function renderAgentFleet(agents) {
+            const container = document.getElementById('agent-fleet');
+            const countBadge = document.getElementById('fleet-count');
+            if (!container) return;
+
+            const arr = Array.isArray(agents) ? agents : Object.entries(agents || {}).map(([id, d]) => ({id, ...d}));
+            if (countBadge) countBadge.textContent = arr.length;
+
+            const order = {active: 0, idle: 1, blocked: 2, offline: 3};
+            const sorted = [...arr].sort((a, b) => (order[(a.status||'offline').toLowerCase()] ?? 4) - (order[(b.status||'offline').toLowerCase()] ?? 4));
+
+            const groups = {active: [], idle: [], 'blocked/offline': []};
+            sorted.forEach(a => {
+                const s = (a.status || 'offline').toLowerCase();
+                if (s === 'active') groups.active.push(a);
+                else if (s === 'idle') groups.idle.push(a);
+                else groups['blocked/offline'].push(a);
+            });
+
+            let html = '';
+            for (const [label, list] of Object.entries(groups)) {
+                if (!list.length) continue;
+                html += `<div class="fleet-section-label">${label}</div>`;
+                html += list.map(a => {
+                    const s = (a.status || 'offline').toLowerCase();
+                    const seen = a.last_seen ? relTime(a.last_seen) : (a.lastActive ? relTime(a.lastActive) : '');
+                    const taskCount = a.taskCount ?? a.activeTasks ?? 0;
+                    const role = a.role || '';
+                    const blocked = s === 'blocked';
+                    return `<div class="fleet-row${blocked ? ' blocked' : ''}">
+                        <div class="fleet-status-dot ${s}"></div>
+                        <div>
+                            <div class="fleet-agent-name">${(a.name || a.id || 'AGENT').toUpperCase()}</div>
+                            ${role ? `<div class="fleet-agent-role">${role}</div>` : ''}
+                        </div>
+                        ${seen ? `<div class="fleet-seen">${seen} ago</div>` : ''}
+                        ${taskCount ? `<div class="fleet-task-count">${taskCount}</div>` : ''}
+                    </div>`;
+                }).join('');
+            }
+
+            container.innerHTML = html || '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:10px;">No agent data</div>';
+        }
+
+        // ─── WORKFLOW STATUS ──────────────────────────────────────────────────
+        function renderWorkflowStatus(data) {
+            const wf = data.workflow || {};
+            const tasks = data.tasks || {};
+
+            const cols = {pending: 'wf-pending', active: 'wf-active', review: 'wf-review', done: 'wf-done'};
+            for (const [status, elId] of Object.entries(cols)) {
+                const ids = wf[status] || [];
+                const countEl = document.getElementById(elId);
+                const pillsEl = document.getElementById(elId + '-pills');
+                if (countEl) countEl.textContent = ids.length;
+                if (pillsEl) {
+                    const first3 = ids.slice(0, 3);
+                    const rest = ids.length - 3;
+                    pillsEl.innerHTML = first3.map(id => {
+                        const t = tasks[id];
+                        const label = t ? t.title.slice(0, 14) + (t.title.length > 14 ? '…' : '') : id;
+                        return `<div class="wf-pill" title="${t ? t.title : id}">${label}</div>`;
+                    }).join('') + (rest > 0 ? `<div class="wf-overflow">+${rest} more</div>` : '');
+                }
+            }
+
+            const total = Object.values(wf).reduce((s, arr) => s + (arr?.length || 0), 0);
+            const done  = wf.done?.length || 0;
+            const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
+            const pctEl = document.getElementById('wf-pct');
+            const fillEl = document.getElementById('wf-progress-fill');
+            if (pctEl)  pctEl.textContent  = pct + '%';
+            if (fillEl) fillEl.style.width = pct + '%';
+        }
+
+        // ─── DECISIONS REQUIRED ───────────────────────────────────────────────
+        function renderDecisionsRequired(data) {
+            const container = document.getElementById('decisions-list');
+            const countEl   = document.getElementById('decisions-count');
+            if (!container) return;
+
+            const allTasks = Object.entries(data.tasks || {}).map(([id, t]) => ({...t, id}));
+            const review = allTasks.filter(t => t.status === 'review');
+
+            if (countEl) countEl.textContent = review.length;
+
+            if (!review.length) {
+                container.innerHTML = '<div style="text-align:center;color:var(--success);padding:16px;font-size:10px;">✓ No pending decisions</div>';
+                return;
+            }
+
+            container.innerHTML = review.slice(0, 6).map(t => `
+                <div class="decision-item">
+                    <div class="decision-item-id">${t.id}</div>
+                    <div class="decision-item-title">${t.title}</div>
+                    ${t.description ? `<div class="decision-item-hint">${t.description.slice(0,80)}${t.description.length>80?'…':''}</div>` : ''}
+                </div>`).join('');
+        }
+
+        // ─── RECENTLY COMPLETED ───────────────────────────────────────────────
+        function renderRecentlyCompleted(data) {
+            const container = document.getElementById('completed-list');
+            if (!container) return;
+
+            const allTasks = Object.entries(data.tasks || {}).map(([id, t]) => ({...t, id}));
+            const done = allTasks
+                .filter(t => t.status === 'done')
+                .sort((a, b) => new Date(b.completedAt || b.updatedAt || 0) - new Date(a.completedAt || a.updatedAt || 0))
+                .slice(0, 5);
+
+            if (!done.length) {
+                container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:16px;font-size:10px;">No completed tasks yet</div>';
+                return;
+            }
+
+            container.innerHTML = done.map(t => {
+                const when = t.completedAt || t.updatedAt ? relTime(t.completedAt || t.updatedAt) + ' ago' : '';
+                return `<div class="completed-item">
+                    <span class="completed-checkmark">✓</span>
+                    <span class="completed-title">${t.title}</span>
+                    <span class="completed-time">${when}</span>
+                </div>`;
+            }).join('');
+        }
+
+        // ─── AGENT ASSIGNMENTS OVERVIEW ───────────────────────────────────────
+        function renderAgentAssignments(data) {
+            const container = document.getElementById('assignments-table');
+            if (!container) return;
+
+            const allTasks = Object.values(data.tasks || {});
+            const agentMap = {};
+
+            allTasks.forEach(t => {
+                const ag = t.assignedTo || 'UNASSIGNED';
+                if (!agentMap[ag]) agentMap[ag] = { total: 0, done: 0, blocked: 0, active: 0 };
+                agentMap[ag].total++;
+                if (t.status === 'done') agentMap[ag].done++;
+                if (t.status === 'blocked') agentMap[ag].blocked++;
+                if (t.status === 'active') agentMap[ag].active++;
+            });
+
+            const rows = Object.entries(agentMap)
+                .sort((a, b) => b[1].total - a[1].total)
+                .slice(0, 8);
+
+            container.innerHTML = `<table class="assignments-table">
+                <thead><tr>
+                    <th>Agent</th><th>Total</th><th>Active</th><th>Done</th><th>Blocked</th>
+                </tr></thead>
+                <tbody>${rows.map(([name, st]) => `<tr>
+                    <td>${name}</td>
+                    <td>${st.total}</td>
+                    <td>${st.active}</td>
+                    <td style="color:var(--success)">${st.done}</td>
+                    <td class="${st.blocked ? 'assignments-blocked' : ''}">${st.blocked || '—'}</td>
+                </tr>`).join('')}</tbody>
+            </table>`;
+        }
+
+        // ─── BACKLOG SPOTLIGHT ────────────────────────────────────────────────
+        function renderBacklogSpotlight(data) {
+            const container = document.getElementById('backlog-spotlight');
+            if (!container) return;
+
+            const allTasks = Object.entries(data.tasks || {}).map(([id, t]) => ({...t, id}));
+            const backlog = allTasks.filter(t => t.status === 'backlog' || t.status === 'pending');
+
+            if (!backlog.length) {
+                container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:16px;font-size:10px;">No backlog tasks</div>';
+                return;
+            }
+
+            // Shuffle and pick 3
+            const shuffled = [...backlog].sort(() => Math.random() - 0.5).slice(0, 3);
+            container.innerHTML = shuffled.map(t => `
+                <div class="backlog-card">
+                    <div class="backlog-card-id">${t.id} · ${t.project || ''}</div>
+                    <div class="backlog-card-title">${t.title}</div>
+                    ${t.description ? `<div class="backlog-card-hint">${t.description.slice(0,70)}${t.description.length>70?'…':''}</div>` : ''}
+                </div>`).join('');
+        }
+
+        // ─── SYSTEM COMMS ─────────────────────────────────────────────────────
+        async function renderSystemComms() {
+            const container = document.getElementById('system-comms');
+            if (!container) return;
+
+            container.innerHTML = `
+                <div class="comms-row"><span class="comms-label">Helios API</span><span class="comms-value" id="comms-helios">Checking…</span></div>
+                <div class="comms-row"><span class="comms-label">WebSocket</span><span class="comms-value" id="comms-ws">—</span></div>
+                <div class="comms-row"><span class="comms-label">data.json</span><span class="comms-value" id="comms-data">—</span></div>
+                <div class="comms-row"><span class="comms-label">Redis</span><span class="comms-value" id="comms-redis">—</span></div>
+                <div class="comms-row"><span class="comms-label">Telegram</span><span class="comms-value" id="comms-tg">—</span></div>
+                <div class="comms-row"><span class="comms-label">API Latency</span><span class="comms-value" id="comms-latency">—</span></div>`;
+
+            try {
+                const t0 = Date.now();
+                const r = await fetch(`${HELIOS_API_BASE}/api/health?t=${t0}`, { cache: 'no-store' });
+                const latency = Date.now() - t0;
+                const set = (id, txt, cls) => { const el = document.getElementById(id); if (el) { el.textContent = txt; if (cls) el.className = 'comms-value ' + cls; } };
+
+                if (r.ok) {
+                    const h = await r.json();
+                    const la = h.last_audit ? relTime(h.last_audit) + ' ago' : '—';
+                    const lae = document.getElementById('last-audit-time');
+                    if (lae) lae.textContent = la;
+
+                    set('comms-helios', 'ONLINE', 'ok');
+                    set('comms-latency', latency + 'ms', latency < 500 ? 'ok' : latency < 1500 ? 'warn' : 'error');
+                    set('comms-ws', heliosSocket && heliosSocket.readyState === WebSocket.OPEN ? 'CONNECTED' : 'POLLING', 'ok');
+                    set('comms-data', appData ? 'LOADED' : 'MISSING', appData ? 'ok' : 'error');
+                    set('comms-redis', h.redis === 'ok' || h.services?.redis === 'ok' ? 'OK' : 'UNKNOWN', 'warn');
+                    set('comms-tg', h.telegram === 'ok' || h.services?.telegram === 'ok' ? 'OK' : 'UNKNOWN', 'warn');
+                } else {
+                    set('comms-helios', 'ERROR ' + r.status, 'error');
+                }
+            } catch(e) {
+                const el = document.getElementById('comms-helios');
+                if (el) { el.textContent = 'OFFLINE'; el.className = 'comms-value error'; }
+            }
+        }
+
+        // ─── LIVE FEED ────────────────────────────────────────────────────────
+        let _liveFeedCount = 0;
+        let _feedCountdown = null;
+        const _MAX_FEED_LINES = 10;
+
+        function appendLiveFeedLine(agent, eventType, text) {
+            const feed = document.getElementById('live-feed');
+            if (!feed) return;
+
+            const now = new Date();
+            const ts = now.toTimeString().slice(0,8);
+            const cls = eventType === 'error' ? 'error' : eventType === 'done' || eventType === 'complete' ? 'completion' : 'heartbeat';
+            const agentLabel = agent || 'HELIOS';
+
+            _liveFeedCount++;
+            const cntEl = document.getElementById('feed-event-count');
+            if (cntEl) cntEl.textContent = _liveFeedCount;
+
+            const line = document.createElement('div');
+            line.className = 'feed-line';
+            line.innerHTML = `<span class="feed-time">${ts}</span><span class="feed-agent">${agentLabel.toUpperCase()}</span><span class="feed-text ${cls}">${text}</span>`;
+
+            // Prepend (newest at top) — feed uses column-reverse
+            feed.insertBefore(line, feed.firstChild);
+
+            // Trim to max lines
+            const lines = feed.querySelectorAll('.feed-line');
+            if (lines.length > _MAX_FEED_LINES) {
+                feed.removeChild(lines[lines.length - 1]);
+            }
+        }
+
+        function setFeedStatus(connected) {
+            const dot = document.getElementById('feed-dot');
+            const txt = document.getElementById('feed-status-text');
+            if (!dot || !txt) return;
+
+            if (connected) {
+                dot.className = 'feed-dot';
+                txt.textContent = '● LIVE';
+                if (_feedCountdown) { clearInterval(_feedCountdown); _feedCountdown = null; }
+            } else {
+                dot.className = 'feed-dot offline';
+                let secs = 30;
+                txt.textContent = `POLLING — next refresh in ${secs}s`;
+                if (_feedCountdown) clearInterval(_feedCountdown);
+                _feedCountdown = setInterval(() => {
+                    secs--;
+                    if (secs <= 0) {
+                        clearInterval(_feedCountdown);
+                        _feedCountdown = null;
+                        txt.textContent = 'POLLING — refreshing...';
+                    } else {
+                        txt.textContent = `POLLING — next refresh in ${secs}s`;
+                    }
+                }, 1000);
+            }
         }
 
         function renderAgentActivity(data) {
@@ -3922,6 +4438,7 @@
             const countBadge = document.getElementById('focus-count');
             if (!container || !appData) return;
 
+            const today = new Date(); today.setHours(0,0,0,0);
             const allTasks = Object.entries(appData.tasks || {}).map(([id, t]) => ({...t, id}));
 
             let filtered;
@@ -3932,36 +4449,98 @@
             } else if (filter === 'active') {
                 filtered = allTasks.filter(t => t.status === 'active' || t.status === 'review');
             } else {
-                filtered = allTasks.filter(t => t.status !== 'done').slice(0, 30);
+                filtered = allTasks.filter(t => t.status !== 'done').slice(0, 40);
             }
 
-            // Sort: high priority first, then by project
-            filtered.sort((a, b) => {
-                const pOrder = { high: 0, medium: 1, low: 2 };
-                return (pOrder[a.priority] ?? 3) - (pOrder[b.priority] ?? 3);
-            });
+            // Apply user-persisted order from localStorage
+            const storageKey = 'focus_order_' + filter;
+            try {
+                const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+                if (saved && Array.isArray(saved)) {
+                    const orderMap = {};
+                    saved.forEach((id, i) => orderMap[id] = i);
+                    filtered.sort((a, b) => {
+                        const aIdx = orderMap[a.id] ?? 999;
+                        const bIdx = orderMap[b.id] ?? 999;
+                        if (aIdx !== bIdx) return aIdx - bIdx;
+                        const pOrder = { high: 0, medium: 1, low: 2 };
+                        return (pOrder[a.priority] ?? 3) - (pOrder[b.priority] ?? 3);
+                    });
+                } else {
+                    filtered.sort((a, b) => {
+                        const pOrder = { high: 0, medium: 1, low: 2 };
+                        return (pOrder[a.priority] ?? 3) - (pOrder[b.priority] ?? 3);
+                    });
+                }
+            } catch(_) {
+                filtered.sort((a, b) => {
+                    const pOrder = { high: 0, medium: 1, low: 2 };
+                    return (pOrder[a.priority] ?? 3) - (pOrder[b.priority] ?? 3);
+                });
+            }
 
             if (countBadge) countBadge.textContent = filtered.length;
 
-            if (filtered.length === 0) {
-                container.innerHTML = '<div id="focus-empty">No tasks match this filter</div>';
+            if (!filtered.length) {
+                container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:30px;font-size:10px;">No tasks match this filter</div>';
                 return;
             }
 
             container.innerHTML = filtered.map(task => {
-                const proj = task.project || '';
-                const status = task.status || 'pending';
-                const statusLabel = status === 'active' ? '▶ active' : status === 'review' ? '⟳ review' : status;
-                return `
-                <div class="focus-task-item">
-                    <div class="focus-priority-dot ${task.priority || 'low'}"></div>
-                    <div>
-                        <div class="focus-task-title">${task.title || task.id}</div>
-                        <div class="focus-task-meta">${statusLabel}${task.assignedTo ? ' · ' + task.assignedTo : ''}</div>
-                        ${proj ? `<div class="focus-task-tag">${proj}</div>` : ''}
+                const isOverdue = task.deadline && new Date(task.deadline) < today && task.status !== 'done';
+                const badgeCls  = isOverdue ? 'overdue' : (task.priority === 'high' ? 'high' : task.priority === 'medium' ? 'medium' : 'low');
+                const badgeTxt  = isOverdue ? 'OVERDUE' : (task.priority === 'high' ? 'HIGH' : task.priority === 'medium' ? 'MED' : 'LOW');
+                const desc = task.description ? task.description.slice(0, 60) + (task.description.length > 60 ? '…' : '') : '';
+                const assignee = task.assignedTo || '';
+                return `<div class="focus-task-item" draggable="true" data-task-id="${task.id}" data-filter="${filter}">
+                    <div class="focus-task-row1">
+                        <span class="focus-priority-badge ${badgeCls}">${badgeTxt}</span>
+                        <span class="focus-task-id">${task.project || ''}</span>
+                        <span class="focus-task-title">${task.title || task.id}</span>
+                    </div>
+                    ${desc ? `<div class="focus-task-desc">${desc}</div>` : ''}
+                    <div class="focus-task-row2">
+                        ${assignee ? `<span class="focus-assignee-badge">${assignee}</span>` : ''}
+                        <div class="focus-task-actions">
+                            <button class="focus-action-btn done-btn" onclick="markFocusDone('${task.id}')">Mark Done</button>
+                            <button class="focus-action-btn assign-btn" onclick="assignFocusTask('${task.id}')">Assign →</button>
+                        </div>
                     </div>
                 </div>`;
             }).join('');
+
+            // Wire up drag-and-drop for ordering
+            let dragSrcId = null;
+            container.querySelectorAll('.focus-task-item').forEach(item => {
+                item.addEventListener('dragstart', e => { dragSrcId = item.dataset.taskId; item.style.opacity = '0.5'; });
+                item.addEventListener('dragend', e => { item.style.opacity = '1'; });
+                item.addEventListener('dragover', e => { e.preventDefault(); item.style.borderTop = '2px solid var(--crimson-bright)'; });
+                item.addEventListener('dragleave', e => { item.style.borderTop = ''; });
+                item.addEventListener('drop', e => {
+                    e.preventDefault(); item.style.borderTop = '';
+                    if (dragSrcId && dragSrcId !== item.dataset.taskId) {
+                        const items = [...container.querySelectorAll('.focus-task-item')];
+                        const newOrder = items.map(el => el.dataset.taskId);
+                        const si = newOrder.indexOf(dragSrcId);
+                        const ti = newOrder.indexOf(item.dataset.taskId);
+                        newOrder.splice(si, 1); newOrder.splice(ti, 0, dragSrcId);
+                        try { localStorage.setItem(storageKey, JSON.stringify(newOrder)); } catch(_) {}
+                        renderTodaysFocus(filter);
+                    }
+                    dragSrcId = null;
+                });
+            });
+        }
+
+        function markFocusDone(taskId) {
+            // Just visual feedback until real API is available
+            const item = document.querySelector(`.focus-task-item[data-task-id="${taskId}"]`);
+            if (item) { item.style.opacity = '0.3'; item.style.textDecoration = 'line-through'; }
+            appendLiveFeedLine('CHAD', 'done', `Task ${taskId} marked done`);
+        }
+        function assignFocusTask(taskId) {
+            const ag = prompt('Assign to agent (e.g. CEREBRONN, HELIOS):', '');
+            if (ag) appendLiveFeedLine('CHAD', 'heartbeat', `Task ${taskId} → ${ag.toUpperCase()}`);
         }
 
         function renderUrgentQueue(data) {
@@ -4715,20 +5294,4 @@
 </body>
 </html>
 
-// System Health Loader
-async function loadSystemHealth() {
-    try {
-        document.getElementById('helios-status').textContent = 'Active';
-        document.getElementById('helios-status').style.color = 'var(--success)';
-        document.getElementById('quanta-status').textContent = 'Running';
-        document.getElementById('quanta-status').style.color = 'var(--success)';
-        document.getElementById('data-status').textContent = 'OK (72 tasks)';
-        document.getElementById('data-status').style.color = 'var(--success)';
-        document.getElementById('last-audit').textContent = new Date().toLocaleTimeString();
-    } catch (e) {
-        console.error('Health load error:', e);
-    }
-}
-loadSystemHealth();
-setInterval(loadSystemHealth, 30000);
 
