@@ -672,3 +672,134 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
     background: radial-gradient(ellipse 80% 45% at 50% -5%,
         rgba(139,0,0,0.15) 0%, rgba(80,0,0,0.06) 40%, transparent 65%);
 }
+
+/* ================================================== */
+/* RED SUN STATS BAR                                  */
+/* ================================================== */
+.rs-stats-bar {
+    display: flex;
+    background: rgba(5, 5, 8, 0.97);
+    border-bottom: 1px solid rgba(139, 0, 0, 0.35);
+    height: 52px;
+    overflow: hidden;
+}
+.rs-stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    flex: 1;
+    cursor: default;
+    transition: background 0.15s;
+}
+.rs-stat-card:last-child { border-right: none; }
+.rs-stat-card:hover { background: rgba(139, 0, 0, 0.08); }
+.rs-stat-value {
+    font-family: var(--display-font);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 3px;
+}
+.rs-stat-label {
+    font-size: 7px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+.rs-stat-card.good  .rs-stat-value { color: var(--crimson-bright); }
+.rs-stat-card.alert .rs-stat-value { color: #ff4444; }
+.rs-stat-card.done  .rs-stat-value { color: var(--success); }
+.rs-stat-card.info  .rs-stat-value { color: #4dabf7; }
+
+/* ================================================== */
+/* TODAY'S FOCUS COLUMN                               */
+/* ================================================== */
+.focus-filter-bar {
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--crystal-border);
+    flex-shrink: 0;
+}
+.focus-filter-btn {
+    padding: 3px 8px;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--crystal-border);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--tech-font);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.focus-filter-btn:hover { border-color: var(--crimson-bright); color: var(--text-primary); }
+.focus-filter-btn.active {
+    background: rgba(220, 20, 60, 0.15);
+    border-color: var(--crimson-bright);
+    color: var(--crimson-bright);
+}
+.focus-task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 9px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: background 0.15s;
+}
+.focus-task-item:hover { background: rgba(139, 0, 0, 0.06); }
+.focus-priority-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+.focus-priority-dot.high   { background: #ff4444; box-shadow: 0 0 4px #ff4444; }
+.focus-priority-dot.medium { background: var(--warning); }
+.focus-priority-dot.low    { background: var(--text-muted); }
+.focus-task-title {
+    font-size: 11px;
+    color: var(--text-primary);
+    line-height: 1.4;
+    flex: 1;
+}
+.focus-task-meta {
+    font-size: 8px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.focus-task-tag {
+    display: inline-block;
+    font-size: 8px;
+    color: var(--crimson-bright);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    padding: 1px 5px;
+    margin-top: 3px;
+    font-family: var(--tech-font);
+    letter-spacing: 0.5px;
+}
+#focus-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 32px 12px;
+    font-size: 11px;
+}
+
+/* ================================================== */
+/* RED SUN COLUMN PANEL OVERRIDES                     */
+/* ================================================== */
+.rs-panel.column-panel {
+    border-radius: 0;
+    border: 1px solid rgba(139, 0, 0, 0.25);
+}
+.rs-panel > .column-header {
+    border-radius: 0;
+}
