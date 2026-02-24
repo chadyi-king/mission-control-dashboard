@@ -2248,6 +2248,9 @@
     <link rel="stylesheet" href="homepage-new.css">
 </head>
 <body>
+    <!-- Solar Corona Background -->
+    <div class="solar-corona"></div>
+
     <!-- Background Effects -->
     <div class="cyber-bg">
         <div class="data-stream">01 A2 43 B3 92 C1 15 D4</div>
@@ -2364,6 +2367,11 @@
 
     <!-- Main Content -->
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- AGENT STATUS RAIL -->
+    <div class="agent-rail" id="agent-rail">
+        <div class="agent-pill"><span class="pill-dot offline"></span><span>Loading agents...</span></div>
+    </div>
 
     <div class="main-content">
         <!-- HOME SECTION - REDESIGNED -->
@@ -2725,9 +2733,37 @@
                     agents: Array.isArray(sync?.agents) ? sync.agents.length : 'n/a',
                     events: Array.isArray(sync?.recent_events) ? sync.recent_events.length : 'n/a'
                 });
+                // Populate agent rail
+                if (Array.isArray(sync.agents) && sync.agents.length) {
+                    renderAgentRail(sync.agents);
+                }
             } catch (error) {
                 console.warn('[Helios] sync bootstrap unavailable, using polling fallback:', error.message || error);
             }
+        }
+
+        function renderAgentRail(agents) {
+            const rail = document.getElementById('agent-rail');
+            if (!rail) return;
+            rail.innerHTML = agents.map(a => {
+                const status = (a.status || 'offline').toLowerCase();
+                const seen = a.last_seen ? relTime(a.last_seen) : '';
+                return `<div class="agent-pill" title="${a.name} — ${a.role || ''}">` +
+                    `<span class="pill-dot ${status}"></span>` +
+                    `<span>${(a.name || 'AGENT').toUpperCase()}</span>` +
+                    (seen ? `<span class="pill-seen">${seen}</span>` : '') +
+                    `</div>`;
+            }).join('');
+        }
+
+        function relTime(iso) {
+            try {
+                const diff = Date.now() - new Date(iso).getTime();
+                if (diff < 60000)  return 'just now';
+                if (diff < 3600000) return Math.floor(diff / 60000) + 'm';
+                if (diff < 86400000) return Math.floor(diff / 3600000) + 'h';
+                return Math.floor(diff / 86400000) + 'd';
+            } catch(e) { return ''; }
         }
 
         function triggerImmediateRefresh(reason = 'realtime') {
