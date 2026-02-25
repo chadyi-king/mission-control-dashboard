@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mission Control Dashboard</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='s' cx='42%25' cy='38%25' r='62%25'><stop offset='0%25' stop-color='%23FFEE99'/><stop offset='15%25' stop-color='%23FF6B00'/><stop offset='35%25' stop-color='%23DC143C'/><stop offset='65%25' stop-color='%233a0000'/><stop offset='100%25' stop-color='%23080000'/></radialGradient></defs><circle cx='50' cy='50' r='48' fill='url(%23s)'/></svg>">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap');
 
@@ -2386,40 +2386,34 @@
     <div class="main-content">
         <!-- HOME SECTION - REDESIGNED -->
         <div id="home-section" class="section active">
-            <!-- Red Sun Stats Bar -->
-            <div class="rs-stats-bar">
-                <div class="rs-stat-card good">
-                    <div class="rs-stat-value" id="rs-agents">—</div>
-                    <div class="rs-stat-label">Agents</div>
-                </div>
-                <div class="rs-stat-card info">
-                    <div class="rs-stat-value" id="rs-active">—</div>
-                    <div class="rs-stat-label">Active</div>
-                </div>
-                <div class="rs-stat-card done">
-                    <div class="rs-stat-value" id="rs-done">—</div>
-                    <div class="rs-stat-label">Done</div>
-                </div>
-                <div class="rs-stat-card">
-                    <div class="rs-stat-value" id="rs-pending">—</div>
-                    <div class="rs-stat-label">Pending</div>
-                </div>
-                <div class="rs-stat-card alert">
-                    <div class="rs-stat-value" id="rs-urgent">—</div>
-                    <div class="rs-stat-label">Urgent</div>
-                </div>
-                <div class="rs-stat-card">
-                    <div class="rs-stat-value" id="rs-backlog">—</div>
-                    <div class="rs-stat-label">Backlog</div>
-                </div>
-                <div class="rs-stat-card">
-                    <div class="rs-stat-value" id="rs-total">—</div>
-                    <div class="rs-stat-label">Total Tasks</div>
-                </div>
-                <div class="rs-stat-card">
-                    <div class="rs-stat-value" id="rs-last-sync" style="font-size:10px">—</div>
-                    <div class="rs-stat-label">Last Sync</div>
-                </div>
+            <!-- Command Strip (18 stats) -->
+            <div class="cmd-strip">
+                <!-- TASKS group -->
+                <div class="cmd-stat"><div class="cmd-stat-value" id="rs-total">—</div><div class="cmd-stat-label">Total</div></div>
+                <div class="cmd-stat alert"><div class="cmd-stat-value" id="rs-urgent">—</div><div class="cmd-stat-label">Urgent</div></div>
+                <div class="cmd-stat warn"><div class="cmd-stat-value" id="rs-highpri">—</div><div class="cmd-stat-label">High-Pri</div></div>
+                <div class="cmd-stat good"><div class="cmd-stat-value" id="rs-active">—</div><div class="cmd-stat-label">Active</div></div>
+                <div class="cmd-stat"><div class="cmd-stat-value" id="rs-pending">—</div><div class="cmd-stat-label">Pending</div></div>
+                <div class="cmd-stat info"><div class="cmd-stat-value" id="rs-review">—</div><div class="cmd-stat-label">Review</div></div>
+                <div class="cmd-stat done"><div class="cmd-stat-value" id="rs-done">—</div><div class="cmd-stat-label">Done</div></div>
+                <div class="cmd-stat"><div class="cmd-stat-value" id="rs-backlog">—</div><div class="cmd-stat-label">Backlog</div></div>
+                <!-- divider -->
+                <div class="cmd-divider"></div>
+                <!-- AGENTS group -->
+                <div class="cmd-stat good"><div class="cmd-stat-value" id="rs-agents">—</div><div class="cmd-stat-label">Agents</div></div>
+                <div class="cmd-stat good"><div class="cmd-stat-value" id="rs-online">—</div><div class="cmd-stat-label">Online</div></div>
+                <!-- divider -->
+                <div class="cmd-divider"></div>
+                <!-- METRICS group -->
+                <div class="cmd-stat done"><div class="cmd-stat-value" id="rs-pct">—</div><div class="cmd-stat-label">Complete%</div></div>
+                <div class="cmd-stat warn"><div class="cmd-stat-value" id="rs-overdue">—</div><div class="cmd-stat-label">Overdue</div></div>
+                <!-- divider -->
+                <div class="cmd-divider"></div>
+                <!-- SYSTEM group -->
+                <div class="cmd-stat dim"><div class="cmd-stat-value" id="rs-last-sync">—</div><div class="cmd-stat-label">Last Sync</div></div>
+                <div class="cmd-stat dim"><div class="cmd-stat-value" id="rs-data-age">—</div><div class="cmd-stat-label">Data Age</div></div>
+                <div class="cmd-stat dim"><div class="cmd-stat-value" id="rs-helios-status">API</div><div class="cmd-stat-label">Helios</div></div>
+                <div class="cmd-stat dim"><div class="cmd-stat-value" id="rs-ws-status">WS</div><div class="cmd-stat-label">Socket</div></div>
             </div>
 
             <!-- Zone 2: Main Content Grid -->
@@ -2934,7 +2928,8 @@
             }
 
             heliosSocket.onopen = () => {
-                console.log('[Helios WS] connected:', wsUrl);
+                                _resetWsRetryDelay();
+console.log('[Helios WS] connected:', wsUrl);
                 setFeedStatus(true);
                 appendLiveFeedLine('HELIOS', 'heartbeat', 'WebSocket connected');
                 if (heliosSocketRetryTimer) {
@@ -2959,7 +2954,7 @@
                         const evtClass = (type === 'error') ? 'error' : (type === 'task_done' || type === 'complete') ? 'done' : 'heartbeat';
                         appendLiveFeedLine(agent, evtClass, String(text).slice(0, 80));
                     }
-                    if (type === 'event' || type === 'heartbeat') {
+                    if (type === 'event' || type === 'heartbeat' || type === 'task_done' || type === 'complete' || type === 'data_updated') {
                         triggerImmediateRefresh(type);
                     }
                 } catch (_) {
@@ -2969,6 +2964,8 @@
 
             heliosSocket.onerror = (error) => {
                 console.warn('[Helios WS] socket error:', error);
+                appendLiveFeedLine('HELIOS', 'error', 'WS error — reconnecting…');
+                scheduleHeliosSocketReconnect();
             };
 
             heliosSocket.onclose = () => {
@@ -2983,13 +2980,16 @@
             };
         }
 
+        let _wsRetryDelay = 3000;
         function scheduleHeliosSocketReconnect() {
             if (heliosSocketRetryTimer) return;
             heliosSocketRetryTimer = setTimeout(() => {
                 heliosSocketRetryTimer = null;
                 connectHeliosDashboardSocket();
-            }, 3000);
+            }, _wsRetryDelay);
+            _wsRetryDelay = Math.min(_wsRetryDelay * 2, 60000); // cap at 60s
         }
+        function _resetWsRetryDelay() { _wsRetryDelay = 3000; }
 
 
         // Load Data
@@ -4022,6 +4022,18 @@
         }
 
         // ─── AGENT FLEET ─────────────────────────────────────────────────────
+        const AGENT_DISPLAY_NAMES = {
+            'chad-yi':    'CHAD YI',
+            'helios':     'HELIOS',
+            'escritor':   'ESCRITOR',
+            'quanta':     'QUANTA',
+            'mensamusa':  'MENSAMUSA',
+            'autour':     'AUTOUR',
+            'cerebronn':  'CEREBRONN',
+        };
+        function getAgentDisplayName(a) {
+            return AGENT_DISPLAY_NAMES[a.id] || AGENT_DISPLAY_NAMES[a.slug] || (a.name ? a.name.toUpperCase() : null) || (a.id ? a.id.toUpperCase() : 'AGENT');
+        }
         function renderAgentFleet(agents) {
             const container = document.getElementById('agent-fleet');
             const countBadge = document.getElementById('fleet-count');
@@ -4033,11 +4045,12 @@
             const order = {active: 0, idle: 1, blocked: 2, offline: 3};
             const sorted = [...arr].sort((a, b) => (order[(a.status||'offline').toLowerCase()] ?? 4) - (order[(b.status||'offline').toLowerCase()] ?? 4));
 
-            const groups = {active: [], idle: [], 'blocked/offline': []};
+            const groups = {active: [], idle: [], 'blocked/offline': [], 'not spawned': []};
             sorted.forEach(a => {
                 const s = (a.status || 'offline').toLowerCase();
                 if (s === 'active') groups.active.push(a);
                 else if (s === 'idle') groups.idle.push(a);
+                else if (s === 'not_spawned') groups['not spawned'].push(a);
                 else groups['blocked/offline'].push(a);
             });
 
@@ -4054,7 +4067,7 @@
                     return `<div class="fleet-row${blocked ? ' blocked' : ''}">
                         <div class="fleet-status-dot ${s}"></div>
                         <div>
-                            <div class="fleet-agent-name">${(a.name || a.id || 'AGENT').toUpperCase()}</div>
+                            <div class="fleet-agent-name">${getAgentDisplayName(a)}</div>
                             ${role ? `<div class="fleet-agent-role">${role}</div>` : ''}
                         </div>
                         ${seen ? `<div class="fleet-seen">${seen} ago</div>` : ''}
@@ -4396,32 +4409,83 @@
             if (miniVelocity) miniVelocity.textContent = velocity + '%';
         }
 
-        // ─── RED SUN STATS BAR ───────────────────────────────────────────────
-        function renderRedSunStats(data) {
-            const s = data.stats || {};
-            const wf = data.workflow || {};
+        // ─── COMMAND STRIP (18 stats) ──────────────────────────────────────────
+        function renderRedSunStats(data) { renderCmdStrip(data); }  // alias
+        function renderCmdStrip(data) {
+            const s   = data.stats    || {};
+            const wf  = data.workflow || {};
             const allTasks = Object.values(data.tasks || {});
+            const agentObj = data.agents || {};
+            const agentArr = Array.isArray(agentObj) ? agentObj : Object.values(agentObj);
 
-            const agents     = data.agents ? (Array.isArray(data.agents) ? data.agents : Object.keys(data.agents)) : [];
-            const activeAgt  = agents.length;
-            const activeTasks = wf.active?.length ?? allTasks.filter(t => t.status === 'active').length;
-            const doneTasks  = wf.done?.length ?? allTasks.filter(t => t.status === 'done').length;
-            const pendTasks  = wf.pending?.length ?? allTasks.filter(t => t.status === 'pending').length;
-            const urgentTasks = s.urgentTasks ?? allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
-            const backlog    = s.backlog ?? allTasks.filter(t => t.status === 'backlog').length;
-            const totalTasks = s.totalTasks ?? allTasks.length;
-            const lastSync   = data.lastUpdated ? relTime(data.lastUpdated) : '—';
+            // Correct keys from data.json
+            const totalTasks  = s.totalTasks  ?? allTasks.length;
+            const urgentTasks = s.urgent      ?? allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
+            const highPri     = s.highPriority ?? allTasks.filter(t => t.priority === 'high').length;
+            const activeTasks = wf.active?.length  ?? allTasks.filter(t => t.status === 'active').length;
+            const pendTasks   = wf.pending?.length ?? allTasks.filter(t => t.status === 'pending').length;
+            const reviewTasks = wf.review?.length  ?? allTasks.filter(t => t.status === 'review').length;
+            const doneTasks   = wf.done?.length    ?? allTasks.filter(t => t.status === 'done').length;
+            const backlog     = s.backlog ?? allTasks.filter(t => t.status === 'backlog').length;
+
+            const totalAgents  = agentArr.length;
+            const onlineAgents = agentArr.filter(a => {
+                const st = (a.status || '').toLowerCase();
+                return st === 'active' || st === 'idle';
+            }).length;
+
+            const total = Object.values(wf).reduce((acc, arr) => acc + (arr?.length || 0), 0);
+            const pct   = total > 0 ? Math.round((doneTasks / total) * 100) : 0;
+
+            const today = new Date();
+            const overdue = allTasks.filter(t => {
+                if (t.status === 'done') return false;
+                const d = t.deadline || t.due;
+                return d && new Date(d) < today;
+            }).length;
+
+            const lastSync  = data.lastUpdated ? relTime(data.lastUpdated) : '—';
+            const dataAge   = data.lastUpdated ? relTime(data.lastUpdated) : '—';
 
             const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-            set('rs-agents',    activeAgt);
-            set('rs-active',    activeTasks);
-            set('rs-done',      doneTasks);
-            set('rs-pending',   pendTasks);
-            set('rs-urgent',    urgentTasks);
-            set('rs-backlog',   backlog);
-            set('rs-total',     totalTasks);
+            set('rs-total',    totalTasks);
+            set('rs-urgent',   urgentTasks);
+            set('rs-highpri',  highPri);
+            set('rs-active',   activeTasks);
+            set('rs-pending',  pendTasks);
+            set('rs-review',   reviewTasks || '0');
+            set('rs-done',     doneTasks);
+            set('rs-backlog',  backlog);
+            set('rs-agents',   totalAgents);
+            set('rs-online',   onlineAgents);
+            set('rs-pct',      pct + '%');
+            set('rs-overdue',  overdue);
             set('rs-last-sync', lastSync);
+            set('rs-data-age', dataAge);
+
+            // Health chips in agent rail
+            const heliosOk = typeof heliosSocket !== 'undefined' && heliosSocket?.readyState === 1;
+            const wsOk     = typeof heliosSocket !== 'undefined' && heliosSocket?.readyState === 1;
+            const updateDot = (dotId, lblId, cls, lbl) => {
+                const d = document.getElementById(dotId), l = document.getElementById(lblId);
+                if (d) { d.className = 'rail-chip-dot ' + cls; }
+                if (l) l.textContent = lbl;
+            };
+            updateDot('rc-helios-dot', 'rc-helios-lbl', heliosOk ? 'ok' : 'error', 'HELIOS');
+            updateDot('rc-ws-dot',     'rc-ws-lbl',     wsOk ? 'ok' : 'warn', 'WS');
+            updateDot('rc-data-dot',   'rc-data-lbl',   'dim', dataAge);
+
+            // CmdStrip status tiles
+            const setStatus = (id, txt, cls) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.textContent = txt;
+                el.parentElement.className = 'cmd-stat ' + cls;
+            };
+            setStatus('rs-helios-status', heliosOk ? 'ON' : 'OFF', heliosOk ? 'done' : 'alert');
+            setStatus('rs-ws-status',     wsOk ? 'LIVE' : 'POLL', wsOk ? 'done' : 'warn');
         }
+
 
         // ─── TODAY'S FOCUS ───────────────────────────────────────────────────
         window._focusFilter = 'urgent';
@@ -4793,6 +4857,7 @@
                 const isSelected = selectedDay && selectedDay.toDateString() === date.toDateString();
                 const hasDeadline = deadlineTasks.length > 0;
 
+                const isPast = date < today;
                 days.push({
                     date,
                     dateStr,
@@ -4803,7 +4868,8 @@
                     mediumCount,
                     isToday,
                     isSelected,
-                    hasDeadline
+                    hasDeadline,
+                    isPast
                 });
             }
 
@@ -4823,7 +4889,7 @@
                      data-day-idx="${idx}"
                      style="${badgeText ? 'border: 1px solid var(--danger);' : ''}">
                     <div class="week-day-name">${day.dayName}</div>
-                    <div class="week-day-number" style="${day.isToday ? 'color: var(--crimson-bright);' : ''} ${day.hasDeadline ? 'font-weight: 700;' : ''}">${day.dayNum}</div>
+                    <div class="week-day-number" style="${day.isPast && day.hasDeadline ? 'color: #ff4444; text-shadow: 0 0 8px rgba(255,68,68,0.5);' : day.isToday ? 'color: var(--warning); text-shadow: 0 0 12px rgba(201,169,98,0.7);' : 'color: white;'} ${day.hasDeadline || day.urgentCount > 0 ? 'font-weight: 700;' : ''}">${day.dayNum}</div>
                     <div class="week-day-stats">
                         ${day.urgentCount > 0 ? `<span class="week-day-count urgent">${day.urgentCount}</span>` : ''}
                         ${day.mediumCount > 0 ? `<span class="week-day-count warning">${day.mediumCount}</span>` : ''}
@@ -5295,3 +5361,4 @@
 </html>
 
 
+                <div class="rail-health-chips" id="rail-health-chips"><div class="rail-chip"><div class="rail-chip-dot dim" id="rc-helios-dot"></div><span id="rc-helios-lbl">HELIOS</span></div><div class="rail-chip"><div class="rail-chip-dot dim" id="rc-ws-dot"></div><span id="rc-ws-lbl">WS</span></div><div class="rail-chip"><div class="rail-chip-dot dim" id="rc-data-dot"></div><span id="rc-data-lbl">DATA</span></div></div>
