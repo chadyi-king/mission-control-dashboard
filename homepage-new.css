@@ -3444,3 +3444,25 @@ body {
     position: relative;
     z-index: 1;
 }
+
+/* ─── Agent Health Status Labels (added Commit 21) ────────────────────────── */
+.agent-health-status-label {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 4px;
+    text-transform: uppercase;
+}
+.agent-health-status-label.agent-dot-active  { color: var(--green-active, #39ff14); background: rgba(57,255,20,0.12); }
+.agent-health-status-label.agent-dot-idle    { color: var(--text-muted); background: rgba(255,255,255,0.07); }
+.agent-health-status-label.agent-dot-offline { color: #555; background: rgba(80,80,80,0.15); }
+.agent-health-status-label.agent-dot-blocked { color: var(--crimson-bright, #ff2244); background: rgba(255,34,68,0.12); }
+
+.agent-health-row.agent-offline {
+    opacity: 0.55;
+}
+.agent-health-row.agent-offline .agent-health-name {
+    color: var(--text-muted);
+}

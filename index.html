@@ -4411,21 +4411,24 @@ console.log('[Helios WS] connected:', wsUrl);
                     }))
             });
 
-            // 3. Agents at work
-            const activeAgents = Object.entries(agents).filter(([, a]) => a.status === 'active' || a.status === 'working');
+            // 3. Agents at work — only deployed (active) agents
+            const DEPLOYED = ['chad-yi', 'cerebron', 'helios'];
+            const activeAgents = Object.entries(agents).filter(([id, a]) =>
+                DEPLOYED.includes(id) && (a.status === 'active' || a.status === 'working')
+            );
             sections.push({
                 title: 'AGENTS AT WORK',
                 rows: activeAgents.length === 0
                     ? [{ cls: '', text: 'No agents currently active' }]
                     : activeAgents.map(([id, a]) => ({
                         cls: 'good',
-                        text: `${id.toUpperCase()} · ${a.currentTask ? String(a.currentTask).slice(0, 40) : 'online'}`
+                        text: `${id.toUpperCase()} · ${a.currentTaskTitle || a.currentTask || 'online'}`
                     }))
             });
 
-            // 4. Suggested priorities (urgency score)
+            // 4. Suggested priorities (urgency score) — active/pending/blocked/review only
             const scored = tasks
-                .filter(t => t.status !== 'done')
+                .filter(t => t.status !== 'done' && t.status !== 'backlog')
                 .map(t => {
                     let score = 0;
                     if (t.deadline) {
@@ -4573,7 +4576,7 @@ console.log('[Helios WS] connected:', wsUrl);
             function isOverdue(d) { if (!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd < today; }
             function isToday(d)   { if (!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd.getTime()===today.getTime(); }
 
-            // Score tasks for urgency
+            // Score tasks for urgency — exclude done and pure backlog for top 5
             const scored = tasks
                 .filter(t => t.status !== 'done')
                 .map(t => {
@@ -4988,17 +4991,19 @@ console.log('[Helios WS] connected:', wsUrl);
                 }
                 if (rowLevel > worstLevel) worstLevel = rowLevel;
 
-                const taskSnippet = ag.currentTask
-                    ? ag.currentTask.slice(0, 28) + (ag.currentTask.length > 28 ? '…' : '')
+                const taskLabel = ag.currentTaskTitle || ag.currentTask || '';
+                const taskSnippet = taskLabel
+                    ? taskLabel.slice(0, 32) + (taskLabel.length > 32 ? '…' : '')
                     : '';
-                const lastSeen = relativeTime(ag.lastActive);
+                const lastSeen = ag.lastActive ? relativeTime(ag.lastActive) : (st === 'offline' ? 'not deployed' : '—');
                 const roleLine = ag.role_tagline ? ` <span class="agent-health-role">${ag.role_tagline}</span>` : '';
 
-                return `<div class="health-row agent-health-row">
+                return `<div class="health-row agent-health-row ${st === 'offline' ? 'agent-offline' : ''}">
                     <span class="agent-pulse-dot ${dotCls}"></span>
                     <span class="agent-health-name">${key.toUpperCase()}</span>${roleLine}
                     <div class="agent-health-right">
-                        <span class="agent-health-task" title="${ag.currentTask || ''}">${taskSnippet}</span>
+                        <span class="agent-health-status-label ${dotCls}">${statusLabel}</span>
+                        <span class="agent-health-task" title="${taskLabel}">${taskSnippet}</span>
                         <span class="agent-health-timestamp">${lastSeen}</span>
                     </div>
                 </div>`;
