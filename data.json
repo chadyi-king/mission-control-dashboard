@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-25T21:30:04+08:00",
+  "lastUpdated": "2026-02-25T23:21:29+08:00",
   "updatedBy": "CHAD_YI",
   "stats": {
     "totalTasks": 86,
@@ -125,7 +125,7 @@
       "agent": "CHAD_YI",
       "notes": "Rebook by next Wednesday (Feb 19). Date given for assessment.",
       "description": "Rebook ACLP reassessment slot",
-      "deadline": "2026-02-19",
+      "deadline": "2026-02-25",
       "createdAt": "2026-02-14T00:05:00Z",
       "completedAt": null
     },
@@ -251,7 +251,7 @@
       "agent": "MensaMusa",
       "notes": "BLOCKED: Needs Moomoo account credentials (102h idle)",
       "description": "",
-      "deadline": null,
+      "deadline": "2026-02-25",
       "createdAt": "2026-02-06T00:00:00Z",
       "completedAt": null
     },
@@ -1206,7 +1206,7 @@
       "agent": "CHAD_YI",
       "notes": "Get clips from EC and pay him. Video due next Monday.",
       "description": "Complete Andre's video for Empyrean",
-      "deadline": "2026-02-23",
+      "deadline": "2026-02-25",
       "createdAt": "2026-02-17T12:13:40.139189Z",
       "completedAt": null
     },
@@ -1269,16 +1269,16 @@
       "role_tagline": "Infrastructure & Monitoring"
     },
     "escritor": {
-      "status": "active",
+      "status": "offline",
       "currentTask": "A2-15 Chapter outline submitted",
-      "lastActive": "2026-02-25T03:30:04+08:00",
+      "lastActive": null,
       "role": "Writer",
       "role_tagline": "Creative Writing & Narrative"
     },
     "quanta": {
-      "status": "active",
+      "status": "offline",
       "currentTask": "A5-1 Trading Bot - LIVE testing phase",
-      "lastActive": "2026-02-25T01:30:04+08:00",
+      "lastActive": null,
       "role": "Trading",
       "role_tagline": "Trading Systems & Finance"
     },
@@ -1290,9 +1290,9 @@
       "role_tagline": "Research & Analysis"
     },
     "forger": {
-      "status": "active",
+      "status": "offline",
       "currentTask": "B6 Elluminate - website complete",
-      "lastActive": "2026-02-24T23:30:04+08:00",
+      "lastActive": null,
       "role": "Builder",
       "role_tagline": "Web Development & Building"
     }

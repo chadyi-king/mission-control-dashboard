@@ -4819,6 +4819,10 @@ console.log('[Helios WS] connected:', wsUrl);
                     return 'week-chip-low';
                 }
 
+                function overdueChip(t) {
+                    return `<span class="week-task-chip week-chip-overdue" title="▲ OVERDUE: ${escHtml(t.title)}" onclick="toggleWeekChip(event,'${t.id}')">▲ ${escHtml(t.id)} ${escHtml(t.title.slice(0,15))}</span>`;
+                }
+
                 const SHOW_LIMIT = 20; // show up to 20 chips per day
                 const allChips = [
                     ...overdueOnToday.map(overdueChip),
