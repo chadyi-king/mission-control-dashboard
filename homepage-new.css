@@ -95,8 +95,9 @@
 }
 
 .week-day-number {
-    font-size: 24px;
-    font-weight: 700;
+    font-family: var(--display-font);
+    font-size: 26px;
+    font-weight: 900;
     color: white;
     margin-bottom: 8px;
 }
@@ -241,7 +242,7 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
     padding: 4px 10px;
     border: 1px solid rgba(255, 255, 255, 0.07);
     background: rgba(255, 255, 255, 0.02);
-    font-family: var(--tech-font);
+    font-family: var(--mono-font);
     font-size: 10px;
     letter-spacing: 0.5px;
     white-space: nowrap;
@@ -284,7 +285,7 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
     gap: 4px;
     padding: 2px 8px;
     border: 1px solid rgba(255,255,255,0.06);
-    font-family: var(--tech-font);
+    font-family: var(--mono-font);
     font-size: 9px;
     letter-spacing: 0.5px;
     white-space: nowrap;
@@ -348,17 +349,19 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
 
 .cmd-stat-value {
     font-family: var(--display-font);
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 900;
     color: var(--text-primary);
     line-height: 1;
     margin-bottom: 2px;
 }
 .cmd-stat-label {
-    font-size: 6.5px;
+    font-family: var(--tech-font);
+    font-size: 7px;
+    font-weight: 500;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.4px;
     white-space: nowrap;
 }
 .cmd-stat.good   .cmd-stat-value { color: var(--crimson-bright); }
@@ -1023,4 +1026,57 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
     .rs-card-full  { height: auto; min-height: 400px; }
     .last-audit-badge { display: none; }
     .topbar-actions-btn { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY HIERARCHY SYSTEM
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Headlines — Orbitron Bold for card titles, section headers */
+.typography-headline,
+.rs-card-title,
+.week-title,
+.topbar .mission-title,
+.sidebar-brand-name {
+    font-family: var(--display-font);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Data/Numbers — Orbitron Black for stats, counts, metrics */
+.typography-data,
+.cmd-stat-value,
+.wf-count,
+.rs-badge,
+.fleet-agent-name,
+.week-day-number {
+    font-family: var(--display-font);
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+/* Labels — Rajdhani Medium for subtitles, metadata */
+.typography-label,
+.cmd-stat-label,
+.wf-label,
+.rs-card-header,
+.focus-filter-btn,
+.week-day-name {
+    font-family: var(--tech-font);
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+/* Monospace — JetBrains Mono for terminal, IDs, technical data */
+.typography-mono,
+.live-feed .feed-text,
+.agent-pill,
+.rail-chip,
+.task-id {
+    font-family: var(--mono-font);
+    font-weight: 400;
+    letter-spacing: 0px;
 }
