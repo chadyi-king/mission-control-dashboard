@@ -84,7 +84,7 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.30;
+            opacity: 0.60;
         }
 
         /* ═══ LAYER 3: CSS fallback star dust ═══ */
@@ -4681,13 +4681,14 @@ console.log('[Helios WS] connected:', wsUrl);
                     ${t.deadline ? `<span class="focus-deadline ${dlCls}">${dlPrefix}${fmtDl(t.deadline)}</span>` : ''}
                 </div>
                 <div class="focus-task-expand" id="fexp-${t.id}">
+                    ${t.status === 'blocked' ? `<div class="focus-expand-row" style="border-left:2px solid rgba(220,38,38,0.6);padding-left:8px;color:rgba(220,100,100,0.9);"><span style="color:rgba(220,38,38,0.9);font-weight:700;">⚑ BLOCKED</span> ${escHtml((t.blockedReason||t.notes||'Awaiting action before this task can proceed.').slice(0,160))}</div>` : ''}
                     ${t.description ? `<div class="focus-expand-row"><span>Notes</span>${escHtml(t.description)}</div>` : ''}
-                    ${t.notes ? `<div class="focus-expand-row"><span>Details</span>${escHtml(t.notes.slice(0,120))}</div>` : ''}
+                    ${t.notes && t.status !== 'blocked' ? `<div class="focus-expand-row"><span>Details</span>${escHtml(t.notes.slice(0,120))}</div>` : ''}
                     <div class="focus-expand-row"><span>Status</span>${t.status||'pending'} · ${t.project||'—'}</div>
                     ${t.agent ? `<div class="focus-expand-row"><span>Agent</span>${t.agent}</div>` : ''}
+                    <div class="focus-expand-row"><span>Rec.</span><span style="color:rgba(255,180,50,0.85);font-weight:600;font-size:10px;letter-spacing:0.06em;">${(function(proj){ if(!proj) return 'Cerebron'; if(proj.startsWith('A2')) return 'Escritor'; if(proj.startsWith('A5')) return 'Quanta'; if(proj.startsWith('A6')) return 'Helios'; if(proj.startsWith('A1')) return 'CHAD_YI'; if(proj.startsWith('B')) return 'Forger'; return 'Cerebron'; })(t.project)}</span></div>
                     <div class="focus-task-actions">
                         <button class="focus-action-btn done-btn" onclick="markFocusDoneNew(event,'${t.id}')">✓ MARK DONE</button>
-                        <button class="focus-action-btn" onclick="assignFocusTask('${t.id}')">ASSIGN</button>
                     </div>
                 </div>
             </div>`;
@@ -4704,13 +4705,63 @@ console.log('[Helios WS] connected:', wsUrl);
         function markFocusDoneNew(event, taskId) {
             event.stopPropagation();
             const card = document.getElementById('ftask-' + taskId);
-            if (card) {
-                card.style.opacity = '0.35';
-                card.style.textDecoration = 'line-through';
-                setTimeout(() => { if (card) card.remove(); }, 800);
+            if (!card) return;
+
+            // Persist to app state
+            const now = new Date().toISOString();
+            if (window.appData && window.appData.tasks && window.appData.tasks[taskId]) {
+                window.appData.tasks[taskId].status = 'done';
+                window.appData.tasks[taskId].completedAt = now;
             }
+            try {
+                const doneTasks = JSON.parse(localStorage.getItem('rs_done_tasks') || '{}');
+                doneTasks[taskId] = now;
+                localStorage.setItem('rs_done_tasks', JSON.stringify(doneTasks));
+            } catch(_) {}
+
+            // Visual: fade card
+            card.style.transition = 'opacity 0.4s';
+            card.style.opacity = '0.3';
+            card.style.textDecoration = 'line-through';
+
+            // Undo toast
+            let undone = false;
+            const toast = document.createElement('div');
+            toast.style.cssText = [
+                'position:fixed','bottom:28px','left:50%','transform:translateX(-50%)',
+                'background:rgba(10,10,14,0.96)','border:1px solid rgba(220,38,38,0.4)',
+                'border-radius:6px','padding:10px 20px','display:flex','align-items:center','gap:14px',
+                "font-family:'Rajdhani',sans-serif",'font-size:13px','font-weight:600',
+                'color:rgba(200,200,210,0.9)','letter-spacing:0.06em',
+                'z-index:9999','box-shadow:0 4px 24px rgba(0,0,0,0.7)'
+            ].join(';');
+            toast.innerHTML = `<span>\u2713 ${taskId} marked done</span>`
+                + `<button style="background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.4);border-radius:4px;padding:3px 10px;color:rgba(220,38,38,0.9);cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;" id="undo-btn-${taskId}">UNDO</button>`;
+            document.body.appendChild(toast);
+
+            document.getElementById('undo-btn-' + taskId).onclick = function() {
+                undone = true;
+                if (window.appData && window.appData.tasks && window.appData.tasks[taskId]) {
+                    window.appData.tasks[taskId].status = 'active';
+                    window.appData.tasks[taskId].completedAt = null;
+                }
+                try {
+                    const doneTasks = JSON.parse(localStorage.getItem('rs_done_tasks') || '{}');
+                    delete doneTasks[taskId];
+                    localStorage.setItem('rs_done_tasks', JSON.stringify(doneTasks));
+                } catch(_) {}
+                if (card) { card.style.opacity = '1'; card.style.textDecoration = 'none'; }
+                if (document.body.contains(toast)) document.body.removeChild(toast);
+            };
+
+            // Auto-dismiss after 5s
+            setTimeout(() => {
+                if (!undone) {
+                    if (card && card.parentNode) card.remove();
+                    if (document.body.contains(toast)) document.body.removeChild(toast);
+                }
+            }, 5000);
             console.log('[Focus] Marked done:', taskId);
-            // TODO: POST to backend when API available
         }
 
         function toggleAlsoToday() {
@@ -5632,7 +5683,6 @@ console.log('[Helios WS] connected:', wsUrl);
                         ${assignee ? `<span class="focus-assignee-badge">${assignee}</span>` : ''}
                         <div class="focus-task-actions">
                             <button class="focus-action-btn done-btn" onclick="markFocusDone('${task.id}')">Mark Done</button>
-                            <button class="focus-action-btn assign-btn" onclick="assignFocusTask('${task.id}')">Assign →</button>
                         </div>
                     </div>
                 </div>`;

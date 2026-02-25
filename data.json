@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-25T23:37:23+08:00",
+  "lastUpdated": "2026-02-26T08:00:00+08:00",
   "updatedBy": "CHAD_YI",
   "workflow": {
     "pending": [
@@ -21,7 +21,9 @@
       "A6-3",
       "A6-13",
       "A6-14",
-      "B6-3"
+      "B6-3",
+      "B3-1",
+      "B6-1"
     ],
     "review": [
       "A6-15",
@@ -32,8 +34,6 @@
       "A2-2",
       "A2-3",
       "A7-1",
-      "B3-1",
-      "B6-1",
       "A1-4",
       "A1-1"
     ],
@@ -1046,13 +1046,13 @@
       "project": "B3",
       "category": "B",
       "priority": "high",
-      "status": "done",
+      "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Website completed via Lovable",
-      "description": "",
+      "notes": "Website built via Lovable — ongoing updates and refinements needed",
+      "description": "Maintain and improve Team Elevate website",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-02-14T12:00:00+08:00"
+      "completedAt": null
     },
     "B6-1": {
       "id": "B6-1",
@@ -1060,13 +1060,13 @@
       "project": "B6",
       "category": "B",
       "priority": "high",
-      "status": "done",
+      "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Website completed via Lovable",
-      "description": "",
+      "notes": "Website built via Lovable — ongoing updates and refinements needed",
+      "description": "Maintain and improve Elluminate website",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-02-20T10:00:00+08:00"
+      "completedAt": null
     },
     "B6-6": {
       "id": "B6-6",
@@ -1275,11 +1275,11 @@
     },
     "cerebron": {
       "status": "active",
-      "currentTask": "A2-13",
-      "lastActive": "2026-02-25T21:37:23+08:00",
+      "currentTask": null,
+      "lastActive": "2026-02-26T08:00:00+08:00",
       "role": "Strategist",
       "role_tagline": "The Brain",
-      "currentTaskTitle": "Study Phase \u2014 Understand Story"
+      "currentTaskTitle": "Organizational Intelligence & Planning"
     },
     "forger": {
       "status": "offline",

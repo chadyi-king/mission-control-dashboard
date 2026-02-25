@@ -1269,29 +1269,59 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
 }
 
 /* Sidebar Glassmorphism Enhancement */
+/* Sidebar Cyberpunk Scanline Animation */
+@keyframes sidebar-scan {
+    0%   { transform: translateY(-100%); opacity: 0; }
+    20%  { opacity: 0.6; }
+    80%  { opacity: 0.4; }
+    100% { transform: translateY(300%); opacity: 0; }
+}
+
 .sidebar {
     backdrop-filter: blur(20px) saturate(180%);
     background: linear-gradient(
         180deg,
-        rgba(220, 38, 38, 0.04) 0%,
-        rgba(5, 5, 8, 0.96) 20%,
-        rgba(3, 3, 5, 0.97) 100%
+        rgba(220, 38, 38, 0.06) 0%,
+        rgba(5, 5, 8, 0.97) 20%,
+        rgba(3, 3, 5, 0.98) 100%
     ) !important;
-    border-right: 1px solid rgba(220, 38, 38, 0.25) !important;
-    box-shadow: 2px 0 0 rgba(220, 38, 38, 0.08),
-                4px 0 20px rgba(0, 0, 0, 0.5) !important;
+    border-right: 1px solid rgba(220, 38, 38, 0.30) !important;
+    box-shadow: 2px 0 0 rgba(220, 38, 38, 0.10),
+                4px 0 30px rgba(0, 0, 0, 0.6),
+                inset -1px 0 0 rgba(220, 38, 38, 0.06) !important;
+    overflow: hidden;
 }
 
-/* Sidebar Active State Glow */
+/* Sidebar Active State Glow + scanline sweep */
+.sidebar-item {
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, border-left 0.2s, box-shadow 0.2s;
+}
+.sidebar-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(220,38,38,0.7) 50%, transparent 100%);
+    opacity: 0;
+    pointer-events: none;
+}
+.sidebar-item.active::after,
+.sidebar-item:hover::after {
+    animation: sidebar-scan 1.6s ease-in-out infinite;
+}
 .sidebar-item.active,
 .sidebar-item:hover {
     background: linear-gradient(
         90deg,
-        rgba(220, 38, 38, 0.12) 0%,
-        rgba(220, 38, 38, 0.03) 100%
+        rgba(220, 38, 38, 0.14) 0%,
+        rgba(220, 38, 38, 0.04) 100%
     ) !important;
     border-left: 2px solid var(--crimson-bright) !important;
-    box-shadow: 0 0 12px rgba(220, 38, 38, 0.15) !important;
+    box-shadow: 0 0 16px rgba(220, 38, 38, 0.18), inset 1px 0 0 rgba(220,38,38,0.25) !important;
 }
 
 /* Card Entrance Animation */
@@ -3210,15 +3240,16 @@ body::before {
     gap: 4px;
 }
 .also-content.expanded {
-    max-height: 172px !important;
+    max-height: 450px !important;
     overflow-y: auto !important;
     scrollbar-width: thin !important;
     padding-top: 4px !important;
 }
 
-/* ── WEEK CALENDAR — Taller columns ── */
+/* ── WEEK CALENDAR — Taller columns for a fuller view ── */
 .week-day-col {
-    min-height: 160px !important;
+    min-height: 320px !important;
+    font-size: 11px !important;
 }
 
 /* ── MOBILE STATS BAR — 2 column grid on small screens ── */
@@ -3394,30 +3425,35 @@ body {
     top: -80px;
     left: 50%;
     transform: translateX(-50%);
-    width: 540px;
-    height: 540px;
+    width: 640px;
+    height: 640px;
     pointer-events: none;
     z-index: 0;
     border-radius: 50%;
+    /* outer corona box-shadow for deep space atmosphere */
+    box-shadow:
+        0 0 60px 20px rgba(200, 60, 0, 0.18),
+        0 0 160px 60px rgba(160, 30, 0, 0.12),
+        0 0 320px 100px rgba(100, 10, 0, 0.07);
 
     /* === CSS corona glow (active by default) ===
        Drop assets/bg-sun.png then swap to the image block below */
     background:
         /* Bright inner core */
-        radial-gradient(circle 60px at 50% 50%,
-            rgba(255, 220, 80, 0.55) 0%,
-            rgba(255, 130, 0, 0.45) 30%,
-            rgba(200, 30, 0, 0.35) 55%,
+        radial-gradient(circle 70px at 50% 50%,
+            rgba(255, 220, 80, 0.65) 0%,
+            rgba(255, 130, 0, 0.55) 30%,
+            rgba(200, 30, 0, 0.40) 55%,
             transparent 72%),
         /* Mid corona */
-        radial-gradient(circle 140px at 50% 50%,
-            rgba(220, 80, 0, 0.20) 0%,
-            rgba(160, 20, 0, 0.22) 50%,
+        radial-gradient(circle 180px at 50% 50%,
+            rgba(220, 80, 0, 0.25) 0%,
+            rgba(160, 20, 0, 0.28) 50%,
             transparent 75%),
         /* Outer diffuse glow */
         radial-gradient(ellipse 100% 80% at 50% 50%,
-            rgba(180, 40, 0, 0.12) 0%,
-            rgba(100, 10, 0, 0.08) 60%,
+            rgba(180, 40, 0, 0.18) 0%,
+            rgba(100, 10, 0, 0.12) 60%,
             transparent 80%);
 
     /* === Uncomment when assets/bg-sun.png is placed ===
