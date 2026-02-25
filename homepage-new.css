@@ -3210,7 +3210,9 @@ body::before {
     gap: 4px;
 }
 .also-content.expanded {
-    max-height: 4000px !important;
+    max-height: 172px !important;
+    overflow-y: auto !important;
+    scrollbar-width: thin !important;
     padding-top: 4px !important;
 }
 
@@ -3328,4 +3330,37 @@ body::before {
     font-style: italic;
     margin-left: 4px;
     vertical-align: middle;
+}
+
+/* ── Commit 16: Full-width recently-done row + active/health split row ── */
+.ops-full-row {
+    margin-top: 10px;
+}
+.ops-full-row .cmd-card-body {
+    max-height: none;
+}
+.task-list-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.task-list-horizontal .task-item {
+    flex: 0 0 calc(25% - 4px);
+    min-width: 180px;
+}
+
+.ops-split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .ops-split-row {
+        grid-template-columns: 1fr;
+    }
+    .task-list-horizontal .task-item {
+        flex: 0 0 calc(50% - 4px);
+    }
 }
