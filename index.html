@@ -39,82 +39,57 @@
         body {
             font-family: var(--tech-font);
             font-weight: 500;
-            background: var(--bg-primary);
+            background: #000000;
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
             letter-spacing: 0.5px;
+            position: relative;
         }
 
-        /* Background Effects */
-        .cyber-bg {
+        /* ═══════════════════════════════════════════════════════════════════════
+           GALACTIC SPACE BACKGROUND
+           ═══════════════════════════════════════════════════════════════════════ */
+        
+        /* Nebula glow from center */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(ellipse at center, rgba(60,0,0,0.18) 0%, rgba(60,0,0,0.08) 30%, transparent 65%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Starfield */
+        body::after {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
-            background: var(--bg-primary);
-            overflow: hidden;
-        }
-
-        .data-stream {
-            position: absolute;
-            top: -100%;
-            font-family: monospace;
-            font-size: 14px;
-            color: var(--crimson-bright);
-            opacity: 0.1;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            animation: fall linear infinite;
-            white-space: nowrap;
             pointer-events: none;
+            background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
+                              radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.3), transparent),
+                              radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.5), transparent),
+                              radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.3), transparent),
+                              radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.4), transparent),
+                              radial-gradient(1px 1px at 33% 80%, rgba(255,255,255,0.3), transparent),
+                              radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 200%, 180% 180%, 220% 220%, 190% 190%, 210% 210%, 240% 240%, 170% 170%;
+            background-position: 0% 0%, 40% 40%, 80% 80%, 20% 60%, 50% 20%, 70% 90%, 10% 50%;
+            animation: starfield-drift 120s linear infinite;
         }
 
-        .data-stream:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; }
-        .data-stream:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 2s; }
-        .data-stream:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 4s; }
-        .data-stream:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; }
-        .data-stream:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 3s; }
-        .data-stream:nth-child(6) { left: 55%; animation-duration: 14s; animation-delay: 5s; }
-        .data-stream:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 2s; }
-        .data-stream:nth-child(8) { left: 75%; animation-duration: 17s; animation-delay: 4s; }
-        .data-stream:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 1s; }
-        .data-stream:nth-child(10) { left: 95%; animation-duration: 21s; animation-delay: 3s; }
-
-        @keyframes fall {
-            0% { transform: translateY(0); opacity: 0; }
-            10% { opacity: 0.1; }
-            90% { opacity: 0.1; }
-            100% { transform: translateY(200vh); opacity: 0; }
-        }
-
-        .circuit-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.08;
-            background-image:
-                linear-gradient(90deg, var(--crimson-bright) 1px, transparent 1px),
-                linear-gradient(var(--crimson-bright) 1px, transparent 1px);
-            background-size: 100px 100px;
-        }
-
-        .hex-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dc143c' fill-opacity='0.4'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        @keyframes starfield-drift {
+            0% { background-position: 0% 0%, 40% 40%, 80% 80%, 20% 60%, 50% 20%, 70% 90%, 10% 50%; }
+            100% { background-position: 100% 100%, 140% 140%, 180% 180%, 120% 160%, 150% 120%, 170% 190%, 110% 150%; }
         }
 
         /* Top Bar - Redesigned */
@@ -2256,21 +2231,7 @@
     <!-- Animated Red Sun (subtle, centred behind content) -->
     <div class="rs-bg-sun"></div>
 
-    <!-- Background Effects -->
-    <div class="cyber-bg">
-        <div class="data-stream">01 A2 43 B3 92 C1 15 D4</div>
-        <div class="data-stream">FF 23 9A 4C 7B E1 56 82</div>
-        <div class="data-stream">AGENT_SPAWN K2.5 TASK_ACTIVE</div>
-        <div class="data-stream">88 12 FA 3D 67 91 BC 22</div>
-        <div class="data-stream">PROJECT_A2 STATUS_RUNNING 45%</div>
-        <div class="data-stream">CD 45 EF 89 12 34 AB 67</div>
-        <div class="data-stream">TOKEN_DATA STREAM_ACTIVE 82%</div>
-        <div class="data-stream">77 88 99 AA BB CC DD EE</div>
-        <div class="data-stream">GITHUB_PUSH REPO_UPDATED MAIN</div>
-        <div class="data-stream">11 22 33 44 55 66 77 88</div>
-    </div>
-    <div class="circuit-overlay"></div>
-    <div class="hex-pattern"></div>
+    <!-- Pure space background via body::before and ::after pseudo-elements -->
 
     <!-- Top Bar -->
     <div class="topbar">
