@@ -1249,3 +1249,155 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
 .mobile-nav-menu a:hover svg {
     color: var(--solar-gold);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   COMMIT 7: TOPBAR + SIDEBAR + ANIMATIONS — Final Visual Polish
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Topbar Glassmorphism Enhancement */
+.topbar {
+    backdrop-filter: blur(20px) saturate(180%);
+    background: linear-gradient(
+        180deg,
+        rgba(220, 38, 38, 0.06) 0%,
+        rgba(5, 5, 8, 0.95) 40%,
+        rgba(3, 3, 5, 0.95) 100%
+    ) !important;
+    border-bottom: 1px solid rgba(220, 38, 38, 0.3) !important;
+    box-shadow: 0 2px 0 rgba(220, 38, 38, 0.1),
+                0 8px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Sidebar Glassmorphism Enhancement */
+.sidebar {
+    backdrop-filter: blur(20px) saturate(180%);
+    background: linear-gradient(
+        180deg,
+        rgba(220, 38, 38, 0.04) 0%,
+        rgba(5, 5, 8, 0.96) 20%,
+        rgba(3, 3, 5, 0.97) 100%
+    ) !important;
+    border-right: 1px solid rgba(220, 38, 38, 0.25) !important;
+    box-shadow: 2px 0 0 rgba(220, 38, 38, 0.08),
+                4px 0 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Sidebar Active State Glow */
+.sidebar-item.active,
+.sidebar-item:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(220, 38, 38, 0.12) 0%,
+        rgba(220, 38, 38, 0.03) 100%
+    ) !important;
+    border-left: 2px solid var(--crimson-bright) !important;
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.15) !important;
+}
+
+/* Card Entrance Animation */
+@keyframes card-entrance {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rs-card {
+    animation: card-entrance 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+/* Stagger card animations by grid position */
+.rs-card:nth-child(1) { animation-delay: 0.05s; }
+.rs-card:nth-child(2) { animation-delay: 0.1s; }
+.rs-card:nth-child(3) { animation-delay: 0.15s; }
+.rs-card:nth-child(4) { animation-delay: 0.2s; }
+.rs-card:nth-child(5) { animation-delay: 0.25s; }
+.rs-card:nth-child(6) { animation-delay: 0.3s; }
+
+/* Stat Hover Glow Animation */
+@keyframes stat-hover-glow {
+    0%, 100% { 
+        box-shadow: 0 0 0 rgba(220, 38, 38, 0);
+    }
+    50% { 
+        box-shadow: 0 0 16px rgba(220, 38, 38, 0.2);
+    }
+}
+
+.cmd-stat:hover {
+    animation: stat-hover-glow 2s ease-in-out infinite;
+}
+
+/* Button Hover Glow Enhancement */
+.topbar-actions-btn:hover,
+.rs-see-all:hover,
+.focus-filter-btn:hover {
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.3),
+                0 0 24px rgba(220, 38, 38, 0.15) !important;
+    transform: translateY(-1px);
+}
+
+/* Sun Widget Enhanced Glow */
+.sun-avatar-enhanced {
+    filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.4)) !important;
+}
+
+/* Mission Control Badge Pulse */
+@keyframes mission-badge-pulse {
+    0%, 100% { 
+        filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.6));
+    }
+    50% { 
+        filter: drop-shadow(0 0 16px rgba(255, 200, 0, 0.9)) drop-shadow(0 0 24px rgba(255, 200, 0, 0.4));
+    }
+}
+
+.mission-icon {
+    animation: mission-badge-pulse 3s ease-in-out infinite;
+}
+
+/* Week Calendar Enhanced Color-Coding */
+.week-day.has-urgent {
+    border: 1px solid rgba(255, 68, 68, 0.3) !important;
+    box-shadow: 0 0 8px rgba(255, 68, 68, 0.15) !important;
+}
+
+.week-day.has-warning {
+    border: 1px solid rgba(255, 107, 0, 0.25) !important;
+    box-shadow: 0 0 6px rgba(255, 107, 0, 0.12) !important;
+}
+
+/* Focus Filter Button Active State */
+.focus-filter-btn.active {
+    background: linear-gradient(
+        90deg,
+        rgba(220, 38, 38, 0.15) 0%,
+        rgba(220, 38, 38, 0.08) 100%
+    ) !important;
+    border-color: var(--crimson-bright) !important;
+    color: var(--crimson-bright) !important;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.2) !important;
+}
+
+/* Smooth Scroll Polish */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Subtle Background Parallax Effect */
+body::before {
+    animation: nebula-drift 120s ease-in-out infinite alternate;
+}
+
+@keyframes nebula-drift {
+    0% { 
+        transform: scale(1) translate(0, 0);
+    }
+    100% { 
+        transform: scale(1.05) translate(-2%, -2%);
+    }
+}
