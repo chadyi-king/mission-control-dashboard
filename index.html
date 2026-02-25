@@ -5814,9 +5814,11 @@ console.log('[Helios WS] connected:', wsUrl);
             `;
         }
 
-        function changeWeek(direction) {
+        // changeWeek() is now defined above in the command center rebuild section
+        // _legacyChangeWeek kept for reference only
+        function _legacyChangeWeek(direction) {
             currentWeekOffset += direction;
-            loadData(); // Re-render
+            loadData();
         }
 
         function searchTasks(query) {
