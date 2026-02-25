@@ -2779,7 +2779,7 @@
                                         <polyline points="6 9 12 15 18 9"/>
                                     </svg>
                                 </button>
-                                <div class="also-content" id="also-content" style="display:none;">
+                                <div class="also-content" id="also-content">
                                     <!-- Populated by JS -->
                                 </div>
                             </div>
@@ -4192,7 +4192,9 @@ console.log('[Helios WS] connected:', wsUrl);
             const tasks = Object.values(data.tasks || {});
             const agents = data.agents || {};
             const agentArr = Object.entries(agents);
-            const today = new Date(); today.setHours(0,0,0,0);
+            // Use SGT (Singapore Time, UTC+8) for all date calculations
+            const sgtNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Singapore' }));
+            const today = new Date(sgtNow); today.setHours(0,0,0,0);
 
             function isToday(d) {
                 if (!d) return false;
@@ -4471,7 +4473,7 @@ console.log('[Helios WS] connected:', wsUrl);
             function buildTaskList(items, limit) {
                 if (!items.length) return '<li class="task-item-empty">No items</li>';
                 return items.slice(0, limit).map(t => `
-                    <li class="task-item priority-${t.priority||'medium'}" onclick="toggleTaskExpand(event,'${t.id}')">
+                    <li class="task-item priority-${t.priority||'medium'}" onclick="openTask('${t.id}')">
                         <div class="task-item-header">
                             <span class="task-priority-dot"></span>
                             <span class="task-title">${escHtml(t.title)}</span>
@@ -4480,11 +4482,7 @@ console.log('[Helios WS] connected:', wsUrl);
                             <span class="task-id">${t.id}</span>
                             ${t.deadline ? `<span class="task-deadline ${dlClass(t.deadline)}">${isOverdue(t.deadline)?'▲ OVERDUE ':''}${fmtDl(t.deadline)}</span>` : ''}
                             ${t.agent ? `<span class="task-agent">${t.agent}</span>` : ''}
-                        </div>
-                        <div class="task-expand" id="txp-${t.id}">
-                            ${t.description ? `<div class="task-expand-field"><span class="task-expand-label">Notes </span>${escHtml(t.description)}</div>` : ''}
-                            ${t.notes ? `<div class="task-expand-field"><span class="task-expand-label">Details </span>${escHtml(t.notes)}</div>` : ''}
-                            <div class="task-expand-field"><span class="task-expand-label">Status </span>${t.status||'—'} · ${t.priority||'—'} priority</div>
+                            <span class="task-open-hint">→ view</span>
                         </div>
                     </li>
                 `).join('');
@@ -4693,8 +4691,8 @@ console.log('[Helios WS] connected:', wsUrl);
             const content = document.getElementById('also-content');
             const chevron = document.getElementById('also-chevron');
             if (!content) return;
-            const isOpen = content.style.display !== 'none';
-            content.style.display = isOpen ? 'none' : 'flex';
+            const isOpen = content.classList.contains('expanded');
+            content.classList.toggle('expanded', !isOpen);
             if (chevron) chevron.classList.toggle('open', !isOpen);
         }
 
@@ -4795,7 +4793,7 @@ console.log('[Helios WS] connected:', wsUrl);
                     return 'week-chip-low';
                 }
                 function overdueChip(t) {
-                    return `<span class="week-task-chip week-chip-overdue" title="${escHtml(t.title)}">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`;
+                    return `<span class="week-task-chip week-chip-overdue" title="${escHtml(t.title)}" onclick="openTask('${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`;
                 }
 
                 const SHOW_LIMIT = 3;
@@ -4803,7 +4801,7 @@ console.log('[Helios WS] connected:', wsUrl);
                     ...overdueOnToday.map(overdueChip),
                     ...dayTasks.map(t =>
                         `<span class="week-task-chip ${chipClass(t)}" title="${escHtml(t.title)}"
-                               onclick="toggleTaskExpand(event,'${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`
+                               onclick="openTask('${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`
                     )
                 ];
                 const visible = allChips.slice(0, SHOW_LIMIT).join('');
@@ -4888,11 +4886,11 @@ console.log('[Helios WS] connected:', wsUrl);
                 let statusLabel = st.toUpperCase();
                 let rowLevel = 0;
 
-                // Only chad-yi, helios, cerebron are truly deployed
-                const knownActive = ['chad-yi', 'helios', 'cerebron'];
+                // Deployed agents: helios, cerebron, escritor, quanta, forger
+                const knownActive = ['chad-yi', 'helios', 'cerebron', 'escritor', 'quanta', 'forger'];
                 const isKnownActive = knownActive.includes(key.toLowerCase());
                 
-                if (st === 'active' && isKnownActive) {
+                if ((st === 'active' || st === 'working') && isKnownActive) {
                     dotCls = 'agent-dot-active';
                     statusLabel = 'ACTIVE';
                 } else if (st === 'active' && !isKnownActive) {
@@ -6035,9 +6033,108 @@ console.log('[Helios WS] connected:', wsUrl);
             alert(`Reviewing item ${itemId}...`);
         }
 
+        let _modalTaskId = null;
+
         function openTask(taskId) {
-            alert(`Opening task ${taskId}...`);
+            if (!window.appData || !window.appData.tasks) return;
+            const t = window.appData.tasks[taskId];
+            if (!t) { console.warn('Task not found:', taskId); return; }
+            _modalTaskId = taskId;
+
+            document.getElementById('tmodal-id').textContent = t.id || taskId;
+            document.getElementById('tmodal-title').textContent = t.title || '—';
+
+            const statusEl = document.getElementById('tmodal-status');
+            const statusMap = { done:'DONE', active:'ACTIVE', review:'REVIEW', blocked:'BLOCKED', pending:'PENDING', backlog:'BACKLOG' };
+            statusEl.textContent = statusMap[t.status] || (t.status||'—').toUpperCase();
+            statusEl.className = 'task-modal-status status-' + (t.status||'pending');
+
+            const priorityEl = document.getElementById('tmodal-priority');
+            priorityEl.textContent = (t.priority||'—').toUpperCase();
+            priorityEl.className = 'task-modal-priority prio-' + (t.priority||'medium');
+
+            const sgtNow = new Date(new Date().toLocaleString('en-US', {timeZone:'Asia/Singapore'}));
+            const today = new Date(sgtNow); today.setHours(0,0,0,0);
+            if (t.deadline) {
+                const dl = new Date(t.deadline); dl.setHours(0,0,0,0);
+                const isOvD = dl < today && t.status !== 'done';
+                const isTdy = dl.getTime() === today.getTime();
+                const dlEl = document.getElementById('tmodal-deadline');
+                dlEl.textContent = (isOvD ? '▲ OVERDUE — ' : isTdy ? 'TODAY — ' : '') +
+                    dl.toLocaleDateString('en-SG', {weekday:'short', year:'numeric', month:'short', day:'numeric'});
+                dlEl.className = 'task-modal-meta-value' + (isOvD ? ' text-overdue' : isTdy ? ' text-today' : '');
+                document.getElementById('tmodal-deadline-row').style.display = 'flex';
+            } else {
+                document.getElementById('tmodal-deadline-row').style.display = 'none';
+            }
+
+            document.getElementById('tmodal-agent').textContent = t.agent || '—';
+            document.getElementById('tmodal-project').textContent = t.project || '—';
+
+            const descSection = document.getElementById('tmodal-desc-section');
+            if (t.description) { document.getElementById('tmodal-desc').textContent = t.description; descSection.style.display = 'block'; }
+            else { descSection.style.display = 'none'; }
+
+            const notesSection = document.getElementById('tmodal-notes-section');
+            if (t.notes) { document.getElementById('tmodal-notes').textContent = t.notes; notesSection.style.display = 'block'; }
+            else { notesSection.style.display = 'none'; }
+
+            document.getElementById('tmodal-btn-done').style.display   = t.status === 'done' ? 'none' : 'inline-flex';
+            document.getElementById('tmodal-btn-active').style.display = (t.status === 'pending' || t.status === 'backlog') ? 'inline-flex' : 'none';
+            document.getElementById('tmodal-btn-blocked').style.display = t.status === 'blocked' ? 'none' : 'inline-flex';
+
+            document.getElementById('task-modal-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeTaskModal() {
+            document.getElementById('task-modal-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+            _modalTaskId = null;
+        }
+
+        function modalMarkDone() {
+            if (!_modalTaskId) return;
+            if (window.appData?.tasks?.[_modalTaskId]) {
+                window.appData.tasks[_modalTaskId].status = 'done';
+                window.appData.tasks[_modalTaskId].completedAt = new Date().toISOString();
+            }
+            showToast(_modalTaskId + ' marked done', 'done');
+            closeTaskModal();
+            if (window.appData) renderNewHomepage(window.appData);
+        }
+
+        function modalMarkActive() {
+            if (!_modalTaskId) return;
+            if (window.appData?.tasks?.[_modalTaskId]) window.appData.tasks[_modalTaskId].status = 'active';
+            showToast(_modalTaskId + ' started', 'info');
+            closeTaskModal();
+            if (window.appData) renderNewHomepage(window.appData);
+        }
+
+        function modalMarkBlocked() {
+            if (!_modalTaskId) return;
+            if (window.appData?.tasks?.[_modalTaskId]) window.appData.tasks[_modalTaskId].status = 'blocked';
+            showToast(_modalTaskId + ' blocked', 'warn');
+            closeTaskModal();
+            if (window.appData) renderNewHomepage(window.appData);
+        }
+
+        function modalAssign() {
+            if (!_modalTaskId || !window.appData) return;
+            const agents = Object.keys(window.appData.agents || {}).filter(a => a !== 'chad-yi');
+            if (!agents.length) { showToast('No agents available', 'warn'); return; }
+            const agent = prompt('Assign to agent:\n' + agents.map(a => a.toUpperCase()).join(', '), agents[0].toUpperCase());
+            if (!agent) return;
+            const agentKey = agent.toLowerCase();
+            if (window.appData?.tasks?.[_modalTaskId]) window.appData.tasks[_modalTaskId].agent = agentKey;
+            showToast(_modalTaskId + ' assigned to ' + agent.toUpperCase(), 'info');
+            closeTaskModal();
+            if (window.appData) renderNewHomepage(window.appData);
+        }
+
+        // Close modal on Escape
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTaskModal(); });
 
         // Toggle Agent Dropdown
         function toggleAgentDropdown() {
@@ -6471,6 +6568,52 @@ console.log('[Helios WS] connected:', wsUrl);
         window.addEventListener('resize', () => { resize(); initStars(); });
     })();
     </script>
+
+    <!-- ═══════════════════════════════════════════════
+         TASK DETAIL MODAL
+    ═══════════════════════════════════════════════ -->
+    <div class="task-modal-overlay" id="task-modal-overlay" onclick="closeTaskModal()">
+        <div class="task-modal" onclick="event.stopPropagation()">
+            <div class="task-modal-header">
+                <div class="task-modal-id" id="tmodal-id">—</div>
+                <div class="task-modal-badges">
+                    <span class="task-modal-status" id="tmodal-status">—</span>
+                    <span class="task-modal-priority" id="tmodal-priority">—</span>
+                </div>
+                <button class="task-modal-close" onclick="closeTaskModal()">✕</button>
+            </div>
+            <div class="task-modal-title" id="tmodal-title">—</div>
+            <div class="task-modal-meta-grid">
+                <div class="task-modal-meta-row" id="tmodal-deadline-row">
+                    <span class="task-modal-meta-label">DEADLINE</span>
+                    <span class="task-modal-meta-value" id="tmodal-deadline">—</span>
+                </div>
+                <div class="task-modal-meta-row">
+                    <span class="task-modal-meta-label">AGENT</span>
+                    <span class="task-modal-meta-value" id="tmodal-agent">—</span>
+                </div>
+                <div class="task-modal-meta-row">
+                    <span class="task-modal-meta-label">PROJECT</span>
+                    <span class="task-modal-meta-value" id="tmodal-project">—</span>
+                </div>
+            </div>
+            <div class="task-modal-section" id="tmodal-desc-section">
+                <div class="task-modal-section-label">DESCRIPTION</div>
+                <div class="task-modal-section-content" id="tmodal-desc">—</div>
+            </div>
+            <div class="task-modal-section" id="tmodal-notes-section">
+                <div class="task-modal-section-label">NOTES / STATUS UPDATE</div>
+                <div class="task-modal-section-content" id="tmodal-notes">—</div>
+            </div>
+            <div class="task-modal-actions">
+                <button class="task-modal-btn btn-done"    id="tmodal-btn-done"    onclick="modalMarkDone()">✓ MARK DONE</button>
+                <button class="task-modal-btn btn-active"  id="tmodal-btn-active"  onclick="modalMarkActive()">▶ START TASK</button>
+                <button class="task-modal-btn btn-blocked" id="tmodal-btn-blocked" onclick="modalMarkBlocked()">⚑ BLOCKED</button>
+                <button class="task-modal-btn btn-assign"                          onclick="modalAssign()">ASSIGN →</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
 
