@@ -3722,6 +3722,7 @@ console.log('[Helios WS] connected:', wsUrl);
             if (catCompletionRate) catCompletionRate.textContent = completionRate + '%';
             if (catUrgentTasks) catUrgentTasks.textContent = urgentTasks;
 
+            populateAgentFilter();
             renderCategoriesList();
 
             if (catLoading) catLoading.style.display = 'none';
@@ -3729,7 +3730,17 @@ console.log('[Helios WS] connected:', wsUrl);
             if (catFilterBar) catFilterBar.style.display = 'flex';
         }
 
-        function renderCategoriesList() {
+        function populateAgentFilter() {
+            const sel = document.getElementById('filter-agent');
+            if (!sel) return;
+            const agents = window.appData && window.appData.agents ? Object.keys(window.appData.agents) : [];
+            // Build options (preserve current selection)
+            const cur = sel.value;
+            sel.innerHTML = '<option value="">All Agents</option>' +
+                agents.map(a => `<option value="${a}"${a === cur ? ' selected' : ''}>${a.toUpperCase()}</option>`).join('');
+        }
+
+                function renderCategoriesList() {
             const container = document.getElementById('categories-container');
 
             const categories = {
@@ -3749,6 +3760,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 const totalTasks = cat.projects.reduce((sum, p) => sum + p.stats.total, 0);
                 const completedTasks = cat.projects.reduce((sum, p) => sum + p.stats.done, 0);
                 const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+                const blockedCount = cat.projects.reduce((sum, p) => sum + (p.tasks || []).filter(t => t.status === 'blocked').length, 0);
 
                 return `
                     <div class="category-section" data-category="${catKey}">
@@ -3758,6 +3770,13 @@ console.log('[Helios WS] connected:', wsUrl);
                                 <h2><span>${catKey}</span>${cat.name.toUpperCase().slice(1)}</h2>
                                 <p>${cat.subtitle}</p>
                             </div>
+                            <div class="category-progress-bar-wrap">
+                                <div class="category-progress-bar">
+                                    <div class="category-progress-fill" style="width: ${completionRate}%"></div>
+                                </div>
+                                <div class="category-progress-label">${completionRate}% complete</div>
+                            </div>
+                            ${blockedCount > 0 ? `<span class="cat-blocked-badge">${blockedCount} BLOCKED</span>` : ''}
                             <div class="category-stats">
                                 <div class="category-stat">
                                     <div class="category-stat-value">${cat.projects.length}</div>
@@ -4019,10 +4038,16 @@ console.log('[Helios WS] connected:', wsUrl);
 
         function renderCategoryTaskItem(task) {
             const priorityClass = task.priority === 'high' ? 'high-priority' : (task.priority === 'medium' ? 'medium-priority' : 'low-priority');
-            const statusIcon = task.status === 'active' ? '▶' : (task.status === 'review' ? '👁' : (task.status === 'done' ? 'Done' : '○'));
+            const statusIcon = task.status === 'active' ? '\u25ba' : (task.status === 'review' ? '\ud83d\udc41' : (task.status === 'done' ? '\u2713' : '\u25cb'));
+            const assignee = task.assignedTo || '';
+            const agents = window.appData && window.appData.agents ? Object.keys(window.appData.agents) : ['chad-yi','helios','escritor','quanta','mensamusa','forger'];
+
+            const agentOpts = agents.map(a =>
+                `<option value="${a}"${a === assignee ? ' selected' : ''}>${a.toUpperCase()}</option>`
+            ).join('');
 
             return `
-                <div class="category-task-item ${priorityClass}">
+                <div class="category-task-item ${priorityClass}" data-task-id="${task.id}">
                     <div class="task-status ${task.status}">${statusIcon}</div>
                     <div class="task-details">
                         <div class="category-task-title">${task.title}</div>
@@ -4030,11 +4055,28 @@ console.log('[Helios WS] connected:', wsUrl);
                         <div class="task-meta-row">
                             <span class="priority-badge ${task.priority}">${task.priority}</span>
                             <span>${task.status}</span>
-                            <span>👤 CHAD_YI</span>
+                            <div class="quick-assign-wrap">
+                                <select class="quick-assign-select" title="Assign to agent"
+                                    onchange="quickAssignTask('${task.id}', this.value); event.stopPropagation();"
+                                    onclick="event.stopPropagation();">
+                                    <option value="">— assign —</option>
+                                    ${agentOpts}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
+        }
+
+        function quickAssignTask(taskId, agentName) {
+            if (!agentName) return;
+            showToast(taskId + ' \u2192 ' + agentName.toUpperCase(), 'info', 3000);
+            // Persist to data.json via backend when available
+            // For now: update local appData so re-renders reflect change
+            if (window.appData && window.appData.tasks && window.appData.tasks[taskId]) {
+                window.appData.tasks[taskId].assignedTo = agentName;
+            }
         }
 
         // Apply Filters

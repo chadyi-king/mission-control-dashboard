@@ -2737,3 +2737,89 @@ body::before {
     overflow-y: auto;
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════
+   COMMIT 12 — CATEGORIES PAGE: PROGRESS BARS, QUICK-ASSIGN, BLOCKED BADGE
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Category progress bar ─────────────────────────────────────── */
+.category-progress-bar-wrap {
+    flex: 1;
+    padding: 0 16px;
+    min-width: 0;
+}
+
+.category-progress-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+.category-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--crimson-bright), #ff8844);
+    border-radius: 2px;
+    transition: width 0.6s ease;
+}
+
+.category-progress-label {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ── Blocked badge on category header ──────────────────────────── */
+.cat-blocked-badge {
+    background: rgba(255,140,0,0.18);
+    color: #ff8c00;
+    border: 1px solid rgba(255,140,0,0.35);
+    border-radius: 3px;
+    font-size: 9px;
+    font-family: var(--font-mono);
+    padding: 2px 7px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    align-self: center;
+}
+
+/* ── Quick-assign select in task items ─────────────────────────── */
+.quick-assign-wrap {
+    margin-left: auto;
+}
+
+.quick-assign-select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    font-size: 9px;
+    font-family: var(--font-mono);
+    padding: 2px 6px;
+    cursor: pointer;
+    max-width: 110px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.quick-assign-select:hover {
+    border-color: var(--crimson-bright);
+    color: var(--text-bright);
+    background: rgba(210,20,20,0.1);
+}
+
+.quick-assign-select:focus {
+    outline: none;
+    border-color: var(--crimson-bright);
+}
+
+/* ── task-meta-row flex alignment ──────────────────────────────── */
+.task-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
