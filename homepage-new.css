@@ -3359,47 +3359,88 @@ body::before {
     }
 }
 
-/* ── Commit 17: Background — nebula + red sun ── */
-/* Place images at:
-     mission-control-dashboard/assets/bg-nebula.jpg   (the deep space + nebula image)
-     mission-control-dashboard/assets/bg-sun.png      (red sun, PNG with transparency OR use mix-blend-mode)
-   Then uncomment the rules below.
-*/
+/* ── Commit 17: Background — nebula gradients + red sun overlay ── */
+/* Deep space background — active immediately (CSS-only, no images required) */
+/* To use your image files instead, drop them in /assets/ and swap the comments */
 body {
-    background-color: #03030a;
-    /* Uncomment once images are in /assets/:
-    background-image: url('assets/bg-nebula.jpg');
-    background-size: cover;
+    background-color: #010108;
+    background-image:
+        /* Nebula cloud top-right */
+        radial-gradient(ellipse 70% 55% at 78% 12%,
+            rgba(140, 20, 20, 0.28) 0%,
+            rgba(80, 10, 40, 0.18) 40%,
+            transparent 70%),
+        /* Nebula cloud bottom-left */
+        radial-gradient(ellipse 60% 45% at 18% 85%,
+            rgba(100, 15, 60, 0.22) 0%,
+            rgba(50, 10, 80, 0.15) 40%,
+            transparent 65%),
+        /* Stars — subtle bright dots via noise-like gradient */
+        radial-gradient(ellipse 100% 100% at 50% 0%,
+            rgba(220, 60, 10, 0.06) 0%,
+            rgba(10, 5, 20, 0.95) 55%,
+            rgba(1, 1, 8, 1) 100%),
+        /* === Swap to image: url('assets/bg-nebula.jpg') === */
+        linear-gradient(180deg, #050210 0%, #010108 100%);
+    background-size: cover, cover, cover, cover;
     background-position: center top;
     background-attachment: fixed;
-    */
 }
 
-/* Red sun overlay — rendered behind content, above nebula */
-/* Requires: <div id="bg-sun"></div> inside <body> before #app */
+/* Red sun — fixed at top-center, bleeds behind the command bar */
+/* Requires: <div id="bg-sun"></div> inside <body> — already added in Commit 17 */
 #bg-sun {
     position: fixed;
-    top: -5%;
+    top: -80px;
     left: 50%;
     transform: translateX(-50%);
-    width: 420px;
-    height: 420px;
+    width: 540px;
+    height: 540px;
     pointer-events: none;
     z-index: 0;
     border-radius: 50%;
-    /* Uncomment once image is in /assets/:
+
+    /* === CSS corona glow (active by default) ===
+       Drop assets/bg-sun.png then swap to the image block below */
+    background:
+        /* Bright inner core */
+        radial-gradient(circle 60px at 50% 50%,
+            rgba(255, 220, 80, 0.55) 0%,
+            rgba(255, 130, 0, 0.45) 30%,
+            rgba(200, 30, 0, 0.35) 55%,
+            transparent 72%),
+        /* Mid corona */
+        radial-gradient(circle 140px at 50% 50%,
+            rgba(220, 80, 0, 0.20) 0%,
+            rgba(160, 20, 0, 0.22) 50%,
+            transparent 75%),
+        /* Outer diffuse glow */
+        radial-gradient(ellipse 100% 80% at 50% 50%,
+            rgba(180, 40, 0, 0.12) 0%,
+            rgba(100, 10, 0, 0.08) 60%,
+            transparent 80%);
+
+    /* === Uncomment when assets/bg-sun.png is placed ===
+    background: none;
     background-image: url('assets/bg-sun.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    mix-blend-mode: screen;
-    opacity: 0.55;
-    filter: blur(0px);
-    */
-    /* Placeholder glow until image is added: */
-    background: radial-gradient(ellipse at center,
-        rgba(255, 200, 0, 0.18) 0%,
-        rgba(220, 60, 0, 0.22) 25%,
-        rgba(180, 0, 0, 0.15) 50%,
-        transparent 72%);
+    mix-blend-mode: multiply;
+    opacity: 0.9;
+    === end image block === */
+
+    /* Slow pulse animation for the corona */
+    animation: sun-pulse 6s ease-in-out infinite;
+}
+
+@keyframes sun-pulse {
+    0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    50%       { opacity: 0.82; transform: translateX(-50%) scale(1.04); }
+}
+
+/* Make sure #app renders above the background */
+#app, .cmd-strip, .side-nav {
+    position: relative;
+    z-index: 1;
 }
