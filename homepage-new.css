@@ -2310,3 +2310,161 @@ body::before {
     }
 }
 
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COMMIT 9 — POLISH: Focus panel height, grid alignment, toasts, pulses
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Fix command grid so agent-ops and focus panel are equal height */
+.command-grid {
+    align-items: stretch;
+}
+.agent-ops {
+    align-items: stretch;
+}
+
+/* ── Focus card body: no max-height — should scroll freely to fill height */
+.focus-card .cmd-card-body,
+.focus-body {
+    max-height: none;
+    flex: 1;
+    min-height: 300px;
+}
+/* But regular ops cards keep their max-height */
+.cmd-card:not(.focus-card):not(.daily-briefing-card) .cmd-card-body {
+    max-height: 220px;
+}
+
+/* ── Make todays-focus-panel stretch full grid height */
+.todays-focus-panel {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+}
+.todays-focus-panel .focus-card {
+    flex: 1;
+    min-height: 500px;
+}
+
+/* ── TOAST NOTIFICATIONS */
+#toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+.toast {
+    background: rgba(8, 8, 14, 0.96);
+    border: 1px solid rgba(220, 38, 38, 0.35);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(220, 220, 235, 0.92);
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 220px;
+    max-width: 360px;
+    animation: toast-in 0.25s ease forwards;
+    pointer-events: auto;
+}
+.toast.toast-done {
+    border-color: rgba(34, 197, 94, 0.4);
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.1);
+}
+.toast.toast-alert {
+    border-color: rgba(220, 38, 38, 0.5);
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.15);
+}
+.toast.toast-info {
+    border-color: rgba(99, 179, 237, 0.35);
+}
+.toast-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+.toast-text { flex: 1; }
+.toast-dismiss {
+    background: none;
+    border: none;
+    color: rgba(150,150,160,0.5);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 2px;
+    pointer-events: auto;
+    flex-shrink: 0;
+}
+@keyframes toast-in {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes toast-out {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(20px); }
+}
+
+/* ── DATA UPDATE PULSE — flashes stats bar on data refresh */
+@keyframes refresh-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    30%  { box-shadow: 0 0 16px 2px rgba(220, 38, 38, 0.25); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+.stats-bar.refreshing {
+    animation: refresh-pulse 1s ease forwards;
+}
+
+/* ── BRIEFING sections layout fix */
+.briefing-section-title::before { flex-shrink: 0; }
+.daily-briefing-card .cmd-card-body {
+    max-height: 280px;
+}
+
+/* ── Ensure ops-row cards display properly in agent-ops grid */
+/* ops-row uses display:contents so children become direct grid items */
+/* Set min-height on those children: */
+#card-review, #card-decisions,
+#card-active, #card-recent,
+#card-recs, #card-health {
+    min-height: 120px;
+}
+
+/* ── Focus rank number styling */
+.focus-rank { user-select: none; }
+
+/* ── Stats bar card highlight when value is nonzero alert */
+#stat-blocked .stat-value:not(:empty):not([data-zero="true"]) { }
+.stat-card.stat-has-alerts {
+    border-color: rgba(220, 38, 38, 0.4);
+}
+
+/* ── Ticker animation delay reset on update */
+.ticker-content.updated {
+    animation: none;
+}
+
+/* ── Week calendar chip title tooltip on hover */
+.week-task-chip {
+    position: relative;
+}
+
+/* ── Smooth section transitions */
+.home-section .cmd-card { animation: card-appear 0.3s ease; }
+@keyframes card-appear {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Priority dot visibility fix */
+.task-item .task-priority-dot {
+    display: inline-block;
+    min-width: 5px;
+}
+

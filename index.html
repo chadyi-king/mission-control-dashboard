@@ -3106,6 +3106,7 @@ console.log('[Helios WS] connected:', wsUrl);
                     if (type === 'event' || type === 'heartbeat' || type === 'task_done' || type === 'complete' || type === 'data_updated') {
                         triggerImmediateRefresh(type);
                     }
+                    if (typeof handleRealtimeEvent === 'function') handleRealtimeEvent(payload);
                 } catch (_) {
                     // ignore non-JSON
                 }
@@ -4118,6 +4119,8 @@ console.log('[Helios WS] connected:', wsUrl);
             renderFocusTasks(data);
             renderWeekCalendar(data);
             updateSystemHealth();
+            // Pulse stats bar on every data refresh
+            if (typeof pulseStatsBar === 'function') pulseStatsBar();
         }
 
         // ════════════════════════════════════════════════════════════════════
@@ -5928,6 +5931,60 @@ console.log('[Helios WS] connected:', wsUrl);
         }
 
         // Initialize
+
+        // ════════════════════════════════════════════════════════════════════
+        // TOAST NOTIFICATION SYSTEM
+        // ════════════════════════════════════════════════════════════════════
+        function showToast(msg, type = 'info', duration = 4000) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const icons = { done: '✓', alert: '▲', info: '●', warn: '◆' };
+            const div = document.createElement('div');
+            div.className = `toast toast-${type}`;
+            div.innerHTML = `
+                <span class="toast-icon">${icons[type] || '●'}</span>
+                <span class="toast-text">${String(msg).slice(0, 80)}</span>
+                <button class="toast-dismiss" onclick="this.closest('.toast').remove()">✕</button>
+            `;
+            container.appendChild(div);
+            setTimeout(() => {
+                div.style.animation = 'toast-out 0.25s ease forwards';
+                setTimeout(() => div.remove(), 280);
+            }, duration);
+        }
+
+        function pulseStatsBar() {
+            const bar = document.getElementById('stats-bar');
+            if (!bar) return;
+            bar.classList.remove('refreshing');
+            void bar.offsetWidth; // reflow
+            bar.classList.add('refreshing');
+            setTimeout(() => bar.classList.remove('refreshing'), 1000);
+        }
+
+        // Hook toast into WS task events
+        const _origHandleWsMsg = window.__rsWsMsgHook || null;
+        function handleRealtimeEvent(payload) {
+            const type = payload?.type;
+            const agent = payload?.agent || payload?.source || 'SYSTEM';
+            const task = payload?.task || payload?.taskId || '';
+            const msg = payload?.message || payload?.event || '';
+
+            if (type === 'task_done' || type === 'complete' || type === 'task_completed') {
+                showToast(`${agent}: ${task || msg || 'task completed'}`, 'done');
+                pulseStatsBar();
+            } else if (type === 'task_updated' || type === 'data_updated') {
+                showToast('Dashboard updated', 'info', 2000);
+                pulseStatsBar();
+            } else if (type === 'agent_status_changed') {
+                showToast(`Agent ${agent}: ${msg || 'status changed'}`, 'info');
+            } else if (type === 'alert' || type === 'error') {
+                showToast(msg || `Alert from ${agent}`, 'alert');
+            } else if (type === 'blocked') {
+                showToast(`BLOCKED: ${task || msg}`, 'warn');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize expanded state tracking
             window.expandedState = {};
@@ -6183,6 +6240,7 @@ console.log('[Helios WS] connected:', wsUrl);
             };
         })();
     </script>
+    <div id="toast-container"></div>
 </body>
 </html>
 
