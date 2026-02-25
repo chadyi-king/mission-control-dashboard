@@ -574,14 +574,34 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
     gap: 12px;
 }
 .rs-card {
-    background: #0d0008;
-    border: 1px solid rgba(139, 0, 0, 0.22);
+    background: radial-gradient(
+        circle at top left,
+        rgba(220, 38, 38, 0.06) 0%,
+        rgba(13, 0, 8, 0.95) 30%,
+        #0a0006 100%
+    );
+    border: 1px solid rgba(220, 38, 38, 0.25);
     border-radius: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     position: relative;
     z-index: 1;
+    box-shadow: 
+        0 0 20px rgba(220, 38, 38, 0.1),
+        0 4px 12px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.02),
+        inset 0 -1px 0 rgba(220, 38, 38, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.rs-card:hover {
+    border-color: rgba(220, 38, 38, 0.4);
+    box-shadow: 
+        0 0 32px rgba(220, 38, 38, 0.16),
+        0 8px 24px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -1px 0 rgba(220, 38, 38, 0.08);
+    transform: translateY(-2px);
 }
 .rs-card-half { height: 340px; }
 .rs-card-full { height: 692px; }
@@ -594,9 +614,15 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
     align-items: center;
     justify-content: space-between;
     padding: 9px 14px;
-    border-bottom: 1px solid rgba(139, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(220, 38, 38, 0.18);
     flex-shrink: 0;
-    background: rgba(0,0,0,0.2);
+    background: linear-gradient(
+        90deg,
+        rgba(220, 38, 38, 0.04) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    box-shadow: 0 1px 0 rgba(220, 38, 38, 0.06);
 }
 .rs-card-title {
     display: flex;
@@ -635,8 +661,14 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
 
 .rs-card-footer {
     padding: 7px 14px;
-    border-top: 1px solid rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(220, 38, 38, 0.12);
     flex-shrink: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(220, 38, 38, 0.02) 0%,
+        transparent 100%
+    );
+    box-shadow: 0 -1px 0 rgba(220, 38, 38, 0.04);
 }
 .rs-see-all {
     font-size: 8px;
