@@ -2252,6 +2252,8 @@
     <link rel="stylesheet" href="homepage-new.css">
 </head>
 <body>
+    <!-- Background: nebula + red sun — images go in /assets/ -->
+    <div id="bg-sun" aria-hidden="true"></div>
     <!-- Hyperspace Starfield Canvas -->
     <canvas id="starfield-canvas"></canvas>
     <!-- Solar Corona Background -->
@@ -2621,7 +2623,85 @@
 
                     </div><!-- /ops-row ROW 2 -->
 
+                    <!-- ROW 3: RECENTLY DONE — spans both agent-ops columns -->
+                    <div class="cmd-card recently-done-card" id="card-recent">
+                        <div class="cmd-card-header">
+                            <div class="cmd-card-title">
+                                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                RECENTLY DONE
+                            </div>
+                            <span class="card-badge badge-done" id="recent-count">0</span>
+                        </div>
+                        <div class="cmd-card-body recently-done-body">
+                            <ul class="task-list task-list-horizontal" id="recently-done-list">
+                                <li class="task-item-empty">Nothing completed yet today</li>
+                            </ul>
+                        </div>
+                    </div>
 
+                    <!-- ROW 4: ACTIVE WORK | SYSTEM HEALTH — ops-row uses display:contents → side-by-side in the 2-col grid -->
+                    <div class="ops-row">
+
+                        <!-- ACTIVE WORK (chad + cerebron + helios only) -->
+                        <div class="cmd-card" id="card-active">
+                            <div class="cmd-card-header">
+                                <div class="cmd-card-title">
+                                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                                    </svg>
+                                    ACTIVE WORK
+                                </div>
+                                <span class="card-badge badge-good" id="active-count">0</span>
+                            </div>
+                            <div class="cmd-card-body">
+                                <ul class="task-list" id="active-work-list">
+                                    <li class="task-item-empty">No active tasks</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- SYSTEM HEALTH: chad-yi → cerebron → helios → others -->
+                        <div class="cmd-card" id="card-health">
+                            <div class="cmd-card-header">
+                                <div class="cmd-card-title">
+                                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                    </svg>
+                                    SYSTEM HEALTH
+                                </div>
+                                <span class="health-indicator" id="health-indicator">
+                                    <span class="health-dot good"></span>
+                                </span>
+                            </div>
+                            <div class="cmd-card-body">
+                                <div id="system-health-content">
+                                    <div class="health-row">
+                                        <span class="health-label">WebSocket</span>
+                                        <span class="health-status" id="ws-status">—</span>
+                                    </div>
+                                    <div class="health-row">
+                                        <span class="health-label">Helios API</span>
+                                        <span class="health-status" id="helios-status">—</span>
+                                    </div>
+                                    <div class="health-row">
+                                        <span class="health-label">Data Feed</span>
+                                        <span class="health-status" id="data-status">—</span>
+                                    </div>
+                                    <div class="health-row">
+                                        <span class="health-label">Last Sync</span>
+                                        <span class="health-status" id="last-sync">—</span>
+                                    </div>
+                                    <div class="health-divider"></div>
+                                    <div id="agent-fleet-health">
+                                        <!-- Populated by updateSystemHealth() — sorted chad-yi → cerebron → helios → others -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /ops-row ROW 4 -->
 
                 </div><!-- /agent-ops -->
 
@@ -2687,91 +2767,7 @@
 
             </div><!-- /command-grid -->
 
-            <!-- ═══════════════════════════════════════
-                 RECENTLY DONE  — full width row below grid
-            ══════════════════════════════════════════ -->
-            <div class="ops-full-row">
-                <div class="cmd-card" id="card-recent">
-                    <div class="cmd-card-header">
-                        <div class="cmd-card-title">
-                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            RECENTLY DONE
-                        </div>
-                        <span class="card-badge badge-done" id="recent-count">0</span>
-                    </div>
-                    <div class="cmd-card-body">
-                        <ul class="task-list task-list-horizontal" id="recently-done-list">
-                            <li class="task-item-empty">Nothing completed yet today</li>
-                        </ul>
-                    </div>
-                </div>
-            </div><!-- /ops-full-row -->
 
-            <!-- ═══════════════════════════════════════
-                 ACTIVE WORK  +  SYSTEM HEALTH  — 2-col row
-            ══════════════════════════════════════════ -->
-            <div class="ops-split-row">
-
-                <!-- ACTIVE WORK -->
-                <div class="cmd-card" id="card-active">
-                    <div class="cmd-card-header">
-                        <div class="cmd-card-title">
-                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                            </svg>
-                            ACTIVE WORK
-                        </div>
-                        <span class="card-badge badge-good" id="active-count">0</span>
-                    </div>
-                    <div class="cmd-card-body">
-                        <ul class="task-list" id="active-work-list">
-                            <li class="task-item-empty">No active tasks</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- SYSTEM HEALTH -->
-                <div class="cmd-card" id="card-health">
-                    <div class="cmd-card-header">
-                        <div class="cmd-card-title">
-                            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                            </svg>
-                            SYSTEM HEALTH
-                        </div>
-                        <span class="health-indicator" id="health-indicator">
-                            <span class="health-dot good"></span>
-                        </span>
-                    </div>
-                    <div class="cmd-card-body">
-                        <div id="system-health-content">
-                            <div class="health-row">
-                                <span class="health-label">WebSocket</span>
-                                <span class="health-status" id="ws-status">—</span>
-                            </div>
-                            <div class="health-row">
-                                <span class="health-label">Helios API</span>
-                                <span class="health-status" id="helios-status">—</span>
-                            </div>
-                            <div class="health-row">
-                                <span class="health-label">Data Feed</span>
-                                <span class="health-status" id="data-status">—</span>
-                            </div>
-                            <div class="health-row">
-                                <span class="health-label">Last Sync</span>
-                                <span class="health-status" id="last-sync">—</span>
-                            </div>
-                            <div class="health-divider"></div>
-                            <div id="agent-fleet-health">
-                                <!-- Populated by updateSystemHealth() -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- /ops-split-row -->
 
             <!-- ═══════════════════════════════════════════
                  WEEK CALENDAR — Mon-Sun, color-coded
@@ -4524,8 +4520,12 @@ console.log('[Helios WS] connected:', wsUrl);
             }
             if (decisionsCount) decisionsCount.textContent = inputs.length;
 
-            // ACTIVE WORK (agent-assigned tasks only, excluding CHAD_YI self-tasks)
-            const activeTasks = tasks.filter(t => t.status === 'active' && t.agent && t.agent !== 'CHAD_YI').slice(0, 8);
+            // ACTIVE WORK — show tasks assigned to core agents: chad-yi, cerebron, helios
+            const _coreAgents = ['chad-yi', 'cerebron', 'helios', 'CHAD_YI', 'Cerebron', 'Helios'];
+            const activeTasks = tasks.filter(t =>
+                t.status === 'active' && t.agent &&
+                _coreAgents.map(a => a.toLowerCase()).includes((t.agent || '').toLowerCase())
+            ).slice(0, 10);
             const activeList = document.getElementById('active-work-list');
             const activeCount = document.getElementById('active-count');
             if (activeList) activeList.innerHTML = buildTaskList(activeTasks, 6);

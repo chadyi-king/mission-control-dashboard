@@ -3332,35 +3332,74 @@ body::before {
     vertical-align: middle;
 }
 
-/* ── Commit 16: Full-width recently-done row + active/health split row ── */
-.ops-full-row {
-    margin-top: 10px;
+/* ── Commit 17: Layout correction — rows 3+4 back inside agent-ops ── */
+
+/* ROW 3: Recently Done — spans both columns of the 2-col agent-ops grid */
+.recently-done-card {
+    grid-column: 1 / -1;
 }
-.ops-full-row .cmd-card-body {
+.recently-done-body {
     max-height: none;
+    min-height: 60px;
 }
 .task-list-horizontal {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 6px;
+    padding: 4px 0;
 }
 .task-list-horizontal .task-item {
-    flex: 0 0 calc(25% - 4px);
+    flex: 0 0 calc(25% - 6px);
     min-width: 180px;
 }
 
-.ops-split-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
+@media (max-width: 768px) {
+    .task-list-horizontal .task-item {
+        flex: 0 0 calc(50% - 6px);
+    }
 }
 
-@media (max-width: 768px) {
-    .ops-split-row {
-        grid-template-columns: 1fr;
-    }
-    .task-list-horizontal .task-item {
-        flex: 0 0 calc(50% - 4px);
-    }
+/* ── Commit 17: Background — nebula + red sun ── */
+/* Place images at:
+     mission-control-dashboard/assets/bg-nebula.jpg   (the deep space + nebula image)
+     mission-control-dashboard/assets/bg-sun.png      (red sun, PNG with transparency OR use mix-blend-mode)
+   Then uncomment the rules below.
+*/
+body {
+    background-color: #03030a;
+    /* Uncomment once images are in /assets/:
+    background-image: url('assets/bg-nebula.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    */
+}
+
+/* Red sun overlay — rendered behind content, above nebula */
+/* Requires: <div id="bg-sun"></div> inside <body> before #app */
+#bg-sun {
+    position: fixed;
+    top: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    height: 420px;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+    /* Uncomment once image is in /assets/:
+    background-image: url('assets/bg-sun.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    mix-blend-mode: screen;
+    opacity: 0.55;
+    filter: blur(0px);
+    */
+    /* Placeholder glow until image is added: */
+    background: radial-gradient(ellipse at center,
+        rgba(255, 200, 0, 0.18) 0%,
+        rgba(220, 60, 0, 0.22) 25%,
+        rgba(180, 0, 0, 0.15) 50%,
+        transparent 72%);
 }
