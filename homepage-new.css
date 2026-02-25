@@ -3243,3 +3243,89 @@ body::before {
         grid-template-columns: repeat(3, 1fr) !important;
     }
 }
+
+/* ── FOCUS PANEL — Fix accordion overflow pushing content down ── */
+.todays-focus-panel { overflow: hidden !important; }
+.todays-focus-panel .focus-card { overflow: hidden !important; }
+.focus-body { min-height: 0 !important; }
+
+/* ── FOCUS FILTER DROPDOWN ── */
+.focus-filter-select {
+    background: rgba(20, 0, 6, 0.85);
+    border: 1px solid rgba(139, 0, 0, 0.3);
+    color: rgba(180, 180, 190, 0.8);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 5px;
+    height: 22px;
+    cursor: pointer;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.focus-filter-select:hover,
+.focus-filter-select:focus { border-color: var(--crimson); color: var(--text-primary); }
+.focus-filter-select option { background: #0b000a; }
+
+/* ── WEEK CHIP INLINE DETAIL ── */
+.week-chip-detail {
+    background: rgba(12, 0, 4, 0.95);
+    border: 1px solid rgba(220, 20, 60, 0.35);
+    border-radius: 4px;
+    padding: 7px 9px;
+    margin: 3px 0;
+    font-size: 10px;
+    line-height: 1.45;
+    animation: wcd-in 0.12s ease;
+}
+@keyframes wcd-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.wcd-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+    line-height: 1.3;
+}
+.wcd-meta {
+    color: var(--text-muted);
+    font-size: 9px;
+    margin-bottom: 5px;
+    letter-spacing: 0.03em;
+}
+.wcd-notes {
+    color: rgba(160, 160, 170, 0.65);
+    font-size: 9px;
+    font-style: italic;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+.wcd-open-btn {
+    background: transparent;
+    border: 1px solid rgba(139, 0, 0, 0.4);
+    color: rgba(220, 20, 60, 0.75);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.15s, color 0.15s;
+}
+.wcd-open-btn:hover { background: rgba(220, 20, 60, 0.12); color: var(--crimson-bright); }
+
+/* ── AGENT HEALTH ROLE TAGLINE ── */
+.agent-health-role {
+    font-size: 8px;
+    color: rgba(140, 140, 155, 0.55);
+    letter-spacing: 0.03em;
+    font-style: italic;
+    margin-left: 4px;
+    vertical-align: middle;
+}

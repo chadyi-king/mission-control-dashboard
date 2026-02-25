@@ -2741,14 +2741,12 @@
                             </div>
                             <div class="cmd-card-actions">
                                 <span class="card-badge badge-total" id="focus-total-count">0 tasks</span>
-                                <button class="card-btn" onclick="shuffleFocusOrder()" title="Re-sort by urgency">
-                                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="17 1 21 5 17 9"/>
-                                        <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-                                        <polyline points="7 23 3 19 7 15"/>
-                                        <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-                                    </svg>
-                                </button>
+                                <select class="focus-filter-select" id="focus-filter-select" onchange="setFocusFilter(this.value)" title="Sort tasks by">
+                                    <option value="urgency">⇅ Urgency</option>
+                                    <option value="due-today">Due Today</option>
+                                    <option value="high-priority">High Priority</option>
+                                    <option value="custom">Custom Order</option>
+                                </select>
                             </div>
                         </div>
 
@@ -2973,6 +2971,14 @@
             return 'ws://localhost:8000';
         })();
         let heliosSocket = null;
+
+        // ── TIMEZONE HELPER ──────────────────────────────────────────────────
+        function sgtToday() {
+            const s = new Date().toLocaleString('en-US', { timeZone: 'Asia/Singapore' });
+            const d = new Date(s);
+            d.setHours(0, 0, 0, 0);
+            return d;
+        }
         let heliosSocketRetryTimer = null;
         let heliosSocketHeartbeatTimer = null;
         let lastRealtimeRefreshMs = 0;
@@ -4308,7 +4314,7 @@ console.log('[Helios WS] connected:', wsUrl);
             if (!el) return;
             const tasks = Object.values(data.tasks || {});
             const agents = data.agents || {};
-            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const today = sgtToday();
 
             function fmt(d) {
                 if (!d) return '';
@@ -4374,7 +4380,7 @@ console.log('[Helios WS] connected:', wsUrl);
 
             const tasks = Object.values(data.tasks || {});
             const agents = data.agents || {};
-            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const today = sgtToday();
             const lastLogin = localStorage.getItem('rs_last_login') ? new Date(localStorage.getItem('rs_last_login')) : today;
             // Update last login
             localStorage.setItem('rs_last_login', new Date().toISOString());
@@ -4463,7 +4469,7 @@ console.log('[Helios WS] connected:', wsUrl);
         // ── OPS CARDS ─────────────────────────────────────────────────────
         function renderOpsCards(data) {
             const tasks = Object.values(data.tasks || {});
-            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const today = sgtToday();
 
             function isOverdue(d) { if (!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd < today; }
             function isToday(d)   { if (!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd.getTime()===today.getTime(); }
@@ -4504,14 +4510,16 @@ console.log('[Helios WS] connected:', wsUrl);
                     decisionsList.innerHTML = '<li class="task-item-empty">No pending decisions</li>';
                 } else {
                     decisionsList.innerHTML = inputs.slice(0, 6).map(inp => `
-                        <li class="task-item priority-high">
+                        <li class="task-item priority-high" onclick="openTask('${inp.id}')">
                             <div class="task-item-header">
                                 <span class="task-priority-dot"></span>
-                                <span class="task-title">${escHtml(inp.question || inp.decision || inp.id || 'Decision required')}</span>
+                                <span class="task-title">${escHtml(inp.question || inp.title || inp.id || 'Decision required')}</span>
                             </div>
                             <div class="task-meta">
                                 <span class="task-id">${inp.id}</span>
                                 ${inp.requiredBy ? `<span class="task-agent">${inp.requiredBy}</span>` : ''}
+                                ${inp.whatINeed ? `<span class="task-deadline">${escHtml(inp.whatINeed.slice(0,30))}</span>` : ''}
+                                <span class="task-open-hint">→ view</span>
                             </div>
                         </li>
                     `).join('');
@@ -4519,8 +4527,8 @@ console.log('[Helios WS] connected:', wsUrl);
             }
             if (decisionsCount) decisionsCount.textContent = inputs.length;
 
-            // ACTIVE WORK
-            const activeTasks = tasks.filter(t => t.status === 'active').slice(0, 8);
+            // ACTIVE WORK (agent-assigned tasks only, excluding CHAD_YI self-tasks)
+            const activeTasks = tasks.filter(t => t.status === 'active' && t.agent && t.agent !== 'CHAD_YI').slice(0, 8);
             const activeList = document.getElementById('active-work-list');
             const activeCount = document.getElementById('active-count');
             if (activeList) activeList.innerHTML = buildTaskList(activeTasks, 6);
@@ -4562,10 +4570,19 @@ console.log('[Helios WS] connected:', wsUrl);
 
         // ── TODAY'S FOCUS ─────────────────────────────────────────────────
         let _focusTaskOrder = [];
+        let _focusFilter = localStorage.getItem('rs_focus_filter') || 'urgency';
+
+        function setFocusFilter(val) {
+            _focusFilter = val;
+            localStorage.setItem('rs_focus_filter', val);
+            if (val !== 'custom') localStorage.removeItem('rs_focus_order');
+            if (window.appData) renderFocusTasks(window.appData);
+        }
 
         function renderFocusTasks(data) {
             const tasks = Object.values(data.tasks || {});
-            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const today = sgtToday();
+            const todayStr = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
 
             function isOverdue(d) { if (!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd < today; }
             function isToday(d)   { if (!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd.getTime()===today.getTime(); }
@@ -4591,15 +4608,35 @@ console.log('[Helios WS] connected:', wsUrl);
                 })
                 .sort((a, b) => b._score - a._score);
 
-            // Try to restore saved order from localStorage
-            const savedOrder = JSON.parse(localStorage.getItem('rs_focus_order') || 'null');
-            let ordered = scored;
-            if (savedOrder && Array.isArray(savedOrder)) {
-                const byId = {};
-                scored.forEach(t => byId[t.id] = t);
-                const reordered = savedOrder.map(id => byId[id]).filter(Boolean);
-                const remaining = scored.filter(t => !savedOrder.includes(t.id));
-                ordered = [...reordered, ...remaining];
+            // Apply filter (from dropdown or localStorage)
+            const activeFilter = _focusFilter || localStorage.getItem('rs_focus_filter') || 'urgency';
+            // Sync dropdown
+            const filterEl = document.getElementById('focus-filter-select');
+            if (filterEl && filterEl.value !== activeFilter) filterEl.value = activeFilter;
+
+            let ordered;
+            if (activeFilter === 'due-today') {
+                ordered = [...scored].sort((a, b) => {
+                    const aT = a.deadline && a.deadline.slice(0,10) === todayStr;
+                    const bT = b.deadline && b.deadline.slice(0,10) === todayStr;
+                    if (aT && !bT) return -1;
+                    if (!aT && bT) return 1;
+                    return b._score - a._score;
+                });
+            } else if (activeFilter === 'high-priority') {
+                const pOrd = { critical: 0, high: 1, medium: 2, low: 3 };
+                ordered = [...scored].sort((a, b) => (pOrd[a.priority] ?? 4) - (pOrd[b.priority] ?? 4));
+            } else if (activeFilter === 'custom') {
+                const savedOrder = JSON.parse(localStorage.getItem('rs_focus_order') || 'null');
+                if (savedOrder && Array.isArray(savedOrder)) {
+                    const byId = {};
+                    scored.forEach(t => byId[t.id] = t);
+                    const reordered = savedOrder.map(id => byId[id]).filter(Boolean);
+                    const remaining = scored.filter(t => !savedOrder.includes(t.id));
+                    ordered = [...reordered, ...remaining];
+                } else { ordered = scored; }
+            } else {
+                ordered = scored; // 'urgency' default
             }
             _focusTaskOrder = ordered.map(t => t.id);
 
@@ -4632,7 +4669,7 @@ console.log('[Helios WS] connected:', wsUrl);
         }
 
         function buildFocusCard(t, rank) {
-            const today = new Date(); today.setHours(0,0,0,0);
+            const today = sgtToday();
             function isOverdue(d) { if(!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd < today; }
             function isToday(d)   { if(!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd.getTime()===today.getTime(); }
             function fmtDl(d)     { return d ? new Date(d).toLocaleDateString('en-SG', {month:'short',day:'numeric'}) : ''; }
@@ -4726,6 +4763,9 @@ console.log('[Helios WS] connected:', wsUrl);
             _focusTaskOrder.splice(srcIdx, 1);
             _focusTaskOrder.splice(tgtIdx, 0, _dragSrcId);
             localStorage.setItem('rs_focus_order', JSON.stringify(_focusTaskOrder));
+            // Auto-switch to custom filter when user drags to reorder
+            _focusFilter = 'custom';
+            localStorage.setItem('rs_focus_filter', 'custom');
             _dragSrcId = null;
             if (window.appData) renderFocusTasks(window.appData);
         }
@@ -4768,7 +4808,7 @@ console.log('[Helios WS] connected:', wsUrl);
             const cols = DAYS.map((dayName, idx) => {
                 const colDate = new Date(weekStart);
                 colDate.setDate(weekStart.getDate() + idx);
-                const colStr = colDate.toISOString().slice(0, 10);
+                const colStr = colDate.getFullYear() + '-' + String(colDate.getMonth()+1).padStart(2,'0') + '-' + String(colDate.getDate()).padStart(2,'0');
                 const isToday = colStr === todayStr;
 
                 // Tasks due on this day
@@ -4793,7 +4833,7 @@ console.log('[Helios WS] connected:', wsUrl);
                     return 'week-chip-low';
                 }
                 function overdueChip(t) {
-                    return `<span class="week-task-chip week-chip-overdue" title="${escHtml(t.title)}" onclick="openTask('${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`;
+                    return `<span class="week-task-chip week-chip-overdue" title="${escHtml(t.title)}" onclick="toggleWeekChip(event,'${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`;
                 }
 
                 const SHOW_LIMIT = 3;
@@ -4801,9 +4841,10 @@ console.log('[Helios WS] connected:', wsUrl);
                     ...overdueOnToday.map(overdueChip),
                     ...dayTasks.map(t =>
                         `<span class="week-task-chip ${chipClass(t)}" title="${escHtml(t.title)}"
-                               onclick="openTask('${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`
+                               onclick="toggleWeekChip(event,'${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`
                     )
                 ];
+
                 const visible = allChips.slice(0, SHOW_LIMIT).join('');
                 const moreCount = allChips.length - SHOW_LIMIT;
                 const moreBtn = moreCount > 0
@@ -4829,6 +4870,40 @@ console.log('[Helios WS] connected:', wsUrl);
             const isOpen = extraEl.style.display !== 'none';
             extraEl.style.display = isOpen ? 'none' : 'block';
             btn.textContent = isOpen ? btn.textContent.replace('[−', '[+') : btn.textContent.replace('[+', '[−');
+        }
+
+        function toggleWeekChip(evt, taskId) {
+            evt.stopPropagation();
+            const chip = evt.currentTarget;
+            const col = chip.closest('.week-day-col');
+            if (!col) return;
+            // Remove any existing detail in this column
+            const existing = col.querySelector('.week-chip-detail');
+            if (existing) {
+                const forTask = existing.dataset.forTask;
+                existing.remove();
+                if (forTask === taskId) return; // toggled off same chip
+            }
+            // Build detail panel
+            const t = window.appData && window.appData.tasks && window.appData.tasks[taskId];
+            if (!t) return;
+            const pMap = { critical: 'var(--crimson-bright)', high: '#ff8800', medium: '#ffcc00', low: '#44aa88' };
+            const clr = pMap[t.priority] || '#888';
+            const dlFmt = t.deadline ? new Date(t.deadline).toLocaleDateString('en-SG', { month: 'short', day: 'numeric' }) : null;
+            const detail = document.createElement('div');
+            detail.className = 'week-chip-detail';
+            detail.dataset.forTask = taskId;
+            detail.innerHTML = `
+                <div class="wcd-title">${escHtml(t.title)}</div>
+                <div class="wcd-meta">
+                    <span style="color:${clr}">${(t.priority||'medium').toUpperCase()}</span>
+                    &nbsp;·&nbsp;${t.status || 'pending'}
+                    ${dlFmt ? `&nbsp;·&nbsp;due ${dlFmt}` : ''}
+                </div>
+                ${t.notes ? `<div class="wcd-notes">${escHtml(t.notes.slice(0, 90))}</div>` : ''}
+                <button class="wcd-open-btn" onclick="openTask('${escHtml(taskId)}')">→ Open Full View</button>
+            `;
+            chip.insertAdjacentElement('afterend', detail);
         }
 
         function changeWeek(direction) {
@@ -4886,13 +4961,23 @@ console.log('[Helios WS] connected:', wsUrl);
                 let statusLabel = st.toUpperCase();
                 let rowLevel = 0;
 
-                // Deployed agents: helios, cerebron, escritor, quanta, forger
+                // Check if lastActive within 24h for STALE detection
+                const lastActiveMs = ag.lastActive ? new Date(ag.lastActive).getTime() : 0;
+                const hoursSince = (Date.now() - lastActiveMs) / (1000 * 60 * 60);
+
+                // Deployed agents
                 const knownActive = ['chad-yi', 'helios', 'cerebron', 'escritor', 'quanta', 'forger'];
                 const isKnownActive = knownActive.includes(key.toLowerCase());
                 
                 if ((st === 'active' || st === 'working') && isKnownActive) {
-                    dotCls = 'agent-dot-active';
-                    statusLabel = 'ACTIVE';
+                    if (hoursSince <= 24) {
+                        dotCls = 'agent-dot-active';
+                        statusLabel = 'ACTIVE';
+                    } else {
+                        dotCls = 'agent-dot-idle';
+                        statusLabel = 'STALE';
+                        rowLevel = 1;
+                    }
                 } else if (st === 'active' && !isKnownActive) {
                     dotCls = 'agent-dot-offline';
                     statusLabel = 'NOT DEPLOYED';
@@ -4911,10 +4996,11 @@ console.log('[Helios WS] connected:', wsUrl);
                     ? ag.currentTask.slice(0, 28) + (ag.currentTask.length > 28 ? '…' : '')
                     : '';
                 const lastSeen = relativeTime(ag.lastActive);
+                const roleLine = ag.role_tagline ? ` <span class="agent-health-role">${ag.role_tagline}</span>` : '';
 
                 return `<div class="health-row agent-health-row">
                     <span class="agent-pulse-dot ${dotCls}"></span>
-                    <span class="agent-health-name">${key.toUpperCase()}</span>
+                    <span class="agent-health-name">${key.toUpperCase()}</span>${roleLine}
                     <div class="agent-health-right">
                         <span class="agent-health-task" title="${ag.currentTask || ''}">${taskSnippet}</span>
                         <span class="agent-health-timestamp">${lastSeen}</span>
@@ -5234,6 +5320,14 @@ console.log('[Helios WS] connected:', wsUrl);
             } catch(e) {
                 const el = document.getElementById('comms-helios');
                 if (el) { el.textContent = 'OFFLINE'; el.className = 'comms-value error'; }
+                // Fallback: show data.json lastUpdated when Helios API is offline
+                const lae = document.getElementById('last-audit-time');
+                if (lae && (lae.textContent === '—' || lae.textContent === '') && window.appData && window.appData.lastUpdated) {
+                    const diff = Date.now() - new Date(window.appData.lastUpdated).getTime();
+                    const hrs = Math.floor(diff / 3600000);
+                    const fallbackTxt = hrs < 1 ? 'just now' : hrs < 24 ? `${hrs}h ago` : `${Math.floor(hrs/24)}d ago`;
+                    lae.textContent = fallbackTxt + ' (data.json)';
+                }
             }
         }
 
@@ -5466,16 +5560,7 @@ console.log('[Helios WS] connected:', wsUrl);
         }
 
 
-        // ─── TODAY'S FOCUS ───────────────────────────────────────────────────
-        window._focusFilter = 'urgent';
-
-        function setFocusFilter(filter, btn) {
-            window._focusFilter = filter;
-            document.querySelectorAll('.focus-filter-btn').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-            renderTodaysFocus(filter);
-        }
-
+        // ─── TODAY'S FOCUS (legacy — superseded by renderFocusTasks) ──────────────
         function renderTodaysFocus(filter) {
             const container = document.getElementById('focus-task-list');
             const countBadge = document.getElementById('focus-count');
