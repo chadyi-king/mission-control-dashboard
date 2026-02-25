@@ -2637,3 +2637,103 @@ body::before {
     }
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════
+   COMMIT 11 — SYSTEM HEALTH: AGENT FLEET STATUS
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Health divider ────────────────────────────────────────────── */
+.health-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 6px 0;
+}
+
+/* ── Agent health rows ──────────────────────────────────────────── */
+.agent-health-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 0;
+    font-size: 9px;
+}
+
+.agent-health-name {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    font-weight: 700;
+    color: var(--text-bright);
+    min-width: 72px;
+    letter-spacing: 0.03em;
+}
+
+.agent-health-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.agent-health-task {
+    font-size: 8px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.agent-health-timestamp {
+    font-size: 7.5px;
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* ── Agent pulse dots ───────────────────────────────────────────── */
+.agent-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+/* ACTIVE — breathing green glow */
+.agent-dot-active {
+    background: #00ff88;
+    box-shadow: 0 0 4px #00ff88;
+    animation: agent-breath 2.4s ease-in-out infinite;
+}
+@keyframes agent-breath {
+    0%, 100% { opacity: 1;   box-shadow: 0 0 4px #00ff88, 0 0 8px #00ff8888; }
+    50%       { opacity: 0.55; box-shadow: 0 0 2px #00ff88; }
+}
+
+/* BLOCKED — orange fast blink */
+.agent-dot-blocked {
+    background: #ff8c00;
+    box-shadow: 0 0 4px #ff8c00;
+    animation: agent-blocked-blink 1s step-end infinite;
+}
+@keyframes agent-blocked-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.1; }
+}
+
+/* IDLE — dim white, no animation */
+.agent-dot-idle {
+    background: rgba(255,255,255,0.35);
+}
+
+/* OFFLINE / UNSPAWNED — gray, no animation */
+.agent-dot-offline {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* System health card — allow taller body for agent fleet */
+#card-health .cmd-card-body {
+    max-height: 260px;
+    overflow-y: auto;
+}
+

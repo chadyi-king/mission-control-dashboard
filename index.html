@@ -2708,6 +2708,10 @@
                                         <span class="health-label">Last Sync</span>
                                         <span class="health-status" id="last-sync">—</span>
                                     </div>
+                                    <div class="health-divider"></div>
+                                    <div id="agent-fleet-health">
+                                        <!-- Populated by updateSystemHealth() -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4786,6 +4790,84 @@ console.log('[Helios WS] connected:', wsUrl);
             fetch('data.json?ping=1', { method: 'HEAD' })
                 .then(() => setStatus('helios-status', 'REACHABLE', 'ok'))
                 .catch(() => setStatus('helios-status', 'UNREACHABLE', 'error'));
+
+            // Agent fleet health rows
+            const fleetEl = document.getElementById('agent-fleet-health');
+            if (!fleetEl) return;
+
+            const agents = window.appData && window.appData.agents
+                ? window.appData.agents
+                : {};
+
+            function relativeTime(iso) {
+                if (!iso) return '';
+                const diff = Date.now() - new Date(iso).getTime();
+                const mins = Math.floor(diff / 60000);
+                if (mins < 1)  return 'just now';
+                if (mins < 60) return `${mins}m ago`;
+                const hrs = Math.floor(mins / 60);
+                if (hrs < 24)  return `${hrs}h ago`;
+                return `${Math.floor(hrs / 24)}d ago`;
+            }
+
+            const agentKeys = Object.keys(agents);
+            let worstLevel = 0; // 0=good 1=warn 2=error
+
+            if (!agentKeys.length) {
+                fleetEl.innerHTML = '<div class="health-row" style="color:var(--text-muted);font-size:9px;">No agent data</div>';
+                return;
+            }
+
+            fleetEl.innerHTML = agentKeys.map(key => {
+                const ag = agents[key];
+                const st = (ag.status || 'unknown').toLowerCase();
+                let dotCls = 'agent-dot-idle';
+                let statusLabel = st.toUpperCase();
+                let rowLevel = 0;
+
+                if (st === 'active') {
+                    dotCls = 'agent-dot-active';
+                    statusLabel = 'ACTIVE';
+                } else if (st === 'blocked') {
+                    dotCls = 'agent-dot-blocked';
+                    statusLabel = 'BLOCKED';
+                    rowLevel = 1;
+                } else if (st === 'not_spawned' || st === 'offline') {
+                    dotCls = 'agent-dot-offline';
+                    statusLabel = st === 'not_spawned' ? 'UNSPAWNED' : 'OFFLINE';
+                    rowLevel = 0;
+                }
+                if (rowLevel > worstLevel) worstLevel = rowLevel;
+
+                const taskSnippet = ag.currentTask
+                    ? ag.currentTask.slice(0, 28) + (ag.currentTask.length > 28 ? '…' : '')
+                    : '';
+                const lastSeen = relativeTime(ag.lastActive);
+
+                return `<div class="health-row agent-health-row">
+                    <span class="agent-pulse-dot ${dotCls}"></span>
+                    <span class="agent-health-name">${key.toUpperCase()}</span>
+                    <div class="agent-health-right">
+                        <span class="agent-health-task" title="${ag.currentTask || ''}">${taskSnippet}</span>
+                        <span class="agent-health-timestamp">${lastSeen}</span>
+                    </div>
+                </div>`;
+            }).join('');
+
+            // Update overall health indicator dot
+            const indEl = document.getElementById('health-indicator');
+            if (indEl) {
+                const dot = indEl.querySelector('.health-dot');
+                if (dot) {
+                    dot.className = 'health-dot ' + (worstLevel >= 2 ? 'error' : worstLevel >= 1 ? 'warn' : 'good');
+                }
+            }
+        }
+
+        // Set up 60-second health refresh interval (idempotent guard)
+        if (!window._healthIntervalSet) {
+            window._healthIntervalSet = true;
+            setInterval(() => { updateSystemHealth(); }, 60000);
         }
 
         // ── CARD TOGGLE ───────────────────────────────────────────────────
