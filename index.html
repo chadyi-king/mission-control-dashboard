@@ -4446,7 +4446,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 title: 'SUGGESTED PRIORITIES',
                 rows: scored.map(t => ({
                     cls: t.priority === 'critical' ? 'urgent' : (t.priority === 'high' ? 'warn' : ''),
-                    text: `${t.id} · ${t.title.slice(0, 45)} ``
+                    text: `${t.id} · ${t.title.slice(0, 55)}`
                 }))
             });
 
