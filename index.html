@@ -33,7 +33,7 @@
             --warning: #c9a962;
             --danger: #ff4444;
             --info: #4dabf7;
-            --sidebar-collapsed: 60px;
+            --sidebar-collapsed: 48px;
             --sidebar-expanded: 200px;
         }
 
@@ -473,107 +473,127 @@
 
         .sidebar.expanded { width: var(--sidebar-expanded); }
 
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 10px 16px;
-            border-bottom: 1px solid var(--crystal-border);
-            margin-bottom: 8px;
-            overflow: visible;
-            position: relative;
-            z-index: 230;
-        }
-
-        .sidebar-avatar {
-            width: 44px;
-            height: 44px;
-            min-width: 44px;
-            flex-shrink: 0;
-            margin-left: -4px;
-            position: relative;
-            overflow: visible;
-            box-shadow:
-                0 0 18px rgba(255, 87, 34, 0.7),
-                0 0 36px rgba(255, 87, 34, 0.35),
-                inset -6px -6px 16px rgba(0,0,0,0.4);
-        }
-
-        .sidebar-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            min-width: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .sidebar.expanded .sidebar-brand { opacity: 1; }
-
-        .sidebar-brand-name {
-            font-family: var(--display-font);
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--crimson-bright);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .sidebar-brand-sub {
-            font-size: 9px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+        /* Sidebar icon-only collapsed design */
+        .sidebar-header { display: none; }
 
         .sidebar-toggle {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 0;
             background: transparent;
             border: none;
-            border-bottom: 1px solid var(--crystal-border);
-            color: var(--crimson-bright);
-            font-size: 14px;
+            border-bottom: 1px solid rgba(220,38,38,0.1);
+            color: rgba(110,110,130,0.6);
+            font-size: 13px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 8px;
-            transition: all 0.2s;
+            margin-bottom: 4px;
+            transition: color 0.15s, background 0.15s;
         }
-
-        .sidebar-toggle:hover { background: var(--crimson-glow); }
-        .sidebar-toggle-text { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transition: opacity 0.3s; }
+        .sidebar-toggle:hover { background: rgba(220,38,38,0.07); color: var(--crimson-bright); }
+        .sidebar-toggle-text { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0; transition: opacity 0.2s; }
         .sidebar.expanded .sidebar-toggle-text { opacity: 1; }
 
+        /* Icon-only nav: labels appear as tooltip flyout when collapsed */
         .sidebar-item {
+            position: relative;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
-            padding: 12px 16px;
+            padding: 12px 0;
             cursor: pointer;
-            transition: all 0.2s;
-            color: var(--text-muted);
+            transition: background 0.15s, color 0.15s, border-left-color 0.15s;
+            color: rgba(110,110,130,0.75);
             text-decoration: none;
             border: none;
             background: transparent;
             width: 100%;
             font-family: var(--tech-font);
             font-size: 12px;
+            border-left: 2px solid transparent;
+            overflow: visible !important;
+        }
+        .sidebar-item:hover { background: rgba(220,38,38,0.07); color: var(--crimson-bright); border-left-color: rgba(220,38,38,0.5); }
+        .sidebar-item.active { background: rgba(220,38,38,0.12); color: var(--crimson-bright); border-left: 2px solid var(--crimson-bright) !important; }
+        .sidebar-icon { width: 22px; height: 22px; min-width: 22px; display: flex; align-items: center; justify-content: center; transition: transform 0.15s; }
+        .sidebar-icon svg { width: 100%; height: 100%; }
+        .sidebar-item:hover .sidebar-icon { transform: scale(1.12); }
+
+        /* Tooltip label — floats right on hover, goes inline when expanded */
+        .sidebar-label {
+            position: absolute;
+            left: calc(100% + 10px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(6,6,10,0.97);
+            border: 1px solid rgba(220,38,38,0.3);
+            border-radius: 4px;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            white-space: nowrap;
+            color: var(--crimson-bright);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.12s;
+            z-index: 9999;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.6), 0 0 8px rgba(220,38,38,0.1);
+        }
+        .sidebar-item:hover .sidebar-label { opacity: 1; }
+        .sidebar.expanded .sidebar-item { justify-content: flex-start; padding: 12px 16px; }
+        .sidebar.expanded .sidebar-label {
+            position: static; transform: none; background: none;
+            border: none; padding: 0; opacity: 1;
+            pointer-events: auto; box-shadow: none;
+            font-size: 12px; letter-spacing: 1px; color: inherit;
         }
 
-        .sidebar-item:hover { background: var(--crimson-glow); color: var(--crimson-bright); }
-        .sidebar-item.active { background: var(--crimson-glow); color: var(--crimson-bright); border-right: 3px solid var(--crimson-bright); }
-        .sidebar-icon { width: 20px; height: 20px; min-width: 20px; display: flex; align-items: center; justify-content: center; }
-        .sidebar-icon svg { width: 100%; height: 100%; }
-        .sidebar-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; opacity: 0; transition: opacity 0.3s; }
-        .sidebar.expanded .sidebar-label { opacity: 1; }
+        /* Agent dots footer */
+        .sidebar-spacer { flex: 1; }
+        .sidebar-footer {
+            padding: 12px 0;
+            border-top: 1px solid rgba(220,38,38,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 7px;
+        }
+        .sidebar-agent-dot {
+            position: relative;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--display-font);
+            font-size: 9px; font-weight: 700; letter-spacing: 0.3px;
+            cursor: default; transition: transform 0.15s;
+        }
+        .sidebar-agent-dot:hover { transform: scale(1.12); }
+        .sidebar-agent-dot .dot-status {
+            position: absolute; bottom: 1px; right: 1px;
+            width: 8px; height: 8px; border-radius: 50%;
+            border: 1.5px solid rgba(5,5,8,1);
+        }
+        .dot-status.online  { background: #22c55e; box-shadow: 0 0 4px rgba(34,197,94,0.8); }
+        .dot-status.offline { background: rgba(80,80,100,0.5); }
+        .dot-status.blocked { background: #f59e0b; box-shadow: 0 0 4px rgba(245,158,11,0.6); }
+        .sidebar-agent-dot .dot-tip {
+            position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
+            background: rgba(6,6,10,0.97); border: 1px solid rgba(220,38,38,0.25); border-radius: 4px;
+            padding: 4px 10px; font-family: var(--tech-font); font-size: 10px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap;
+            color: rgba(200,200,210,0.9); opacity: 0; pointer-events: none;
+            transition: opacity 0.12s; z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .sidebar-agent-dot:hover .dot-tip { opacity: 1; }
+        .sidebar.expanded .sidebar-footer { align-items: flex-start; padding: 12px 16px; }
+        .sidebar.expanded .sidebar-agent-dot { border-radius: 6px; width: 100%; height: auto; min-height: 30px; justify-content: flex-start; padding: 3px 0; gap: 8px; }
+        .sidebar.expanded .dot-tip { position: static; transform: none; background: none; border: none; padding: 0; opacity: 1; pointer-events: auto; box-shadow: none; font-size: 10px; color: rgba(140,140,170,0.7); letter-spacing: 0.04em; text-transform: none; font-style: italic; font-weight: 400; }
 
         /* Main Content */
         .main-content {
@@ -2330,17 +2350,9 @@
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-avatar" style="display:none;"></div>
-            <div class="sidebar-brand">
-                <div class="sidebar-brand-name">Solar Core</div>
-                <div class="sidebar-brand-sub">Mission Control</div>
-            </div>
-        </div>
-
-        <button class="sidebar-toggle" type="button" onclick="toggleSidebar()">
+        <button class="sidebar-toggle" type="button" onclick="toggleSidebar()" title="Expand sidebar">
             <span class="sidebar-toggle-arrow">▶</span>
-            <span class="sidebar-toggle-text">Expand</span>
+            <span class="sidebar-toggle-text">Collapse</span>
         </button>
 
         <a class="sidebar-item" href="index.html">
@@ -2386,6 +2398,10 @@
             </span>
             <span class="sidebar-label">Resources</span>
         </a>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-footer" id="sidebar-footer">
+            <!-- Agent status dots — populated by updateSidebarAgents() -->
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -2454,19 +2470,20 @@
                     </div>
                 </div>
 
-                <!-- 4. BLOCKED -->
+                <!-- 4. NEEDS INPUT -->
                 <div class="stat-card" id="stat-blocked">
                     <div class="stat-header">
                         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
                         </svg>
-                        <span class="stat-label">BLOCKED</span>
+                        <span class="stat-label">NEEDS INPUT</span>
                     </div>
                     <div class="stat-value stat-val-warn" id="s-blocked-total">—</div>
                     <div class="stat-breakdown">
-                        <span class="sub-stat sub-alert" id="s-blocked-you">— by you</span>
-                        <span class="sub-stat sub-warn" id="s-blocked-agents">— by agents</span>
+                        <span class="sub-stat sub-alert" id="s-blocked-you">— your action</span>
+                        <span class="sub-stat sub-warn" id="s-blocked-agents">— agents stalled</span>
                         <span class="sub-stat sub-muted" id="s-blocked-external">— external</span>
                     </div>
                 </div>
@@ -2519,19 +2536,20 @@
                     </div>
                 </div>
 
-                <!-- 8. DECISIONS NEEDED -->
+                <!-- 8. MY INPUT NEEDED -->
                 <div class="stat-card" id="stat-messages">
                     <div class="stat-header">
                         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
                         </svg>
-                        <span class="stat-label">DECISIONS</span>
+                        <span class="stat-label">MY INPUT</span>
                     </div>
                     <div class="stat-value" id="s-messages-total">—</div>
                     <div class="stat-breakdown">
-                        <span class="sub-stat sub-agent" id="s-messages-helios">— Helios</span>
-                        <span class="sub-stat sub-muted" id="s-messages-system">— system</span>
-                        <span class="sub-stat sub-alert" id="s-messages-unread">— unread</span>
+                        <span class="sub-stat sub-agent" id="s-messages-helios">— from agents</span>
+                        <span class="sub-stat sub-muted" id="s-messages-system">— self-owned</span>
+                        <span class="sub-stat sub-alert" id="s-messages-unread">— waiting</span>
                     </div>
                 </div>
 
@@ -2601,16 +2619,16 @@
                             </div>
                         </div>
 
-                        <!-- DECISIONS REQUIRED -->
+                        <!-- NEEDS MY INPUT -->
                         <div class="cmd-card" id="card-decisions">
                             <div class="cmd-card-header">
                                 <div class="cmd-card-title">
                                     <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                                        <line x1="12" y1="9" x2="12" y2="13"/>
-                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="8" x2="12" y2="12"/>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"/>
                                     </svg>
-                                    DECISIONS
+                                    NEEDS MY INPUT
                                 </div>
                                 <span class="card-badge badge-alert" id="decisions-count">0</span>
                             </div>
@@ -2804,6 +2822,8 @@
                     <span class="week-legend-item"><span class="week-legend-dot week-chip-high"></span> High</span>
                     <span class="week-legend-item"><span class="week-legend-dot week-chip-medium"></span> Medium</span>
                     <span class="week-legend-item"><span class="week-legend-dot week-chip-low"></span> Normal</span>
+                    <span class="week-legend-item"><span class="week-legend-dot week-chip-blocked"></span> Blocked</span>
+                    <span class="week-legend-item"><span class="week-legend-dot week-chip-review"></span> Review</span>
                     <span class="week-legend-item"><span class="week-legend-dot week-chip-done"></span> Done</span>
                 </div>
 
@@ -2969,16 +2989,35 @@
             const sidebar = document.getElementById('sidebar');
             const toggleArrow = document.querySelector('.sidebar-toggle-arrow');
             const toggleText = document.querySelector('.sidebar-toggle-text');
-
             sidebar.classList.toggle('expanded');
             const isExpanded = sidebar.classList.contains('expanded');
-
-            toggleArrow.textContent = isExpanded ? '◀' : '▶';
-            toggleText.textContent = isExpanded ? 'Collapse' : 'Expand';
+            if (toggleArrow) toggleArrow.textContent = isExpanded ? '◀' : '▶';
+            if (toggleText)  toggleText.textContent  = isExpanded ? 'Collapse' : 'Expand';
             document.body.classList.toggle('sidebar-expanded', isExpanded);
-            if (!isExpanded) {
-                closeMobileMenu();
-            }
+            if (!isExpanded) closeMobileMenu();
+        }
+
+        function updateSidebarAgents(data) {
+            const footer = document.getElementById('sidebar-footer');
+            if (!footer || !data) return;
+            const agents = data.agents || {};
+            const cfg = {
+                'chad-yi':  { init:'CY', bg:'rgba(255,107,0,0.18)',  bd:'rgba(255,107,0,0.4)',   col:'#ff8c00' },
+                'helios':   { init:'HE', bg:'rgba(220,38,38,0.18)',  bd:'rgba(220,38,38,0.4)',   col:'#e04040' },
+                'cerebron': { init:'CB', bg:'rgba(100,100,230,0.18)',bd:'rgba(100,100,230,0.35)',col:'#9090ee' },
+            };
+            const _core = ['chad-yi','helios','cerebron'];
+            footer.innerHTML = _core.map(function(id) {
+                const a = agents[id] || {};
+                const sc = (a.status==='active'||a.status==='working') ? 'online' : (a.status==='blocked' ? 'blocked' : 'offline');
+                const c = cfg[id] || {};
+                const tip = escHtml(id.toUpperCase()) + ' · ' + sc.toUpperCase() + ' · ' + escHtml((a.currentTaskTitle||'idle').slice(0,30));
+                return '<div class="sidebar-agent-dot" style="background:' + (c.bg||'') + ';border:1px solid ' + (c.bd||'') + '">'
+                     + '<span style="color:' + (c.col||'#aaa') + ';font-size:9px;font-weight:700">' + (c.init||id.slice(0,2).toUpperCase()) + '</span>'
+                     + '<span class="dot-status ' + sc + '"></span>'
+                     + '<span class="dot-tip">' + tip + '</span>'
+                     + '</div>';
+            }).join('');
         }
 
         // Section Navigation removed (multi-page navigation uses normal links)
@@ -3200,6 +3239,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 window.appData = appData;
                 renderHomeSection();
                 renderCategoriesSection();
+                updateSidebarAgents(appData);
                 console.log('Rendering complete. allProjects:', allProjects.length);
 
             } catch (error) {
@@ -4245,8 +4285,8 @@ console.log('[Helios WS] connected:', wsUrl);
             // 4. BLOCKED
             const blockedTasks = tasks.filter(t => t.status === 'blocked');
             set('s-blocked-total', blockedTasks.length);
-            set('s-blocked-you', blockedTasks.filter(t => t.agent === 'CHAD_YI' || !t.agent).length + ' by you');
-            set('s-blocked-agents', blockedTasks.filter(t => t.agent && t.agent !== 'CHAD_YI').length + ' by agents');
+            set('s-blocked-you', blockedTasks.filter(t => !t.agent || t.agent === 'CHAD_YI').length + ' your action');
+            set('s-blocked-agents', blockedTasks.filter(t => t.agent && t.agent !== 'CHAD_YI').length + ' agents stalled');
             set('s-blocked-external', '0 external');
 
             // 5. COMPLETED
@@ -4509,14 +4549,15 @@ console.log('[Helios WS] connected:', wsUrl);
                         <li class="task-item priority-high" onclick="openTask('${inp.id}')">
                             <div class="task-item-header">
                                 <span class="task-priority-dot"></span>
-                                <span class="task-title">${escHtml(inp.question || inp.title || inp.id || 'Decision required')}</span>
+                                <span class="task-title">${escHtml(inp.question || inp.title || 'Input required')}</span>
                             </div>
                             <div class="task-meta">
                                 <span class="task-id">${inp.id}</span>
-                                ${inp.requiredBy ? `<span class="task-agent">${inp.requiredBy}</span>` : ''}
-                                ${inp.whatINeed ? `<span class="task-deadline">${escHtml(inp.whatINeed.slice(0,30))}</span>` : ''}
-                                <span class="task-open-hint">→ view</span>
+                                ${inp.agent ? `<span class="task-agent" style="color:rgba(255,180,50,0.85)">From: ${escHtml(inp.agent)}</span>` : ''}
+                                ${inp.whatINeed ? `<span class="task-deadline" style="color:rgba(170,170,200,0.75)" title="${escHtml(inp.whatINeed)}">Need: ${escHtml(inp.whatINeed.slice(0,28))}</span>` : ''}
+                                <span class="task-open-hint" style="color:rgba(220,38,38,0.75)">→ action</span>
                             </div>
+                            ${inp.urgency === 'high' ? '<div style="font-size:9px;color:rgba(220,38,38,0.75);padding:2px 0 0 16px;letter-spacing:0.08em;font-family:\'Rajdhani\',sans-serif;font-weight:700;">⚡ HIGH URGENCY</div>' : ''}
                         </li>
                     `).join('');
                 }
@@ -4712,6 +4753,8 @@ console.log('[Helios WS] connected:', wsUrl);
             if (window.appData && window.appData.tasks && window.appData.tasks[taskId]) {
                 window.appData.tasks[taskId].status = 'done';
                 window.appData.tasks[taskId].completedAt = now;
+                // Immediately refresh Recently Done panel
+                renderOpsCards(window.appData);
             }
             try {
                 const doneTasks = JSON.parse(localStorage.getItem('rs_done_tasks') || '{}');
@@ -4752,6 +4795,8 @@ console.log('[Helios WS] connected:', wsUrl);
                 } catch(_) {}
                 if (card) { card.style.opacity = '1'; card.style.textDecoration = 'none'; }
                 if (document.body.contains(toast)) document.body.removeChild(toast);
+                // Restore: re-render both panels
+                if (window.appData) { renderOpsCards(window.appData); renderFocusTasks(window.appData); }
             };
 
             // Auto-dismiss after 5s
@@ -4759,6 +4804,8 @@ console.log('[Helios WS] connected:', wsUrl);
                 if (!undone) {
                     if (card && card.parentNode) card.remove();
                     if (document.body.contains(toast)) document.body.removeChild(toast);
+                    // Re-render focus panel now that task is confirmed done
+                    if (window.appData) renderFocusTasks(window.appData);
                 }
             }, 5000);
             console.log('[Focus] Marked done:', taskId);
@@ -4863,7 +4910,9 @@ console.log('[Helios WS] connected:', wsUrl);
                 }) : [];
 
                 function chipClass(t) {
-                    if (t.status === 'done') return 'week-chip-done';
+                    if (t.status === 'done')    return 'week-chip-done';
+                    if (t.status === 'blocked') return 'week-chip-blocked';
+                    if (t.status === 'review')  return 'week-chip-review';
                     const d = new Date(t.deadline||''); d.setHours(0,0,0,0);
                     const now = new Date(); now.setHours(0,0,0,0);
                     if (d < now) return 'week-chip-overdue';
