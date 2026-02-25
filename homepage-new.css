@@ -2823,3 +2823,203 @@ body::before {
     flex-wrap: wrap;
 }
 
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COMMIT 13 — ALL USER-REQUESTED UI REFINEMENTS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────
+   RED SUN ORB (replaces CHAD_YI avatar in topbar-left)
+───────────────────────────────────────────────────── */
+.topbar-brand-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.red-sun-orb {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%,
+        #ff4444 0%,
+        #dc143c 30%,
+        #8b0000 60%,
+        #400000 100%);
+    box-shadow:
+        0 0 12px rgba(220, 20, 60, 0.8),
+        0 0 28px rgba(139, 0, 0, 0.6),
+        0 0 50px rgba(139, 0, 0, 0.3),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    animation: orb-pulse 3s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes orb-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 12px rgba(220, 20, 60, 0.8),
+            0 0 28px rgba(139, 0, 0, 0.6),
+            0 0 50px rgba(139, 0, 0, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow:
+            0 0 18px rgba(220, 20, 60, 1),
+            0 0 38px rgba(139, 0, 0, 0.8),
+            0 0 65px rgba(139, 0, 0, 0.4);
+        transform: scale(1.04);
+    }
+}
+
+/* ─────────────────────────────────────────────────────
+   CYBERPUNK BRAND NAME (Share Tech Mono + Glow)
+───────────────────────────────────────────────────── */
+.topbar-brand-name-v2 {
+    font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: #ff3333;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 8px rgba(220, 20, 60, 0.8),
+        0 0 20px rgba(139, 0, 0, 0.5),
+        0 0 40px rgba(139, 0, 0, 0.25);
+    white-space: nowrap;
+    animation: brand-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes brand-glow {
+    0% {
+        color: #ff3333;
+        text-shadow:
+            0 0 8px rgba(220, 20, 60, 0.8),
+            0 0 20px rgba(139, 0, 0, 0.5),
+            0 0 40px rgba(139, 0, 0, 0.25);
+    }
+    100% {
+        color: #ff5555;
+        text-shadow:
+            0 0 12px rgba(220, 20, 60, 1),
+            0 0 30px rgba(139, 0, 0, 0.7),
+            0 0 55px rgba(139, 0, 0, 0.35);
+    }
+}
+
+/* ─────────────────────────────────────────────────────
+   STATS BAR — Center everything
+───────────────────────────────────────────────────── */
+.stats-bar {
+    justify-content: center !important;
+}
+
+.stat-card {
+    text-align: center !important;
+    align-items: center !important;
+}
+
+.stat-card .stat-icon-label {
+    justify-content: center !important;
+}
+
+.stat-card .stat-value {
+    text-align: center !important;
+}
+
+/* ─────────────────────────────────────────────────────
+   ALSO TODAY SECTION — Scrollable, don't push layout
+───────────────────────────────────────────────────── */
+.also-content {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(220, 38, 38, 0.3) transparent;
+}
+
+.also-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.also-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.also-content::-webkit-scrollbar-thumb {
+    background: rgba(220, 38, 38, 0.3);
+    border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────────────
+   WEEK CALENDAR — Legend Bar
+───────────────────────────────────────────────────── */
+.week-legend-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 6px 16px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.week-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.week-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.week-legend-dot.week-chip-overdue {
+    background: #ff4444;
+    box-shadow: 0 0 4px rgba(255, 68, 68, 0.5);
+}
+
+.week-legend-dot.week-chip-critical {
+    background: #dc143c;
+    box-shadow: 0 0 4px rgba(220, 20, 60, 0.4);
+}
+
+.week-legend-dot.week-chip-high {
+    background: #ff6b00;
+    box-shadow: 0 0 4px rgba(255, 107, 0, 0.4);
+}
+
+.week-legend-dot.week-chip-medium {
+    background: #eab308;
+    box-shadow: 0 0 4px rgba(234, 179, 8, 0.3);
+}
+
+.week-legend-dot.week-chip-low {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.week-legend-dot.week-chip-done {
+    background: #22c55e;
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────
+   AGENT HEALTH — "Not Deployed" styling
+───────────────────────────────────────────────────── */
+.agent-dot-offline {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(100, 100, 120, 0.5);
+    border: 1px solid rgba(100, 100, 120, 0.3);
+    flex-shrink: 0;
+}

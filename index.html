@@ -6,7 +6,7 @@
     <title>Mission Control Dashboard</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='s' cx='42%25' cy='38%25' r='62%25'><stop offset='0%25' stop-color='%23FFEE99'/><stop offset='15%25' stop-color='%23FF6B00'/><stop offset='35%25' stop-color='%23DC143C'/><stop offset='65%25' stop-color='%233a0000'/><stop offset='100%25' stop-color='%23080000'/></radialGradient></defs><circle cx='50' cy='50' r='48' fill='url(%23s)'/></svg>">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&family=Share+Tech+Mono&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -52,23 +52,31 @@
            GALACTIC SPACE BACKGROUND
            ═══════════════════════════════════════════════════════════════════════ */
         
-        /* Nebula glow from center */
+        /* ═══ LAYER 1: Red Sun radial glow ═══ */
         body::before {
             content: '';
             position: fixed;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 140%;
-            height: 140%;
-            background: radial-gradient(ellipse at center, rgba(60,0,0,0.18) 0%, rgba(60,0,0,0.08) 30%, transparent 65%);
+            width: 120vw;
+            height: 120vh;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(180, 0, 0, 0.18) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(120, 0, 0, 0.10) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 48%, rgba(80, 0, 0, 0.06) 0%, transparent 55%);
             z-index: 0;
             pointer-events: none;
+            animation: sun-breathe 8s ease-in-out infinite alternate;
         }
 
-        /* Starfield */
-        body::after {
-            content: '';
+        @keyframes sun-breathe {
+            0%   { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 1;   transform: translate(-50%, -50%) scale(1.03); }
+        }
+
+        /* ═══ LAYER 2: Hyperspace starfield (animated canvas injected in JS) ═══ */
+        #starfield-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -76,21 +84,38 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
-                              radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.3), transparent),
-                              radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.5), transparent),
-                              radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.3), transparent),
-                              radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.4), transparent),
-                              radial-gradient(1px 1px at 33% 80%, rgba(255,255,255,0.3), transparent),
-                              radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.4), transparent);
-            background-size: 200% 200%, 180% 180%, 220% 220%, 190% 190%, 210% 210%, 240% 240%, 170% 170%;
-            background-position: 0% 0%, 40% 40%, 80% 80%, 20% 60%, 50% 20%, 70% 90%, 10% 50%;
-            animation: starfield-drift 120s linear infinite;
+            opacity: 0.30;
+        }
+
+        /* ═══ LAYER 3: CSS fallback star dust ═══ */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.25;
+            background-image:
+                radial-gradient(1.2px 1.2px at 10% 15%, rgba(255,200,200,0.6), transparent),
+                radial-gradient(0.8px 0.8px at 25% 45%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 50% 80%, rgba(255,180,180,0.4), transparent),
+                radial-gradient(0.6px 0.6px at 70% 20%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1.4px 1.4px at 85% 65%, rgba(255,200,200,0.5), transparent),
+                radial-gradient(0.7px 0.7px at 40% 90%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 95% 35%, rgba(255,180,180,0.3), transparent),
+                radial-gradient(0.9px 0.9px at 15% 70%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1.1px 1.1px at 60% 10%, rgba(255,200,200,0.5), transparent),
+                radial-gradient(0.5px 0.5px at 35% 55%, rgba(255,255,255,0.3), transparent);
+            background-size: 50% 50%;
+            animation: starfield-drift 90s linear infinite;
         }
 
         @keyframes starfield-drift {
-            0% { background-position: 0% 0%, 40% 40%, 80% 80%, 20% 60%, 50% 20%, 70% 90%, 10% 50%; }
-            100% { background-position: 100% 100%, 140% 140%, 180% 180%, 120% 160%, 150% 120%, 170% 190%, 110% 150%; }
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(-50%, -50%); }
         }
 
         /* Top Bar - Redesigned */
@@ -2227,6 +2252,8 @@
     <link rel="stylesheet" href="homepage-new.css">
 </head>
 <body>
+    <!-- Hyperspace Starfield Canvas -->
+    <canvas id="starfield-canvas"></canvas>
     <!-- Solar Corona Background -->
     <div class="solar-corona"></div>
     <!-- Animated Red Sun (subtle, centred behind content) -->
@@ -2237,30 +2264,14 @@
     <!-- Top Bar -->
     <div class="topbar">
         <div class="topbar-left">
-            <div class="sun-widget-header">
-                <div class="sun-avatar-enhanced"></div>
-                <div class="sun-info">
-                    <div class="sun-name">CHAD_YI</div>
-                    <div class="sun-status">● ACTIVE</div>
-                </div>
+            <div class="topbar-brand-area">
+                <div class="red-sun-orb"></div>
+                <span class="topbar-brand-name-v2">RED SUN COMMAND</span>
             </div>
         </div>
         <div class="topbar-center">
             <div class="topbar-brand">
-                <span class="topbar-brand-icon">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"/>
-                        <line x1="12" y1="1" x2="12" y2="3"/>
-                        <line x1="12" y1="21" x2="12" y2="23"/>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                        <line x1="1" y1="12" x2="3" y2="12"/>
-                        <line x1="21" y1="12" x2="23" y2="12"/>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                    </svg>
-                </span>
-                <span class="topbar-brand-name">RED SUN COMMAND</span>
+                <!-- sun icon removed, brand is now in topbar-left -->
             </div>
             <div class="topbar-ticker-wrap" aria-live="off">
                 <div class="topbar-ticker" id="topbar-ticker">
@@ -2307,12 +2318,7 @@
                 <span class="lad-label">Last audit</span>
                 <span class="lad-value" id="last-audit-time">—</span>
             </div>
-            <button class="topbar-actions-btn" type="button" onclick="window.location.href='system.html'">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="6" y1="18" x2="18" y2="6"/>
-                </svg>
-                ACTIONS
-            </button>
+            <!-- ACTIONS btn removed -->
             <div class="status-widget">
                 <div class="status-dot"></div>
                 <span>ONLINE</span>
@@ -2323,7 +2329,7 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-avatar" style="font-size: 24px; display: flex; align-items: center; justify-content: center;">⚡</div>
+            <div class="sidebar-avatar" style="display:none;"></div>
             <div class="sidebar-brand">
                 <div class="sidebar-brand-name">Solar Core</div>
                 <div class="sidebar-brand-sub">Mission Control</div>
@@ -2766,7 +2772,7 @@
                             <div class="also-today-section" id="also-today-section">
                                 <button class="also-today-header" id="also-today-btn" onclick="toggleAlsoToday()">
                                     <span class="also-divider-line"></span>
-                                    <span class="also-label">ALSO TODAY</span>
+                                    <span class="also-label" id="also-label-text">MORE TASKS</span>
                                     <span class="also-count" id="also-count">0 more</span>
                                     <span class="also-divider-line"></span>
                                     <svg class="also-chevron" id="also-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
@@ -2812,6 +2818,14 @@
                         </button>
                     </div>
                     <div class="week-range-label" id="week-range-label">Loading...</div>
+                </div>
+                <div class="week-legend-bar">
+                    <span class="week-legend-item"><span class="week-legend-dot week-chip-overdue"></span> Overdue</span>
+                    <span class="week-legend-item"><span class="week-legend-dot week-chip-critical"></span> Critical</span>
+                    <span class="week-legend-item"><span class="week-legend-dot week-chip-high"></span> High</span>
+                    <span class="week-legend-item"><span class="week-legend-dot week-chip-medium"></span> Medium</span>
+                    <span class="week-legend-item"><span class="week-legend-dot week-chip-low"></span> Normal</span>
+                    <span class="week-legend-item"><span class="week-legend-dot week-chip-done"></span> Done</span>
                 </div>
 
                 <div class="week-grid" id="week-grid">
@@ -4432,7 +4446,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 title: 'SUGGESTED PRIORITIES',
                 rows: scored.map(t => ({
                     cls: t.priority === 'critical' ? 'urgent' : (t.priority === 'high' ? 'warn' : ''),
-                    text: `${t.id} · ${t.title.slice(0, 45)} · score ${t._score}`
+                    text: `${t.id} · ${t.title.slice(0, 45)} ``
                 }))
             });
 
@@ -4610,6 +4624,9 @@ console.log('[Helios WS] connected:', wsUrl);
             const alsoCount = document.getElementById('also-count');
             if (alsoEl) alsoEl.innerHTML = also.map((t, i) => buildFocusCard(t, i + 6)).join('');
             if (alsoCount) alsoCount.textContent = also.length + ' more';
+            // Update the also-today label text
+            const alsoLabelEl = document.getElementById('also-label-text');
+            if (alsoLabelEl) alsoLabelEl.textContent = also.length + ' MORE TASKS';
 
             // Show/hide also-today section
             const alsoSection = document.getElementById('also-today-section');
@@ -4726,8 +4743,10 @@ console.log('[Helios WS] connected:', wsUrl);
 
         function renderWeekCalendar(data) {
             const tasks = Object.values(data.tasks || {});
-            const today = new Date();
-            const todayStr = today.toISOString().slice(0, 10);
+            // Use Singapore timezone for "today"
+            const sgtNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Singapore' }));
+            const today = sgtNow;
+            const todayStr = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
 
             // Calculate Monday of current week + offset
             const dow = today.getDay(); // 0=Sun
@@ -4757,10 +4776,12 @@ console.log('[Helios WS] connected:', wsUrl);
                 // Tasks due on this day
                 const dayTasks = tasks.filter(t => t.deadline && t.deadline.slice(0, 10) === colStr);
                 // Also tasks that are overdue and this is the first day of week
-                const overdueOnFirstDay = idx === 0 ? tasks.filter(t => {
+                // Show overdue tasks on today's column (not just first day)
+                const overdueOnToday = isToday ? tasks.filter(t => {
                     if (t.status === 'done' || !t.deadline) return false;
                     const d = new Date(t.deadline); d.setHours(0,0,0,0);
-                    return d < weekStart;
+                    const nowD = new Date(); nowD.setHours(0,0,0,0);
+                    return d < nowD;
                 }) : [];
 
                 function chipClass(t) {
@@ -4779,7 +4800,7 @@ console.log('[Helios WS] connected:', wsUrl);
 
                 const SHOW_LIMIT = 3;
                 const allChips = [
-                    ...overdueOnFirstDay.map(overdueChip),
+                    ...overdueOnToday.map(overdueChip),
                     ...dayTasks.map(t =>
                         `<span class="week-task-chip ${chipClass(t)}" title="${escHtml(t.title)}"
                                onclick="toggleTaskExpand(event,'${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`
@@ -4867,9 +4888,16 @@ console.log('[Helios WS] connected:', wsUrl);
                 let statusLabel = st.toUpperCase();
                 let rowLevel = 0;
 
-                if (st === 'active') {
+                // Only chad-yi, helios, cerebron are truly deployed
+                const knownActive = ['chad-yi', 'helios', 'cerebron'];
+                const isKnownActive = knownActive.includes(key.toLowerCase());
+                
+                if (st === 'active' && isKnownActive) {
                     dotCls = 'agent-dot-active';
                     statusLabel = 'ACTIVE';
+                } else if (st === 'active' && !isKnownActive) {
+                    dotCls = 'agent-dot-offline';
+                    statusLabel = 'NOT DEPLOYED';
                 } else if (st === 'blocked') {
                     dotCls = 'agent-dot-blocked';
                     statusLabel = 'BLOCKED';
@@ -6367,6 +6395,82 @@ console.log('[Helios WS] connected:', wsUrl);
         })();
     </script>
     <div id="toast-container"></div>
+
+    <!-- Hyperspace Starfield Animation -->
+    <script>
+    (function() {
+        const canvas = document.getElementById('starfield-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        const STAR_COUNT = 280;
+        const SPEED = 0.4;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < STAR_COUNT; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.8 + 0.3,
+                    speed: Math.random() * SPEED + 0.1,
+                    opacity: Math.random() * 0.7 + 0.2,
+                    twinkleSpeed: Math.random() * 0.02 + 0.005,
+                    twinklePhase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+
+        let frame = 0;
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            frame++;
+
+            for (const s of stars) {
+                // Slow drift upward (hyperspace feel)
+                s.y -= s.speed;
+                if (s.y < -5) {
+                    s.y = canvas.height + 5;
+                    s.x = Math.random() * canvas.width;
+                }
+
+                // Twinkle
+                const twinkle = Math.sin(frame * s.twinkleSpeed + s.twinklePhase) * 0.3 + 0.7;
+                const alpha = s.opacity * twinkle;
+                
+                // Red-tinted stars (some white, some reddish)
+                const r = 255;
+                const g = 200 + Math.floor(Math.random() * 55);
+                const b = 200 + Math.floor(Math.random() * 55);
+                
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+                ctx.fill();
+
+                // Glow for larger stars
+                if (s.size > 1.2) {
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.size * 2.5, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(180,0,0,${alpha * 0.15})`;
+                    ctx.fill();
+                }
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        resize();
+        initStars();
+        draw();
+        window.addEventListener('resize', () => { resize(); initStars(); });
+    })();
+    </script>
 </body>
 </html>
 
