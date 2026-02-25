@@ -1112,3 +1112,35 @@ body.sidebar-expanded .agent-rail { padding-left: calc(var(--sidebar-expanded) +
     font-weight: 400;
     letter-spacing: 0px;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SVG ICON SYSTEM — Unified geometric icon styling
+   Added in Commit 4
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Mission Control Badge Lightning Icon */
+.mission-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.mission-icon svg {
+    color: var(--solar-gold);
+    filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* Mobile Nav Menu SVG Icons */
+.mobile-nav-menu a {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+}
+.mobile-nav-menu a svg {
+    flex-shrink: 0;
+    color: var(--crimson-bright);
+    filter: drop-shadow(0 0 3px currentColor);
+    transition: all 0.2s ease;
+}
+.mobile-nav-menu a:hover svg {
+    color: var(--solar-gold);
+}
