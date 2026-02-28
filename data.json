@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-26T10:00:00+08:00",
-  "updatedBy": "CHAD_YI",
+  "lastUpdated": "2026-02-28T22:59:20.396265+08:00",
+  "updatedBy": "helios-v2",
   "workflow": {
     "pending": [
       "A1-3",
@@ -1242,9 +1242,9 @@
   },
   "agents": {
     "chad-yi": {
-      "status": "active",
+      "status": "offline",
       "currentTask": "A6-14",
-      "lastActive": "2026-02-25T23:37:23+08:00",
+      "lastActive": "2026-02-18T10:19:23.234555+00:00",
       "role": "Commander",
       "role_tagline": "The Face",
       "currentTaskTitle": "Dashboard design + fixes"
@@ -1252,7 +1252,7 @@
     "helios": {
       "status": "active",
       "currentTask": "A6-15",
-      "lastActive": "2026-02-25T17:37:23+08:00",
+      "lastActive": "2026-02-28T22:59:20.396265+08:00",
       "role": "Infrastructure",
       "role_tagline": "The Spine",
       "currentTaskTitle": "Dashboard Audit Report: Phase 1"
@@ -1260,7 +1260,7 @@
     "escritor": {
       "status": "offline",
       "currentTask": null,
-      "lastActive": null,
+      "lastActive": "2026-02-14T07:54:31.120599+00:00",
       "role": "Content",
       "role_tagline": "The Writer",
       "currentTaskTitle": "Not yet deployed"
@@ -1288,6 +1288,12 @@
       "role": "Tech",
       "role_tagline": "The Builder",
       "currentTaskTitle": "Not yet deployed"
+    },
+    "mensamusa": {
+      "status": "idle"
+    },
+    "autour": {
+      "status": "idle"
     }
   },
   "inputsNeeded": {
