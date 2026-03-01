@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-02T00:48:25.372241",
+  "lastUpdated": "2026-03-02T01:02:55.410922+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [
@@ -219,11 +219,11 @@
     },
     "A5-1": {
       "id": "A5-1",
-      "title": "Trading Bot: Forex/Commodities (Telegram \u2192 OANDA)",
+      "title": "Trading Bot: Forex/Commodities (Telegram → OANDA)",
       "project": "A5",
       "category": "A",
       "priority": "high",
-      "status": "active",
+      "status": "blocked",
       "agent": "Quanta",
       "notes": "FINAL TESTING: Live trading bot in validation phase. Monitoring for 24-48h.",
       "description": "Telegram signal forwarding to OANDA - final testing",
@@ -233,11 +233,11 @@
     },
     "A5-2": {
       "id": "A5-2",
-      "title": "Trading Bot: Options Flow (Twitter \u2192 Moomoo)",
+      "title": "Trading Bot: Options Flow (Twitter → Moomoo)",
       "project": "A5",
       "category": "A",
       "priority": "low",
-      "status": "backlog",
+      "status": "blocked",
       "agent": "MensaMusa",
       "notes": "DEFERRED: Will create agent in April/May. Need Twitter/X to Moomoo connection.",
       "description": "",
@@ -251,7 +251,7 @@
       "project": "A6",
       "category": "A",
       "priority": "high",
-      "status": "done",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "COMPLETED: Homepage done by Cerebronn.",
       "description": "Update dashboard UI design and fix non-functional System and Resources pages",
@@ -881,7 +881,7 @@
       "project": "B6",
       "category": "B",
       "priority": "high",
-      "status": "done",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "COMPLETED: SPH items ordered.",
       "description": "Order by 17 February",
@@ -965,7 +965,7 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "backlog",
+      "status": "done",
       "agent": "CHAD_YI",
       "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "RE:UNITE chapters 1-12 are done",
@@ -979,7 +979,7 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "backlog",
+      "status": "active",
       "agent": "Escritor",
       "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "Study all existing content to prepare for Chapter 13 collaboration",
@@ -1007,7 +1007,7 @@
       "project": "A6",
       "category": "A",
       "priority": "high",
-      "status": "backlog",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "ON HOLD: Next pages are Categories, System, Resources (March work). Starting with Categories page.",
       "description": "",
@@ -1021,7 +1021,7 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "backlog",
+      "status": "done",
       "agent": "CHAD_YI",
       "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "",
@@ -1035,7 +1035,7 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "backlog",
+      "status": "done",
       "agent": "CHAD_YI",
       "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "",
@@ -1051,7 +1051,7 @@
       "priority": "high",
       "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Website built via Lovable \u2014 ongoing updates and refinements needed",
+      "notes": "Website built via Lovable — ongoing updates and refinements needed",
       "description": "Maintain and improve Team Elevate website",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1065,7 +1065,7 @@
       "priority": "high",
       "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Website built via Lovable \u2014 ongoing updates and refinements needed",
+      "notes": "Website built via Lovable — ongoing updates and refinements needed",
       "description": "Maintain and improve Elluminate website",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1077,7 +1077,7 @@
       "project": "B6",
       "category": "B",
       "priority": "high",
-      "status": "done",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "COMPLETED: Handled by Steven.",
       "description": "Source, confirm, and schedule facilitators for the ESU program",
@@ -1220,7 +1220,7 @@
       "project": "A1",
       "category": "A",
       "priority": "critical",
-      "status": "done",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "COMPLETED: Bali flights booked.",
       "description": "Book flights for Bali trip",
@@ -1234,7 +1234,7 @@
       "project": "A2",
       "category": "A",
       "priority": "medium",
-      "status": "backlog",
+      "status": "review",
       "agent": "escritor",
       "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "Chapter outline submitted by Escritor for review and approval",
@@ -1255,7 +1255,7 @@
     "helios": {
       "status": "active",
       "currentTask": "A6-15",
-      "lastActive": "2026-03-02T00:32:51.550452+08:00",
+      "lastActive": "2026-03-02T01:02:55.410922+08:00",
       "role": "Infrastructure",
       "role_tagline": "The Spine",
       "currentTaskTitle": "Dashboard Audit Report: Phase 1"
@@ -1329,7 +1329,7 @@
       "idleHours": 120,
       "priority": "MEDIUM",
       "title": "Trading Bot: Forex/Commodities",
-      "brief": "A5 \u2022 From: Quanta",
+      "brief": "A5 • From: Quanta",
       "whatINeed": "OANDA API credentials",
       "why": "Quanta has been blocked for 120 hours waiting for this",
       "steps": [
@@ -1382,50 +1382,50 @@
       "status": "active",
       "currentTask": "A6-3 Dashboard infrastructure",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "\u2705 Active now"
+      "state": "✅ Active now"
     },
     "Helios": {
       "status": "active",
       "currentTask": "15-minute audits",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "\u2705 Active now"
+      "state": "✅ Active now"
     },
     "Escritor": {
       "status": "idle",
       "currentTask": "A2-13 Chapter outline",
       "lastActive": "2026-02-14T20:00:00+08:00",
-      "state": "\u26a0\ufe0f Idle 1d - needs input"
+      "state": "⚠️ Idle 1d - needs input"
     },
     "Quanta": {
       "status": "active",
       "currentTask": "A5-1 LIVE testing - final validation phase",
       "lastActive": "2026-02-19T04:00:00",
-      "state": "\u2705 Testing in progress"
+      "state": "✅ Testing in progress"
     },
     "MensaMusa": {
       "status": "blocked",
       "currentTask": "A5-2 Options monitoring",
       "lastActive": "2026-02-08T10:00:00+08:00",
-      "state": "\ud83d\udd34 Blocked 7d - waiting for credentials"
+      "state": "🔴 Blocked 7d - waiting for credentials"
     },
     "Autour": {
       "status": "not_spawned",
       "currentTask": "A3 KOE scripts",
       "lastActive": null,
-      "state": "\u26aa Not started"
+      "state": "⚪ Not started"
     },
     "Forger": {
       "status": "active",
       "currentTask": "B6 Elluminate website complete",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "\u2705 Active now"
+      "state": "✅ Active now"
     }
   },
   "projects": {
     "A": {
       "name": "Ambition (Personal)",
       "subtitle": "By Calbee (Personal)",
-      "icon": "\ud83c\udfaf",
+      "icon": "🎯",
       "projects": [
         "A1",
         "A2",
@@ -1439,7 +1439,7 @@
     "B": {
       "name": "Business (Empire)",
       "subtitle": "Empire (Main Work)",
-      "icon": "\ud83c\udfe2",
+      "icon": "🏢",
       "projects": [
         "B1",
         "B10",
@@ -1456,7 +1456,7 @@
     "C": {
       "name": "Callings (Side Jobs)",
       "subtitle": "On The Side (Other Jobs)",
-      "icon": "\u2694\ufe0f",
+      "icon": "⚔️",
       "projects": [
         "C1",
         "C2",
@@ -1507,7 +1507,7 @@
     },
     "B4": {
       "name": "Pesta Fiesta",
-      "description": "Birthdays, d\u00e9cor"
+      "description": "Birthdays, décor"
     },
     "B5": {
       "name": "Enticipate",
