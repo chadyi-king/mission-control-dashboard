@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-02T02:03:19.640206+08:00",
+  "lastUpdated": "2026-03-02T02:11:06.734277+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [
@@ -1255,7 +1255,7 @@
     "helios": {
       "status": "active",
       "currentTask": "A6-15",
-      "lastActive": "2026-03-02T02:03:19.640206+08:00",
+      "lastActive": "2026-03-02T02:11:06.734277+08:00",
       "role": "Infrastructure",
       "role_tagline": "The Spine",
       "currentTaskTitle": "Dashboard Audit Report: Phase 1"
@@ -1269,7 +1269,7 @@
       "currentTaskTitle": "Not yet deployed"
     },
     "quanta": {
-      "status": "idle",
+      "status": "offline",
       "currentTask": null,
       "lastActive": null,
       "role": "Finance",
@@ -1293,10 +1293,10 @@
       "currentTaskTitle": "Not yet deployed"
     },
     "mensamusa": {
-      "status": "idle"
+      "status": "offline"
     },
     "autour": {
-      "status": "idle"
+      "status": "offline"
     }
   },
   "inputsNeeded": {
