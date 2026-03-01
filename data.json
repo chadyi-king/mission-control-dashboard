@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-02T02:37:18.357087+08:00",
-  "updatedBy": "helios-v2",
+  "lastUpdated": "2026-03-02T02:43:37.756192",
+  "updatedBy": "CHAD_YI manual fix",
   "workflow": {
     "pending": [
       "A5-3"
@@ -219,7 +219,7 @@
     },
     "A5-1": {
       "id": "A5-1",
-      "title": "Trading Bot: Forex/Commodities (Telegram → OANDA)",
+      "title": "Trading Bot: Forex/Commodities (Telegram \u2192 OANDA)",
       "project": "A5",
       "category": "A",
       "priority": "high",
@@ -233,7 +233,7 @@
     },
     "A5-2": {
       "id": "A5-2",
-      "title": "Trading Bot: Options Flow (Twitter → Moomoo)",
+      "title": "Trading Bot: Options Flow (Twitter \u2192 Moomoo)",
       "project": "A5",
       "category": "A",
       "priority": "low",
@@ -1051,7 +1051,7 @@
       "priority": "high",
       "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Website built via Lovable — ongoing updates and refinements needed",
+      "notes": "Website built via Lovable \u2014 ongoing updates and refinements needed",
       "description": "Maintain and improve Team Elevate website",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1065,7 +1065,7 @@
       "priority": "high",
       "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Website built via Lovable — ongoing updates and refinements needed",
+      "notes": "Website built via Lovable \u2014 ongoing updates and refinements needed",
       "description": "Maintain and improve Elluminate website",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1245,58 +1245,36 @@
   },
   "agents": {
     "chad-yi": {
-      "status": "offline",
-      "currentTask": "A6-14",
-      "lastActive": "2026-02-18T10:19:23.234555+00:00",
+      "status": "active",
+      "currentTask": "Task coordination & reporting",
+      "lastActive": "2026-03-02T02:43:37.756175",
       "role": "Commander",
       "role_tagline": "The Face",
-      "currentTaskTitle": "Dashboard design + fixes"
+      "currentTaskTitle": "Task coordination & reporting"
     },
     "helios": {
       "status": "active",
-      "currentTask": "A6-15",
-      "lastActive": "2026-03-02T02:37:18.357087+08:00",
+      "currentTask": "Dashboard Audit Report: Phase 1",
+      "lastActive": "2026-03-02T02:43:37.756189",
       "role": "Infrastructure",
       "role_tagline": "The Spine",
-      "currentTaskTitle": "Dashboard Audit Report: Phase 1"
+      "currentTaskTitle": "15-min audit + dashboard sync"
     },
-    "escritor": {
-      "status": "offline",
-      "currentTask": null,
-      "lastActive": "2026-02-14T07:54:31.120599+00:00",
-      "role": "Content",
-      "role_tagline": "The Writer",
-      "currentTaskTitle": "Not yet deployed"
-    },
-    "quanta": {
-      "status": "offline",
-      "currentTask": null,
-      "lastActive": null,
-      "role": "Finance",
-      "role_tagline": "The Trader",
-      "currentTaskTitle": "Blocked: awaiting OANDA credentials"
-    },
-    "cerebron": {
+    "cerebronn": {
       "status": "active",
       "currentTask": null,
-      "lastActive": "2026-02-26T08:00:00+08:00",
+      "lastActive": "2026-03-02T02:43:37.756190",
       "role": "Strategist",
       "role_tagline": "The Brain",
-      "currentTaskTitle": "Organizational Intelligence & Planning"
+      "currentTaskTitle": "30-min memory + decision cycles"
     },
-    "forger": {
-      "status": "offline",
-      "currentTask": null,
-      "lastActive": null,
-      "role": "Tech",
-      "role_tagline": "The Builder",
-      "currentTaskTitle": "Not yet deployed"
-    },
-    "mensamusa": {
-      "status": "offline"
-    },
-    "autour": {
-      "status": "offline"
+    "quanta": {
+      "status": "active",
+      "currentTask": "XAUUSD execution on OANDA",
+      "lastActive": "2026-03-02T02:43:37.756190",
+      "role": "Finance",
+      "role_tagline": "The Trader",
+      "currentTaskTitle": "Live XAUUSD trading"
     }
   },
   "inputsNeeded": {
@@ -1329,7 +1307,7 @@
       "idleHours": 120,
       "priority": "MEDIUM",
       "title": "Trading Bot: Forex/Commodities",
-      "brief": "A5 • From: Quanta",
+      "brief": "A5 \u2022 From: Quanta",
       "whatINeed": "OANDA API credentials",
       "why": "Quanta has been blocked for 120 hours waiting for this",
       "steps": [
@@ -1382,50 +1360,50 @@
       "status": "active",
       "currentTask": "A6-3 Dashboard infrastructure",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
+      "state": "\u2705 Active now"
     },
     "Helios": {
       "status": "active",
       "currentTask": "15-minute audits",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
+      "state": "\u2705 Active now"
     },
     "Escritor": {
       "status": "idle",
       "currentTask": "A2-13 Chapter outline",
       "lastActive": "2026-02-14T20:00:00+08:00",
-      "state": "⚠️ Idle 1d - needs input"
+      "state": "\u26a0\ufe0f Idle 1d - needs input"
     },
     "Quanta": {
       "status": "active",
       "currentTask": "A5-1 LIVE testing - final validation phase",
       "lastActive": "2026-02-19T04:00:00",
-      "state": "✅ Testing in progress"
+      "state": "\u2705 Testing in progress"
     },
     "MensaMusa": {
       "status": "blocked",
       "currentTask": "A5-2 Options monitoring",
       "lastActive": "2026-02-08T10:00:00+08:00",
-      "state": "🔴 Blocked 7d - waiting for credentials"
+      "state": "\ud83d\udd34 Blocked 7d - waiting for credentials"
     },
     "Autour": {
       "status": "not_spawned",
       "currentTask": "A3 KOE scripts",
       "lastActive": null,
-      "state": "⚪ Not started"
+      "state": "\u26aa Not started"
     },
     "Forger": {
       "status": "active",
       "currentTask": "B6 Elluminate website complete",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
+      "state": "\u2705 Active now"
     }
   },
   "projects": {
     "A": {
       "name": "Ambition (Personal)",
       "subtitle": "By Calbee (Personal)",
-      "icon": "🎯",
+      "icon": "\ud83c\udfaf",
       "projects": [
         "A1",
         "A2",
@@ -1439,7 +1417,7 @@
     "B": {
       "name": "Business (Empire)",
       "subtitle": "Empire (Main Work)",
-      "icon": "🏢",
+      "icon": "\ud83c\udfe2",
       "projects": [
         "B1",
         "B10",
@@ -1456,7 +1434,7 @@
     "C": {
       "name": "Callings (Side Jobs)",
       "subtitle": "On The Side (Other Jobs)",
-      "icon": "⚔️",
+      "icon": "\u2694\ufe0f",
       "projects": [
         "C1",
         "C2",
@@ -1507,7 +1485,7 @@
     },
     "B4": {
       "name": "Pesta Fiesta",
-      "description": "Birthdays, décor"
+      "description": "Birthdays, d\u00e9cor"
     },
     "B5": {
       "name": "Enticipate",
