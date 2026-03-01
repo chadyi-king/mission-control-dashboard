@@ -1,48 +1,51 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-02T00:32:51.550452+08:00",
+  "lastUpdated": "2026-03-02T00:48:25.372241",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [
-      "A1-3",
-      "A1-5",
-      "A2-14",
-      "B6-8",
-      "A5-3",
-      "B8-6",
-      "B6-6",
-      "B6-7",
-      "A1-6"
+      "A5-3"
     ],
     "active": [
       "A1-2",
-      "A1-7",
-      "A2-13",
-      "A6-3",
-      "A6-13",
+      "A1-5",
+      "A5-1",
+      "B6-7",
+      "B6-8",
+      "B8-6",
+      "A1-6"
+    ],
+    "review": [
+      "A6-15"
+    ],
+    "done": [
+      "A1-1",
+      "A1-4",
       "A6-14",
       "B6-3",
       "B3-1",
-      "B6-1"
-    ],
-    "review": [
-      "A6-15",
-      "A2-15"
-    ],
-    "done": [
-      "A2-1",
-      "A2-2",
-      "A2-3",
+      "B6-1",
+      "B6-6",
       "A7-1",
-      "A1-4",
-      "A1-1"
+      "A1-7"
     ],
     "urgent": [
+      "A1-1",
+      "A1-2",
+      "A1-3",
+      "A1-4",
+      "A1-5",
+      "A5-2",
+      "A6-15",
+      "A2-13",
+      "A2-14",
+      "A6-13",
+      "B6-7",
+      "B6-8",
+      "B8-6",
       "A1-6",
       "A1-7",
-      "B6-3",
-      "B6-6",
-      "B6-7"
+      "A2-15"
     ]
   },
   "tasks": {
@@ -68,7 +71,7 @@
       "priority": "high",
       "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Daily payments for 5-6 days starting today (Feb 13)",
+      "notes": "URGENT: Only Findit payment left. Due by Friday.",
       "description": "Process daily payments for DEVSPACE and Findit Sen services",
       "deadline": "2026-02-28",
       "createdAt": "2026-02-13T12:39:00Z",
@@ -80,9 +83,9 @@
       "project": "A1",
       "category": "A",
       "priority": "high",
-      "status": "pending",
+      "status": "backlog",
       "agent": "CHAD_YI",
-      "notes": "Target: next next week (by Feb 27). Hard deadline: March 25.",
+      "notes": "Check March 15 if rebooking done by other person.",
       "description": "Rebook Disney Cruise",
       "deadline": "2026-02-27",
       "createdAt": "2026-02-13T23:16:00Z",
@@ -108,11 +111,11 @@
       "project": "A1",
       "category": "A",
       "priority": "high",
-      "status": "pending",
+      "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Rebook by next Wednesday (Feb 19). Date given for assessment.",
+      "notes": "URGENT: Must rebook by tomorrow night.",
       "description": "Rebook ACLP reassessment slot",
-      "deadline": "2026-02-25",
+      "deadline": "2026-03-03",
       "createdAt": "2026-02-14T00:05:00Z",
       "completedAt": null
     },
@@ -124,7 +127,7 @@
       "priority": "high",
       "status": "backlog",
       "agent": "CHAD_YI",
-      "notes": "Continue RE:UNITE novel",
+      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -216,13 +219,13 @@
     },
     "A5-1": {
       "id": "A5-1",
-      "title": "Trading Bot: Forex/Commodities (Telegram → OANDA)",
+      "title": "Trading Bot: Forex/Commodities (Telegram \u2192 OANDA)",
       "project": "A5",
       "category": "A",
       "priority": "high",
-      "status": "blocked",
+      "status": "active",
       "agent": "Quanta",
-      "notes": "LIVE TESTING: Bot is running in final validation phase. Last laps of testing.",
+      "notes": "FINAL TESTING: Live trading bot in validation phase. Monitoring for 24-48h.",
       "description": "Telegram signal forwarding to OANDA - final testing",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -230,13 +233,13 @@
     },
     "A5-2": {
       "id": "A5-2",
-      "title": "Trading Bot: Options Flow (Twitter → Moomoo)",
+      "title": "Trading Bot: Options Flow (Twitter \u2192 Moomoo)",
       "project": "A5",
       "category": "A",
-      "priority": "high",
-      "status": "blocked",
+      "priority": "low",
+      "status": "backlog",
       "agent": "MensaMusa",
-      "notes": "BLOCKED: Needs Moomoo account credentials (102h idle)",
+      "notes": "DEFERRED: Will create agent in April/May. Need Twitter/X to Moomoo connection.",
       "description": "",
       "deadline": "2026-02-25",
       "createdAt": "2026-02-06T00:00:00Z",
@@ -248,13 +251,13 @@
       "project": "A6",
       "category": "A",
       "priority": "high",
-      "status": "active",
+      "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Minor design updates to dashboard. Fix System and Resources pages. Requires planning first.",
+      "notes": "COMPLETED: Homepage done by Cerebronn.",
       "description": "Update dashboard UI design and fix non-functional System and Resources pages",
       "deadline": "2026-02-28",
       "createdAt": "2026-02-13T12:42:00Z",
-      "completedAt": null
+      "completedAt": "2026-03-02T00:48:25.372216"
     },
     "A6-15": {
       "id": "A6-15",
@@ -878,13 +881,13 @@
       "project": "B6",
       "category": "B",
       "priority": "high",
-      "status": "active",
+      "status": "done",
       "agent": "CHAD_YI",
-      "notes": "PENDING: Items to order - REVERTED",
+      "notes": "COMPLETED: SPH items ordered.",
       "description": "Order by 17 February",
       "deadline": "2026-02-25",
       "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
+      "completedAt": "2026-03-02T00:48:25.372219"
     },
     "B6-4": {
       "id": "B6-4",
@@ -962,9 +965,9 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "done",
+      "status": "backlog",
       "agent": "CHAD_YI",
-      "notes": "All chapters 1-12 written and complete. Ready for Chapter 13.",
+      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "RE:UNITE chapters 1-12 are done",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -976,9 +979,9 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "active",
+      "status": "backlog",
       "agent": "Escritor",
-      "notes": "Escritor reads chapters 1-12 and Story Bible to understand RE:UNITE universe before collaborating on Chapter 13",
+      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "Study all existing content to prepare for Chapter 13 collaboration",
       "deadline": "2026-03-07",
       "createdAt": "2026-02-12T07:30:00Z",
@@ -990,9 +993,9 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "pending",
+      "status": "backlog",
       "agent": "Escritor",
-      "notes": "Collaborative writing - Escritor drafts, Caleb reviews and guides. Start after Study Phase complete.",
+      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "Chapter 13 written in collaboration with Caleb",
       "deadline": "2026-03-14",
       "createdAt": "2026-02-14T00:00:00Z",
@@ -1004,9 +1007,9 @@
       "project": "A6",
       "category": "A",
       "priority": "high",
-      "status": "active",
+      "status": "backlog",
       "agent": "CHAD_YI",
-      "notes": "Click project → full view modal",
+      "notes": "ON HOLD: Next pages are Categories, System, Resources (March work). Starting with Categories page.",
       "description": "",
       "deadline": "2026-03-01",
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1018,9 +1021,9 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "done",
+      "status": "backlog",
       "agent": "CHAD_YI",
-      "notes": "Completed - no longer needed",
+      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1032,9 +1035,9 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "done",
+      "status": "backlog",
       "agent": "CHAD_YI",
-      "notes": "First draft complete",
+      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1048,7 +1051,7 @@
       "priority": "high",
       "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Website built via Lovable — ongoing updates and refinements needed",
+      "notes": "Website built via Lovable \u2014 ongoing updates and refinements needed",
       "description": "Maintain and improve Team Elevate website",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1062,7 +1065,7 @@
       "priority": "high",
       "status": "done",
       "agent": "CHAD_YI",
-      "notes": "Website built via Lovable — ongoing updates and refinements needed",
+      "notes": "Website built via Lovable \u2014 ongoing updates and refinements needed",
       "description": "Maintain and improve Elluminate website",
       "deadline": null,
       "createdAt": "2026-02-06T00:00:00Z",
@@ -1074,13 +1077,13 @@
       "project": "B6",
       "category": "B",
       "priority": "high",
-      "status": "active",
+      "status": "done",
       "agent": "CHAD_YI",
-      "notes": "PENDING: 120 facilitators needed - REVERTED",
+      "notes": "COMPLETED: Handled by Steven.",
       "description": "Source, confirm, and schedule facilitators for the ESU program",
       "deadline": "2026-02-25",
       "createdAt": "2026-02-12T07:30:00Z",
-      "completedAt": null
+      "completedAt": "2026-03-02T00:48:25.372219"
     },
     "B6-7": {
       "id": "B6-7",
@@ -1090,9 +1093,9 @@
       "priority": "high",
       "status": "active",
       "agent": "CHAD_YI",
-      "notes": "PENDING: Insurance check - REVERTED",
+      "notes": "Moved to next Friday.",
       "description": "Check and confirm insurance requirements for SMU event",
-      "deadline": "2026-02-25",
+      "deadline": "2026-03-07",
       "createdAt": "2026-02-13T14:48:00Z",
       "completedAt": null
     },
@@ -1101,12 +1104,12 @@
       "title": "Order gel blitz guns for MENDAKI",
       "project": "B6",
       "category": "B",
-      "priority": "high",
-      "status": "pending",
+      "priority": "critical",
+      "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Order equipment for MENDAKI event",
+      "notes": "URGENT: Order gel blitz guns by Tuesday night.",
       "description": "Order gel blitz guns for MENDAKI event by next Wednesday",
-      "deadline": "2026-02-26",
+      "deadline": "2026-03-04",
       "createdAt": "2026-02-14T16:20:00Z",
       "completedAt": null
     },
@@ -1191,9 +1194,9 @@
       "priority": "high",
       "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Get clips from EC and pay him. Video due next Monday.",
+      "notes": "DONE but need changes by next Sunday.",
       "description": "Complete Andre's video for Empyrean",
-      "deadline": "2026-02-25",
+      "deadline": "2026-03-09",
       "createdAt": "2026-02-17T12:13:40.139189Z",
       "completedAt": null
     },
@@ -1205,9 +1208,9 @@
       "priority": "critical",
       "status": "active",
       "agent": "CHAD_YI",
-      "notes": "Contract mostly done - need to add final details and send signed copy to Lisa. URGENT - due tonight.",
+      "notes": "URGENT: Must sign Lisa contract by tomorrow.",
       "description": "Complete Lisa's employment contract and send signed version",
-      "deadline": "2026-02-25",
+      "deadline": "2026-03-02",
       "createdAt": "2026-02-19T17:07:00+08:00",
       "completedAt": null
     },
@@ -1217,13 +1220,13 @@
       "project": "A1",
       "category": "A",
       "priority": "critical",
-      "status": "active",
+      "status": "done",
       "agent": "CHAD_YI",
-      "notes": "URGENT - Book Bali flights by tonight (Feb 23)",
+      "notes": "COMPLETED: Bali flights booked.",
       "description": "Book flights for Bali trip",
       "deadline": "2026-03-01",
       "createdAt": "2026-02-23T18:52:00+08:00",
-      "completedAt": null
+      "completedAt": "2026-03-02T00:48:25.372203"
     },
     "A2-15": {
       "id": "A2-15",
@@ -1231,9 +1234,9 @@
       "project": "A2",
       "category": "A",
       "priority": "medium",
-      "status": "review",
+      "status": "backlog",
       "agent": "escritor",
-      "notes": "Escritor has completed study phase and drafted outline. Review plot structure and character arcs.",
+      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "Chapter outline submitted by Escritor for review and approval",
       "deadline": "2026-02-28",
       "createdAt": "2026-02-24T14:00:00+08:00",
@@ -1326,7 +1329,7 @@
       "idleHours": 120,
       "priority": "MEDIUM",
       "title": "Trading Bot: Forex/Commodities",
-      "brief": "A5 • From: Quanta",
+      "brief": "A5 \u2022 From: Quanta",
       "whatINeed": "OANDA API credentials",
       "why": "Quanta has been blocked for 120 hours waiting for this",
       "steps": [
@@ -1379,50 +1382,50 @@
       "status": "active",
       "currentTask": "A6-3 Dashboard infrastructure",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
+      "state": "\u2705 Active now"
     },
     "Helios": {
       "status": "active",
       "currentTask": "15-minute audits",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
+      "state": "\u2705 Active now"
     },
     "Escritor": {
       "status": "idle",
       "currentTask": "A2-13 Chapter outline",
       "lastActive": "2026-02-14T20:00:00+08:00",
-      "state": "⚠️ Idle 1d - needs input"
+      "state": "\u26a0\ufe0f Idle 1d - needs input"
     },
     "Quanta": {
       "status": "active",
       "currentTask": "A5-1 LIVE testing - final validation phase",
       "lastActive": "2026-02-19T04:00:00",
-      "state": "✅ Testing in progress"
+      "state": "\u2705 Testing in progress"
     },
     "MensaMusa": {
       "status": "blocked",
       "currentTask": "A5-2 Options monitoring",
       "lastActive": "2026-02-08T10:00:00+08:00",
-      "state": "🔴 Blocked 7d - waiting for credentials"
+      "state": "\ud83d\udd34 Blocked 7d - waiting for credentials"
     },
     "Autour": {
       "status": "not_spawned",
       "currentTask": "A3 KOE scripts",
       "lastActive": null,
-      "state": "⚪ Not started"
+      "state": "\u26aa Not started"
     },
     "Forger": {
       "status": "active",
       "currentTask": "B6 Elluminate website complete",
       "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
+      "state": "\u2705 Active now"
     }
   },
   "projects": {
     "A": {
       "name": "Ambition (Personal)",
       "subtitle": "By Calbee (Personal)",
-      "icon": "🎯",
+      "icon": "\ud83c\udfaf",
       "projects": [
         "A1",
         "A2",
@@ -1436,7 +1439,7 @@
     "B": {
       "name": "Business (Empire)",
       "subtitle": "Empire (Main Work)",
-      "icon": "🏢",
+      "icon": "\ud83c\udfe2",
       "projects": [
         "B1",
         "B10",
@@ -1453,7 +1456,7 @@
     "C": {
       "name": "Callings (Side Jobs)",
       "subtitle": "On The Side (Other Jobs)",
-      "icon": "⚔️",
+      "icon": "\u2694\ufe0f",
       "projects": [
         "C1",
         "C2",
@@ -1504,7 +1507,7 @@
     },
     "B4": {
       "name": "Pesta Fiesta",
-      "description": "Birthdays, décor"
+      "description": "Birthdays, d\u00e9cor"
     },
     "B5": {
       "name": "Enticipate",
@@ -1567,5 +1570,12 @@
     "active": 10,
     "blocked": 2,
     "done": 8
+  },
+  "stats": {
+    "total": 85,
+    "pending": 1,
+    "active": 7,
+    "review": 1,
+    "done": 9
   }
 }
