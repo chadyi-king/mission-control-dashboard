@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-01T22:40:25.866087+08:00",
+  "lastUpdated": "2026-03-01T22:47:34.022673+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [
@@ -220,7 +220,7 @@
       "project": "A5",
       "category": "A",
       "priority": "high",
-      "status": "active",
+      "status": "blocked",
       "agent": "Quanta",
       "notes": "LIVE TESTING: Bot is running in final validation phase. Last laps of testing.",
       "description": "Telegram signal forwarding to OANDA - final testing",
@@ -1046,7 +1046,7 @@
       "project": "B3",
       "category": "B",
       "priority": "high",
-      "status": "active",
+      "status": "done",
       "agent": "CHAD_YI",
       "notes": "Website built via Lovable — ongoing updates and refinements needed",
       "description": "Maintain and improve Team Elevate website",
@@ -1060,7 +1060,7 @@
       "project": "B6",
       "category": "B",
       "priority": "high",
-      "status": "active",
+      "status": "done",
       "agent": "CHAD_YI",
       "notes": "Website built via Lovable — ongoing updates and refinements needed",
       "description": "Maintain and improve Elluminate website",
@@ -1074,7 +1074,7 @@
       "project": "B6",
       "category": "B",
       "priority": "high",
-      "status": "pending",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "PENDING: 120 facilitators needed - REVERTED",
       "description": "Source, confirm, and schedule facilitators for the ESU program",
@@ -1088,7 +1088,7 @@
       "project": "B6",
       "category": "B",
       "priority": "high",
-      "status": "pending",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "PENDING: Insurance check - REVERTED",
       "description": "Check and confirm insurance requirements for SMU event",
@@ -1189,7 +1189,7 @@
       "project": "B8",
       "category": "B",
       "priority": "high",
-      "status": "pending",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "Get clips from EC and pay him. Video due next Monday.",
       "description": "Complete Andre's video for Empyrean",
@@ -1203,7 +1203,7 @@
       "project": "A1",
       "category": "A",
       "priority": "critical",
-      "status": "pending",
+      "status": "active",
       "agent": "CHAD_YI",
       "notes": "Contract mostly done - need to add final details and send signed copy to Lisa. URGENT - due tonight.",
       "description": "Complete Lisa's employment contract and send signed version",
@@ -1252,7 +1252,7 @@
     "helios": {
       "status": "active",
       "currentTask": "A6-15",
-      "lastActive": "2026-03-01T22:40:25.866087+08:00",
+      "lastActive": "2026-03-01T22:47:34.022673+08:00",
       "role": "Infrastructure",
       "role_tagline": "The Spine",
       "currentTaskTitle": "Dashboard Audit Report: Phase 1"
@@ -1560,5 +1560,12 @@
       "deadline": "2026-02-17",
       "hoursRemaining": 94
     }
-  ]
+  ],
+  "taskSummary": {
+    "critical": 0,
+    "urgent": 2,
+    "active": 10,
+    "blocked": 2,
+    "done": 8
+  }
 }
