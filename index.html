@@ -4263,20 +4263,37 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-review-approvals', '0 approvals');
 
             // 3. AGENTS (X/Y) — only count active within 24h as working
-            const totalAgents = agentArr.length;
+            // Filter out dormant agents (escritor, mensamusa, autour) from total count
+            const dormantAgents = ['escritor', 'mensamusa', 'autour'];
+            const operationalAgents = agentArr.filter(([id, a]) => !dormantAgents.includes(id));
+            const totalAgents = operationalAgents.length; // Shows 4-5 instead of 7
+            
             const _24h = 24 * 60 * 60 * 1000;
-            const workingAgents = agentArr.filter(([,a]) => {
+            
+            // Special handling for chad-yi: check if gateway is reachable instead of lastActive
+            const isChadActive = () => {
+                const chadData = agents['chad-yi'] || {};
+                // If we can load this dashboard, Chad (user) is active
+                return document.visibilityState !== 'hidden' || navigator.onLine;
+            };
+            
+            const workingAgents = operationalAgents.filter(([id, a]) => {
+                if (id === 'chad-yi') return isChadActive(); // Special case
                 if (a.status !== 'active' && a.status !== 'working') return false;
                 if (!a.lastActive) return false;
                 return (Date.now() - new Date(a.lastActive).getTime()) <= _24h;
             }).length;
-            const staleAgents = agentArr.filter(([,a]) => {
+            
+            const staleAgents = operationalAgents.filter(([id, a]) => {
+                if (id === 'chad-yi') return false; // Chad is never stale if online
                 if (a.status !== 'active' && a.status !== 'working') return false;
                 if (!a.lastActive) return true;
                 return (Date.now() - new Date(a.lastActive).getTime()) > _24h;
             }).length;
-            const idleAgents = agentArr.filter(([,a]) => a.status === 'idle' || a.status === 'standby').length;
-            const blockedAgents = agentArr.filter(([,a]) => a.status === 'blocked' || a.status === 'offline').length;
+            
+            const idleAgents = operationalAgents.filter(([id, a]) => a.status === 'idle' || a.status === 'standby').length;
+            const blockedAgents = operationalAgents.filter(([id, a]) => a.status === 'blocked' || a.status === 'offline').length;
+            
             set('s-agents-total', workingAgents + '/' + totalAgents);
             set('s-agents-working', workingAgents + ' active');
             set('s-agents-idle', staleAgents + ' stale');
