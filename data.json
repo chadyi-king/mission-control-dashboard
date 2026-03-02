@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-02T23:20:05.321832+08:00",
+  "lastUpdated": "2026-03-02T23:35:07.575350+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [],
@@ -65,7 +65,7 @@
       "project": "A1",
       "category": "A",
       "priority": "high",
-      "status": "backlog",
+      "status": "done",
       "agent": "CHAD_YI",
       "notes": "Check March 15 if rebooking done by other person.",
       "description": "Rebook Disney Cruise",
@@ -975,7 +975,7 @@
       "project": "A2",
       "category": "A",
       "priority": "high",
-      "status": "backlog",
+      "status": "active",
       "agent": "Escritor",
       "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
       "description": "Chapter 13 written in collaboration with Caleb",
@@ -1155,7 +1155,7 @@
       "id": "A5-3",
       "title": "Update Quanta symbol list - add BTC, ETH, AUD, CAD, CHF, NZD",
       "project": "A5",
-      "status": "active",
+      "status": "done",
       "priority": "medium",
       "description": "Expand monitoring symbols from 7 to 13. Add: BTCUSD, ETHUSD, AUDUSD, USDCAD, USDCHF, NZDUSD. Code already edited in monitor_callistofx.py - just needs restart to apply.",
       "notes": "User wants to test current setup first before restarting. Apply when ready.",
@@ -1174,7 +1174,7 @@
       "project": "B8",
       "category": "B",
       "priority": "high",
-      "status": "blocked",
+      "status": "done",
       "agent": "CHAD_YI",
       "notes": "DONE but need changes by next Sunday.",
       "description": "Complete Andre's video for Empyrean",
@@ -1237,7 +1237,7 @@
     "helios": {
       "status": "active",
       "currentTask": "Dashboard Audit Report: Phase 1",
-      "lastActive": "2026-03-02T23:20:05.321832+08:00",
+      "lastActive": "2026-03-02T23:35:07.575350+08:00",
       "role": "Infrastructure",
       "role_tagline": "The Spine",
       "currentTaskTitle": "15-min audit + dashboard sync"
@@ -1534,11 +1534,11 @@
     }
   ],
   "taskSummary": {
-    "critical": 4,
+    "critical": 3,
     "urgent": 2,
-    "active": 2,
-    "blocked": 6,
-    "done": 8
+    "active": 3,
+    "blocked": 5,
+    "done": 11
   },
   "stats": {
     "total": 85,
