@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-10T03:08:55.493596+08:00",
+  "lastUpdated": "2026-03-10T03:09:33.224652+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [],
@@ -1227,7 +1227,7 @@
   },
   "agents": {
     "chad-yi": {
-      "status": "offline",
+      "status": "active",
       "currentTask": "Task coordination & reporting",
       "lastActive": "2026-03-09T10:00:05.203472+00:00",
       "role": "Commander",
@@ -1237,7 +1237,7 @@
     "helios": {
       "status": "active",
       "currentTask": "Dashboard Audit Report: Phase 1",
-      "lastActive": "2026-03-10T03:08:55.493596+08:00",
+      "lastActive": "2026-03-10T03:09:33.224652+08:00",
       "role": "Infrastructure",
       "role_tagline": "The Spine",
       "currentTaskTitle": "15-min audit + dashboard sync"
@@ -1251,7 +1251,7 @@
       "currentTaskTitle": "30-min memory + decision cycles"
     },
     "quanta": {
-      "status": "idle",
+      "status": "active",
       "currentTask": "XAUUSD execution on OANDA",
       "lastActive": "2026-03-02T03:23:27.546732",
       "role": "Finance",
