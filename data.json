@@ -1,7 +1,53 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-18T05:57:44.459059+08:00",
+  "lastUpdated": "2026-03-18T05:59:51.648110+08:00",
   "updatedBy": "helios-v2",
+  "stats": {
+    "totalTasks": 64,
+    "completedTasks": 13,
+    "completionRate": 20,
+    "activeTasks": 3,
+    "blockedTasks": 4,
+    "backlogTasks": 43,
+    "needsAttention": 9
+  },
+  "projects": {
+    "A": {
+      "name": "A - Ambition",
+      "projects": [
+        "A1",
+        "A2",
+        "A3",
+        "A5",
+        "A6",
+        "A7"
+      ]
+    },
+    "B": {
+      "name": "B - Business",
+      "projects": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10"
+      ]
+    },
+    "C": {
+      "name": "C - Callings",
+      "projects": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    }
+  },
+  "projectDetails": {},
   "workflow": {
     "pending": [
       "B1-1",
@@ -541,14 +587,14 @@
       "health": "active",
       "currentTask": "",
       "notes": "The Face - Primary interface",
-      "lastActive": "2026-03-18T05:57:44.459059+08:00"
+      "lastActive": "2026-03-18T05:59:51.648110+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
       "notes": "The Spine - operational coordinator",
-      "lastActive": "2026-03-18T05:57:44.459059+08:00"
+      "lastActive": "2026-03-18T05:59:51.648110+08:00"
     },
     "cerebronn": {
       "status": "active",
@@ -562,7 +608,7 @@
       "health": "active",
       "currentTask": "",
       "notes": "Live trading - Final validation",
-      "lastActive": "2026-03-18T05:57:44.459059+08:00"
+      "lastActive": "2026-03-18T05:59:51.648110+08:00"
     }
   },
   "needsAttention": [
@@ -632,7 +678,7 @@
   ],
   "dailyBriefing": {
     "date": "2026-03-18",
-    "sgt_time": "05:57 SGT",
+    "sgt_time": "05:59 SGT",
     "summary": {
       "total_tasks": 0,
       "critical": 0,
