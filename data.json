@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-18T05:23:52.808226+08:00",
+  "lastUpdated": "2026-03-18T05:26:17.590749+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [],
@@ -12,6 +12,10 @@
       "A6-15"
     ],
     "done": [
+      "A1-6",
+      "A1-5",
+      "B6-8",
+      "A1-2",
       "A1-7",
       "A6-14",
       "B6-3",
@@ -22,51 +26,23 @@
       "B6-1"
     ],
     "urgent": [
-      "A1-6",
-      "A1-5",
-      "B6-8",
-      "A1-2",
       "B6-7",
-      "B8-6"
+      "B8-6",
+      "A2-1",
+      "A7-1",
+      "A7-2",
+      "A7-3"
     ],
     "blocked": [
-      "A1-6",
-      "A1-5",
-      "B6-8",
-      "A1-2",
       "B6-7",
-      "B8-6"
+      "B8-6",
+      "A2-1",
+      "A7-1",
+      "A7-2",
+      "A7-3"
     ]
   },
   "tasks": {
-    "A1-6": {
-      "id": "A1-6",
-      "title": "Sign Lisa's contract",
-      "agent": "CHAD_YI",
-      "priority": "critical",
-      "status": "blocked"
-    },
-    "A1-5": {
-      "id": "A1-5",
-      "title": "Rebook ACLP reassessment",
-      "agent": "CHAD_YI",
-      "priority": "critical",
-      "status": "blocked"
-    },
-    "B6-8": {
-      "id": "B6-8",
-      "title": "Order gel blitz guns for MENDAKI",
-      "agent": "CHAD_YI",
-      "priority": "critical",
-      "status": "blocked"
-    },
-    "A1-2": {
-      "id": "A1-2",
-      "title": "Findit payment only",
-      "agent": "CHAD_YI",
-      "priority": "critical",
-      "status": "blocked"
-    },
     "B6-7": {
       "id": "B6-7",
       "title": "Check insurance for SMU event",
@@ -81,12 +57,33 @@
       "priority": "urgent",
       "status": "blocked"
     },
-    "A6-15": {
-      "id": "A6-15",
-      "title": "Dashboard Audit Report Phase 1",
-      "agent": "Helios",
-      "priority": "review",
-      "status": "review"
+    "A2-1": {
+      "id": "A2-1",
+      "title": "Chapter 13 writing",
+      "agent": "Escritor",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "A7-1": {
+      "id": "A7-1",
+      "title": "Finalize wedding theme",
+      "agent": "CHAD_YI",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "A7-2": {
+      "id": "A7-2",
+      "title": "Book venue and catering",
+      "agent": "CHAD_YI",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "A7-3": {
+      "id": "A7-3",
+      "title": "Send invitations",
+      "agent": "CHAD_YI",
+      "priority": "urgent",
+      "status": "blocked"
     },
     "A5-1": {
       "id": "A5-1",
@@ -101,6 +98,41 @@
       "agent": "CHAD_YI",
       "priority": "active",
       "status": "active"
+    },
+    "A6-15": {
+      "id": "A6-15",
+      "title": "Dashboard Audit Report Phase 1",
+      "agent": "Helios",
+      "priority": "review",
+      "status": "review"
+    },
+    "A1-6": {
+      "id": "A1-6",
+      "title": "Sign Lisa's contract",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "A1-5": {
+      "id": "A1-5",
+      "title": "Rebook ACLP reassessment",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "B6-8": {
+      "id": "B6-8",
+      "title": "Order gel blitz guns for MENDAKI",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "A1-2": {
+      "id": "A1-2",
+      "title": "Devspace and Findit payments",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
     },
     "A1-7": {
       "id": "A1-7",
@@ -165,14 +197,14 @@
       "health": "active",
       "currentTask": "",
       "notes": "The Face - Primary interface",
-      "lastActive": "2026-03-18T05:23:52.808226+08:00"
+      "lastActive": "2026-03-18T05:26:17.590749+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
       "notes": "The Spine - operational coordinator",
-      "lastActive": "2026-03-18T05:23:52.808226+08:00"
+      "lastActive": "2026-03-18T05:26:17.590749+08:00"
     },
     "cerebronn": {
       "status": "active",
@@ -186,66 +218,17 @@
       "health": "active",
       "currentTask": "",
       "notes": "Live trading - Final validation",
-      "lastActive": "2026-03-18T05:23:52.808226+08:00"
+      "lastActive": "2026-03-18T05:26:17.590749+08:00"
+    },
+    "tasks left": {
+      "status": "offline",
+      "health": "offline",
+      "currentTask": "",
+      "notes": "",
+      "lastActive": "2026-03-18T05:26:17.590749+08:00"
     }
   },
   "needsAttention": [
-    {
-      "id": "A1-6",
-      "title": "Sign Lisa's contract",
-      "reason": "Blocked: Sign Lisa's contract",
-      "owner": "CHAD_YI",
-      "priority": "critical"
-    },
-    {
-      "id": "A1-6",
-      "title": "Sign Lisa's contract",
-      "reason": "CRITICAL: Sign Lisa's contract",
-      "owner": "CHAD_YI",
-      "priority": "critical"
-    },
-    {
-      "id": "A1-5",
-      "title": "Rebook ACLP reassessment",
-      "reason": "Blocked: Rebook ACLP reassessment",
-      "owner": "CHAD_YI",
-      "priority": "critical"
-    },
-    {
-      "id": "A1-5",
-      "title": "Rebook ACLP reassessment",
-      "reason": "CRITICAL: Rebook ACLP reassessment",
-      "owner": "CHAD_YI",
-      "priority": "critical"
-    },
-    {
-      "id": "B6-8",
-      "title": "Order gel blitz guns for MENDAKI",
-      "reason": "Blocked: Order gel blitz guns for MENDAKI",
-      "owner": "CHAD_YI",
-      "priority": "critical"
-    },
-    {
-      "id": "B6-8",
-      "title": "Order gel blitz guns for MENDAKI",
-      "reason": "CRITICAL: Order gel blitz guns for MENDAKI",
-      "owner": "CHAD_YI",
-      "priority": "critical"
-    },
-    {
-      "id": "A1-2",
-      "title": "Findit payment only",
-      "reason": "Blocked: Findit payment only",
-      "owner": "CHAD_YI",
-      "priority": "critical"
-    },
-    {
-      "id": "A1-2",
-      "title": "Findit payment only",
-      "reason": "CRITICAL: Findit payment only",
-      "owner": "CHAD_YI",
-      "priority": "critical"
-    },
     {
       "id": "B6-7",
       "title": "Check insurance for SMU event",
@@ -273,61 +256,118 @@
       "reason": "URGENT: Andre's video (need changes)",
       "owner": "CHAD_YI",
       "priority": "urgent"
+    },
+    {
+      "id": "A2-1",
+      "title": "Chapter 13 writing",
+      "reason": "Blocked: Chapter 13 writing",
+      "owner": "Escritor",
+      "priority": "urgent"
+    },
+    {
+      "id": "A2-1",
+      "title": "Chapter 13 writing",
+      "reason": "URGENT: Chapter 13 writing",
+      "owner": "Escritor",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-1",
+      "title": "Finalize wedding theme",
+      "reason": "Blocked: Finalize wedding theme",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-1",
+      "title": "Finalize wedding theme",
+      "reason": "URGENT: Finalize wedding theme",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-2",
+      "title": "Book venue and catering",
+      "reason": "Blocked: Book venue and catering",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-2",
+      "title": "Book venue and catering",
+      "reason": "URGENT: Book venue and catering",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-3",
+      "title": "Send invitations",
+      "reason": "Blocked: Send invitations",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-3",
+      "title": "Send invitations",
+      "reason": "URGENT: Send invitations",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
     }
   ],
   "dailyBriefing": {
     "date": "2026-03-18",
-    "sgt_time": "05:23 SGT",
+    "sgt_time": "05:26 SGT",
     "summary": {
       "total_tasks": 0,
-      "critical": 4,
-      "urgent": 2,
+      "critical": 0,
+      "urgent": 6,
       "active": 2,
       "blocked": 6,
       "review": 0,
-      "done": 8
+      "done": 12
     },
     "top_priorities": [
       {
-        "id": "A1-6",
-        "title": "Sign Lisa's contract",
+        "id": "B6-7",
+        "title": "Check insurance for SMU event",
         "owner": "CHAD_YI"
       },
       {
-        "id": "A1-6",
-        "title": "Sign Lisa's contract",
+        "id": "B6-7",
+        "title": "Check insurance for SMU event",
         "owner": "CHAD_YI"
       },
       {
-        "id": "A1-5",
-        "title": "Rebook ACLP reassessment",
+        "id": "B8-6",
+        "title": "Andre's video (need changes)",
         "owner": "CHAD_YI"
       },
       {
-        "id": "A1-5",
-        "title": "Rebook ACLP reassessment",
+        "id": "B8-6",
+        "title": "Andre's video (need changes)",
         "owner": "CHAD_YI"
       },
       {
-        "id": "B6-8",
-        "title": "Order gel blitz guns for MENDAKI",
-        "owner": "CHAD_YI"
+        "id": "A2-1",
+        "title": "Chapter 13 writing",
+        "owner": "Escritor"
       }
     ],
     "agent_health": {
       "chad-yi": "active",
       "helios": "active",
       "cerebronn": "active",
-      "quanta": "active"
+      "quanta": "active",
+      "tasks left": "offline"
     }
   },
   "escalations": [],
   "inputsNeeded": [],
   "taskSummary": {
-    "critical": 4,
-    "urgent": 2,
+    "critical": 0,
+    "urgent": 6,
     "active": 2,
     "blocked": 6,
-    "done": 8
+    "done": 12
   }
 }
