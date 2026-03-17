@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-18T05:26:17.590749+08:00",
+  "lastUpdated": "2026-03-18T05:34:47.715182+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [],
@@ -12,6 +12,7 @@
       "A6-15"
     ],
     "done": [
+      "B8-6",
       "A1-6",
       "A1-5",
       "B6-8",
@@ -27,7 +28,6 @@
     ],
     "urgent": [
       "B6-7",
-      "B8-6",
       "A2-1",
       "A7-1",
       "A7-2",
@@ -35,7 +35,6 @@
     ],
     "blocked": [
       "B6-7",
-      "B8-6",
       "A2-1",
       "A7-1",
       "A7-2",
@@ -52,10 +51,10 @@
     },
     "B8-6": {
       "id": "B8-6",
-      "title": "Andre's video (need changes)",
+      "title": "Andre's video (changes done)",
       "agent": "CHAD_YI",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "done",
+      "status": "done"
     },
     "A2-1": {
       "id": "A2-1",
@@ -197,35 +196,35 @@
       "health": "active",
       "currentTask": "",
       "notes": "The Face - Primary interface",
-      "lastActive": "2026-03-18T05:26:17.590749+08:00"
+      "lastActive": "2026-03-18T05:34:47.715182+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
       "notes": "The Spine - operational coordinator",
-      "lastActive": "2026-03-18T05:26:17.590749+08:00"
+      "lastActive": "2026-03-18T05:34:47.715182+08:00"
     },
     "cerebronn": {
       "status": "active",
       "health": "active",
       "currentTask": "",
       "notes": "The Brain - Persistent memory",
-      "lastActive": "2026-03-17T21:14:24.083697+00:00"
+      "lastActive": "2026-03-17T21:34:27.856789+00:00"
     },
     "quanta": {
       "status": "active",
       "health": "active",
       "currentTask": "",
       "notes": "Live trading - Final validation",
-      "lastActive": "2026-03-18T05:26:17.590749+08:00"
+      "lastActive": "2026-03-18T05:34:47.715182+08:00"
     },
     "tasks left": {
       "status": "offline",
       "health": "offline",
       "currentTask": "",
       "notes": "",
-      "lastActive": "2026-03-18T05:26:17.590749+08:00"
+      "lastActive": "2026-03-18T05:34:47.715182+08:00"
     }
   },
   "needsAttention": [
@@ -240,20 +239,6 @@
       "id": "B6-7",
       "title": "Check insurance for SMU event",
       "reason": "URGENT: Check insurance for SMU event",
-      "owner": "CHAD_YI",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-6",
-      "title": "Andre's video (need changes)",
-      "reason": "Blocked: Andre's video (need changes)",
-      "owner": "CHAD_YI",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-6",
-      "title": "Andre's video (need changes)",
-      "reason": "URGENT: Andre's video (need changes)",
       "owner": "CHAD_YI",
       "priority": "urgent"
     },
@@ -316,15 +301,15 @@
   ],
   "dailyBriefing": {
     "date": "2026-03-18",
-    "sgt_time": "05:26 SGT",
+    "sgt_time": "05:34 SGT",
     "summary": {
       "total_tasks": 0,
       "critical": 0,
-      "urgent": 6,
+      "urgent": 5,
       "active": 2,
-      "blocked": 6,
+      "blocked": 5,
       "review": 0,
-      "done": 12
+      "done": 13
     },
     "top_priorities": [
       {
@@ -338,19 +323,19 @@
         "owner": "CHAD_YI"
       },
       {
-        "id": "B8-6",
-        "title": "Andre's video (need changes)",
-        "owner": "CHAD_YI"
-      },
-      {
-        "id": "B8-6",
-        "title": "Andre's video (need changes)",
-        "owner": "CHAD_YI"
+        "id": "A2-1",
+        "title": "Chapter 13 writing",
+        "owner": "Escritor"
       },
       {
         "id": "A2-1",
         "title": "Chapter 13 writing",
         "owner": "Escritor"
+      },
+      {
+        "id": "A7-1",
+        "title": "Finalize wedding theme",
+        "owner": "CHAD_YI"
       }
     ],
     "agent_health": {
@@ -365,9 +350,9 @@
   "inputsNeeded": [],
   "taskSummary": {
     "critical": 0,
-    "urgent": 6,
+    "urgent": 5,
     "active": 2,
-    "blocked": 6,
-    "done": 12
+    "blocked": 5,
+    "done": 13
   }
 }
