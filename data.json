@@ -1,9 +1,53 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-18T05:55:32.977014+08:00",
+  "lastUpdated": "2026-03-18T05:56:37.679036+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
-    "pending": [],
+    "pending": [
+      "B1-1",
+      "B1-2",
+      "B1-3",
+      "B1-4",
+      "B1-5",
+      "B2-1",
+      "B2-2",
+      "B2-3",
+      "B2-4",
+      "B2-5",
+      "B3-2",
+      "B3-3",
+      "B3-4",
+      "B3-5",
+      "B4-1",
+      "B4-2",
+      "B4-3",
+      "B4-4",
+      "B4-5",
+      "B5-1",
+      "B5-2",
+      "B5-3",
+      "B5-4",
+      "B5-5",
+      "B6-2",
+      "B6-4",
+      "B6-5",
+      "B7-1",
+      "B7-2",
+      "B7-3",
+      "B7-4",
+      "B7-5",
+      "B8-1",
+      "B8-2",
+      "B8-3",
+      "B8-4",
+      "B8-5",
+      "B9-1",
+      "B9-2",
+      "B9-3",
+      "B9-4",
+      "B9-5",
+      "B10-1"
+    ],
     "active": [
       "A5-1",
       "A5-3"
@@ -31,100 +75,14 @@
       "A2-1",
       "A7-1",
       "A7-2",
-      "A7-3",
-      "B1-1",
-      "B1-2",
-      "B1-3",
-      "B1-4",
-      "B1-5",
-      "B2-1",
-      "B2-2",
-      "B2-3",
-      "B2-4",
-      "B2-5",
-      "B3-2",
-      "B3-3",
-      "B3-4",
-      "B3-5",
-      "B4-1",
-      "B4-2",
-      "B4-3",
-      "B4-4",
-      "B4-5",
-      "B5-1",
-      "B5-2",
-      "B5-3",
-      "B5-4",
-      "B5-5",
-      "B6-2",
-      "B6-4",
-      "B6-5",
-      "B7-1",
-      "B7-2",
-      "B7-3",
-      "B7-4",
-      "B7-5",
-      "B8-1",
-      "B8-2",
-      "B8-3",
-      "B8-4",
-      "B8-5",
-      "B9-1",
-      "B9-2",
-      "B9-3",
-      "B9-4",
-      "B9-5",
-      "B10-1"
+      "A7-3"
     ],
     "blocked": [
       "B6-7",
       "A2-1",
       "A7-1",
       "A7-2",
-      "A7-3",
-      "B1-1",
-      "B1-2",
-      "B1-3",
-      "B1-4",
-      "B1-5",
-      "B2-1",
-      "B2-2",
-      "B2-3",
-      "B2-4",
-      "B2-5",
-      "B3-2",
-      "B3-3",
-      "B3-4",
-      "B3-5",
-      "B4-1",
-      "B4-2",
-      "B4-3",
-      "B4-4",
-      "B4-5",
-      "B5-1",
-      "B5-2",
-      "B5-3",
-      "B5-4",
-      "B5-5",
-      "B6-2",
-      "B6-4",
-      "B6-5",
-      "B7-1",
-      "B7-2",
-      "B7-3",
-      "B7-4",
-      "B7-5",
-      "B8-1",
-      "B8-2",
-      "B8-3",
-      "B8-4",
-      "B8-5",
-      "B9-1",
-      "B9-2",
-      "B9-3",
-      "B9-4",
-      "B9-5",
-      "B10-1"
+      "A7-3"
     ]
   },
   "tasks": {
@@ -174,71 +132,71 @@
       "id": "B1-1",
       "title": "Website design/redesign",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B1-2": {
       "id": "B1-2",
       "title": "SEO setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B1-3": {
       "id": "B1-3",
       "title": "Google Ads management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B1-4": {
       "id": "B1-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B1-5": {
       "id": "B1-5",
       "title": "Client management setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B2-1": {
       "id": "B2-1",
       "title": "Website design/redesign",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B2-2": {
       "id": "B2-2",
       "title": "SEO setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B2-3": {
       "id": "B2-3",
       "title": "Google Ads management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B2-4": {
       "id": "B2-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B2-5": {
       "id": "B2-5",
       "title": "Client management setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B3-1": {
       "id": "B3-1",
@@ -251,99 +209,99 @@
       "id": "B3-2",
       "title": "SEO optimization",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B3-3": {
       "id": "B3-3",
       "title": "Google Ads setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B3-4": {
       "id": "B3-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B3-5": {
       "id": "B3-5",
       "title": "Client management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B4-1": {
       "id": "B4-1",
       "title": "Website design/redesign",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B4-2": {
       "id": "B4-2",
       "title": "SEO setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B4-3": {
       "id": "B4-3",
       "title": "Google Ads management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B4-4": {
       "id": "B4-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B4-5": {
       "id": "B4-5",
       "title": "Client management setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B5-1": {
       "id": "B5-1",
       "title": "Website design/redesign",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B5-2": {
       "id": "B5-2",
       "title": "SEO setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B5-3": {
       "id": "B5-3",
       "title": "Google Ads management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B5-4": {
       "id": "B5-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B5-5": {
       "id": "B5-5",
       "title": "Client management setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B6-1": {
       "id": "B6-1",
@@ -356,8 +314,8 @@
       "id": "B6-2",
       "title": "MENDAKI - Get gel guns and archery tag",
       "agent": "CHAD_YI",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B6-3": {
       "id": "B6-3",
@@ -370,127 +328,127 @@
       "id": "B6-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B6-5": {
       "id": "B6-5",
       "title": "Client management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B7-1": {
       "id": "B7-1",
       "title": "Website design/redesign",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B7-2": {
       "id": "B7-2",
       "title": "SEO setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B7-3": {
       "id": "B7-3",
       "title": "Google Ads management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B7-4": {
       "id": "B7-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B7-5": {
       "id": "B7-5",
       "title": "Client management setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B8-1": {
       "id": "B8-1",
       "title": "Website design/redesign",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B8-2": {
       "id": "B8-2",
       "title": "SEO setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B8-3": {
       "id": "B8-3",
       "title": "Google Ads management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B8-4": {
       "id": "B8-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B8-5": {
       "id": "B8-5",
       "title": "Client management setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B9-1": {
       "id": "B9-1",
       "title": "Website design/redesign",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B9-2": {
       "id": "B9-2",
       "title": "SEO setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B9-3": {
       "id": "B9-3",
       "title": "Google Ads management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B9-4": {
       "id": "B9-4",
       "title": "Social media management",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B9-5": {
       "id": "B9-5",
       "title": "Client management setup",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "B10-1": {
       "id": "B10-1",
       "title": "[NEED DETAILS]",
       "agent": "Forger",
-      "priority": "urgent",
-      "status": "blocked"
+      "priority": "backlog",
+      "status": "pending"
     },
     "A5-1": {
       "id": "A5-1",
@@ -583,14 +541,14 @@
       "health": "active",
       "currentTask": "",
       "notes": "The Face - Primary interface",
-      "lastActive": "2026-03-18T05:55:32.977014+08:00"
+      "lastActive": "2026-03-18T05:56:37.679036+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
       "notes": "The Spine - operational coordinator",
-      "lastActive": "2026-03-18T05:55:32.977014+08:00"
+      "lastActive": "2026-03-18T05:56:37.679036+08:00"
     },
     "cerebronn": {
       "status": "active",
@@ -604,14 +562,7 @@
       "health": "active",
       "currentTask": "",
       "notes": "Live trading - Final validation",
-      "lastActive": "2026-03-18T05:55:32.977014+08:00"
-    },
-    "backlog/medium": {
-      "status": "offline",
-      "health": "offline",
-      "currentTask": "",
-      "notes": "",
-      "lastActive": "2026-03-18T05:55:32.977014+08:00"
+      "lastActive": "2026-03-18T05:56:37.679036+08:00"
     }
   },
   "needsAttention": [
@@ -684,619 +635,17 @@
       "reason": "URGENT: Send invitations",
       "owner": "CHAD_YI",
       "priority": "urgent"
-    },
-    {
-      "id": "B1-1",
-      "title": "Website design/redesign",
-      "reason": "Blocked: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-1",
-      "title": "Website design/redesign",
-      "reason": "URGENT: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-2",
-      "title": "SEO setup",
-      "reason": "Blocked: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-2",
-      "title": "SEO setup",
-      "reason": "URGENT: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-3",
-      "title": "Google Ads management",
-      "reason": "Blocked: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-3",
-      "title": "Google Ads management",
-      "reason": "URGENT: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-5",
-      "title": "Client management setup",
-      "reason": "Blocked: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B1-5",
-      "title": "Client management setup",
-      "reason": "URGENT: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-1",
-      "title": "Website design/redesign",
-      "reason": "Blocked: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-1",
-      "title": "Website design/redesign",
-      "reason": "URGENT: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-2",
-      "title": "SEO setup",
-      "reason": "Blocked: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-2",
-      "title": "SEO setup",
-      "reason": "URGENT: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-3",
-      "title": "Google Ads management",
-      "reason": "Blocked: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-3",
-      "title": "Google Ads management",
-      "reason": "URGENT: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-5",
-      "title": "Client management setup",
-      "reason": "Blocked: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B2-5",
-      "title": "Client management setup",
-      "reason": "URGENT: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B3-2",
-      "title": "SEO optimization",
-      "reason": "Blocked: SEO optimization",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B3-2",
-      "title": "SEO optimization",
-      "reason": "URGENT: SEO optimization",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B3-3",
-      "title": "Google Ads setup",
-      "reason": "Blocked: Google Ads setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B3-3",
-      "title": "Google Ads setup",
-      "reason": "URGENT: Google Ads setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B3-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B3-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B3-5",
-      "title": "Client management",
-      "reason": "Blocked: Client management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B3-5",
-      "title": "Client management",
-      "reason": "URGENT: Client management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-1",
-      "title": "Website design/redesign",
-      "reason": "Blocked: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-1",
-      "title": "Website design/redesign",
-      "reason": "URGENT: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-2",
-      "title": "SEO setup",
-      "reason": "Blocked: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-2",
-      "title": "SEO setup",
-      "reason": "URGENT: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-3",
-      "title": "Google Ads management",
-      "reason": "Blocked: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-3",
-      "title": "Google Ads management",
-      "reason": "URGENT: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-5",
-      "title": "Client management setup",
-      "reason": "Blocked: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B4-5",
-      "title": "Client management setup",
-      "reason": "URGENT: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-1",
-      "title": "Website design/redesign",
-      "reason": "Blocked: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-1",
-      "title": "Website design/redesign",
-      "reason": "URGENT: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-2",
-      "title": "SEO setup",
-      "reason": "Blocked: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-2",
-      "title": "SEO setup",
-      "reason": "URGENT: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-3",
-      "title": "Google Ads management",
-      "reason": "Blocked: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-3",
-      "title": "Google Ads management",
-      "reason": "URGENT: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-5",
-      "title": "Client management setup",
-      "reason": "Blocked: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B5-5",
-      "title": "Client management setup",
-      "reason": "URGENT: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B6-2",
-      "title": "MENDAKI - Get gel guns and archery tag",
-      "reason": "Blocked: MENDAKI - Get gel guns and archery tag",
-      "owner": "CHAD_YI",
-      "priority": "urgent"
-    },
-    {
-      "id": "B6-2",
-      "title": "MENDAKI - Get gel guns and archery tag",
-      "reason": "URGENT: MENDAKI - Get gel guns and archery tag",
-      "owner": "CHAD_YI",
-      "priority": "urgent"
-    },
-    {
-      "id": "B6-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B6-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B6-5",
-      "title": "Client management",
-      "reason": "Blocked: Client management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B6-5",
-      "title": "Client management",
-      "reason": "URGENT: Client management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-1",
-      "title": "Website design/redesign",
-      "reason": "Blocked: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-1",
-      "title": "Website design/redesign",
-      "reason": "URGENT: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-2",
-      "title": "SEO setup",
-      "reason": "Blocked: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-2",
-      "title": "SEO setup",
-      "reason": "URGENT: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-3",
-      "title": "Google Ads management",
-      "reason": "Blocked: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-3",
-      "title": "Google Ads management",
-      "reason": "URGENT: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-5",
-      "title": "Client management setup",
-      "reason": "Blocked: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B7-5",
-      "title": "Client management setup",
-      "reason": "URGENT: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-1",
-      "title": "Website design/redesign",
-      "reason": "Blocked: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-1",
-      "title": "Website design/redesign",
-      "reason": "URGENT: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-2",
-      "title": "SEO setup",
-      "reason": "Blocked: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-2",
-      "title": "SEO setup",
-      "reason": "URGENT: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-3",
-      "title": "Google Ads management",
-      "reason": "Blocked: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-3",
-      "title": "Google Ads management",
-      "reason": "URGENT: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-5",
-      "title": "Client management setup",
-      "reason": "Blocked: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B8-5",
-      "title": "Client management setup",
-      "reason": "URGENT: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-1",
-      "title": "Website design/redesign",
-      "reason": "Blocked: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-1",
-      "title": "Website design/redesign",
-      "reason": "URGENT: Website design/redesign",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-2",
-      "title": "SEO setup",
-      "reason": "Blocked: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-2",
-      "title": "SEO setup",
-      "reason": "URGENT: SEO setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-3",
-      "title": "Google Ads management",
-      "reason": "Blocked: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-3",
-      "title": "Google Ads management",
-      "reason": "URGENT: Google Ads management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-4",
-      "title": "Social media management",
-      "reason": "Blocked: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-4",
-      "title": "Social media management",
-      "reason": "URGENT: Social media management",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-5",
-      "title": "Client management setup",
-      "reason": "Blocked: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B9-5",
-      "title": "Client management setup",
-      "reason": "URGENT: Client management setup",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B10-1",
-      "title": "[NEED DETAILS]",
-      "reason": "Blocked: [NEED DETAILS]",
-      "owner": "Forger",
-      "priority": "urgent"
-    },
-    {
-      "id": "B10-1",
-      "title": "[NEED DETAILS]",
-      "reason": "URGENT: [NEED DETAILS]",
-      "owner": "Forger",
-      "priority": "urgent"
     }
   ],
   "dailyBriefing": {
     "date": "2026-03-18",
-    "sgt_time": "05:55 SGT",
+    "sgt_time": "05:56 SGT",
     "summary": {
       "total_tasks": 0,
       "critical": 0,
-      "urgent": 48,
+      "urgent": 5,
       "active": 2,
-      "blocked": 48,
+      "blocked": 5,
       "review": 0,
       "done": 13
     },
@@ -1331,17 +680,16 @@
       "chad-yi": "active",
       "helios": "active",
       "cerebronn": "active",
-      "quanta": "active",
-      "backlog/medium": "offline"
+      "quanta": "active"
     }
   },
   "escalations": [],
   "inputsNeeded": [],
   "taskSummary": {
     "critical": 0,
-    "urgent": 48,
+    "urgent": 5,
     "active": 2,
-    "blocked": 48,
+    "blocked": 5,
     "backlog": 0,
     "done": 13
   }
