@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-18T05:01:25.707970+08:00",
+  "lastUpdated": "2026-03-18T05:08:25.206101+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [],
@@ -13,11 +13,11 @@
     ],
     "done": [
       "A1-7",
-      "A1-1",
-      "A1-4",
       "A6-14",
       "B6-3",
       "B6-6",
+      "A1-1",
+      "A1-4",
       "B3-1",
       "B6-1"
     ],
@@ -28,1524 +28,306 @@
       "A1-2",
       "B6-7",
       "B8-6"
+    ],
+    "blocked": [
+      "A1-6",
+      "A1-5",
+      "B6-8",
+      "A1-2",
+      "B6-7",
+      "B8-6"
     ]
   },
   "tasks": {
-    "A1-1": {
-      "id": "A1-1",
-      "title": "Change Taiwan flights and hotel",
-      "project": "A1",
-      "category": "A",
+    "A1-6": {
+      "id": "A1-6",
+      "title": "Sign Lisa's contract",
+      "agent": "CHAD_YI",
       "priority": "critical",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "COMPLETED: Taiwan flights and hotel successfully rescheduled by Caleb.",
-      "description": "Reschedule Taiwan trip flights and accommodation",
-      "deadline": "2026-02-13",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-02-13T10:00:00+08:00"
-    },
-    "A1-2": {
-      "id": "A1-2",
-      "title": "Daily payments - DEVSPACE and Findit Sen",
-      "project": "A1",
-      "category": "A",
-      "priority": "high",
-      "status": "blocked",
-      "agent": "CHAD_YI",
-      "notes": "URGENT: Only Findit payment left. Due by Friday.",
-      "description": "Process daily payments for DEVSPACE and Findit Sen services",
-      "deadline": "2026-02-28",
-      "createdAt": "2026-02-13T12:39:00Z",
-      "completedAt": null
-    },
-    "A1-3": {
-      "id": "A1-3",
-      "title": "Book Disney Cruise rebooking",
-      "project": "A1",
-      "category": "A",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "Check March 15 if rebooking done by other person.",
-      "description": "Rebook Disney Cruise",
-      "deadline": "2026-02-27",
-      "createdAt": "2026-02-13T23:16:00Z",
-      "completedAt": null
-    },
-    "A1-4": {
-      "id": "A1-4",
-      "title": "Send ACLP homework",
-      "project": "A1",
-      "category": "A",
-      "priority": "critical",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "DUE TODAY (Feb 15) - Submit before end of day",
-      "description": "Submit ACLP homework assignment",
-      "deadline": "2026-02-15",
-      "createdAt": "2026-02-14T00:05:00Z",
-      "completedAt": "2026-02-15T14:00:00+08:00"
+      "status": "blocked"
     },
     "A1-5": {
       "id": "A1-5",
       "title": "Rebook ACLP reassessment",
-      "project": "A1",
-      "category": "A",
-      "priority": "high",
-      "status": "blocked",
       "agent": "CHAD_YI",
-      "notes": "URGENT: Must rebook by tomorrow night.",
-      "description": "Rebook ACLP reassessment slot",
-      "deadline": "2026-03-03",
-      "createdAt": "2026-02-14T00:05:00Z",
-      "completedAt": null
-    },
-    "A2-4": {
-      "id": "A2-4",
-      "title": "Write Chapter 4",
-      "project": "A2",
-      "category": "A",
-      "priority": "high",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A3-1": {
-      "id": "A3-1",
-      "title": "Script 1: Right vs Left politics",
-      "project": "A3",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "First KOE YouTube short script",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A3-2": {
-      "id": "A3-2",
-      "title": "Script 2: Left is stupid and evil",
-      "project": "A3",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Second KOE YouTube short script",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A3-3": {
-      "id": "A3-3",
-      "title": "Script 3: Spiritual warfare in America",
-      "project": "A3",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Third KOE YouTube short script",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A4-1": {
-      "id": "A4-1",
-      "title": "Research VTuber agencies hiring",
-      "project": "A4",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "4-6hrs, 3x/week minimum",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A4-2": {
-      "id": "A4-2",
-      "title": "Research Kick platform setup",
-      "project": "A4",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Sign up process, requirements",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A4-3": {
-      "id": "A4-3",
-      "title": "Research streaming equipment",
-      "project": "A4",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Mic, camera, lighting setup",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A5-1": {
-      "id": "A5-1",
-      "title": "Trading Bot: Forex/Commodities (Telegram → OANDA)",
-      "project": "A5",
-      "category": "A",
-      "priority": "high",
-      "status": "active",
-      "agent": "Quanta",
-      "notes": "FINAL TESTING: Live trading bot in validation phase. Monitoring for 24-48h.",
-      "description": "Telegram signal forwarding to OANDA - final testing",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A5-2": {
-      "id": "A5-2",
-      "title": "Trading Bot: Options Flow (Twitter → Moomoo)",
-      "project": "A5",
-      "category": "A",
-      "priority": "low",
-      "status": "blocked",
-      "agent": "MensaMusa",
-      "notes": "DEFERRED: Will create agent in April/May. Need Twitter/X to Moomoo connection.",
-      "description": "",
-      "deadline": "2026-02-25",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-14": {
-      "id": "A6-14",
-      "title": "Dashboard design changes + fix System/Resources pages",
-      "project": "A6",
-      "category": "A",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "COMPLETED: Homepage done by Cerebronn.",
-      "description": "Update dashboard UI design and fix non-functional System and Resources pages",
-      "deadline": "2026-02-28",
-      "createdAt": "2026-02-13T12:42:00Z",
-      "completedAt": "2026-03-02T00:48:25.372216"
-    },
-    "A6-15": {
-      "id": "A6-15",
-      "title": "Dashboard Audit Report: Phase 1",
-      "project": "A6",
-      "category": "A",
-      "priority": "high",
-      "status": "review",
-      "agent": "helios",
-      "notes": "Helios completed full audit of dashboard components. Review findings before merging.",
-      "description": "System health audit report submitted by Helios for review",
-      "deadline": "2026-02-26",
-      "createdAt": "2026-02-24T10:00:00+08:00",
-      "completedAt": null
-    },
-    "A6-16": {
-      "id": "A6-16",
-      "title": "Document upload system",
-      "project": "A6",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Drag & drop file upload",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-17": {
-      "id": "A6-17",
-      "title": "Voice/chat integration",
-      "project": "A6",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Dashboard talks back to user",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-18": {
-      "id": "A6-18",
-      "title": "Security hardening",
-      "project": "A6",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Auth, encryption, access control",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-1": {
-      "id": "B1-1",
-      "title": "B1: Website design/redesign",
-      "project": "B1",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Research competitors, create mockups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-2": {
-      "id": "B1-2",
-      "title": "B1: SEO setup",
-      "project": "B1",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Keywords, meta tags, optimization",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-3": {
-      "id": "B1-3",
-      "title": "B1: Google Ads management",
-      "project": "B1",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Campaigns, bidding, ad copy",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-4": {
-      "id": "B1-4",
-      "title": "B1: Social media management",
-      "project": "B1",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Accounts, content calendar, posts",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B1-5": {
-      "id": "B1-5",
-      "title": "B1: Client management setup",
-      "project": "B1",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM, email templates, follow-ups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-1": {
-      "id": "B2-1",
-      "title": "B2: Website design/redesign",
-      "project": "B2",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Research competitors, create mockups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-2": {
-      "id": "B2-2",
-      "title": "B2: SEO setup",
-      "project": "B2",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Keywords, meta tags, optimization",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-3": {
-      "id": "B2-3",
-      "title": "B2: Google Ads management",
-      "project": "B2",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Campaigns, bidding, ad copy",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-4": {
-      "id": "B2-4",
-      "title": "B2: Social media management",
-      "project": "B2",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Accounts, content calendar, posts",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B2-5": {
-      "id": "B2-5",
-      "title": "B2: Client management setup",
-      "project": "B2",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM, email templates, follow-ups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-1": {
-      "id": "B4-1",
-      "title": "B4: Website design/redesign",
-      "project": "B4",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Research competitors, create mockups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-2": {
-      "id": "B4-2",
-      "title": "B4: SEO setup",
-      "project": "B4",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Keywords, meta tags, optimization",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-3": {
-      "id": "B4-3",
-      "title": "B4: Google Ads management",
-      "project": "B4",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Campaigns, bidding, ad copy",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-4": {
-      "id": "B4-4",
-      "title": "B4: Social media management",
-      "project": "B4",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Accounts, content calendar, posts",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B4-5": {
-      "id": "B4-5",
-      "title": "B4: Client management setup",
-      "project": "B4",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM, email templates, follow-ups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-1": {
-      "id": "B5-1",
-      "title": "B5: Website design/redesign",
-      "project": "B5",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Research competitors, create mockups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-2": {
-      "id": "B5-2",
-      "title": "B5: SEO setup",
-      "project": "B5",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Keywords, meta tags, optimization",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-3": {
-      "id": "B5-3",
-      "title": "B5: Google Ads management",
-      "project": "B5",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Campaigns, bidding, ad copy",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-4": {
-      "id": "B5-4",
-      "title": "B5: Social media management",
-      "project": "B5",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Accounts, content calendar, posts",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B5-5": {
-      "id": "B5-5",
-      "title": "B5: Client management setup",
-      "project": "B5",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM, email templates, follow-ups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-1": {
-      "id": "B7-1",
-      "title": "B7: Website design/redesign",
-      "project": "B7",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Research competitors, create mockups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-2": {
-      "id": "B7-2",
-      "title": "B7: SEO setup",
-      "project": "B7",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Keywords, meta tags, optimization",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-3": {
-      "id": "B7-3",
-      "title": "B7: Google Ads management",
-      "project": "B7",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Campaigns, bidding, ad copy",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-4": {
-      "id": "B7-4",
-      "title": "B7: Social media management",
-      "project": "B7",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Accounts, content calendar, posts",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B7-5": {
-      "id": "B7-5",
-      "title": "B7: Client management setup",
-      "project": "B7",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM, email templates, follow-ups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-1": {
-      "id": "B8-1",
-      "title": "B8: Website design/redesign",
-      "project": "B8",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Research competitors, create mockups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-2": {
-      "id": "B8-2",
-      "title": "B8: SEO setup",
-      "project": "B8",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Keywords, meta tags, optimization",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-3": {
-      "id": "B8-3",
-      "title": "B8: Google Ads management",
-      "project": "B8",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Campaigns, bidding, ad copy",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-4": {
-      "id": "B8-4",
-      "title": "B8: Social media management",
-      "project": "B8",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Accounts, content calendar, posts",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B8-5": {
-      "id": "B8-5",
-      "title": "B8: Client management setup",
-      "project": "B8",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM, email templates, follow-ups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-1": {
-      "id": "B9-1",
-      "title": "B9: Website design/redesign",
-      "project": "B9",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Research competitors, create mockups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-2": {
-      "id": "B9-2",
-      "title": "B9: SEO setup",
-      "project": "B9",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Keywords, meta tags, optimization",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-3": {
-      "id": "B9-3",
-      "title": "B9: Google Ads management",
-      "project": "B9",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Campaigns, bidding, ad copy",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-4": {
-      "id": "B9-4",
-      "title": "B9: Social media management",
-      "project": "B9",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Accounts, content calendar, posts",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B9-5": {
-      "id": "B9-5",
-      "title": "B9: Client management setup",
-      "project": "B9",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM, email templates, follow-ups",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-2": {
-      "id": "B3-2",
-      "title": "B3: SEO optimization",
-      "project": "B3",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Website done by Lovable, now optimize",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-3": {
-      "id": "B3-3",
-      "title": "B3: Google Ads setup",
-      "project": "B3",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Campaigns for Team Elevate",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-4": {
-      "id": "B3-4",
-      "title": "B3: Social media management",
-      "project": "B3",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Content for Team Elevate",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B3-5": {
-      "id": "B3-5",
-      "title": "B3: Client management",
-      "project": "B3",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM for team members",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-2": {
-      "id": "B6-2",
-      "title": "B6: SEO optimization",
-      "project": "B6",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Website done by Lovable, now optimize",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-3": {
-      "id": "B6-3",
-      "title": "SPH items to order",
-      "project": "B6",
-      "category": "B",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "COMPLETED: SPH items ordered.",
-      "description": "Order by 17 February",
-      "deadline": "2026-02-25",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-03-02T00:48:25.372219"
-    },
-    "B6-4": {
-      "id": "B6-4",
-      "title": "B6: Social media management",
-      "project": "B6",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Content for Elluminate",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-5": {
-      "id": "B6-5",
-      "title": "B6: Client management",
-      "project": "B6",
-      "category": "B",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "CRM setup",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B10-1": {
-      "id": "B10-1",
-      "title": "B10: [NEED DETAILS]",
-      "project": "B10",
-      "category": "B",
-      "priority": "low",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Waiting for user to define B10 task",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "C1-1": {
-      "id": "C1-1",
-      "title": "Research property market trends",
-      "project": "C1",
-      "category": "C",
-      "priority": "low",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Location analysis for investments",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "C2-1": {
-      "id": "C2-1",
-      "title": "Update side sales portfolio",
-      "project": "C2",
-      "category": "C",
-      "priority": "low",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Add recent work and testimonials",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A2-3": {
-      "id": "A2-3",
-      "title": "Chapters 1-12 COMPLETE",
-      "project": "A2",
-      "category": "A",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
-      "description": "RE:UNITE chapters 1-12 are done",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-02-10T16:00:00+08:00"
-    },
-    "A2-13": {
-      "id": "A2-13",
-      "title": "Escritor Study Phase - Understand Story",
-      "project": "A2",
-      "category": "A",
-      "priority": "high",
-      "status": "active",
-      "agent": "Escritor",
-      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
-      "description": "Study all existing content to prepare for Chapter 13 collaboration",
-      "deadline": "2026-03-07",
-      "createdAt": "2026-02-12T07:30:00Z",
-      "completedAt": null
-    },
-    "A2-14": {
-      "id": "A2-14",
-      "title": "Write Chapter 13 WITH Caleb",
-      "project": "A2",
-      "category": "A",
-      "priority": "high",
-      "status": "active",
-      "agent": "Escritor",
-      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
-      "description": "Chapter 13 written in collaboration with Caleb",
-      "deadline": "2026-03-14",
-      "createdAt": "2026-02-14T00:00:00Z",
-      "completedAt": null
-    },
-    "A6-13": {
-      "id": "A6-13",
-      "title": "Project Detail Page",
-      "project": "A6",
-      "category": "A",
-      "priority": "high",
-      "status": "active",
-      "agent": "CHAD_YI",
-      "notes": "ON HOLD: Next pages are Categories, System, Resources (March work). Starting with Categories page.",
-      "description": "",
-      "deadline": "2026-03-01",
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "A2-2": {
-      "id": "A2-2",
-      "title": "Review Chapter 2 feedback",
-      "project": "A2",
-      "category": "A",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-01-28T11:00:00+08:00"
-    },
-    "A2-1": {
-      "id": "A2-1",
-      "title": "Complete Chapter 1",
-      "project": "A2",
-      "category": "A",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": "2026-01-20T09:00:00+08:00"
-    },
-    "B3-1": {
-      "id": "B3-1",
-      "title": "Team Elevate website (Lovable)",
-      "project": "B3",
-      "category": "B",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "Website built via Lovable — ongoing updates and refinements needed",
-      "description": "Maintain and improve Team Elevate website",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-1": {
-      "id": "B6-1",
-      "title": "Elluminate website (Lovable)",
-      "project": "B6",
-      "category": "B",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "Website built via Lovable — ongoing updates and refinements needed",
-      "description": "Maintain and improve Elluminate website",
-      "deadline": null,
-      "createdAt": "2026-02-06T00:00:00Z",
-      "completedAt": null
-    },
-    "B6-6": {
-      "id": "B6-6",
-      "title": "Find facilitators for ESU",
-      "project": "B6",
-      "category": "B",
-      "priority": "high",
-      "status": "done",
-      "agent": "CHAD_YI",
-      "notes": "COMPLETED: Handled by Steven.",
-      "description": "Source, confirm, and schedule facilitators for the ESU program",
-      "deadline": "2026-02-25",
-      "createdAt": "2026-02-12T07:30:00Z",
-      "completedAt": "2026-03-02T00:48:25.372219"
-    },
-    "B6-7": {
-      "id": "B6-7",
-      "title": "Check insurance for SMU event",
-      "project": "B6",
-      "category": "B",
-      "priority": "high",
-      "status": "blocked",
-      "agent": "CHAD_YI",
-      "notes": "Moved to next Friday.",
-      "description": "Check and confirm insurance requirements for SMU event",
-      "deadline": "2026-03-07",
-      "createdAt": "2026-02-13T14:48:00Z",
-      "completedAt": null
+      "priority": "critical",
+      "status": "blocked"
     },
     "B6-8": {
       "id": "B6-8",
       "title": "Order gel blitz guns for MENDAKI",
-      "project": "B6",
-      "category": "B",
+      "agent": "CHAD_YI",
       "priority": "critical",
-      "status": "blocked",
-      "agent": "CHAD_YI",
-      "notes": "URGENT: Order gel blitz guns by Tuesday night.",
-      "description": "Order gel blitz guns for MENDAKI event by next Wednesday",
-      "deadline": "2026-03-04",
-      "createdAt": "2026-02-14T16:20:00Z",
-      "completedAt": null
+      "status": "blocked"
     },
-    "A7-1": {
-      "id": "A7-1",
-      "title": "Venue confirmed - Shangri-La",
-      "project": "A7",
-      "category": "A",
-      "priority": "high",
-      "status": "done",
+    "A1-2": {
+      "id": "A1-2",
+      "title": "Findit payment only",
       "agent": "CHAD_YI",
-      "notes": "Venue confirmed: Shangri-La. Now working on venue logistics.",
-      "description": "Wedding venue confirmed at Shangri-La",
-      "deadline": null,
-      "createdAt": "2026-02-08T12:02:05.387258Z",
-      "completedAt": "2026-02-18T15:00:00+08:00"
+      "priority": "critical",
+      "status": "blocked"
     },
-    "A7-2": {
-      "id": "A7-2",
-      "title": "Invite list",
-      "project": "A7",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
+    "B6-7": {
+      "id": "B6-7",
+      "title": "Check insurance for SMU event",
       "agent": "CHAD_YI",
-      "notes": "Draft guest list",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-08T12:02:05.387258Z",
-      "completedAt": null
-    },
-    "A7-3": {
-      "id": "A7-3",
-      "title": "Contact Pastor Raymond",
-      "project": "A7",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Confirm wedding officiant availability",
-      "description": "",
-      "deadline": null,
-      "createdAt": "2026-02-08T12:06:04.411346Z",
-      "completedAt": null
-    },
-    "A7-4": {
-      "id": "A7-4",
-      "title": "Check Shangri-La transport",
-      "project": "A7",
-      "category": "A",
-      "priority": "medium",
-      "status": "backlog",
-      "agent": "CHAD_YI",
-      "notes": "Check if Shangri-La has transport for gas, if not arrange transport",
-      "description": "Verify Shangri-La gas transport logistics for wedding",
-      "deadline": null,
-      "createdAt": "2026-02-13T14:48:00Z",
-      "completedAt": null
-    },
-    "A5-3": {
-      "id": "A5-3",
-      "title": "Update Quanta symbol list - add BTC, ETH, AUD, CAD, CHF, NZD",
-      "project": "A5",
-      "status": "active",
-      "priority": "medium",
-      "description": "Expand monitoring symbols from 7 to 13. Add: BTCUSD, ETHUSD, AUDUSD, USDCAD, USDCHF, NZDUSD. Code already edited in monitor_callistofx.py - just needs restart to apply.",
-      "notes": "User wants to test current setup first before restarting. Apply when ready.",
-      "created": "2026-02-16T00:29:04.876474",
-      "deadline": null,
-      "assignee": "CHAD_YI",
-      "tags": [
-        "quanta",
-        "trading",
-        "enhancement"
-      ]
+      "priority": "urgent",
+      "status": "blocked"
     },
     "B8-6": {
       "id": "B8-6",
-      "title": "Finish Andre's video",
-      "project": "B8",
-      "category": "B",
-      "priority": "high",
-      "status": "blocked",
+      "title": "Andre's video (need changes)",
       "agent": "CHAD_YI",
-      "notes": "DONE but need changes by next Sunday.",
-      "description": "Complete Andre's video for Empyrean",
-      "deadline": "2026-03-09",
-      "createdAt": "2026-02-17T12:13:40.139189Z",
-      "completedAt": null
+      "priority": "urgent",
+      "status": "blocked"
     },
-    "A1-6": {
-      "id": "A1-6",
-      "title": "Finalize and send Lisa's contract",
-      "project": "A1",
-      "category": "A",
-      "priority": "critical",
-      "status": "blocked",
+    "A6-15": {
+      "id": "A6-15",
+      "title": "Dashboard Audit Report Phase 1",
+      "agent": "Helios",
+      "priority": "review",
+      "status": "review"
+    },
+    "A5-1": {
+      "id": "A5-1",
+      "title": "Quanta Trading Bot - Final Testing",
+      "agent": "Quanta",
+      "priority": "active",
+      "status": "active"
+    },
+    "A5-3": {
+      "id": "A5-3",
+      "title": "Update Quanta symbol list",
       "agent": "CHAD_YI",
-      "notes": "URGENT: Must sign Lisa contract by tomorrow.",
-      "description": "Complete Lisa's employment contract and send signed version",
-      "deadline": "2026-03-02",
-      "createdAt": "2026-02-19T17:07:00+08:00",
-      "completedAt": null
+      "priority": "active",
+      "status": "active"
     },
     "A1-7": {
       "id": "A1-7",
       "title": "Book flights for Bali",
-      "project": "A1",
-      "category": "A",
-      "priority": "critical",
-      "status": "done",
       "agent": "CHAD_YI",
-      "notes": "COMPLETED: Bali flights booked.",
-      "description": "Book flights for Bali trip",
-      "deadline": "2026-03-01",
-      "createdAt": "2026-02-23T18:52:00+08:00",
-      "completedAt": "2026-03-02T00:48:25.372203"
+      "priority": "done",
+      "status": "done"
     },
-    "A2-15": {
-      "id": "A2-15",
-      "title": "RE:UNITE Chapter 1-3 Outline",
-      "project": "A2",
-      "category": "A",
-      "priority": "medium",
-      "status": "review",
-      "agent": "escritor",
-      "notes": "ON HOLD: Escritor agent not yet created. Caleb has completed Ch 1-12 manually.",
-      "description": "Chapter outline submitted by Escritor for review and approval",
-      "deadline": "2026-02-28",
-      "createdAt": "2026-02-24T14:00:00+08:00",
-      "completedAt": null
-    }
-  },
-  "agents": {
-    "chad-yi": {
-      "status": "offline",
-      "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-03-09T10:00:05.203472+00:00",
-      "role": "Commander",
-      "role_tagline": "The Face",
-      "currentTaskTitle": "Task coordination & reporting"
-    },
-    "helios": {
-      "status": "active",
-      "currentTask": "Dashboard Audit Report: Phase 1",
-      "lastActive": "2026-03-18T05:01:25.707970+08:00",
-      "role": "Infrastructure",
-      "role_tagline": "The Spine",
-      "currentTaskTitle": "15-min audit + dashboard sync"
-    },
-    "cerebronn": {
-      "status": "active",
-      "currentTask": null,
-      "lastActive": "2026-03-13T23:32:54.242259+00:00",
-      "role": "Strategist",
-      "role_tagline": "The Brain",
-      "currentTaskTitle": "30-min memory + decision cycles"
-    },
-    "quanta": {
-      "status": "offline",
-      "currentTask": "XAUUSD execution on OANDA",
-      "lastActive": "2026-03-02T03:23:27.546732",
-      "role": "Finance",
-      "role_tagline": "The Trader",
-      "currentTaskTitle": "Live XAUUSD trading"
-    },
-    "escritor": {
-      "status": "offline"
-    },
-    "mensamusa": {
-      "status": "offline"
-    },
-    "autour": {
-      "status": "offline"
-    }
-  },
-  "inputsNeeded": {
-    "A5-1": {
-      "id": "A5-1",
-      "agent": "quanta",
-      "title": "Trading Bot: Forex/Commodities",
-      "question": "Provide OANDA API credentials to unblock Quanta",
-      "whatINeed": "OANDA API credentials (account ID + API key)",
-      "why": "Quanta has been blocked for 120+ hours waiting for credentials",
-      "requiredBy": "CHAD_YI",
-      "options": [
-        "Provide credentials now",
-        "Request demo account first",
-        "Postpone trading bot to next sprint"
-      ],
-      "steps": [
-        "Review the blocker",
-        "Provide OANDA API credentials",
-        "Agent will resume work"
-      ],
-      "urgency": "high"
-    }
-  },
-  "inputDetails": {
-    "A5-1": {
-      "taskId": "A5-1",
-      "agent": "Quanta",
-      "waitingFor": "OANDA API credentials",
-      "idleHours": 120,
-      "priority": "MEDIUM",
-      "title": "Trading Bot: Forex/Commodities",
-      "brief": "A5 • From: Quanta",
-      "whatINeed": "OANDA API credentials",
-      "why": "Quanta has been blocked for 120 hours waiting for this",
-      "steps": [
-        "Review the blocker",
-        "Provide the required credentials",
-        "Agent will resume work"
-      ],
-      "currentStatus": "Waiting for OANDA API credentials"
-    }
-  },
-  "urgentTaskDetails": {
-    "A1-1": {
-      "id": "A1-1",
-      "title": "Change Taiwan flights and hotel",
-      "deadline": "2026-02-13",
-      "hoursRemaining": 20,
+    "A6-14": {
+      "id": "A6-14",
+      "title": "Dashboard homepage design",
       "agent": "CHAD_YI",
-      "severity": "critical"
-    },
-    "A1-4": {
-      "id": "A1-4",
-      "title": "Send ACLP homework",
-      "deadline": "2026-02-15",
-      "hoursRemaining": 48,
-      "agent": "CHAD_YI",
-      "severity": "critical",
-      "description": "Due tomorrow night"
-    },
-    "B6-6": {
-      "id": "B6-6",
-      "title": "Find facilitators for ESU",
-      "deadline": "2026-02-17",
-      "hoursRemaining": 94,
-      "agent": "CHAD_YI",
-      "severity": "high",
-      "description": "Need minimum 120 facilitators by 17 Feb"
+      "priority": "done",
+      "status": "done"
     },
     "B6-3": {
       "id": "B6-3",
       "title": "SPH items to order",
-      "deadline": "2026-02-17",
-      "hoursRemaining": 94,
       "agent": "CHAD_YI",
-      "severity": "high",
-      "description": "Order by 17 February"
-    }
-  },
-  "agentDetails": {
-    "CHAD_YI": {
-      "status": "active",
-      "currentTask": "A6-3 Dashboard infrastructure",
-      "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
+      "priority": "done",
+      "status": "done"
     },
-    "Helios": {
-      "status": "active",
-      "currentTask": "15-minute audits",
-      "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
-    },
-    "Escritor": {
-      "status": "idle",
-      "currentTask": "A2-13 Chapter outline",
-      "lastActive": "2026-02-14T20:00:00+08:00",
-      "state": "⚠️ Idle 1d - needs input"
-    },
-    "Quanta": {
-      "status": "active",
-      "currentTask": "A5-1 LIVE testing - final validation phase",
-      "lastActive": "2026-02-19T04:00:00",
-      "state": "✅ Testing in progress"
-    },
-    "MensaMusa": {
-      "status": "blocked",
-      "currentTask": "A5-2 Options monitoring",
-      "lastActive": "2026-02-08T10:00:00+08:00",
-      "state": "🔴 Blocked 7d - waiting for credentials"
-    },
-    "Autour": {
-      "status": "not_spawned",
-      "currentTask": "A3 KOE scripts",
-      "lastActive": null,
-      "state": "⚪ Not started"
-    },
-    "Forger": {
-      "status": "active",
-      "currentTask": "B6 Elluminate website complete",
-      "lastActive": "2026-02-16T00:29:49.426989",
-      "state": "✅ Active now"
-    }
-  },
-  "projects": {
-    "A": {
-      "name": "Ambition (Personal)",
-      "subtitle": "By Calbee (Personal)",
-      "icon": "🎯",
-      "projects": [
-        "A1",
-        "A2",
-        "A3",
-        "A4",
-        "A5",
-        "A6",
-        "A7"
-      ]
-    },
-    "B": {
-      "name": "Business (Empire)",
-      "subtitle": "Empire (Main Work)",
-      "icon": "🏢",
-      "projects": [
-        "B1",
-        "B10",
-        "B2",
-        "B3",
-        "B4",
-        "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9"
-      ]
-    },
-    "C": {
-      "name": "Callings (Side Jobs)",
-      "subtitle": "On The Side (Other Jobs)",
-      "icon": "⚔️",
-      "projects": [
-        "C1",
-        "C2",
-        "C3"
-      ]
-    }
-  },
-  "projectDetails": {
-    "A1": {
-      "name": "Personal",
-      "description": "One-off personal tasks"
-    },
-    "A2": {
-      "name": "RE:UNITE",
-      "description": "R21 Isekai novel"
-    },
-    "A3": {
-      "name": "KOE",
-      "description": "YouTube/TikTok Christian content"
-    },
-    "A4": {
-      "name": "Streaming",
-      "description": "VTuber agency research"
-    },
-    "A5": {
-      "name": "Trading",
-      "description": "Forex/Gold signals, options flow"
-    },
-    "A6": {
-      "name": "Mission Control",
-      "description": "This dashboard"
-    },
-    "A7": {
-      "name": "Wedding",
-      "description": "Dec 12-13 planning"
-    },
-    "B1": {
-      "name": "Exstatic",
-      "description": "Umbrella company website"
-    },
-    "B2": {
-      "name": "Energize",
-      "description": "Equipment events"
-    },
-    "B3": {
-      "name": "Team Elevate",
-      "description": "Large scale events"
-    },
-    "B4": {
-      "name": "Pesta Fiesta",
-      "description": "Birthdays, décor"
-    },
-    "B5": {
-      "name": "Enticipate",
-      "description": "Travel + retreats"
-    },
-    "B6": {
-      "name": "Elluminate",
-      "description": "Team building (URGENT)"
-    },
-    "B7": {
-      "name": "Encompasse",
-      "description": "Schools + training"
-    },
-    "B8": {
-      "name": "Empyrean",
-      "description": "Video marketing"
-    },
-    "B9": {
-      "name": "Ethereal",
-      "description": "3D printing e-commerce"
-    },
-    "B10": {
-      "name": "Epitaph",
-      "description": "Data tracking"
-    },
-    "C3": {
-      "id": "C3",
-      "name": "Vibe Code Games",
-      "description": "Building games and interactive experiences, starting with Gather Town",
-      "category": "C",
-      "status": "active",
-      "created": "2026-02-13"
-    },
-    "C1": {
-      "name": "Real Estate",
-      "description": "RES exam June 2026"
-    },
-    "C2": {
-      "name": "Side Sales",
-      "description": "Remote sales"
-    }
-  },
-  "urgentDeadlines": [
-    {
+    "B6-6": {
       "id": "B6-6",
       "title": "Find facilitators for ESU",
-      "deadline": "2026-02-17",
-      "hoursRemaining": 94
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "A1-1": {
+      "id": "A1-1",
+      "title": "Change Taiwan flights and hotel",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "A1-4": {
+      "id": "A1-4",
+      "title": "Send ACLP homework",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "B3-1": {
+      "id": "B3-1",
+      "title": "Team Elevate website (Lovable)",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "B6-1": {
+      "id": "B6-1",
+      "title": "Elluminate website (Lovable)",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    }
+  },
+  "agents": {
+    "chad-yi": {
+      "status": "active",
+      "health": "active",
+      "currentTask": "",
+      "notes": "The Face - Primary interface",
+      "lastActive": "2026-03-18T05:08:25.206101+08:00"
+    },
+    "helios": {
+      "status": "active",
+      "health": "active",
+      "currentTask": "15-min audit + dashboard sync",
+      "notes": "The Spine - operational coordinator",
+      "lastActive": "2026-03-18T05:08:25.206101+08:00"
+    },
+    "cerebronn": {
+      "status": "active",
+      "health": "active",
+      "currentTask": "",
+      "notes": "The Brain - Persistent memory",
+      "lastActive": "2026-03-17T20:05:56.887733+00:00"
+    },
+    "quanta": {
+      "status": "active",
+      "health": "active",
+      "currentTask": "",
+      "notes": "Live trading - Final validation",
+      "lastActive": "2026-03-18T05:08:25.206101+08:00"
+    }
+  },
+  "needsAttention": [
+    {
+      "id": "A1-6",
+      "title": "Sign Lisa's contract",
+      "reason": "Blocked: Sign Lisa's contract",
+      "owner": "CHAD_YI",
+      "priority": "critical"
     },
     {
-      "id": "B6-3",
-      "title": "Elluminate pitch deck",
-      "deadline": "2026-02-17",
-      "hoursRemaining": 94
+      "id": "A1-6",
+      "title": "Sign Lisa's contract",
+      "reason": "CRITICAL: Sign Lisa's contract",
+      "owner": "CHAD_YI",
+      "priority": "critical"
+    },
+    {
+      "id": "A1-5",
+      "title": "Rebook ACLP reassessment",
+      "reason": "Blocked: Rebook ACLP reassessment",
+      "owner": "CHAD_YI",
+      "priority": "critical"
+    },
+    {
+      "id": "A1-5",
+      "title": "Rebook ACLP reassessment",
+      "reason": "CRITICAL: Rebook ACLP reassessment",
+      "owner": "CHAD_YI",
+      "priority": "critical"
+    },
+    {
+      "id": "B6-8",
+      "title": "Order gel blitz guns for MENDAKI",
+      "reason": "Blocked: Order gel blitz guns for MENDAKI",
+      "owner": "CHAD_YI",
+      "priority": "critical"
+    },
+    {
+      "id": "B6-8",
+      "title": "Order gel blitz guns for MENDAKI",
+      "reason": "CRITICAL: Order gel blitz guns for MENDAKI",
+      "owner": "CHAD_YI",
+      "priority": "critical"
+    },
+    {
+      "id": "A1-2",
+      "title": "Findit payment only",
+      "reason": "Blocked: Findit payment only",
+      "owner": "CHAD_YI",
+      "priority": "critical"
+    },
+    {
+      "id": "A1-2",
+      "title": "Findit payment only",
+      "reason": "CRITICAL: Findit payment only",
+      "owner": "CHAD_YI",
+      "priority": "critical"
+    },
+    {
+      "id": "B6-7",
+      "title": "Check insurance for SMU event",
+      "reason": "Blocked: Check insurance for SMU event",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "B6-7",
+      "title": "Check insurance for SMU event",
+      "reason": "URGENT: Check insurance for SMU event",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "B8-6",
+      "title": "Andre's video (need changes)",
+      "reason": "Blocked: Andre's video (need changes)",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "B8-6",
+      "title": "Andre's video (need changes)",
+      "reason": "URGENT: Andre's video (need changes)",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
     }
   ],
+  "dailyBriefing": {
+    "date": "2026-03-18",
+    "sgt_time": "05:08 SGT",
+    "summary": {
+      "total_tasks": 0,
+      "critical": 4,
+      "urgent": 2,
+      "active": 2,
+      "blocked": 6,
+      "review": 0,
+      "done": 8
+    },
+    "top_priorities": [
+      {
+        "id": "A1-6",
+        "title": "Sign Lisa's contract",
+        "owner": "CHAD_YI"
+      },
+      {
+        "id": "A1-6",
+        "title": "Sign Lisa's contract",
+        "owner": "CHAD_YI"
+      },
+      {
+        "id": "A1-5",
+        "title": "Rebook ACLP reassessment",
+        "owner": "CHAD_YI"
+      },
+      {
+        "id": "A1-5",
+        "title": "Rebook ACLP reassessment",
+        "owner": "CHAD_YI"
+      },
+      {
+        "id": "B6-8",
+        "title": "Order gel blitz guns for MENDAKI",
+        "owner": "CHAD_YI"
+      }
+    ],
+    "agent_health": {
+      "chad-yi": "active",
+      "helios": "active",
+      "cerebronn": "active",
+      "quanta": "active"
+    }
+  },
+  "escalations": [],
+  "inputsNeeded": [],
   "taskSummary": {
     "critical": 4,
     "urgent": 2,
     "active": 2,
     "blocked": 6,
     "done": 8
-  },
-  "stats": {
-    "total": 85,
-    "pending": 0,
-    "active": 2,
-    "review": 1,
-    "done": 8,
-    "blocked": 4
   }
 }
