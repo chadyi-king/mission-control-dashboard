@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-18T05:34:47.715182+08:00",
+  "lastUpdated": "2026-03-18T05:48:16.318448+08:00",
   "updatedBy": "helios-v2",
   "workflow": {
     "pending": [],
@@ -13,6 +13,8 @@
     ],
     "done": [
       "B8-6",
+      "B3-1",
+      "B6-1",
       "A1-6",
       "A1-5",
       "B6-8",
@@ -22,23 +24,35 @@
       "B6-3",
       "B6-6",
       "A1-1",
-      "A1-4",
-      "B3-1",
-      "B6-1"
+      "A1-4"
     ],
     "urgent": [
       "B6-7",
       "A2-1",
       "A7-1",
       "A7-2",
-      "A7-3"
+      "A7-3",
+      "B2-1",
+      "B4-1",
+      "B5-1",
+      "B7-1",
+      "B8-1",
+      "B9-1",
+      "B10-1"
     ],
     "blocked": [
       "B6-7",
       "A2-1",
       "A7-1",
       "A7-2",
-      "A7-3"
+      "A7-3",
+      "B2-1",
+      "B4-1",
+      "B5-1",
+      "B7-1",
+      "B8-1",
+      "B9-1",
+      "B10-1"
     ]
   },
   "tasks": {
@@ -81,6 +95,69 @@
       "id": "A7-3",
       "title": "Send invitations",
       "agent": "CHAD_YI",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "B2-1": {
+      "id": "B2-1",
+      "title": "Energize website",
+      "agent": "Forger",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "B3-1": {
+      "id": "B3-1",
+      "title": "Team Elevate website (Lovable)",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "B4-1": {
+      "id": "B4-1",
+      "title": "Pesta Fiesta website",
+      "agent": "Forger",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "B5-1": {
+      "id": "B5-1",
+      "title": "Enticipate website",
+      "agent": "Forger",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "B6-1": {
+      "id": "B6-1",
+      "title": "Elluminate website (Lovable)",
+      "agent": "CHAD_YI",
+      "priority": "done",
+      "status": "done"
+    },
+    "B7-1": {
+      "id": "B7-1",
+      "title": "Encompasse website",
+      "agent": "Forger",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "B8-1": {
+      "id": "B8-1",
+      "title": "Empyrean website",
+      "agent": "Forger",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "B9-1": {
+      "id": "B9-1",
+      "title": "Ethereal website",
+      "agent": "Forger",
+      "priority": "urgent",
+      "status": "blocked"
+    },
+    "B10-1": {
+      "id": "B10-1",
+      "title": "Epitaph website",
+      "agent": "Forger",
       "priority": "urgent",
       "status": "blocked"
     },
@@ -174,20 +251,6 @@
       "agent": "CHAD_YI",
       "priority": "done",
       "status": "done"
-    },
-    "B3-1": {
-      "id": "B3-1",
-      "title": "Team Elevate website (Lovable)",
-      "agent": "CHAD_YI",
-      "priority": "done",
-      "status": "done"
-    },
-    "B6-1": {
-      "id": "B6-1",
-      "title": "Elluminate website (Lovable)",
-      "agent": "CHAD_YI",
-      "priority": "done",
-      "status": "done"
     }
   },
   "agents": {
@@ -196,35 +259,28 @@
       "health": "active",
       "currentTask": "",
       "notes": "The Face - Primary interface",
-      "lastActive": "2026-03-18T05:34:47.715182+08:00"
+      "lastActive": "2026-03-18T05:48:16.318448+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
       "notes": "The Spine - operational coordinator",
-      "lastActive": "2026-03-18T05:34:47.715182+08:00"
+      "lastActive": "2026-03-18T05:48:16.318448+08:00"
     },
     "cerebronn": {
       "status": "active",
       "health": "active",
       "currentTask": "",
       "notes": "The Brain - Persistent memory",
-      "lastActive": "2026-03-17T21:34:27.856789+00:00"
+      "lastActive": "2026-03-17T21:41:08.666508+00:00"
     },
     "quanta": {
       "status": "active",
       "health": "active",
       "currentTask": "",
       "notes": "Live trading - Final validation",
-      "lastActive": "2026-03-18T05:34:47.715182+08:00"
-    },
-    "tasks left": {
-      "status": "offline",
-      "health": "offline",
-      "currentTask": "",
-      "notes": "",
-      "lastActive": "2026-03-18T05:34:47.715182+08:00"
+      "lastActive": "2026-03-18T05:48:16.318448+08:00"
     }
   },
   "needsAttention": [
@@ -297,17 +353,115 @@
       "reason": "URGENT: Send invitations",
       "owner": "CHAD_YI",
       "priority": "urgent"
+    },
+    {
+      "id": "B2-1",
+      "title": "Energize website",
+      "reason": "Blocked: Energize website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B2-1",
+      "title": "Energize website",
+      "reason": "URGENT: Energize website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B4-1",
+      "title": "Pesta Fiesta website",
+      "reason": "Blocked: Pesta Fiesta website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B4-1",
+      "title": "Pesta Fiesta website",
+      "reason": "URGENT: Pesta Fiesta website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B5-1",
+      "title": "Enticipate website",
+      "reason": "Blocked: Enticipate website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B5-1",
+      "title": "Enticipate website",
+      "reason": "URGENT: Enticipate website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B7-1",
+      "title": "Encompasse website",
+      "reason": "Blocked: Encompasse website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B7-1",
+      "title": "Encompasse website",
+      "reason": "URGENT: Encompasse website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B8-1",
+      "title": "Empyrean website",
+      "reason": "Blocked: Empyrean website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B8-1",
+      "title": "Empyrean website",
+      "reason": "URGENT: Empyrean website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B9-1",
+      "title": "Ethereal website",
+      "reason": "Blocked: Ethereal website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B9-1",
+      "title": "Ethereal website",
+      "reason": "URGENT: Ethereal website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B10-1",
+      "title": "Epitaph website",
+      "reason": "Blocked: Epitaph website",
+      "owner": "Forger",
+      "priority": "urgent"
+    },
+    {
+      "id": "B10-1",
+      "title": "Epitaph website",
+      "reason": "URGENT: Epitaph website",
+      "owner": "Forger",
+      "priority": "urgent"
     }
   ],
   "dailyBriefing": {
     "date": "2026-03-18",
-    "sgt_time": "05:34 SGT",
+    "sgt_time": "05:48 SGT",
     "summary": {
       "total_tasks": 0,
       "critical": 0,
-      "urgent": 5,
+      "urgent": 12,
       "active": 2,
-      "blocked": 5,
+      "blocked": 12,
       "review": 0,
       "done": 13
     },
@@ -342,17 +496,16 @@
       "chad-yi": "active",
       "helios": "active",
       "cerebronn": "active",
-      "quanta": "active",
-      "tasks left": "offline"
+      "quanta": "active"
     }
   },
   "escalations": [],
   "inputsNeeded": [],
   "taskSummary": {
     "critical": 0,
-    "urgent": 5,
+    "urgent": 12,
     "active": 2,
-    "blocked": 5,
+    "blocked": 12,
     "done": 13
   }
 }
