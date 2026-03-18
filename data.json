@@ -1,15 +1,15 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-19T00:57:21.538272+08:00",
+  "lastUpdated": "2026-03-19T01:12:23.940047+08:00",
   "updatedBy": "helios-v2",
   "stats": {
-    "totalTasks": 63,
-    "completedTasks": 20,
-    "completionRate": 32,
-    "activeTasks": 1,
-    "blockedTasks": 0,
-    "backlogTasks": 42,
-    "needsAttention": 1
+    "totalTasks": 64,
+    "completedTasks": 13,
+    "completionRate": 20,
+    "activeTasks": 3,
+    "blockedTasks": 4,
+    "backlogTasks": 43,
+    "needsAttention": 9
   },
   "projects": {
     "A": {
@@ -18,7 +18,6 @@
         "A1",
         "A2",
         "A3",
-        "A4",
         "A5",
         "A6",
         "A7"
@@ -48,88 +47,7 @@
       ]
     }
   },
-  "projectDetails": {
-    "A1": {
-      "name": "Personal",
-      "description": "Personal admin, travel, certifications"
-    },
-    "A2": {
-      "name": "RE:UNITE",
-      "description": "Isekai novel writing project"
-    },
-    "A3": {
-      "name": "KOE",
-      "description": "YouTube / TikTok content channel"
-    },
-    "A4": {
-      "name": "Streaming",
-      "description": "VTuber streaming setup"
-    },
-    "A5": {
-      "name": "Trading",
-      "description": "Forex / Gold automated trading (Quanta)"
-    },
-    "A6": {
-      "name": "Mission Control",
-      "description": "AI agent dashboard and operations stack"
-    },
-    "A7": {
-      "name": "Wedding",
-      "description": "Wedding planning for Dec 12–13"
-    },
-    "B1": {
-      "name": "Exstatic",
-      "description": "Business project"
-    },
-    "B2": {
-      "name": "Energize",
-      "description": "Business project"
-    },
-    "B3": {
-      "name": "Team Elevate",
-      "description": "Corporate training platform"
-    },
-    "B4": {
-      "name": "Pesta Fiesta",
-      "description": "Business project"
-    },
-    "B5": {
-      "name": "Enticipate",
-      "description": "Business project"
-    },
-    "B6": {
-      "name": "Elluminate",
-      "description": "Events and corporate activations"
-    },
-    "B7": {
-      "name": "Encompasse",
-      "description": "Business project"
-    },
-    "B8": {
-      "name": "Empyrean",
-      "description": "Video production project"
-    },
-    "B9": {
-      "name": "Ethereal",
-      "description": "3D printing venture"
-    },
-    "B10": {
-      "name": "Epitaph",
-      "description": "Data tracking project"
-    },
-    "C1": {
-      "name": "Real Estate",
-      "description": "RES exam preparation, June 2026"
-    },
-    "C2": {
-      "name": "Side Sales",
-      "description": "Side sales operations"
-    },
-    "C3": {
-      "name": "Vibe Coding",
-      "description": "Games and apps — vibe coding side projects"
-    }
-  },
+  "projectDetails": {},
   "workflow": {
     "pending": [
       "B1-1",
@@ -156,6 +74,7 @@
       "B5-3",
       "B5-4",
       "B5-5",
+      "B6-2",
       "B6-4",
       "B6-5",
       "B7-1",
@@ -176,9 +95,13 @@
       "B10-1"
     ],
     "active": [
-      "A2-1"
+      "A2-1",
+      "A5-1",
+      "A5-3"
     ],
-    "review": [],
+    "review": [
+      "A6-15"
+    ],
     "done": [
       "B8-6",
       "B3-1",
@@ -192,27 +115,29 @@
       "A6-14",
       "B6-6",
       "A1-1",
-      "A1-4",
-      "A7-1",
-      "A7-2",
-      "A7-3",
-      "B6-7",
-      "A5-1",
-      "A5-3",
-      "B6-2"
+      "A1-4"
     ],
     "urgent": [
-      "A2-1"
+      "B6-7",
+      "A2-1",
+      "A7-1",
+      "A7-2",
+      "A7-3"
     ],
-    "blocked": []
+    "blocked": [
+      "B6-7",
+      "A7-1",
+      "A7-2",
+      "A7-3"
+    ]
   },
   "tasks": {
     "B6-7": {
       "id": "B6-7",
       "title": "Check insurance for SMU event",
       "agent": "CHAD_YI",
-      "priority": "done",
-      "status": "done"
+      "priority": "urgent",
+      "status": "blocked"
     },
     "B8-6": {
       "id": "B8-6",
@@ -232,22 +157,22 @@
       "id": "A7-1",
       "title": "Finalize wedding theme",
       "agent": "CHAD_YI",
-      "priority": "done",
-      "status": "done"
+      "priority": "urgent",
+      "status": "blocked"
     },
     "A7-2": {
       "id": "A7-2",
       "title": "Book venue and catering",
       "agent": "CHAD_YI",
-      "priority": "done",
-      "status": "done"
+      "priority": "urgent",
+      "status": "blocked"
     },
     "A7-3": {
       "id": "A7-3",
       "title": "Send invitations",
       "agent": "CHAD_YI",
-      "priority": "done",
-      "status": "done"
+      "priority": "urgent",
+      "status": "blocked"
     },
     "B1-1": {
       "id": "B1-1",
@@ -435,8 +360,8 @@
       "id": "B6-2",
       "title": "MENDAKI - Get gel guns and archery tag",
       "agent": "CHAD_YI",
-      "priority": "done",
-      "status": "done"
+      "priority": "backlog",
+      "status": "backlog"
     },
     "B6-3": {
       "id": "B6-3",
@@ -575,15 +500,22 @@
       "id": "A5-1",
       "title": "Quanta Trading Bot - Final Testing",
       "agent": "Quanta",
-      "priority": "done",
-      "status": "done"
+      "priority": "active",
+      "status": "active"
     },
     "A5-3": {
       "id": "A5-3",
       "title": "Update Quanta symbol list",
       "agent": "CHAD_YI",
-      "priority": "done",
-      "status": "done"
+      "priority": "active",
+      "status": "active"
+    },
+    "A6-15": {
+      "id": "A6-15",
+      "title": "Dashboard Audit Report Phase 1",
+      "agent": "Helios",
+      "priority": "review",
+      "status": "review"
     },
     "A1-6": {
       "id": "A1-6",
@@ -655,14 +587,14 @@
       "health": "active",
       "currentTask": "",
       "notes": "The Face - Primary interface",
-      "lastActive": "2026-03-19T00:57:21.538272+08:00"
+      "lastActive": "2026-03-19T01:12:23.940047+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
       "notes": "The Spine - operational coordinator",
-      "lastActive": "2026-03-19T00:57:21.538272+08:00"
+      "lastActive": "2026-03-19T01:12:23.940047+08:00"
     },
     "cerebronn": {
       "status": "active",
@@ -676,35 +608,111 @@
       "health": "active",
       "currentTask": "",
       "notes": "Live trading - Final validation",
-      "lastActive": "2026-03-19T00:57:21.538272+08:00"
+      "lastActive": "2026-03-19T01:12:23.940047+08:00"
     }
   },
   "needsAttention": [
     {
+      "id": "B6-7",
+      "title": "Check insurance for SMU event",
+      "reason": "Blocked: Check insurance for SMU event",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "B6-7",
+      "title": "Check insurance for SMU event",
+      "reason": "URGENT: Check insurance for SMU event",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
       "id": "A2-1",
       "title": "Chapter 13 writing",
       "reason": "URGENT: Chapter 13 writing",
+      "owner": "Escritor",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-1",
+      "title": "Finalize wedding theme",
+      "reason": "Blocked: Finalize wedding theme",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-1",
+      "title": "Finalize wedding theme",
+      "reason": "URGENT: Finalize wedding theme",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-2",
+      "title": "Book venue and catering",
+      "reason": "Blocked: Book venue and catering",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-2",
+      "title": "Book venue and catering",
+      "reason": "URGENT: Book venue and catering",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-3",
+      "title": "Send invitations",
+      "reason": "Blocked: Send invitations",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A7-3",
+      "title": "Send invitations",
+      "reason": "URGENT: Send invitations",
       "owner": "CHAD_YI",
       "priority": "urgent"
     }
   ],
   "dailyBriefing": {
     "date": "2026-03-19",
-    "sgt_time": "00:57 SGT",
+    "sgt_time": "01:12 SGT",
     "summary": {
-      "total_tasks": 63,
+      "total_tasks": 0,
       "critical": 0,
-      "urgent": 1,
-      "active": 1,
-      "blocked": 0,
+      "urgent": 5,
+      "active": 3,
+      "blocked": 4,
       "review": 0,
-      "done": 20
+      "done": 13
     },
     "top_priorities": [
+      {
+        "id": "B6-7",
+        "title": "Check insurance for SMU event",
+        "owner": "CHAD_YI"
+      },
+      {
+        "id": "B6-7",
+        "title": "Check insurance for SMU event",
+        "owner": "CHAD_YI"
+      },
       {
         "id": "A2-1",
         "title": "Chapter 13 writing",
         "owner": "Escritor"
+      },
+      {
+        "id": "A7-1",
+        "title": "Finalize wedding theme",
+        "owner": "CHAD_YI"
+      },
+      {
+        "id": "A7-1",
+        "title": "Finalize wedding theme",
+        "owner": "CHAD_YI"
       }
     ],
     "agent_health": {
@@ -718,10 +726,10 @@
   "inputsNeeded": [],
   "taskSummary": {
     "critical": 0,
-    "urgent": 1,
-    "active": 1,
-    "blocked": 0,
-    "backlog": 42,
-    "done": 20
+    "urgent": 5,
+    "active": 3,
+    "blocked": 4,
+    "backlog": 43,
+    "done": 13
   }
 }
