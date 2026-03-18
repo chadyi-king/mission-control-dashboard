@@ -3158,11 +3158,11 @@
             if (!footer || !data) return;
             const agents = data.agents || {};
             const cfg = {
-                'chad-yi':  { init:'CY', bg:'rgba(255,107,0,0.18)',  bd:'rgba(255,107,0,0.4)',   col:'#ff8c00' },
-                'helios':   { init:'HE', bg:'rgba(220,38,38,0.18)',  bd:'rgba(220,38,38,0.4)',   col:'#e04040' },
-                'cerebron': { init:'CB', bg:'rgba(100,100,230,0.18)',bd:'rgba(100,100,230,0.35)',col:'#9090ee' },
+                'chad-yi':   { init:'CY', bg:'rgba(255,107,0,0.18)',  bd:'rgba(255,107,0,0.4)',   col:'#ff8c00' },
+                'helios':    { init:'HE', bg:'rgba(220,38,38,0.18)',  bd:'rgba(220,38,38,0.4)',   col:'#e04040' },
+                'cerebronn': { init:'CB', bg:'rgba(100,100,230,0.18)',bd:'rgba(100,100,230,0.35)',col:'#9090ee' },
             };
-            const _core = ['chad-yi','helios','cerebron'];
+            const _core = ['chad-yi','helios','cerebronn'];
             footer.innerHTML = _core.map(function(id) {
                 const a = agents[id] || {};
                 const sc = (a.status==='active'||a.status==='working') ? 'online' : (a.status==='blocked' ? 'blocked' : 'offline');
@@ -3227,6 +3227,140 @@
                     };
                 })
                 .filter(Boolean);
+        }
+
+        function projectIdFromTask(task) {
+            return String(task?.project || task?.id || '').replace(/-\d+$/, '');
+        }
+
+        function getDefaultProjectDetails() {
+            return {
+                A1: { name: 'Personal', description: 'Personal admin, travel, certifications' },
+                A2: { name: 'RE:UNITE', description: 'Isekai novel writing project' },
+                A3: { name: 'KOE', description: 'YouTube / TikTok content channel' },
+                A4: { name: 'Streaming', description: 'VTuber streaming setup' },
+                A5: { name: 'Trading', description: 'Forex / Gold automated trading (Quanta)' },
+                A6: { name: 'Mission Control', description: 'AI agent dashboard and operations stack' },
+                A7: { name: 'Wedding', description: 'Wedding planning for Dec 12–13' },
+                B1: { name: 'Exstatic', description: 'Business project' },
+                B2: { name: 'Energize', description: 'Business project' },
+                B3: { name: 'Team Elevate', description: 'Corporate training platform' },
+                B4: { name: 'Pesta Fiesta', description: 'Business project' },
+                B5: { name: 'Enticipate', description: 'Business project' },
+                B6: { name: 'Elluminate', description: 'Events and corporate activations' },
+                B7: { name: 'Encompasse', description: 'Business project' },
+                B8: { name: 'Empyrean', description: 'Video production project' },
+                B9: { name: 'Ethereal', description: '3D printing venture' },
+                B10: { name: 'Epitaph', description: 'Data tracking project' },
+                C1: { name: 'Real Estate', description: 'RES exam preparation, June 2026' },
+                C2: { name: 'Side Sales', description: 'Side sales operations' },
+                C3: { name: 'Vibe Coding', description: 'Games and apps — vibe coding side projects' }
+            };
+        }
+
+        function normalizeDashboardData(rawData) {
+            const data = JSON.parse(JSON.stringify(rawData || {}));
+            data.projects = data.projects || {};
+            data.projects.A = data.projects.A || { name: 'A - Ambition', projects: [] };
+            data.projects.B = data.projects.B || { name: 'B - Business', projects: [] };
+            data.projects.C = data.projects.C || { name: 'C - Callings', projects: [] };
+
+            if (!Array.isArray(data.projects.A.projects)) data.projects.A.projects = [];
+            if (!data.projects.A.projects.includes('A4')) {
+                data.projects.A.projects.splice(3, 0, 'A4');
+            }
+
+            data.projectDetails = {
+                ...getDefaultProjectDetails(),
+                ...(data.projectDetails || {})
+            };
+
+            data.tasks = data.tasks || {};
+            Object.values(data.tasks).forEach(task => {
+                task.project = projectIdFromTask(task);
+                if (task.status !== 'done') {
+                    task.priority = normalizePriority(task.priority);
+                }
+            });
+
+            const doneTaskIds = ['A7-1', 'A7-2', 'A7-3', 'B6-7', 'A5-1', 'A5-3', 'B6-2'];
+            doneTaskIds.forEach(taskId => {
+                if (data.tasks[taskId]) {
+                    data.tasks[taskId].status = 'done';
+                    data.tasks[taskId].priority = 'done';
+                }
+            });
+            delete data.tasks['A6-15'];
+
+            data.workflow = data.workflow || {};
+            ['pending', 'active', 'review', 'done', 'urgent', 'blocked'].forEach(key => {
+                if (!Array.isArray(data.workflow[key])) data.workflow[key] = [];
+            });
+
+            ['pending', 'active', 'review', 'urgent', 'blocked'].forEach(key => {
+                data.workflow[key] = data.workflow[key].filter(taskId => taskId !== 'A6-15' && !doneTaskIds.includes(taskId));
+            });
+            data.workflow.done = Array.from(new Set([...data.workflow.done.filter(taskId => taskId !== 'A6-15'), ...doneTaskIds]))
+                .filter(taskId => data.tasks[taskId]);
+
+            const completedTaskSet = new Set(data.workflow.done);
+            const uniqueAttention = [];
+            const seenAttention = new Set();
+            (Array.isArray(data.needsAttention) ? data.needsAttention : []).forEach(item => {
+                const id = item?.id || item?.taskId;
+                if (!id || completedTaskSet.has(id) || !data.tasks[id] || seenAttention.has(id)) return;
+                seenAttention.add(id);
+                uniqueAttention.push(item);
+            });
+            data.needsAttention = uniqueAttention;
+
+            const allTasks = Object.values(data.tasks);
+            const doneTasks = allTasks.filter(task => task.status === 'done');
+            const activeTasks = allTasks.filter(task => task.status === 'active');
+            const blockedTasks = allTasks.filter(task => task.status === 'blocked');
+            const backlogTasks = allTasks.filter(task => task.status === 'backlog' || task.status === 'pending');
+            const urgentTasks = allTasks.filter(task => task.status !== 'done' && normalizePriority(task.priority) === 'high');
+            const reviewTasks = allTasks.filter(task => task.status === 'review');
+
+            data.stats = {
+                totalTasks: allTasks.length,
+                completedTasks: doneTasks.length,
+                completionRate: Math.round((doneTasks.length / Math.max(1, allTasks.length)) * 100),
+                activeTasks: activeTasks.length,
+                blockedTasks: blockedTasks.length,
+                backlogTasks: backlogTasks.length,
+                needsAttention: data.needsAttention.length
+            };
+
+            data.taskSummary = {
+                critical: 0,
+                urgent: urgentTasks.length,
+                active: activeTasks.length,
+                blocked: blockedTasks.length,
+                backlog: backlogTasks.length,
+                done: doneTasks.length
+            };
+
+            const topPriorities = data.needsAttention.length
+                ? data.needsAttention.slice(0, 5).map(item => ({ id: item.id, title: item.title, owner: item.owner }))
+                : urgentTasks.slice(0, 5).map(task => ({ id: task.id, title: task.title, owner: task.agent || '—' }));
+
+            data.dailyBriefing = {
+                ...(data.dailyBriefing || {}),
+                summary: {
+                    total_tasks: allTasks.length,
+                    critical: 0,
+                    urgent: urgentTasks.length,
+                    active: activeTasks.length,
+                    blocked: blockedTasks.length,
+                    review: reviewTasks.length,
+                    done: doneTasks.length
+                },
+                top_priorities: topPriorities,
+                agent_health: Object.fromEntries(Object.entries(data.agents || {}).map(([id, agent]) => [id, agent.health || agent.status || 'unknown']))
+            };
+
+            return data;
         }
 
         function deriveProjectStatus(projTasks = []) {
@@ -3433,7 +3567,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                appData = await response.json();
+                appData = normalizeDashboardData(await response.json());
                 console.log('Data loaded:', Object.keys(appData));
                 console.log('Stats:', appData.stats);
                 console.log('Tasks count:', Object.keys(appData.tasks || {}).length);
@@ -3953,8 +4087,8 @@ console.log('[Helios WS] connected:', wsUrl);
             const totalProjects = allProjects.length;
             const totalTasks = allTasks.length;
             const tasksDone = allTasks.filter(t => t.status === 'done').length;
-            const tasksPending = allTasks.filter(t => t.status === 'pending').length;
-            const urgentTasks = allTasks.filter(t => t.priority === 'high' && t.status !== 'done').length;
+            const tasksPending = allTasks.filter(t => t.status !== 'done').length;
+            const urgentTasks = allTasks.filter(t => normalizePriority(t.priority) === 'high' && t.status !== 'done').length;
             const completionRate = totalTasks > 0 ? Math.round((tasksDone / totalTasks) * 100) : 0;
 
             catTotalProjects.textContent = totalProjects;
@@ -4121,28 +4255,12 @@ console.log('[Helios WS] connected:', wsUrl);
         function renderProjectCard(proj) {
             const progress = proj.stats.total > 0 ? Math.round((proj.stats.done / proj.stats.total) * 100) : 0;
             const statusClass = proj.status === 'active' ? 'active' : (proj.status === 'pending' ? 'pending' : '');
-            const timePercent = proj.timeTracking.estimated > 0
-                ? Math.min(100, Math.round((proj.timeTracking.spent / proj.timeTracking.estimated) * 100))
-                : 0;
-            const timeClass = timePercent > 100 ? 'danger' : (timePercent > 80 ? 'warning' : '');
             const resourcesCount = Array.isArray(proj.resources) ? proj.resources.length : 0;
-
-            const deadline = proj.nextDeadline;
-            let dueDisplay = 'No pending tasks';
-            let dueClass = 'success';
-            let countdown = '';
-
-            if (deadline) {
-                countdown = formatCountdown(deadline.date);
-                dueDisplay = deadline.task.title.substring(0, 30) + (deadline.task.title.length > 30 ? '...' : '');
-                dueClass = deadline.priority === 'high' || countdown === 'OVERDUE' ? 'urgent' :
-                          (countdown.includes('d') && parseInt(countdown) <= 2 ? 'warning' : 'success');
-            }
 
             return `
                 <div class="project-card" data-project="${proj.id}" data-status="${proj.status}"
                      data-priority="${proj.stats.urgent > 0 ? 'high' : (proj.stats.mediumPriority > 0 ? 'medium' : 'low')}"
-                     data-agent="CHAD_YI" data-due="${deadline ? deadline.date.getTime() : 9999999999999}"
+                     data-agent="CHAD_YI" data-due="9999999999999"
                      data-progress="${progress}" data-tasks="${proj.stats.total}">
                     <div class="project-card-header" onclick="toggleProject(this)">
                         <div class="project-info-main">
@@ -4179,7 +4297,7 @@ console.log('[Helios WS] connected:', wsUrl);
                         </div>
                         <div class="task-stat urgent">
                             <div class="task-stat-value">${proj.stats.active}</div>
-                            <div class="task-stat-label">Active</div>
+                            <div class="task-stat-label">Open</div>
                         </div>
                         <div class="task-stat">
                             <div class="task-stat-value">${proj.stats.done}</div>
@@ -4588,7 +4706,7 @@ console.log('[Helios WS] connected:', wsUrl);
             Object.values(projects).forEach(cat => {
                 (cat.projects || []).forEach(pid => {
                     totalProj++;
-                    const ptasks = tasks.filter(t => t.project === pid);
+                    const ptasks = tasks.filter(t => projectIdFromTask(t) === pid);
                     const hasOverdue = ptasks.some(t => t.status !== 'done' && t.deadline && isOverdue(t.deadline));
                     const hasBlocked = ptasks.some(t => t.status === 'blocked');
                     if (hasBlocked) projDelayed++;
@@ -4846,8 +4964,8 @@ console.log('[Helios WS] connected:', wsUrl);
             }
             if (decisionsCount) decisionsCount.textContent = inputs.length;
 
-            // ACTIVE WORK — show tasks assigned to core agents: chad-yi, cerebron, helios
-            const _coreAgents = ['chad-yi', 'cerebron', 'helios', 'CHAD_YI', 'Cerebron', 'Helios'];
+            // ACTIVE WORK — show tasks assigned to core agents: chad-yi, cerebronn, helios
+            const _coreAgents = ['chad-yi', 'cerebronn', 'helios', 'CHAD_YI', 'Cerebronn', 'Helios'];
             const activeTasks = tasks.filter(t =>
                 t.status === 'active' && t.agent &&
                 _coreAgents.map(a => a.toLowerCase()).includes((t.agent || '').toLowerCase())
@@ -5014,7 +5132,7 @@ console.log('[Helios WS] connected:', wsUrl);
                     <div class="focus-expand-row"><span>Project</span>${escHtml(_projName)}</div>
                     <div class="focus-expand-row"><span>Status</span>${t.status||'pending'}</div>
                     ${t.agent ? `<div class="focus-expand-row"><span>Agent</span>${t.agent}</div>` : ''}
-                    <div class="focus-expand-row"><span>Rec.</span><span style="color:rgba(255,180,50,0.85);font-weight:600;font-size:10px;letter-spacing:0.06em;">${(function(proj){ if(!proj) return 'Cerebron'; if(proj.startsWith('A2')) return 'Escritor'; if(proj.startsWith('A5')) return 'Quanta'; if(proj.startsWith('A6')) return 'Helios'; if(proj.startsWith('A1')) return 'CHAD_YI'; if(proj.startsWith('B')) return 'Forger'; return 'Cerebron'; })(t.project)}</span></div>
+                    <div class="focus-expand-row"><span>Rec.</span><span style="color:rgba(255,180,50,0.85);font-weight:600;font-size:10px;letter-spacing:0.06em;">${(function(proj){ if(!proj) return 'Cerebronn'; if(proj.startsWith('A2')) return 'Escritor'; if(proj.startsWith('A5')) return 'Quanta'; if(proj.startsWith('A6')) return 'Helios'; if(proj.startsWith('A1')) return 'CHAD_YI'; if(proj.startsWith('B')) return 'Forger'; return 'Cerebronn'; })(_projId)}</span></div>
                     <div class="focus-task-actions">
                         <button class="focus-action-btn done-btn" onclick="markFocusDoneNew(event,'${t.id}')">✓ MARK DONE</button>
                     </div>
@@ -5075,10 +5193,11 @@ console.log('[Helios WS] connected:', wsUrl);
                 const sha = meta.sha;
                 // Decode content
                 const raw = atob(meta.content.replace(/\n/g, ''));
-                const json = JSON.parse(raw);
+                const json = normalizeDashboardData(JSON.parse(raw));
                 // Apply change
                 if (json.tasks && json.tasks[taskId]) {
                     json.tasks[taskId].status = 'done';
+                    json.tasks[taskId].priority = 'done';
                     json.tasks[taskId].completedAt = new Date().toISOString();
                 }
                 // Remove from workflow active/urgent/blocked/pending lists
@@ -5443,7 +5562,7 @@ console.log('[Helios WS] connected:', wsUrl);
             }
 
             // Sort agents: chad-yi, cerebron, helios first; rest alphabetically
-            const _priorityOrder = ['chad-yi', 'cerebron', 'helios'];
+            const _priorityOrder = ['chad-yi', 'cerebronn', 'helios'];
             const agentKeys = Object.keys(agents).sort((a, b) => {
                 const ai = _priorityOrder.indexOf(a.toLowerCase());
                 const bi = _priorityOrder.indexOf(b.toLowerCase());
