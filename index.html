@@ -608,8 +608,10 @@
 
         /* Section Management */
         .section {
-            display: none;
+            display: block;
             animation: fadeIn 0.3s ease;
+            scroll-margin-top: 96px;
+            margin-bottom: 56px;
         }
 
         .section.active {
@@ -2142,6 +2144,182 @@
         .placeholder-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
         .placeholder-title { font-family: var(--display-font); font-size: 18px; color: var(--crimson-bright); margin-bottom: 8px; }
         .placeholder-text { color: var(--text-muted); font-size: 14px; }
+        /* Flow divider between Home and Categories */
+        .section-flow-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 0 0 40px;
+            padding: 0 4px;
+        }
+        .flow-divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(220,20,60,0.4), transparent);
+        }
+        .flow-divider-label {
+            font-family: var(--display-font);
+            font-size: 9px;
+            letter-spacing: 2.5px;
+            color: var(--crimson-bright);
+            opacity: 0.7;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(220, 20, 60, 0.35);
+            background: rgba(220, 20, 60, 0.08);
+            color: var(--crimson-bright);
+            font-size: 10px;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+        .section-caption {
+            margin: -4px 0 22px;
+            color: var(--text-muted);
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            max-width: 760px;
+        }
+        .project-resource-summary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 8px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(77, 171, 247, 0.12);
+            border: 1px solid rgba(77, 171, 247, 0.28);
+            color: var(--info);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .project-resources-strip {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--crystal-border);
+            background: rgba(77, 171, 247, 0.05);
+        }
+        .project-resources-title {
+            font-size: 10px;
+            color: var(--info);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .project-resources-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .project-resource-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(77, 171, 247, 0.26);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+        }
+        .project-resource-pill:hover {
+            border-color: var(--info);
+            color: var(--info);
+            box-shadow: 0 0 12px rgba(77, 171, 247, 0.18);
+            background: rgba(77, 171, 247, 0.08);
+        }
+        .project-resource-type {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+        .resource-project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .resource-project-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 14px;
+            padding: 18px;
+            backdrop-filter: blur(10px);
+        }
+        .resource-project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .resource-project-id {
+            font-family: var(--display-font);
+            font-size: 12px;
+            color: var(--crimson-bright);
+            letter-spacing: 1px;
+        }
+        .resource-project-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .resource-project-meta {
+            margin-bottom: 14px;
+            color: var(--text-muted);
+            font-size: 11px;
+            letter-spacing: 0.4px;
+        }
+        .resource-project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .resource-link-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.06);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+        .resource-link-item:hover {
+            border-color: rgba(77, 171, 247, 0.35);
+            color: var(--info);
+            background: rgba(77, 171, 247, 0.08);
+        }
+        .resource-link-label {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .resource-link-meta {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+        .resource-section-note {
+            margin-top: 16px;
+            color: var(--text-muted);
+            font-size: 11px;
+            letter-spacing: 0.4px;
+        }
 
         /* Loading & Error States */
         .loading-state { text-align: center; padding: 60px; color: var(--text-muted); }
@@ -2304,35 +2482,21 @@
             </div>
         </div>
         <div class="mobile-nav-menu" id="mobile-nav-menu">
-            <a href="index.html">
+            <a href="#home-section" onclick="window.scrollTo({top:0,behavior:'smooth'}); closeMobileMenu(); return false;">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                     <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
-                Home
+                ↑ Top
             </a>
-            <a href="categories.html">
+            <a href="#categories-section" onclick="document.getElementById('categories-section').scrollIntoView({behavior:'smooth',block:'start'}); closeMobileMenu(); return false;">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
                     <rect x="3" y="3" width="7" height="7"/>
                     <rect x="14" y="3" width="7" height="7"/>
                     <rect x="14" y="14" width="7" height="7"/>
                     <rect x="3" y="14" width="7" height="7"/>
                 </svg>
-                Categories
-            </a>
-            <a href="system.html">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M12 1v6m0 6v6M1 12h6m6 0h6"/>
-                </svg>
-                System
-            </a>
-            <a href="resources.html">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                </svg>
-                Resources
+                ↓ Projects
             </a>
         </div>
         <div class="topbar-right">
@@ -2355,49 +2519,6 @@
             <span class="sidebar-toggle-text">Collapse</span>
         </button>
 
-        <a class="sidebar-item" href="index.html">
-            <span class="sidebar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">Home</span>
-        </a>
-
-        <a class="sidebar-item" href="categories.html">
-            <span class="sidebar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="7" height="7"/>
-                    <rect x="14" y="3" width="7" height="7"/>
-                    <rect x="14" y="14" width="7" height="7"/>
-                    <rect x="3" y="14" width="7" height="7"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">Categories</span>
-        </a>
-
-        <a class="sidebar-item" href="system.html">
-            <span class="sidebar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">System</span>
-        </a>
-
-        <a class="sidebar-item" href="resources.html">
-            <span class="sidebar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                </svg>
-            </span>
-            <span class="sidebar-label">Resources</span>
-        </a>
         <div class="sidebar-spacer"></div>
         <div class="sidebar-footer" id="sidebar-footer">
             <!-- Agent status dots — populated by updateSidebarAgents() -->
@@ -2488,19 +2609,20 @@
                     </div>
                 </div>
 
-                <!-- 5. COMPLETED -->
-                <div class="stat-card" id="stat-completed">
+                <!-- 5. TASKS LEFT -->
+                <div class="stat-card" id="stat-tasks-left">
                     <div class="stat-header">
                         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polyline points="20 6 9 17 4 12"/>
+                            <path d="M12 2v20"/>
+                            <path d="M5 9l7-7 7 7"/>
                         </svg>
-                        <span class="stat-label">COMPLETED</span>
+                        <span class="stat-label">TASKS LEFT</span>
                     </div>
-                    <div class="stat-value stat-val-good" id="s-completed-total">—</div>
+                    <div class="stat-value" id="s-tasks-left-total">—</div>
                     <div class="stat-breakdown">
-                        <span class="sub-stat sub-good" id="s-completed-you">— by you</span>
-                        <span class="sub-stat sub-agent" id="s-completed-agents">— by agents</span>
-                        <span class="sub-stat sub-muted" id="s-completed-week">—% week goal</span>
+                        <span class="sub-stat sub-agent" id="s-tasks-left-all">— total tasks</span>
+                        <span class="sub-stat sub-good" id="s-tasks-left-done">— completed</span>
+                        <span class="sub-stat sub-muted" id="s-tasks-left-progress">— complete</span>
                     </div>
                 </div>
 
@@ -2837,9 +2959,19 @@
 
         </div><!-- /home-section -->
 
-        <!-- CATEGORIES SECTION (UNCHANGED) -->
+        <!-- ═══════════════════════════════════════════
+             PROJECT CATEGORIES — scrolls naturally below home
+        ═══════════════════════════════════════════ -->
+        <div class="section-flow-divider">
+            <div class="flow-divider-line"></div>
+            <div class="flow-divider-label">↓ PROJECT CATEGORIES</div>
+            <div class="flow-divider-line"></div>
+        </div>
+
         <div id="categories-section" class="section">
-            <h1 class="page-title">Folder Project Categories</h1>
+            <div class="section-kicker">Execution Layer</div>
+            <h1 class="page-title">A / B / C Categories</h1>
+            <p class="section-caption">Everything below this point is the working deck: categories, project health, task previews, and master-doc links attached to the projects that actually need them.</p>
 
             <!-- Dashboard Stats Bar -->
             <div id="dashboard-stats-bar" class="dashboard-stats-bar" style="display: none;">
@@ -2931,25 +3063,9 @@
             <div id="categories-container"></div>
         </div>
 
-        <!-- INSIGHTS SECTION -->
-        <div id="insights-section" class="section">
-            <h1 class="page-title">Chart Insights</h1>
-            <div class="placeholder-content">
-                <div class="placeholder-icon">Stats</div>
-                <div class="placeholder-title">Insights Coming Soon</div>
-                <div class="placeholder-text">Analytics, trends, and performance metrics will appear here.</div>
-            </div>
-        </div>
+        <!-- ═══════════════ END OF PAGE ═══════════════ -->
 
-        <!-- RESOURCES SECTION -->
-        <div id="resources-section" class="section">
-            <h1 class="page-title">Books Resources</h1>
-            <div class="placeholder-content">
-                <div class="placeholder-icon">Folder</div>
-                <div class="placeholder-title">Resources Coming Soon</div>
-                <div class="placeholder-text">Documents, templates, and reference materials will appear here.</div>
-            </div>
-        </div>
+
     </div>
 
     <script src="mobile-nav.js"></script>
@@ -2962,7 +3078,7 @@
         const HELIOS_API_BASE = (
             window.HELIOS_API_BASE ||
             localStorage.getItem('HELIOS_API_BASE') ||
-            'https://helios-api-xfvi.onrender.com'
+            'http://localhost:8000'
         ).replace(/\/+$/, '');
         const HELIOS_WS_URL = (() => {
             const configured = window.HELIOS_WS_URL || localStorage.getItem('HELIOS_WS_URL');
@@ -3041,6 +3157,87 @@
             if (window.ProjectTasksModal && typeof window.ProjectTasksModal.setProjectLookup === 'function') {
                 window.ProjectTasksModal.setProjectLookup(projectLookup);
             }
+        }
+
+        function normalizePriority(priority) {
+            const normalized = String(priority || '').toLowerCase();
+            if (normalized === 'critical' || normalized === 'urgent' || normalized === 'high') return 'high';
+            if (normalized === 'medium') return 'medium';
+            return 'low';
+        }
+
+        function normalizeProjectResources(resources = []) {
+            if (!Array.isArray(resources)) return [];
+            return resources
+                .map((resource, index) => {
+                    if (typeof resource === 'string') {
+                        return {
+                            id: `resource-${index}`,
+                            title: resource,
+                            type: 'doc',
+                            url: resource
+                        };
+                    }
+                    if (!resource || !resource.url) return null;
+                    return {
+                        id: resource.id || `resource-${index}`,
+                        title: resource.title || resource.label || 'Resource',
+                        type: resource.type || 'doc',
+                        url: resource.url
+                    };
+                })
+                .filter(Boolean);
+        }
+
+        function deriveProjectStatus(projTasks = []) {
+            if (!projTasks.length) return 'pending';
+            if (projTasks.some(task => task.status === 'blocked')) return 'blocked';
+            if (projTasks.some(task => task.status === 'active')) return 'active';
+            if (projTasks.some(task => task.status === 'review')) return 'review';
+            if (projTasks.every(task => task.status === 'done')) return 'done';
+            return 'pending';
+        }
+
+        function buildProjectsFromData(data) {
+            const projects = [];
+            if (!data || !data.projects) return projects;
+
+            Object.keys(data.projects).forEach(catKey => {
+                const cat = data.projects[catKey];
+                if (!cat.projects) return;
+
+                cat.projects.forEach(projId => {
+                    const tasks = data.tasks || {};
+                    const projTasks = Object.values(tasks).filter(t => t.project === projId);
+                    const taskStats = calculateTaskStats(projTasks);
+                    const projDetails = data.projectDetails && data.projectDetails[projId] ? data.projectDetails[projId] : {};
+
+                    projects.push({
+                        id: projId,
+                        category: catKey,
+                        categoryName: cat.name,
+                        name: projDetails.name || projId,
+                        description: projDetails.description || '',
+                        resources: normalizeProjectResources(projDetails.resources),
+                        tasks: projTasks,
+                        stats: taskStats,
+                        status: deriveProjectStatus(projTasks),
+                        priorityBreakdown: getPriorityBreakdown(projTasks),
+                        timeTracking: calculateTimeTracking(projTasks),
+                        nextDeadline: getNextDeadline(projTasks),
+                        milestones: generateMilestones({id: projId}, projTasks),
+                        timeline: buildProjectTimeline(projTasks)
+                    });
+                });
+            });
+
+            return projects;
+        }
+
+        function setActiveSectionLink(name) {
+            document.querySelectorAll('[data-section]').forEach(link => {
+                link.classList.toggle('active', link.dataset.section === name);
+            });
         }
 
         async function loadHeliosSyncBootstrap() {
@@ -3192,7 +3389,7 @@ console.log('[Helios WS] connected:', wsUrl);
         async function loadData() {
             try {
                 console.log('Loading data...');
-                const response = await fetch('data.json?t=' + Date.now()); // Cache busting
+                const response = await fetch('https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json?t=' + Date.now()); // GitHub raw — always fresh
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -3200,38 +3397,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 console.log('Data loaded:', Object.keys(appData));
                 console.log('Stats:', appData.stats);
                 console.log('Tasks count:', Object.keys(appData.tasks || {}).length);
-                allProjects = [];
-
-                // Process all projects
-                if (appData.projects) {
-                    Object.keys(appData.projects).forEach(catKey => {
-                        const cat = appData.projects[catKey];
-                        if (cat.projects) {
-                            cat.projects.forEach(projId => {
-                                // projId is now a string (e.g., "A1"), not an object
-                                const tasks = appData.tasks || {};
-                                const projTasks = Object.values(tasks).filter(t => t.project === projId);
-                                const taskStats = calculateTaskStats(projTasks);
-                                const projDetails = appData.projectDetails && appData.projectDetails[projId];
-
-                                allProjects.push({
-                                    id: projId,
-                                    category: catKey,
-                                    categoryName: cat.name,
-                                    name: projDetails ? projDetails.name : projId,
-                                    description: projDetails ? projDetails.description : '',
-                                    tasks: projTasks,
-                                    stats: taskStats,
-                                    priorityBreakdown: getPriorityBreakdown(projTasks),
-                                    timeTracking: calculateTimeTracking(projTasks),
-                                    nextDeadline: getNextDeadline(projTasks),
-                                    milestones: generateMilestones({id: projId}, projTasks),
-                                    timeline: buildProjectTimeline(projTasks)
-                                });
-                            });
-                        }
-                    });
-                }
+                allProjects = buildProjectsFromData(appData);
 
                 syncProjectLookup();
 
@@ -3239,6 +3405,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 window.appData = appData;
                 renderHomeSection();
                 renderCategoriesSection();
+                renderResourcesSection();
                 updateSidebarAgents(appData);
                 console.log('Rendering complete. allProjects:', allProjects.length);
 
@@ -3271,25 +3438,28 @@ console.log('[Helios WS] connected:', wsUrl);
 
         // Calculate comprehensive task statistics
         function calculateTaskStats(tasks) {
+            const openTasks = tasks.filter(t => t.status !== 'done');
             return {
                 total: tasks.length,
                 pending: tasks.filter(t => t.status === 'pending').length,
                 active: tasks.filter(t => t.status === 'active').length,
+                blocked: tasks.filter(t => t.status === 'blocked').length,
                 review: tasks.filter(t => t.status === 'review').length,
                 done: tasks.filter(t => t.status === 'done').length,
-                highPriority: tasks.filter(t => t.priority === 'high' && t.status !== 'done').length,
-                mediumPriority: tasks.filter(t => t.priority === 'medium' && t.status !== 'done').length,
-                lowPriority: tasks.filter(t => t.priority === 'low' && t.status !== 'done').length,
-                urgent: tasks.filter(t => t.priority === 'high' && t.status !== 'done').length
+                left: openTasks.length,
+                highPriority: openTasks.filter(t => normalizePriority(t.priority) === 'high').length,
+                mediumPriority: openTasks.filter(t => normalizePriority(t.priority) === 'medium').length,
+                lowPriority: openTasks.filter(t => normalizePriority(t.priority) === 'low').length,
+                urgent: openTasks.filter(t => normalizePriority(t.priority) === 'high').length
             };
         }
 
         // Get priority breakdown
         function getPriorityBreakdown(tasks) {
             return {
-                high: tasks.filter(t => t.priority === 'high').length,
-                medium: tasks.filter(t => t.priority === 'medium').length,
-                low: tasks.filter(t => t.priority === 'low').length
+                high: tasks.filter(t => normalizePriority(t.priority) === 'high').length,
+                medium: tasks.filter(t => normalizePriority(t.priority) === 'medium').length,
+                low: tasks.filter(t => normalizePriority(t.priority) === 'low').length
             };
         }
 
@@ -3468,8 +3638,9 @@ console.log('[Helios WS] connected:', wsUrl);
 
         // Get priority class
         function getPriorityClass(priority) {
-            if (priority === 'high') return 'high-priority';
-            if (priority === 'medium') return 'medium-priority';
+            const normalized = normalizePriority(priority);
+            if (normalized === 'high') return 'high-priority';
+            if (normalized === 'medium') return 'medium-priority';
             return 'low-priority';
         }
 
@@ -3841,6 +4012,67 @@ console.log('[Helios WS] connected:', wsUrl);
             }).join('');
         }
 
+        function renderProjectResourcesStrip(proj) {
+            const resources = Array.isArray(proj.resources) ? proj.resources : [];
+            if (!resources.length) return '';
+
+            return `
+                <div class="project-resources-strip">
+                    <div class="project-resources-title">📎 Master Docs / Resources</div>
+                    <div class="project-resources-list">
+                        ${resources.map(resource => `
+                            <a class="project-resource-pill" href="${escHtml(resource.url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
+                                <span>${escHtml(resource.title)}</span>
+                                <span class="project-resource-type">${escHtml(resource.type)}</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderResourcesSection() {
+            const container = document.getElementById('resources-container');
+            if (!container) return;
+
+            const projectsWithResources = allProjects.filter(proj => Array.isArray(proj.resources) && proj.resources.length > 0);
+
+            if (!projectsWithResources.length) {
+                container.innerHTML = `
+                    <div class="placeholder-content" style="grid-column: 1 / -1; padding: 44px 30px;">
+                        <div class="placeholder-icon">📎</div>
+                        <div class="placeholder-title">No Project Docs Added Yet</div>
+                        <div class="placeholder-text">When you add links like Google Docs or Drive folders under a project’s details, they’ll appear here and inside the project card itself.</div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = projectsWithResources.map(proj => `
+                <div class="resource-project-card">
+                    <div class="resource-project-header">
+                        <div>
+                            <div class="resource-project-id">${escHtml(proj.id)}</div>
+                            <div class="resource-project-name">${escHtml(proj.name)}</div>
+                        </div>
+                        <span class="project-resource-summary">${proj.resources.length} docs</span>
+                    </div>
+                    <div class="resource-project-meta">${escHtml(proj.categoryName || proj.category)} · ${proj.stats.left} tasks left</div>
+                    <div class="resource-project-links">
+                        ${proj.resources.map(resource => `
+                            <a class="resource-link-item" href="${escHtml(resource.url)}" target="_blank" rel="noopener noreferrer">
+                                <div>
+                                    <div class="resource-link-label">${escHtml(resource.title)}</div>
+                                    <div class="resource-link-meta">${escHtml(resource.type)}</div>
+                                </div>
+                                <span>↗</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
         function renderProjectCard(proj) {
             const progress = proj.stats.total > 0 ? Math.round((proj.stats.done / proj.stats.total) * 100) : 0;
             const statusClass = proj.status === 'active' ? 'active' : (proj.status === 'pending' ? 'pending' : '');
@@ -3848,6 +4080,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 ? Math.min(100, Math.round((proj.timeTracking.spent / proj.timeTracking.estimated) * 100))
                 : 0;
             const timeClass = timePercent > 100 ? 'danger' : (timePercent > 80 ? 'warning' : '');
+            const resourcesCount = Array.isArray(proj.resources) ? proj.resources.length : 0;
 
             const deadline = proj.nextDeadline;
             let dueDisplay = 'No pending tasks';
@@ -3873,9 +4106,11 @@ console.log('[Helios WS] connected:', wsUrl);
                                 <div class="project-badges">
                                     <span class="agent-badge ${statusClass}">${proj.status}</span>
                                     ${proj.stats.urgent > 0 ? '<span class="agent-badge" style="background: rgba(255,68,68,0.3); color: #ff4444;">URGENT</span>' : ''}
+                                    ${resourcesCount > 0 ? `<span class="project-resource-summary">${resourcesCount} docs</span>` : ''}
                                 </div>
                             </div>
-                            <div class="project-id">${proj.stats.total} tasks · ${proj.stats.done} completed · ${proj.stats.active} active</div>
+                            <div class="project-id">${proj.stats.total} tasks · ${proj.stats.left} left · ${proj.stats.done} completed</div>
+                            ${proj.description ? `<div style="margin-top: 6px; color: var(--text-muted); font-size: 12px;">${escHtml(proj.description)}</div>` : ''}
                         </div>
                         <span class="expand-icon">▼</span>
                     </div>
@@ -3953,6 +4188,7 @@ console.log('[Helios WS] connected:', wsUrl);
                     ${renderProjectTimeline(proj)}
 
                     <div class="project-card-content">
+                        ${renderProjectResourcesStrip(proj)}
                         ${renderTasksSection(proj)}
 
                         <div class="project-actions">
@@ -4078,7 +4314,8 @@ console.log('[Helios WS] connected:', wsUrl);
         }
 
         function renderCategoryTaskItem(task) {
-            const priorityClass = task.priority === 'high' ? 'high-priority' : (task.priority === 'medium' ? 'medium-priority' : 'low-priority');
+            const normalizedPriority = normalizePriority(task.priority);
+            const priorityClass = normalizedPriority === 'high' ? 'high-priority' : (normalizedPriority === 'medium' ? 'medium-priority' : 'low-priority');
             const statusIcon = task.status === 'active' ? '\u25ba' : (task.status === 'review' ? '\ud83d\udc41' : (task.status === 'done' ? '\u2713' : '\u25cb'));
             const assignee = task.assignedTo || '';
             const agents = window.appData && window.appData.agents ? Object.keys(window.appData.agents) : ['chad-yi','helios','escritor','quanta','mensamusa','forger'];
@@ -4094,8 +4331,9 @@ console.log('[Helios WS] connected:', wsUrl);
                         <div class="category-task-title">${task.title}</div>
                         ${task.notes ? `<div class="task-notes">${task.notes}</div>` : ''}
                         <div class="task-meta-row">
-                            <span class="priority-badge ${task.priority}">${task.priority}</span>
+                            <span class="priority-badge ${normalizedPriority}">${normalizedPriority}</span>
                             <span>${task.status}</span>
+                            ${task.deadline ? `<span>due ${new Date(task.deadline).toLocaleDateString('en-SG', { month: 'short', day: 'numeric' })}</span>` : ''}
                             <div class="quick-assign-wrap">
                                 <select class="quick-assign-select" title="Assign to agent"
                                     onchange="quickAssignTask('${task.id}', this.value); event.stopPropagation();"
@@ -4242,21 +4480,25 @@ console.log('[Helios WS] connected:', wsUrl);
                 if (el) el.innerHTML = val;
             }
 
-            const activeTasks = tasks.filter(t => t.status !== 'done');
+            const openTasks = tasks.filter(t => t.status !== 'done');
+            const inputsNeeded = Array.isArray(data.inputsNeeded)
+                ? data.inputsNeeded
+                : Object.values(data.inputsNeeded || {});
+            const needsAttention = Array.isArray(data.needsAttention) ? data.needsAttention : [];
 
             // 1. DUE TODAY
-            const dueToday = activeTasks.filter(t => t.deadline && isToday(t.deadline));
-            const dueUrgent = dueToday.filter(t => t.priority === 'critical' || t.priority === 'high').length;
-            const dueDeadline = activeTasks.filter(t => t.deadline && isOverdue(t.deadline)).length;
-            const dueNormal = dueToday.filter(t => t.priority === 'medium' || t.priority === 'low').length;
+            const dueToday = openTasks.filter(t => t.deadline && isToday(t.deadline));
+            const dueUrgent = dueToday.filter(t => normalizePriority(t.priority) === 'high').length;
+            const dueDeadline = openTasks.filter(t => t.deadline && isOverdue(t.deadline)).length;
+            const dueNormal = dueToday.filter(t => normalizePriority(t.priority) !== 'high').length;
             set('s-due-today', dueToday.length);
             set('s-due-urgent', dueUrgent + ' urgent');
             set('s-due-deadline', dueDeadline + ' overdue');
             set('s-due-normal', dueNormal + ' normal');
 
             // 2. REVIEW
-            const reviewTasks = activeTasks.filter(t => t.status === 'review');
-            const reviewDecisions = data.inputsNeeded ? Object.keys(data.inputsNeeded).length : 0;
+            const reviewTasks = openTasks.filter(t => t.status === 'review');
+            const reviewDecisions = inputsNeeded.length;
             set('s-review-total', reviewTasks.length + reviewDecisions);
             set('s-review-agent', reviewTasks.length + ' agent work');
             set('s-review-decisions', reviewDecisions + ' decisions');
@@ -4291,7 +4533,6 @@ console.log('[Helios WS] connected:', wsUrl);
                 return (Date.now() - new Date(a.lastActive).getTime()) > _24h;
             }).length;
             
-            const idleAgents = operationalAgents.filter(([id, a]) => a.status === 'idle' || a.status === 'standby').length;
             const blockedAgents = operationalAgents.filter(([id, a]) => a.status === 'blocked' || a.status === 'offline').length;
             
             set('s-agents-total', workingAgents + '/' + totalAgents);
@@ -4301,20 +4542,23 @@ console.log('[Helios WS] connected:', wsUrl);
 
             // 4. BLOCKED
             const blockedTasks = tasks.filter(t => t.status === 'blocked');
-            set('s-blocked-total', blockedTasks.length);
-            set('s-blocked-you', blockedTasks.filter(t => !t.agent || t.agent === 'CHAD_YI').length + ' your action');
+            const inputIds = new Set();
+            const userBlocked = blockedTasks.filter(t => !t.agent || t.agent === 'CHAD_YI');
+            userBlocked.forEach(t => inputIds.add(t.id));
+            needsAttention.forEach(item => inputIds.add(item.id || item.taskId || item.title));
+            inputsNeeded.forEach((item, idx) => inputIds.add(item.id || item.taskId || `input-${idx}`));
+            set('s-blocked-total', inputIds.size);
+            set('s-blocked-you', userBlocked.length + ' your action');
             set('s-blocked-agents', blockedTasks.filter(t => t.agent && t.agent !== 'CHAD_YI').length + ' agents stalled');
             set('s-blocked-external', '0 external');
 
-            // 5. COMPLETED
+            // 5. TASKS LEFT
             const doneTasks = tasks.filter(t => t.status === 'done');
-            const doneByYou = doneTasks.filter(t => t.agent === 'CHAD_YI' || !t.agent).length;
-            const doneByAgents = doneTasks.filter(t => t.agent && t.agent !== 'CHAD_YI').length;
-            const weekGoalPct = Math.round((doneTasks.length / Math.max(1, tasks.length)) * 100);
-            set('s-completed-total', doneTasks.length);
-            set('s-completed-you', doneByYou + ' by you');
-            set('s-completed-agents', doneByAgents + ' by agents');
-            set('s-completed-week', weekGoalPct + '% week goal');
+            const completionPct = Math.round((doneTasks.length / Math.max(1, tasks.length)) * 100);
+            set('s-tasks-left-total', openTasks.length);
+            set('s-tasks-left-all', tasks.length + ' total tasks');
+            set('s-tasks-left-done', doneTasks.length + ' completed');
+            set('s-tasks-left-progress', completionPct + '% complete');
 
             // 6. VELOCITY (tasks done today)
             const lastLogin = localStorage.getItem('rs_last_login');
@@ -4349,13 +4593,15 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-projects-delayed', projDelayed + ' delayed');
 
             // 8. DECISIONS NEEDED (from inputsNeeded)
-            const decisionsNeeded = data.inputsNeeded ? Object.values(data.inputsNeeded) : [];
+            const decisionsNeeded = inputsNeeded;
             const agentDecisions = decisionsNeeded.filter(i => i.requiredBy && i.requiredBy !== 'CHAD_YI').length;
             const selfDecisions = decisionsNeeded.length - agentDecisions;
-            set('s-messages-total', decisionsNeeded.length);
+            const additionalAttention = new Set(needsAttention.map(item => item.id || item.taskId || item.title));
+            decisionsNeeded.forEach((item, idx) => additionalAttention.add(item.id || item.taskId || `input-${idx}`));
+            set('s-messages-total', additionalAttention.size);
             set('s-messages-helios', agentDecisions + ' from agents');
             set('s-messages-system', selfDecisions + ' self-owned');
-            set('s-messages-unread', decisionsNeeded.length > 0 ? decisionsNeeded.length + ' waiting' : '— clear');
+            set('s-messages-unread', additionalAttention.size > 0 ? additionalAttention.size + ' waiting' : '— clear');
         }
 
         // ── TICKER ────────────────────────────────────────────────────────
@@ -4915,10 +5161,10 @@ console.log('[Helios WS] connected:', wsUrl);
                 const colStr = colDate.getFullYear() + '-' + String(colDate.getMonth()+1).padStart(2,'0') + '-' + String(colDate.getDate()).padStart(2,'0');
                 const isToday = colStr === todayStr;
 
-                // Tasks due on this day
+                // Tasks with a deadline on this specific day
                 const dayTasks = tasks.filter(t => t.deadline && t.deadline.slice(0, 10) === colStr);
-                // Also tasks that are overdue and this is the first day of week
-                // Show overdue tasks on today's column (not just first day)
+
+                // Overdue tasks (past deadline) — show on today's column
                 const overdueOnToday = isToday ? tasks.filter(t => {
                     if (t.status === 'done' || !t.deadline) return false;
                     const d = new Date(t.deadline); d.setHours(0,0,0,0);
@@ -4926,16 +5172,26 @@ console.log('[Helios WS] connected:', wsUrl);
                     return d < nowD;
                 }) : [];
 
+                // No-deadline tasks (active/blocked/urgent/review) — pile onto today's column
+                const noDeadlineOnToday = isToday ? tasks.filter(t => {
+                    if (t.status === 'done' || t.deadline) return false;
+                    // Only show non-backlog work on the today pile
+                    return t.status === 'active' || t.status === 'blocked' || t.status === 'review' ||
+                           normalizePriority(t.priority) === 'high';
+                }) : [];
+
                 function chipClass(t) {
                     if (t.status === 'done')    return 'week-chip-done';
                     if (t.status === 'blocked') return 'week-chip-blocked';
                     if (t.status === 'review')  return 'week-chip-review';
-                    const d = new Date(t.deadline||''); d.setHours(0,0,0,0);
-                    const now = new Date(); now.setHours(0,0,0,0);
-                    if (d < now) return 'week-chip-overdue';
-                    if (t.priority === 'critical') return 'week-chip-critical';
-                    if (t.priority === 'high') return 'week-chip-high';
-                    if (t.priority === 'medium') return 'week-chip-medium';
+                    const normalized = normalizePriority(t.priority);
+                    if (t.deadline) {
+                        const d = new Date(t.deadline); d.setHours(0,0,0,0);
+                        const now = new Date(); now.setHours(0,0,0,0);
+                        if (d < now) return 'week-chip-overdue';
+                    }
+                    if (normalized === 'high') return 'week-chip-critical';
+                    if (normalized === 'medium') return 'week-chip-medium';
                     return 'week-chip-low';
                 }
 
@@ -4943,9 +5199,16 @@ console.log('[Helios WS] connected:', wsUrl);
                     return `<span class="week-task-chip week-chip-overdue" title="▲ OVERDUE: ${escHtml(t.title)}" onclick="toggleWeekChip(event,'${t.id}')">▲ ${escHtml(t.id)} ${escHtml(t.title.slice(0,15))}</span>`;
                 }
 
-                const SHOW_LIMIT = 20; // show up to 20 chips per day
+                function noDeadlineChip(t) {
+                    const cls = chipClass(t);
+                    const label = t.status === 'active' ? '▶' : t.status === 'blocked' ? '⚠' : '→';
+                    return `<span class="week-task-chip ${cls}" title="${escHtml(t.title)} [no deadline]" onclick="toggleWeekChip(event,'${t.id}')">${label} ${escHtml(t.id)} ${escHtml(t.title.slice(0,15))}</span>`;
+                }
+
+                const SHOW_LIMIT = 8; // keep today readable
                 const allChips = [
                     ...overdueOnToday.map(overdueChip),
+                    ...noDeadlineOnToday.map(noDeadlineChip),
                     ...dayTasks.map(t =>
                         `<span class="week-task-chip ${chipClass(t)}" title="${escHtml(t.title)}"
                                onclick="toggleWeekChip(event,'${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`
@@ -5030,7 +5293,7 @@ console.log('[Helios WS] connected:', wsUrl);
             setStatus('data-status', window.appData ? 'LIVE' : '—', window.appData ? 'ok' : '');
             setStatus('last-sync', new Date().toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
             // Helios check (fire-and-forget)
-            fetch('data.json?ping=1', { method: 'HEAD' })
+            fetch('https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json?t=' + Date.now(), { method: 'HEAD' })
                 .then(() => setStatus('helios-status', 'REACHABLE', 'ok'))
                 .catch(() => setStatus('helios-status', 'UNREACHABLE', 'error'));
 
@@ -5082,7 +5345,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 const hoursSince = (Date.now() - lastActiveMs) / (1000 * 60 * 60);
 
                 // Deployed agents
-                const knownActive = ['chad-yi', 'helios', 'cerebron', 'escritor', 'quanta', 'forger'];
+                const knownActive = ['chad-yi', 'helios', 'cerebronn', 'escritor', 'quanta', 'forger'];
                 const isKnownActive = knownActive.includes(key.toLowerCase());
                 
                 if ((st === 'active' || st === 'working') && isKnownActive) {
@@ -6441,10 +6704,22 @@ console.log('[Helios WS] connected:', wsUrl);
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize expanded state tracking
             window.expandedState = {};
+            setActiveSectionLink('home');
             loadData();
             loadHeliosSyncBootstrap();
             connectHeliosDashboardSocket();
+            // 60-second auto-refresh
+            setInterval(() => loadData(), 60000);
         });
+
+        function showSection(name) {
+            const el = document.getElementById(name + '-section');
+            if (el) {
+                setActiveSectionLink(name);
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            closeMobileMenu();
+        }
 
         // Toggle expand/collapse for dashboard items
         function toggleExpand(key) {
@@ -6575,7 +6850,7 @@ console.log('[Helios WS] connected:', wsUrl);
 
                     // Fetch with cache-busting to get fresh data
                     const cacheBuster = `?t=${Date.now()}`;
-                    const response = await fetch('data.json' + cacheBuster, {
+                    const response = await fetch('https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json' + cacheBuster, {
                         method: 'GET',
                         cache: 'no-store'
                     });
@@ -6605,41 +6880,14 @@ console.log('[Helios WS] connected:', wsUrl);
                         appData = newData;
 
                         // Rebuild project data
-                        allProjects = [];
-                        if (appData.projects) {
-                            Object.keys(appData.projects).forEach(catKey => {
-                                const cat = appData.projects[catKey];
-                                if (cat.projects) {
-                                    cat.projects.forEach(projId => {
-                                        const tasks = appData.tasks || {};
-                                        const projTasks = Object.values(tasks).filter(t => t.project === projId);
-                                        const taskStats = calculateTaskStats(projTasks);
-                                        const projDetails = appData.projectDetails && appData.projectDetails[projId];
-
-                                        allProjects.push({
-                                            id: projId,
-                                            category: catKey,
-                                            categoryName: cat.name,
-                                            name: projDetails ? projDetails.name : projId,
-                                            description: projDetails ? projDetails.description : '',
-                                            tasks: projTasks,
-                                            stats: taskStats,
-                                            priorityBreakdown: getPriorityBreakdown(projTasks),
-                                            timeTracking: calculateTimeTracking(projTasks),
-                                            nextDeadline: getNextDeadline(projTasks),
-                                            milestones: generateMilestones({id: projId}, projTasks),
-                                            timeline: buildProjectTimeline(projTasks)
-                                        });
-                                    });
-                                }
-                            });
-                        }
+                        allProjects = buildProjectsFromData(appData);
 
                         syncProjectLookup();
 
                         // Re-render all sections
                         renderHomeSection();
                         renderCategoriesSection();
+                        renderResourcesSection();
 
                         showUpdated();
                     } else {
