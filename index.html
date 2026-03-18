@@ -276,6 +276,22 @@
             gap: 20px;
         }
 
+        .topbar-settings-btn {
+            background: none;
+            border: 1px solid rgba(220,20,60,0.2);
+            border-radius: 4px;
+            padding: 5px 7px;
+            color: rgba(160,160,180,0.6);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .topbar-settings-btn:hover {
+            color: rgba(220,20,60,0.9);
+            border-color: rgba(220,20,60,0.5);
+        }
+
         .status-widget {
             display: flex;
             align-items: center;
@@ -2509,6 +2525,30 @@
                 <div class="status-dot"></div>
                 <span>ONLINE</span>
             </div>
+            <button class="topbar-settings-btn" onclick="openSettingsModal()" title="Settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;">
+        <div style="background:#0d0d10;border:1px solid rgba(220,20,60,0.3);border-radius:8px;padding:28px 32px;width:420px;max-width:90vw;box-shadow:0 8px 40px rgba(0,0,0,0.8);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <h3 style="font-family:'Orbitron',sans-serif;font-size:13px;letter-spacing:0.12em;color:rgba(220,20,60,0.9);margin:0;">SETTINGS</h3>
+                <button onclick="closeSettingsModal()" style="background:none;border:none;color:rgba(160,160,180,0.7);cursor:pointer;font-size:18px;line-height:1;padding:0 4px;">×</button>
+            </div>
+            <div style="margin-bottom:16px;">
+                <label style="display:block;font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:0.1em;color:rgba(160,160,180,0.7);text-transform:uppercase;margin-bottom:6px;">GitHub Personal Access Token</label>
+                <input id="gh-pat-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                    style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(220,20,60,0.2);border-radius:4px;padding:8px 12px;color:rgba(200,200,220,0.9);font-family:'JetBrains Mono',monospace;font-size:12px;box-sizing:border-box;outline:none;"/>
+                <div style="margin-top:5px;font-family:'Rajdhani',sans-serif;font-size:10px;color:rgba(120,120,140,0.7);">Required for Mark Done to persist across sessions. Needs <code style="color:rgba(200,160,100,0.8);">contents:write</code> scope on the dashboard repo.</div>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;">
+                <button onclick="closeSettingsModal()" style="background:none;border:1px solid rgba(160,160,180,0.2);border-radius:4px;padding:7px 16px;color:rgba(160,160,180,0.7);font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:0.06em;cursor:pointer;">CANCEL</button>
+                <button onclick="saveSettingsPAT()" style="background:rgba(220,20,60,0.15);border:1px solid rgba(220,20,60,0.4);border-radius:4px;padding:7px 16px;color:rgba(220,60,80,0.9);font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:0.06em;cursor:pointer;font-weight:700;">SAVE</button>
+            </div>
+            <div id="settings-status" style="margin-top:10px;font-family:'Rajdhani',sans-serif;font-size:11px;min-height:16px;"></div>
         </div>
     </div>
 
@@ -3208,7 +3248,7 @@
 
                 cat.projects.forEach(projId => {
                     const tasks = data.tasks || {};
-                    const projTasks = Object.values(tasks).filter(t => t.project === projId);
+                    const projTasks = Object.values(tasks).filter(t => (t.id || '').replace(/-\d+$/, '') === projId);
                     const taskStats = calculateTaskStats(projTasks);
                     const projDetails = data.projectDetails && data.projectDetails[projId] ? data.projectDetails[projId] : {};
 
@@ -3955,10 +3995,15 @@ console.log('[Helios WS] connected:', wsUrl);
                 function renderCategoriesList() {
             const container = document.getElementById('categories-container');
 
+            const catIcons = {
+                A: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`,
+                B: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`,
+                C: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+            };
             const categories = {
-                A: { icon: '🎯', name: 'Ambition', subtitle: 'By Calbee (Personal)', projects: [] },
-                B: { icon: '🏢', name: 'Business', subtitle: 'Empire (Main Work)', projects: [] },
-                C: { icon: '⚔️', name: 'Callings', subtitle: 'On The Side (Other Jobs)', projects: [] }
+                A: { icon: catIcons.A, name: 'Ambition', subtitle: 'Personal Projects', projects: [] },
+                B: { icon: catIcons.B, name: 'Business', subtitle: 'Active Ventures', projects: [] },
+                C: { icon: catIcons.C, name: 'Callings', subtitle: 'Side Projects', projects: [] }
             };
 
             allProjects.forEach(proj => {
@@ -3977,7 +4022,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 return `
                     <div class="category-section" data-category="${catKey}">
                         <div class="category-header-bar">
-                            <div class="category-icon">${cat.icon}</div>
+                        <div class="category-icon" style="color:var(--crimson-bright);display:flex;align-items:center;">${cat.icon}</div>
                             <div class="category-title-group">
                                 <h2><span>${catKey}</span>${cat.name.toUpperCase().slice(1)}</h2>
                                 <p>${cat.subtitle}</p>
@@ -4142,39 +4187,6 @@ console.log('[Helios WS] connected:', wsUrl);
                         </div>
                     </div>
 
-                    <div class="time-tracking-bar">
-                        <div class="time-stat">
-                            <span class="time-label">Time Spent</span>
-                            <span class="time-value ${timeClass}">${proj.timeTracking.spent}h / ${proj.timeTracking.estimated}h</span>
-                        </div>
-                        <div class="time-progress-bar">
-                            <div class="time-progress-fill ${timeClass}" style="width: ${Math.min(100, timePercent)}%"></div>
-                        </div>
-                        <div class="time-stat">
-                            <span class="time-label">Remaining</span>
-                            <span class="time-value">${proj.timeTracking.remaining}h</span>
-                        </div>
-                    </div>
-
-                    <div class="due-countdown">
-                        <span class="due-label">🕐 Next Due:</span>
-                        <div class="due-value ${dueClass}">
-                            ${dueDisplay}
-                            ${countdown ? `<span class="countdown-timer">${countdown}</span>` : ''}
-                        </div>
-                    </div>
-
-                    <div class="milestones-section">
-                        <div class="milestones-title">📍 Milestones</div>
-                        <div class="milestones-track">
-                            ${proj.milestones.map(m => `
-                                <div class="milestone ${m.completed ? 'completed' : (m.active ? 'active' : 'upcoming')}">
-                                    <div class="milestone-tooltip">${m.label} (${m.tasksRequired} tasks)</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
                     <div class="progress-section">
                         <div class="progress-header">
                             <span class="progress-label">Overall Progress</span>
@@ -4185,10 +4197,7 @@ console.log('[Helios WS] connected:', wsUrl);
                         </div>
                     </div>
 
-                    ${renderProjectTimeline(proj)}
-
                     <div class="project-card-content">
-                        ${renderProjectResourcesStrip(proj)}
                         ${renderTasksSection(proj)}
 
                         <div class="project-actions">
@@ -4510,7 +4519,7 @@ console.log('[Helios WS] connected:', wsUrl);
             const operationalAgents = agentArr.filter(([id, a]) => !dormantAgents.includes(id));
             const totalAgents = operationalAgents.length; // Shows 4-5 instead of 7
             
-            const _24h = 24 * 60 * 60 * 1000;
+            const _30min = 30 * 60 * 1000;
             
             // Special handling for chad-yi: check if gateway is reachable instead of lastActive
             const isChadActive = () => {
@@ -4523,14 +4532,14 @@ console.log('[Helios WS] connected:', wsUrl);
                 if (id === 'chad-yi') return isChadActive(); // Special case
                 if (a.status !== 'active' && a.status !== 'working') return false;
                 if (!a.lastActive) return false;
-                return (Date.now() - new Date(a.lastActive).getTime()) <= _24h;
+                return (Date.now() - new Date(a.lastActive).getTime()) <= _30min;
             }).length;
             
             const staleAgents = operationalAgents.filter(([id, a]) => {
                 if (id === 'chad-yi') return false; // Chad is never stale if online
                 if (a.status !== 'active' && a.status !== 'working') return false;
                 if (!a.lastActive) return true;
-                return (Date.now() - new Date(a.lastActive).getTime()) > _24h;
+                return (Date.now() - new Date(a.lastActive).getTime()) > _30min;
             }).length;
             
             const blockedAgents = operationalAgents.filter(([id, a]) => a.status === 'blocked' || a.status === 'offline').length;
@@ -4672,7 +4681,12 @@ console.log('[Helios WS] connected:', wsUrl);
             const container = document.getElementById('daily-briefing-content');
             if (!container) return;
             const el = document.getElementById('briefing-time');
-            if (el) el.textContent = new Date().toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+            if (el) {
+                const now = new Date();
+                const dayStr = now.toLocaleDateString('en-SG', { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase();
+                const timeStr = now.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+                el.textContent = dayStr + ' · ' + timeStr + ' SGT';
+            }
 
             const tasks = Object.values(data.tasks || {});
             const agents = data.agents || {};
@@ -4714,19 +4728,24 @@ console.log('[Helios WS] connected:', wsUrl);
                     }))
             });
 
-            // 3. Agents at work — only deployed (active) agents
-            const DEPLOYED = ['chad-yi', 'cerebron', 'helios'];
-            const activeAgents = Object.entries(agents).filter(([id, a]) =>
-                DEPLOYED.includes(id) && (a.status === 'active' || a.status === 'working')
-            );
+            // 3. Agents at work — all agents with active/working status
+            const _30minMs = 30 * 60 * 1000;
+            const activeAgents = Object.entries(agents).filter(([id, a]) => {
+                if (id === 'chad-yi') return true; // user is always present
+                if (a.status !== 'active' && a.status !== 'working') return false;
+                return a.lastActive && (Date.now() - new Date(a.lastActive).getTime()) <= _30minMs;
+            });
             sections.push({
                 title: 'AGENTS AT WORK',
                 rows: activeAgents.length === 0
-                    ? [{ cls: '', text: 'No agents currently active' }]
-                    : activeAgents.map(([id, a]) => ({
-                        cls: 'good',
-                        text: `${id.toUpperCase()} · ${a.currentTaskTitle || a.currentTask || 'online'}`
-                    }))
+                    ? [{ cls: '', text: 'No agents active in past 30 minutes' }]
+                    : activeAgents.map(([id, a]) => {
+                        const task = a.currentTaskTitle || a.currentTask || '';
+                        return {
+                            cls: 'good',
+                            text: `${id.toUpperCase()}${task ? ' · ' + task.slice(0, 40) : ' · online'}`
+                        };
+                    })
             });
 
             // 4. Suggested priorities (urgency score) — active/pending/blocked/review only
@@ -4969,7 +4988,11 @@ console.log('[Helios WS] connected:', wsUrl);
             const dlCls = !t.deadline ? '' : isOverdue(t.deadline) ? 'overdue' : isToday(t.deadline) ? 'today' : '';
             const dlPrefix = isOverdue(t.deadline) ? '▲ OVERDUE · ' : isToday(t.deadline) ? 'TODAY · ' : '';
 
-            return `<div class="focus-task-card priority-${t.priority||'medium'}"
+            const _projId = (t.id || '').replace(/-\d+$/, '');
+            const _projDetails = (window.appData && window.appData.projectDetails && window.appData.projectDetails[_projId]) || {};
+            const _projName = _projDetails.name || _projId;
+            const _normPriority = normalizePriority(t.priority || 'medium');
+            return `<div class="focus-task-card priority-${_normPriority}"
                          id="ftask-${t.id}"
                          draggable="true"
                          data-task-id="${t.id}"
@@ -4981,14 +5004,15 @@ console.log('[Helios WS] connected:', wsUrl);
                 <div class="focus-task-title">${escHtml(t.title)}</div>
                 <div class="focus-task-meta">
                     <span class="focus-task-id">${t.id}</span>
-                    <span class="focus-priority-tag focus-priority-${t.priority||'medium'}">${(t.priority||'med').toUpperCase()}</span>
+                    <span class="focus-priority-tag focus-priority-${_normPriority}">${(_normPriority).toUpperCase()}</span>
                     ${t.deadline ? `<span class="focus-deadline ${dlCls}">${dlPrefix}${fmtDl(t.deadline)}</span>` : ''}
                 </div>
                 <div class="focus-task-expand" id="fexp-${t.id}">
                     ${t.status === 'blocked' ? `<div class="focus-expand-row" style="border-left:2px solid rgba(220,38,38,0.6);padding-left:8px;color:rgba(220,100,100,0.9);"><span style="color:rgba(220,38,38,0.9);font-weight:700;">⚑ BLOCKED</span> ${escHtml((t.blockedReason||t.notes||'Awaiting action before this task can proceed.').slice(0,160))}</div>` : ''}
                     ${t.description ? `<div class="focus-expand-row"><span>Notes</span>${escHtml(t.description)}</div>` : ''}
                     ${t.notes && t.status !== 'blocked' ? `<div class="focus-expand-row"><span>Details</span>${escHtml(t.notes.slice(0,120))}</div>` : ''}
-                    <div class="focus-expand-row"><span>Status</span>${t.status||'pending'} · ${t.project||'—'}</div>
+                    <div class="focus-expand-row"><span>Project</span>${escHtml(_projName)}</div>
+                    <div class="focus-expand-row"><span>Status</span>${t.status||'pending'}</div>
                     ${t.agent ? `<div class="focus-expand-row"><span>Agent</span>${t.agent}</div>` : ''}
                     <div class="focus-expand-row"><span>Rec.</span><span style="color:rgba(255,180,50,0.85);font-weight:600;font-size:10px;letter-spacing:0.06em;">${(function(proj){ if(!proj) return 'Cerebron'; if(proj.startsWith('A2')) return 'Escritor'; if(proj.startsWith('A5')) return 'Quanta'; if(proj.startsWith('A6')) return 'Helios'; if(proj.startsWith('A1')) return 'CHAD_YI'; if(proj.startsWith('B')) return 'Forger'; return 'Cerebron'; })(t.project)}</span></div>
                     <div class="focus-task-actions">
@@ -5004,6 +5028,90 @@ console.log('[Helios WS] connected:', wsUrl);
             event.stopPropagation();
             const el = document.getElementById('fexp-' + taskId);
             if (el) el.classList.toggle('open');
+        }
+
+        // ── GitHub PAT Settings ──────────────────────────────────────────
+        function openSettingsModal() {
+            const modal = document.getElementById('settings-modal');
+            if (!modal) return;
+            modal.style.display = 'flex';
+            const input = document.getElementById('gh-pat-input');
+            if (input) input.value = localStorage.getItem('gh_pat') || '';
+            const status = document.getElementById('settings-status');
+            if (status) status.textContent = '';
+        }
+        function closeSettingsModal() {
+            const modal = document.getElementById('settings-modal');
+            if (modal) modal.style.display = 'none';
+        }
+        function saveSettingsPAT() {
+            const input = document.getElementById('gh-pat-input');
+            const status = document.getElementById('settings-status');
+            if (!input) return;
+            const pat = input.value.trim();
+            if (pat) {
+                localStorage.setItem('gh_pat', pat);
+                if (status) { status.textContent = '✓ PAT saved. Mark Done will now commit to GitHub.'; status.style.color = 'rgba(80,200,120,0.8)'; }
+            } else {
+                localStorage.removeItem('gh_pat');
+                if (status) { status.textContent = 'PAT cleared. Mark Done will be session-only.'; status.style.color = 'rgba(160,160,180,0.6)'; }
+            }
+            setTimeout(closeSettingsModal, 1600);
+        }
+
+        // ── GitHub commit helper ─────────────────────────────────────────
+        async function commitTaskDoneToGitHub(taskId, pat) {
+            const apiUrl = 'https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json';
+            const headers = {
+                'Authorization': 'token ' + pat,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json'
+            };
+            try {
+                // Get current file + SHA
+                const res = await fetch(apiUrl, { headers });
+                if (!res.ok) throw new Error('GET failed: ' + res.status);
+                const meta = await res.json();
+                const sha = meta.sha;
+                // Decode content
+                const raw = atob(meta.content.replace(/\n/g, ''));
+                const json = JSON.parse(raw);
+                // Apply change
+                if (json.tasks && json.tasks[taskId]) {
+                    json.tasks[taskId].status = 'done';
+                    json.tasks[taskId].completedAt = new Date().toISOString();
+                }
+                // Remove from workflow active/urgent/blocked/pending lists
+                ['active','urgent','blocked','pending','review'].forEach(k => {
+                    if (Array.isArray(json.workflow[k])) {
+                        json.workflow[k] = json.workflow[k].filter(id => id !== taskId);
+                    }
+                });
+                if (Array.isArray(json.workflow.done) && !json.workflow.done.includes(taskId)) {
+                    json.workflow.done.push(taskId);
+                }
+                // Remove from needsAttention
+                if (Array.isArray(json.needsAttention)) {
+                    json.needsAttention = json.needsAttention.filter(n => n.id !== taskId);
+                }
+                // PUT back
+                const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(json, null, 2))));
+                const putRes = await fetch(apiUrl, {
+                    method: 'PUT',
+                    headers,
+                    body: JSON.stringify({
+                        message: `Mark done: ${taskId}`,
+                        content: newContent,
+                        sha: sha
+                    })
+                });
+                if (!putRes.ok) throw new Error('PUT failed: ' + putRes.status);
+                console.log('[GitHub] Committed task done:', taskId);
+                return true;
+            } catch (err) {
+                console.warn('[GitHub] Commit failed:', err);
+                return false;
+            }
         }
 
         function markFocusDoneNew(event, taskId) {
@@ -5025,6 +5133,13 @@ console.log('[Helios WS] connected:', wsUrl);
                 localStorage.setItem('rs_done_tasks', JSON.stringify(doneTasks));
             } catch(_) {}
 
+            // Attempt GitHub commit if PAT available
+            const pat = localStorage.getItem('gh_pat');
+            let ghPromise = null;
+            if (pat) {
+                ghPromise = commitTaskDoneToGitHub(taskId, pat);
+            }
+
             // Visual: fade card
             card.style.transition = 'opacity 0.4s';
             card.style.opacity = '0.3';
@@ -5041,9 +5156,20 @@ console.log('[Helios WS] connected:', wsUrl);
                 'color:rgba(200,200,210,0.9)','letter-spacing:0.06em',
                 'z-index:9999','box-shadow:0 4px 24px rgba(0,0,0,0.7)'
             ].join(';');
-            toast.innerHTML = `<span>\u2713 ${taskId} marked done</span>`
+            const syncLabel = pat ? ' <span style="font-size:10px;color:rgba(80,200,120,0.7);">↑ syncing</span>' : '';
+            toast.innerHTML = `<span>\u2713 ${taskId} marked done${syncLabel}</span>`
                 + `<button style="background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.4);border-radius:4px;padding:3px 10px;color:rgba(220,38,38,0.9);cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;" id="undo-btn-${taskId}">UNDO</button>`;
             document.body.appendChild(toast);
+
+            if (ghPromise) {
+                ghPromise.then(ok => {
+                    if (!undone && document.body.contains(toast)) {
+                        const syncEl = toast.querySelector('span span');
+                        if (syncEl) syncEl.textContent = ok ? ' ✓ saved' : ' ⚠ local only';
+                        if (syncEl) syncEl.style.color = ok ? 'rgba(80,200,120,0.7)' : 'rgba(220,160,60,0.7)';
+                    }
+                });
+            }
 
             document.getElementById('undo-btn-' + taskId).onclick = function() {
                 undone = true;
@@ -5291,7 +5417,7 @@ console.log('[Helios WS] connected:', wsUrl);
             const wsOk = window.heliosSocket && window.heliosSocket.readyState === WebSocket.OPEN;
             setStatus('ws-status', wsOk ? 'CONNECTED' : 'POLLING', wsOk ? 'ok' : 'warn');
             setStatus('data-status', window.appData ? 'LIVE' : '—', window.appData ? 'ok' : '');
-            setStatus('last-sync', new Date().toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+            setStatus('last-sync', new Date().toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' }));
             // Helios check (fire-and-forget)
             fetch('https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json?t=' + Date.now(), { method: 'HEAD' })
                 .then(() => setStatus('helios-status', 'REACHABLE', 'ok'))
@@ -5349,7 +5475,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 const isKnownActive = knownActive.includes(key.toLowerCase());
                 
                 if ((st === 'active' || st === 'working') && isKnownActive) {
-                    if (hoursSince <= 24) {
+                    if (hoursSince <= 0.5) {
                         dotCls = 'agent-dot-active';
                         statusLabel = 'ACTIVE';
                     } else {
