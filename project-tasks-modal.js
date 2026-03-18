@@ -131,10 +131,7 @@
                 </div>
                 <footer class="project-modal-footer">
                     <div class="project-modal-task-count" id="project-modal-task-counter">Showing 0 tasks</div>
-                    <div class="project-modal-footer-actions">
-                        <button class="project-modal-btn secondary" type="button" data-action="spawn-agent">Spawn Agent</button>
-                        <button class="project-modal-btn" type="button" data-action="add-task">Add Task</button>
-                    </div>
+                    <div class="project-modal-task-count">Read-only detail view</div>
                 </footer>
             </div>
         `;
@@ -192,24 +189,6 @@
             renderTaskList();
         });
 
-        const spawnBtn = overlayEl.querySelector('[data-action="spawn-agent"]');
-        const addBtn = overlayEl.querySelector('[data-action="add-task"]');
-
-        spawnBtn.addEventListener('click', () => {
-            if (typeof global.quickAction === 'function') {
-                global.quickAction('Spawn Agent');
-            } else {
-                alert('Spawn Agent - Feature coming soon!');
-            }
-        });
-
-        addBtn.addEventListener('click', () => {
-            if (currentProject && typeof global.addTask === 'function') {
-                global.addTask(currentProject.id);
-            } else if (currentProject) {
-                alert(`Add new task to project ${currentProject.id}...`);
-            }
-        });
     }
 
     function updateChipSelection(container, attr, value) {
@@ -430,12 +409,15 @@
         const absoluteFormatter = resolveHelper('formatAbsoluteTimestamp');
         const created = absoluteFormatter(task.createdAt);
         const completed = task.completedAt ? absoluteFormatter(task.completedAt) : '—';
+        const deadline = task.deadline ? absoluteFormatter(task.deadline) : '—';
         const status = task.status || 'pending';
         const statusClass = `project-modal-pill status-${status}`;
         const priorityValue = (task.priority || 'medium').toLowerCase();
         const helperClass = resolveHelper('getPriorityClass')(priorityValue) || priorityValue;
         const normalizedPriority = /high/i.test(helperClass) ? 'high' : /medium/i.test(helperClass) ? 'medium' : /low/i.test(helperClass) ? 'low' : priorityValue;
         const priorityLabel = priorityValue.toUpperCase();
+        const projectLabel = currentProject ? `${currentProject.id} · ${currentProject.name}` : 'Project';
+        const owner = task.agent || task.assignedTo || 'Unassigned';
 
         return `
             <div class="project-modal-task-row">
@@ -446,9 +428,15 @@
                     <div class="project-modal-task-meta">
                         <span class="project-modal-pill priority-pill">${priorityLabel}</span>
                         <span class="${statusClass}">${STATUS_LABELS[status] || status}</span>
+                        <span class="project-modal-pill priority-pill">${projectLabel}</span>
+                        <span class="project-modal-pill priority-pill">${owner}</span>
                     </div>
                 </div>
                 <div class="project-modal-task-dates">
+                    <div>
+                        <span>Deadline</span>
+                        <div>${deadline}</div>
+                    </div>
                     <div>
                         <span>Created</span>
                         <div>${created}</div>
