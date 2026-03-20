@@ -1,15 +1,15 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-20T12:29:58.277673+08:00",
+  "lastUpdated": "2026-03-20T12:38:36.388051+08:00",
   "updatedBy": "helios-v2",
   "stats": {
-    "totalTasks": 64,
+    "totalTasks": 65,
     "completedTasks": 13,
     "completionRate": 20,
     "activeTasks": 3,
     "blockedTasks": 4,
-    "backlogTasks": 43,
-    "needsAttention": 9
+    "backlogTasks": 44,
+    "needsAttention": 10
   },
   "projects": {
     "A": {
@@ -50,6 +50,7 @@
   "projectDetails": {},
   "workflow": {
     "pending": [
+      "A1-8",
       "B1-1",
       "B1-2",
       "B1-3",
@@ -119,6 +120,7 @@
     ],
     "urgent": [
       "B6-7",
+      "A1-8",
       "A2-1",
       "A7-1",
       "A7-2",
@@ -145,6 +147,13 @@
       "agent": "CHAD_YI",
       "priority": "done",
       "status": "done"
+    },
+    "A1-8": {
+      "id": "A1-8",
+      "title": "Create habit tracker in dashboard",
+      "agent": "CHAD_YI",
+      "priority": "urgent",
+      "status": "backlog"
     },
     "A2-1": {
       "id": "A2-1",
@@ -585,30 +594,30 @@
     "chad-yi": {
       "status": "active",
       "health": "active",
-      "currentTask": "",
-      "notes": "The Face - Primary interface",
-      "lastActive": "2026-03-20T12:29:58.277673+08:00"
+      "currentTask": "OpenClaw gateway connected",
+      "notes": "The Face - Telegram interface via OpenClaw gateway (live)",
+      "lastActive": "2026-03-20T12:38:36.388051+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
-      "notes": "The Spine - operational coordinator",
-      "lastActive": "2026-03-20T12:29:58.277673+08:00"
+      "notes": "The Spine - operational coordinator (local Ollama)",
+      "lastActive": "2026-03-20T12:38:36.388051+08:00"
     },
     "cerebronn": {
       "status": "active",
       "health": "active",
-      "currentTask": "",
-      "notes": "The Brain - Persistent memory",
+      "currentTask": "VS Code/Claude interface",
+      "notes": "The Brain - Manual agent (activity = file writes, not automated work)",
       "lastActive": "2026-03-20T02:11:59.700363+00:00"
     },
     "quanta": {
       "status": "active",
       "health": "active",
-      "currentTask": "",
-      "notes": "Live trading - Final validation",
-      "lastActive": "2026-03-20T12:29:58.277673+08:00"
+      "currentTask": "Trading bot status check",
+      "notes": "Trading executor - OANDA integration (verify separately)",
+      "lastActive": "2026-03-20T12:38:36.388051+08:00"
     }
   },
   "needsAttention": [
@@ -623,6 +632,13 @@
       "id": "B6-7",
       "title": "Check insurance for SMU event",
       "reason": "URGENT: Check insurance for SMU event",
+      "owner": "CHAD_YI",
+      "priority": "urgent"
+    },
+    {
+      "id": "A1-8",
+      "title": "Create habit tracker in dashboard",
+      "reason": "URGENT: Create habit tracker in dashboard",
       "owner": "CHAD_YI",
       "priority": "urgent"
     },
@@ -678,11 +694,11 @@
   ],
   "dailyBriefing": {
     "date": "2026-03-20",
-    "sgt_time": "12:29 SGT",
+    "sgt_time": "12:38 SGT",
     "summary": {
       "total_tasks": 0,
       "critical": 0,
-      "urgent": 5,
+      "urgent": 6,
       "active": 3,
       "blocked": 4,
       "review": 0,
@@ -700,14 +716,14 @@
         "owner": "CHAD_YI"
       },
       {
+        "id": "A1-8",
+        "title": "Create habit tracker in dashboard",
+        "owner": "CHAD_YI"
+      },
+      {
         "id": "A2-1",
         "title": "Chapter 13 writing",
         "owner": "Escritor"
-      },
-      {
-        "id": "A7-1",
-        "title": "Finalize wedding theme",
-        "owner": "CHAD_YI"
       },
       {
         "id": "A7-1",
@@ -726,17 +742,17 @@
     {
       "type": "agent_silent",
       "agent": "cerebronn",
-      "hours_silent": 2.3,
+      "hours_silent": 2.4,
       "severity": "warning"
     }
   ],
   "inputsNeeded": [],
   "taskSummary": {
     "critical": 0,
-    "urgent": 5,
+    "urgent": 6,
     "active": 3,
     "blocked": 4,
-    "backlog": 43,
+    "backlog": 44,
     "done": 13
   }
 }
