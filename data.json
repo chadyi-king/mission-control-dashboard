@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-20T09:07:20.052542+08:00",
+  "lastUpdated": "2026-03-20T09:22:54.745869+08:00",
   "updatedBy": "helios-v2",
   "stats": {
     "totalTasks": 64,
@@ -587,28 +587,28 @@
       "health": "active",
       "currentTask": "",
       "notes": "The Face - Primary interface",
-      "lastActive": "2026-03-20T09:07:20.052542+08:00"
+      "lastActive": "2026-03-20T09:22:54.745869+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
       "notes": "The Spine - operational coordinator",
-      "lastActive": "2026-03-20T09:07:20.052542+08:00"
+      "lastActive": "2026-03-20T09:22:54.745869+08:00"
     },
     "cerebronn": {
       "status": "active",
       "health": "active",
       "currentTask": "",
       "notes": "The Brain - Persistent memory",
-      "lastActive": "2026-03-19T22:05:41.957469+00:00"
+      "lastActive": "2026-03-20T01:15:02.602293+00:00"
     },
     "quanta": {
       "status": "active",
       "health": "active",
       "currentTask": "",
       "notes": "Live trading - Final validation",
-      "lastActive": "2026-03-20T09:07:20.052542+08:00"
+      "lastActive": "2026-03-20T09:22:54.745869+08:00"
     }
   },
   "needsAttention": [
@@ -678,7 +678,7 @@
   ],
   "dailyBriefing": {
     "date": "2026-03-20",
-    "sgt_time": "09:07 SGT",
+    "sgt_time": "09:22 SGT",
     "summary": {
       "total_tasks": 0,
       "critical": 0,
@@ -722,14 +722,7 @@
       "quanta": "active"
     }
   },
-  "escalations": [
-    {
-      "type": "agent_silent",
-      "agent": "cerebronn",
-      "hours_silent": 3.0,
-      "severity": "warning"
-    }
-  ],
+  "escalations": [],
   "inputsNeeded": [],
   "taskSummary": {
     "critical": 0,
