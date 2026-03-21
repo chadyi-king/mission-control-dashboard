@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-21T17:38:11.720296+08:00",
+  "lastUpdated": "2026-03-21T17:54:14.669878+08:00",
   "updatedBy": "helios-v2",
   "stats": {
     "totalTasks": 65,
@@ -596,28 +596,28 @@
       "health": "active",
       "currentTask": "OpenClaw gateway connected",
       "notes": "The Face - Telegram interface via OpenClaw gateway (live)",
-      "lastActive": "2026-03-21T17:38:11.720296+08:00"
+      "lastActive": "2026-03-21T17:54:14.669878+08:00"
     },
     "helios": {
       "status": "active",
       "health": "active",
       "currentTask": "15-min audit + dashboard sync",
       "notes": "The Spine - operational coordinator (local Ollama)",
-      "lastActive": "2026-03-21T17:38:11.720296+08:00"
+      "lastActive": "2026-03-21T17:54:14.669878+08:00"
     },
     "cerebronn": {
       "status": "active",
       "health": "active",
       "currentTask": "VS Code/Claude interface",
       "notes": "The Brain - Manual agent (activity = file writes, not automated work)",
-      "lastActive": "2026-03-21T06:35:04.934766+00:00"
+      "lastActive": "2026-03-21T09:46:43.100034+00:00"
     },
     "quanta": {
       "status": "active",
       "health": "active",
       "currentTask": "Trading bot status check",
       "notes": "Trading executor - OANDA integration (verify separately)",
-      "lastActive": "2026-03-21T17:38:11.720296+08:00"
+      "lastActive": "2026-03-21T17:54:14.669878+08:00"
     }
   },
   "needsAttention": [
@@ -694,7 +694,7 @@
   ],
   "dailyBriefing": {
     "date": "2026-03-21",
-    "sgt_time": "17:38 SGT",
+    "sgt_time": "17:54 SGT",
     "summary": {
       "total_tasks": 0,
       "critical": 0,
@@ -738,14 +738,7 @@
       "quanta": "active"
     }
   },
-  "escalations": [
-    {
-      "type": "agent_silent",
-      "agent": "cerebronn",
-      "hours_silent": 3.1,
-      "severity": "warning"
-    }
-  ],
+  "escalations": [],
   "inputsNeeded": [],
   "taskSummary": {
     "critical": 0,
