@@ -1,15 +1,15 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-03-22T13:34:01.502259+08:00",
-  "updatedBy": "helios-v2",
+  "lastUpdated": "2026-03-22T17:05:00+08:00",
+  "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 65,
+    "totalTasks": 66,
     "completedTasks": 13,
     "completionRate": 20,
     "activeTasks": 3,
     "blockedTasks": 4,
     "backlogTasks": 44,
-    "needsAttention": 10
+    "needsAttention": 11
   },
   "projects": {
     "A": {
@@ -51,6 +51,7 @@
   "workflow": {
     "pending": [
       "A1-8",
+      "A7-4",
       "B1-1",
       "B1-2",
       "B1-3",
@@ -182,6 +183,15 @@
       "agent": "CHAD_YI",
       "priority": "urgent",
       "status": "blocked"
+    },
+    "A7-4": {
+      "id": "A7-4",
+      "title": "Prepare wedding guest list (due Sat 28 Mar)",
+      "agent": "CHAD_YI",
+      "priority": "urgent",
+      "status": "pending",
+      "dueDate": "2026-03-28",
+      "reminderDate": "2026-03-23"
     },
     "B1-1": {
       "id": "B1-1",
