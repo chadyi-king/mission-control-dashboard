@@ -2171,9 +2171,9 @@
                                 <span class="quick-action-icon">Stats</span>
                                 <span>Export Report</span>
                             </div>
-                            <div class="quick-action-item" onclick="quickAction('Deploy to GitHub')">
-                                <span class="quick-action-icon">📤</span>
-                                <span>Deploy</span>
+                            <div class="quick-action-item" onclick="quickAction('Open Live Dashboard')">
+                                <span class="quick-action-icon">🌐</span>
+                                <span>Live Dashboard</span>
                             </div>
                         </div>
                     </div>
@@ -2471,6 +2471,10 @@
 
         // Quick Actions
         function quickAction(action) {
+            if (action === 'Open Live Dashboard') {
+                window.open('https://chadyi-king.github.io/mission-control-dashboard/index.html', '_blank', 'noopener');
+                return;
+            }
             alert(`${action} - Feature coming soon!`);
         }
 
