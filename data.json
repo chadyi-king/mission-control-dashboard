@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "lastUpdated": "2026-03-23T15:15:10.076963+08:00",
+  "lastUpdated": "2026-03-23T15:23:41.799428+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -155,7 +155,8 @@
       "agent": "-------",
       "status": "done",
       "priority": "done",
-      "completed": "-----------"
+      "completed": "-----------",
+      "completedAt": "-----------"
     },
     "A1-8": {
       "id": "A1-8",
@@ -219,7 +220,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-23"
+      "completed": "2026-03-23",
+      "completedAt": "2026-03-23"
     },
     "A7-3": {
       "id": "A7-3",
@@ -304,7 +306,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-02-05"
+      "completed": "2026-02-05",
+      "completedAt": "2026-02-05"
     },
     "B3-2": {
       "id": "B3-2",
@@ -410,7 +413,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-02-05"
+      "completed": "2026-02-05",
+      "completedAt": "2026-02-05"
     },
     "B6-2": {
       "id": "B6-2",
@@ -425,7 +429,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01"
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01"
     },
     "B6-4": {
       "id": "B6-4",
@@ -447,7 +452,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01"
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01"
     },
     "B6-7": {
       "id": "B6-7",
@@ -455,7 +461,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-23"
+      "completed": "2026-03-23",
+      "completedAt": "2026-03-23"
     },
     "B7-1": {
       "id": "B7-1",
@@ -575,7 +582,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-23"
+      "completed": "2026-03-23",
+      "completedAt": "2026-03-23"
     },
     "A1-6": {
       "id": "A1-6",
@@ -583,7 +591,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-18"
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18"
     },
     "A1-5": {
       "id": "A1-5",
@@ -591,7 +600,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-18"
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18"
     },
     "B6-8": {
       "id": "B6-8",
@@ -599,7 +609,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-18"
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18"
     },
     "A1-2": {
       "id": "A1-2",
@@ -607,7 +618,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-18"
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18"
     },
     "A1-7": {
       "id": "A1-7",
@@ -615,7 +627,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01"
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01"
     },
     "A6-14": {
       "id": "A6-14",
@@ -623,7 +636,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01"
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01"
     },
     "A1-1": {
       "id": "A1-1",
@@ -631,7 +645,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-02-13"
+      "completed": "2026-02-13",
+      "completedAt": "2026-02-13"
     },
     "A1-4": {
       "id": "A1-4",
@@ -639,7 +654,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-02-15"
+      "completed": "2026-02-15",
+      "completedAt": "2026-02-15"
     }
   },
   "recentWins": [
