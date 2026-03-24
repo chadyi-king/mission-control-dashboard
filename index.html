@@ -5385,6 +5385,7 @@ console.log('[Helios WS] connected:', wsUrl);
 
             // 2. REVIEW
             const reviewTasks = openTasks.filter(t => t.status === 'review');
+            const inputsNeeded = getInputRequestEntries(data);
             const reviewDecisions = inputsNeeded.length;
             set('s-review-total', reviewTasks.length + reviewDecisions);
             set('s-review-agent', reviewTasks.length + ' agent work');
@@ -7704,7 +7705,8 @@ console.log('[Helios WS] connected:', wsUrl);
                         lastKnownUpdate = newHash;
 
                         // Update global app data
-                        appData = newData;
+                        appData = normalizeDashboardData(newData);
+                        window.appData = appData;
 
                         // Rebuild project data
                         allProjects = buildProjectsFromData(appData);

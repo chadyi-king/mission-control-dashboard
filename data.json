@@ -1,12 +1,12 @@
 {
   "version": "2.0.0",
-  "lastUpdated": "2026-03-23T15:23:41.799428+08:00",
+  "lastUpdated": "2026-03-25T00:44:45.079598+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
     "tasksLeft": 52,
     "completedTasks": 16,
-    "completedToday": 3,
+    "completedToday": 0,
     "completedThisWeek": 3,
     "critical": 0,
     "urgent": 6,
@@ -15,26 +15,7 @@
     "backlog": 41
   },
   "completions": {
-    "today": [
-      {
-        "id": "B6-7",
-        "title": "Check insurance for SMU event",
-        "date": "2026-03-23",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "B8-6",
-        "title": "Andre's video (changes done)",
-        "date": "2026-03-23",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "A7-2",
-        "title": "Book venue and catering",
-        "date": "2026-03-23",
-        "agent": "CHAD_YI"
-      }
-    ],
+    "today": [],
     "this_week": [
       {
         "id": "B6-7",
@@ -58,7 +39,7 @@
     "all_time": 16
   },
   "weeklyProgress": {
-    "completed": 3,
+    "completed": 0,
     "started": 0
   },
   "workflow": {
@@ -121,10 +102,10 @@
       "B6-3",
       "B6-6",
       "B6-7",
+      "B6-8",
       "B8-6",
       "A1-6",
       "A1-5",
-      "B6-8",
       "A1-2",
       "A1-7",
       "A6-14",
@@ -464,6 +445,15 @@
       "completed": "2026-03-23",
       "completedAt": "2026-03-23"
     },
+    "B6-8": {
+      "id": "B6-8",
+      "title": "Order gel blitz guns for MENDAKI",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18"
+    },
     "B7-1": {
       "id": "B7-1",
       "title": "Website design/redesign",
@@ -603,15 +593,6 @@
       "completed": "2026-03-18",
       "completedAt": "2026-03-18"
     },
-    "B6-8": {
-      "id": "B6-8",
-      "title": "Order gel blitz guns for MENDAKI",
-      "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-18",
-      "completedAt": "2026-03-18"
-    },
     "A1-2": {
       "id": "A1-2",
       "title": "Devspace and Findit payments",
@@ -659,24 +640,6 @@
     }
   },
   "recentWins": [
-    {
-      "id": "B6-7",
-      "title": "Check insurance for SMU event",
-      "date": "2026-03-23",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "B8-6",
-      "title": "Andre's video (changes done)",
-      "date": "2026-03-23",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "A7-2",
-      "title": "Book venue and catering",
-      "date": "2026-03-23",
-      "agent": "CHAD_YI"
-    },
     {
       "id": "B6-7",
       "title": "Check insurance for SMU event",
