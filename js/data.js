@@ -188,7 +188,14 @@ async function commitTaskDone(taskId) {
   const fileInfo = await getResp.json();
 
   const content = JSON.parse(atob(fileInfo.content));
-  const task = content.tasks?.find(t => t.id === taskId);
+
+  // Handle both dict format {id: taskObj} and array format
+  let task;
+  if (Array.isArray(content.tasks)) {
+    task = content.tasks.find(t => t.id === taskId);
+  } else if (content.tasks && typeof content.tasks === 'object') {
+    task = content.tasks[taskId];
+  }
   if (!task) throw new Error('Task not found: ' + taskId);
 
   task.status = 'done';
@@ -196,7 +203,8 @@ async function commitTaskDone(taskId) {
 
   // Recompute stats
   if (content.stats) {
-    content.stats = computeStats(content.tasks);
+    const tasksArr = Array.isArray(content.tasks) ? content.tasks : Object.values(content.tasks || {});
+    content.stats = computeStats(tasksArr);
   }
 
   const updated = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
