@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RED SUN COMMAND — Mission Control</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Dashboard CSS -->
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- Starfield Background -->
+  <canvas id="starfield-canvas"></canvas>
+
+  <div class="app-shell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo" title="RED SUN COMMAND"></div>
+      <div id="sidebar-agents" class="sidebar-agents">
+        <!-- Agent dots rendered by js/agents.js -->
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="header-title">
+          <span class="sun-icon"></span>
+          RED SUN COMMAND
+        </div>
+        <div class="header-meta">
+          <span>Mission Control Dashboard</span>
+          <span>v3.0</span>
+        </div>
+      </header>
+
+      <!-- Ticker -->
+      <div class="ticker-bar">
+        <div id="ticker-track" class="ticker-track">
+          <!-- Rendered by js/render.js -->
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div id="stats-bar" class="stats-bar">
+        <!-- Rendered by js/render.js -->
+      </div>
+
+      <!-- Daily Briefing -->
+      <div id="daily-briefing" class="briefing">
+        <!-- Rendered by js/render.js -->
+      </div>
+
+      <!-- Ops Grid (Needs Attention / Input Required / Active Work) -->
+      <div id="ops-grid" class="ops-grid">
+        <!-- Rendered by js/render.js -->
+      </div>
+
+      <!-- Focus Tasks -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">
+            Focus Tasks
+            <span id="focus-badge" class="section-badge">0</span>
+          </div>
+        </div>
+        <div id="focus-tasks" class="card">
+          <!-- Rendered by js/render.js -->
+        </div>
+      </section>
+
+      <!-- System Health -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">System Health</div>
+        </div>
+        <div id="system-health" class="system-health">
+          <!-- Rendered by js/render.js -->
+        </div>
+      </section>
+
+      <!-- Calendar -->
+      <section class="section calendar-section">
+        <div class="calendar-header">
+          <div class="section-title">Week at a Glance</div>
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" onclick="CalendarView.prevWeek()" title="Previous week">&#8249;</button>
+            <span id="calendar-range" class="calendar-range"></span>
+            <button class="calendar-nav-btn" onclick="CalendarView.goToday()" title="Today">&#9679;</button>
+            <button class="calendar-nav-btn" onclick="CalendarView.nextWeek()" title="Next week">&#8250;</button>
+          </div>
+        </div>
+        <div class="calendar-legend">
+          <span class="calendar-legend-item"><span class="calendar-legend-dot" style="background:var(--crimson-bright)"></span> Critical</span>
+          <span class="calendar-legend-item"><span class="calendar-legend-dot" style="background:var(--status-high)"></span> High</span>
+          <span class="calendar-legend-item"><span class="calendar-legend-dot" style="background:var(--status-medium)"></span> Medium</span>
+          <span class="calendar-legend-item"><span class="calendar-legend-dot" style="background:var(--status-done)"></span> Done</span>
+          <span class="calendar-legend-item"><span class="calendar-legend-dot" style="background:var(--status-blocked)"></span> Overdue</span>
+        </div>
+        <div id="calendar-grid" class="calendar-grid">
+          <!-- Rendered by js/calendar.js -->
+        </div>
+      </section>
+
+      <!-- Categories & Projects -->
+      <section class="section categories-section">
+        <div class="section-header">
+          <div class="section-title">Categories &amp; Projects</div>
+        </div>
+        <div id="categories-section">
+          <!-- Rendered by js/render.js -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Task Detail Modal -->
+  <div id="task-modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <!-- Rendered by js/modal.js -->
+    </div>
+  </div>
+
+  <!-- Update Indicator -->
+  <div id="update-indicator" class="update-indicator">
+    <span class="update-dot"></span>
+    <span class="update-text">SYNCED</span>
+  </div>
+
+  <!-- Scripts (order matters: data -> render -> calendar -> modal -> agents -> app) -->
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/agents.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
