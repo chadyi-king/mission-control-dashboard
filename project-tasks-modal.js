@@ -1,10 +1,12 @@
 (function (global) {
-    const STATUS_ORDER = ['pending', 'active', 'review', 'done'];
-    const STATUS_LABELS = {
-        pending: 'Pending',
-        active: 'Active',
-        review: 'Review',
-        done: 'Done'
+    const GROUP_ORDER = ['needs-me', 'needs-review', 'needs-input', 'active-work', 'open-work', 'completed'];
+    const GROUP_LABELS = {
+        'needs-me': 'Needs Me',
+        'needs-review': 'Needs My Review',
+        'needs-input': 'Needs My Input',
+        'active-work': 'Verified Active Work',
+        'open-work': 'Other Open Work',
+        'completed': 'Completed'
     };
     const PRIORITY_ORDER = { high: 0, medium: 1, low: 2 };
 
@@ -13,22 +15,22 @@
             const date = value ? new Date(value) : new Date();
             return isNaN(date.getTime()) ? new Date() : date;
         },
-        formatAbsoluteTimestamp(value) {
-            if (!value) return '—';
-            const date = new Date(value);
-            if (isNaN(date.getTime())) return '—';
-            return date.toLocaleString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false
-            });
-        },
         getPriorityClass(priority) {
             if (priority === 'high') return 'high';
             if (priority === 'medium') return 'medium';
             return 'low';
+        },
+        getTaskPrimaryLane(task) {
+            return { key: task?.status === 'done' ? 'completed' : 'open-work', label: 'Open Work' };
+        },
+        getTaskDetailModel(task) {
+            return {
+                lane: this.getTaskPrimaryLane(task),
+                projectLabel: 'Project',
+                personAgent: task?.agent || task?.assignedTo || 'Unassigned',
+                about: task?.description || task?.title || 'No description logged.',
+                progress: task?.notes || 'No progress logged.'
+            };
         }
     };
 
@@ -37,24 +39,15 @@
     let elements = {};
     let projectLookup = {};
     let currentProject = null;
-    let filters = createDefaultFilters();
+    let filters = { search: '', sort: 'attention' };
     let keydownHandler = null;
-
-    function createDefaultFilters(overrides = {}) {
-        return Object.assign({
-            status: 'all',
-            priority: 'all',
-            search: '',
-            sort: 'created-newest'
-        }, overrides);
-    }
 
     function resolveHelper(name) {
         if (overrideHelpers[name]) return overrideHelpers[name];
         if (typeof global[name] === 'function') return global[name];
         const shared = global.MissionControlHelpers || {};
         if (typeof shared[name] === 'function') return shared[name];
-        return defaultHelpers[name];
+        return defaultHelpers[name].bind(defaultHelpers);
     }
 
     function ensureMounted() {
@@ -90,39 +83,20 @@
                     </div>
                 </div>
                 <div class="project-modal-quick-stats" id="project-modal-quick-stats"></div>
-                <div class="project-modal-filters">
-                    <div>
-                        <div class="modal-filter-label">Status</div>
-                        <div class="modal-chip-row" id="project-modal-status-chips">
-                            <button type="button" class="modal-chip" data-status="all">All</button>
-                            <button type="button" class="modal-chip" data-status="pending">Pending</button>
-                            <button type="button" class="modal-chip" data-status="active">Active</button>
-                            <button type="button" class="modal-chip" data-status="review">Review</button>
-                            <button type="button" class="modal-chip" data-status="done">Done</button>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="modal-filter-label">Priority</div>
-                        <div class="modal-chip-row" id="project-modal-priority-chips">
-                            <button type="button" class="modal-chip" data-priority="all">All</button>
-                            <button type="button" class="modal-chip" data-priority="high">High</button>
-                            <button type="button" class="modal-chip" data-priority="medium">Medium</button>
-                            <button type="button" class="modal-chip" data-priority="low">Low</button>
-                        </div>
-                    </div>
-                    <div>
+                <div class="project-modal-filters slim">
+                    <div class="project-modal-filter-block grow">
                         <div class="modal-filter-label">Search</div>
                         <div class="modal-search-field">
-                            <input type="text" id="project-modal-search" placeholder="Search tasks or notes" />
+                            <input type="text" id="project-modal-search" placeholder="Search titles, notes, or context" />
                         </div>
                     </div>
-                    <div>
+                    <div class="project-modal-filter-block compact">
                         <div class="modal-filter-label">Sort</div>
                         <select class="modal-select" id="project-modal-sort">
-                            <option value="created-newest">Created · Newest</option>
-                            <option value="created-oldest">Created · Oldest</option>
+                            <option value="attention">Needs attention first</option>
                             <option value="priority">Priority</option>
-                            <option value="status">Status</option>
+                            <option value="recent">Newest first</option>
+                            <option value="completed">Recently completed first</option>
                         </select>
                     </div>
                 </div>
@@ -131,7 +105,7 @@
                 </div>
                 <footer class="project-modal-footer">
                     <div class="project-modal-task-count" id="project-modal-task-counter">Showing 0 tasks</div>
-                    <div class="project-modal-task-count">Read-only detail view</div>
+                    <div class="project-modal-task-count">Same task detail view as the main dashboard</div>
                 </footer>
             </div>
         `;
@@ -148,8 +122,6 @@
             progressValue: overlayEl.querySelector('#project-modal-progress-value'),
             progressSubtext: overlayEl.querySelector('#project-modal-progress-subtext'),
             quickStats: overlayEl.querySelector('#project-modal-quick-stats'),
-            statusChips: overlayEl.querySelector('#project-modal-status-chips'),
-            priorityChips: overlayEl.querySelector('#project-modal-priority-chips'),
             searchInput: overlayEl.querySelector('#project-modal-search'),
             sortSelect: overlayEl.querySelector('#project-modal-sort'),
             taskList: overlayEl.querySelector('#project-modal-task-list'),
@@ -160,23 +132,16 @@
         overlayEl.addEventListener('click', (event) => {
             if (event.target === overlayEl || event.target.closest('[data-project-modal-close]')) {
                 hideModal();
+                return;
             }
-        });
-
-        elements.statusChips.addEventListener('click', (event) => {
-            const chip = event.target.closest('[data-status]');
-            if (!chip) return;
-            filters.status = chip.dataset.status;
-            updateChipSelection(elements.statusChips, 'status', filters.status);
-            renderTaskList();
-        });
-
-        elements.priorityChips.addEventListener('click', (event) => {
-            const chip = event.target.closest('[data-priority]');
-            if (!chip) return;
-            filters.priority = chip.dataset.priority;
-            updateChipSelection(elements.priorityChips, 'priority', filters.priority);
-            renderTaskList();
+            const taskRow = event.target.closest('[data-open-task]');
+            if (taskRow) {
+                const taskId = taskRow.getAttribute('data-open-task');
+                hideModal();
+                if (typeof global.openTask === 'function') {
+                    global.openTask(taskId);
+                }
+            }
         });
 
         elements.searchInput.addEventListener('input', (event) => {
@@ -188,21 +153,12 @@
             filters.sort = event.target.value;
             renderTaskList();
         });
-
-    }
-
-    function updateChipSelection(container, attr, value) {
-        container.querySelectorAll(`[data-${attr}]`).forEach((chip) => {
-            chip.classList.toggle('active', chip.dataset[attr] === value);
-        });
     }
 
     function setProjectLookup(data) {
         if (Array.isArray(data)) {
             projectLookup = data.reduce((map, proj) => {
-                if (proj && proj.id) {
-                    map[proj.id] = proj;
-                }
+                if (proj && proj.id) map[proj.id] = proj;
                 return map;
             }, {});
         } else if (data && typeof data === 'object') {
@@ -222,15 +178,11 @@
         }
 
         currentProject = project;
-        filters = createDefaultFilters({
-            status: options.status || 'all',
-            priority: options.priority || 'all',
+        filters = {
             search: options.search || '',
-            sort: options.sort || 'created-newest'
-        });
+            sort: options.sort || 'attention'
+        };
 
-        updateChipSelection(elements.statusChips, 'status', filters.status);
-        updateChipSelection(elements.priorityChips, 'priority', filters.priority);
         elements.searchInput.value = filters.search;
         elements.sortSelect.value = filters.sort;
 
@@ -240,18 +192,28 @@
         showModal();
     }
 
+    function getProjectStats(project) {
+        if (project && project.stats) return project.stats;
+        const tasks = Array.isArray(project?.tasks) ? project.tasks : [];
+        return {
+            total: tasks.length,
+            done: tasks.filter(task => task.status === 'done').length,
+            left: tasks.filter(task => task.status !== 'done').length,
+            urgent: tasks.filter(task => task.status !== 'done' && task.priority === 'high').length
+        };
+    }
+
     function populateHeader(project) {
         const stats = getProjectStats(project);
-        const total = stats.total;
-        const done = stats.done;
+        const total = stats.total || 0;
+        const done = stats.done || 0;
         const progress = total > 0 ? Math.round((done / total) * 100) : 0;
-        const urgent = stats.urgent;
+        const urgent = stats.urgent || 0;
 
         elements.name.textContent = project.name || project.id;
         elements.id.textContent = project.id || '—';
-        const statusValue = project.status || 'pending';
-        elements.status.textContent = statusValue;
-        elements.status.className = `project-modal-status-badge ${statusValue}`;
+        elements.status.textContent = project.status || 'pending';
+        elements.status.className = `project-modal-status-badge ${project.status || 'pending'}`;
         elements.total.textContent = `${total} task${total === 1 ? '' : 's'}`;
         elements.urgent.textContent = urgent > 0 ? `${urgent} urgent` : 'No urgent tasks';
         elements.urgent.classList.toggle('has-urgent', urgent > 0);
@@ -262,16 +224,17 @@
     }
 
     function renderQuickStats(project) {
-        const stats = getProjectStats(project);
-        const statDefs = [
-            { label: 'Total', value: stats.total },
-            { label: 'Active', value: stats.active },
-            { label: 'Review', value: stats.review },
-            { label: 'Done', value: stats.done },
-            { label: 'Urgent', value: stats.urgent }
+        const tasks = getTaskList(project);
+        const groups = buildTaskGroups(tasks);
+        const stats = [
+            { label: 'Needs me', value: groups['needs-me']?.length || 0 },
+            { label: 'Review', value: groups['needs-review']?.length || 0 },
+            { label: 'Input', value: groups['needs-input']?.length || 0 },
+            { label: 'Open elsewhere', value: (groups['active-work']?.length || 0) + (groups['open-work']?.length || 0) },
+            { label: 'Done', value: groups.completed?.length || 0 }
         ];
 
-        elements.quickStats.innerHTML = statDefs.map(stat => `
+        elements.quickStats.innerHTML = stats.map(stat => `
             <div class="project-modal-quick-stat">
                 <div class="project-modal-quick-stat-label">${stat.label}</div>
                 <div class="project-modal-quick-stat-value">${stat.value}</div>
@@ -279,173 +242,119 @@
         `).join('');
     }
 
-    function getProjectStats(project) {
-        if (project && project.stats) return project.stats;
-        return calculateStatsFromTasks(project.tasks || []);
-    }
-
-    function calculateStatsFromTasks(tasks) {
-        const stats = {
-            total: tasks.length,
-            pending: 0,
-            active: 0,
-            review: 0,
-            done: 0,
-            urgent: 0
-        };
-        tasks.forEach(task => {
-            const status = task.status || 'pending';
-            if (status === 'pending' || status === 'active' || status === 'review' || status === 'done') {
-                stats[status] += 1;
-            }
-            if (task.priority === 'high' && status !== 'done') {
-                stats.urgent += 1;
-            }
-        });
-        return stats;
-    }
-
     function getTaskList(project) {
-        const tasks = Array.isArray(project.tasks) ? project.tasks.slice() : [];
-        return tasks;
+        return Array.isArray(project?.tasks) ? project.tasks.slice() : [];
     }
 
     function getFilteredTasks(tasks) {
         const safeParse = resolveHelper('safeParseDate');
+        const laneResolver = resolveHelper('getTaskPrimaryLane');
         const searchTerm = filters.search.toLowerCase();
 
         return tasks.filter(task => {
-            if (filters.status !== 'all' && (task.status || 'pending') !== filters.status) {
-                return false;
-            }
-            if (filters.priority !== 'all' && (task.priority || 'medium') !== filters.priority) {
-                return false;
-            }
-            if (searchTerm) {
-                const haystack = `${task.title || ''} ${task.notes || ''} ${task.status || ''} ${task.priority || ''}`.toLowerCase();
-                if (!haystack.includes(searchTerm)) {
-                    return false;
-                }
-            }
-            return true;
+            if (!searchTerm) return true;
+            const detail = resolveHelper('getTaskDetailModel')(task, global.appData);
+            const haystack = [
+                task.title,
+                task.notes,
+                task.description,
+                detail.about,
+                detail.progress,
+                detail.personAgent,
+                detail.projectLabel,
+                laneResolver(task, global.appData).label
+            ].join(' ').toLowerCase();
+            return haystack.includes(searchTerm);
         }).sort((a, b) => {
-            switch (filters.sort) {
-                case 'created-oldest':
-                    return safeParse(a.createdAt) - safeParse(b.createdAt);
-                case 'priority': {
-                    const aPriority = PRIORITY_ORDER[a.priority] ?? 99;
-                    const bPriority = PRIORITY_ORDER[b.priority] ?? 99;
-                    return aPriority - bPriority;
-                }
-                case 'status': {
-                    const aStatus = STATUS_ORDER.indexOf(a.status || 'pending');
-                    const bStatus = STATUS_ORDER.indexOf(b.status || 'pending');
-                    return aStatus - bStatus;
-                }
-                case 'created-newest':
-                default:
-                    return safeParse(b.createdAt) - safeParse(a.createdAt);
+            if (filters.sort === 'priority') {
+                return (PRIORITY_ORDER[a.priority] ?? 99) - (PRIORITY_ORDER[b.priority] ?? 99);
             }
+            if (filters.sort === 'recent') {
+                return safeParse(b.createdAt) - safeParse(a.createdAt);
+            }
+            if (filters.sort === 'completed') {
+                return safeParse(b.completedAt || b.createdAt) - safeParse(a.completedAt || a.createdAt);
+            }
+
+            const laneOrder = GROUP_ORDER.indexOf(laneResolver(a, global.appData).key) - GROUP_ORDER.indexOf(laneResolver(b, global.appData).key);
+            if (laneOrder !== 0) return laneOrder;
+            const priorityDelta = (PRIORITY_ORDER[a.priority] ?? 99) - (PRIORITY_ORDER[b.priority] ?? 99);
+            if (priorityDelta !== 0) return priorityDelta;
+            return safeParse(b.createdAt) - safeParse(a.createdAt);
         });
+    }
+
+    function buildTaskGroups(tasks) {
+        const laneResolver = resolveHelper('getTaskPrimaryLane');
+        const grouped = {};
+        GROUP_ORDER.forEach(key => { grouped[key] = []; });
+
+        tasks.forEach(task => {
+            const lane = laneResolver(task, global.appData);
+            const key = grouped[lane.key] ? lane.key : 'open-work';
+            grouped[key].push(task);
+        });
+
+        return grouped;
     }
 
     function renderTaskList() {
         if (!currentProject) return;
         const tasks = getTaskList(currentProject);
         const filtered = getFilteredTasks(tasks);
+        const groups = buildTaskGroups(filtered);
 
-        if (filtered.length === 0) {
-            elements.taskList.innerHTML = '<div class="project-modal-empty">No tasks match the current filters.</div>';
-        } else {
-            const groups = buildTaskGroups(filtered);
-            elements.taskList.innerHTML = groups.map(renderTaskGroup).join('');
-        }
+        const content = GROUP_ORDER
+            .filter(key => groups[key] && groups[key].length > 0)
+            .map(key => renderTaskGroup(key, groups[key]))
+            .join('');
 
-        const label = filtered.length === tasks.length
+        elements.taskList.innerHTML = content || '<div class="project-modal-empty">No tasks match the current search.</div>';
+        elements.taskCounter.textContent = filtered.length === tasks.length
             ? `Showing ${filtered.length} task${filtered.length === 1 ? '' : 's'}`
             : `Showing ${filtered.length} of ${tasks.length} tasks`;
-        elements.taskCounter.textContent = label;
     }
 
-    function buildTaskGroups(tasks) {
-        const grouped = STATUS_ORDER.map(status => ({
-            status,
-            tasks: []
-        }));
-
-        const fallback = { status: 'other', tasks: [] };
-
-        tasks.forEach(task => {
-            const status = task.status || 'pending';
-            const idx = STATUS_ORDER.indexOf(status);
-            if (idx >= 0) {
-                grouped[idx].tasks.push(task);
-            } else {
-                fallback.tasks.push(task);
-            }
-        });
-
-        const result = grouped.filter(group => group.tasks.length > 0);
-        if (fallback.tasks.length > 0) {
-            result.push(fallback);
-        }
-        return result;
-    }
-
-    function renderTaskGroup(group) {
-        const label = STATUS_LABELS[group.status] || group.status;
+    function renderTaskGroup(key, tasks) {
         return `
             <div class="project-modal-task-group">
                 <div class="task-group-header">
-                    <span>${label}</span>
-                    <span class="task-group-count">${group.tasks.length}</span>
+                    <span>${GROUP_LABELS[key] || key}</span>
+                    <span class="task-group-count">${tasks.length}</span>
                 </div>
-                ${group.tasks.map(renderTaskRow).join('')}
+                ${tasks.map(renderTaskRow).join('')}
             </div>
         `;
     }
 
     function renderTaskRow(task) {
-        const absoluteFormatter = resolveHelper('formatAbsoluteTimestamp');
-        const created = absoluteFormatter(task.createdAt);
-        const completed = task.completedAt ? absoluteFormatter(task.completedAt) : '—';
-        const deadline = task.deadline ? absoluteFormatter(task.deadline) : '—';
-        const status = task.status || 'pending';
-        const statusClass = `project-modal-pill status-${status}`;
+        const detail = resolveHelper('getTaskDetailModel')(task, global.appData);
+        const getPriorityClass = resolveHelper('getPriorityClass');
         const priorityValue = (task.priority || 'medium').toLowerCase();
-        const helperClass = resolveHelper('getPriorityClass')(priorityValue) || priorityValue;
-        const normalizedPriority = /high/i.test(helperClass) ? 'high' : /medium/i.test(helperClass) ? 'medium' : /low/i.test(helperClass) ? 'low' : priorityValue;
+        const priorityClass = getPriorityClass(priorityValue) || priorityValue;
         const priorityLabel = priorityValue.toUpperCase();
-        const projectLabel = currentProject ? `${currentProject.id} · ${currentProject.name}` : 'Project';
-        const owner = task.agent || task.assignedTo || 'Unassigned';
+        const created = resolveHelper('safeParseDate')(task.createdAt);
+        const createdText = isNaN(created.getTime()) ? '—' : created.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        const deadlineText = task.deadline
+            ? new Date(task.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+            : 'No deadline';
 
         return `
-            <div class="project-modal-task-row">
-                <div class="project-modal-task-priority ${normalizedPriority}">${priorityLabel}</div>
+            <div class="project-modal-task-row clickable" data-open-task="${task.id}" tabindex="0" role="button" aria-label="Open ${task.title || task.id}">
+                <div class="project-modal-task-priority ${priorityClass}">${priorityLabel}</div>
                 <div class="project-modal-task-main">
+                    <div class="project-modal-task-kicker">${detail.projectLabel} · ${task.id}</div>
                     <div class="project-modal-task-title">${task.title || 'Untitled Task'}</div>
-                    ${task.notes ? `<div class="project-modal-task-notes">${task.notes}</div>` : ''}
+                    <div class="project-modal-task-summary">${detail.about}</div>
+                    <div class="project-modal-task-progress">${detail.progress}</div>
                     <div class="project-modal-task-meta">
-                        <span class="project-modal-pill priority-pill">${priorityLabel}</span>
-                        <span class="${statusClass}">${STATUS_LABELS[status] || status}</span>
-                        <span class="project-modal-pill priority-pill">${projectLabel}</span>
-                        <span class="project-modal-pill priority-pill">${owner}</span>
+                        <span class="project-modal-pill status-${detail.lane.key.replace(/[^a-z-]/g, '')}">${detail.lane.label}</span>
+                        <span class="project-modal-pill priority-pill">Person / Agent · ${detail.personAgent}</span>
+                        <span class="project-modal-pill priority-pill">Created · ${createdText}</span>
+                        <span class="project-modal-pill priority-pill">${deadlineText === 'No deadline' ? deadlineText : `Due · ${deadlineText}`}</span>
                     </div>
                 </div>
-                <div class="project-modal-task-dates">
-                    <div>
-                        <span>Deadline</span>
-                        <div>${deadline}</div>
-                    </div>
-                    <div>
-                        <span>Created</span>
-                        <div>${created}</div>
-                    </div>
-                    <div>
-                        <span>Completed</span>
-                        <div>${completed}</div>
-                    </div>
-                </div>
+                <div class="project-modal-task-open">→ detail</div>
             </div>
         `;
     }
@@ -455,9 +364,7 @@
         overlayEl.classList.add('visible');
         document.body.classList.add('modal-open');
         keydownHandler = (event) => {
-            if (event.key === 'Escape') {
-                hideModal();
-            }
+            if (event.key === 'Escape') hideModal();
         };
         document.addEventListener('keydown', keydownHandler);
     }
