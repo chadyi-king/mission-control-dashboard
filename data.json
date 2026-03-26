@@ -1,18 +1,19 @@
 {
-  "version": "2.0.0",
-  "lastUpdated": "2026-03-26T19:42:32.266499+08:00",
+  "version": "3.0.0",
+  "lastUpdated": "2026-03-26T22:29:19.965840+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 68,
-    "tasksLeft": 52,
+    "totalTasks": 67,
+    "tasksLeft": 51,
     "completedTasks": 16,
     "completedToday": 0,
     "completedThisWeek": 3,
     "critical": 0,
-    "urgent": 6,
+    "urgent": 11,
     "active": 2,
     "blocked": 6,
-    "backlog": 41
+    "review": 0,
+    "backlog": 43
   },
   "completions": {
     "today": [],
@@ -36,7 +37,7 @@
         "agent": "CHAD_YI"
       }
     ],
-    "all_time": 16
+    "all_time": 22
   },
   "weeklyProgress": {
     "completed": 0,
@@ -71,7 +72,6 @@
       "B5-3",
       "B5-4",
       "B5-5",
-      "B6-2",
       "B7-1",
       "B7-2",
       "B7-3",
@@ -95,10 +95,10 @@
     ],
     "review": [],
     "done": [
-      "----",
       "A7-2",
       "B3-1",
       "B6-1",
+      "B6-2",
       "B6-3",
       "B6-6",
       "B6-7",
@@ -112,14 +112,6 @@
       "A1-1",
       "A1-4"
     ],
-    "urgent": [
-      "A1-10",
-      "A2-1",
-      "B3-2",
-      "B3-3",
-      "B6-4",
-      "B6-5"
-    ],
     "blocked": [
       "A1-10",
       "A2-1",
@@ -130,74 +122,87 @@
     ]
   },
   "tasks": {
-    "----": {
-      "id": "----",
-      "title": "-------",
-      "agent": "-------",
-      "status": "done",
-      "priority": "done",
-      "completed": "-----------",
-      "completedAt": "-----------"
-    },
     "A1-8": {
       "id": "A1-8",
       "title": "Create habit tracker in dashboard",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "high",
+      "deadline": "2026-04-20"
     },
     "A1-9": {
       "id": "A1-9",
       "title": "Set up double dates with Jamie's cousins throughout the year",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "high",
+      "deadline": "2026-12-31"
     },
     "A1-10": {
       "id": "A1-10",
       "title": "Prepare wedding guest list",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "blocked",
-      "priority": "urgent"
+      "priority": "high",
+      "deadline": "2026-03-28"
     },
     "A2-1": {
       "id": "A2-1",
       "title": "Chapter 13 writing",
+      "project": "A2",
+      "category": "A",
       "agent": "Escritor",
       "status": "blocked",
-      "priority": "urgent"
+      "priority": "high"
     },
     "A5-1": {
       "id": "A5-1",
       "title": "Quanta Trading Bot - Final Testing",
+      "project": "A5",
+      "category": "A",
       "agent": "Quanta",
       "status": "active",
-      "priority": "active"
+      "priority": "medium"
     },
     "A5-3": {
       "id": "A5-3",
       "title": "Update Quanta symbol list",
+      "project": "A5",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "active",
-      "priority": "active"
+      "priority": "medium"
     },
     "A5-4": {
       "id": "A5-4",
       "title": "Add AXI/MT5 for QUANTA with same trading logic",
+      "project": "A5",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "high"
     },
     "A7-1": {
       "id": "A7-1",
       "title": "Finalize wedding theme",
+      "project": "A7",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
-      "priority": "backlog"
+      "priority": "high",
+      "deadline": "2026-06-01"
     },
     "A7-2": {
       "id": "A7-2",
       "title": "Book venue and catering",
+      "project": "A7",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -207,83 +212,108 @@
     "A7-3": {
       "id": "A7-3",
       "title": "Send invitations",
+      "project": "A7",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
-      "priority": "backlog"
+      "priority": "high",
+      "deadline": "2026-09-01"
     },
     "B1-1": {
       "id": "B1-1",
       "title": "Website design/redesign",
+      "project": "B1",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B1-2": {
       "id": "B1-2",
       "title": "SEO setup",
+      "project": "B1",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B1-3": {
       "id": "B1-3",
       "title": "Google Ads management",
+      "project": "B1",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B1-4": {
       "id": "B1-4",
       "title": "Social media management",
+      "project": "B1",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B1-5": {
       "id": "B1-5",
       "title": "Client management setup",
+      "project": "B1",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B2-1": {
       "id": "B2-1",
       "title": "Website design/redesign",
+      "project": "B2",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B2-2": {
       "id": "B2-2",
       "title": "SEO setup",
+      "project": "B2",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B2-3": {
       "id": "B2-3",
       "title": "Google Ads management",
+      "project": "B2",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B2-4": {
       "id": "B2-4",
       "title": "Social media management",
+      "project": "B2",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B2-5": {
       "id": "B2-5",
       "title": "Client management setup",
+      "project": "B2",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B3-1": {
       "id": "B3-1",
       "title": "Team Elevate website (Lovable)",
+      "project": "B3",
+      "category": "B",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -293,104 +323,134 @@
     "B3-2": {
       "id": "B3-2",
       "title": "SEO optimization",
+      "project": "B3",
+      "category": "B",
       "agent": "Forger",
       "status": "blocked",
-      "priority": "urgent"
+      "priority": "high"
     },
     "B3-3": {
       "id": "B3-3",
       "title": "Google Ads setup",
+      "project": "B3",
+      "category": "B",
       "agent": "Forger",
       "status": "blocked",
-      "priority": "urgent"
+      "priority": "high"
     },
     "B3-4": {
       "id": "B3-4",
       "title": "Social media management",
+      "project": "B3",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B3-5": {
       "id": "B3-5",
       "title": "Client management",
+      "project": "B3",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B4-1": {
       "id": "B4-1",
       "title": "Website design/redesign",
+      "project": "B4",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B4-2": {
       "id": "B4-2",
       "title": "SEO setup",
+      "project": "B4",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B4-3": {
       "id": "B4-3",
       "title": "Google Ads management",
+      "project": "B4",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B4-4": {
       "id": "B4-4",
       "title": "Social media management",
+      "project": "B4",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B4-5": {
       "id": "B4-5",
       "title": "Client management setup",
+      "project": "B4",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B5-1": {
       "id": "B5-1",
       "title": "Website design/redesign",
+      "project": "B5",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B5-2": {
       "id": "B5-2",
       "title": "SEO setup",
+      "project": "B5",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B5-3": {
       "id": "B5-3",
       "title": "Google Ads management",
+      "project": "B5",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B5-4": {
       "id": "B5-4",
       "title": "Social media management",
+      "project": "B5",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B5-5": {
       "id": "B5-5",
       "title": "Client management setup",
+      "project": "B5",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B6-1": {
       "id": "B6-1",
       "title": "Elluminate website (Lovable)",
+      "project": "B6",
+      "category": "B",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -400,13 +460,17 @@
     "B6-2": {
       "id": "B6-2",
       "title": "MENDAKI - Get gel guns and archery tag",
+      "project": "B6",
+      "category": "B",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "backlog"
+      "status": "done",
+      "priority": "done"
     },
     "B6-3": {
       "id": "B6-3",
       "title": "SPH items to order",
+      "project": "B6",
+      "category": "B",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -416,20 +480,26 @@
     "B6-4": {
       "id": "B6-4",
       "title": "SEO setup",
+      "project": "B6",
+      "category": "B",
       "agent": "Forger",
       "status": "blocked",
-      "priority": "urgent"
+      "priority": "high"
     },
     "B6-5": {
       "id": "B6-5",
       "title": "Google Ads management",
+      "project": "B6",
+      "category": "B",
       "agent": "Forger",
       "status": "blocked",
-      "priority": "urgent"
+      "priority": "high"
     },
     "B6-6": {
       "id": "B6-6",
       "title": "Find facilitators for ESU",
+      "project": "B6",
+      "category": "B",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -439,6 +509,8 @@
     "B6-7": {
       "id": "B6-7",
       "title": "Check insurance for SMU event",
+      "project": "B6",
+      "category": "B",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -448,6 +520,8 @@
     "B6-8": {
       "id": "B6-8",
       "title": "Order gel blitz guns for MENDAKI",
+      "project": "B6",
+      "category": "B",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -457,118 +531,152 @@
     "B7-1": {
       "id": "B7-1",
       "title": "Website design/redesign",
+      "project": "B7",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B7-2": {
       "id": "B7-2",
       "title": "SEO setup",
+      "project": "B7",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B7-3": {
       "id": "B7-3",
       "title": "Google Ads management",
+      "project": "B7",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B7-4": {
       "id": "B7-4",
       "title": "Social media management",
+      "project": "B7",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B7-5": {
       "id": "B7-5",
       "title": "Client management setup",
+      "project": "B7",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B8-1": {
       "id": "B8-1",
       "title": "Website design/redesign",
+      "project": "B8",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B8-2": {
       "id": "B8-2",
       "title": "SEO setup",
+      "project": "B8",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B8-3": {
       "id": "B8-3",
       "title": "Google Ads management",
+      "project": "B8",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B8-4": {
       "id": "B8-4",
       "title": "Social media management",
+      "project": "B8",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B8-5": {
       "id": "B8-5",
       "title": "Client management setup",
+      "project": "B8",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B9-1": {
       "id": "B9-1",
       "title": "Website design/redesign",
+      "project": "B9",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B9-2": {
       "id": "B9-2",
       "title": "SEO setup",
+      "project": "B9",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B9-3": {
       "id": "B9-3",
       "title": "Google Ads management",
+      "project": "B9",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B9-4": {
       "id": "B9-4",
       "title": "Social media management",
+      "project": "B9",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B9-5": {
       "id": "B9-5",
       "title": "Client management setup",
+      "project": "B9",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B10-1": {
       "id": "B10-1",
       "title": "[NEED DETAILS]",
+      "project": "B10",
+      "category": "B",
       "agent": "Forger",
       "status": "backlog",
-      "priority": "backlog"
+      "priority": "low"
     },
     "B8-6": {
       "id": "B8-6",
       "title": "Andre's video (changes done)",
+      "project": "B8",
+      "category": "B",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -578,6 +686,8 @@
     "A1-6": {
       "id": "A1-6",
       "title": "Sign Lisa's contract",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -587,6 +697,8 @@
     "A1-5": {
       "id": "A1-5",
       "title": "Rebook ACLP reassessment",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -596,6 +708,8 @@
     "A1-2": {
       "id": "A1-2",
       "title": "Devspace and Findit payments",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -605,6 +719,8 @@
     "A1-7": {
       "id": "A1-7",
       "title": "Book flights for Bali",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -614,6 +730,8 @@
     "A6-14": {
       "id": "A6-14",
       "title": "Dashboard homepage design",
+      "project": "A6",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -623,6 +741,8 @@
     "A1-1": {
       "id": "A1-1",
       "title": "Change Taiwan flights and hotel",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -632,6 +752,8 @@
     "A1-4": {
       "id": "A1-4",
       "title": "Send ACLP homework",
+      "project": "A1",
+      "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
@@ -658,5 +780,479 @@
       "date": "2026-03-23",
       "agent": "CHAD_YI"
     }
-  ]
+  ],
+  "agents": {
+    "chad-yi": {
+      "name": "Chad Yi",
+      "role": "The Face — Primary interface",
+      "platform": "OpenClaw",
+      "status": "active",
+      "currentTask": "Task coordination & reporting",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "helios": {
+      "name": "Helios",
+      "role": "The Spine — COO, auditor, reporter",
+      "platform": "Systemd service",
+      "status": "active",
+      "currentTask": "Dashboard sync + audit",
+      "lastActive": "2026-03-26T22:29:19.969037+08:00",
+      "capabilities": []
+    },
+    "quanta": {
+      "name": "Quanta",
+      "role": "Trading — XAUUSD execution on OANDA",
+      "platform": "Telegram monitor",
+      "status": "active",
+      "currentTask": "XAUUSD execution on OANDA",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "cerebronn": {
+      "name": "Cerebronn",
+      "role": "The Brain — Persistent memory & decisions",
+      "platform": "VS Code / Copilot",
+      "status": "active",
+      "currentTask": "30-min memory + decision cycles",
+      "lastActive": "",
+      "capabilities": []
+    }
+  },
+  "categories": {
+    "A": {
+      "name": "Ambition",
+      "description": "Personal Projects",
+      "projects": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7"
+      ]
+    },
+    "B": {
+      "name": "Business",
+      "description": "Active Ventures",
+      "projects": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10"
+      ]
+    },
+    "C": {
+      "name": "Callings",
+      "description": "Side Projects",
+      "projects": []
+    }
+  },
+  "projects": {
+    "A1": {
+      "name": "Personal",
+      "description": "Personal life tasks",
+      "category": "A",
+      "status": "blocked",
+      "tasks": [
+        "A1-8",
+        "A1-9",
+        "A1-10",
+        "A1-6",
+        "A1-5",
+        "A1-2",
+        "A1-7",
+        "A1-1",
+        "A1-4"
+      ],
+      "totalTasks": 9,
+      "completedTasks": 6,
+      "completionPct": 67
+    },
+    "A2": {
+      "name": "RE:UNITE",
+      "description": "Novel writing project",
+      "category": "A",
+      "status": "blocked",
+      "tasks": [
+        "A2-1"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "A3": {
+      "name": "KOE",
+      "description": "Content creation",
+      "category": "A",
+      "status": "pending",
+      "tasks": [],
+      "totalTasks": 0,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "A4": {
+      "name": "Streaming",
+      "description": "VTuber streaming setup",
+      "category": "A",
+      "status": "pending",
+      "tasks": [],
+      "totalTasks": 0,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "A5": {
+      "name": "Trading",
+      "description": "Quanta trading bot & strategy",
+      "category": "A",
+      "status": "active",
+      "tasks": [
+        "A5-1",
+        "A5-3",
+        "A5-4"
+      ],
+      "totalTasks": 3,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "A6": {
+      "name": "Mission Control",
+      "description": "Dashboard & infrastructure",
+      "category": "A",
+      "status": "done",
+      "tasks": [
+        "A6-14"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 1,
+      "completionPct": 100
+    },
+    "A7": {
+      "name": "Wedding",
+      "description": "Wedding planning",
+      "category": "A",
+      "status": "pending",
+      "tasks": [
+        "A7-1",
+        "A7-2",
+        "A7-3"
+      ],
+      "totalTasks": 3,
+      "completedTasks": 1,
+      "completionPct": 33
+    },
+    "B1": {
+      "name": "Exstatic",
+      "description": "Umbrella company",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B1-1",
+        "B1-2",
+        "B1-3",
+        "B1-4",
+        "B1-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B2": {
+      "name": "Energize",
+      "description": "Energy drinks brand",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B2-1",
+        "B2-2",
+        "B2-3",
+        "B2-4",
+        "B2-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B3": {
+      "name": "Team Elevate",
+      "description": "Events company",
+      "category": "B",
+      "status": "blocked",
+      "tasks": [
+        "B3-1",
+        "B3-2",
+        "B3-3",
+        "B3-4",
+        "B3-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 1,
+      "completionPct": 20
+    },
+    "B4": {
+      "name": "Pesta Fiesta",
+      "description": "Party planning",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B4-1",
+        "B4-2",
+        "B4-3",
+        "B4-4",
+        "B4-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B5": {
+      "name": "Enticipate",
+      "description": "Marketing agency",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B5-1",
+        "B5-2",
+        "B5-3",
+        "B5-4",
+        "B5-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B6": {
+      "name": "Elluminate",
+      "description": "Education & events",
+      "category": "B",
+      "status": "blocked",
+      "tasks": [
+        "B6-1",
+        "B6-2",
+        "B6-3",
+        "B6-4",
+        "B6-5",
+        "B6-6",
+        "B6-7",
+        "B6-8"
+      ],
+      "totalTasks": 8,
+      "completedTasks": 6,
+      "completionPct": 75
+    },
+    "B7": {
+      "name": "Encompasse",
+      "description": "Consulting",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B7-1",
+        "B7-2",
+        "B7-3",
+        "B7-4",
+        "B7-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B8": {
+      "name": "Empyrean",
+      "description": "Media production",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B8-1",
+        "B8-2",
+        "B8-3",
+        "B8-4",
+        "B8-5",
+        "B8-6"
+      ],
+      "totalTasks": 6,
+      "completedTasks": 1,
+      "completionPct": 17
+    },
+    "B9": {
+      "name": "Ethereal",
+      "description": "Creative studio",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B9-1",
+        "B9-2",
+        "B9-3",
+        "B9-4",
+        "B9-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B10": {
+      "name": "Epitaph",
+      "description": "Legacy project",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B10-1"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "completionPct": 0
+    }
+  },
+  "projectDetails": {
+    "A1": {
+      "name": "Personal",
+      "description": "Personal life tasks"
+    },
+    "A2": {
+      "name": "RE:UNITE",
+      "description": "Novel writing project"
+    },
+    "A3": {
+      "name": "KOE",
+      "description": "Content creation"
+    },
+    "A4": {
+      "name": "Streaming",
+      "description": "VTuber streaming setup"
+    },
+    "A5": {
+      "name": "Trading",
+      "description": "Quanta trading bot & strategy"
+    },
+    "A6": {
+      "name": "Mission Control",
+      "description": "Dashboard & infrastructure"
+    },
+    "A7": {
+      "name": "Wedding",
+      "description": "Wedding planning"
+    },
+    "B1": {
+      "name": "Exstatic",
+      "description": "Umbrella company"
+    },
+    "B2": {
+      "name": "Energize",
+      "description": "Energy drinks brand"
+    },
+    "B3": {
+      "name": "Team Elevate",
+      "description": "Events company"
+    },
+    "B4": {
+      "name": "Pesta Fiesta",
+      "description": "Party planning"
+    },
+    "B5": {
+      "name": "Enticipate",
+      "description": "Marketing agency"
+    },
+    "B6": {
+      "name": "Elluminate",
+      "description": "Education & events"
+    },
+    "B7": {
+      "name": "Encompasse",
+      "description": "Consulting"
+    },
+    "B8": {
+      "name": "Empyrean",
+      "description": "Media production"
+    },
+    "B9": {
+      "name": "Ethereal",
+      "description": "Creative studio"
+    },
+    "B10": {
+      "name": "Epitaph",
+      "description": "Legacy project"
+    }
+  },
+  "needsAttention": [
+    {
+      "id": "A1-8",
+      "title": "Create habit tracker in dashboard",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A1-9",
+      "title": "Set up double dates with Jamie's cousins throughout the year",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A1-10",
+      "title": "Prepare wedding guest list",
+      "reason": "blocked",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A2-1",
+      "title": "Chapter 13 writing",
+      "reason": "blocked",
+      "owner": "Escritor"
+    },
+    {
+      "id": "A5-4",
+      "title": "Add AXI/MT5 for QUANTA with same trading logic",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A7-1",
+      "title": "Finalize wedding theme",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A7-3",
+      "title": "Send invitations",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "B3-2",
+      "title": "SEO optimization",
+      "reason": "blocked",
+      "owner": "Forger"
+    },
+    {
+      "id": "B3-3",
+      "title": "Google Ads setup",
+      "reason": "blocked",
+      "owner": "Forger"
+    },
+    {
+      "id": "B6-4",
+      "title": "SEO setup",
+      "reason": "blocked",
+      "owner": "Forger"
+    },
+    {
+      "id": "B6-5",
+      "title": "Google Ads management",
+      "reason": "blocked",
+      "owner": "Forger"
+    }
+  ],
+  "inputsNeeded": [],
+  "dailyBriefing": {},
+  "audit": {
+    "lastRun": "2026-03-26T22:29:19.965840+08:00",
+    "dataIntegrity": "ok",
+    "taskCount": 67,
+    "findings": []
+  }
 }
