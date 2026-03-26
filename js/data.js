@@ -49,7 +49,10 @@ function normalizeData(raw) {
     d[key] = raw[key] !== undefined ? raw[key] : structuredClone(DEFAULT_DATA[key]);
   }
 
-  // Ensure tasks is an array
+  // Ensure tasks is an array — helios-v3 writes {id: taskObj} dict, convert to array
+  if (d.tasks && !Array.isArray(d.tasks) && typeof d.tasks === 'object') {
+    d.tasks = Object.entries(d.tasks).map(([k, v]) => ({ ...v, id: v.id || k }));
+  }
   if (!Array.isArray(d.tasks)) d.tasks = [];
 
   // Filter out garbage task ids
@@ -64,7 +67,10 @@ function normalizeData(raw) {
   // Ensure categories is an object
   if (typeof d.categories !== 'object' || Array.isArray(d.categories)) d.categories = {};
 
-  // Ensure projects is an array
+  // Ensure projects is an array — helios-v3 writes {id: projObj} dict, convert to array
+  if (d.projects && !Array.isArray(d.projects) && typeof d.projects === 'object') {
+    d.projects = Object.entries(d.projects).map(([k, v]) => ({ ...v, id: v.id || k }));
+  }
   if (!Array.isArray(d.projects)) d.projects = [];
 
   // Recompute stats from tasks (source of truth)
