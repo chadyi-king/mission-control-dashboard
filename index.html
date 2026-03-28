@@ -4065,9 +4065,6 @@
             data.projects.C = data.projects.C || { name: 'C - Callings', projects: [] };
 
             if (!Array.isArray(data.projects.A.projects)) data.projects.A.projects = [];
-            if (!data.projects.A.projects.includes('A4')) {
-                data.projects.A.projects.splice(3, 0, 'A4');
-            }
 
             data.projectDetails = {
                 ...getDefaultProjectDetails(),
@@ -4106,34 +4103,46 @@
             const urgentTasks = allTasks.filter(task => task.status !== 'done' && normalizePriority(task.priority) === 'high');
             const reviewTasks = allTasks.filter(task => task.status === 'review');
 
+            // Trust helios stats, only fill in dashboard-specific extras
+            const heliosStats = data.stats || {};
             data.stats = {
-                totalTasks: allTasks.length,
-                completedTasks: doneTasks.length,
+                totalTasks: heliosStats.totalTasks ?? allTasks.length,
+                tasksLeft: heliosStats.tasksLeft ?? (allTasks.length - doneTasks.length),
+                completedTasks: heliosStats.completedTasks ?? doneTasks.length,
+                completedToday: heliosStats.completedToday ?? 0,
+                completedThisWeek: heliosStats.completedThisWeek ?? 0,
+                critical: heliosStats.critical ?? 0,
+                urgent: heliosStats.urgent ?? urgentTasks.length,
+                active: heliosStats.active ?? activeTasks.length,
+                blocked: heliosStats.blocked ?? blockedTasks.length,
+                review: heliosStats.review ?? reviewTasks.length,
+                backlog: heliosStats.backlog ?? backlogTasks.length,
                 completionRate: Math.round((doneTasks.length / Math.max(1, allTasks.length)) * 100),
-                activeTasks: activeTasks.length,
-                blockedTasks: blockedTasks.length,
-                backlogTasks: backlogTasks.length,
                 needsAttention: data.needsAttention.length
             };
 
             data.taskSummary = {
-                critical: 0,
-                urgent: urgentTasks.length,
-                active: activeTasks.length,
-                blocked: blockedTasks.length,
-                backlog: backlogTasks.length,
+                critical: data.stats.critical,
+                urgent: data.stats.urgent,
+                active: data.stats.active,
+                blocked: data.stats.blocked,
+                backlog: data.stats.backlog,
                 done: doneTasks.length
             };
 
-            const topPriorities = data.needsAttention.length
-                ? data.needsAttention.slice(0, 5).map(item => ({ id: item.id, title: item.title, owner: item.owner }))
-                : urgentTasks.slice(0, 5).map(task => ({ id: task.id, title: task.title, owner: task.agent || '—' }));
+            // Trust helios dailyBriefing, only add dashboard-computed extras if missing
+            const heliosBriefing = data.dailyBriefing || {};
+            const topPriorities = heliosBriefing.topPriorities && heliosBriefing.topPriorities.length
+                ? heliosBriefing.topPriorities.slice(0, 5)
+                : (data.needsAttention.length
+                    ? data.needsAttention.slice(0, 5).map(item => ({ id: item.id, title: item.title, owner: item.owner }))
+                    : urgentTasks.slice(0, 5).map(task => ({ id: task.id, title: task.title, owner: task.agent || '—' })));
 
             data.dailyBriefing = {
-                ...(data.dailyBriefing || {}),
-                summary: {
+                ...heliosBriefing,
+                summary: heliosBriefing.summary || {
                     total_tasks: allTasks.length,
-                    critical: 0,
+                    critical: data.stats.critical,
                     urgent: urgentTasks.length,
                     active: activeTasks.length,
                     blocked: blockedTasks.length,
@@ -4141,7 +4150,7 @@
                     done: doneTasks.length
                 },
                 top_priorities: topPriorities,
-                agent_health: Object.fromEntries(Object.entries(data.agents || {}).map(([id, agent]) => [id, agent.health || agent.status || 'unknown']))
+                agent_health: heliosBriefing.agentHealth || Object.fromEntries(Object.entries(data.agents || {}).map(([id, agent]) => [id, agent.health || agent.status || 'unknown']))
             };
 
             return data;
@@ -4355,6 +4364,10 @@ console.log('[Helios WS] connected:', wsUrl);
                 console.log('Data loaded:', Object.keys(appData));
                 console.log('Stats:', appData.stats);
                 console.log('Tasks count:', Object.keys(appData.tasks || {}).length);
+
+                // Cache for offline fallback
+                try { localStorage.setItem('rs_dashboard_cache', JSON.stringify(appData)); } catch(e) {}
+
                 allProjects = buildProjectsFromData(appData);
 
                 syncProjectLookup();
@@ -4370,6 +4383,23 @@ console.log('[Helios WS] connected:', wsUrl);
             } catch (error) {
                 console.error('Failed to load data:', error);
                 console.error('Error stack:', error.stack);
+
+                // Try localStorage fallback
+                try {
+                    const cached = localStorage.getItem('rs_dashboard_cache');
+                    if (cached) {
+                        console.log('Using cached data (offline fallback)');
+                        appData = JSON.parse(cached);
+                        allProjects = buildProjectsFromData(appData);
+                        syncProjectLookup();
+                        window.appData = appData;
+                        renderHomeSection();
+                        renderCategoriesSection();
+                        renderResourcesSection();
+                        updateSidebarAgents(appData);
+                        return;
+                    }
+                } catch(e) { console.warn('Cache fallback failed:', e); }
                 
                 const errorMessage = `
                     <div style="text-align: center; color: #ff6b6b; padding: 40px;">
@@ -6049,25 +6079,21 @@ console.log('[Helios WS] connected:', wsUrl);
                 const colStr = colDate.getFullYear() + '-' + String(colDate.getMonth()+1).padStart(2,'0') + '-' + String(colDate.getDate()).padStart(2,'0');
                 const isToday = colStr === todayStr;
 
-                // Tasks with a deadline on this specific day
+                // Tasks with a deadline on this specific day (including overdue ones — show on their actual deadline day)
                 const dayTasks = sortTasksForAttention(tasks.filter(t => t.status !== 'done' && t.deadline && t.deadline.slice(0, 10) === colStr), today);
 
-                // Overdue tasks (past deadline) — show on today's column
+                // For today only: overdue tasks whose deadline was BEFORE this week (can't show on original day)
                 const overdueOnToday = isToday ? sortTasksForAttention(tasks.filter(t => {
                     if (t.status === 'done' || !t.deadline) return false;
                     const d = new Date(t.deadline); d.setHours(0,0,0,0);
-                    const nowD = new Date(); nowD.setHours(0,0,0,0);
-                    return d < nowD;
+                    return d < weekStart;  // Only tasks with deadline before the visible week
                 }), today) : [];
 
-                // No-deadline tasks (active/blocked/urgent/review) — pile onto today's column
+                // No-deadline tasks: only show high-priority/blocked items on today (not the whole pile)
                 const noDeadlineOnToday = isToday ? sortTasksForAttention(tasks.filter(t => {
                     if (t.status === 'done' || t.deadline) return false;
-                    // Only show work that is still in motion on today's pile
-                    return t.status === 'active' || t.status === 'blocked' || t.status === 'review' ||
-                           normalizePriority(t.priority) === 'high' ||
-                           (t.status === 'pending' && normalizePriority(t.priority) === 'medium');
-                }), today) : [];
+                    return t.status === 'blocked' || normalizePriority(t.priority) === 'high';
+                }), today).slice(0, 5) : [];
 
                 function chipClass(t) {
                     if (t.status === 'done')    return 'week-chip-done';
