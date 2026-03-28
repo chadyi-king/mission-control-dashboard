@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-03-28T15:32:33.228900+08:00",
+  "lastUpdated": "2026-03-28T15:33:03.359315+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 76,
@@ -981,7 +981,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-03-28T15:32:33.241465+08:00",
+      "lastActive": "2026-03-28T15:33:03.362176+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -999,6 +999,42 @@
       "platform": "VS Code / Copilot",
       "status": "active",
       "currentTask": "30-min memory + decision cycles",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "tele": {
+      "name": "Tele",
+      "role": "The Face — Telegram task management interface",
+      "platform": "Telegram Bot (@chad_yi_bot)",
+      "status": "active",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "escritor": {
+      "name": "Escritor",
+      "role": "Story Agent — RE:UNITE novel writing",
+      "platform": "Systemd service",
+      "status": "offline",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "forger": {
+      "name": "Forger",
+      "role": "Web Architect — websites, SEO, full-stack",
+      "platform": "Systemd service",
+      "status": "active",
+      "currentTask": "Processing TASK-HERO-VISUAL-NOW.md",
+      "lastActive": "2026-02-15T20:12:06.296568",
+      "capabilities": []
+    },
+    "autour": {
+      "name": "Autour",
+      "role": "Script Agent — KOE content & screenplays",
+      "platform": "Systemd service",
+      "status": "offline",
+      "currentTask": "",
       "lastActive": "",
       "capabilities": []
     }
@@ -1579,7 +1615,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-03-28T15:32:33.241465+08:00"
+        "lastActive": "2026-03-28T15:33:03.362176+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1588,12 +1624,28 @@
       "cerebronn": {
         "status": "active",
         "lastActive": ""
+      },
+      "tele": {
+        "status": "active",
+        "lastActive": ""
+      },
+      "escritor": {
+        "status": "offline",
+        "lastActive": ""
+      },
+      "forger": {
+        "status": "active",
+        "lastActive": "2026-02-15T20:12:06.296568"
+      },
+      "autour": {
+        "status": "offline",
+        "lastActive": ""
       }
     },
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-03-28T15:32:33.228900+08:00",
+    "lastRun": "2026-03-28T15:33:03.359315+08:00",
     "dataIntegrity": "ok",
     "taskCount": 76,
     "findings": []
