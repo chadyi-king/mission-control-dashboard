@@ -1,19 +1,19 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-03-28T13:58:05.267228+08:00",
+  "lastUpdated": "2026-03-28T13:58:37.332850+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 67,
-    "tasksLeft": 51,
-    "completedTasks": 16,
+    "totalTasks": 76,
+    "tasksLeft": 57,
+    "completedTasks": 19,
     "completedToday": 0,
     "completedThisWeek": 3,
     "critical": 0,
     "urgent": 11,
-    "active": 2,
+    "active": 0,
     "blocked": 6,
     "review": 0,
-    "backlog": 43
+    "backlog": 51
   },
   "completions": {
     "today": [],
@@ -37,7 +37,7 @@
         "agent": "CHAD_YI"
       }
     ],
-    "all_time": 22
+    "all_time": 26
   },
   "weeklyProgress": {
     "completed": 0,
@@ -87,14 +87,21 @@
       "B9-3",
       "B9-4",
       "B9-5",
-      "B10-1"
+      "B10-1",
+      "C1-1",
+      "C1-2",
+      "C2-1",
+      "C2-2",
+      "C3-2",
+      "C3-3",
+      "C3-4",
+      "C3-5"
     ],
-    "active": [
-      "A5-1",
-      "A5-3"
-    ],
+    "active": [],
     "review": [],
     "done": [
+      "A5-1",
+      "A5-3",
       "A7-2",
       "B3-1",
       "B6-1",
@@ -110,7 +117,8 @@
       "A1-7",
       "A6-14",
       "A1-1",
-      "A1-4"
+      "A1-4",
+      "C3-1"
     ],
     "urgent": [
       "A1-8",
@@ -176,12 +184,12 @@
     },
     "A5-1": {
       "id": "A5-1",
-      "title": "Quanta Trading Bot - Final Testing",
+      "title": "Quanta Trading Bot - Live trading",
       "project": "A5",
       "category": "A",
       "agent": "Quanta",
-      "status": "active",
-      "priority": "medium"
+      "status": "done",
+      "priority": "done"
     },
     "A5-3": {
       "id": "A5-3",
@@ -189,8 +197,8 @@
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "active",
-      "priority": "medium"
+      "status": "done",
+      "priority": "done"
     },
     "A5-4": {
       "id": "A5-4",
@@ -772,6 +780,89 @@
       "priority": "done",
       "completed": "2026-02-15",
       "completedAt": "2026-02-15"
+    },
+    "C1-1": {
+      "id": "C1-1",
+      "title": "Study for RES exam",
+      "project": "C1",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "deadline": "2026-06-01"
+    },
+    "C1-2": {
+      "id": "C1-2",
+      "title": "Register for RES exam",
+      "project": "C1",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "deadline": "2026-05-15"
+    },
+    "C2-1": {
+      "id": "C2-1",
+      "title": "Update portfolio",
+      "project": "C2",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low"
+    },
+    "C2-2": {
+      "id": "C2-2",
+      "title": "Reach out to potential clients",
+      "project": "C2",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low"
+    },
+    "C3-1": {
+      "id": "C3-1",
+      "title": "Research Gather Town platform capabilities",
+      "project": "C3",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done"
+    },
+    "C3-2": {
+      "id": "C3-2",
+      "title": "Design virtual team building activity concept",
+      "project": "C3",
+      "category": "C",
+      "agent": "Pixel",
+      "status": "backlog",
+      "priority": "low"
+    },
+    "C3-3": {
+      "id": "C3-3",
+      "title": "Create Gather Town space prototype",
+      "project": "C3",
+      "category": "C",
+      "agent": "Pixel",
+      "status": "backlog",
+      "priority": "low"
+    },
+    "C3-4": {
+      "id": "C3-4",
+      "title": "Test with internal team",
+      "project": "C3",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low"
+    },
+    "C3-5": {
+      "id": "C3-5",
+      "title": "Launch for B6 Elluminate client pilot",
+      "project": "C3",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low"
     }
   },
   "recentWins": [
@@ -810,7 +901,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-03-28T13:58:05.270652+08:00",
+      "lastActive": "2026-03-28T13:58:37.336447+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -925,15 +1016,15 @@
       "name": "Trading",
       "description": "Quanta trading bot & strategy",
       "category": "A",
-      "status": "active",
+      "status": "pending",
       "tasks": [
         "A5-1",
         "A5-3",
         "A5-4"
       ],
       "totalTasks": 3,
-      "completedTasks": 0,
-      "completionPct": 0
+      "completedTasks": 2,
+      "completionPct": 67
     },
     "A6": {
       "name": "Mission Control",
@@ -1263,9 +1354,9 @@
   "inputsNeeded": [],
   "dailyBriefing": {},
   "audit": {
-    "lastRun": "2026-03-28T13:58:05.267228+08:00",
+    "lastRun": "2026-03-28T13:58:37.332850+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 67,
+    "taskCount": 76,
     "findings": []
   }
 }
