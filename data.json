@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-03-28T14:54:22.626619+08:00",
+  "lastUpdated": "2026-03-28T14:54:54.713256+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 76,
@@ -970,9 +970,9 @@
       "name": "Chad Yi",
       "role": "The Face — Primary interface",
       "platform": "OpenClaw",
-      "status": "active",
+      "status": "stale",
       "currentTask": "Task coordination & reporting",
-      "lastActive": "",
+      "lastActive": "2026-03-23T14:20:00+08:00",
       "capabilities": []
     },
     "helios": {
@@ -981,7 +981,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-03-28T14:54:22.628643+08:00",
+      "lastActive": "2026-03-28T14:54:54.715646+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1574,12 +1574,12 @@
     ],
     "agentHealth": {
       "chad-yi": {
-        "status": "active",
-        "lastActive": ""
+        "status": "stale",
+        "lastActive": "2026-03-23T14:20:00+08:00"
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-03-28T14:54:22.628643+08:00"
+        "lastActive": "2026-03-28T14:54:54.715646+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1593,7 +1593,7 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-03-28T14:54:22.626619+08:00",
+    "lastRun": "2026-03-28T14:54:54.713256+08:00",
     "dataIntegrity": "ok",
     "taskCount": 76,
     "findings": []
