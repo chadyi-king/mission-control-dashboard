@@ -4082,25 +4082,10 @@
                 }
             });
 
-            const doneTaskIds = ['A7-1', 'A7-2', 'A7-3', 'B6-7', 'A5-1', 'A5-3', 'B6-2'];
-            doneTaskIds.forEach(taskId => {
-                if (data.tasks[taskId]) {
-                    data.tasks[taskId].status = 'done';
-                    data.tasks[taskId].priority = 'done';
-                }
-            });
-            delete data.tasks['A6-15'];
-
             data.workflow = data.workflow || {};
             ['pending', 'active', 'review', 'done', 'urgent', 'blocked'].forEach(key => {
                 if (!Array.isArray(data.workflow[key])) data.workflow[key] = [];
             });
-
-            ['pending', 'active', 'review', 'urgent', 'blocked'].forEach(key => {
-                data.workflow[key] = data.workflow[key].filter(taskId => taskId !== 'A6-15' && !doneTaskIds.includes(taskId));
-            });
-            data.workflow.done = Array.from(new Set([...data.workflow.done.filter(taskId => taskId !== 'A6-15'), ...doneTaskIds]))
-                .filter(taskId => data.tasks[taskId]);
 
             const completedTaskSet = new Set(data.workflow.done);
             const uniqueAttention = [];
