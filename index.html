@@ -38,7 +38,7 @@
             --danger: #ff4444;
             --info: #4dabf7;
             --sidebar-collapsed: 48px;
-            --sidebar-expanded: 200px;
+            --sidebar-expanded: 280px;
         }
 
         body {
@@ -687,7 +687,7 @@
         .sidebar-agent-dot:hover .dot-tip { opacity: 1; }
         .sidebar.expanded .sidebar-footer { align-items: flex-start; padding: 12px 16px; }
         .sidebar.expanded .sidebar-agent-dot { border-radius: 6px; width: 100%; height: auto; min-height: 30px; justify-content: flex-start; padding: 3px 0; gap: 8px; }
-        .sidebar.expanded .dot-tip { position: static; transform: none; background: none; border: none; padding: 0; opacity: 1; pointer-events: auto; box-shadow: none; font-size: 10px; color: rgba(140,140,170,0.7); letter-spacing: 0.04em; text-transform: none; font-style: italic; font-weight: 400; }
+        .sidebar.expanded .dot-tip { position: static; transform: none; background: none; border: none; padding: 0; opacity: 1; pointer-events: auto; box-shadow: none; font-size: 11px; color: rgba(140,140,170,0.7); letter-spacing: 0.04em; text-transform: none; font-style: normal; font-weight: 400; white-space: normal; word-break: break-word; line-height: 1.4; }
 
         /* Main Content */
         .main-content {
@@ -2783,6 +2783,10 @@
             box-shadow: inset 0 0 0 1px rgba(220,20,60,0.08);
         }
 
+        .week-day-col.past-col {
+            opacity: 0.7;
+        }
+
         .week-day-header {
             margin-bottom: 10px;
             padding-bottom: 8px;
@@ -3099,20 +3103,21 @@
                     </div>
                 </div>
 
-                <!-- 2. REVIEW -->
+                <!-- 2. MY INPUT -->
                 <div class="stat-card" id="stat-review">
                     <div class="stat-header">
                         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                            <circle cx="12" cy="12" r="3"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
                         </svg>
-                        <span class="stat-label">REVIEW</span>
+                        <span class="stat-label">MY INPUT</span>
                     </div>
-                    <div class="stat-value" id="s-review-total">—</div>
+                    <div class="stat-value stat-val-warn" id="s-review-total">—</div>
                     <div class="stat-breakdown">
-                        <span class="sub-stat sub-agent" id="s-review-agent">— agent work</span>
-                        <span class="sub-stat sub-decision" id="s-review-decisions">— decisions</span>
-                        <span class="sub-stat sub-approval" id="s-review-approvals">— approvals</span>
+                        <span class="sub-stat sub-alert" id="s-review-agent">— blocked</span>
+                        <span class="sub-stat sub-decision" id="s-review-decisions">— review</span>
+                        <span class="sub-stat sub-approval" id="s-review-approvals">— decisions</span>
                     </div>
                 </div>
 
@@ -3202,20 +3207,21 @@
                     </div>
                 </div>
 
-                <!-- 8. MY INPUT NEEDED -->
+                <!-- 8. OVERDUE -->
                 <div class="stat-card" id="stat-messages">
                     <div class="stat-header">
                         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M9 11l3 3L22 4"/>
-                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                            <line x1="4" y1="4" x2="20" y2="20"/>
                         </svg>
-                        <span class="stat-label">MY INPUT</span>
+                        <span class="stat-label">OVERDUE</span>
                     </div>
-                    <div class="stat-value" id="s-messages-total">—</div>
+                    <div class="stat-value stat-val-alert" id="s-messages-total">—</div>
                     <div class="stat-breakdown">
-                        <span class="sub-stat sub-agent" id="s-messages-helios">— from agents</span>
-                        <span class="sub-stat sub-muted" id="s-messages-system">— self-owned</span>
-                        <span class="sub-stat sub-alert" id="s-messages-unread">— waiting</span>
+                        <span class="sub-stat sub-alert" id="s-messages-helios">— past deadline</span>
+                        <span class="sub-stat sub-warn" id="s-messages-system">— this week</span>
+                        <span class="sub-stat sub-muted" id="s-messages-unread">— oldest</span>
                     </div>
                 </div>
 
@@ -3409,6 +3415,14 @@
                                     <option value="urgency">⇅ Urgency</option>
                                     <option value="due-today">Due Today</option>
                                     <option value="high-priority">High Priority</option>
+                                    <option value="blocked">⚑ Blocked Only</option>
+                                    <option value="my-tasks">My Tasks Only</option>
+                                </select>
+                                <select class="focus-filter-select" id="focus-project-filter" onchange="setFocusProjectFilter(this.value)" title="Filter by project" style="max-width:90px;">
+                                    <option value="">All Projects</option>
+                                    <option value="A">A — Ambition</option>
+                                    <option value="B">B — Business</option>
+                                    <option value="C">C — Callings</option>
                                 </select>
                             </div>
                         </div>
@@ -3655,6 +3669,8 @@
             if (toggleText)  toggleText.textContent  = isExpanded ? 'Collapse' : 'Expand';
             document.body.classList.toggle('sidebar-expanded', isExpanded);
             if (!isExpanded) closeMobileMenu();
+            // Re-render sidebar agents in new layout
+            if (window.appData) updateSidebarAgents(window.appData);
         }
 
         function updateSidebarAgents(data) {
@@ -3665,11 +3681,60 @@
                 'helios':    { init:'HE', bg:'rgba(220,38,38,0.18)',  bd:'rgba(220,38,38,0.4)',   col:'#e04040' },
                 'cerebronn': { init:'CB', bg:'rgba(100,100,230,0.18)',bd:'rgba(100,100,230,0.35)',col:'#9090ee' },
                 'quanta':    { init:'QT', bg:'rgba(64,145,108,0.18)', bd:'rgba(64,145,108,0.35)', col:'#77d8a8' },
+                'tele':      { init:'TL', bg:'rgba(0,136,204,0.18)', bd:'rgba(0,136,204,0.35)',  col:'#40b0e0' },
+                'escritor':  { init:'ES', bg:'rgba(180,120,60,0.18)',bd:'rgba(180,120,60,0.35)', col:'#d4a040' },
+                'forger':    { init:'FG', bg:'rgba(160,60,180,0.18)',bd:'rgba(160,60,180,0.35)', col:'#c070d0' },
+                'autour':    { init:'AU', bg:'rgba(200,80,80,0.18)', bd:'rgba(200,80,80,0.35)',  col:'#e06060' },
             };
-            const _core = ['chad-yi','quanta','cerebronn','helios'];
-            footer.innerHTML = _core.map(function(id) {
+            // Show all agents from data, not just hardcoded 4
+            const agents = data.agents || {};
+            const _priority = ['chad-yi','helios','cerebronn','quanta','tele','escritor','forger','autour'];
+            const agentKeys = Object.keys(agents).sort((a, b) => {
+                const ai = _priority.indexOf(a.toLowerCase());
+                const bi = _priority.indexOf(b.toLowerCase());
+                if (ai !== -1 && bi !== -1) return ai - bi;
+                if (ai !== -1) return -1;
+                if (bi !== -1) return 1;
+                return a.localeCompare(b);
+            });
+            // Also add configured agents not in data
+            _priority.forEach(id => { if (!agentKeys.includes(id)) agentKeys.push(id); });
+
+            const isExpanded = document.getElementById('sidebar')?.classList.contains('expanded');
+
+            // Header
+            const onlineCount = agentKeys.filter(id => {
                 const meta = getAgentSignalMeta(id, data);
-                const c = cfg[id] || {};
+                return meta.tone === 'online';
+            }).length;
+            let headerHtml = `<div style="font-size:8px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(220,38,38,0.6);margin-bottom:6px;text-align:center;font-weight:700;">FLEET ${onlineCount}/${agentKeys.length}</div>`;
+
+            footer.innerHTML = headerHtml + agentKeys.map(function(id) {
+                const meta = getAgentSignalMeta(id, data);
+                const c = cfg[id] || { init: id.slice(0,2).toUpperCase(), bg:'rgba(100,100,100,0.18)', bd:'rgba(100,100,100,0.3)', col:'#888' };
+                const ag = agents[id] || {};
+
+                // For expanded view: show role and last active
+                const lastActive = ag.lastActive ? formatRelativeTimestamp(ag.lastActive) : 'no signal';
+                const role = ag.role || ag.role_tagline || '';
+                const task = ag.currentTask ? String(ag.currentTask).slice(0, 40) : '';
+
+                if (isExpanded) {
+                    const statusCls = meta.tone === 'online' ? 'online' : meta.tone === 'blocked' ? 'blocked' : 'offline';
+                    return `<div class="sidebar-agent-dot" style="background:${c.bg};border:1px solid ${c.bd};flex-direction:column;align-items:flex-start;padding:8px 10px;">
+                        <div style="display:flex;align-items:center;gap:6px;width:100%;">
+                            <span style="color:${c.col};font-size:10px;font-weight:700;min-width:16px;">${c.init}</span>
+                            <span style="color:rgba(220,220,240,0.9);font-size:11px;font-weight:600;flex:1;">${escHtml(formatAgentDisplay(id))}</span>
+                            <span class="dot-status ${statusCls}"></span>
+                        </div>
+                        <div style="font-size:9px;color:rgba(140,140,170,0.7);margin-top:3px;line-height:1.3;">
+                            ${meta.label.toUpperCase()} · ${lastActive}
+                            ${task ? '<br>' + escHtml(task) : ''}
+                        </div>
+                    </div>`;
+                }
+
+                // Collapsed: original dot view
                 const tip = escHtml(formatAgentDisplay(id)) + ' · ' + escHtml(meta.label.toUpperCase()) + ' · ' + escHtml((meta.detail || '').slice(0, 110));
                 return '<div class="sidebar-agent-dot" style="background:' + (c.bg||'') + ';border:1px solid ' + (c.bd||'') + '">'
                      + '<span style="color:' + (c.col||'#aaa') + ';font-size:9px;font-weight:700">' + (c.init||id.slice(0,2).toUpperCase()) + '</span>'
@@ -5414,14 +5479,15 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-due-deadline', dueDeadline + ' overdue');
             set('s-due-normal', dueNormal + ' normal');
 
-            // 2. REVIEW
+            // 2. MY INPUT — everything that needs Caleb's action
+            const blockedTasks = openTasks.filter(t => t.status === 'blocked');
             const reviewTasks = openTasks.filter(t => t.status === 'review');
             const inputsNeeded = getInputRequestEntries(data);
-            const reviewDecisions = inputsNeeded.length;
-            set('s-review-total', reviewTasks.length + reviewDecisions);
-            set('s-review-agent', reviewTasks.length + ' agent work');
-            set('s-review-decisions', reviewDecisions + ' decisions');
-            set('s-review-approvals', '0 approvals');
+            const myInputTotal = blockedTasks.length + reviewTasks.length + inputsNeeded.length;
+            set('s-review-total', myInputTotal);
+            set('s-review-agent', blockedTasks.length + ' blocked');
+            set('s-review-decisions', reviewTasks.length + ' review');
+            set('s-review-approvals', inputsNeeded.length + ' decisions');
 
             // 3. AGENTS — only count verified recent signals, not optimistic "active" claims
             const coreAgents = ['chad-yi', 'quanta', 'cerebronn', 'helios'];
@@ -5481,48 +5547,101 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-projects-risk', projRisk + ' at risk');
             set('s-projects-delayed', projDelayed + ' delayed');
 
-            // 8. DECISIONS NEEDED (from inputsNeeded)
-            const decisionsNeeded = lens.myInputTasks;
-            const agentDecisions = decisionsNeeded.filter(i => i.requiredBy && i.requiredBy !== 'CHAD_YI').length;
-            const selfDecisions = decisionsNeeded.length - agentDecisions;
-            const additionalAttention = new Set(decisionsNeeded.map(item => item.id || item.taskId || item.title));
-            set('s-messages-total', additionalAttention.size);
-            set('s-messages-helios', agentDecisions + ' from agents');
-            set('s-messages-system', selfDecisions + ' self-owned');
-            set('s-messages-unread', additionalAttention.size > 0 ? additionalAttention.size + ' waiting' : '— clear');
+            // 8. OVERDUE — tasks past their deadline
+            const allOverdue = openTasks.filter(t => t.deadline && isOverdue(t.deadline));
+            const overdueThisWeek = allOverdue.filter(t => {
+                const d = new Date(t.deadline); d.setHours(0,0,0,0);
+                const weekAgo = new Date(today); weekAgo.setDate(weekAgo.getDate() - 7);
+                return d >= weekAgo;
+            });
+            // Find oldest overdue
+            let oldestOverdue = '— clear';
+            if (allOverdue.length > 0) {
+                const sorted = allOverdue.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+                const oldest = new Date(sorted[0].deadline);
+                const daysOld = Math.round((today - oldest) / (1000*60*60*24));
+                oldestOverdue = daysOld + 'd ago';
+            }
+            set('s-messages-total', allOverdue.length);
+            set('s-messages-helios', allOverdue.length + ' past deadline');
+            set('s-messages-system', overdueThisWeek.length + ' this week');
+            set('s-messages-unread', oldestOverdue);
         }
 
-        // ── TICKER ────────────────────────────────────────────────────────
+        // ── TICKER (Bloomberg-style feed) ──────────────────────────────
         function updateTicker(data) {
             const el = document.getElementById('ticker-content');
             if (!el) return;
             const tasks = Object.values(data.tasks || {});
             const agents = data.agents || {};
             const today = sgtToday();
+            const stats = data.stats || {};
+            const projects = data.projects || {};
 
             function fmt(d) {
                 if (!d) return '';
                 const dd = new Date(d);
                 return dd.toLocaleDateString('en-SG', { month: 'short', day: 'numeric' });
             }
+
             const parts = [];
+
+            // Overall progress indicator
+            const donePct = stats.completedTasks ? Math.round(stats.completedTasks / Math.max(1, stats.totalTasks) * 100) : 0;
+            parts.push(`<span class="ticker-item-done">■ PROGRESS ${donePct}% ▲ ${stats.completedTasks || 0}/${stats.totalTasks || 0}</span>`);
+
+            // Per-project health indicators (like stock tickers)
+            const projectDetails = getDefaultProjectDetails();
+            const projIds = ['A1','A2','A3','A4','A5','A6','A7','B1','B3','B6','C1','C3'];
+            projIds.forEach(pid => {
+                const ptasks = tasks.filter(t => projectIdFromTask(t) === pid && t.status !== 'done');
+                if (ptasks.length === 0) return;
+                const pDone = tasks.filter(t => projectIdFromTask(t) === pid && t.status === 'done').length;
+                const pTotal = ptasks.length + pDone;
+                const name = (projectDetails[pid] || {}).name || pid;
+                const hasBlocked = ptasks.some(t => t.status === 'blocked');
+                const hasOverdue = ptasks.some(t => t.deadline && (() => { const d = new Date(t.deadline); d.setHours(0,0,0,0); return d < today; })());
+                const arrow = hasBlocked ? '▼' : hasOverdue ? '▼' : pDone > 0 ? '▲' : '─';
+                const cls = hasBlocked ? 'ticker-item-alert' : hasOverdue ? 'ticker-item-warn' : 'ticker-item-done';
+                parts.push(`<span class="${cls}">${pid} ${name.toUpperCase()} ${arrow} ${ptasks.length} open</span>`);
+            });
+
+            // Agent status pips
+            const agentEntries = Object.entries(agents);
+            if (agentEntries.length > 0) {
+                const agentPips = agentEntries.map(([id, a]) => {
+                    const s = a.status || 'unknown';
+                    const pip = s === 'active' || s === 'working' ? '●' : s === 'stale' ? '◐' : '○';
+                    return `${pip} ${id.toUpperCase()}`;
+                }).join(' ');
+                parts.push(`<span class="ticker-item-done">FLEET: ${agentPips}</span>`);
+            }
+
+            // Overdue alerts
+            const overdue = tasks.filter(t => t.status !== 'done' && t.deadline && (() => {
+                const d = new Date(t.deadline); d.setHours(0,0,0,0); return d < today;
+            })());
+            if (overdue.length > 0) {
+                parts.push(`<span class="ticker-item-alert">⚑ ${overdue.length} OVERDUE · ATTENTION REQUIRED</span>`);
+            }
+
+            // Blocked count
+            const blocked = tasks.filter(t => t.status === 'blocked');
+            if (blocked.length > 0) {
+                parts.push(`<span class="ticker-item-alert">⚠ ${blocked.length} BLOCKED</span>`);
+            }
+
             // Completed today
             const doneToday = tasks.filter(t => t.status === 'done' && t.completedAt && (() => {
                 const d = new Date(t.completedAt); d.setHours(0,0,0,0); return d.getTime() === today.getTime();
             })());
             if (doneToday.length > 0) {
                 doneToday.slice(0, 2).forEach(t => {
-                    parts.push(`<span class="ticker-item-done">■ DONE · ${t.id} · ${t.title.slice(0,40)}</span>`);
+                    parts.push(`<span class="ticker-item-done">✓ ${t.id} ${t.title.slice(0,30)} DONE</span>`);
                 });
             }
-            // Overdue alerts
-            const overdue = tasks.filter(t => t.status !== 'done' && t.deadline && (() => {
-                const d = new Date(t.deadline); d.setHours(0,0,0,0); return d < today;
-            })()).slice(0, 3);
-            overdue.forEach(t => {
-                parts.push(`<span class="ticker-item-alert">▲ OVERDUE · ${t.id} · ${t.title.slice(0,35)} · was ${fmt(t.deadline)}</span>`);
-            });
-            // Upcoming deadlines (next 3 days)
+
+            // Upcoming deadlines
             const threeDays = new Date(today); threeDays.setDate(threeDays.getDate() + 3);
             const upcoming = tasks.filter(t => {
                 if (t.status === 'done' || !t.deadline) return false;
@@ -5530,32 +5649,19 @@ console.log('[Helios WS] connected:', wsUrl);
                 return d >= today && d <= threeDays;
             }).slice(0, 3);
             upcoming.forEach(t => {
-                parts.push(`<span class="ticker-item-warn">◆ DUE ${fmt(t.deadline)} · ${t.id} · ${t.title.slice(0,35)}</span>`);
+                parts.push(`<span class="ticker-item-warn">◆ DUE ${fmt(t.deadline)} · ${t.id} · ${t.title.slice(0,30)}</span>`);
             });
-            // Active agents
-            Object.entries(agents).forEach(([id, a]) => {
-                if (a.status === 'active' || a.status === 'working') {
-                    const task = a.currentTask ? ` · ${String(a.currentTask).slice(0, 30)}` : '';
-                    parts.push(`<span class="ticker-item-done">● ${id.toUpperCase()} ACTIVE${task}</span>`);
-                }
-            });
-            // Blocked
-            const blocked = tasks.filter(t => t.status === 'blocked');
-            if (blocked.length > 0) {
-                parts.push(`<span class="ticker-item-alert">⚑ ${blocked.length} TASK${blocked.length > 1 ? 'S' : ''} BLOCKED · ATTENTION REQUIRED</span>`);
-            }
 
             if (parts.length === 0) {
                 parts.push('<span>■ ALL SYSTEMS NOMINAL · NO ALERTS</span>');
             }
 
             const sep = '&nbsp;&nbsp;<span class="ticker-sep">|</span>&nbsp;&nbsp;';
-            // Double the content so loop feels seamless
             const content = parts.join(sep);
             el.innerHTML = content + sep + content;
         }
 
-        // ── DAILY BRIEFING ────────────────────────────────────────────────
+        // ── DAILY BRIEFING (action-first) ──────────────────────────────
         function renderDailyBriefing(data) {
             const container = document.getElementById('daily-briefing-content');
             if (!container) return;
@@ -5568,45 +5674,74 @@ console.log('[Helios WS] connected:', wsUrl);
             }
 
             const lens = getDashboardLens(data);
+            const agents = data.agents || {};
 
             const sections = [];
 
+            // 1. WHAT I NEED TO DO — blocked + review + input-needed (action items first)
+            const actionItems = dedupeTasksById([
+                ...lens.myInputTasks,
+                ...lens.reviewTasks,
+                ...(lens.needsMeTasks || [])
+            ]);
             sections.push({
-                title: 'COMPLETED TODAY',
-                rows: lens.completedToday.length === 0
-                    ? [{ cls: '', text: 'No completions logged yet today.' }]
-                    : lens.completedToday.slice(0, 4).map(t => ({ cls: 'good', text: `${t.id} · ${t.title} · ${getTaskProjectLabel(t, data)}` }))
-            });
-
-            sections.push({
-                title: 'THIS WEEK',
-                rows: lens.completedWeek.length === 0
-                    ? [{ cls: '', text: 'No weekly completions logged yet.' }]
-                    : lens.completedWeek.slice(0, 4).map(t => ({
-                        cls: 'good',
-                        text: `${t.id} · ${t.title} · ${formatAbsoluteTimestamp(t.completedAt)}`
+                title: '⚡ ACTION REQUIRED',
+                rows: actionItems.length === 0
+                    ? [{ cls: '', text: 'No items waiting for you — all clear.' }]
+                    : actionItems.slice(0, 6).map(t => ({
+                        cls: t.status === 'blocked' ? 'urgent' : 'warn',
+                        text: `${t.status === 'blocked' ? '⚑ BLOCKED' : t.status === 'review' ? '👁 REVIEW' : '→ NEEDS YOU'} · ${t.id} · ${t.title.slice(0, 48)} · ${getTaskProjectLabel(t, data)}`
                     }))
             });
 
+            // 2. AGENT ACTIVITY — what agents have been working on recently
+            const agentActivity = Object.entries(agents)
+                .filter(([id, a]) => id !== 'chad-yi' && (a.currentTask || a.status === 'active' || a.status === 'working'))
+                .map(([id, a]) => {
+                    const statusEmoji = a.status === 'active' || a.status === 'working' ? '🟢' : a.status === 'stale' ? '🟡' : '⚫';
+                    const task = a.currentTask ? String(a.currentTask).slice(0, 45) : 'idle';
+                    return { cls: '', text: `${statusEmoji} ${formatAgentDisplay(id)} · ${task}` };
+                });
+            if (agentActivity.length > 0) {
+                sections.push({
+                    title: '🤖 AGENT ACTIVITY',
+                    rows: agentActivity.slice(0, 4)
+                });
+            }
+
+            // 3. OVERDUE / ALERTS
             sections.push({
-                title: 'URGENT ATTENTION',
+                title: '⚠️ OVERDUE & BLOCKED',
                 rows: lens.attentionTasks.length === 0
                     ? [{ cls: '', text: 'No overdue or blocked tasks — clear' }]
-                    : lens.attentionTasks.slice(0, 4).map(t => ({
+                    : lens.attentionTasks.slice(0, 5).map(t => ({
                         cls: 'urgent',
-                        text: `${t.status === 'blocked' ? '⚑ BLOCKED' : '▲ OVERDUE'} · ${t.id} · ${t.title.slice(0, 52)} · ${getTaskProjectLabel(t, data)}`
+                        text: `${t.status === 'blocked' ? '⚑ BLOCKED' : '▲ OVERDUE'} · ${t.id} · ${t.title.slice(0, 48)} · ${getTaskProjectLabel(t, data)}`
                     }))
             });
 
+            // 4. NEXT UP — actionable tasks (not attention, not needs-me)
             sections.push({
-                title: 'NEXT UP',
+                title: '📋 NEXT UP',
                 rows: lens.nextUpTasks.length === 0
                     ? [{ cls: '', text: 'Everything actionable is either done or parked.' }]
                     : lens.nextUpTasks.slice(0, 4).map(t => ({
                         cls: normalizePriority(t.priority) === 'high' ? 'warn' : '',
-                        text: `${t.id} · ${t.title.slice(0, 55)} · ${getTaskProjectLabel(t, data)}`
+                        text: `${t.id} · ${t.title.slice(0, 52)} · ${getTaskProjectLabel(t, data)}`
                     }))
             });
+
+            // 5. COMPLETED (at the bottom, not the top)
+            const allCompleted = [...lens.completedToday, ...lens.completedWeek.filter(t => !lens.completedToday.some(ct => ct.id === t.id))];
+            if (allCompleted.length > 0) {
+                sections.push({
+                    title: '✅ COMPLETED',
+                    rows: allCompleted.slice(0, 4).map(t => ({
+                        cls: 'good',
+                        text: `${t.id} · ${t.title} · ${formatAbsoluteTimestamp(t.completedAt)}`
+                    }))
+                });
+            }
 
             container.innerHTML = sections.map(s => `
                 <div class="briefing-section">
@@ -5615,7 +5750,6 @@ console.log('[Helios WS] connected:', wsUrl);
                 </div>
             `).join('');
         }
-
         // ── OPS CARDS ─────────────────────────────────────────────────────
         function renderOpsCards(data) {
             const tasks = Object.values(data.tasks || {});
@@ -5691,11 +5825,18 @@ console.log('[Helios WS] connected:', wsUrl);
         // ── TODAY'S FOCUS ─────────────────────────────────────────────────
         let _focusTaskOrder = [];
         let _focusFilter = localStorage.getItem('rs_focus_filter') || 'urgency';
+        let _focusProjectFilter = localStorage.getItem('rs_focus_project') || '';
 
         function setFocusFilter(val) {
             _focusFilter = val;
             localStorage.setItem('rs_focus_filter', val);
             if (val !== 'custom') localStorage.removeItem('rs_focus_order');
+            if (window.appData) renderFocusTasks(window.appData);
+        }
+
+        function setFocusProjectFilter(val) {
+            _focusProjectFilter = val;
+            localStorage.setItem('rs_focus_project', val);
             if (window.appData) renderFocusTasks(window.appData);
         }
 
@@ -5707,9 +5848,21 @@ console.log('[Helios WS] connected:', wsUrl);
             function isOverdue(d) { if (!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd < today; }
             function isToday(d)   { if (!d) return false; const dd=new Date(d); dd.setHours(0,0,0,0); return dd.getTime()===today.getTime(); }
 
-            // Score tasks for urgency — exclude done and pure backlog for top 5
-            const scored = tasks
-                .filter(t => t.status !== 'done')
+            // Apply project category filter
+            const projFilter = _focusProjectFilter || localStorage.getItem('rs_focus_project') || '';
+            const projFilterEl = document.getElementById('focus-project-filter');
+            if (projFilterEl && projFilterEl.value !== projFilter) projFilterEl.value = projFilter;
+
+            let filteredTasks = tasks.filter(t => t.status !== 'done');
+            if (projFilter) {
+                filteredTasks = filteredTasks.filter(t => {
+                    const pid = projectIdFromTask(t);
+                    return pid && pid.startsWith(projFilter);
+                });
+            }
+
+            // Score tasks for urgency
+            const scored = filteredTasks
                 .map(t => {
                     let score = 0;
                     if (t.deadline) {
@@ -5728,9 +5881,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 })
                 .sort((a, b) => b._score - a._score);
 
-            // Apply filter (from dropdown or localStorage)
             const activeFilter = _focusFilter || localStorage.getItem('rs_focus_filter') || 'urgency';
-            // Sync dropdown
             const filterEl = document.getElementById('focus-filter-select');
             if (filterEl && filterEl.value !== activeFilter) filterEl.value = activeFilter;
 
@@ -5746,6 +5897,13 @@ console.log('[Helios WS] connected:', wsUrl);
             } else if (activeFilter === 'high-priority') {
                 const pOrd = { critical: 0, high: 1, medium: 2, low: 3 };
                 ordered = [...scored].sort((a, b) => (pOrd[a.priority] ?? 4) - (pOrd[b.priority] ?? 4));
+            } else if (activeFilter === 'blocked') {
+                ordered = scored.filter(t => t.status === 'blocked');
+            } else if (activeFilter === 'my-tasks') {
+                ordered = scored.filter(t => {
+                    const agent = normalizeAgentId(t.agent || t.owner || '');
+                    return agent === 'chad-yi' || agent === 'chad_yi' || !t.agent;
+                });
             } else if (activeFilter === 'custom') {
                 const savedOrder = JSON.parse(localStorage.getItem('rs_focus_order') || 'null');
                 if (savedOrder && Array.isArray(savedOrder)) {
@@ -6049,13 +6207,12 @@ console.log('[Helios WS] connected:', wsUrl);
 
         function renderWeekCalendar(data) {
             const tasks = Object.values(data.tasks || {});
-            // Use Singapore timezone for "today"
             const sgtNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Singapore' }));
             const today = sgtNow;
+            today.setHours(0, 0, 0, 0);
             const todayStr = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
 
-            // Calculate Monday of current week + offset
-            const dow = today.getDay(); // 0=Sun
+            const dow = today.getDay();
             const diffToMon = dow === 0 ? -6 : 1 - dow;
             const weekStart = new Date(today);
             weekStart.setDate(today.getDate() + diffToMon + _weekOffset * 7);
@@ -6064,7 +6221,6 @@ console.log('[Helios WS] connected:', wsUrl);
             const weekEnd = new Date(weekStart);
             weekEnd.setDate(weekStart.getDate() + 6);
 
-            // Update range label
             const rangeLbl = document.getElementById('week-range-label');
             function fmtShort(d) { return d.toLocaleDateString('en-SG', { month: 'short', day: 'numeric' }); }
             if (rangeLbl) rangeLbl.textContent = fmtShort(weekStart) + ' – ' + fmtShort(weekEnd);
@@ -6076,20 +6232,32 @@ console.log('[Helios WS] connected:', wsUrl);
             const cols = DAYS.map((dayName, idx) => {
                 const colDate = new Date(weekStart);
                 colDate.setDate(weekStart.getDate() + idx);
+                colDate.setHours(0, 0, 0, 0);
                 const colStr = colDate.getFullYear() + '-' + String(colDate.getMonth()+1).padStart(2,'0') + '-' + String(colDate.getDate()).padStart(2,'0');
                 const isToday = colStr === todayStr;
+                const isPast = colDate < today;
+                const isFuture = colDate > today;
 
-                // Tasks with a deadline on this specific day (including overdue ones — show on their actual deadline day)
-                const dayTasks = sortTasksForAttention(tasks.filter(t => t.status !== 'done' && t.deadline && t.deadline.slice(0, 10) === colStr), today);
+                // ── DONE tasks: show on deadline day (or completedAt if available) ──
+                const doneTasks = tasks.filter(t => {
+                    if (t.status !== 'done') return false;
+                    const doneDate = (t.completedAt || t.deadline || '').slice(0, 10);
+                    return doneDate === colStr;
+                });
 
-                // For today only: overdue tasks whose deadline was BEFORE this week (can't show on original day)
+                // ── Active tasks with deadline on this day ──
+                const scheduledTasks = sortTasksForAttention(
+                    tasks.filter(t => t.status !== 'done' && t.deadline && t.deadline.slice(0, 10) === colStr),
+                    today
+                );
+
+                // ── Today: also show overdue (deadline before this week) + high-priority no-deadline ──
                 const overdueOnToday = isToday ? sortTasksForAttention(tasks.filter(t => {
                     if (t.status === 'done' || !t.deadline) return false;
                     const d = new Date(t.deadline); d.setHours(0,0,0,0);
-                    return d < weekStart;  // Only tasks with deadline before the visible week
+                    return d < weekStart;
                 }), today) : [];
 
-                // No-deadline tasks: only show high-priority/blocked items on today (not the whole pile)
                 const noDeadlineOnToday = isToday ? sortTasksForAttention(tasks.filter(t => {
                     if (t.status === 'done' || t.deadline) return false;
                     return t.status === 'blocked' || normalizePriority(t.priority) === 'high';
@@ -6102,49 +6270,70 @@ console.log('[Helios WS] connected:', wsUrl);
                     const normalized = normalizePriority(t.priority);
                     if (t.deadline) {
                         const d = new Date(t.deadline); d.setHours(0,0,0,0);
-                        const now = new Date(); now.setHours(0,0,0,0);
-                        if (d < now) return 'week-chip-overdue';
+                        if (d < today) return 'week-chip-overdue';
                     }
                     if (normalized === 'high') return 'week-chip-critical';
                     if (normalized === 'medium') return 'week-chip-medium';
                     return 'week-chip-low';
                 }
 
-                function overdueChip(t) {
-                    return `<span class="week-task-chip week-chip-overdue" title="▲ OVERDUE: ${escHtml(t.title)}" onclick="openTask('${t.id}')">▲ ${escHtml(t.id)} ${escHtml(t.title.slice(0,15))}</span>`;
-                }
+                // Build chips: done first (on past days), then overdue, then scheduled
+                const allChips = [];
 
-                function noDeadlineChip(t) {
+                // Done chips (green, shown on any day)
+                doneTasks.forEach(t => {
+                    allChips.push(`<span class="week-task-chip week-chip-done" title="✓ ${escHtml(t.title)}" onclick="openTask('${t.id}')">✓ ${escHtml(t.id)} ${escHtml(t.title.slice(0,15))}</span>`);
+                });
+
+                // Overdue chips (today only)
+                overdueOnToday.forEach(t => {
+                    allChips.push(`<span class="week-task-chip week-chip-overdue" title="▲ OVERDUE: ${escHtml(t.title)}" onclick="openTask('${t.id}')">▲ ${escHtml(t.id)} ${escHtml(t.title.slice(0,15))}</span>`);
+                });
+
+                // No-deadline chips (today only)
+                noDeadlineOnToday.forEach(t => {
                     const cls = chipClass(t);
-                    const label = t.status === 'active' ? '▶' : t.status === 'blocked' ? '⚠' : '→';
-                    return `<span class="week-task-chip ${cls}" title="${escHtml(t.title)} [no deadline]" onclick="openTask('${t.id}')">${label} ${escHtml(t.id)} ${escHtml(t.title.slice(0,15))}</span>`;
-                }
+                    const label = t.status === 'blocked' ? '⚠' : '▶';
+                    allChips.push(`<span class="week-task-chip ${cls}" title="${escHtml(t.title)} [no deadline]" onclick="openTask('${t.id}')">${label} ${escHtml(t.id)} ${escHtml(t.title.slice(0,15))}</span>`);
+                });
+
+                // Scheduled chips
+                scheduledTasks.forEach(t => {
+                    allChips.push(`<span class="week-task-chip ${chipClass(t)}" title="${escHtml(t.title)}" onclick="openTask('${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`);
+                });
 
                 const SHOW_LIMIT = 12;
-                const allChips = [
-                    ...overdueOnToday.map(overdueChip),
-                    ...noDeadlineOnToday.map(noDeadlineChip),
-                    ...dayTasks.map(t =>
-                        `<span class="week-task-chip ${chipClass(t)}" title="${escHtml(t.title)}"
-                               onclick="openTask('${t.id}')">${escHtml(t.id)} ${escHtml(t.title.slice(0,18))}</span>`
-                    )
-                ];
-
                 const visible = allChips.slice(0, SHOW_LIMIT).join('');
                 const moreCount = allChips.length - SHOW_LIMIT;
                 const dayCount = allChips.length;
+                const doneCount = doneTasks.length;
                 const moreBtn = moreCount > 0
                     ? `<button class="week-more-btn" onclick="expandWeekDay(this)">[+${moreCount} more]</button>
                        <div class="week-extra" style="display:none">${allChips.slice(SHOW_LIMIT).join('')}</div>`
                     : '';
 
-                return `<div class="week-day-col${isToday ? ' today-col' : ''}">
+                // Day summary: past days show done/total, future shows planned count
+                let countLabel;
+                if (isPast && doneCount > 0) {
+                    countLabel = `<span style="color:var(--accent-green)">${doneCount} done</span>` + (scheduledTasks.length ? ` · ${scheduledTasks.length} missed` : '');
+                } else if (isToday) {
+                    countLabel = dayCount ? `${dayCount} items` : 'clear';
+                } else if (isFuture) {
+                    countLabel = scheduledTasks.length ? `${scheduledTasks.length} planned` : 'open';
+                } else {
+                    countLabel = dayCount ? `${dayCount} items` : 'clear';
+                }
+
+                // Empty past day placeholder
+                const emptyMsg = (isPast && dayCount === 0) ? '<div style="color:var(--text-muted);font-size:9px;padding:4px 0;text-align:center;">—</div>' : '';
+
+                return `<div class="week-day-col${isToday ? ' today-col' : ''}${isPast ? ' past-col' : ''}">
                     <div class="week-day-header">
                         <span class="week-day-name">${dayName}</span>
                         <span class="week-day-num">${colDate.getDate()}</span>
-                        <span class="week-day-count">${dayCount ? `${dayCount} items` : 'clear'}</span>
+                        <span class="week-day-count">${countLabel}</span>
                     </div>
-                    ${visible}${moreBtn}
+                    ${emptyMsg}${visible}${moreBtn}
                 </div>`;
             });
 
