@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-03-28T13:58:37.332850+08:00",
+  "lastUpdated": "2026-03-28T13:59:09.453494+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 76,
@@ -189,7 +189,8 @@
       "category": "A",
       "agent": "Quanta",
       "status": "done",
-      "priority": "done"
+      "priority": "done",
+      "completedAt": "2026-03-28T13:59:09.453494+08:00"
     },
     "A5-3": {
       "id": "A5-3",
@@ -198,7 +199,8 @@
       "category": "A",
       "agent": "CHAD_YI",
       "status": "done",
-      "priority": "done"
+      "priority": "done",
+      "completedAt": "2026-03-28T13:59:09.453494+08:00"
     },
     "A5-4": {
       "id": "A5-4",
@@ -485,7 +487,8 @@
       "category": "B",
       "agent": "CHAD_YI",
       "status": "done",
-      "priority": "done"
+      "priority": "done",
+      "completedAt": "2026-03-28T13:59:09.453494+08:00"
     },
     "B6-3": {
       "id": "B6-3",
@@ -826,7 +829,8 @@
       "category": "C",
       "agent": "CHAD_YI",
       "status": "done",
-      "priority": "done"
+      "priority": "done",
+      "completedAt": "2026-03-28T13:59:09.453494+08:00"
     },
     "C3-2": {
       "id": "C3-2",
@@ -901,7 +905,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-03-28T13:58:37.336447+08:00",
+      "lastActive": "2026-03-28T13:59:09.462072+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -956,7 +960,11 @@
     "C": {
       "name": "Callings",
       "description": "Side Projects",
-      "projects": []
+      "projects": [
+        "C1",
+        "C2",
+        "C3"
+      ]
     }
   },
   "projects": {
@@ -1211,6 +1219,48 @@
       "totalTasks": 1,
       "completedTasks": 0,
       "completionPct": 0
+    },
+    "C1": {
+      "name": "Real Estate",
+      "description": "RES exam June 2026",
+      "category": "C",
+      "status": "pending",
+      "tasks": [
+        "C1-1",
+        "C1-2"
+      ],
+      "totalTasks": 2,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "C2": {
+      "name": "Side Sales",
+      "description": "Portfolio & client outreach",
+      "category": "C",
+      "status": "pending",
+      "tasks": [
+        "C2-1",
+        "C2-2"
+      ],
+      "totalTasks": 2,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "C3": {
+      "name": "Vibe Code Games",
+      "description": "Games & interactive experiences",
+      "category": "C",
+      "status": "pending",
+      "tasks": [
+        "C3-1",
+        "C3-2",
+        "C3-3",
+        "C3-4",
+        "C3-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 1,
+      "completionPct": 20
     }
   },
   "projectDetails": {
@@ -1281,6 +1331,18 @@
     "B10": {
       "name": "Epitaph",
       "description": "Legacy project"
+    },
+    "C1": {
+      "name": "Real Estate",
+      "description": "RES exam June 2026"
+    },
+    "C2": {
+      "name": "Side Sales",
+      "description": "Portfolio & client outreach"
+    },
+    "C3": {
+      "name": "Vibe Code Games",
+      "description": "Games & interactive experiences"
     }
   },
   "needsAttention": [
@@ -1351,10 +1413,22 @@
       "owner": "Forger"
     }
   ],
-  "inputsNeeded": [],
-  "dailyBriefing": {},
+  "inputsNeeded": [
+    {
+      "taskId": "A1-10",
+      "title": "Prepare wedding guest list",
+      "reason": "Blocked — needs your input"
+    }
+  ],
+  "dailyBriefing": {
+    "date": "2026-03-28",
+    "focus": 0,
+    "completedToday": 0,
+    "completedThisWeek": 3,
+    "blockers": 0
+  },
   "audit": {
-    "lastRun": "2026-03-28T13:58:37.332850+08:00",
+    "lastRun": "2026-03-28T13:59:09.453494+08:00",
     "dataIntegrity": "ok",
     "taskCount": 76,
     "findings": []
