@@ -351,8 +351,41 @@
         .topbar-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 12px;
         }
+
+        .ws-live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            font-family: var(--mono-font);
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            cursor: default;
+        }
+        .ws-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .ws-live-indicator.ws-live .ws-dot {
+            background: var(--success);
+            box-shadow: 0 0 6px var(--success);
+            animation: pulse 2s infinite;
+        }
+        .ws-live-indicator.ws-live .ws-label { color: var(--success); }
+        .ws-live-indicator.ws-polling .ws-dot {
+            background: var(--warning);
+        }
+        .ws-live-indicator.ws-polling .ws-label { color: var(--warning); }
+        .ws-live-indicator.ws-offline .ws-dot {
+            background: var(--danger);
+        }
+        .ws-live-indicator.ws-offline .ws-label { color: var(--danger); }
 
         .topbar-settings-btn {
             background: none;
@@ -2956,6 +2989,130 @@
 
             .focus-task-card {
                 cursor: pointer;
+                position: relative;
+            }
+            .focus-quick-actions {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                display: flex;
+                gap: 5px;
+                opacity: 0;
+                transition: opacity 0.15s ease;
+                pointer-events: none;
+            }
+            .focus-task-card:hover .focus-quick-actions {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .focus-quick-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 3px;
+                padding: 3px 8px;
+                border-radius: 4px;
+                border: 1px solid rgba(255,255,255,0.12);
+                background: rgba(10,10,18,0.85);
+                color: rgba(200,200,210,0.85);
+                font-family: 'Rajdhani', sans-serif;
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                cursor: pointer;
+                backdrop-filter: blur(6px);
+                transition: background 0.15s, border-color 0.15s;
+            }
+            .focus-quick-btn:hover {
+                border-color: rgba(255,255,255,0.25);
+                background: rgba(30,30,44,0.95);
+            }
+            .focus-quick-btn.fqb-done:hover {
+                border-color: rgba(80,200,120,0.5);
+                color: rgba(80,200,120,0.95);
+            }
+            .focus-quick-btn.fqb-block:hover {
+                border-color: rgba(220,160,60,0.5);
+                color: rgba(220,160,60,0.95);
+            }
+
+            /* Inline task creation */
+            .focus-add-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px; height: 20px;
+                border-radius: 4px;
+                border: 1px solid rgba(255,255,255,0.1);
+                background: transparent;
+                color: rgba(200,200,210,0.5);
+                font-size: 14px;
+                line-height: 1;
+                cursor: pointer;
+                margin-left: 8px;
+                vertical-align: middle;
+                transition: color 0.15s, border-color 0.15s;
+            }
+            .focus-add-btn:hover {
+                color: rgba(80,200,120,0.9);
+                border-color: rgba(80,200,120,0.4);
+            }
+            .inline-task-form {
+                display: none;
+                padding: 10px 12px;
+                margin-bottom: 8px;
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 6px;
+                background: rgba(18,18,28,0.7);
+            }
+            .inline-task-form.visible { display: block; }
+            .inline-task-form input,
+            .inline-task-form select {
+                font-family: 'Inter', sans-serif;
+                font-size: 12px;
+                padding: 6px 8px;
+                border-radius: 4px;
+                border: 1px solid rgba(255,255,255,0.1);
+                background: rgba(10,10,18,0.8);
+                color: rgba(220,220,230,0.9);
+                outline: none;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .inline-task-form input:focus,
+            .inline-task-form select:focus {
+                border-color: rgba(99,102,241,0.5);
+            }
+            .inline-task-form .itf-row {
+                display: flex;
+                gap: 6px;
+                margin-top: 6px;
+            }
+            .inline-task-form .itf-row select { width: auto; flex: 0 0 auto; }
+            .inline-task-form .itf-row input[type="date"] { width: auto; flex: 0 0 120px; }
+            .inline-task-submit {
+                padding: 5px 14px;
+                border-radius: 4px;
+                border: 1px solid rgba(80,200,120,0.4);
+                background: rgba(80,200,120,0.12);
+                color: rgba(80,200,120,0.9);
+                font-family: 'Rajdhani', sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                cursor: pointer;
+                transition: background 0.15s;
+            }
+            .inline-task-submit:hover { background: rgba(80,200,120,0.22); }
+            .inline-task-cancel {
+                padding: 5px 10px;
+                border-radius: 4px;
+                border: 1px solid rgba(255,255,255,0.08);
+                background: transparent;
+                color: rgba(200,200,210,0.5);
+                font-family: 'Rajdhani', sans-serif;
+                font-size: 11px;
+                font-weight: 600;
+                cursor: pointer;
             }
 
             .focus-expand-row span:first-child {
@@ -3032,6 +3189,10 @@
             </a>
         </div>
         <div class="topbar-right">
+            <div id="ws-live-indicator" class="ws-live-indicator ws-polling" title="Connection status">
+                <span class="ws-dot"></span>
+                <span class="ws-label">POLLING</span>
+            </div>
             <div class="last-audit-badge">
                 <span class="lad-label">Last audit</span>
                 <span class="lad-value" id="last-audit-time">—</span>
@@ -3435,6 +3596,23 @@
                                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                                 </svg>
                                 PRIORITY QUEUE
+                                <button class="focus-add-btn" onclick="toggleInlineTaskForm()" title="Add task">+</button>
+                            </div>
+                            <div class="inline-task-form" id="inline-task-form">
+                                <input type="text" id="itf-title" placeholder="Task title…" autocomplete="off">
+                                <div class="itf-row">
+                                    <select id="itf-project">
+                                        <option value="">Project…</option>
+                                    </select>
+                                    <select id="itf-priority">
+                                        <option value="high">High</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="low">Low</option>
+                                    </select>
+                                    <input type="date" id="itf-deadline">
+                                    <button class="inline-task-submit" onclick="submitInlineTask()">ADD</button>
+                                    <button class="inline-task-cancel" onclick="toggleInlineTaskForm()">✕</button>
+                                </div>
                             </div>
                             <div class="focus-top5" id="focus-top5" ondragover="event.preventDefault()">
                                 <!-- Populated by JS: renderFocusTasks() -->
@@ -5968,6 +6146,10 @@ console.log('[Helios WS] connected:', wsUrl);
                          ondrop="focusDrop(event)"
                          onclick="openTask('${t.id}')">
                 <span class="focus-rank">#${rank}</span>
+                <div class="focus-quick-actions">
+                    <button class="focus-quick-btn fqb-done" onclick="apiTaskAction(event,'${t.id}','done')" title="Mark done">✓</button>
+                    <button class="focus-quick-btn fqb-block" onclick="apiTaskAction(event,'${t.id}','blocked')" title="Flag blocked">⚑</button>
+                </div>
                 <div class="focus-task-contextline">${escHtml(detail.projectLabel)} · ${escHtml(t.id)}</div>
                 <div class="focus-task-title">${escHtml(t.title)}</div>
                 <div class="focus-task-meta">
@@ -6061,6 +6243,90 @@ console.log('[Helios WS] connected:', wsUrl);
             } catch (err) {
                 console.warn('[GitHub] Commit failed:', err);
                 return false;
+            }
+        }
+
+        // ── Quick-action API helper ──────────────────────────────────────
+        async function apiTaskAction(event, taskId, action) {
+            event.stopPropagation();
+            const card = document.getElementById('ftask-' + taskId);
+            const statusMap = { done: 'done', blocked: 'blocked' };
+            const newStatus = statusMap[action] || action;
+            try {
+                const res = await fetch(`${HELIOS_API_BASE}/api/tasks/${encodeURIComponent(taskId)}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ field: 'status', value: newStatus })
+                });
+                if (!res.ok) throw new Error('API ' + res.status);
+                // Optimistic UI update
+                if (action === 'done') {
+                    if (card) { card.style.transition = 'opacity 0.4s'; card.style.opacity = '0.3'; card.style.textDecoration = 'line-through'; }
+                    if (window.appData?.tasks?.[taskId]) {
+                        window.appData.tasks[taskId].status = 'done';
+                        window.appData.tasks[taskId].completedAt = new Date().toISOString();
+                    }
+                    showToast(`✓ ${taskId} marked done`, 'success');
+                } else if (action === 'blocked') {
+                    if (card) card.style.borderLeftColor = 'rgba(220,160,60,0.8)';
+                    if (window.appData?.tasks?.[taskId]) {
+                        window.appData.tasks[taskId].status = 'blocked';
+                    }
+                    showToast(`⚑ ${taskId} flagged blocked`, 'warn');
+                }
+                // Trigger refresh from backend data
+                if (typeof triggerImmediateRefresh === 'function') triggerImmediateRefresh();
+            } catch (err) {
+                console.warn('[apiTaskAction]', err);
+                // Fallback: use existing markFocusDoneNew for done action
+                if (action === 'done') {
+                    markFocusDoneNew(event, taskId);
+                } else {
+                    showToast(`⚠ Action failed: ${err.message}`, 'error');
+                }
+            }
+        }
+
+        // ── Inline Task Creation ─────────────────────────────────────────
+        function toggleInlineTaskForm() {
+            const form = document.getElementById('inline-task-form');
+            if (!form) return;
+            const isVis = form.classList.toggle('visible');
+            if (isVis) {
+                // Populate project dropdown from appData
+                const sel = document.getElementById('itf-project');
+                if (sel && window.appData?.projectDetails) {
+                    const opts = ['<option value="">Project…</option>'];
+                    Object.entries(window.appData.projectDetails).forEach(([k, v]) => {
+                        opts.push(`<option value="${k}">${v.name || k}</option>`);
+                    });
+                    sel.innerHTML = opts.join('');
+                }
+                const titleInput = document.getElementById('itf-title');
+                if (titleInput) { titleInput.value = ''; titleInput.focus(); }
+            }
+        }
+
+        async function submitInlineTask() {
+            const title = (document.getElementById('itf-title')?.value || '').trim();
+            if (!title) { showToast('Enter a task title', 'warn'); return; }
+            const project = document.getElementById('itf-project')?.value || '';
+            const priority = document.getElementById('itf-priority')?.value || 'medium';
+            const deadline = document.getElementById('itf-deadline')?.value || '';
+            try {
+                const res = await fetch(`${HELIOS_API_BASE}/api/tasks`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, project, priority, deadline: deadline || undefined })
+                });
+                if (!res.ok) throw new Error('API ' + res.status);
+                const data = await res.json();
+                showToast(`+ Created ${data.task_id || 'task'}`, 'success');
+                toggleInlineTaskForm();
+                if (typeof triggerImmediateRefresh === 'function') triggerImmediateRefresh();
+            } catch (err) {
+                console.warn('[submitInlineTask]', err);
+                showToast(`⚠ Create failed: ${err.message}`, 'error');
             }
         }
 
@@ -6789,6 +7055,14 @@ console.log('[Helios WS] connected:', wsUrl);
             const dot = document.getElementById('feed-dot');
             const txt = document.getElementById('feed-status-text');
             if (!dot || !txt) return;
+
+            // Update topbar live indicator
+            const wsInd = document.getElementById('ws-live-indicator');
+            if (wsInd) {
+                wsInd.className = 'ws-live-indicator ' + (connected ? 'ws-live' : 'ws-polling');
+                const lbl = wsInd.querySelector('.ws-label');
+                if (lbl) lbl.textContent = connected ? 'LIVE' : 'POLLING';
+            }
 
             if (connected) {
                 dot.className = 'feed-dot';
@@ -7642,8 +7916,70 @@ console.log('[Helios WS] connected:', wsUrl);
             if (window.appData) renderNewHomepage(window.appData);
         }
 
-        // Close modal on Escape
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTaskModal(); });
+        // Keyboard shortcuts
+        (function initKeyboardShortcuts() {
+            let focusIdx = -1;
+            function getFocusCards() { return Array.from(document.querySelectorAll('#focus-top5 .focus-task-card')); }
+            function highlightCard(idx) {
+                getFocusCards().forEach((c, i) => {
+                    c.style.outline = i === idx ? '1px solid rgba(99,102,241,0.6)' : '';
+                    c.style.outlineOffset = i === idx ? '-1px' : '';
+                });
+            }
+            document.addEventListener('keydown', e => {
+                // Don't intercept when typing in inputs
+                const tag = (e.target.tagName || '').toLowerCase();
+                if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable) {
+                    if (e.key === 'Escape') { e.target.blur(); closeTaskModal(); }
+                    return;
+                }
+                const cards = getFocusCards();
+                switch (e.key) {
+                    case 'Escape':
+                        closeTaskModal();
+                        focusIdx = -1;
+                        highlightCard(-1);
+                        break;
+                    case 'j':
+                    case 'ArrowDown':
+                        if (cards.length) {
+                            focusIdx = Math.min(focusIdx + 1, cards.length - 1);
+                            highlightCard(focusIdx);
+                            cards[focusIdx].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                        }
+                        e.preventDefault();
+                        break;
+                    case 'k':
+                    case 'ArrowUp':
+                        if (cards.length) {
+                            focusIdx = Math.max(focusIdx - 1, 0);
+                            highlightCard(focusIdx);
+                            cards[focusIdx].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                        }
+                        e.preventDefault();
+                        break;
+                    case 'Enter':
+                        if (focusIdx >= 0 && cards[focusIdx]) {
+                            const tid = cards[focusIdx].dataset.taskId;
+                            if (tid) openTask(tid);
+                        }
+                        break;
+                    case 'd':
+                        if (focusIdx >= 0 && cards[focusIdx]) {
+                            const tid = cards[focusIdx].dataset.taskId;
+                            if (tid) apiTaskAction(new Event('click'), tid, 'done');
+                        }
+                        break;
+                    case 'n':
+                        toggleInlineTaskForm();
+                        e.preventDefault();
+                        break;
+                    case '?':
+                        showToast('Keys: j/k navigate · Enter open · d done · n new · ? help', 'info', 5000);
+                        break;
+                }
+            });
+        })();
 
         // Toggle Agent Dropdown
         function toggleAgentDropdown() {
