@@ -1,13 +1,13 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-03-29T23:59:32.125631+08:00",
+  "lastUpdated": "2026-03-30T00:00:02.239890+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 76,
     "tasksLeft": 57,
     "completedTasks": 19,
     "completedToday": 0,
-    "completedThisWeek": 3,
+    "completedThisWeek": 0,
     "critical": 0,
     "urgent": 11,
     "active": 0,
@@ -17,26 +17,7 @@
   },
   "completions": {
     "today": [],
-    "this_week": [
-      {
-        "id": "B6-7",
-        "title": "Check insurance for SMU event",
-        "date": "2026-03-23",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "B8-6",
-        "title": "Andre's video (changes done)",
-        "date": "2026-03-23",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "A7-2",
-        "title": "Book venue and catering",
-        "date": "2026-03-23",
-        "agent": "CHAD_YI"
-      }
-    ],
+    "this_week": [],
     "all_time": 26
   },
   "weeklyProgress": {
@@ -945,26 +926,7 @@
       "createdAt": "2026-02-01T00:00:00+08:00"
     }
   },
-  "recentWins": [
-    {
-      "id": "B6-7",
-      "title": "Check insurance for SMU event",
-      "date": "2026-03-23",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "B8-6",
-      "title": "Andre's video (changes done)",
-      "date": "2026-03-23",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "A7-2",
-      "title": "Book venue and catering",
-      "date": "2026-03-23",
-      "agent": "CHAD_YI"
-    }
-  ],
+  "recentWins": [],
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
@@ -981,7 +943,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-03-29T23:59:32.128663+08:00",
+      "lastActive": "2026-03-30T00:00:02.242162+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1570,12 +1532,12 @@
     }
   ],
   "dailyBriefing": {
-    "date": "2026-03-29",
+    "date": "2026-03-30",
     "summary": "⚠️ 6 tasks blocked. 11 urgent items need attention.",
     "focus": 11,
     "blockers": 6,
     "completedToday": 0,
-    "completedThisWeek": 3,
+    "completedThisWeek": 0,
     "topPriorities": [
       {
         "id": "A1-8",
@@ -1615,7 +1577,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-03-29T23:59:32.128663+08:00"
+        "lastActive": "2026-03-30T00:00:02.242162+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1647,12 +1609,12 @@
         "id": "A1-10",
         "title": "Prepare wedding guest list",
         "deadline": "2026-03-28",
-        "daysOverdue": 1
+        "daysOverdue": 2
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-03-29T23:59:32.125631+08:00",
+    "lastRun": "2026-03-30T00:00:02.239890+08:00",
     "dataIntegrity": "ok",
     "taskCount": 76,
     "findings": []
