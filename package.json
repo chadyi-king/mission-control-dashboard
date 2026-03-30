@@ -1,8 +1,0 @@
-{
-  "name": "mission-control-dashboard",
-  "version": "1.0.0",
-  "description": "Mission Control Dashboard for Caleb E",
-  "scripts": {
-    "start": "npx serve ."
-  }
-}
