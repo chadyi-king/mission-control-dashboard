@@ -387,6 +387,22 @@
         }
         .ws-live-indicator.ws-offline .ws-label { color: var(--danger); }
 
+        .last-audit-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            font-family: var(--mono-font);
+            font-size: 9px;
+            letter-spacing: 0.05em;
+            cursor: default;
+        }
+        .lad-label { color: var(--text-muted); text-transform: uppercase; }
+        .lad-value { color: var(--text-secondary); }
+
         .topbar-settings-btn {
             background: none;
             border: 1px solid rgba(220,20,60,0.2);
@@ -721,8 +737,15 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         .sidebar-agent-dot:hover .dot-tip { opacity: 1; }
-        .sidebar.expanded .sidebar-footer { align-items: flex-start; padding: 12px 16px; }
-        .sidebar.expanded .sidebar-agent-dot { border-radius: 6px; width: 100%; height: auto; min-height: 30px; justify-content: flex-start; padding: 3px 0; gap: 8px; }
+        .sidebar.expanded .sidebar-footer { align-items: stretch; padding: 12px 14px; gap: 6px; }
+        .sidebar.expanded .sidebar-agent-dot {
+            border-radius: 8px; width: 100%; height: auto; min-height: 36px;
+            flex-direction: column; align-items: flex-start;
+            padding: 8px 12px; gap: 4px;
+        }
+        .sidebar.expanded .sidebar-agent-dot .dot-status {
+            position: static; width: 7px; height: 7px; border: none;
+        }
         .sidebar.expanded .dot-tip { position: static; transform: none; background: none; border: none; padding: 0; opacity: 1; pointer-events: auto; box-shadow: none; font-size: 11px; color: rgba(140,140,170,0.7); letter-spacing: 0.04em; text-transform: none; font-style: normal; font-weight: 400; white-space: normal; word-break: break-word; line-height: 1.4; }
 
         /* Main Content */
@@ -881,8 +904,8 @@
 
         /* ─── Stats Bar ── home section ─────────────────────────────── */
         .stats-bar {
-            display: flex;
-            gap: 0;
+            display: grid;
+            grid-template-columns: 3fr auto 3fr auto 3fr;
             margin-bottom: 16px;
             background: var(--panel-bg);
             border: 1px solid var(--crystal-border);
@@ -892,7 +915,6 @@
         .stat-cluster {
             display: flex;
             flex-direction: column;
-            flex: 1;
             min-width: 0;
         }
         .stat-cluster-label {
@@ -900,43 +922,46 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: rgba(220,20,60,0.45);
-            padding: 5px 12px 4px;
+            padding: 6px 12px 5px;
             font-family: var(--tech-font);
             border-bottom: 1px solid rgba(220,20,60,0.1);
+            text-align: center;
         }
         .stat-cluster-cards {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             flex: 1;
         }
         .stat-cluster-divider {
             width: 1px;
             background: rgba(255,255,255,0.07);
-            align-self: stretch;
         }
         .stat-card {
-            flex: 1;
-            padding: 10px 14px;
+            padding: 12px 14px 10px;
             border-right: 1px solid rgba(255,255,255,0.04);
             min-width: 0;
+            display: flex;
+            flex-direction: column;
         }
         .stat-card:last-child { border-right: none; }
         .stat-header {
             display: flex;
             align-items: center;
-            gap: 6px;
-            margin-bottom: 4px;
+            gap: 5px;
+            margin-bottom: 6px;
         }
         .stat-icon {
-            width: 13px;
-            height: 13px;
+            width: 12px;
+            height: 12px;
             color: var(--text-muted);
             flex-shrink: 0;
         }
         .stat-breakdown {
             display: flex;
             flex-wrap: wrap;
-            gap: 3px 8px;
-            margin-top: 4px;
+            gap: 2px 6px;
+            margin-top: auto;
+            padding-top: 4px;
         }
         .sub-stat { font-size: 9px; color: var(--text-muted); white-space: nowrap; }
         .sub-alert   { color: var(--danger); }
@@ -952,6 +977,16 @@
         .sub-trend   { color: var(--success); }
         .stat-val-warn  { color: var(--warning) !important; }
         .stat-val-alert { color: var(--danger) !important; }
+        .stat-val-good  { color: var(--success) !important; }
+        @media (max-width: 1100px) {
+            .stats-bar { grid-template-columns: 1fr; }
+            .stat-cluster-divider { width: auto; height: 1px; }
+        }
+        @media (max-width: 600px) {
+            .stat-card { padding: 8px 10px 6px; }
+            .stat-value { font-size: 18px; }
+            .stat-label { font-size: 8px; letter-spacing: 1px; }
+        }
         /* ─────────────────────────────────────────────────────────── */
 
         .stat-subtext {
@@ -2298,6 +2333,7 @@
             border-radius: 6px;
             border-left: 2px solid transparent;
             transition: all 0.2s;
+            cursor: pointer;
         }
         .category-task-item:hover { background: rgba(255,255,255,0.05); }
         .category-task-item.high-priority { border-left-color: var(--danger); background: rgba(255, 68, 68, 0.05); }
@@ -3340,7 +3376,7 @@
         <div id="home-section" class="section active">
 
             <!-- ═══════════════════════════════════════════
-                 STATS BAR — 8 Hierarchical Stat Cards
+                 STATS BAR — 9 Cards in 3 Clusters (3×3)
             ═══════════════════════════════════════════ -->
             <div class="stats-bar" id="stats-bar">
 
@@ -3361,8 +3397,8 @@
                             <div class="stat-value" id="s-due-today">—</div>
                             <div class="stat-breakdown">
                                 <span class="sub-stat sub-alert" id="s-due-urgent">— urgent</span>
-                                <span class="sub-stat sub-deadline" id="s-due-deadline">— deadline</span>
-                                <span class="sub-stat sub-normal" id="s-due-normal">— normal</span>
+                                <span class="sub-stat sub-deadline" id="s-due-deadline">— overdue</span>
+                                <span class="sub-stat sub-normal" id="s-due-normal">— tomorrow</span>
                             </div>
                         </div>
 
@@ -3403,8 +3439,8 @@
                             </div>
                         </div>
 
-                    </div><!-- /cluster-cards -->
-                </div><!-- /cluster schedule -->
+                    </div>
+                </div>
 
                 <div class="stat-cluster-divider"></div>
 
@@ -3429,7 +3465,51 @@
                             </div>
                         </div>
 
-                        <!-- AGENTS -->
+                        <!-- TASKS LEFT -->
+                        <div class="stat-card" id="stat-tasks-left">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 11l3 3L22 4"/>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                                </svg>
+                                <span class="stat-label">TASKS LEFT</span>
+                            </div>
+                            <div class="stat-value" id="s-tasks-left-total">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-agent" id="s-tasks-left-all">— total</span>
+                                <span class="sub-stat sub-good" id="s-tasks-left-done">— done</span>
+                                <span class="sub-stat sub-muted" id="s-tasks-left-progress">— %</span>
+                            </div>
+                        </div>
+
+                        <!-- COMPLETION -->
+                        <div class="stat-card" id="stat-completion">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                <span class="stat-label">COMPLETION</span>
+                            </div>
+                            <div class="stat-value stat-val-good" id="s-completion-pct">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-good" id="s-completion-done">— done</span>
+                                <span class="sub-stat sub-agent" id="s-completion-total">— total</span>
+                                <span class="sub-stat sub-muted" id="s-completion-remaining">— left</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="stat-cluster-divider"></div>
+
+                <!-- ── CLUSTER 3: PERFORMANCE ── -->
+                <div class="stat-cluster">
+                    <div class="stat-cluster-label">Performance</div>
+                    <div class="stat-cluster-cards">
+
+                        <!-- FLEET -->
                         <div class="stat-card" id="stat-agents">
                             <div class="stat-header">
                                 <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -3438,42 +3518,15 @@
                                     <circle cx="19" cy="9" r="2"/>
                                     <circle cx="5" cy="9" r="2"/>
                                 </svg>
-                                <span class="stat-label">AGENTS</span>
+                                <span class="stat-label">FLEET</span>
                             </div>
                             <div class="stat-value" id="s-agents-total">—/7</div>
                             <div class="stat-breakdown">
-                                <span class="sub-stat sub-good" id="s-agents-working">— working</span>
-                                <span class="sub-stat sub-idle" id="s-agents-idle">— idle</span>
-                                <span class="sub-stat sub-alert" id="s-agents-blocked">— blocked</span>
+                                <span class="sub-stat sub-good" id="s-agents-working">— active</span>
+                                <span class="sub-stat sub-idle" id="s-agents-idle">— stale</span>
+                                <span class="sub-stat sub-alert" id="s-agents-blocked">— offline</span>
                             </div>
                         </div>
-
-                        <!-- TASKS LEFT -->
-                        <div class="stat-card" id="stat-tasks-left">
-                            <div class="stat-header">
-                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2v20"/>
-                                    <path d="M5 9l7-7 7 7"/>
-                                </svg>
-                                <span class="stat-label">TASKS LEFT</span>
-                            </div>
-                            <div class="stat-value" id="s-tasks-left-total">—</div>
-                            <div class="stat-breakdown">
-                                <span class="sub-stat sub-agent" id="s-tasks-left-all">— total tasks</span>
-                                <span class="sub-stat sub-good" id="s-tasks-left-done">— completed</span>
-                                <span class="sub-stat sub-muted" id="s-tasks-left-progress">— complete</span>
-                            </div>
-                        </div>
-
-                    </div><!-- /cluster-cards -->
-                </div><!-- /cluster scope -->
-
-                <div class="stat-cluster-divider"></div>
-
-                <!-- ── CLUSTER 3: PERFORMANCE ── -->
-                <div class="stat-cluster">
-                    <div class="stat-cluster-label">Performance</div>
-                    <div class="stat-cluster-cards">
 
                         <!-- ACTION ITEMS -->
                         <div class="stat-card" id="stat-review">
@@ -3509,8 +3562,8 @@
                             </div>
                         </div>
 
-                    </div><!-- /cluster-cards -->
-                </div><!-- /cluster performance -->
+                    </div>
+                </div>
 
             </div><!-- /stats-bar -->
 
@@ -3982,7 +4035,6 @@
             const footer = document.getElementById('sidebar-footer');
             if (!footer || !data) return;
             const cfg = {
-                'chad-yi':   { init:'CA', bg:'rgba(255,107,0,0.18)',  bd:'rgba(255,107,0,0.4)',   col:'#ff8c00' },
                 'helios':    { init:'HE', bg:'rgba(220,38,38,0.18)',  bd:'rgba(220,38,38,0.4)',   col:'#e04040' },
                 'cerebronn': { init:'CB', bg:'rgba(100,100,230,0.18)',bd:'rgba(100,100,230,0.35)',col:'#9090ee' },
                 'quanta':    { init:'QT', bg:'rgba(64,145,108,0.18)', bd:'rgba(64,145,108,0.35)', col:'#77d8a8' },
@@ -3990,10 +4042,10 @@
                 'forger':    { init:'FG', bg:'rgba(160,60,180,0.18)',bd:'rgba(160,60,180,0.35)', col:'#c070d0' },
                 'autour':    { init:'AU', bg:'rgba(200,80,80,0.18)', bd:'rgba(200,80,80,0.35)',  col:'#e06060' },
             };
-            // Show all agents from data, not just hardcoded 4
+            const _excluded = new Set(['chad-yi', 'tele']);
             const agents = data.agents || {};
-            const _priority = ['chad-yi','helios','cerebronn','quanta','escritor','forger','autour'];
-            const agentKeys = Object.keys(agents).sort((a, b) => {
+            const _priority = ['helios','cerebronn','quanta','escritor','forger','autour'];
+            const agentKeys = Object.keys(agents).filter(k => !_excluded.has(k.toLowerCase())).sort((a, b) => {
                 const ai = _priority.indexOf(a.toLowerCase());
                 const bi = _priority.indexOf(b.toLowerCase());
                 if (ai !== -1 && bi !== -1) return ai - bi;
@@ -4020,20 +4072,18 @@
 
                 // For expanded view: show role and last active
                 const lastActive = ag.lastActive ? formatRelativeTimestamp(ag.lastActive) : 'no signal';
-                const role = ag.role || ag.role_tagline || '';
                 const task = ag.currentTask ? String(ag.currentTask).slice(0, 40) : '';
 
                 if (isExpanded) {
                     const statusCls = meta.tone === 'online' ? 'online' : meta.tone === 'blocked' ? 'blocked' : 'offline';
-                    return `<div class="sidebar-agent-dot" style="background:${c.bg};border:1px solid ${c.bd};flex-direction:column;align-items:flex-start;padding:8px 10px;">
+                    return `<div class="sidebar-agent-dot" style="background:${c.bg};border:1px solid ${c.bd};">
                         <div style="display:flex;align-items:center;gap:6px;width:100%;">
-                            <span style="color:${c.col};font-size:10px;font-weight:700;min-width:16px;">${c.init}</span>
-                            <span style="color:rgba(220,220,240,0.9);font-size:11px;font-weight:600;flex:1;">${escHtml(formatAgentDisplay(id))}</span>
+                            <span style="color:${c.col};font-size:10px;font-weight:700;min-width:18px;">${c.init}</span>
+                            <span style="color:rgba(220,220,240,0.9);font-size:11px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(formatAgentDisplay(id))}</span>
                             <span class="dot-status ${statusCls}"></span>
                         </div>
-                        <div style="font-size:9px;color:rgba(140,140,170,0.7);margin-top:3px;line-height:1.3;">
-                            ${meta.label.toUpperCase()} · ${lastActive}
-                            ${task ? '<br>' + escHtml(task) : ''}
+                        <div style="font-size:9px;color:rgba(140,140,170,0.7);line-height:1.3;padding-left:24px;">
+                            ${meta.label.toUpperCase()} · ${lastActive}${task ? '<br>' + escHtml(task) : ''}
                         </div>
                     </div>`;
                 }
@@ -5897,6 +5947,18 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-messages-helios', allOverdue.length + ' past deadline');
             set('s-messages-system', overdueThisWeek.length + ' this week');
             set('s-messages-unread', oldestOverdue);
+
+            // 9. COMPLETION — overall progress percentage
+            set('s-completion-pct', completionPct + '%');
+            set('s-completion-done', doneTasks.length + ' done');
+            set('s-completion-total', tasks.length + ' total');
+            set('s-completion-remaining', openTasks.length + ' left');
+
+            // Fallback: update last-audit-time from data.lastUpdated if helios hasn't set it
+            const _lae = document.getElementById('last-audit-time');
+            if (_lae && (_lae.textContent === '—' || _lae.textContent === '') && data.lastUpdated) {
+                _lae.textContent = formatRelativeTimestamp(data.lastUpdated);
+            }
         }
 
         // ── TICKER (Bloomberg-style feed) ──────────────────────────────
