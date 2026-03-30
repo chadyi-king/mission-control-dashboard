@@ -1,19 +1,19 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-03-31T05:56:03.932153+08:00",
+  "lastUpdated": "2026-03-31T05:56:35.115421+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 76,
-    "tasksLeft": 57,
+    "totalTasks": 84,
+    "tasksLeft": 65,
     "completedTasks": 19,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
-    "urgent": 11,
+    "urgent": 19,
     "active": 0,
     "blocked": 5,
     "review": 0,
-    "backlog": 51
+    "backlog": 59
   },
   "completions": {
     "today": [],
@@ -76,7 +76,15 @@
       "C3-2",
       "C3-3",
       "C3-4",
-      "C3-5"
+      "C3-5",
+      "A3-1",
+      "A3-2",
+      "A3-3",
+      "A3-4",
+      "A4-1",
+      "A4-2",
+      "A4-3",
+      "A4-4"
     ],
     "active": [],
     "review": [],
@@ -112,7 +120,15 @@
       "B3-2",
       "B3-3",
       "B6-4",
-      "B6-5"
+      "B6-5",
+      "A3-1",
+      "A3-2",
+      "A3-3",
+      "A3-4",
+      "A4-1",
+      "A4-2",
+      "A4-3",
+      "A4-4"
     ],
     "blocked": [
       "A1-10",
@@ -927,6 +943,86 @@
       "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-1": {
+      "id": "A3-1",
+      "title": "Plan first YouTube video topic & script",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-2": {
+      "id": "A3-2",
+      "title": "Set up KOE YouTube channel branding",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-3": {
+      "id": "A3-3",
+      "title": "Record first video",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-4": {
+      "id": "A3-4",
+      "title": "TikTok content strategy (short clips)",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A4-1": {
+      "id": "A4-1",
+      "title": "VTuber model / avatar setup",
+      "project": "A4",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A4-2": {
+      "id": "A4-2",
+      "title": "OBS + streaming software config",
+      "project": "A4",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A4-3": {
+      "id": "A4-3",
+      "title": "Plan first stream schedule & content",
+      "project": "A4",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A4-4": {
+      "id": "A4-4",
+      "title": "Set up Twitch/YouTube streaming channel",
+      "project": "A4",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
     }
   },
   "recentWins": [],
@@ -946,7 +1042,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-03-31T05:56:03.934623+08:00",
+      "lastActive": "2026-03-31T05:56:35.117947+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1082,8 +1178,13 @@
       "description": "Content creation",
       "category": "A",
       "status": "pending",
-      "tasks": [],
-      "totalTasks": 0,
+      "tasks": [
+        "A3-1",
+        "A3-2",
+        "A3-3",
+        "A3-4"
+      ],
+      "totalTasks": 4,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1092,8 +1193,13 @@
       "description": "VTuber streaming setup",
       "category": "A",
       "status": "pending",
-      "tasks": [],
-      "totalTasks": 0,
+      "tasks": [
+        "A4-1",
+        "A4-2",
+        "A4-3",
+        "A4-4"
+      ],
+      "totalTasks": 4,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1488,6 +1594,54 @@
       "title": "Google Ads management",
       "reason": "blocked",
       "owner": "Forger"
+    },
+    {
+      "id": "A3-1",
+      "title": "Plan first YouTube video topic & script",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A3-2",
+      "title": "Set up KOE YouTube channel branding",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A3-3",
+      "title": "Record first video",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A3-4",
+      "title": "TikTok content strategy (short clips)",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A4-1",
+      "title": "VTuber model / avatar setup",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A4-2",
+      "title": "OBS + streaming software config",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A4-3",
+      "title": "Plan first stream schedule & content",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A4-4",
+      "title": "Set up Twitch/YouTube streaming channel",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
     }
   ],
   "inputsNeeded": [
@@ -1529,8 +1683,8 @@
   ],
   "dailyBriefing": {
     "date": "2026-03-31",
-    "summary": "⚠️ 5 tasks blocked. 11 urgent items need attention.",
-    "focus": 11,
+    "summary": "⚠️ 5 tasks blocked. 19 urgent items need attention.",
+    "focus": 19,
     "blockers": 5,
     "completedToday": 0,
     "completedThisWeek": 0,
@@ -1573,7 +1727,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-03-31T05:56:03.934623+08:00"
+        "lastActive": "2026-03-31T05:56:35.117947+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1610,9 +1764,9 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-03-31T05:56:03.932153+08:00",
+    "lastRun": "2026-03-31T05:56:35.115421+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 76,
+    "taskCount": 84,
     "findings": []
   }
 }
