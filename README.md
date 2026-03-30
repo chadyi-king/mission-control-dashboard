@@ -18,9 +18,8 @@ Dashboard for managing projects, tasks, and AI agents.
 2. Or deploy to GitHub Pages
 
 ## Deployment policy
-- Use GitHub Pages as the only public deployment target for this repository.
-- Do not maintain or link a Render deployment for this dashboard.
-- If a Render service still exists, disable auto-deploy and suspend/delete that service in the Render dashboard.
+- GitHub Pages is the only deployment target: https://chadyi-king.github.io/mission-control-dashboard/
+- No Render deployment. Do not create or link one.
 
 ## Deploy to GitHub Pages
 1. Push to GitHub repository
