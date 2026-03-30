@@ -2789,6 +2789,12 @@
             color: var(--priority-done);
         }
 
+        .week-chip-paused,
+        .week-legend-dot.week-chip-paused {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
         .focus-task-card.priority-low {
             border-color: rgba(146, 163, 189, 0.24);
         }
@@ -2951,6 +2957,19 @@
             color: var(--text-muted);
             font-size: 9px;
         }
+
+        .task-modal-status { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; letter-spacing: 0.1em; font-weight: 700; }
+        .task-modal-status.status-done    { background: rgba(0,255,136,0.15);  color: #00ff88; }
+        .task-modal-status.status-active  { background: rgba(99,102,241,0.18); color: #818cf8; }
+        .task-modal-status.status-review  { background: rgba(167,139,250,0.15); color: #a78bfa; }
+        .task-modal-status.status-blocked { background: rgba(220,20,60,0.20);  color: #DC143C; }
+        .task-modal-status.status-paused  { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .task-modal-status.status-pending { background: rgba(148,163,184,0.12); color: #94a3b8; }
+        .task-modal-status.status-backlog { background: rgba(100,116,139,0.10); color: #64748b; }
+        .task-modal-priority { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; letter-spacing: 0.1em; font-weight: 700; }
+        .task-modal-priority.prio-high   { background: rgba(255,107,107,0.15); color: #ff6b6b; }
+        .task-modal-priority.prio-medium { background: rgba(240,193,92,0.15);  color: #f0c15c; }
+        .task-modal-priority.prio-low    { background: rgba(148,163,184,0.10); color: #94a3b8; }
 
         .task-modal-meta-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4097,7 +4116,16 @@
             if (task?.description) return task.description;
             if (task?.notes && task.notes.length > 18) return task.notes;
             const projectLabel = getTaskProjectLabel(task, data);
-            return `${task?.title || 'This task'} belongs to ${projectLabel} and does not have a fuller written brief yet.`;
+            const statusHints = {
+                blocked: 'Currently blocked — add a Notes entry in ACTIVE.md to describe what needs to be unblocked.',
+                paused:  'Currently paused — add a Notes entry in ACTIVE.md to describe why this is on hold.',
+                review:  'Awaiting review. Add a Notes entry in ACTIVE.md to provide context for the reviewer.',
+                active:  'Actively being worked on. Add a Notes entry in ACTIVE.md to log progress.',
+                done:    'Task completed.'
+            };
+            const hint = statusHints[task?.status];
+            if (hint) return `${task?.title || 'This task'} · ${projectLabel}. ${hint}`;
+            return `${task?.title || 'This task'} · ${projectLabel}. Add a Notes column in ACTIVE.md to see the full brief here.`;
         }
 
         function getTaskProgressText(task) {
@@ -4107,9 +4135,10 @@
                     ? `Marked complete ${formatAbsoluteTimestamp(task.completedAt)}.`
                     : 'Marked complete, but no completion note was logged.';
             }
-            if (task?.status === 'active') return 'Marked active, but no progress note has been logged yet.';
-            if (task?.status === 'review') return 'Waiting for review. No review summary has been logged yet.';
-            if (task?.status === 'blocked') return 'Blocked right now. A specific unblock note has not been logged yet.';
+            if (task?.status === 'active')  return 'Actively in progress. No progress note logged yet — add one in ACTIVE.md.';
+            if (task?.status === 'review')  return 'Waiting for review. No review note logged yet — add one in ACTIVE.md.';
+            if (task?.status === 'blocked') return task?.blockReason  ? `Blocked: ${task.blockReason}` : 'Blocked. Add a reason in ACTIVE.md (e.g. "BLOCKED - Waiting for X").';
+            if (task?.status === 'paused')  return task?.pauseReason || task?.blockReason ? `Paused: ${task.pauseReason || task.blockReason}` : 'Paused. Add a reason in ACTIVE.md (e.g. "PAUSED - Waiting for X").';
             return 'No progress update has been logged yet.';
         }
 
@@ -4325,7 +4354,7 @@
             });
 
             data.workflow = data.workflow || {};
-            ['pending', 'active', 'review', 'done', 'urgent', 'blocked'].forEach(key => {
+            ['pending', 'active', 'review', 'done', 'urgent', 'blocked', 'paused'].forEach(key => {
                 if (!Array.isArray(data.workflow[key])) data.workflow[key] = [];
             });
 
@@ -5448,7 +5477,8 @@ console.log('[Helios WS] connected:', wsUrl);
                 { title: 'Needs Me', tasks: grouped.needsMe },
                 { title: 'Needs My Review', tasks: grouped.needsReview },
                 { title: 'Needs My Input', tasks: grouped.needsInput },
-                { title: 'In motion elsewhere', tasks: [...grouped.activeWork, ...grouped.otherOpen] }
+                { title: 'Active Work', tasks: grouped.activeWork },
+                { title: 'Open Work',   tasks: grouped.otherOpen }
             ].filter(section => section.tasks.length > 0).forEach(section => {
                 sections.push(`
                     <div class="tasks-section">
@@ -5495,7 +5525,7 @@ console.log('[Helios WS] connected:', wsUrl);
         function renderCategoryTaskItem(task) {
             const normalizedPriority = normalizePriority(task.priority);
             const priorityClass = normalizedPriority === 'high' ? 'high-priority' : (normalizedPriority === 'medium' ? 'medium-priority' : 'low-priority');
-            const statusIcon = task.status === 'active' ? '\u25ba' : (task.status === 'review' ? '\ud83d\udc41' : (task.status === 'done' ? '\u2713' : '\u25cb'));
+            const statusIcon = task.status === 'active' ? '\u25ba' : task.status === 'review' ? '\ud83d\udc41' : task.status === 'done' ? '\u2713' : task.status === 'paused' ? '\u23f8' : task.status === 'blocked' ? '\u26a0' : '\u25cb';
 
             return `
                 <div class="category-task-item ${priorityClass}" data-task-id="${task.id}" onclick="event.stopPropagation(); openTask('${task.id}')">
@@ -6550,6 +6580,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 function chipClass(t) {
                     if (t.status === 'done')    return 'week-chip-done';
                     if (t.status === 'blocked') return 'week-chip-blocked';
+                    if (t.status === 'paused')  return 'week-chip-paused';
                     if (t.status === 'review')  return 'week-chip-review';
                     const normalized = normalizePriority(t.priority);
                     if (t.deadline) {
@@ -7851,7 +7882,7 @@ console.log('[Helios WS] connected:', wsUrl);
             document.getElementById('tmodal-title').textContent = t.title || '—';
 
             const statusEl = document.getElementById('tmodal-status');
-            const statusMap = { done:'DONE', active:'ACTIVE', review:'REVIEW', blocked:'BLOCKED', pending:'PENDING', backlog:'BACKLOG' };
+            const statusMap = { done:'DONE', active:'ACTIVE', review:'REVIEW', blocked:'BLOCKED', paused:'PAUSED', pending:'PENDING', backlog:'BACKLOG' };
             statusEl.textContent = statusMap[t.status] || (t.status||'—').toUpperCase();
             statusEl.className = 'task-modal-status status-' + (t.status||'pending');
 
@@ -7879,6 +7910,20 @@ console.log('[Helios WS] connected:', wsUrl);
             document.getElementById('tmodal-lane').textContent = detail.lane.label;
             document.getElementById('tmodal-created').textContent = formatStamp(t.createdAt);
             document.getElementById('tmodal-completed').textContent = t.completedAt ? formatStamp(t.completedAt) : '—';
+
+            const blockRow = document.getElementById('tmodal-block-row');
+            if (blockRow) {
+                const reason = t.blockReason || t.pauseReason;
+                if (reason || t.status === 'blocked' || t.status === 'paused') {
+                    const label = t.status === 'paused' ? 'PAUSED BECAUSE' : 'BLOCKED BECAUSE';
+                    const text  = reason || (t.status === 'paused' ? 'No pause reason logged yet.' : 'No unblock note logged yet.');
+                    blockRow.querySelector('.task-modal-meta-label').textContent = label;
+                    document.getElementById('tmodal-block-reason').textContent = text;
+                    blockRow.style.display = 'flex';
+                } else {
+                    blockRow.style.display = 'none';
+                }
+            }
 
             const descSection = document.getElementById('tmodal-desc-section');
             document.getElementById('tmodal-desc').textContent = detail.about;
@@ -8459,6 +8504,10 @@ console.log('[Helios WS] connected:', wsUrl);
                 <div class="task-modal-meta-row">
                     <span class="task-modal-meta-label">COMPLETED</span>
                     <span class="task-modal-meta-value" id="tmodal-completed">—</span>
+                </div>
+                <div class="task-modal-meta-row" id="tmodal-block-row" style="display:none">
+                    <span class="task-modal-meta-label">BLOCKED BECAUSE</span>
+                    <span class="task-modal-meta-value" id="tmodal-block-reason">—</span>
                 </div>
             </div>
             <div class="task-modal-section" id="tmodal-desc-section">
