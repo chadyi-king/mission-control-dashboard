@@ -3264,7 +3264,7 @@
                     </div>
                 </div>
 
-                <!-- 2. MY INPUT -->
+                <!-- 2. ACTION ITEMS -->
                 <div class="stat-card" id="stat-review">
                     <div class="stat-header">
                         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -3272,13 +3272,13 @@
                             <line x1="12" y1="8" x2="12" y2="12"/>
                             <line x1="12" y1="16" x2="12.01" y2="16"/>
                         </svg>
-                        <span class="stat-label">MY INPUT</span>
+                        <span class="stat-label">ACTION ITEMS</span>
                     </div>
                     <div class="stat-value stat-val-warn" id="s-review-total">—</div>
                     <div class="stat-breakdown">
-                        <span class="sub-stat sub-alert" id="s-review-agent">— blocked</span>
+                        <span class="sub-stat sub-alert" id="s-review-agent">— to do</span>
                         <span class="sub-stat sub-decision" id="s-review-decisions">— review</span>
-                        <span class="sub-stat sub-approval" id="s-review-approvals">— decisions</span>
+                        <span class="sub-stat sub-approval" id="s-review-approvals">— input</span>
                     </div>
                 </div>
 
@@ -3301,21 +3301,22 @@
                     </div>
                 </div>
 
-                        <!-- 4. NEEDS ME -->
+                        <!-- 4. THIS WEEK -->
                 <div class="stat-card" id="stat-blocked">
                     <div class="stat-header">
                         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="8" x2="12" y2="12"/>
-                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
                         </svg>
-                                <span class="stat-label">NEEDS ME</span>
+                                <span class="stat-label">THIS WEEK</span>
                     </div>
-                    <div class="stat-value stat-val-warn" id="s-blocked-total">—</div>
+                    <div class="stat-value" id="s-blocked-total">—</div>
                     <div class="stat-breakdown">
-                                <span class="sub-stat sub-alert" id="s-blocked-you">— to do</span>
-                                <span class="sub-stat sub-warn" id="s-blocked-agents">— review</span>
-                                <span class="sub-stat sub-muted" id="s-blocked-external">— input</span>
+                                <span class="sub-stat sub-good" id="s-blocked-you">— done</span>
+                                <span class="sub-stat sub-warn" id="s-blocked-agents">— remaining</span>
+                                <span class="sub-stat sub-alert" id="s-blocked-external">— overdue</span>
                     </div>
                 </div>
 
@@ -3433,7 +3434,7 @@
                     <!-- ROW 2 PAIR -->
                     <div class="ops-row">
 
-                        <!-- NEEDS REVIEW -->
+                        <!-- AWAITING REVIEW -->
                         <div class="cmd-card" id="card-review">
                             <div class="cmd-card-header">
                                 <div class="cmd-card-title">
@@ -3441,7 +3442,7 @@
                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                                         <circle cx="12" cy="12" r="3"/>
                                     </svg>
-                                    NEEDS REVIEW
+                                    AWAITING REVIEW
                                 </div>
                                 <span class="card-badge badge-warn" id="review-count">0</span>
                             </div>
@@ -3452,7 +3453,7 @@
                             </div>
                         </div>
 
-                        <!-- NEEDS MY INPUT -->
+                        <!-- INPUT REQUESTED -->
                         <div class="cmd-card" id="card-decisions">
                             <div class="cmd-card-header">
                                 <div class="cmd-card-title">
@@ -3461,7 +3462,7 @@
                                         <line x1="12" y1="8" x2="12" y2="12"/>
                                         <line x1="12" y1="16" x2="12.01" y2="16"/>
                                     </svg>
-                                    NEEDS MY INPUT
+                                    INPUT REQUESTED
                                 </div>
                                 <span class="card-badge badge-alert" id="decisions-count">0</span>
                             </div>
@@ -3474,20 +3475,21 @@
 
                     </div><!-- /ops-row ROW 2 -->
 
-                    <!-- ROW 3: RECENTLY DONE — spans both agent-ops columns -->
+                    <!-- ROW 3: MY QUEUE — spans both agent-ops columns -->
                     <div class="cmd-card recently-done-card" id="card-recent">
                         <div class="cmd-card-header">
                             <div class="cmd-card-title">
                                 <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <polyline points="20 6 9 17 4 12"/>
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
                                 </svg>
-                                NEEDS ME
+                                MY QUEUE
                             </div>
                             <span class="card-badge badge-done" id="recent-count">0</span>
                         </div>
                         <div class="cmd-card-body recently-done-body">
                             <ul class="task-list task-list-horizontal" id="recently-done-list">
-                                <li class="task-item-empty">Nothing currently queued for Caleb</li>
+                                <li class="task-item-empty">No tasks queued directly for Caleb</li>
                             </ul>
                         </div>
                     </div>
@@ -5647,25 +5649,28 @@ console.log('[Helios WS] connected:', wsUrl);
 
             const openTasks = tasks.filter(t => t.status !== 'done');
 
-            // 1. DUE TODAY
+            // 1. DUE TODAY — today count is primary; sub-breakdown shows urgency + overdue carried + tomorrow
             const dueToday = openTasks.filter(t => t.deadline && isToday(t.deadline));
-            const dueUrgent = dueToday.filter(t => normalizePriority(t.priority) === 'high').length;
+            const dueTodayHigh = dueToday.filter(t => normalizePriority(t.priority) === 'high').length;
             const dueDeadline = openTasks.filter(t => t.deadline && isOverdue(t.deadline)).length;
-            const dueNormal = dueToday.filter(t => normalizePriority(t.priority) !== 'high').length;
+            const dueTomorrow = (() => {
+                const tom = new Date(today); tom.setDate(tom.getDate() + 1);
+                return openTasks.filter(t => {
+                    if (!t.deadline) return false;
+                    const dd = new Date(t.deadline); dd.setHours(0,0,0,0);
+                    return dd.getTime() === tom.getTime();
+                }).length;
+            })();
             set('s-due-today', dueToday.length);
-            set('s-due-urgent', dueUrgent + ' urgent');
+            set('s-due-urgent', dueTodayHigh + ' urgent');
             set('s-due-deadline', dueDeadline + ' overdue');
-            set('s-due-normal', dueNormal + ' normal');
+            set('s-due-normal', dueTomorrow + ' tomorrow');
 
-            // 2. MY INPUT — everything that needs Caleb's action
-            const blockedTasks = openTasks.filter(t => t.status === 'blocked');
-            const reviewTasks = openTasks.filter(t => t.status === 'review');
-            const inputsNeeded = getInputRequestEntries(data);
-            const myInputTotal = blockedTasks.length + reviewTasks.length + inputsNeeded.length;
-            set('s-review-total', myInputTotal);
-            set('s-review-agent', blockedTasks.length + ' blocked');
-            set('s-review-decisions', reviewTasks.length + ' review');
-            set('s-review-approvals', inputsNeeded.length + ' decisions');
+            // 2. ACTION ITEMS — single aggregate: needsMe + review + input (deduplicated via lens)
+            set('s-review-total', lens.needsMeAggregate.length);
+            set('s-review-agent', lens.needsMeTasks.length + ' to do');
+            set('s-review-decisions', lens.reviewTasks.length + ' review');
+            set('s-review-approvals', lens.myInputTasks.length + ' input');
 
             // 3. AGENTS — only count verified recent signals, not optimistic "active" claims
             const coreAgents = ['chad-yi', 'quanta', 'cerebronn', 'helios'];
@@ -5679,11 +5684,24 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-agents-idle', staleSignals + ' stale');
             set('s-agents-blocked', blockedSignals + ' unverified');
 
-            // 4. NEEDS ME
-            set('s-blocked-total', lens.needsMeAggregate.length);
-            set('s-blocked-you', lens.needsMeTasks.length + ' to do');
-            set('s-blocked-agents', lens.reviewTasks.length + ' review');
-            set('s-blocked-external', lens.myInputTasks.length + ' input');
+            // 4. THIS WEEK — tasks due within the current Mon–Sun week
+            const weekEnd = new Date(today); weekEnd.setDate(weekEnd.getDate() + (7 - today.getDay()) % 7 || 7);
+            const weekStart7 = new Date(today); weekStart7.setDate(weekStart7.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1));
+            const thisWeekTasks = openTasks.filter(t => {
+                if (!t.deadline) return false;
+                const d = new Date(t.deadline); d.setHours(0,0,0,0);
+                return d >= weekStart7 && d <= weekEnd;
+            });
+            const doneThisWeekCount = tasks.filter(t => {
+                if (t.status !== 'done' || !t.completedAt) return false;
+                const d = new Date(t.completedAt); d.setHours(0,0,0,0);
+                return d >= weekStart7;
+            }).length;
+            const overdueThisWeekCount = openTasks.filter(t => t.deadline && isOverdue(t.deadline)).length;
+            set('s-blocked-total', thisWeekTasks.length + doneThisWeekCount);
+            set('s-blocked-you', doneThisWeekCount + ' done');
+            set('s-blocked-agents', thisWeekTasks.length + ' remaining');
+            set('s-blocked-external', overdueThisWeekCount + ' overdue');
 
             // 5. TASKS LEFT
             const doneTasks = tasks.filter(t => t.status === 'done');
@@ -5962,21 +5980,21 @@ console.log('[Helios WS] connected:', wsUrl);
             const reviewTasks = lens.reviewTasks.slice(0, 8);
             const reviewList = document.getElementById('needs-review-list');
             const reviewCount = document.getElementById('review-count');
-            if (reviewList) reviewList.innerHTML = buildTaskList(reviewTasks, 6, 'No tasks waiting for review');
+            if (reviewList) reviewList.innerHTML = buildTaskList(reviewTasks, 6, 'No tasks awaiting review');
             if (reviewCount) reviewCount.textContent = reviewTasks.length;
 
             // NEEDS MY INPUT
             const inputs = lens.myInputTasks;
             const decisionsList = document.getElementById('decisions-list');
             const decisionsCount = document.getElementById('decisions-count');
-            if (decisionsList) decisionsList.innerHTML = buildTaskList(inputs, 6, 'No pending input from you');
+            if (decisionsList) decisionsList.innerHTML = buildTaskList(inputs, 6, 'No input requested from you');
             if (decisionsCount) decisionsCount.textContent = inputs.length;
 
             // NEEDS ME
             const needsMeTasks = lens.needsMeTasks.slice(0, 10);
             const needsMeList = document.getElementById('recently-done-list');
             const needsMeCount = document.getElementById('recent-count');
-            if (needsMeList) needsMeList.innerHTML = buildTaskList(needsMeTasks, 6, 'Nothing currently queued directly for Caleb');
+            if (needsMeList) needsMeList.innerHTML = buildTaskList(needsMeTasks, 6, 'No tasks queued directly for Caleb');
             if (needsMeCount) needsMeCount.textContent = needsMeTasks.length;
 
             // ACTIVE WORK — only tasks explicitly marked active with verified live signals
@@ -6580,10 +6598,14 @@ console.log('[Helios WS] connected:', wsUrl);
 
                 // Day summary: past days show done/total, future shows planned count
                 let countLabel;
+                const overdueCarried = isToday ? overdueOnToday.length : 0;
                 if (isPast && doneCount > 0) {
                     countLabel = `<span style="color:var(--accent-green)">${doneCount} done</span>` + (scheduledTasks.length ? ` · ${scheduledTasks.length} missed` : '');
                 } else if (isToday) {
-                    countLabel = dayCount ? `${dayCount} items` : 'clear';
+                    const schedLabel = scheduledTasks.length ? scheduledTasks.length + ' due' : '';
+                    const ovdLabel = overdueCarried ? `+${overdueCarried} overdue` : '';
+                    const parts = [schedLabel, ovdLabel].filter(Boolean);
+                    countLabel = parts.length ? parts.join(' · ') : 'clear';
                 } else if (isFuture) {
                     countLabel = scheduledTasks.length ? `${scheduledTasks.length} planned` : 'open';
                 } else {
@@ -8088,8 +8110,7 @@ console.log('[Helios WS] connected:', wsUrl);
             loadData();
             loadHeliosSyncBootstrap();
             connectHeliosDashboardSocket();
-            // 60-second auto-refresh
-            setInterval(() => loadData(), 60000);
+            // Smart polling (30s) is handled by the IIFE below — no separate interval needed
         });
 
         function showSection(name) {
