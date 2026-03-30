@@ -689,6 +689,9 @@
             flex-direction: column;
             align-items: center;
             gap: 7px;
+            max-height: 320px;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
         .sidebar-agent-dot {
             position: relative;
@@ -875,6 +878,81 @@
             font-size: 22px;
             color: var(--text-primary);
         }
+
+        /* ─── Stats Bar ── home section ─────────────────────────────── */
+        .stats-bar {
+            display: flex;
+            gap: 0;
+            margin-bottom: 16px;
+            background: var(--panel-bg);
+            border: 1px solid var(--crystal-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .stat-cluster {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 0;
+        }
+        .stat-cluster-label {
+            font-size: 7px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(220,20,60,0.45);
+            padding: 5px 12px 4px;
+            font-family: var(--tech-font);
+            border-bottom: 1px solid rgba(220,20,60,0.1);
+        }
+        .stat-cluster-cards {
+            display: flex;
+            flex: 1;
+        }
+        .stat-cluster-divider {
+            width: 1px;
+            background: rgba(255,255,255,0.07);
+            align-self: stretch;
+        }
+        .stat-card {
+            flex: 1;
+            padding: 10px 14px;
+            border-right: 1px solid rgba(255,255,255,0.04);
+            min-width: 0;
+        }
+        .stat-card:last-child { border-right: none; }
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .stat-icon {
+            width: 13px;
+            height: 13px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+        .stat-breakdown {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px 8px;
+            margin-top: 4px;
+        }
+        .sub-stat { font-size: 9px; color: var(--text-muted); white-space: nowrap; }
+        .sub-alert   { color: var(--danger); }
+        .sub-warn    { color: var(--warning); }
+        .sub-good    { color: var(--success); }
+        .sub-idle    { color: var(--text-secondary); }
+        .sub-muted   { color: var(--text-muted); }
+        .sub-agent   { color: rgba(100,180,255,0.8); }
+        .sub-deadline{ color: var(--warning); }
+        .sub-normal  { color: var(--text-secondary); }
+        .sub-decision{ color: var(--warning); }
+        .sub-approval{ color: rgba(100,180,255,0.8); }
+        .sub-trend   { color: var(--success); }
+        .stat-val-warn  { color: var(--warning) !important; }
+        .stat-val-alert { color: var(--danger) !important; }
+        /* ─────────────────────────────────────────────────────────── */
 
         .stat-subtext {
             font-size: 11px;
@@ -3266,145 +3344,173 @@
             ═══════════════════════════════════════════ -->
             <div class="stats-bar" id="stats-bar">
 
-                <!-- 1. DUE TODAY -->
-                <div class="stat-card" id="stat-due-today">
-                    <div class="stat-header">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                        <span class="stat-label">DUE TODAY</span>
-                    </div>
-                    <div class="stat-value" id="s-due-today">—</div>
-                    <div class="stat-breakdown">
-                        <span class="sub-stat sub-alert" id="s-due-urgent">— urgent</span>
-                        <span class="sub-stat sub-deadline" id="s-due-deadline">— deadline</span>
-                        <span class="sub-stat sub-normal" id="s-due-normal">— normal</span>
-                    </div>
-                </div>
+                <!-- ── CLUSTER 1: SCHEDULE ── -->
+                <div class="stat-cluster">
+                    <div class="stat-cluster-label">Schedule</div>
+                    <div class="stat-cluster-cards">
 
-                <!-- 2. ACTION ITEMS -->
-                <div class="stat-card" id="stat-review">
-                    <div class="stat-header">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="8" x2="12" y2="12"/>
-                            <line x1="12" y1="16" x2="12.01" y2="16"/>
-                        </svg>
-                        <span class="stat-label">ACTION ITEMS</span>
-                    </div>
-                    <div class="stat-value stat-val-warn" id="s-review-total">—</div>
-                    <div class="stat-breakdown">
-                        <span class="sub-stat sub-alert" id="s-review-agent">— to do</span>
-                        <span class="sub-stat sub-decision" id="s-review-decisions">— review</span>
-                        <span class="sub-stat sub-approval" id="s-review-approvals">— input</span>
-                    </div>
-                </div>
+                        <!-- DUE TODAY -->
+                        <div class="stat-card" id="stat-due-today">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <span class="stat-label">DUE TODAY</span>
+                            </div>
+                            <div class="stat-value" id="s-due-today">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-alert" id="s-due-urgent">— urgent</span>
+                                <span class="sub-stat sub-deadline" id="s-due-deadline">— deadline</span>
+                                <span class="sub-stat sub-normal" id="s-due-normal">— normal</span>
+                            </div>
+                        </div>
 
-                <!-- 3. AGENTS -->
-                <div class="stat-card" id="stat-agents">
-                    <div class="stat-header">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="8" r="4"/>
-                            <path d="M20 21a8 8 0 1 0-16 0"/>
-                            <circle cx="19" cy="9" r="2"/>
-                            <circle cx="5" cy="9" r="2"/>
-                        </svg>
-                        <span class="stat-label">AGENTS</span>
-                    </div>
-                    <div class="stat-value" id="s-agents-total">—/7</div>
-                    <div class="stat-breakdown">
-                        <span class="sub-stat sub-good" id="s-agents-working">— working</span>
-                        <span class="sub-stat sub-idle" id="s-agents-idle">— idle</span>
-                        <span class="sub-stat sub-alert" id="s-agents-blocked">— blocked</span>
-                    </div>
-                </div>
+                        <!-- OVERDUE -->
+                        <div class="stat-card" id="stat-messages">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                    <line x1="4" y1="4" x2="20" y2="20"/>
+                                </svg>
+                                <span class="stat-label">OVERDUE</span>
+                            </div>
+                            <div class="stat-value stat-val-alert" id="s-messages-total">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-alert" id="s-messages-helios">— past deadline</span>
+                                <span class="sub-stat sub-warn" id="s-messages-system">— this week</span>
+                                <span class="sub-stat sub-muted" id="s-messages-unread">— oldest</span>
+                            </div>
+                        </div>
 
-                        <!-- 4. THIS WEEK -->
-                <div class="stat-card" id="stat-blocked">
-                    <div class="stat-header">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="16" y1="2" x2="16" y2="6"/>
-                            <line x1="8" y1="2" x2="8" y2="6"/>
-                            <line x1="3" y1="10" x2="21" y2="10"/>
-                        </svg>
+                        <!-- THIS WEEK -->
+                        <div class="stat-card" id="stat-blocked">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
                                 <span class="stat-label">THIS WEEK</span>
-                    </div>
-                    <div class="stat-value" id="s-blocked-total">—</div>
-                    <div class="stat-breakdown">
+                            </div>
+                            <div class="stat-value" id="s-blocked-total">—</div>
+                            <div class="stat-breakdown">
                                 <span class="sub-stat sub-good" id="s-blocked-you">— done</span>
                                 <span class="sub-stat sub-warn" id="s-blocked-agents">— remaining</span>
                                 <span class="sub-stat sub-alert" id="s-blocked-external">— overdue</span>
-                    </div>
-                </div>
+                            </div>
+                        </div>
 
-                <!-- 5. TASKS LEFT -->
-                <div class="stat-card" id="stat-tasks-left">
-                    <div class="stat-header">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2v20"/>
-                            <path d="M5 9l7-7 7 7"/>
-                        </svg>
-                        <span class="stat-label">TASKS LEFT</span>
-                    </div>
-                    <div class="stat-value" id="s-tasks-left-total">—</div>
-                    <div class="stat-breakdown">
-                        <span class="sub-stat sub-agent" id="s-tasks-left-all">— total tasks</span>
-                        <span class="sub-stat sub-good" id="s-tasks-left-done">— completed</span>
-                        <span class="sub-stat sub-muted" id="s-tasks-left-progress">— complete</span>
-                    </div>
-                </div>
+                    </div><!-- /cluster-cards -->
+                </div><!-- /cluster schedule -->
 
-                <!-- 6. VELOCITY -->
-                <div class="stat-card" id="stat-velocity">
-                    <div class="stat-header">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                        </svg>
-                        <span class="stat-label">VELOCITY</span>
-                    </div>
-                    <div class="stat-value" id="s-velocity-today">—</div>
-                    <div class="stat-breakdown">
-                        <span class="sub-stat sub-muted">today</span>
-                        <span class="sub-stat sub-agent" id="s-velocity-week">— this wk</span>
-                        <span class="sub-stat sub-trend" id="s-velocity-trend">vs last wk</span>
-                    </div>
-                </div>
+                <div class="stat-cluster-divider"></div>
 
-                <!-- 7. PROJECTS -->
-                <div class="stat-card" id="stat-projects">
-                    <div class="stat-header">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                        </svg>
-                        <span class="stat-label">PROJECTS</span>
-                    </div>
-                    <div class="stat-value" id="s-projects-total">—</div>
-                    <div class="stat-breakdown">
-                        <span class="sub-stat sub-good" id="s-projects-ok">— on track</span>
-                        <span class="sub-stat sub-warn" id="s-projects-risk">— at risk</span>
-                        <span class="sub-stat sub-alert" id="s-projects-delayed">— delayed</span>
-                    </div>
-                </div>
+                <!-- ── CLUSTER 2: SCOPE ── -->
+                <div class="stat-cluster">
+                    <div class="stat-cluster-label">Scope</div>
+                    <div class="stat-cluster-cards">
 
-                <!-- 8. OVERDUE -->
-                <div class="stat-card" id="stat-messages">
-                    <div class="stat-header">
-                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                            <line x1="4" y1="4" x2="20" y2="20"/>
-                        </svg>
-                        <span class="stat-label">OVERDUE</span>
-                    </div>
-                    <div class="stat-value stat-val-alert" id="s-messages-total">—</div>
-                    <div class="stat-breakdown">
-                        <span class="sub-stat sub-alert" id="s-messages-helios">— past deadline</span>
-                        <span class="sub-stat sub-warn" id="s-messages-system">— this week</span>
-                        <span class="sub-stat sub-muted" id="s-messages-unread">— oldest</span>
-                    </div>
-                </div>
+                        <!-- PROJECTS -->
+                        <div class="stat-card" id="stat-projects">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                </svg>
+                                <span class="stat-label">PROJECTS</span>
+                            </div>
+                            <div class="stat-value" id="s-projects-total">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-good" id="s-projects-ok">— on track</span>
+                                <span class="sub-stat sub-warn" id="s-projects-risk">— at risk</span>
+                                <span class="sub-stat sub-alert" id="s-projects-delayed">— delayed</span>
+                            </div>
+                        </div>
+
+                        <!-- AGENTS -->
+                        <div class="stat-card" id="stat-agents">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="8" r="4"/>
+                                    <path d="M20 21a8 8 0 1 0-16 0"/>
+                                    <circle cx="19" cy="9" r="2"/>
+                                    <circle cx="5" cy="9" r="2"/>
+                                </svg>
+                                <span class="stat-label">AGENTS</span>
+                            </div>
+                            <div class="stat-value" id="s-agents-total">—/7</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-good" id="s-agents-working">— working</span>
+                                <span class="sub-stat sub-idle" id="s-agents-idle">— idle</span>
+                                <span class="sub-stat sub-alert" id="s-agents-blocked">— blocked</span>
+                            </div>
+                        </div>
+
+                        <!-- TASKS LEFT -->
+                        <div class="stat-card" id="stat-tasks-left">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2v20"/>
+                                    <path d="M5 9l7-7 7 7"/>
+                                </svg>
+                                <span class="stat-label">TASKS LEFT</span>
+                            </div>
+                            <div class="stat-value" id="s-tasks-left-total">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-agent" id="s-tasks-left-all">— total tasks</span>
+                                <span class="sub-stat sub-good" id="s-tasks-left-done">— completed</span>
+                                <span class="sub-stat sub-muted" id="s-tasks-left-progress">— complete</span>
+                            </div>
+                        </div>
+
+                    </div><!-- /cluster-cards -->
+                </div><!-- /cluster scope -->
+
+                <div class="stat-cluster-divider"></div>
+
+                <!-- ── CLUSTER 3: PERFORMANCE ── -->
+                <div class="stat-cluster">
+                    <div class="stat-cluster-label">Performance</div>
+                    <div class="stat-cluster-cards">
+
+                        <!-- ACTION ITEMS -->
+                        <div class="stat-card" id="stat-review">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                                <span class="stat-label">ACTION ITEMS</span>
+                            </div>
+                            <div class="stat-value stat-val-warn" id="s-review-total">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-alert" id="s-review-agent">— to do</span>
+                                <span class="sub-stat sub-decision" id="s-review-decisions">— review</span>
+                                <span class="sub-stat sub-approval" id="s-review-approvals">— input</span>
+                            </div>
+                        </div>
+
+                        <!-- VELOCITY -->
+                        <div class="stat-card" id="stat-velocity">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                                </svg>
+                                <span class="stat-label">VELOCITY</span>
+                            </div>
+                            <div class="stat-value" id="s-velocity-today">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-muted">today</span>
+                                <span class="sub-stat sub-agent" id="s-velocity-week">— this wk</span>
+                                <span class="sub-stat sub-trend" id="s-velocity-trend">vs last wk</span>
+                            </div>
+                        </div>
+
+                    </div><!-- /cluster-cards -->
+                </div><!-- /cluster performance -->
 
             </div><!-- /stats-bar -->
 
@@ -3876,18 +3982,17 @@
             const footer = document.getElementById('sidebar-footer');
             if (!footer || !data) return;
             const cfg = {
-                'chad-yi':   { init:'CY', bg:'rgba(255,107,0,0.18)',  bd:'rgba(255,107,0,0.4)',   col:'#ff8c00' },
+                'chad-yi':   { init:'CA', bg:'rgba(255,107,0,0.18)',  bd:'rgba(255,107,0,0.4)',   col:'#ff8c00' },
                 'helios':    { init:'HE', bg:'rgba(220,38,38,0.18)',  bd:'rgba(220,38,38,0.4)',   col:'#e04040' },
                 'cerebronn': { init:'CB', bg:'rgba(100,100,230,0.18)',bd:'rgba(100,100,230,0.35)',col:'#9090ee' },
                 'quanta':    { init:'QT', bg:'rgba(64,145,108,0.18)', bd:'rgba(64,145,108,0.35)', col:'#77d8a8' },
-                'tele':      { init:'TL', bg:'rgba(0,136,204,0.18)', bd:'rgba(0,136,204,0.35)',  col:'#40b0e0' },
                 'escritor':  { init:'ES', bg:'rgba(180,120,60,0.18)',bd:'rgba(180,120,60,0.35)', col:'#d4a040' },
                 'forger':    { init:'FG', bg:'rgba(160,60,180,0.18)',bd:'rgba(160,60,180,0.35)', col:'#c070d0' },
                 'autour':    { init:'AU', bg:'rgba(200,80,80,0.18)', bd:'rgba(200,80,80,0.35)',  col:'#e06060' },
             };
             // Show all agents from data, not just hardcoded 4
             const agents = data.agents || {};
-            const _priority = ['chad-yi','helios','cerebronn','quanta','tele','escritor','forger','autour'];
+            const _priority = ['chad-yi','helios','cerebronn','quanta','escritor','forger','autour'];
             const agentKeys = Object.keys(agents).sort((a, b) => {
                 const ai = _priority.indexOf(a.toLowerCase());
                 const bi = _priority.indexOf(b.toLowerCase());
@@ -5812,10 +5917,6 @@ console.log('[Helios WS] connected:', wsUrl);
 
             const parts = [];
 
-            // Overall progress indicator
-            const donePct = stats.completedTasks ? Math.round(stats.completedTasks / Math.max(1, stats.totalTasks) * 100) : 0;
-            parts.push(`<span class="ticker-item-done">■ PROGRESS ${donePct}% ▲ ${stats.completedTasks || 0}/${stats.totalTasks || 0}</span>`);
-
             // Per-project health indicators (like stock tickers)
             const projectDetails = getDefaultProjectDetails();
             const projIds = ['A1','A2','A3','A4','A5','A6','A7','B1','B3','B6','C1','C3'];
@@ -5843,31 +5944,23 @@ console.log('[Helios WS] connected:', wsUrl);
                 parts.push(`<span class="ticker-item-done">FLEET: ${agentPips}</span>`);
             }
 
-            // Overdue alerts
+            // Overdue tasks — individual items
             const overdue = tasks.filter(t => t.status !== 'done' && t.deadline && (() => {
                 const d = new Date(t.deadline); d.setHours(0,0,0,0); return d < today;
             })());
-            if (overdue.length > 0) {
-                parts.push(`<span class="ticker-item-alert">⚑ ${overdue.length} OVERDUE · ATTENTION REQUIRED</span>`);
-            }
+            overdue.forEach(t => {
+                parts.push(`<span class="ticker-item-alert">⚑ OVERDUE ${t.id} · ${t.title.slice(0,35)}</span>`);
+            });
 
-            // Blocked count
-            const blocked = tasks.filter(t => t.status === 'blocked');
-            if (blocked.length > 0) {
-                parts.push(`<span class="ticker-item-alert">⚠ ${blocked.length} BLOCKED</span>`);
-            }
+            // Blocked tasks — individual items
+            const blocked = tasks.filter(t => t.status === 'blocked' || t.status === 'paused');
+            blocked.forEach(t => {
+                const icon = t.status === 'paused' ? '⏸' : '⚠';
+                const label = t.status === 'paused' ? 'PAUSED' : 'BLOCKED';
+                parts.push(`<span class="ticker-item-alert">${icon} ${label} ${t.id} · ${t.title.slice(0,35)}</span>`);
+            });
 
-            // Completed today
-            const doneToday = tasks.filter(t => t.status === 'done' && t.completedAt && (() => {
-                const d = new Date(t.completedAt); d.setHours(0,0,0,0); return d.getTime() === today.getTime();
-            })());
-            if (doneToday.length > 0) {
-                doneToday.slice(0, 2).forEach(t => {
-                    parts.push(`<span class="ticker-item-done">✓ ${t.id} ${t.title.slice(0,30)} DONE</span>`);
-                });
-            }
-
-            // Upcoming deadlines
+            // Upcoming deadlines (next 3 days)
             const threeDays = new Date(today); threeDays.setDate(threeDays.getDate() + 3);
             const upcoming = tasks.filter(t => {
                 if (t.status === 'done' || !t.deadline) return false;
