@@ -1,19 +1,19 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-03-31T06:43:21.067328+08:00",
+  "lastUpdated": "2026-03-31T06:43:52.317042+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 84,
-    "tasksLeft": 65,
+    "totalTasks": 86,
+    "tasksLeft": 67,
     "completedTasks": 19,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
-    "urgent": 19,
-    "active": 0,
+    "urgent": 21,
+    "active": 3,
     "blocked": 5,
     "review": 0,
-    "backlog": 59
+    "backlog": 58
   },
   "completions": {
     "today": [],
@@ -77,16 +77,19 @@
       "C3-3",
       "C3-4",
       "C3-5",
-      "A3-1",
-      "A3-2",
-      "A3-3",
       "A3-4",
       "A4-1",
       "A4-2",
       "A4-3",
-      "A4-4"
+      "A4-4",
+      "A3-5",
+      "A3-6"
     ],
-    "active": [],
+    "active": [
+      "A3-1",
+      "A3-2",
+      "A3-3"
+    ],
     "review": [],
     "done": [
       "A5-1",
@@ -128,7 +131,9 @@
       "A4-1",
       "A4-2",
       "A4-3",
-      "A4-4"
+      "A4-4",
+      "A3-5",
+      "A3-6"
     ],
     "blocked": [
       "A1-10",
@@ -946,37 +951,37 @@
     },
     "A3-1": {
       "id": "A3-1",
-      "title": "Plan first YouTube video topic & script",
+      "title": "Script 1 — Right vs Left politics (YouTube short)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "active",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-2": {
       "id": "A3-2",
-      "title": "Set up KOE YouTube channel branding",
+      "title": "Script 2 — Spiritual warfare (YouTube short)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "active",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-3": {
       "id": "A3-3",
-      "title": "Record first video",
+      "title": "Script 3 — Christian faith & Gen Z (YouTube short)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "active",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-4": {
       "id": "A3-4",
-      "title": "TikTok content strategy (short clips)",
+      "title": "Set up KOE YouTube channel branding",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -1023,6 +1028,26 @@
       "status": "pending",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-5": {
+      "id": "A3-5",
+      "title": "TikTok content strategy (short clips from scripts)",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-6": {
+      "id": "A3-6",
+      "title": "Record & edit first video",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-02-01T00:00:00+08:00"
     }
   },
   "recentWins": [],
@@ -1042,7 +1067,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-03-31T06:43:21.070437+08:00",
+      "lastActive": "2026-03-31T06:43:52.320163+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1177,14 +1202,16 @@
       "name": "KOE",
       "description": "Content creation",
       "category": "A",
-      "status": "pending",
+      "status": "active",
       "tasks": [
         "A3-1",
         "A3-2",
         "A3-3",
-        "A3-4"
+        "A3-4",
+        "A3-5",
+        "A3-6"
       ],
-      "totalTasks": 4,
+      "totalTasks": 6,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1597,25 +1624,25 @@
     },
     {
       "id": "A3-1",
-      "title": "Plan first YouTube video topic & script",
+      "title": "Script 1 — Right vs Left politics (YouTube short)",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-2",
-      "title": "Set up KOE YouTube channel branding",
+      "title": "Script 2 — Spiritual warfare (YouTube short)",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-3",
-      "title": "Record first video",
+      "title": "Script 3 — Christian faith & Gen Z (YouTube short)",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-4",
-      "title": "TikTok content strategy (short clips)",
+      "title": "Set up KOE YouTube channel branding",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
@@ -1640,6 +1667,18 @@
     {
       "id": "A4-4",
       "title": "Set up Twitch/YouTube streaming channel",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A3-5",
+      "title": "TikTok content strategy (short clips from scripts)",
+      "reason": "urgent",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A3-6",
+      "title": "Record & edit first video",
       "reason": "urgent",
       "owner": "CHAD_YI"
     }
@@ -1683,8 +1722,8 @@
   ],
   "dailyBriefing": {
     "date": "2026-03-31",
-    "summary": "⚠️ 5 tasks blocked. 19 urgent items need attention.",
-    "focus": 19,
+    "summary": "⚠️ 5 tasks blocked. 21 urgent items need attention.",
+    "focus": 21,
     "blockers": 5,
     "completedToday": 0,
     "completedThisWeek": 0,
@@ -1727,7 +1766,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-03-31T06:43:21.070437+08:00"
+        "lastActive": "2026-03-31T06:43:52.320163+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1764,9 +1803,9 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-03-31T06:43:21.067328+08:00",
+    "lastRun": "2026-03-31T06:43:52.317042+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 84,
+    "taskCount": 86,
     "findings": []
   }
 }
