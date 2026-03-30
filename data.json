@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-03-30T15:14:18.556227+08:00",
+  "lastUpdated": "2026-03-30T15:14:50.686163+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 76,
@@ -11,7 +11,7 @@
     "critical": 0,
     "urgent": 11,
     "active": 0,
-    "blocked": 6,
+    "blocked": 5,
     "review": 0,
     "backlog": 51
   },
@@ -116,7 +116,6 @@
     ],
     "blocked": [
       "A1-10",
-      "A2-1",
       "B3-2",
       "B3-3",
       "B6-4",
@@ -163,8 +162,9 @@
       "project": "A2",
       "category": "A",
       "agent": "Escritor",
-      "status": "blocked",
+      "status": "paused",
       "priority": "high",
+      "pauseReason": "Waiting for Escritor build",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A5-1": {
@@ -943,7 +943,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-03-30T15:14:18.558897+08:00",
+      "lastActive": "2026-03-30T15:14:50.691598+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1066,7 +1066,7 @@
       "name": "RE:UNITE",
       "description": "Novel writing project",
       "category": "A",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "A2-1"
       ],
@@ -1441,7 +1441,7 @@
     {
       "id": "A2-1",
       "title": "Chapter 13 writing",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "Escritor"
     },
     {
@@ -1496,13 +1496,6 @@
       "blockedSince": "2026-02-26T00:00:00+08:00"
     },
     {
-      "taskId": "A2-1",
-      "title": "Chapter 13 writing",
-      "agent": "Escritor",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
       "taskId": "B3-2",
       "title": "SEO optimization",
       "agent": "Forger",
@@ -1533,9 +1526,9 @@
   ],
   "dailyBriefing": {
     "date": "2026-03-30",
-    "summary": "⚠️ 6 tasks blocked. 11 urgent items need attention.",
+    "summary": "⚠️ 5 tasks blocked. 11 urgent items need attention.",
     "focus": 11,
-    "blockers": 6,
+    "blockers": 5,
     "completedToday": 0,
     "completedThisWeek": 0,
     "topPriorities": [
@@ -1561,7 +1554,7 @@
         "id": "A2-1",
         "title": "Chapter 13 writing",
         "priority": "high",
-        "status": "blocked"
+        "status": "paused"
       },
       {
         "id": "A5-4",
@@ -1577,7 +1570,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-03-30T15:14:18.558897+08:00"
+        "lastActive": "2026-03-30T15:14:50.691598+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1614,7 +1607,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-03-30T15:14:18.556227+08:00",
+    "lastRun": "2026-03-30T15:14:50.686163+08:00",
     "dataIntegrity": "ok",
     "taskCount": 76,
     "findings": []
