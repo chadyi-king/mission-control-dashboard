@@ -889,19 +889,6 @@
 
         .stat-chip-accent { border-color: rgba(220, 20, 60, 0.4); box-shadow: 0 0 15px rgba(220, 20, 60, 0.1); }
 
-        .stat-label {
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .stat-value {
-            font-family: var(--display-font);
-            font-size: 22px;
-            color: var(--text-primary);
-        }
-
         /* ─── Stats Bar ── home section ─────────────────────────────── */
         .stats-bar {
             display: grid;
@@ -4155,8 +4142,8 @@
 
         function formatAgentDisplay(agent) {
             const id = normalizeAgentId(agent);
-            const labels = {had Yi
-                'chad-yi': 'Caleb',
+            const labels = {
+                'chad-yi': 'Chad Yi',
                 'helios': 'Helios',
                 'cerebronn': 'Cerebronn',
                 'quanta': 'Quanta',
@@ -6044,7 +6031,7 @@ console.log('[Helios WS] connected:', wsUrl);
 
             // 2. AGENT ACTIVITY — what agents have been working on recently
             const agentActivity = Object.entries(agents)
-                .filter(([id, a]) => id !== 'chad-yi' && (a.currentTask || a.status === 'active' || a.status === 'working'))
+                .filter(([id, a]) => id !== 'chad-yi' && id.toLowerCase() !== 'tele' && (a.currentTask || a.status === 'active' || a.status === 'working'))
                 .map(([id, a]) => {
                     const statusEmoji = a.status === 'active' || a.status === 'working' ? '🟢' : a.status === 'stale' ? '🟡' : '⚫';
                     const task = a.currentTask ? String(a.currentTask).slice(0, 45) : 'idle';
@@ -6828,9 +6815,9 @@ console.log('[Helios WS] connected:', wsUrl);
                 return `${Math.floor(hrs / 24)}d ago`;
             }
 
-            // Sort agents: chad-yi, cerebron, helios first; rest alphabetically
+            // Sort agents: chad-yi, cerebron, helios first; rest alphabetically — exclude tele
             const _priorityOrder = ['chad-yi', 'cerebronn', 'helios'];
-            const agentKeys = Object.keys(agents).sort((a, b) => {
+            const agentKeys = Object.keys(agents).filter(k => k.toLowerCase() !== 'tele').sort((a, b) => {
                 const ai = _priorityOrder.indexOf(a.toLowerCase());
                 const bi = _priorityOrder.indexOf(b.toLowerCase());
                 if (ai !== -1 && bi !== -1) return ai - bi;
