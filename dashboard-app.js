@@ -80,14 +80,16 @@
 
                 if (isExpanded) {
                     const statusCls = meta.tone === 'online' ? 'online' : meta.tone === 'blocked' ? 'blocked' : 'offline';
+                    const taskDisplay = task ? escHtml(task.replace(/^TASK-|\.md$/gi, '').slice(0, 38)) : '';
                     return `<div class="sidebar-agent-dot" style="background:${c.bg};border:1px solid ${c.bd};">
-                        <div style="display:flex;align-items:center;gap:6px;width:100%;">
-                            <span style="color:${c.col};font-size:10px;font-weight:700;min-width:18px;">${c.init}</span>
-                            <span style="color:rgba(220,220,240,0.9);font-size:11px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(formatAgentDisplay(id))}</span>
+                        <div class="sidebar-agent-row1">
+                            <span class="agent-init" style="color:${c.col};">${c.init}</span>
+                            <span class="agent-name">${escHtml(formatAgentDisplay(id))}</span>
                             <span class="dot-status ${statusCls}"></span>
                         </div>
-                        <div style="font-size:9px;color:rgba(140,140,170,0.7);line-height:1.3;padding-left:24px;">
-                            ${meta.label.toUpperCase()} · ${lastActive}${task ? '<br>' + escHtml(task) : ''}
+                        <div class="sidebar-agent-row2">
+                            <span class="sidebar-agent-status-line">${escHtml(meta.label)} · ${escHtml(lastActive)}</span>
+                            ${taskDisplay ? `<span class="sidebar-agent-task-line">${taskDisplay}</span>` : ''}
                         </div>
                     </div>`;
                 }
