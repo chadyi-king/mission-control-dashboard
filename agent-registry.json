@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "agents": {
+    "chad-yi": {
+      "displayName": "Chad Yi",
+      "initials": "CY",
+      "colors": {
+        "bg": "rgba(255,140,0,0.18)",
+        "border": "rgba(255,140,0,0.4)",
+        "text": "#ff8c00"
+      },
+      "role": "Lead / Commander",
+      "type": "local",
+      "priority": 1,
+      "fleet": true,
+      "excluded": false,
+      "requirements": "Needs OpenClaw + Telegram to count as truly active; dashboard can only verify local presence."
+    },
+    "helios": {
+      "displayName": "Helios",
+      "initials": "HE",
+      "colors": {
+        "bg": "rgba(220,38,38,0.18)",
+        "border": "rgba(220,38,38,0.4)",
+        "text": "#e04040"
+      },
+      "role": "Operations / Sync",
+      "type": "local",
+      "priority": 2,
+      "fleet": true,
+      "excluded": false,
+      "requirements": "Needs audit/update/reporting activity to count as active; dashboard checks latest sync."
+    },
+    "cerebronn": {
+      "displayName": "Cerebronn",
+      "initials": "CB",
+      "colors": {
+        "bg": "rgba(100,100,230,0.18)",
+        "border": "rgba(100,100,230,0.35)",
+        "text": "#9090ee"
+      },
+      "role": "Strategy / Planning",
+      "type": "local",
+      "priority": 3,
+      "fleet": true,
+      "excluded": false,
+      "requirements": "Needs live planning/infrastructure use to count as active; dashboard only sees recent heartbeat."
+    },
+    "quanta": {
+      "displayName": "Quanta",
+      "initials": "QT",
+      "colors": {
+        "bg": "rgba(64,145,108,0.18)",
+        "border": "rgba(64,145,108,0.35)",
+        "text": "#77d8a8"
+      },
+      "role": "Trading / Analytics",
+      "type": "local",
+      "priority": 4,
+      "fleet": true,
+      "excluded": false,
+      "requirements": "Needs Telegram-monitoring signal to count as active; dashboard only sees recent heartbeat."
+    },
+    "escritor": {
+      "displayName": "Escritor",
+      "initials": "ES",
+      "colors": {
+        "bg": "rgba(180,120,60,0.18)",
+        "border": "rgba(180,120,60,0.35)",
+        "text": "#d4a040"
+      },
+      "role": "Writing / Content",
+      "type": "local",
+      "priority": 5,
+      "fleet": true,
+      "excluded": false
+    },
+    "forger": {
+      "displayName": "Forger",
+      "initials": "FG",
+      "colors": {
+        "bg": "rgba(160,60,180,0.18)",
+        "border": "rgba(160,60,180,0.35)",
+        "text": "#c070d0"
+      },
+      "role": "Code / Build",
+      "type": "local",
+      "priority": 6,
+      "fleet": true,
+      "excluded": false
+    },
+    "autour": {
+      "displayName": "Autour",
+      "initials": "AU",
+      "colors": {
+        "bg": "rgba(200,80,80,0.18)",
+        "border": "rgba(200,80,80,0.35)",
+        "text": "#e06060"
+      },
+      "role": "Media / KOE",
+      "type": "local",
+      "priority": 7,
+      "fleet": true,
+      "excluded": false
+    },
+    "mensamusa": {
+      "displayName": "Mensamusa",
+      "initials": "MM",
+      "colors": {
+        "bg": "rgba(120,120,120,0.18)",
+        "border": "rgba(120,120,120,0.35)",
+        "text": "#aaa"
+      },
+      "role": "Research / Knowledge",
+      "type": "local",
+      "priority": 8,
+      "fleet": true,
+      "excluded": false
+    },
+    "tele": {
+      "displayName": "Tele",
+      "initials": "TL",
+      "colors": {
+        "bg": "rgba(80,80,80,0.18)",
+        "border": "rgba(80,80,80,0.35)",
+        "text": "#666"
+      },
+      "role": "Telegram Bridge",
+      "type": "local",
+      "priority": 99,
+      "fleet": false,
+      "excluded": true
+    }
+  },
+  "healthPriority": ["chad-yi", "cerebronn", "helios"],
+  "meta": {
+    "description": "Central agent registry — single source of truth for all agent display config.",
+    "lastUpdated": "2025-07-24"
+  }
+}
