@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-01T23:59:45.557532+08:00",
+  "lastUpdated": "2026-04-02T00:00:15.673428+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 86,
@@ -1067,7 +1067,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-01T23:59:45.562812+08:00",
+      "lastActive": "2026-04-02T00:00:15.676668+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1721,7 +1721,7 @@
     }
   ],
   "dailyBriefing": {
-    "date": "2026-04-01",
+    "date": "2026-04-02",
     "summary": "⚠️ 5 tasks blocked. 21 urgent items need attention.",
     "focus": 21,
     "blockers": 5,
@@ -1766,7 +1766,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-01T23:59:45.562812+08:00"
+        "lastActive": "2026-04-02T00:00:15.676668+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1798,12 +1798,12 @@
         "id": "A1-10",
         "title": "Prepare wedding guest list",
         "deadline": "2026-03-28",
-        "daysOverdue": 4
+        "daysOverdue": 5
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-04-01T23:59:45.557532+08:00",
+    "lastRun": "2026-04-02T00:00:15.673428+08:00",
     "dataIntegrity": "ok",
     "taskCount": 86,
     "findings": []
