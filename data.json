@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-06T17:48:06.318089+00:00",
-  "updatedBy": "helios-auto-fix",
+  "lastUpdated": "2026-04-07T01:48:40.467726+08:00",
+  "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 86,
     "tasksLeft": 67,
@@ -951,7 +951,7 @@
     },
     "A3-1": {
       "id": "A3-1",
-      "title": "Script 1 \u2014 Right vs Left politics (YouTube short)",
+      "title": "Script 1 — Right vs Left politics (YouTube short)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -961,7 +961,7 @@
     },
     "A3-2": {
       "id": "A3-2",
-      "title": "Script 2 \u2014 Spiritual warfare (YouTube short)",
+      "title": "Script 2 — Spiritual warfare (YouTube short)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -971,7 +971,7 @@
     },
     "A3-3": {
       "id": "A3-3",
-      "title": "Script 3 \u2014 Christian faith & Gen Z (YouTube short)",
+      "title": "Script 3 — Christian faith & Gen Z (YouTube short)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -1054,7 +1054,7 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
-      "role": "The Face \u2014 Primary interface",
+      "role": "The Face — Primary interface",
       "platform": "OpenClaw",
       "status": "stale",
       "currentTask": "Task coordination & reporting",
@@ -1063,34 +1063,34 @@
     },
     "helios": {
       "name": "Helios",
-      "role": "The Spine \u2014 COO, auditor, reporter",
+      "role": "The Spine — COO, auditor, reporter",
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-07T01:48:05.168892+08:00",
+      "lastActive": "2026-04-07T01:48:40.470066+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
-      "role": "Trading \u2014 XAUUSD execution on OANDA",
+      "role": "Trading — XAUUSD execution on OANDA",
       "platform": "Telegram monitor",
       "status": "active",
-      "currentTask": "Watching CallistoFx \u2014 live XAUUSD execution",
-      "lastActive": "2026-04-07T01:47:32.819915+08:00",
+      "currentTask": "Watching CallistoFx — live XAUUSD execution",
+      "lastActive": "2026-04-07T01:48:35.438713+08:00",
       "capabilities": []
     },
     "cerebronn": {
       "name": "Cerebronn",
-      "role": "The Brain \u2014 Persistent memory & decisions",
+      "role": "The Brain — Persistent memory & decisions",
       "platform": "VS Code / Copilot",
       "status": "active",
-      "currentTask": "Memory cycle \u2014 10 files, 0 decisions",
+      "currentTask": "Memory cycle — 10 files, 0 decisions",
       "lastActive": "2026-04-07T01:47:33.162001+08:00",
       "capabilities": []
     },
     "tele": {
       "name": "Tele",
-      "role": "The Face \u2014 Telegram task management interface",
+      "role": "The Face — Telegram task management interface",
       "platform": "Telegram Bot (@chad_yi_bot)",
       "status": "active",
       "currentTask": "",
@@ -1099,7 +1099,7 @@
     },
     "escritor": {
       "name": "Escritor",
-      "role": "Story Agent \u2014 RE:UNITE novel writing",
+      "role": "Story Agent — RE:UNITE novel writing",
       "platform": "Systemd service",
       "status": "offline",
       "currentTask": "",
@@ -1108,16 +1108,16 @@
     },
     "forger": {
       "name": "Forger",
-      "role": "Web Architect \u2014 websites, SEO, full-stack",
+      "role": "Web Architect — websites, SEO, full-stack",
       "platform": "Systemd service",
-      "status": "awaiting_build",
+      "status": "active",
       "currentTask": "Processing TASK-HERO-VISUAL-NOW.md",
-      "lastActive": "2026-03-03T23:36:40Z",
+      "lastActive": "2026-02-15T20:12:06.296568",
       "capabilities": []
     },
     "autour": {
       "name": "Autour",
-      "role": "Script Agent \u2014 KOE content & screenplays",
+      "role": "Script Agent — KOE content & screenplays",
       "platform": "Systemd service",
       "status": "offline",
       "currentTask": "",
@@ -1624,19 +1624,19 @@
     },
     {
       "id": "A3-1",
-      "title": "Script 1 \u2014 Right vs Left politics (YouTube short)",
+      "title": "Script 1 — Right vs Left politics (YouTube short)",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-2",
-      "title": "Script 2 \u2014 Spiritual warfare (YouTube short)",
+      "title": "Script 2 — Spiritual warfare (YouTube short)",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-3",
-      "title": "Script 3 \u2014 Christian faith & Gen Z (YouTube short)",
+      "title": "Script 3 — Christian faith & Gen Z (YouTube short)",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
@@ -1688,41 +1688,41 @@
       "taskId": "A1-10",
       "title": "Prepare wedding guest list",
       "agent": "CHAD_YI",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-26T00:00:00+08:00"
     },
     {
       "taskId": "B3-2",
       "title": "SEO optimization",
       "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     },
     {
       "taskId": "B3-3",
       "title": "Google Ads setup",
       "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     },
     {
       "taskId": "B6-4",
       "title": "SEO setup",
       "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     },
     {
       "taskId": "B6-5",
       "title": "Google Ads management",
       "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     }
   ],
   "dailyBriefing": {
     "date": "2026-04-07",
-    "summary": "\u26a0\ufe0f 5 tasks blocked. 21 urgent items need attention.",
+    "summary": "⚠️ 5 tasks blocked. 21 urgent items need attention.",
     "focus": 21,
     "blockers": 5,
     "completedToday": 0,
@@ -1766,11 +1766,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-07T01:48:05.168892+08:00"
+        "lastActive": "2026-04-07T01:48:40.470066+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-07T01:47:32.819915+08:00"
+        "lastActive": "2026-04-07T01:48:35.438713+08:00"
       },
       "cerebronn": {
         "status": "active",
@@ -1803,7 +1803,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-07T01:48:05.166082+08:00",
+    "lastRun": "2026-04-07T01:48:40.467726+08:00",
     "dataIntegrity": "ok",
     "taskCount": 86,
     "findings": []
