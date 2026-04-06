@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-06T20:24:34.360171+00:00",
-  "updatedBy": "helios-auto-fix",
+  "lastUpdated": "2026-04-07T04:25:08.454566+08:00",
+  "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 56,
     "tasksLeft": 37,
@@ -9,11 +9,11 @@
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
-    "urgent": 22,
-    "active": 4,
-    "blocked": 5,
+    "urgent": 18,
+    "active": 0,
+    "blocked": 17,
     "review": 0,
-    "backlog": 26
+    "backlog": 18
   },
   "completions": {
     "today": [],
@@ -46,30 +46,16 @@
       "A1-1",
       "A1-4"
     ],
-    "blocked": [
-      "A1-10",
-      "B3-2",
-      "B6-5",
-      "C1-1",
-      "C2-2"
-    ],
-    "active": [
-      "C3-1",
-      "A3-1",
-      "A3-2",
-      "A3-3"
-    ],
-    "review": [],
-    "paused": [
-      "A2-1",
-      "B10-1"
-    ],
-    "urgent": [
+    "needs_your_input": [
       "A1-8",
       "A1-9",
+      "A1-10",
       "A5-4",
       "A7-1",
       "A7-3",
+      "A3-1",
+      "A3-2",
+      "A3-3",
       "A3-4",
       "A4-1",
       "A4-2",
@@ -79,20 +65,32 @@
       "A3-6",
       "A5-5"
     ],
-    "pending": [
+    "needs_your_review": [],
+    "agent_working": [],
+    "scheduled": [],
+    "todo": [
       "B1-1",
       "B2-1",
+      "B3-2",
       "B4-1",
       "B5-1",
+      "B6-5",
       "B7-1",
       "B8-1",
       "B9-1",
+      "C1-1",
       "C1-2",
       "C2-1",
+      "C2-2",
+      "C3-1",
       "C3-2",
       "C3-3",
       "C3-4",
       "C3-5"
+    ],
+    "paused": [
+      "A2-1",
+      "B10-1"
     ]
   },
   "tasks": {
@@ -102,7 +100,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "blocked",
       "priority": "high",
       "deadline": "2026-04-20",
       "createdAt": "2026-03-21T00:00:00+08:00"
@@ -113,7 +111,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "blocked",
       "priority": "high",
       "deadline": "2026-12-31",
       "createdAt": "2026-12-01T00:00:00+08:00"
@@ -131,7 +129,7 @@
     },
     "A2-1": {
       "id": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "project": "A2",
       "category": "A",
       "agent": "Escritor",
@@ -168,7 +166,7 @@
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -178,7 +176,7 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "deadline": "2026-06-01",
       "createdAt": "2026-05-02T00:00:00+08:00"
@@ -197,32 +195,32 @@
     },
     "A7-3": {
       "id": "A7-3",
-      "title": "Send invitations \u2014 Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
+      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "deadline": "2026-04-30",
       "createdAt": "2026-08-02T00:00:00+08:00"
     },
     "B1-1": {
       "id": "B1-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B1",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B2-1": {
       "id": "B2-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B2",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -240,31 +238,31 @@
     },
     "B3-2": {
       "id": "B3-2",
-      "title": "SEO + Google Ads setup \u2014 \u2460 SEO optimization (3-step process) \u2461 Google Ads (landing pages + checklist) \u2462 Social media \u2463 Client management",
+      "title": "SEO + Google Ads setup — ① SEO optimization (3-step process) ② Google Ads (landing pages + checklist) ③ Social media ④ Client management",
       "project": "B3",
       "category": "B",
       "agent": "Forger",
-      "status": "blocked",
-      "priority": "high",
+      "status": "pending",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B4-1": {
       "id": "B4-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B4",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B5-1": {
       "id": "B5-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B5",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -305,7 +303,7 @@
     },
     "B6-4": {
       "id": "B6-4",
-      "title": "SEO setup \u2014 Basic complete (meta tags, H1s). Content ongoing",
+      "title": "SEO setup — Basic complete (meta tags, H1s). Content ongoing",
       "project": "B6",
       "category": "B",
       "agent": "Forger",
@@ -316,12 +314,12 @@
     },
     "B6-5": {
       "id": "B6-5",
-      "title": "Google Ads + finish marketing \u2014 \u2460 Google Ads (2 landing pages + checklist) \u2461 Social media \u2462 Client management",
+      "title": "Google Ads + finish marketing — ① Google Ads (2 landing pages + checklist) ② Social media ③ Client management",
       "project": "B6",
       "category": "B",
       "agent": "Forger",
-      "status": "blocked",
-      "priority": "high",
+      "status": "pending",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B6-6": {
@@ -362,37 +360,37 @@
     },
     "B7-1": {
       "id": "B7-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B7",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B8-1": {
       "id": "B8-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B8",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B9-1": {
       "id": "B9-1",
-      "title": "Full Shopify + marketing setup \u2014 \u2460 Shopify website (not standard site) \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full Shopify + marketing setup — ① Shopify website (not standard site) ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B9",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B10-1": {
       "id": "B10-1",
-      "title": "Corporate data tracking setup \u2014 Back burner, revisit end of year",
+      "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "project": "B10",
       "category": "B",
       "agent": "Forger",
@@ -498,12 +496,12 @@
     },
     "C1-1": {
       "id": "C1-1",
-      "title": "Study for RES exam \u2014 Upload all lectures, PowerPoints, PDFs, Q&A to Cowork for study system [2026-06-01]",
+      "title": "Study for RES exam — Upload all lectures, PowerPoints, PDFs, Q&A to Cowork for study system [2026-06-01]",
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "blocked",
-      "priority": "high",
+      "status": "pending",
+      "priority": "low",
       "createdAt": "2026-05-02T00:00:00+08:00"
     },
     "C1-2": {
@@ -512,7 +510,7 @@
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "deadline": "2026-05-15",
       "createdAt": "2026-04-15T00:00:00+08:00"
@@ -523,27 +521,27 @@
       "project": "C2",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "C2-2": {
       "id": "C2-2",
-      "title": "Research remote sales companies \u2014 Look for high-commission roles (base $60k negotiable to $35-40k)",
+      "title": "Research remote sales companies — Look for high-commission roles (base $60k negotiable to $35-40k)",
       "project": "C2",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "blocked",
-      "priority": "high",
+      "status": "pending",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "C3-1": {
       "id": "C3-1",
-      "title": "Research Gather Town \u2014 2D virtual workspace platform. Custom map creation possible with object library + interactive elements. AI can DESIGN concepts but building requires manual work or API. Good for team building activities",
+      "title": "Research Gather Town — 2D virtual workspace platform. Custom map creation possible with object library + interactive elements. AI can DESIGN concepts but building requires manual work or API. Good for team building activities",
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "active",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-03-14T13:59:09.453494+08:00"
     },
@@ -553,7 +551,7 @@
       "project": "C3",
       "category": "C",
       "agent": "Pixel",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -563,7 +561,7 @@
       "project": "C3",
       "category": "C",
       "agent": "Pixel",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -573,7 +571,7 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -583,37 +581,37 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "pending",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-1": {
       "id": "A3-1",
-      "title": "Script 1 \u2014 Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare \u2014 principalities not flesh and blood)",
+      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "active",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-2": {
       "id": "A3-2",
-      "title": "Script 2 \u2014 Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "active",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-3": {
       "id": "A3-3",
-      "title": "Script 3 \u2014 Christian faith & Gen Z + continuation of spiritual warfare series",
+      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "active",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -623,7 +621,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -633,27 +631,27 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A4-2": {
       "id": "A4-2",
-      "title": "Interview streaming management companies \u2014 must handle clipping, social media, content strategy",
+      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A4-3": {
       "id": "A4-3",
-      "title": "Define content strategy \u2014 what to stream, how to grow audience",
+      "title": "Define content strategy — what to stream, how to grow audience",
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -663,7 +661,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -673,7 +671,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -683,17 +681,17 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A5-5": {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "blocked",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     }
@@ -702,43 +700,43 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
-      "role": "The Face \u2014 Primary interface",
+      "role": "The Face — Primary interface",
       "platform": "OpenClaw",
-      "status": "active",
+      "status": "stale",
       "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-04-07T03:10:28.733607+08:00",
+      "lastActive": "2026-04-07T03:30:00+08:00",
       "capabilities": []
     },
     "helios": {
       "name": "Helios",
-      "role": "The Spine \u2014 COO, auditor, reporter",
+      "role": "The Spine — COO, auditor, reporter",
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-07T04:24:33.206172+08:00",
+      "lastActive": "2026-04-07T04:25:08.456116+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
-      "role": "Trading \u2014 XAUUSD execution on OANDA",
+      "role": "Trading — XAUUSD execution on OANDA",
       "platform": "Telegram monitor",
       "status": "active",
-      "currentTask": "Watching CallistoFx \u2014 live XAUUSD execution",
-      "lastActive": "2026-04-07T04:23:38.056190+08:00",
+      "currentTask": "Watching CallistoFx — live XAUUSD execution",
+      "lastActive": "2026-04-07T04:24:41.678204+08:00",
       "capabilities": []
     },
     "cerebronn": {
       "name": "Cerebronn",
-      "role": "The Brain \u2014 Persistent memory & decisions",
+      "role": "The Brain — Persistent memory & decisions",
       "platform": "VS Code / Copilot",
       "status": "active",
-      "currentTask": "Memory cycle \u2014 9 files, 0 decisions",
+      "currentTask": "Memory cycle — 9 files, 0 decisions",
       "lastActive": "2026-04-07T04:22:30.642877+08:00",
       "capabilities": []
     },
     "tele": {
       "name": "Tele",
-      "role": "The Face \u2014 Telegram task management interface",
+      "role": "The Face — Telegram task management interface",
       "platform": "Telegram Bot (@chad_yi_bot)",
       "status": "active",
       "currentTask": "",
@@ -747,7 +745,7 @@
     },
     "escritor": {
       "name": "Escritor",
-      "role": "Story Agent \u2014 RE:UNITE novel writing",
+      "role": "Story Agent — RE:UNITE novel writing",
       "platform": "Systemd service",
       "status": "offline",
       "currentTask": "",
@@ -756,16 +754,16 @@
     },
     "forger": {
       "name": "Forger",
-      "role": "Web Architect \u2014 websites, SEO, full-stack",
+      "role": "Web Architect — websites, SEO, full-stack",
       "platform": "Systemd service",
-      "status": "awaiting_build",
+      "status": "active",
       "currentTask": "Processing TASK-HERO-VISUAL-NOW.md",
-      "lastActive": "2026-03-03T23:36:40Z",
+      "lastActive": "2026-02-15T20:12:06.296568",
       "capabilities": []
     },
     "autour": {
       "name": "Autour",
-      "role": "Script Agent \u2014 KOE content & screenplays",
+      "role": "Script Agent — KOE content & screenplays",
       "platform": "Systemd service",
       "status": "offline",
       "currentTask": "",
@@ -850,7 +848,7 @@
       "name": "KOE",
       "description": "Content creation",
       "category": "A",
-      "status": "active",
+      "status": "blocked",
       "tasks": [
         "A3-1",
         "A3-2",
@@ -867,7 +865,7 @@
       "name": "Streaming",
       "description": "VTuber streaming setup",
       "category": "A",
-      "status": "pending",
+      "status": "blocked",
       "tasks": [
         "A4-1",
         "A4-2",
@@ -882,7 +880,7 @@
       "name": "Trading",
       "description": "Quanta trading bot & strategy",
       "category": "A",
-      "status": "pending",
+      "status": "blocked",
       "tasks": [
         "A5-1",
         "A5-3",
@@ -909,7 +907,7 @@
       "name": "Wedding",
       "description": "Wedding planning",
       "category": "A",
-      "status": "pending",
+      "status": "blocked",
       "tasks": [
         "A7-1",
         "A7-2",
@@ -947,7 +945,7 @@
       "name": "Team Elevate",
       "description": "Events company",
       "category": "B",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "B3-1",
         "B3-2"
@@ -984,7 +982,7 @@
       "name": "Elluminate",
       "description": "Education & events",
       "category": "B",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "B6-1",
         "B6-2",
@@ -1052,7 +1050,7 @@
       "name": "Real Estate",
       "description": "RES exam June 2026",
       "category": "C",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "C1-1",
         "C1-2"
@@ -1065,7 +1063,7 @@
       "name": "Side Sales",
       "description": "Portfolio & client outreach",
       "category": "C",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "C2-1",
         "C2-2"
@@ -1078,7 +1076,7 @@
       "name": "Vibe Code Games",
       "description": "Games & interactive experiences",
       "category": "C",
-      "status": "active",
+      "status": "pending",
       "tasks": [
         "C3-1",
         "C3-2",
@@ -1177,13 +1175,13 @@
     {
       "id": "A1-8",
       "title": "Create habit tracker in dashboard",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A1-9",
       "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
@@ -1194,167 +1192,227 @@
     },
     {
       "id": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "reason": "paused",
       "owner": "Escritor"
     },
     {
       "id": "A5-4",
       "title": "Add AXI/MT5 for QUANTA with same trading logic",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A7-1",
       "title": "Finalize wedding theme",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A7-3",
-      "title": "Send invitations \u2014 Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
-      "reason": "urgent",
+      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
-      "id": "B3-2",
-      "title": "SEO + Google Ads setup \u2014 \u2460 SEO optimization (3-step process) \u2461 Google Ads (landing pages + checklist) \u2462 Social media \u2463 Client management",
-      "reason": "blocked",
-      "owner": "Forger"
-    },
-    {
-      "id": "B6-5",
-      "title": "Google Ads + finish marketing \u2014 \u2460 Google Ads (2 landing pages + checklist) \u2461 Social media \u2462 Client management",
-      "reason": "blocked",
-      "owner": "Forger"
-    },
-    {
       "id": "B10-1",
-      "title": "Corporate data tracking setup \u2014 Back burner, revisit end of year",
+      "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "reason": "paused",
       "owner": "Forger"
     },
     {
-      "id": "C1-1",
-      "title": "Study for RES exam \u2014 Upload all lectures, PowerPoints, PDFs, Q&A to Cowork for study system [2026-06-01]",
-      "reason": "blocked",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "C2-2",
-      "title": "Research remote sales companies \u2014 Look for high-commission roles (base $60k negotiable to $35-40k)",
-      "reason": "blocked",
-      "owner": "CHAD_YI"
-    },
-    {
       "id": "A3-1",
-      "title": "Script 1 \u2014 Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare \u2014 principalities not flesh and blood)",
-      "reason": "urgent",
+      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-2",
-      "title": "Script 2 \u2014 Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
-      "reason": "urgent",
+      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-3",
-      "title": "Script 3 \u2014 Christian faith & Gen Z + continuation of spiritual warfare series",
-      "reason": "urgent",
+      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-4",
       "title": "Set up KOE YouTube channel branding",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-1",
       "title": "Research streaming platforms (Kick vs YouTube vs Twitch) and find management company",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-2",
-      "title": "Interview streaming management companies \u2014 must handle clipping, social media, content strategy",
-      "reason": "urgent",
+      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-3",
-      "title": "Define content strategy \u2014 what to stream, how to grow audience",
-      "reason": "urgent",
+      "title": "Define content strategy — what to stream, how to grow audience",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-4",
       "title": "Set up streaming channel and management workflow",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-5",
       "title": "TikTok content strategy (short clips from scripts)",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-6",
       "title": "Record & edit first video",
-      "reason": "urgent",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     },
     {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
-      "reason": "urgent",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
+      "reason": "blocked",
       "owner": "CHAD_YI"
     }
   ],
   "inputsNeeded": [
     {
+      "taskId": "A1-8",
+      "title": "Create habit tracker in dashboard",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-03-21T00:00:00+08:00"
+    },
+    {
+      "taskId": "A1-9",
+      "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-12-01T00:00:00+08:00"
+    },
+    {
       "taskId": "A1-10",
       "title": "Prepare wedding guest list",
       "agent": "CHAD_YI",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-26T00:00:00+08:00"
     },
     {
-      "taskId": "B3-2",
-      "title": "SEO + Google Ads setup \u2014 \u2460 SEO optimization (3-step process) \u2461 Google Ads (landing pages + checklist) \u2462 Social media \u2463 Client management",
-      "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "B6-5",
-      "title": "Google Ads + finish marketing \u2014 \u2460 Google Ads (2 landing pages + checklist) \u2461 Social media \u2462 Client management",
-      "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "C1-1",
-      "title": "Study for RES exam \u2014 Upload all lectures, PowerPoints, PDFs, Q&A to Cowork for study system [2026-06-01]",
+      "taskId": "A5-4",
+      "title": "Add AXI/MT5 for QUANTA with same trading logic",
       "agent": "CHAD_YI",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A7-1",
+      "title": "Finalize wedding theme",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-05-02T00:00:00+08:00"
     },
     {
-      "taskId": "C2-2",
-      "title": "Research remote sales companies \u2014 Look for high-commission roles (base $60k negotiable to $35-40k)",
+      "taskId": "A7-3",
+      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
       "agent": "CHAD_YI",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-08-02T00:00:00+08:00"
+    },
+    {
+      "taskId": "A3-1",
+      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A3-2",
+      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A3-3",
+      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A3-4",
+      "title": "Set up KOE YouTube channel branding",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A4-1",
+      "title": "Research streaming platforms (Kick vs YouTube vs Twitch) and find management company",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A4-2",
+      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A4-3",
+      "title": "Define content strategy — what to stream, how to grow audience",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A4-4",
+      "title": "Set up streaming channel and management workflow",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A3-5",
+      "title": "TikTok content strategy (short clips from scripts)",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A3-6",
+      "title": "Record & edit first video",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A5-5",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     }
   ],
   "dailyBriefing": {
     "date": "2026-04-07",
-    "summary": "\u26a0\ufe0f 5 tasks blocked. 22 urgent items need attention.",
-    "focus": 22,
-    "blockers": 5,
+    "summary": "⚠️ 17 tasks blocked. 18 urgent items need attention.",
+    "focus": 18,
+    "blockers": 17,
     "completedToday": 0,
     "completedThisWeek": 0,
     "topPriorities": [
@@ -1362,13 +1420,13 @@
         "id": "A1-8",
         "title": "Create habit tracker in dashboard",
         "priority": "high",
-        "status": "backlog"
+        "status": "blocked"
       },
       {
         "id": "A1-9",
         "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
         "priority": "high",
-        "status": "backlog"
+        "status": "blocked"
       },
       {
         "id": "A1-10",
@@ -1378,7 +1436,7 @@
       },
       {
         "id": "A2-1",
-        "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+        "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
         "priority": "high",
         "status": "paused"
       },
@@ -1386,7 +1444,7 @@
         "id": "A5-4",
         "title": "Add AXI/MT5 for QUANTA with same trading logic",
         "priority": "high",
-        "status": "backlog"
+        "status": "blocked"
       }
     ],
     "agentHealth": {
@@ -1396,11 +1454,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-07T04:24:33.206172+08:00"
+        "lastActive": "2026-04-07T04:25:08.456116+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-07T04:23:38.056190+08:00"
+        "lastActive": "2026-04-07T04:24:41.678204+08:00"
       },
       "cerebronn": {
         "status": "active",
@@ -1426,7 +1484,7 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-04-07T04:24:33.203213+08:00",
+    "lastRun": "2026-04-07T04:25:08.454566+08:00",
     "dataIntegrity": "ok",
     "taskCount": 56,
     "findings": []
