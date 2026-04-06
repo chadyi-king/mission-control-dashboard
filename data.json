@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-07T00:20:39.899142+08:00",
+  "lastUpdated": "2026-04-07T00:21:13.912701+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 86,
@@ -1067,7 +1067,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-07T00:20:39.901329+08:00",
+      "lastActive": "2026-04-07T00:21:13.915748+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1085,7 +1085,7 @@
       "platform": "VS Code / Copilot",
       "status": "active",
       "currentTask": "Memory cycle — 0 files, 0 decisions",
-      "lastActive": "2026-04-07T00:15:31.170109+08:00",
+      "lastActive": "2026-04-07T00:20:59.014694+08:00",
       "capabilities": []
     },
     "tele": {
@@ -1766,7 +1766,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-07T00:20:39.901329+08:00"
+        "lastActive": "2026-04-07T00:21:13.915748+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1774,7 +1774,7 @@
       },
       "cerebronn": {
         "status": "active",
-        "lastActive": "2026-04-07T00:15:31.170109+08:00"
+        "lastActive": "2026-04-07T00:20:59.014694+08:00"
       },
       "tele": {
         "status": "active",
@@ -1803,7 +1803,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-07T00:20:39.899142+08:00",
+    "lastRun": "2026-04-07T00:21:13.912701+08:00",
     "dataIntegrity": "ok",
     "taskCount": 86,
     "findings": []
