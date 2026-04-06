@@ -1,24 +1,24 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-06T19:44:43.255683+00:00",
-  "updatedBy": "helios-auto-fix",
+  "lastUpdated": "2026-04-07T03:45:18.310315+08:00",
+  "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 87,
-    "tasksLeft": 68,
-    "completedTasks": 19,
+    "tasksLeft": 67,
+    "completedTasks": 20,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
-    "urgent": 22,
+    "urgent": 21,
     "active": 3,
-    "blocked": 5,
+    "blocked": 4,
     "review": 0,
-    "backlog": 59
+    "backlog": 58
   },
   "completions": {
     "today": [],
     "this_week": [],
-    "all_time": 26
+    "all_time": 27
   },
   "weeklyProgress": {
     "completed": 0,
@@ -33,6 +33,7 @@
       "B6-1",
       "B6-2",
       "B6-3",
+      "B6-4",
       "B6-6",
       "B6-7",
       "B6-8",
@@ -50,7 +51,6 @@
       "A1-10",
       "B3-2",
       "B3-3",
-      "B6-4",
       "B6-5"
     ],
     "active": [
@@ -60,7 +60,8 @@
     ],
     "review": [],
     "paused": [
-      "A2-1"
+      "A2-1",
+      "B10-1"
     ],
     "urgent": [
       "A1-8",
@@ -115,7 +116,6 @@
       "B9-3",
       "B9-4",
       "B9-5",
-      "B10-1",
       "C1-1",
       "C1-2",
       "C2-1",
@@ -162,7 +162,7 @@
     },
     "A2-1": {
       "id": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "project": "A2",
       "category": "A",
       "agent": "Escritor",
@@ -228,13 +228,13 @@
     },
     "A7-3": {
       "id": "A7-3",
-      "title": "Send invitations",
+      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
       "priority": "high",
-      "deadline": "2026-09-01",
+      "deadline": "2026-04-30",
       "createdAt": "2026-08-02T00:00:00+08:00"
     },
     "B1-1": {
@@ -526,17 +526,18 @@
     },
     "B6-4": {
       "id": "B6-4",
-      "title": "SEO setup",
+      "title": "SEO setup — Basic SEO complete (meta tags, H1s done). Content writing ongoing",
       "project": "B6",
       "category": "B",
       "agent": "Forger",
-      "status": "blocked",
-      "priority": "high",
-      "createdAt": "2026-02-01T00:00:00+08:00"
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-02-01T00:00:00+08:00",
+      "completedAt": "2026-04-07T03:45:18.310315+08:00"
     },
     "B6-5": {
       "id": "B6-5",
-      "title": "Google Ads management",
+      "title": "Google Ads management — Create 2 landing pages, follow Google Ads checklist",
       "project": "B6",
       "category": "B",
       "agent": "Forger",
@@ -732,11 +733,11 @@
     },
     "B10-1": {
       "id": "B10-1",
-      "title": "[NEED DETAILS]",
+      "title": "[NEED DETAILS] — Back burner, revisit end of year",
       "project": "B10",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
+      "status": "paused",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -931,7 +932,7 @@
     },
     "A3-1": {
       "id": "A3-1",
-      "title": "Script 1 \u2014 Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare \u2014 principalities not flesh and blood)",
+      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -941,7 +942,7 @@
     },
     "A3-2": {
       "id": "A3-2",
-      "title": "Script 2 \u2014 Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -951,7 +952,7 @@
     },
     "A3-3": {
       "id": "A3-3",
-      "title": "Script 3 \u2014 Christian faith & Gen Z + continuation of spiritual warfare series",
+      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -971,7 +972,7 @@
     },
     "A4-1": {
       "id": "A4-1",
-      "title": "VTuber model / avatar setup",
+      "title": "Research streaming platforms (Kick vs YouTube vs Twitch) and find management company",
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
@@ -981,7 +982,7 @@
     },
     "A4-2": {
       "id": "A4-2",
-      "title": "OBS + streaming software config",
+      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
@@ -991,7 +992,7 @@
     },
     "A4-3": {
       "id": "A4-3",
-      "title": "Plan first stream schedule & content",
+      "title": "Define content strategy — what to stream, how to grow audience",
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
@@ -1001,7 +1002,7 @@
     },
     "A4-4": {
       "id": "A4-4",
-      "title": "Set up Twitch/YouTube streaming channel",
+      "title": "Set up streaming channel and management workflow",
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
@@ -1031,7 +1032,7 @@
     },
     "A5-5": {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
@@ -1044,43 +1045,43 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
-      "role": "The Face \u2014 Primary interface",
+      "role": "The Face — Primary interface",
       "platform": "OpenClaw",
-      "status": "active",
+      "status": "stale",
       "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-04-07T03:10:28.733607+08:00",
+      "lastActive": "2026-03-23T14:20:00+08:00",
       "capabilities": []
     },
     "helios": {
       "name": "Helios",
-      "role": "The Spine \u2014 COO, auditor, reporter",
+      "role": "The Spine — COO, auditor, reporter",
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-07T03:44:42.216024+08:00",
+      "lastActive": "2026-04-07T03:45:18.313184+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
-      "role": "Trading \u2014 XAUUSD execution on OANDA",
+      "role": "Trading — XAUUSD execution on OANDA",
       "platform": "Telegram monitor",
       "status": "active",
-      "currentTask": "Watching CallistoFx \u2014 live XAUUSD execution",
+      "currentTask": "Watching CallistoFx — live XAUUSD execution",
       "lastActive": "2026-04-07T03:44:37.569622+08:00",
       "capabilities": []
     },
     "cerebronn": {
       "name": "Cerebronn",
-      "role": "The Brain \u2014 Persistent memory & decisions",
+      "role": "The Brain — Persistent memory & decisions",
       "platform": "VS Code / Copilot",
       "status": "active",
-      "currentTask": "Memory cycle \u2014 10 files, 0 decisions",
+      "currentTask": "Memory cycle — 10 files, 0 decisions",
       "lastActive": "2026-04-07T03:43:37.544061+08:00",
       "capabilities": []
     },
     "tele": {
       "name": "Tele",
-      "role": "The Face \u2014 Telegram task management interface",
+      "role": "The Face — Telegram task management interface",
       "platform": "Telegram Bot (@chad_yi_bot)",
       "status": "active",
       "currentTask": "",
@@ -1089,7 +1090,7 @@
     },
     "escritor": {
       "name": "Escritor",
-      "role": "Story Agent \u2014 RE:UNITE novel writing",
+      "role": "Story Agent — RE:UNITE novel writing",
       "platform": "Systemd service",
       "status": "offline",
       "currentTask": "",
@@ -1098,16 +1099,16 @@
     },
     "forger": {
       "name": "Forger",
-      "role": "Web Architect \u2014 websites, SEO, full-stack",
+      "role": "Web Architect — websites, SEO, full-stack",
       "platform": "Systemd service",
-      "status": "awaiting_build",
+      "status": "active",
       "currentTask": "Processing TASK-HERO-VISUAL-NOW.md",
-      "lastActive": "2026-03-03T23:36:40Z",
+      "lastActive": "2026-02-15T20:12:06.296568",
       "capabilities": []
     },
     "autour": {
       "name": "Autour",
-      "role": "Script Agent \u2014 KOE content & screenplays",
+      "role": "Script Agent — KOE content & screenplays",
       "platform": "Systemd service",
       "status": "offline",
       "currentTask": "",
@@ -1357,8 +1358,8 @@
         "B6-8"
       ],
       "totalTasks": 8,
-      "completedTasks": 6,
-      "completionPct": 75
+      "completedTasks": 7,
+      "completionPct": 88
     },
     "B7": {
       "name": "Encompasse",
@@ -1567,7 +1568,7 @@
     },
     {
       "id": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "reason": "paused",
       "owner": "Escritor"
     },
@@ -1585,7 +1586,7 @@
     },
     {
       "id": "A7-3",
-      "title": "Send invitations",
+      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
@@ -1602,32 +1603,32 @@
       "owner": "Forger"
     },
     {
-      "id": "B6-4",
-      "title": "SEO setup",
+      "id": "B6-5",
+      "title": "Google Ads management — Create 2 landing pages, follow Google Ads checklist",
       "reason": "blocked",
       "owner": "Forger"
     },
     {
-      "id": "B6-5",
-      "title": "Google Ads management",
-      "reason": "blocked",
+      "id": "B10-1",
+      "title": "[NEED DETAILS] — Back burner, revisit end of year",
+      "reason": "paused",
       "owner": "Forger"
     },
     {
       "id": "A3-1",
-      "title": "Script 1 \u2014 Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare \u2014 principalities not flesh and blood)",
+      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-2",
-      "title": "Script 2 \u2014 Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-3",
-      "title": "Script 3 \u2014 Christian faith & Gen Z + continuation of spiritual warfare series",
+      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
@@ -1639,25 +1640,25 @@
     },
     {
       "id": "A4-1",
-      "title": "VTuber model / avatar setup",
+      "title": "Research streaming platforms (Kick vs YouTube vs Twitch) and find management company",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-2",
-      "title": "OBS + streaming software config",
+      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-3",
-      "title": "Plan first stream schedule & content",
+      "title": "Define content strategy — what to stream, how to grow audience",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-4",
-      "title": "Set up Twitch/YouTube streaming channel",
+      "title": "Set up streaming channel and management workflow",
       "reason": "urgent",
       "owner": "CHAD_YI"
     },
@@ -1675,7 +1676,7 @@
     },
     {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
       "reason": "urgent",
       "owner": "CHAD_YI"
     }
@@ -1685,43 +1686,36 @@
       "taskId": "A1-10",
       "title": "Prepare wedding guest list",
       "agent": "CHAD_YI",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-26T00:00:00+08:00"
     },
     {
       "taskId": "B3-2",
       "title": "SEO optimization",
       "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     },
     {
       "taskId": "B3-3",
       "title": "Google Ads setup",
       "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "B6-4",
-      "title": "SEO setup",
-      "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     },
     {
       "taskId": "B6-5",
-      "title": "Google Ads management",
+      "title": "Google Ads management — Create 2 landing pages, follow Google Ads checklist",
       "agent": "Forger",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     }
   ],
   "dailyBriefing": {
     "date": "2026-04-07",
-    "summary": "\u26a0\ufe0f 5 tasks blocked. 22 urgent items need attention.",
-    "focus": 22,
-    "blockers": 5,
+    "summary": "⚠️ 4 tasks blocked. 21 urgent items need attention.",
+    "focus": 21,
+    "blockers": 4,
     "completedToday": 0,
     "completedThisWeek": 0,
     "topPriorities": [
@@ -1745,7 +1739,7 @@
       },
       {
         "id": "A2-1",
-        "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+        "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
         "priority": "high",
         "status": "paused"
       },
@@ -1763,7 +1757,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-07T03:44:42.216024+08:00"
+        "lastActive": "2026-04-07T03:45:18.313184+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1793,7 +1787,7 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-04-07T03:44:42.213259+08:00",
+    "lastRun": "2026-04-07T03:45:18.310315+08:00",
     "dataIntegrity": "ok",
     "taskCount": 87,
     "findings": []
