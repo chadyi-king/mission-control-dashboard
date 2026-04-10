@@ -1,10 +1,10 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-10T20:45:40.545296+00:00",
-  "updatedBy": "helios-auto-fix",
+  "lastUpdated": "2026-04-11 07:00 SGT",
+  "updatedBy": "CHAD_YI",
   "stats": {
-    "totalTasks": 59,
-    "tasksLeft": 40,
+    "totalTasks": 58,
+    "tasksLeft": 39,
     "completedTasks": 19,
     "completedToday": 0,
     "completedThisWeek": 0,
@@ -64,8 +64,7 @@
       "A5-5",
       "A7-1",
       "A7-3",
-      "A1-11",
-      "A1-12"
+      "A1-11"
     ],
     "check this": [],
     "agent on it": [],
@@ -718,18 +717,6 @@
       "priority": "high",
       "deadline": "2026-04-10",
       "createdAt": "2026-03-11T00:00:00+08:00"
-    },
-    "A1-12": {
-      "id": "A1-12",
-      "title": "Meet Eleanor and Hansel \u2014 Prepare thoroughly",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "blocked",
-      "priority": "high",
-      "deadline": null,
-      "description": "Important meeting on October 10. Need extensive preparation.",
-      "createdAt": "2026-02-01T00:00:00+08:00"
     }
   },
   "recentWins": [],
@@ -1328,12 +1315,6 @@
     {
       "id": "A1-11",
       "title": "File personal taxes",
-      "reason": "blocked",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "A1-12",
-      "title": "Meet Eleanor and Hansel \u2014 Prepare thoroughly",
       "reason": "blocked",
       "owner": "CHAD_YI"
     }
