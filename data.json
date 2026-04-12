@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-13T03:20:01.208319+08:00",
+  "lastUpdated": "2026-04-13T03:20:36.681112+08:00",
   "updatedBy": "infrastructure-sync",
   "stats": {
     "totalTasks": 20,
@@ -717,48 +717,100 @@
   },
   "recentWins": [],
   "agents": {
-    "quanta": {
+    "caleb": {
       "status": "active",
-      "currentTask": "Monitoring XAUUSD",
-      "health": "healthy",
-      "lastSeen": "2026-04-13T03:20:01.208319+08:00",
-      "lastActivity": "Live trading"
-    },
-    "cerebronn": {
-      "status": "active",
-      "currentTask": null,
-      "health": "healthy",
-      "lastSeen": "2026-04-13T03:20:01.208319+08:00",
-      "lastActivity": "Planning & architecture"
-    },
-    "helios": {
-      "status": "idle",
-      "currentTask": null,
-      "health": "healthy",
-      "lastSeen": "2026-04-13T03:20:01.208319+08:00",
-      "lastActivity": "Auditing & sync"
+      "role": "Shadow CEO \u00b7 Strategic Command",
+      "currentFocus": "Directing agent infrastructure rebuild",
+      "decisionsToday": 15,
+      "activeThreads": 1,
+      "lastActive": "2026-04-13T03:20:36.681112+08:00"
     },
     "chad-yi": {
+      "status": "active",
+      "role": "The Face \u00b7 Interface & Coordination",
+      "currentTask": "Dashboard redesign & agent sync",
+      "health": "healthy",
+      "queueStatus": {
+        "pending": 9,
+        "claimed": 0,
+        "blocked": 0
+      },
+      "nextReport": "8:00 AM",
+      "lastActive": "2026-04-13T03:20:36.681112+08:00"
+    },
+    "cerebronn": {
       "status": "idle",
+      "role": "The Brain \u00b7 Planning & Architecture",
       "currentTask": null,
       "health": "healthy",
-      "lastSeen": "2026-04-13T03:20:01.208319+08:00",
-      "lastActivity": "Task coordination & reporting"
+      "lastActivity": "Planned B3 website build (8 sub-tasks created)",
+      "tasksCompletedToday": 2,
+      "createdSubtasks": 8,
+      "lastActive": "2026-04-13T01:18:20+08:00"
+    },
+    "helios": {
+      "status": "active",
+      "role": "The Spine \u00b7 Auditor & COO",
+      "currentTask": "Auditing every 15 minutes",
+      "health": "healthy",
+      "auditCycle": "15 minutes",
+      "dashboardSync": "5 minutes",
+      "staleTasksReleased": 0,
+      "lastActive": "2026-04-13T03:20:36.681112+08:00"
     },
     "forger": {
-      "status": "idle",
+      "status": "stopped",
+      "role": "The Builder \u00b7 Websites",
       "currentTask": null,
       "health": "stale",
-      "lastSeen": "2025-03-04T00:00:00+08:00",
-      "lastActivity": "Awaiting conversion"
+      "tasksWaiting": 8,
+      "issue": "Running old code - needs AgentWorker conversion",
+      "lastActive": "2025-03-04T00:00:00+08:00"
     },
-    "last_sync": "2026-04-13T02:58:43.282901+08:00",
+    "quanta": {
+      "status": "active",
+      "role": "The Trader \u00b7 Execution",
+      "currentTask": "Monitoring XAUUSD",
+      "health": "healthy",
+      "account": {
+        "balance": 3819.37,
+        "currency": "USD"
+      },
+      "openTrades": [
+        {
+          "symbol": "CHFJPY",
+          "side": "BUY",
+          "status": "Live",
+          "upl": -16.06
+        }
+      ],
+      "pendingOrders": 5,
+      "signals": "CallistoFx (Telegram)",
+      "warnings": [
+        "1 untracked live trade"
+      ],
+      "lastActive": "2026-04-13T03:20:36.681112+08:00"
+    },
     "autour": {
       "status": "idle",
+      "role": "The Voice \u00b7 Content",
       "currentTask": null,
       "health": "unknown",
-      "lastSeen": null,
-      "lastActivity": "Not spawned"
+      "lastActive": null
+    },
+    "escritor": {
+      "status": "idle",
+      "role": "The Scribe \u00b7 Writing",
+      "currentTask": null,
+      "health": "unknown",
+      "lastActive": null
+    },
+    "mensamusa": {
+      "status": "idle",
+      "role": "The Scholar \u00b7 Research",
+      "currentTask": null,
+      "health": "unknown",
+      "lastActive": null
     }
   },
   "categories": {
