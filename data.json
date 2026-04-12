@@ -1,15 +1,14 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-13T02:50:01.447067+08:00",
+  "lastUpdated": "2026-04-13T02:53:47.646706+08:00",
   "updatedBy": "infrastructure-sync",
   "stats": {
-    "totalTasks": 20,
-    "tasksLeft": 39,
-    "completedTasks": 19,
-    "completedToday": 11,
-    "active": 0,
-    "blocked": 0,
-    "pending": 9
+    "totalTasks": 68,
+    "pending": 15,
+    "claimed": 0,
+    "activeAgents": 1,
+    "idleAgents": 3,
+    "stoppedAgents": 1
   },
   "completions": {
     "today": [],
@@ -719,63 +718,39 @@
   "agents": {
     "chad-yi": {
       "status": "idle",
+      "health": "offline",
       "currentTask": null,
+      "lastActivity": "Completed: daily-decision-review",
+      "lastSeen": "2026-04-13T02:53:47.646706+08:00"
+    },
+    "cerebronn": {
+      "status": "idle",
       "health": "healthy",
-      "lastSeen": "2026-04-13T02:50:01.447067+08:00",
-      "lastActivity": "Task coordination & reporting"
+      "currentTask": null,
+      "lastActivity": "Completed: B3 planning (2 tasks, created 8 sub-tasks)",
+      "lastSeen": "2026-04-13T01:18:20+08:00"
     },
     "helios": {
       "status": "idle",
+      "health": "offline",
       "currentTask": null,
-      "health": "healthy",
-      "lastSeen": "2026-04-13T02:50:01.447067+08:00",
-      "lastActivity": "Auditing & sync"
+      "lastActivity": "Running: audits every 15 min, syncs dashboard",
+      "lastSeen": "2026-04-13T02:53:47.646706+08:00"
+    },
+    "forger": {
+      "status": "stopped",
+      "health": "stale",
+      "currentTask": null,
+      "lastActivity": "NOT RUNNING - needs conversion to new infrastructure",
+      "lastSeen": "2025-03-04T00:00:00+08:00",
+      "blockedReason": "Old code, can't claim queue tasks"
     },
     "quanta": {
       "status": "active",
+      "health": "healthy",
       "currentTask": "Monitoring XAUUSD",
-      "health": "healthy",
-      "lastSeen": "2026-04-13T02:50:01.447067+08:00",
-      "lastActivity": "Live trading"
-    },
-    "cerebronn": {
-      "status": "active",
-      "currentTask": null,
-      "health": "healthy",
-      "lastSeen": "2026-04-13T02:50:01.447067+08:00",
-      "lastActivity": "Planning & architecture"
-    },
-    "tele": {
-      "name": "Tele",
-      "role": "The Face \u2014 Telegram task management interface",
-      "platform": "Telegram Bot (@chad_yi_bot)",
-      "status": "active",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "escritor": {
-      "name": "Escritor",
-      "role": "Story Agent \u2014 RE:UNITE novel writing",
-      "platform": "Systemd service",
-      "status": "offline",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "forger": {
-      "status": "idle",
-      "currentTask": null,
-      "health": "stale",
-      "lastSeen": "2025-03-04T00:00:00+08:00",
-      "lastActivity": "Awaiting conversion"
-    },
-    "autour": {
-      "status": "idle",
-      "currentTask": null,
-      "health": "unknown",
-      "lastSeen": null,
-      "lastActivity": "Not spawned"
+      "lastActivity": "Live trading - 0 open trades",
+      "lastSeen": "2026-04-13T02:53:47.646706+08:00"
     }
   },
   "categories": {
