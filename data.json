@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-13T03:04:41.276372+08:00",
-  "updatedBy": "helios-v3",
+  "lastUpdated": "2026-04-13T03:20:01.208319+08:00",
+  "updatedBy": "infrastructure-sync",
   "stats": {
     "totalTasks": 20,
     "tasksLeft": 9,
@@ -721,44 +721,44 @@
       "status": "active",
       "currentTask": "Monitoring XAUUSD",
       "health": "healthy",
-      "lastActivity": "Live trading",
-      "lastActive": "2026-04-13T03:04:41.276372+08:00"
+      "lastSeen": "2026-04-13T03:20:01.208319+08:00",
+      "lastActivity": "Live trading"
     },
     "cerebronn": {
       "status": "active",
       "currentTask": null,
       "health": "healthy",
-      "lastActivity": "Planning & architecture",
-      "lastActive": "2026-04-13T03:04:41.276372+08:00"
+      "lastSeen": "2026-04-13T03:20:01.208319+08:00",
+      "lastActivity": "Planning & architecture"
     },
     "helios": {
       "status": "idle",
       "currentTask": null,
       "health": "healthy",
-      "lastActivity": "Auditing & sync",
-      "lastActive": "2026-04-13T03:04:41.276372+08:00"
+      "lastSeen": "2026-04-13T03:20:01.208319+08:00",
+      "lastActivity": "Auditing & sync"
     },
     "chad-yi": {
       "status": "idle",
       "currentTask": null,
       "health": "healthy",
-      "lastActivity": "Task coordination & reporting",
-      "lastActive": "2026-04-13T03:04:41.276372+08:00"
+      "lastSeen": "2026-04-13T03:20:01.208319+08:00",
+      "lastActivity": "Task coordination & reporting"
     },
     "forger": {
       "status": "idle",
       "currentTask": null,
       "health": "stale",
-      "lastActivity": "Awaiting conversion",
-      "lastActive": "2025-03-04T00:00:00+08:00"
+      "lastSeen": "2025-03-04T00:00:00+08:00",
+      "lastActivity": "Awaiting conversion"
     },
     "last_sync": "2026-04-13T02:58:43.282901+08:00",
     "autour": {
       "status": "idle",
       "currentTask": null,
       "health": "unknown",
-      "lastActivity": "Not spawned",
-      "lastActive": null
+      "lastSeen": null,
+      "lastActivity": "Not spawned"
     }
   },
   "categories": {
@@ -1517,7 +1517,7 @@
       "total": 20
     },
     "claimedTasks": [],
-    "lastSync": "2026-04-13T03:00:01.568391+08:00",
+    "lastSync": "2026-04-13T03:20:01.208319+08:00",
     "systemHealth": "healthy"
   },
   "activeWork": []

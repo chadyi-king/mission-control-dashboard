@@ -1,0 +1,764 @@
+<!-- ═══════════════════════════════════════════════════════════════
+     AGENT FLEET — Unified Panel (replaces Active Work + System Health)
+     Organizational Hierarchy: CALEB → CHAD_YI → CEREBRONN → HELIOS → OTHERS
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="agent-fleet-unified" id="agent-fleet-unified">
+    
+    <!-- HEADER: Chain of Command -->
+    <div class="fleet-command-header">
+        <div class="command-chain">
+            <span class="chain-link chain-caleb">CALEB</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-link chain-chad">CHAD_YI</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-link chain-cerebronn">CEREBRONN</span>
+            <span class="chain-arrow">→</span>
+            <span class="chain-link chain-workers">AGENTS</span>
+        </div>
+        <div class="fleet-meta">
+            <span class="fleet-count" id="fleet-online-count">0/0 ONLINE</span>
+            <span class="fleet-last-sync" id="fleet-last-sync">—</span>
+        </div>
+    </div>
+
+    <!-- AGENT CARDS CONTAINER -->
+    <div class="fleet-cards-container" id="fleet-cards-container">
+        
+        <!-- TIER 0: CALEB (Shadow CEO) -->
+        <div class="agent-card-tier tier-ceo" data-agent="caleb">
+            <div class="agent-card-header">
+                <div class="agent-avatar avatar-ceo">C</div>
+                <div class="agent-title">
+                    <div class="agent-name">CALEB</div>
+                    <div class="agent-role">Shadow CEO · Strategic Command</div>
+                </div>
+                <div class="agent-status-badge status-active">● ACTIVE</div>
+            </div>            
+            <div class="agent-card-body">
+                <div class="agent-current-focus">
+                    <span class="focus-label">Current Focus:</span>
+                    <span class="focus-value" id="caleb-focus">Directing agent infrastructure rebuild</span>
+                </div>                
+                <div class="agent-metrics">
+                    <div class="metric">
+                        <span class="metric-label">Decisions Today</span>
+                        <span class="metric-value" id="caleb-decisions">—</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Active Threads</span>
+                        <span class="metric-value">1</span>
+                    </div>
+                </div>            
+            </div>        </div>
+
+        <!-- TIER 1: CHAD_YI (The Face) -->
+        <div class="agent-card-tier tier-face" data-agent="chad-yi">
+            <div class="agent-card-header">
+                <div class="agent-avatar avatar-face">F</div>
+                <div class="agent-title">
+                    <div class="agent-name">CHAD_YI</div>
+                    <div class="agent-role">The Face · Interface & Coordination</div>
+                </div>
+                <div class="agent-status-badge" id="chad-yi-status-badge">● CHECKING...</div>
+            </div>            
+            <div class="agent-card-body">
+                <div class="agent-current-focus">
+                    <span class="focus-label">Current Task:</span>
+                    <span class="focus-value" id="chad-yi-focus">—</span>
+                </div>                
+                <div class="agent-operations">
+                    <div class="ops-section">
+                        <span class="ops-label">Queue Status:</span>
+                        <span class="ops-value" id="chad-yi-queue">— pending · — claimed · — blocked</span>
+                    </div>
+                    <div class="ops-section">
+                        <span class="ops-label">Reports Due:</span>
+                        <span class="ops-value" id="chad-yi-reports">Next: 8:00 AM</span>
+                    </div>
+                </div>                
+                <div class="agent-last-seen" id="chad-yi-last-seen">
+                    Last active: —
+                </div>            
+            </div>        </div>
+
+        <!-- TIER 2: CEREBRONN (The Brain) -->
+        <div class="agent-card-tier tier-brain" data-agent="cerebronn">
+            <div class="agent-card-header">
+                <div class="agent-avatar avatar-brain">B</div>
+                <div class="agent-title">
+                    <div class="agent-name">CEREBRONN</div>
+                    <div class="agent-role">The Brain · Planning & Architecture</div>
+                </div>
+                <div class="agent-status-badge" id="cerebronn-status-badge">● CHECKING...</div>
+            </div>            
+            <div class="agent-card-body">
+                <div class="agent-current-focus">
+                    <span class="focus-label">Last Planning:</span>
+                    <span class="focus-value" id="cerebronn-focus">—</span>
+                </div>                
+                <div class="agent-operations">
+                    <div class="ops-section">
+                        <span class="ops-label">Tasks Planned Today:</span>
+                        <span class="ops-value" id="cerebronn-planned">—</span>
+                    </div>
+                    <div class="ops-section">
+                        <span class="ops-label">Sub-Tasks Created:</span>
+                        <span class="ops-value" id="cerebronn-created">—</span>
+                    </div>
+                </div>                
+                <div class="agent-last-seen" id="cerebronn-last-seen">
+                    Last active: —
+                </div>            
+            </div>        </div>
+
+        <!-- TIER 3: HELIOS (The Spine) -->
+        <div class="agent-card-tier tier-spine" data-agent="helios">
+            <div class="agent-card-header">
+                <div class="agent-avatar avatar-spine">S</div>
+                <div class="agent-title">
+                    <div class="agent-name">HELIOS</div>
+                    <div class="agent-role">The Spine · Auditor & COO</div>
+                </div>
+                <div class="agent-status-badge" id="helios-status-badge">● CHECKING...</div>
+            </div>            
+            <div class="agent-card-body">
+                <div class="agent-current-focus">
+                    <span class="focus-label">Audit Cycle:</span>
+                    <span class="focus-value">Every 15 minutes</span>
+                </div>                
+                <div class="agent-operations">
+                    <div class="ops-section">
+                        <span class="ops-label">Stale Tasks Released:</span>
+                        <span class="ops-value" id="helios-stale">—</span>
+                    </div>
+                    <div class="ops-section">
+                        <span class="ops-label">Dashboard Sync:</span>
+                        <span class="ops-value">Every 5 minutes</span>
+                    </div>
+                </div>                
+                <div class="agent-last-seen" id="helios-last-seen">
+                    Last audit: —
+                </div>            
+            </div>        </div>
+
+        <!-- TIER 4: WORKER AGENTS (Collapsible) -->
+        <div class="worker-agents-section">
+            <button class="worker-toggle" onclick="toggleWorkerAgents()">
+                <span class="worker-toggle-label">WORKER AGENTS</span>
+                <span class="worker-count" id="worker-count">(0)</span>
+                <svg class="worker-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>            
+            <div class="worker-agents-grid" id="worker-agents-grid">
+                
+                <!-- FORGER -->
+                <div class="worker-card" data-agent="forger">
+                    <div class="worker-header">
+                        <div class="worker-avatar">🔨</div>
+                        <div class="worker-info">
+                            <div class="worker-name">FORGER</div>
+                            <div class="worker-role">The Builder · Websites</div>
+                        </div>
+                        <div class="worker-status" id="forger-status">⚠️ STOPPED</div>
+                    </div>                    
+                    <div class="worker-body">
+                        <div class="worker-stat">
+                            <span class="stat-label">Tasks Waiting:</span>
+                            <span class="stat-value blocked" id="forger-waiting">—</span>
+                        </div>
+                        <div class="worker-issue" id="forger-issue">Not converted to new infrastructure</div>
+                    </div>                </div>
+
+                <!-- QUANTA -->
+                <div class="worker-card" data-agent="quanta">
+                    <div class="worker-header">
+                        <div class="worker-avatar">📈</div>
+                        <div class="worker-info">
+                            <div class="worker-name">QUANTA</div>
+                            <div class="worker-role">The Trader · Execution</div>
+                        </div>
+                        <div class="worker-status" id="quanta-status">● ACTIVE</div>
+                    </div>                    
+                    <div class="worker-body">
+                        <div class="worker-stat">
+                            <span class="stat-label">Account:</span>
+                            <span class="stat-value" id="quanta-balance">$—</span>
+                        </div>
+                        <div class="worker-stat">
+                            <span class="stat-label">Open Trades:</span>
+                            <span class="stat-value" id="quanta-trades">—</span>
+                        </div>
+                        <div class="worker-stat">
+                            <span class="stat-label">Signals:</span>
+                            <span class="stat-value">CallistoFx</span>
+                        </div>
+                        <div class="worker-warning" id="quanta-warning">⚠️ 1 untracked trade</div>
+                    </div>                </div>
+
+                <!-- Other agents placeholder -->
+                <div class="worker-card worker-inactive" data-agent="autour">
+                    <div class="worker-header">
+                        <div class="worker-avatar">🎙️</div>
+                        <div class="worker-info">
+                            <div class="worker-name">AUTOUR</div>
+                            <div class="worker-role">The Voice · Content</div>
+                        </div>
+                        <div class="worker-status">○ NOT SPAWNED</div>
+                    </div>                </div>
+
+                <div class="worker-card worker-inactive" data-agent="escritor">
+                    <div class="worker-header">
+                        <div class="worker-avatar">✍️</div>
+                        <div class="worker-info">
+                            <div class="worker-name">ESCRITOR</div>
+                            <div class="worker-role">The Scribe · Writing</div>
+                        </div>
+                        <div class="worker-status">○ NOT SPAWNED</div>
+                    </div>                </div>
+
+                <div class="worker-card worker-inactive" data-agent="mensamusa">
+                    <div class="worker-header">
+                        <div class="worker-avatar">📚</div>
+                        <div class="worker-info">
+                            <div class="worker-name">MENSAMUSA</div>
+                            <div class="worker-role">The Scholar · Research</div>
+                        </div>
+                        <div class="worker-status">○ NOT SPAWNED</div>
+                    </div>                </div>
+
+            </div>        </div>
+
+    </div>
+
+</div>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   AGENT FLEET UNIFIED PANEL STYLES
+═══════════════════════════════════════════════════════════════ */
+
+.agent-fleet-unified {
+    background: rgba(10, 10, 12, 0.7);
+    border: 1px solid rgba(220, 20, 60, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Command Chain Header */
+.fleet-command-header {
+    background: linear-gradient(135deg, rgba(20, 20, 24, 0.9) 0%, rgba(30, 20, 25, 0.9) 100%);
+    border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.command-chain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+
+.chain-link {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.chain-caleb {
+    background: rgba(220, 180, 100, 0.2);
+    border: 1px solid rgba(220, 180, 100, 0.5);
+    color: rgba(220, 200, 150, 0.95);
+}
+
+.chain-chad {
+    background: rgba(220, 20, 60, 0.25);
+    border: 1px solid rgba(220, 20, 60, 0.6);
+    color: rgba(220, 80, 100, 0.95);
+}
+
+.chain-cerebronn {
+    background: rgba(100, 150, 220, 0.2);
+    border: 1px solid rgba(100, 150, 220, 0.5);
+    color: rgba(150, 180, 220, 0.95);
+}
+
+.chain-workers {
+    background: rgba(100, 200, 100, 0.15);
+    border: 1px solid rgba(100, 200, 100, 0.4);
+    color: rgba(150, 200, 150, 0.9);
+}
+
+.chain-arrow {
+    color: rgba(160, 160, 180, 0.5);
+    font-size: 12px;
+}
+
+.fleet-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px;
+}
+
+.fleet-count {
+    color: rgba(200, 200, 220, 0.8);
+    letter-spacing: 0.05em;
+}
+
+.fleet-last-sync {
+    color: rgba(160, 160, 180, 0.6);
+}
+
+/* Fleet Cards Container */
+.fleet-cards-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Agent Card Tiers */
+.agent-card-tier {
+    background: rgba(15, 15, 18, 0.6);
+    border: 1px solid rgba(220, 20, 60, 0.15);
+    border-radius: 8px;
+    padding: 14px 16px;
+    transition: all 0.2s ease;
+}
+
+.agent-card-tier:hover {
+    border-color: rgba(220, 20, 60, 0.3);
+    background: rgba(20, 20, 24, 0.7);
+}
+
+.tier-ceo {
+    border-left: 3px solid rgba(220, 180, 100, 0.6);
+}
+
+.tier-face {
+    border-left: 3px solid rgba(220, 20, 60, 0.6);
+}
+
+.tier-brain {
+    border-left: 3px solid rgba(100, 150, 220, 0.6);
+}
+
+.tier-spine {
+    border-left: 3px solid rgba(180, 100, 220, 0.6);
+}
+
+/* Agent Card Header */
+.agent-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.agent-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: 2px solid;
+}
+
+.avatar-ceo {
+    background: rgba(220, 180, 100, 0.15);
+    border-color: rgba(220, 180, 100, 0.5);
+    color: rgba(220, 200, 150, 0.95);
+}
+
+.avatar-face {
+    background: rgba(220, 20, 60, 0.2);
+    border-color: rgba(220, 20, 60, 0.5);
+    color: rgba(220, 80, 100, 0.95);
+}
+
+.avatar-brain {
+    background: rgba(100, 150, 220, 0.15);
+    border-color: rgba(100, 150, 220, 0.5);
+    color: rgba(150, 180, 220, 0.95);
+}
+
+.avatar-spine {
+    background: rgba(180, 100, 220, 0.15);
+    border-color: rgba(180, 100, 220, 0.5);
+    color: rgba(200, 150, 220, 0.95);
+}
+
+.agent-title {
+    flex: 1;
+}
+
+.agent-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: rgba(220, 220, 240, 0.95);
+    letter-spacing: 0.05em;
+}
+
+.agent-role {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 9px;
+    color: rgba(160, 160, 180, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.agent-status-badge {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: rgba(100, 200, 100, 0.15);
+    color: rgba(100, 220, 100, 0.9);
+}
+
+.agent-status-badge.status-offline {
+    background: rgba(100, 100, 100, 0.15);
+    color: rgba(160, 160, 160, 0.7);
+}
+
+.agent-status-badge.status-error {
+    background: rgba(220, 100, 100, 0.15);
+    color: rgba(220, 120, 120, 0.9);
+}
+
+/* Agent Card Body */
+.agent-card-body {
+    padding-left: 48px;
+}
+
+.agent-current-focus {
+    margin-bottom: 10px;
+}
+
+.focus-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 9px;
+    color: rgba(140, 140, 160, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 6px;
+}
+
+.focus-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(200, 200, 220, 0.9);
+}
+
+.agent-metrics {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 8px;
+    color: rgba(120, 120, 140, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.metric-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: rgba(220, 220, 240, 0.9);
+}
+
+.agent-operations {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.ops-section {
+    display: flex;
+    gap: 8px;
+}
+
+.ops-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 9px;
+    color: rgba(140, 140, 160, 0.7);
+    min-width: 100px;
+}
+
+.ops-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(180, 180, 200, 0.85);
+}
+
+.agent-last-seen {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 9px;
+    color: rgba(120, 120, 140, 0.6);
+}
+
+/* Worker Agents Section */
+.worker-agents-section {
+    margin-top: 8px;
+}
+
+.worker-toggle {
+    width: 100%;
+    background: rgba(15, 15, 18, 0.5);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.worker-toggle:hover {
+    background: rgba(20, 20, 24, 0.7);
+    border-color: rgba(220, 20, 60, 0.35);
+}
+
+.worker-toggle-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: rgba(200, 200, 220, 0.9);
+    letter-spacing: 0.1em;
+}
+
+.worker-count {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px;
+    color: rgba(160, 160, 180, 0.7);
+}
+
+.worker-chevron {
+    color: rgba(160, 160, 180, 0.6);
+    transition: transform 0.2s ease;
+}
+
+.worker-toggle.expanded .worker-chevron {
+    transform: rotate(180deg);
+}
+
+.worker-agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.worker-agents-grid.expanded {
+    max-height: 500px;
+}
+
+/* Worker Cards */
+.worker-card {
+    background: rgba(12, 12, 15, 0.6);
+    border: 1px solid rgba(100, 100, 120, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+}
+
+.worker-card.worker-inactive {
+    opacity: 0.6;
+}
+
+.worker-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.worker-avatar {
+    font-size: 18px;
+}
+
+.worker-info {
+    flex: 1;
+}
+
+.worker-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: rgba(200, 200, 220, 0.9);
+}
+
+.worker-role {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 8px;
+    color: rgba(140, 140, 160, 0.7);
+}
+
+.worker-status {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.05em;
+    color: rgba(100, 200, 100, 0.9);
+}
+
+.worker-body {
+    padding-left: 28px;
+}
+
+.worker-stat {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.worker-stat .stat-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 8px;
+    color: rgba(120, 120, 140, 0.7);
+}
+
+.worker-stat .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(180, 180, 200, 0.85);
+}
+
+.worker-stat .stat-value.blocked {
+    color: rgba(220, 180, 100, 0.9);
+}
+
+.worker-issue, .worker-warning {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 8px;
+    color: rgba(220, 160, 100, 0.85);
+    margin-top: 6px;
+    padding: 4px 6px;
+    background: rgba(220, 160, 100, 0.1);
+    border-radius: 3px;
+}
+</style>
+
+<script>
+function toggleWorkerAgents() {
+    const grid = document.getElementById('worker-agents-grid');
+    const btn = document.querySelector('.worker-toggle');
+    grid.classList.toggle('expanded');
+    btn.classList.toggle('expanded');
+}
+
+// Auto-populate with real data
+function populateAgentFleet(data) {
+    const agents = data.agents || {};
+    const now = new Date();
+    
+    // CHAD_YI
+    if (agents['chad-yi']) {
+        const chad = agents['chad-yi'];
+        document.getElementById('chad-yi-status-badge').textContent = 
+            chad.status === 'active' ? '● ONLINE' : '○ OFFLINE';
+        document.getElementById('chad-yi-status-badge').className = 
+            'agent-status-badge ' + (chad.status === 'active' ? '' : 'status-offline');
+        document.getElementById('chad-yi-focus').textContent = 
+            chad.currentTask || 'Operational coordination';
+        document.getElementById('chad-yi-last-seen').textContent = 
+            'Last active: ' + formatTime(chad.lastActive);
+    }
+    
+    // CEREBRONN
+    if (agents['cerebronn']) {
+        const cerebronn = agents['cerebronn'];
+        document.getElementById('cerebronn-status-badge').textContent = 
+            cerebronn.status === 'active' ? '● ONLINE' : '○ OFFLINE';
+        document.getElementById('cerebronn-status-badge').className = 
+            'agent-status-badge ' + (cerebronn.status === 'active' ? '' : 'status-offline');
+        document.getElementById('cerebronn-focus').textContent = 
+            cerebronn.lastActivity || 'Idle - waiting for planning tasks';
+        document.getElementById('cerebronn-planned').textContent = 
+            (cerebronn.tasks_completed_today || 0) + ' tasks';
+        document.getElementById('cerebronn-created').textContent = 
+            (cerebronn.created_subtasks || 8) + ' sub-tasks';
+        document.getElementById('cerebronn-last-seen').textContent = 
+            'Last active: ' + formatTime(cerebronn.lastActive);
+    }
+    
+    // HELIOS
+    if (agents['helios']) {
+        const helios = agents['helios'];
+        document.getElementById('helios-status-badge').textContent = 
+            helios.status === 'active' ? '● AUDITING' : '○ OFFLINE';
+        document.getElementById('helios-status-badge').className = 
+            'agent-status-badge ' + (helios.status === 'active' ? '' : 'status-offline');
+        document.getElementById('helios-last-seen').textContent = 
+            'Last audit: ' + formatTime(helios.lastActive);
+    }
+    
+    // QUANTA
+    if (agents['quanta']) {
+        const quanta = agents['quanta'];
+        if (quanta.account) {
+            document.getElementById('quanta-balance').textContent = 
+                '$' + (quanta.account.balance || 0).toFixed(0);
+        }
+        if (quanta.open_trades) {
+            document.getElementById('quanta-trades').textContent = 
+                quanta.open_trades.length + ' open';
+        }
+    }
+    
+    // FORGER
+    if (agents['forger']) {
+        const forger = agents['forger'];
+        document.getElementById('forger-waiting').textContent = 
+            (forger.tasks_waiting || 0) + ' blocked';
+    }
+    
+    // Fleet counts
+    const onlineCount = Object.values(agents).filter(a => a.status === 'active').length;
+    document.getElementById('fleet-online-count').textContent = 
+        onlineCount + '/' + Object.keys(agents).length + ' ONLINE';
+    document.getElementById('fleet-last-sync').textContent = 
+        'Sync: ' + now.toLocaleTimeString('en-SG', {hour: '2-digit', minute:'2-digit'});
+    
+    // Worker count
+    const workers = ['forger', 'quanta', 'autour', 'escritor', 'mensamusa'];
+    const activeWorkers = workers.filter(w => agents[w] && agents[w].status === 'active').length;
+    document.getElementById('worker-count').textContent = '(' + activeWorkers + '/' + workers.length + ')';
+}
+
+function formatTime(isoString) {
+    if (!isoString) return 'unknown';
+    const date = new Date(isoString);
+    const now = new Date();
+    const diff = Math.floor((now - date) / 60000); // minutes
+    
+    if (diff < 1) return 'just now';
+    if (diff < 60) return diff + ' min ago';
+    if (diff < 1440) return Math.floor(diff/60) + ' hr ago';
+    return Math.floor(diff/1440) + ' days ago';
+}
+</script>
