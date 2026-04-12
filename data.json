@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-13T02:58:43.283180+08:00",
-  "updatedBy": "rich-agent-status-sync",
+  "lastUpdated": "2026-04-13T03:04:41.276372+08:00",
+  "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 20,
     "tasksLeft": 9,
@@ -718,99 +718,48 @@
   "recentWins": [],
   "agents": {
     "quanta": {
-      "account": {
-        "balance": 3819.37,
-        "unrealized_pnl": 3259.45,
-        "status": "live_trading"
-      },
-      "open_trades": [
-        {
-          "symbol": "CHFJPY",
-          "side": "BUY",
-          "status": "live OANDA trade not tracked by Quanta",
-          "entry": "201.820",
-          "current": "201.829",
-          "upl": "-16.06"
-        }
-      ],
-      "pending_orders": [
-        {
-          "symbol": "BTCUSD",
-          "side": "SELL",
-          "entry": "73,448.00"
-        },
-        {
-          "symbol": "BTCUSD",
-          "side": "SELL",
-          "entry": "73,066.00"
-        },
-        {
-          "symbol": "BTCUSD",
-          "side": "BUY",
-          "entry": "71,868.00"
-        },
-        {
-          "symbol": "BTCUSD",
-          "side": "BUY",
-          "entry": "72,260.00"
-        },
-        {
-          "symbol": "GBPJPY",
-          "side": "SELL",
-          "entry": "214.850"
-        }
-      ],
-      "warnings": [
-        "1 untracked live trade",
-        "5 untracked pending orders"
-      ],
-      "telegram_channels": [
-        "CallistoFx (primary)",
-        "Signal channels (backup)"
-      ],
-      "last_update": "2026-04-13T02:58:43.270148+08:00"
+      "status": "active",
+      "currentTask": "Monitoring XAUUSD",
+      "health": "healthy",
+      "lastActivity": "Live trading",
+      "lastActive": "2026-04-13T03:04:41.276372+08:00"
     },
     "cerebronn": {
-      "status": "idle",
-      "last_activity": "Completed B3 planning",
-      "tasks_completed_today": 5,
-      "created_subtasks": 8,
-      "waiting_for": "New planning tasks in queue",
-      "last_decision": "completed_planning_seo_optimization",
-      "last_outcome": "accepted"
+      "status": "active",
+      "currentTask": null,
+      "health": "healthy",
+      "lastActivity": "Planning & architecture",
+      "lastActive": "2026-04-13T03:04:41.276372+08:00"
     },
     "helios": {
-      "status": "stopped",
-      "role": "Auditor / COO",
-      "cycle": "Every 15 minutes",
-      "duties": [
-        "Release stale tasks (>30min)",
-        "Sync dashboard every 5 min",
-        "Check agent health"
-      ],
-      "next_audit": "In ~10 minutes"
+      "status": "idle",
+      "currentTask": null,
+      "health": "healthy",
+      "lastActivity": "Auditing & sync",
+      "lastActive": "2026-04-13T03:04:41.276372+08:00"
     },
     "chad-yi": {
-      "status": "active",
-      "role": "The Face - Interface & Coordination",
-      "current_mode": "Direct chat with Caleb",
-      "operational_tasks_pending": 5,
-      "queue_status": {
-        "pending": 9,
-        "claimed": 0,
-        "blocked": 0
-      },
-      "last_interaction": "2026-04-13T02:58:43.282518+08:00"
+      "status": "idle",
+      "currentTask": null,
+      "health": "healthy",
+      "lastActivity": "Task coordination & reporting",
+      "lastActive": "2026-04-13T03:04:41.276372+08:00"
     },
     "forger": {
-      "status": "stopped",
+      "status": "idle",
+      "currentTask": null,
       "health": "stale",
-      "issue": "Running old code - not converted to AgentWorker",
-      "tasks_waiting": 8,
-      "impact": "8 website build tasks blocked",
-      "action_needed": "Convert to new infrastructure"
+      "lastActivity": "Awaiting conversion",
+      "lastActive": "2025-03-04T00:00:00+08:00"
     },
-    "last_sync": "2026-04-13T02:58:43.282901+08:00"
+    "last_sync": "2026-04-13T02:58:43.282901+08:00",
+    "autour": {
+      "status": "idle",
+      "currentTask": null,
+      "health": "unknown",
+      "lastActivity": "Not spawned",
+      "lastActive": null
+    }
   },
   "categories": {
     "A": {
@@ -1568,7 +1517,7 @@
       "total": 20
     },
     "claimedTasks": [],
-    "lastSync": "2026-04-13T02:55:01.511165+08:00",
+    "lastSync": "2026-04-13T03:00:01.568391+08:00",
     "systemHealth": "healthy"
   },
   "activeWork": []
