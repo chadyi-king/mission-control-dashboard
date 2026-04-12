@@ -48,12 +48,24 @@
             // Agent config now comes from agent-registry.js
             const agents = data.agents || {};
             const _fleetIds = getFleetIds();
+            // Priority order: CHAD_YI → Cerebronn → Helios → Others
+            const _priorityOrder = ['chad-yi', 'cerebronn', 'helios'];
             const agentKeys = Object.keys(agents).filter(k => !isAgentExcluded(k)).sort((a, b) => {
-                const ai = _fleetIds.indexOf(a.toLowerCase());
-                const bi = _fleetIds.indexOf(b.toLowerCase());
+                const aLower = a.toLowerCase();
+                const bLower = b.toLowerCase();
+                const ai = _priorityOrder.indexOf(aLower);
+                const bi = _priorityOrder.indexOf(bLower);
+                // If both are in priority list, sort by priority
                 if (ai !== -1 && bi !== -1) return ai - bi;
+                // Priority agents come first
                 if (ai !== -1) return -1;
                 if (bi !== -1) return 1;
+                // Then sort by fleet order
+                const af = _fleetIds.indexOf(aLower);
+                const bf = _fleetIds.indexOf(bLower);
+                if (af !== -1 && bf !== -1) return af - bf;
+                if (af !== -1) return -1;
+                if (bf !== -1) return 1;
                 return a.localeCompare(b);
             });
             // Also add configured fleet agents not in data
