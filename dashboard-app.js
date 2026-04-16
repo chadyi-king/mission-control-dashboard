@@ -741,7 +741,7 @@ console.log('[Helios WS] connected:', wsUrl);
         async function loadData() {
             try {
                 console.log('Loading data...');
-                const response = await fetch('https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json?t=' + Date.now()); // GitHub raw — always fresh
+                const response = await fetch('data.json?t=' + Date.now()); // local data — always fresh
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -4398,7 +4398,7 @@ console.log('[Helios WS] connected:', wsUrl);
 
                     // Fetch with cache-busting to get fresh data
                     const cacheBuster = `?t=${Date.now()}`;
-                    const response = await fetch('https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json' + cacheBuster, {
+                    const response = await fetch('data.json' + cacheBuster, {
                         method: 'GET',
                         cache: 'no-store'
                     });
