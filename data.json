@@ -1,13 +1,13 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-16T14:46:33.791194+08:00",
+  "lastUpdated": "2026-04-16T14:47:11.295986+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 58,
     "tasksLeft": 38,
     "completedTasks": 20,
-    "completedToday": 0,
-    "completedThisWeek": 0,
+    "completedToday": 2,
+    "completedThisWeek": 2,
     "critical": 0,
     "urgent": 18,
     "active": 0,
@@ -16,12 +16,38 @@
     "backlog": 19
   },
   "completions": {
-    "today": [],
-    "this_week": [],
-    "all_time": 29
+    "today": [
+      {
+        "id": "A1-11",
+        "title": "File personal taxes",
+        "date": "2026-04-16",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "B6-8",
+        "title": "Order Botak Print Signs",
+        "date": "2026-04-16",
+        "agent": "CHAD-YI"
+      }
+    ],
+    "this_week": [
+      {
+        "id": "A1-11",
+        "title": "File personal taxes",
+        "date": "2026-04-16",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "B6-8",
+        "title": "Order Botak Print Signs",
+        "date": "2026-04-16",
+        "agent": "CHAD-YI"
+      }
+    ],
+    "all_time": 31
   },
   "weeklyProgress": {
-    "completed": 0,
+    "completed": 2,
     "started": 0
   },
   "workflow": {
@@ -715,20 +741,45 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-10",
-      "createdAt": "2026-03-11T00:00:00+08:00",
-      "completedAt": "2026-04-16T14:46:33.791194+08:00"
+      "completed": "2026-04-16",
+      "completedAt": "2026-04-16",
+      "createdAt": "2026-03-11T00:00:00+08:00"
     }
   },
-  "recentWins": [],
+  "recentWins": [
+    {
+      "id": "A1-11",
+      "title": "File personal taxes",
+      "date": "2026-04-16",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "B6-8",
+      "title": "Order Botak Print Signs",
+      "date": "2026-04-16",
+      "agent": "CHAD-YI"
+    },
+    {
+      "id": "A1-11",
+      "title": "File personal taxes",
+      "date": "2026-04-16",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "B6-8",
+      "title": "Order Botak Print Signs",
+      "date": "2026-04-16",
+      "agent": "CHAD-YI"
+    }
+  ],
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
       "role": "The Face — Primary interface",
       "platform": "OpenClaw",
-      "status": "stale",
+      "status": "active",
       "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-04-13T07:30:00+08:00",
+      "lastActive": "2026-04-16T15:00:00+08:00",
       "capabilities": []
     },
     "helios": {
@@ -737,7 +788,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-16T14:46:33.792224+08:00",
+      "lastActive": "2026-04-16T14:47:11.299963+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -746,7 +797,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-16T14:46:02.385523+08:00",
+      "lastActive": "2026-04-16T14:47:07.271546+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1439,8 +1490,8 @@
     "summary": "⚠️ 17 tasks blocked. 18 urgent items need attention.",
     "focus": 18,
     "blockers": 17,
-    "completedToday": 0,
-    "completedThisWeek": 0,
+    "completedToday": 2,
+    "completedThisWeek": 2,
     "topPriorities": [
       {
         "id": "A1-8",
@@ -1475,16 +1526,16 @@
     ],
     "agentHealth": {
       "chad-yi": {
-        "status": "stale",
-        "lastActive": "2026-04-13T07:30:00+08:00"
+        "status": "active",
+        "lastActive": "2026-04-16T15:00:00+08:00"
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-16T14:46:33.792224+08:00"
+        "lastActive": "2026-04-16T14:47:11.299963+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-16T14:46:02.385523+08:00"
+        "lastActive": "2026-04-16T14:47:07.271546+08:00"
       },
       "cerebronn": {
         "status": "active",
@@ -1517,7 +1568,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-16T14:46:33.791194+08:00",
+    "lastRun": "2026-04-16T14:47:11.295986+08:00",
     "dataIntegrity": "ok",
     "taskCount": 58,
     "findings": []
