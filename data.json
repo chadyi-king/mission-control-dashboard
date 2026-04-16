@@ -1,17 +1,17 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-16T19:51:14.504439+08:00",
+  "lastUpdated": "2026-04-16T19:51:25.873115+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 63,
-    "tasksLeft": 43,
+    "totalTasks": 64,
+    "tasksLeft": 44,
     "completedTasks": 20,
     "completedToday": 2,
     "completedThisWeek": 2,
     "critical": 0,
-    "urgent": 21,
+    "urgent": 22,
     "active": 0,
-    "blocked": 20,
+    "blocked": 21,
     "review": 0,
     "backlog": 21
   },
@@ -93,7 +93,8 @@
       "A7-3",
       "A1-12",
       "A1-13",
-      "A1-14"
+      "A1-14",
+      "A6-15"
     ],
     "check this": [],
     "agent on it": [],
@@ -803,6 +804,17 @@
       "priority": "low",
       "deadline": "2026-04-24",
       "createdAt": "2026-03-25T00:00:00+08:00"
+    },
+    "A6-15": {
+      "id": "A6-15",
+      "title": "Build Cerebronn as a proper bot in VS Code Studio",
+      "project": "A6",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "blocked",
+      "priority": "high",
+      "deadline": "2026-04-30",
+      "createdAt": "2026-03-31T00:00:00+08:00"
     }
   },
   "recentWins": [
@@ -847,7 +859,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-16T19:51:14.505488+08:00",
+      "lastActive": "2026-04-16T19:51:25.874346+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1033,13 +1045,14 @@
       "name": "Mission Control",
       "description": "Dashboard & infrastructure",
       "category": "A",
-      "status": "done",
+      "status": "blocked",
       "tasks": [
-        "A6-14"
+        "A6-14",
+        "A6-15"
       ],
-      "totalTasks": 1,
+      "totalTasks": 2,
       "completedTasks": 1,
-      "completionPct": 100
+      "completionPct": 50
     },
     "A7": {
       "name": "Wedding",
@@ -1444,6 +1457,12 @@
       "title": "Build EPEPTOME website — selling peptides for research (hold until prioritized)",
       "reason": "blocked",
       "owner": "CHAD_YI"
+    },
+    {
+      "id": "A6-15",
+      "title": "Build Cerebronn as a proper bot in VS Code Studio",
+      "reason": "blocked",
+      "owner": "CHAD_YI"
     }
   ],
   "inputsNeeded": [
@@ -1586,13 +1605,20 @@
       "agent": "CHAD_YI",
       "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
+    },
+    {
+      "taskId": "A6-15",
+      "title": "Build Cerebronn as a proper bot in VS Code Studio",
+      "agent": "CHAD_YI",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-03-31T00:00:00+08:00"
     }
   ],
   "dailyBriefing": {
     "date": "2026-04-16",
-    "summary": "⚠️ 20 tasks blocked. 21 urgent items need attention.",
-    "focus": 21,
-    "blockers": 20,
+    "summary": "⚠️ 21 tasks blocked. 22 urgent items need attention.",
+    "focus": 22,
+    "blockers": 21,
     "completedToday": 2,
     "completedThisWeek": 2,
     "topPriorities": [
@@ -1634,7 +1660,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-16T19:51:14.505488+08:00"
+        "lastActive": "2026-04-16T19:51:25.874346+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1671,9 +1697,9 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-16T19:51:14.504439+08:00",
+    "lastRun": "2026-04-16T19:51:25.873115+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 63,
+    "taskCount": 64,
     "findings": []
   }
 }
