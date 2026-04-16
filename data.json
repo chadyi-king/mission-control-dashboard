@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-16T09:16:06.545865+00:00",
-  "updatedBy": "helios-auto-fix",
+  "lastUpdated": "2026-04-16T17:22:36.449515+08:00",
+  "updatedBy": "chad-yi-manual-fix",
   "stats": {
     "totalTasks": 58,
     "tasksLeft": 38,
@@ -1572,5 +1572,59 @@
     "dataIntegrity": "ok",
     "taskCount": 58,
     "findings": []
+  },
+  "agentFleet": {
+    "chad-yi": {
+      "status": "active",
+      "currentTask": "Live session on Telegram",
+      "lastActive": "2026-04-16T17:20:00+08:00",
+      "queue": {
+        "pending": 0,
+        "claimed": 8,
+        "blocked": 0
+      },
+      "nextReport": "8:00 AM"
+    },
+    "cerebronn": {
+      "status": "active",
+      "currentTask": "Memory cycle",
+      "lastPlanning": "2026-04-16",
+      "tasksPlannedToday": 0,
+      "subTasksCreated": 0,
+      "lastActive": "2026-04-16T17:16:00+08:00"
+    },
+    "helios": {
+      "status": "active",
+      "currentTask": "Dashboard sync + audit",
+      "auditCycle": "Every 15 minutes",
+      "staleTasksReleased": 0,
+      "dashboardSync": "Every 5 minutes",
+      "lastAudit": "2026-04-16T17:16:05+08:00"
+    },
+    "quanta": {
+      "status": "active",
+      "currentTask": "Watching CallistoFx \u2014 live XAUUSD execution",
+      "account": "$3,891.43",
+      "openTrades": 1,
+      "signals": "CallistoFx",
+      "warning": "1 untracked trade"
+    },
+    "forger": {
+      "status": "stopped",
+      "currentTask": "Not converted to new infrastructure",
+      "tasksWaiting": 9
+    },
+    "escritor": {
+      "status": "not_spawned",
+      "currentTask": null
+    },
+    "autour": {
+      "status": "not_spawned",
+      "currentTask": null
+    },
+    "mensamusa": {
+      "status": "not_spawned",
+      "currentTask": null
+    }
   }
 }
