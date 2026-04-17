@@ -11,8 +11,8 @@
       "current_balance": 3804.67,
       "baseline_balance": 3804.67,
       "weekly_profit": 0,
-      "weekly_loss": 17.06,
-      "total_pnl": -17.06,
+      "weekly_loss": 0,
+      "total_pnl": 0.0,
       "win_count": 0,
       "loss_count": 1,
       "status": "active"
@@ -25,6 +25,13 @@
       "balance": 3804.67,
       "pnl": -17.06,
       "note": "Baseline established from OANDA account"
+    },
+    {
+      "date": "2026-04-18",
+      "agent": "quanta",
+      "balance": 3804.67,
+      "pnl": 0,
+      "note": "Balance 3804.67 | P/L +0.00 | Open 0"
     }
   ],
   "weekly_rankings": {

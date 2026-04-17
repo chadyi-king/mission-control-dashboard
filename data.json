@@ -1552,16 +1552,24 @@
         "current_balance": 3804.67,
         "baseline_balance": 3804.67,
         "weekly_profit": 0,
-        "weekly_loss": 17.06,
-        "total_pnl": -17.06,
+        "weekly_loss": 0,
+        "total_pnl": 0.0,
         "win_count": 0,
         "loss_count": 1,
         "status": "active"
       }
     },
     "weekly_rankings": {
-      "best": { "agent": "quanta", "amount": -17.06, "period": "2026-04-17" },
-      "worst": { "agent": "quanta", "amount": -17.06, "period": "2026-04-17" }
+      "best": {
+        "agent": "quanta",
+        "amount": -17.06,
+        "period": "2026-04-17"
+      },
+      "worst": {
+        "agent": "quanta",
+        "amount": -17.06,
+        "period": "2026-04-17"
+      }
     }
   }
 }
