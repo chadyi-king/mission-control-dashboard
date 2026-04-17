@@ -969,7 +969,18 @@
             border-bottom: 1px solid rgba(220,20,60,0.08);
             text-align: center;
             font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        .stat-cluster-label .cluster-total {
+            font-size: 9px;
+            color: rgba(200,200,220,0.85);
+            letter-spacing: 0;
+            text-transform: none;
+        }
+        .stat-cluster-label .cluster-total.positive { color: #4ade80; }
+        .stat-cluster-label .cluster-total.negative { color: #ef4444; }
         .stat-cluster-cards {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;

@@ -1845,6 +1845,17 @@ console.log('[Helios WS] connected:', wsUrl);
                 if (net < worstAgent.amount || worstAgent.amount === 0) worstAgent = { name: agentId.toUpperCase(), amount: net };
             });
 
+            // Total lifetime PNL (sum of all agent total_pnl)
+            let totalPNL = 0;
+            Object.values(revAgents).forEach(a => {
+                totalPNL += parseFloat(a.total_pnl || 0);
+            });
+            const totalEl = document.getElementById('s-pnl-total-lifetime');
+            if (totalEl) {
+                totalEl.textContent = (totalPNL >= 0 ? '+' : '') + totalPNL.toFixed(2) + ' total';
+                totalEl.className = 'cluster-total' + (totalPNL >= 0 ? ' positive' : ' negative');
+            }
+
             const weeklyNet = weeklyProfit - weeklyLoss;
             const weeklyNetEl = document.getElementById('s-pnl-weekly-net');
             if (weeklyNetEl) {
