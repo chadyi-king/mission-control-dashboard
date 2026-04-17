@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-17T14:26:29.564452+08:00",
+  "lastUpdated": "2026-04-17T14:26:38.590868+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 64,
@@ -9,11 +9,11 @@
     "completedToday": 0,
     "completedThisWeek": 2,
     "critical": 0,
-    "urgent": 22,
+    "urgent": 23,
     "active": 0,
-    "blocked": 21,
+    "blocked": 0,
     "review": 0,
-    "backlog": 21
+    "backlog": 0
   },
   "completions": {
     "today": [],
@@ -31,7 +31,7 @@
         "agent": "CHAD-YI"
       }
     ],
-    "all_time": 30
+    "all_time": 17
   },
   "weeklyProgress": {
     "completed": 0,
@@ -60,10 +60,18 @@
       "A1-4",
       "A1-11"
     ],
-    "waiting on you": [
+    "waiting on you": [],
+    "check this": [],
+    "agent on it": [],
+    "has deadline": [
+      "A1-12",
+      "B6-9"
+    ],
+    "todo": [
       "A1-8",
       "A1-9",
       "A1-10",
+      "A2-1",
       "A3-1",
       "A3-2",
       "A3-3",
@@ -78,15 +86,7 @@
       "A5-5",
       "A7-1",
       "A7-3",
-      "A1-12",
-      "A1-13",
-      "A1-14",
-      "A6-15"
-    ],
-    "check this": [],
-    "agent on it": [],
-    "has deadline": [],
-    "todo": [
+      "B10-1",
       "C1-1",
       "C1-2",
       "C2-1",
@@ -106,13 +106,12 @@
       "B8-1",
       "B9-1",
       "B1-2",
-      "B6-9",
-      "B8-2"
+      "A1-13",
+      "A1-14",
+      "B8-2",
+      "A6-15"
     ],
-    "paused": [
-      "A2-1",
-      "B10-1"
-    ]
+    "paused": []
   },
   "tasks": {
     "A1-8": {
@@ -121,7 +120,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "deadline": "2026-04-20",
       "createdAt": "2026-03-21T00:00:00+08:00"
@@ -132,7 +131,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "deadline": "2026-12-31",
       "createdAt": "2026-12-01T00:00:00+08:00"
@@ -143,7 +142,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "deadline": "2026-04-09",
       "createdAt": "2026-03-10T00:00:00+08:00"
@@ -154,7 +153,7 @@
       "project": "A2",
       "category": "A",
       "agent": "Escritor",
-      "status": "paused",
+      "status": "removed",
       "priority": "high",
       "pauseReason": "Waiting for Escritor build",
       "createdAt": "2026-02-01T00:00:00+08:00"
@@ -165,7 +164,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -175,7 +174,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -185,7 +184,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -195,7 +194,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -205,7 +204,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -215,7 +214,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -225,7 +224,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -235,7 +234,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -245,7 +244,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -255,7 +254,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -287,7 +286,7 @@
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -297,7 +296,7 @@
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -307,7 +306,7 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "deadline": "2026-06-01",
       "createdAt": "2026-05-02T00:00:00+08:00"
@@ -330,7 +329,7 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "deadline": "2026-04-30",
       "createdAt": "2026-03-31T00:00:00+08:00"
@@ -447,7 +446,7 @@
       "project": "B10",
       "category": "B",
       "agent": "Forger",
-      "status": "paused",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -457,7 +456,7 @@
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -467,7 +466,7 @@
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "deadline": "2026-05-15",
       "createdAt": "2026-04-15T00:00:00+08:00"
@@ -478,7 +477,7 @@
       "project": "C2",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -488,7 +487,7 @@
       "project": "C2",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -498,7 +497,7 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -508,7 +507,7 @@
       "project": "C3",
       "category": "C",
       "agent": "Pixel",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -518,7 +517,7 @@
       "project": "C3",
       "category": "C",
       "agent": "Pixel",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -528,7 +527,7 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -538,7 +537,7 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -632,7 +631,7 @@
       "project": "B1",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -642,7 +641,7 @@
       "project": "B2",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -652,7 +651,7 @@
       "project": "B3",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -662,7 +661,7 @@
       "project": "B4",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -672,7 +671,7 @@
       "project": "B5",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -682,7 +681,7 @@
       "project": "B6",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -692,7 +691,7 @@
       "project": "B7",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -702,7 +701,7 @@
       "project": "B8",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -712,7 +711,7 @@
       "project": "B9",
       "category": "B",
       "agent": "Forger",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -722,7 +721,7 @@
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -744,7 +743,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "has deadline",
       "priority": "high",
       "deadline": "2026-04-16",
       "createdAt": "2026-03-17T00:00:00+08:00"
@@ -755,7 +754,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "deadline": "2026-04-24",
       "createdAt": "2026-03-25T00:00:00+08:00"
@@ -766,7 +765,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -775,9 +774,9 @@
       "title": "Order items for SPH event",
       "project": "B6",
       "category": "B",
-      "agent": "CHAD-YI",
-      "status": "pending",
-      "priority": "low",
+      "agent": "CHAD_YI",
+      "status": "has deadline",
+      "priority": "high",
       "deadline": "2026-04-17",
       "createdAt": "2026-03-18T00:00:00+08:00"
     },
@@ -787,7 +786,7 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "low",
       "deadline": "2026-04-24",
       "createdAt": "2026-03-25T00:00:00+08:00"
@@ -798,7 +797,7 @@
       "project": "A6",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "blocked",
+      "status": "removed",
       "priority": "high",
       "deadline": "2026-04-30",
       "createdAt": "2026-03-31T00:00:00+08:00"
@@ -834,7 +833,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-17T14:26:29.565530+08:00",
+      "lastActive": "2026-04-17T14:26:38.592806+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -937,7 +936,7 @@
       "name": "Personal",
       "description": "Personal life tasks",
       "category": "A",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "A1-8",
         "A1-9",
@@ -973,7 +972,7 @@
       "name": "KOE",
       "description": "Content creation",
       "category": "A",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "A3-1",
         "A3-2",
@@ -990,7 +989,7 @@
       "name": "Streaming",
       "description": "VTuber streaming setup",
       "category": "A",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "A4-1",
         "A4-2",
@@ -1005,7 +1004,7 @@
       "name": "Trading",
       "description": "Quanta trading bot & strategy",
       "category": "A",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "A5-1",
         "A5-3",
@@ -1020,7 +1019,7 @@
       "name": "Mission Control",
       "description": "Dashboard & infrastructure",
       "category": "A",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "A6-14",
         "A6-15"
@@ -1033,7 +1032,7 @@
       "name": "Wedding",
       "description": "Wedding planning",
       "category": "A",
-      "status": "blocked",
+      "status": "pending",
       "tasks": [
         "A7-1",
         "A7-2",
@@ -1304,302 +1303,148 @@
     {
       "id": "A1-8",
       "title": "Create habit tracker in dashboard",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A1-9",
       "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A1-10",
       "title": "Prepare wedding guest list",
-      "reason": "blocked",
+      "reason": "overdue",
       "owner": "CHAD_YI"
     },
     {
       "id": "A2-1",
       "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
-      "reason": "paused",
+      "reason": "urgent",
       "owner": "Escritor"
     },
     {
       "id": "A3-1",
       "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-2",
       "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-3",
       "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-4",
       "title": "Set up KOE YouTube channel branding",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-5",
       "title": "TikTok content strategy (short clips from scripts)",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A3-6",
       "title": "Record & edit first video",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-1",
       "title": "Research streaming platforms (Kick vs YouTube vs Twitch) and find management company",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-2",
       "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-3",
       "title": "Define content strategy — what to stream, how to grow audience",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A4-4",
       "title": "Set up streaming channel and management workflow",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A5-4",
       "title": "Add AXI/MT5 for QUANTA with same trading logic",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A5-5",
       "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A7-1",
       "title": "Finalize wedding theme",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A7-3",
       "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
-    },
-    {
-      "id": "B10-1",
-      "title": "Corporate data tracking setup — Back burner, revisit end of year",
-      "reason": "paused",
-      "owner": "Forger"
     },
     {
       "id": "A1-12",
       "title": "Fix Google Ads API",
-      "reason": "blocked",
+      "reason": "overdue",
       "owner": "CHAD_YI"
     },
     {
       "id": "A1-13",
       "title": "Create RES exam testing bot",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "A1-14",
       "title": "Build EPEPTOME website — selling peptides for research (hold until prioritized)",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     },
     {
       "id": "B6-9",
       "title": "Order items for SPH event",
       "reason": "overdue",
-      "owner": "CHAD-YI"
+      "owner": "CHAD_YI"
     },
     {
       "id": "A6-15",
       "title": "Build Cerebronn as a proper bot in VS Code Studio",
-      "reason": "blocked",
+      "reason": "urgent",
       "owner": "CHAD_YI"
     }
   ],
-  "inputsNeeded": [
-    {
-      "taskId": "A1-8",
-      "title": "Create habit tracker in dashboard",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-03-21T00:00:00+08:00"
-    },
-    {
-      "taskId": "A1-9",
-      "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-12-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A1-10",
-      "title": "Prepare wedding guest list",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-03-10T00:00:00+08:00"
-    },
-    {
-      "taskId": "A3-1",
-      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A3-2",
-      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A3-3",
-      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A3-4",
-      "title": "Set up KOE YouTube channel branding",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A3-5",
-      "title": "TikTok content strategy (short clips from scripts)",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A3-6",
-      "title": "Record & edit first video",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A4-1",
-      "title": "Research streaming platforms (Kick vs YouTube vs Twitch) and find management company",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A4-2",
-      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A4-3",
-      "title": "Define content strategy — what to stream, how to grow audience",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A4-4",
-      "title": "Set up streaming channel and management workflow",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A5-4",
-      "title": "Add AXI/MT5 for QUANTA with same trading logic",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A5-5",
-      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A7-1",
-      "title": "Finalize wedding theme",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-05-02T00:00:00+08:00"
-    },
-    {
-      "taskId": "A7-3",
-      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-03-31T00:00:00+08:00"
-    },
-    {
-      "taskId": "A1-12",
-      "title": "Fix Google Ads API",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-03-17T00:00:00+08:00"
-    },
-    {
-      "taskId": "A1-13",
-      "title": "Create RES exam testing bot",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-03-25T00:00:00+08:00"
-    },
-    {
-      "taskId": "A1-14",
-      "title": "Build EPEPTOME website — selling peptides for research (hold until prioritized)",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-02-01T00:00:00+08:00"
-    },
-    {
-      "taskId": "A6-15",
-      "title": "Build Cerebronn as a proper bot in VS Code Studio",
-      "agent": "CHAD_YI",
-      "reason": "Blocked — needs input",
-      "blockedSince": "2026-03-31T00:00:00+08:00"
-    }
-  ],
+  "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-17",
-    "summary": "⚠️ 21 tasks blocked. 22 urgent items need attention.",
-    "focus": 22,
-    "blockers": 21,
+    "summary": "🔥 23 urgent tasks today. 0 completed so far.",
+    "focus": 23,
+    "blockers": 0,
     "completedToday": 0,
     "completedThisWeek": 2,
     "topPriorities": [
@@ -1607,31 +1452,31 @@
         "id": "A1-8",
         "title": "Create habit tracker in dashboard",
         "priority": "high",
-        "status": "blocked"
+        "status": "removed"
       },
       {
         "id": "A1-9",
         "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
         "priority": "high",
-        "status": "blocked"
+        "status": "removed"
       },
       {
         "id": "A1-10",
         "title": "Prepare wedding guest list",
         "priority": "high",
-        "status": "blocked"
+        "status": "removed"
       },
       {
         "id": "A2-1",
         "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
         "priority": "high",
-        "status": "paused"
+        "status": "removed"
       },
       {
         "id": "A3-1",
         "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
         "priority": "high",
-        "status": "blocked"
+        "status": "removed"
       }
     ],
     "agentHealth": {
@@ -1641,7 +1486,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-17T14:26:29.565530+08:00"
+        "lastActive": "2026-04-17T14:26:38.592806+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1684,7 +1529,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-17T14:26:29.564452+08:00",
+    "lastRun": "2026-04-17T14:26:38.590868+08:00",
     "dataIntegrity": "ok",
     "taskCount": 64,
     "findings": []
