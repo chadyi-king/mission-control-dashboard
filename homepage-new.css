@@ -2315,13 +2315,17 @@ body::before {
         padding: 10px;
     }
     .stat-value {
-        font-size: 22px;
+        font-size: 16px;
     }
     .stat-label {
-        font-size: 8px;
+        font-size: 7px;
     }
     .sub-stat {
-        font-size: 9px;
+        font-size: 8px;
+    }
+    .stat-cluster-label .cluster-total {
+        font-size: 13px;
+        font-weight: 700;
     }
 }
 
