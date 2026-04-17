@@ -1539,5 +1539,29 @@
     "dataIntegrity": "ok",
     "taskCount": 64,
     "findings": []
+  },
+  "revenue": {
+    "version": "1.0.0",
+    "tracking_started": "2026-04-17",
+    "currency": "USD",
+    "starting_balance": 3804.67,
+    "agents": {
+      "quanta": {
+        "source": "oanda",
+        "account_id": "001-003-8520002-001",
+        "current_balance": 3804.67,
+        "baseline_balance": 3804.67,
+        "weekly_profit": 0,
+        "weekly_loss": 17.06,
+        "total_pnl": -17.06,
+        "win_count": 0,
+        "loss_count": 1,
+        "status": "active"
+      }
+    },
+    "weekly_rankings": {
+      "best": { "agent": "quanta", "amount": -17.06, "period": "2026-04-17" },
+      "worst": { "agent": "quanta", "amount": -17.06, "period": "2026-04-17" }
+    }
   }
 }
