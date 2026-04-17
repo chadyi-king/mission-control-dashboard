@@ -12,7 +12,8 @@
 
     <div class="fleet-grid" id="fleet-grid">
         <!-- Leadership Row -->
-        <div class="agent-card" data-agent="chad-yi" onclick="toggleAgentDetails('chad-yi')">
+        <div class="agent-card chad-yi-card" data-agent="chad-yi" onclick="toggleAgentDetails('chad-yi')">
+            <div class="agent-card-bg" style="background-image:url('assets/chad-yi-avatar.jpg')"></div>
             <div class="agent-card-header">
                 <div class="agent-status live"></div>
                 <div class="agent-badge" id="chad-yi-badge">● LIVE</div>
@@ -369,6 +370,31 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
+}
+
+.agent-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.chad-yi-card {
+    border-color: rgba(220, 38, 38, 0.25);
+}
+
+.agent-card-header,
+.agent-card-body,
+.agent-card-footer,
+.agent-details {
+    position: relative;
+    z-index: 1;
 }
 
 .agent-card:hover {
