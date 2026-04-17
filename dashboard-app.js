@@ -4521,6 +4521,8 @@ function updateFleetPanel(data) {
         const task = document.getElementById(id + '-task');
         const log = document.getElementById(id + '-log');
         const live = document.getElementById(id + '-live');
+        const seen = document.getElementById(id + '-seen');
+        const recent = document.getElementById(id + '-recent');
         const statusDot = document.querySelector('.agent-card[data-agent="' + id + '"] .agent-status');
 
         const s = (agent.status || 'offline').toLowerCase();
@@ -4550,12 +4552,22 @@ function updateFleetPanel(data) {
         }
 
         if (task) task.textContent = agent.currentTask || (isNotBuilt ? 'Queued for future deployment' : 'Idle');
-        if (log) {
-            const lastSeen = agent.lastActive 
-                ? 'Last seen: ' + (typeof formatRelativeTimestamp === 'function' ? formatRelativeTimestamp(agent.lastActive) : agent.lastActive) + ' ago'
-                : 'No recent activity';
-            log.textContent = lastSeen;
+        
+        // Only update recent tasks if data provides it; don't wipe hardcoded meaningful ones
+        if (recent && Array.isArray(agent.recentTasks) && agent.recentTasks.length) {
+            recent.textContent = agent.recentTasks.join(' \u00b7 ');
         }
+        
+        // Update Last Seen in its own row, not in Recent Activity
+        if (seen) {
+            if (agent.lastActive) {
+                const ts = typeof formatRelativeTimestamp === 'function' ? formatRelativeTimestamp(agent.lastActive) : agent.lastActive;
+                seen.textContent = 'Last seen: ' + ts;
+            } else {
+                seen.textContent = isNotBuilt ? 'Never active' : 'No heartbeat';
+            }
+        }
+        
         if (live) live.textContent = isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal');
     });
 
