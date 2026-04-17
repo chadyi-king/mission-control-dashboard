@@ -1827,7 +1827,51 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-agents-stale', staleSignals + ' stale');
             set('s-agents-offline', offlineSignals + ' offline');
 
-            // 4. THIS WEEK — tasks due within the current Mon–Sun week
+            // 4. PNL CLUSTER — revenue tracking from revenue ledger
+            const rev = data.revenue || {};
+            const revAgents = rev.agents || {};
+            let weeklyProfit = 0;
+            let weeklyLoss = 0;
+            let bestAgent = { name: '—', amount: 0 };
+            let worstAgent = { name: '—', amount: 0 };
+
+            Object.entries(revAgents).forEach(([agentId, agentRev]) => {
+                const profit = parseFloat(agentRev.weekly_profit || 0);
+                const loss = parseFloat(agentRev.weekly_loss || 0);
+                weeklyProfit += Math.max(0, profit);
+                weeklyLoss += Math.max(0, loss);
+                const net = parseFloat(agentRev.total_pnl || 0);
+                if (net > bestAgent.amount) bestAgent = { name: agentId.toUpperCase(), amount: net };
+                if (net < worstAgent.amount || worstAgent.amount === 0) worstAgent = { name: agentId.toUpperCase(), amount: net };
+            });
+
+            const weeklyNet = weeklyProfit - weeklyLoss;
+            const weeklyNetEl = document.getElementById('s-pnl-weekly-net');
+            if (weeklyNetEl) {
+                weeklyNetEl.textContent = (weeklyNet >= 0 ? '+' : '') + weeklyNet.toFixed(2);
+                weeklyNetEl.className = 'stat-value' + (weeklyNet >= 0 ? ' stat-val-good' : ' stat-val-alert');
+            }
+            set('s-pnl-weekly-profit', '+' + weeklyProfit.toFixed(2) + ' profit');
+            set('s-pnl-weekly-loss', '-' + weeklyLoss.toFixed(2) + ' loss');
+            set('s-pnl-weekly-net-sub', (weeklyNet >= 0 ? '+' : '') + weeklyNet.toFixed(2) + ' net');
+
+            const bestEl = document.getElementById('s-best-agent-amount');
+            if (bestEl) {
+                bestEl.textContent = (bestAgent.amount >= 0 ? '+' : '') + bestAgent.amount.toFixed(2);
+                bestEl.className = 'stat-value' + (bestAgent.amount >= 0 ? ' stat-val-good' : ' stat-val-alert');
+            }
+            set('s-best-agent-name', bestAgent.name);
+            set('s-best-agent-share', bestAgent.name !== '—' ? 'top agent' : '—');
+
+            const worstEl = document.getElementById('s-worst-agent-amount');
+            if (worstEl) {
+                worstEl.textContent = (worstAgent.amount >= 0 ? '+' : '') + worstAgent.amount.toFixed(2);
+                worstEl.className = 'stat-value' + (worstAgent.amount >= 0 ? ' stat-val-good' : ' stat-val-alert');
+            }
+            set('s-worst-agent-name', worstAgent.name);
+            set('s-worst-agent-streak', worstAgent.name !== '—' ? 'needs work' : '—');
+
+            // 5. THIS WEEK — tasks due within the current Mon–Sun week
             const weekEnd = new Date(today); weekEnd.setDate(weekEnd.getDate() + (7 - today.getDay()) % 7 || 7);
             const weekStart7 = new Date(today); weekStart7.setDate(weekStart7.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1));
             const thisWeekTasks = openTasks.filter(t => {

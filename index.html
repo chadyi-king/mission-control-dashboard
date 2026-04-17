@@ -256,6 +256,51 @@
                     </div>
                 </div>
 
+                <!-- ── CLUSTER 4: PNL ── -->
+                <div class="stat-cluster">
+                    <div class="stat-cluster-label">PNL</div>
+                    <div class="stat-cluster-cards">
+
+                        <div class="stat-card" id="stat-weekly-pnl">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                <span class="stat-label">WEEKLY PNL</span>
+                            </div>
+                            <div class="stat-value" id="s-pnl-weekly-net">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-good" id="s-pnl-weekly-profit">— profit</span>
+                                <span class="sub-stat sub-alert" id="s-pnl-weekly-loss">— loss</span>
+                                <span class="sub-stat sub-muted" id="s-pnl-weekly-net-sub">— net</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card" id="stat-best-agent">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <span class="stat-label">BEST AGENT</span>
+                            </div>
+                            <div class="stat-value stat-val-good" id="s-best-agent-amount">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-agent" id="s-best-agent-name">— agent</span>
+                                <span class="sub-stat sub-good" id="s-best-agent-share">— share</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card" id="stat-worst-agent">
+                            <div class="stat-header">
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
+                                <span class="stat-label">WORST AGENT</span>
+                            </div>
+                            <div class="stat-value stat-val-alert" id="s-worst-agent-amount">—</div>
+                            <div class="stat-breakdown">
+                                <span class="sub-stat sub-alert" id="s-worst-agent-name">— agent</span>
+                                <span class="sub-stat sub-muted" id="s-worst-agent-streak">— streak</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div><!-- /stats-bar -->
 
             <!-- FULL-WIDTH AGENT FLEET — below stats bar -->
@@ -635,7 +680,7 @@
     <script src="mobile-nav.js"></script>
     <script src="project-tasks-modal.js"></script>
     <script src="agent-registry.js?v=2"></script>
-    <script src="dashboard-app.js?v=6"></script>
+    <script src="dashboard-app.js?v=7"></script>
     <div id="toast-container"></div>
 
     <!-- Hyperspace Starfield Animation -->

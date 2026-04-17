@@ -2293,8 +2293,35 @@ body::before {
     .week-grid {
         grid-template-columns: repeat(4, 1fr);
     }
+    /* Stats bar mobile: vertical stack of clusters */
     .stats-bar {
-        flex-wrap: nowrap;
+        flex-direction: column;
+        gap: 10px;
+        overflow-x: visible;
+        padding: 10px 0;
+    }
+    .stat-cluster {
+        min-width: 0;
+        width: 100%;
+    }
+    .stat-cluster-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+    .stat-card {
+        min-width: 0;
+        flex: 1;
+        padding: 10px;
+    }
+    .stat-value {
+        font-size: 22px;
+    }
+    .stat-label {
+        font-size: 8px;
+    }
+    .sub-stat {
+        font-size: 9px;
     }
 }
 
