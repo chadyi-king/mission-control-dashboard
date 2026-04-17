@@ -4553,6 +4553,11 @@ function updateFleetPanel(data) {
 
         if (task) task.textContent = agent.currentTask || (isNotBuilt ? 'Queued for future deployment' : 'Idle');
         
+        // Update Recent Activity with meaningful content, not just timestamps
+        if (log && agent.recentActivity) {
+            log.textContent = agent.recentActivity;
+        }
+        
         // Only update recent tasks if data provides it; don't wipe hardcoded meaningful ones
         if (recent && Array.isArray(agent.recentTasks) && agent.recentTasks.length) {
             recent.textContent = agent.recentTasks.join(' \u00b7 ');

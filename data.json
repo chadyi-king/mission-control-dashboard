@@ -830,7 +830,8 @@
         "Redesigned agent fleet dashboard",
         "Fixed mobile click interactions",
         "Coordinated overdue task triage"
-      ]
+      ],
+      "recentActivity": "Responding via Telegram gateway \u00b7 Dashboard coordination"
     },
     "helios": {
       "name": "Helios",
@@ -844,7 +845,8 @@
         "Auto-synced dashboard data.json",
         "Ran enhanced audit cycle",
         "Fixed 3 data integrity issues"
-      ]
+      ],
+      "recentActivity": "Synced dashboard data and ran enhanced audit"
     },
     "quanta": {
       "name": "Quanta",
@@ -858,7 +860,8 @@
         "Executed XAUUSD live trade (CallistoFx)",
         "Monitored OANDA signals",
         "Processed market open volatility"
-      ]
+      ],
+      "recentActivity": "Monitoring OANDA for XAUUSD signals"
     },
     "cerebronn": {
       "name": "Cerebronn",
@@ -867,7 +870,8 @@
       "status": "not_built_yet",
       "currentTask": "Architecture & deep reasoning (The Brain)",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "recentActivity": "No activity \u2014 agent not yet deployed"
     },
     "tele": {
       "name": "Tele",
@@ -876,7 +880,8 @@
       "status": "active",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "recentActivity": "Gateway routing active"
     },
     "escritor": {
       "name": "Escritor",
@@ -885,7 +890,8 @@
       "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "2026-04-16T07:20:23Z",
-      "capabilities": []
+      "capabilities": [],
+      "recentActivity": "No activity \u2014 stale state from March 21"
     },
     "forger": {
       "name": "Forger",
@@ -894,7 +900,8 @@
       "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "recentActivity": "No activity \u2014 old service stopped"
     },
     "autour": {
       "name": "Autour",
@@ -903,7 +910,8 @@
       "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "2026-04-16T07:20:23Z",
-      "capabilities": []
+      "capabilities": [],
+      "recentActivity": "No activity \u2014 agent not yet built"
     }
   },
   "categories": {
