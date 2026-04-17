@@ -263,21 +263,12 @@
                 <div id="agent-fleet-container"></div>
             </div>
             <script>
-            // Load the agent fleet panel
-            fetch('agent-fleet-redesign.html?v=' + Date.now())
+            // Load the agent fleet panel (functions now in dashboard-app.js)
+            fetch('agent-fleet-redesign.html?v=7')
                 .then(r => r.text())
                 .then(html => {
                     document.getElementById('agent-fleet-container').innerHTML = html;
-                    // Extract and run scripts
-                    const scripts = html.match(/<script>[\s\S]*?<\/script>/g) || [];
-                    scripts.forEach(script => {
-                        const code = script.replace(/<script>|<\/script>/g, '');
-                        try {
-                            eval(code);
-                        } catch(e) {
-                            console.error('Fleet script error:', e);
-                        }
-                    });
+                    // Scripts are now in dashboard-app.js, no eval needed
                 })
                 .catch(e => {
                     console.error('Failed to load fleet panel:', e);

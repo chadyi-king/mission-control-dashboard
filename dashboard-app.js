@@ -4492,3 +4492,73 @@ console.log('[Helios WS] connected:', wsUrl);
                 })
             };
         })();
+
+/* ═══════════════════════════════════════════════════════════════
+   AGENT FLEET — Flat Bento Grid Functions
+═══════════════════════════════════════════════════════════════ */
+
+function toggleAgentDetails(agentId) {
+    const card = document.querySelector('.agent-card[data-agent="' + agentId + '"]');
+    if (!card) return;
+    
+    // Close all other expanded cards for cleaner UX
+    document.querySelectorAll('.agent-card.expanded').forEach(function(other) {
+        if (other !== card) other.classList.remove('expanded');
+    });
+    
+    card.classList.toggle('expanded');
+}
+
+function updateFleetPanel(data) {
+    if (!data || !data.agents) return;
+    const agents = data.agents;
+    let liveCount = 0;
+    let queuedCount = 0;
+
+    Object.keys(agents).forEach(function(id) {
+        const agent = agents[id];
+        const badge = document.getElementById(id + '-badge');
+        const task = document.getElementById(id + '-task');
+        const log = document.getElementById(id + '-log');
+        const live = document.getElementById(id + '-live');
+        const statusDot = document.querySelector('.agent-card[data-agent="' + id + '"] .agent-status');
+
+        const s = (agent.status || 'offline').toLowerCase();
+        const isLive = s === 'active' || s === 'working';
+        const isNotBuilt = s === 'not_built_yet' || s === 'not_spawned' || s === 'error';
+
+        if (isLive) liveCount++;
+        else if (isNotBuilt) queuedCount++;
+
+        if (badge) {
+            if (isNotBuilt) {
+                badge.textContent = '\u25cc NOT BUILT';
+                badge.className = 'agent-badge not-built';
+            } else if (isLive) {
+                badge.textContent = '\u25cf LIVE';
+                badge.className = 'agent-badge';
+            } else {
+                badge.textContent = '\u25cb IDLE';
+                badge.className = 'agent-badge';
+                badge.style.background = 'rgba(100,100,100,0.12)';
+                badge.style.color = '#aaa';
+            }
+        }
+
+        if (statusDot) {
+            statusDot.className = 'agent-status' + (isLive ? ' live' : ' offline');
+        }
+
+        if (task) task.textContent = agent.currentTask || (isNotBuilt ? 'Queued for future deployment' : 'Idle');
+        if (log) {
+            const lastSeen = agent.lastActive 
+                ? 'Last seen: ' + (typeof formatRelativeTimestamp === 'function' ? formatRelativeTimestamp(agent.lastActive) : agent.lastActive) + ' ago'
+                : 'No recent activity';
+            log.textContent = lastSeen;
+        }
+        if (live) live.textContent = isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal');
+    });
+
+    const summary = document.getElementById('fleet-status-summary');
+    if (summary) summary.textContent = liveCount + ' live \u00b7 ' + queuedCount + ' queued';
+}

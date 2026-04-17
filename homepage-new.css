@@ -1537,6 +1537,11 @@ body::before {
 .sub-deadline { color: rgba(220, 38, 38, 0.9); }
 .sub-trend  { color: rgba(99, 179, 237, 0.75); }
 
+.fleet-fullwidth-wrapper {
+    width: 100%;
+    margin-bottom: 4px;
+}
+
 /* ─────────────────────────────────────────────────────
    COMMAND GRID — 4 column (agent-ops left, focus right)
 ───────────────────────────────────────────────────── */
