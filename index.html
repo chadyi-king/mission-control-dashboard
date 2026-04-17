@@ -264,7 +264,7 @@
             </div>
             <script>
             // Load the agent fleet panel
-            fetch('agent-fleet-redesign.html')
+            fetch('agent-fleet-redesign.html?v=' + Date.now())
                 .then(r => r.text())
                 .then(html => {
                     document.getElementById('agent-fleet-container').innerHTML = html;
