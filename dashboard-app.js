@@ -610,6 +610,7 @@
                 if (Array.isArray(sync.agents) && sync.agents.length) {
                     renderAgentRail(sync.agents);
                     renderAgentFleet(sync.agents);
+                    if (typeof updateFleetPanel === 'function') updateFleetPanel(sync);
                 }
                 appendLiveFeedLine('HELIOS', 'heartbeat', 'sync bootstrap ok — ' + (sync.agents?.length || 0) + ' agents online');
             } catch (error) {
@@ -763,6 +764,7 @@ console.log('[Helios WS] connected:', wsUrl);
                 renderCategoriesSection();
                 renderResourcesSection();
                 updateSidebarAgents(appData);
+                if (typeof updateFleetPanel === 'function') updateFleetPanel(appData);
                 console.log('Rendering complete. allProjects:', allProjects.length);
 
             } catch (error) {
@@ -782,6 +784,7 @@ console.log('[Helios WS] connected:', wsUrl);
                         renderCategoriesSection();
                         renderResourcesSection();
                         updateSidebarAgents(appData);
+                        if (typeof updateFleetPanel === 'function') updateFleetPanel(appData);
                         return;
                     }
                 } catch(e) { console.warn('Cache fallback failed:', e); }

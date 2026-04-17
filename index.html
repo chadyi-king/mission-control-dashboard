@@ -258,9 +258,37 @@
 
             </div><!-- /stats-bar -->
 
-            <!-- ═══════════════════════════════════════════
+            <!-- FULL-WIDTH AGENT FLEET — below stats bar -->
+            <div class="fleet-fullwidth-wrapper" id="fleet-fullwidth-wrapper">
+                <div id="agent-fleet-container"></div>
+            </div>
+            <script>
+            // Load the agent fleet panel
+            fetch('agent-fleet-redesign.html')
+                .then(r => r.text())
+                .then(html => {
+                    document.getElementById('agent-fleet-container').innerHTML = html;
+                    // Extract and run scripts
+                    const scripts = html.match(/<script>[\s\S]*?<\/script>/g) || [];
+                    scripts.forEach(script => {
+                        const code = script.replace(/<script>|<\/script>/g, '');
+                        try {
+                            eval(code);
+                        } catch(e) {
+                            console.error('Fleet script error:', e);
+                        }
+                    });
+                })
+                .catch(e => {
+                    console.error('Failed to load fleet panel:', e);
+                    document.getElementById('agent-fleet-container').innerHTML = 
+                        '<div style="padding:20px;color:rgba(220,80,80,0.9)">Failed to load Agent Fleet panel</div>';
+                });
+            </script>
+
+            <!-- ═══════════════════════════════════════════════════════════════
                  COMMAND GRID — Agent Ops (left) + Today's Focus (right)
-            ═══════════════════════════════════════════ -->
+            ═══════════════════════════════════════════════════════════════ -->
             <div class="command-grid" id="command-grid">
 
                 <!-- ─────────────────────────────────────
@@ -362,39 +390,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    <!-- ROW 4: AGENT FLEET — Unified panel showing organizational hierarchy -->
-                    <div class="ops-row">
-                        <div class="cmd-card fleet-card" id="card-fleet" style="grid-column: 1 / -1;">
-                            <div id="agent-fleet-container">
-                                <!-- Agent fleet panel loaded here -->
-                            </div>
-                        </div>
-                    </div><!-- /ops-row ROW 4 -->
-                    
-                    <script>
-                    // Load the agent fleet panel
-                    fetch('agent-fleet-redesign.html')
-                        .then(r => r.text())
-                        .then(html => {
-                            document.getElementById('agent-fleet-container').innerHTML = html;
-                            // Extract and run scripts
-                            const scripts = html.match(/<script>[\s\S]*?<\/script>/g) || [];
-                            scripts.forEach(script => {
-                                const code = script.replace(/<script>|<\/script>/g, '');
-                                try {
-                                    eval(code);
-                                } catch(e) {
-                                    console.error('Fleet script error:', e);
-                                }
-                            });
-                        })
-                        .catch(e => {
-                            console.error('Failed to load fleet panel:', e);
-                            document.getElementById('agent-fleet-container').innerHTML = 
-                                '<div style="padding:20px;color:rgba(220,80,80,0.9)">Failed to load Agent Fleet panel</div>';
-                        });
-                    </script>
 
                 </div><!-- /agent-ops -->
 
