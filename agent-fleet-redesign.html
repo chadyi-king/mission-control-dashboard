@@ -18,7 +18,7 @@
                 <div class="agent-badge" id="chad-yi-badge">● LIVE</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar">F</div>
+                <div class="agent-avatar photo"><img src="assets/chad-yi-avatar.jpg" alt="CHAD_YI"></div>
                 <div class="agent-name">CHAD_YI</div>
                 <div class="agent-role">The Face</div>
             </div>
@@ -442,6 +442,18 @@
     margin-bottom: 8px;
     background: rgba(220, 38, 38, 0.12);
     border: 1.5px solid rgba(220, 38, 38, 0.25);
+    overflow: hidden;
+}
+
+.agent-avatar.photo {
+    padding: 0;
+    background: transparent;
+}
+
+.agent-avatar.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .agent-avatar.dim {
