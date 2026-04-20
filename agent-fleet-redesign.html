@@ -55,7 +55,7 @@
                 <div class="agent-badge not-built" id="cerebronn-badge">◌ NOT BUILT</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar dim">B</div>
+                <div class="agent-avatar photo dark-bg"><img src="assets/cerebronn-avatar.jpg?v=1" alt="CEREBRONN"></div>
                 <div class="agent-name">CEREBRONN</div>
                 <div class="agent-role">The Brain</div>
             </div>
@@ -480,6 +480,23 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.agent-avatar.photo.dark-bg {
+    position: relative;
+}
+
+.agent-avatar.photo.dark-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.agent-avatar.photo.dark-bg img {
+    filter: brightness(0.85);
 }
 
 .agent-avatar.dim {
