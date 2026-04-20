@@ -4597,18 +4597,26 @@ function updateFleetPanel(data) {
     let liveCount = 0;
     let queuedCount = 0;
 
+    // Map data.json agent keys to HTML card IDs
+    const idMap = {
+        'chad-yi': 'chad-yi',
+        'cerebronn': 'cerebronn',
+        'helios': 'helios',
+        'quanta': 'quanta',
+        'forger': 'forger',
+        'escritor': 'escrita',
+        'autour': 'autour',
+        'mensamusa': 'mensamusa'
+    };
+
     Object.keys(agents).forEach(function(id) {
         const agent = agents[id];
-        const badge = document.getElementById(id + '-badge');
-        const task = document.getElementById(id + '-task');
-        const log = document.getElementById(id + '-log');
-        const live = document.getElementById(id + '-live');
-        const seen = document.getElementById(id + '-seen');
-        const recent = document.getElementById(id + '-recent');
-        const statusDot = document.querySelector('.agent-card[data-agent="' + id + '"] .agent-status');
+        const domId = idMap[id] || id;
+        const badge = document.getElementById(domId + '-badge');
+        const statusDot = document.querySelector('.agent-card[data-agent="' + domId + '"] .agent-status');
 
         const s = (agent.status || 'offline').toLowerCase();
-        const isLive = s === 'active' || s === 'working';
+        const isLive = s === 'active' || s === 'working' || s === 'running_live';
         const isNotBuilt = s === 'not_built_yet' || s === 'not_spawned' || s === 'error';
 
         if (isLive) liveCount++;
@@ -4633,19 +4641,93 @@ function updateFleetPanel(data) {
             statusDot.className = 'agent-status' + (isLive ? ' live' : ' offline');
         }
 
-        if (task) task.textContent = agent.currentTask || (isNotBuilt ? 'Queued for future deployment' : 'Idle');
-        
-        // Update Recent Activity with meaningful content, not just timestamps
-        if (log && agent.recentActivity) {
-            log.textContent = agent.recentActivity;
+        // Helper to safely set textContent
+        function setText(elId, value, fallback) {
+            const el = document.getElementById(elId);
+            if (el) el.textContent = value || fallback || '\u2014';
         }
-        
-        // Only update recent tasks if data provides it; don't wipe hardcoded meaningful ones
-        if (recent && Array.isArray(agent.recentTasks) && agent.recentTasks.length) {
-            recent.textContent = agent.recentTasks.join(' \u00b7 ');
+
+        // Role-specific field population
+        if (domId === 'chad-yi') {
+            setText('chad-yi-task', agent.currentTask, 'Idle');
+            setText('chad-yi-messages', agent.messagesToday);
+            setText('chad-yi-gateway', agent.gatewayStatus);
+            setText('chad-yi-last-action', agent.lastAction);
+            setText('chad-yi-live', isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal'));
         }
-        
-        // Update Last Seen in its own row, not in Recent Activity
+
+        if (domId === 'cerebronn') {
+            setText('cerebronn-project', agent.currentProject);
+            setText('cerebronn-architecture', agent.architectureFocus);
+            setText('cerebronn-commits', agent.vscodeCommits);
+            setText('cerebronn-model', agent.modelUsed);
+            setText('cerebronn-build-target', agent.buildTarget, 'April 30, 2026');
+            setText('cerebronn-files', agent.filesTouched);
+            setText('cerebronn-live', isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal'));
+        }
+
+        if (domId === 'helios') {
+            setText('helios-last-audit', agent.lastAudit);
+            setText('helios-issues', agent.issuesFound);
+            setText('helios-monitored', agent.agentsMonitored);
+            setText('helios-next-audit', agent.nextAudit);
+            setText('helios-sync-health', agent.syncHealth);
+            setText('helios-live', isLive ? 'Cron active \u00b7 Last audit: just now' : (isNotBuilt ? 'No running process' : 'No verified signal'));
+        }
+
+        if (domId === 'quanta') {
+            const bal = agent.balancePnl || (data.revenue && data.revenue.agents && data.revenue.agents.quanta ? '$' + data.revenue.agents.quanta.current_balance + ' / PnL $' + data.revenue.agents.quanta.today_pnl : null);
+            setText('quanta-balance', bal);
+            setText('quanta-positions', agent.openPositions);
+            setText('quanta-trades', agent.todaysTrades);
+            setText('quanta-winrate', agent.winRate);
+            setText('quanta-streak', agent.streak);
+            setText('quanta-pairs', agent.currencyPairs);
+            setText('quanta-strategy', agent.strategy);
+            setText('quanta-live', isLive ? 'Process running \u00b7 1 open trade' : (isNotBuilt ? 'No running process' : 'No verified signal'));
+        }
+
+        if (domId === 'forger') {
+            setText('forger-queued', agent.queuedProject);
+            setText('forger-stack', agent.techStack);
+            setText('forger-build-target', agent.buildTarget);
+            setText('forger-deploy', agent.lastDeploy);
+            setText('forger-commits', agent.commits);
+            setText('forger-live', isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal'));
+        }
+
+        if (domId === 'escrita') {
+            setText('escrita-chapter', agent.currentChapter);
+            setText('escrita-words', agent.wordsWritten);
+            setText('escrita-deadline', agent.deadline);
+            setText('escrita-draft', agent.draftStatus);
+            setText('escrita-characters', agent.characters);
+            setText('escrita-plot', agent.plotArc);
+            setText('escrita-live', isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal'));
+        }
+
+        if (domId === 'autour') {
+            setText('autour-campaign', agent.currentCampaign);
+            setText('autour-posts', agent.postsScheduled);
+            setText('autour-platform', agent.platform);
+            setText('autour-engagement', agent.engagement);
+            setText('autour-pipeline', agent.contentPipeline);
+            setText('autour-live', isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal'));
+        }
+
+        if (domId === 'mensamusa') {
+            setText('mensamusa-balance', agent.balancePnl);
+            setText('mensamusa-positions', agent.openPositions);
+            setText('mensamusa-trades', agent.todaysTrades);
+            setText('mensamusa-winrate', agent.winRate);
+            setText('mensamusa-streak', agent.streak);
+            setText('mensamusa-tickers', agent.tickersTracked);
+            setText('mensamusa-strategy', agent.strategy);
+            setText('mensamusa-live', isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal'));
+        }
+
+        // Update Last Seen in its own row
+        const seen = document.getElementById(domId + '-seen');
         if (seen) {
             if (agent.lastActive) {
                 const ts = typeof formatRelativeTimestamp === 'function' ? formatRelativeTimestamp(agent.lastActive) : agent.lastActive;
@@ -4654,8 +4736,6 @@ function updateFleetPanel(data) {
                 seen.textContent = isNotBuilt ? 'Never active' : 'No heartbeat';
             }
         }
-        
-        if (live) live.textContent = isLive ? 'Process verified active' : (isNotBuilt ? 'No running process' : 'No verified signal');
     });
 
     const summary = document.getElementById('fleet-status-summary');

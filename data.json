@@ -799,7 +799,10 @@
       "status": "stale",
       "currentTask": "Live session on Telegram",
       "lastActive": "2026-04-16T20:07:36+08:00",
-      "capabilities": []
+      "capabilities": [],
+      "messagesToday": 0,
+      "gatewayStatus": "Telegram connected",
+      "lastAction": "Dashboard sync and agent coordination"
     },
     "helios": {
       "name": "Helios",
@@ -808,7 +811,12 @@
       "status": "active",
       "currentTask": "Dashboard sync + audit",
       "lastActive": "2026-04-21T04:45:54.658883+08:00",
-      "capabilities": []
+      "capabilities": [],
+      "lastAudit": "2026-04-21T04:45:54+08:00",
+      "issuesFound": 0,
+      "agentsMonitored": 8,
+      "nextAudit": "2026-04-21T05:00:00+08:00",
+      "syncHealth": "Healthy"
     },
     "quanta": {
       "name": "Quanta",
@@ -817,7 +825,14 @@
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
       "lastActive": "2026-04-21T04:45:20.483544+08:00",
-      "capabilities": []
+      "capabilities": [],
+      "balancePnl": "$3,857.84 / PnL +$18.56",
+      "openPositions": 1,
+      "todaysTrades": 3,
+      "winRate": "67%",
+      "streak": "W2",
+      "currencyPairs": "XAUUSD",
+      "strategy": "CallistoFx momentum"
     },
     "cerebronn": {
       "name": "Cerebronn",
@@ -826,7 +841,13 @@
       "status": "not_built_yet",
       "currentTask": "Architecture & deep reasoning (The Brain)",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "currentProject": "Mission Control Dashboard",
+      "architectureFocus": "Agent memory persistence",
+      "vscodeCommits": 0,
+      "modelUsed": "Claude 3.7 Sonnet",
+      "buildTarget": "April 30, 2026",
+      "filesTouched": 0
     },
     "tele": {
       "name": "Tele",
@@ -844,7 +865,13 @@
       "status": "offline",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "currentChapter": "Chapter 13",
+      "wordsWritten": 0,
+      "deadline": "2026-06-01",
+      "draftStatus": "Not started",
+      "characters": 0,
+      "plotArc": "Act II — Rising action"
     },
     "forger": {
       "name": "Forger",
@@ -853,7 +880,12 @@
       "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "queuedProject": "B6 Elluminate website rebuild",
+      "techStack": "Next.js / Tailwind / Vercel",
+      "buildTarget": "TBD",
+      "lastDeploy": "Never",
+      "commits": 0
     },
     "autour": {
       "name": "Autour",
@@ -862,7 +894,28 @@
       "status": "offline",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "currentCampaign": "KOE Launch",
+      "postsScheduled": 0,
+      "platform": "YouTube / TikTok",
+      "engagement": "0%",
+      "contentPipeline": "Queued"
+    },
+    "mensamusa": {
+      "name": "MensaMusa",
+      "role": "Stocks Trading — Options flow & tickers",
+      "platform": "Systemd service",
+      "status": "not_built_yet",
+      "currentTask": "Awaiting Moomoo credentials",
+      "lastActive": "",
+      "capabilities": [],
+      "balancePnl": "$0.00 / PnL $0.00",
+      "openPositions": 0,
+      "todaysTrades": 0,
+      "winRate": "0%",
+      "streak": "N/A",
+      "tickersTracked": "SPY, QQQ, TSLA",
+      "strategy": "Options flow momentum"
     }
   },
   "categories": {
