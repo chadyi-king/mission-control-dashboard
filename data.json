@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T07:25:50.068605+08:00",
+  "lastUpdated": "2026-04-21T07:30:23.675426+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 64,
@@ -839,6 +839,58 @@
       "priority": "medium",
       "deadline": "2026-04-30",
       "createdAt": "2026-03-31T00:00:00+08:00"
+    },
+    "A1-15": {
+      "id": "A1-15",
+      "title": "Call back police to make report",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "removed",
+      "priority": "critical",
+      "deadline": "2026-04-22",
+      "createdAt": "2026-04-21T07:28:32.446243+08:00"
+    },
+    "A1-16": {
+      "id": "A1-16",
+      "title": "Reply lawyer email about payment extension",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "removed",
+      "priority": "critical",
+      "deadline": "2026-04-22",
+      "createdAt": "2026-04-21T07:28:32.446243+08:00"
+    },
+    "A6-16": {
+      "id": "A6-16",
+      "title": "Research and fully understand Higgfields AI for Empyrean — AI UGC and Product Advertisements pathway",
+      "project": "A6",
+      "category": "A",
+      "agent": "Cerebronn",
+      "status": "removed",
+      "priority": "high",
+      "createdAt": "2026-04-21T07:28:32.446243+08:00"
+    },
+    "B8-7": {
+      "id": "B8-7",
+      "title": "Finish framework for encompass website",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "removed",
+      "priority": "high",
+      "createdAt": "2026-04-21T07:28:32.446243+08:00"
+    },
+    "B11-1": {
+      "id": "B11-1",
+      "title": "Create EPEPTOME website — sell research peptides",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "removed",
+      "priority": "high",
+      "createdAt": "2026-04-21T07:28:32.446243+08:00"
     }
   },
   "recentWins": [],
@@ -858,7 +910,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T07:25:50.069579+08:00",
+      "lastActive": "2026-04-21T07:30:23.676943+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -867,7 +919,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-21T07:25:49.993931+08:00",
+      "lastActive": "2026-04-21T07:29:57.623531+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1378,11 +1430,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T07:25:50.069579+08:00"
+        "lastActive": "2026-04-21T07:30:23.676943+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-21T07:25:49.993931+08:00"
+        "lastActive": "2026-04-21T07:29:57.623531+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1433,9 +1485,9 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T07:25:50.068605+08:00",
+    "lastRun": "2026-04-21T07:30:23.675426+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 64,
+    "taskCount": 69,
     "findings": []
   },
   "revenue": {
