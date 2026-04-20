@@ -130,11 +130,113 @@
       "priority": 99,
       "fleet": false,
       "excluded": true
+    },
+    "clair": {
+      "displayName": "Clair",
+      "initials": "CL",
+      "colors": {
+        "bg": "rgba(80,150,200,0.12)",
+        "border": "rgba(80,150,200,0.25)",
+        "text": "#6a9cc0"
+      },
+      "role": "Streaming Scout",
+      "type": "local",
+      "priority": 9,
+      "fleet": true,
+      "excluded": false
+    },
+    "eplusplus": {
+      "displayName": "E++",
+      "initials": "E+",
+      "colors": {
+        "bg": "rgba(100,100,100,0.12)",
+        "border": "rgba(100,100,100,0.25)",
+        "text": "#888"
+      },
+      "role": "Core Dev",
+      "type": "local",
+      "priority": 10,
+      "fleet": true,
+      "excluded": false
+    },
+    "kotler": {
+      "displayName": "Kotler",
+      "initials": "KT",
+      "colors": {
+        "bg": "rgba(180,100,160,0.12)",
+        "border": "rgba(180,100,160,0.25)",
+        "text": "#b070a0"
+      },
+      "role": "Marketing Ops",
+      "type": "local",
+      "priority": 11,
+      "fleet": true,
+      "excluded": false
+    },
+    "ledger": {
+      "displayName": "Ledger",
+      "initials": "LG",
+      "colors": {
+        "bg": "rgba(140,140,80,0.12)",
+        "border": "rgba(140,140,80,0.25)",
+        "text": "#a0a060"
+      },
+      "role": "Finance / CRM",
+      "type": "local",
+      "priority": 12,
+      "fleet": true,
+      "excluded": false
+    },
+    "atlas": {
+      "displayName": "Atlas",
+      "initials": "AT",
+      "colors": {
+        "bg": "rgba(80,120,80,0.12)",
+        "border": "rgba(80,120,80,0.25)",
+        "text": "#609060"
+      },
+      "role": "Researcher",
+      "type": "local",
+      "priority": 13,
+      "fleet": true,
+      "excluded": false
+    },
+    "pulsar": {
+      "displayName": "Pulsar",
+      "initials": "PS",
+      "colors": {
+        "bg": "rgba(80,80,140,0.12)",
+        "border": "rgba(80,80,140,0.25)",
+        "text": "#6060a0"
+      },
+      "role": "Data Sentinel",
+      "type": "local",
+      "priority": 14,
+      "fleet": true,
+      "excluded": false
+    },
+    "abed": {
+      "displayName": "Abed",
+      "initials": "AB",
+      "colors": {
+        "bg": "rgba(160,120,80,0.12)",
+        "border": "rgba(160,120,80,0.25)",
+        "text": "#a08060"
+      },
+      "role": "Community Manager",
+      "type": "local",
+      "priority": 15,
+      "fleet": true,
+      "excluded": false
     }
   },
-  "healthPriority": ["chad-yi", "cerebronn", "helios"],
+  "healthPriority": [
+    "chad-yi",
+    "cerebronn",
+    "helios"
+  ],
   "meta": {
-    "description": "Central agent registry — single source of truth for all agent display config.",
+    "description": "Central agent registry \u2014 single source of truth for all agent display config.",
     "lastUpdated": "2025-07-24"
   }
 }

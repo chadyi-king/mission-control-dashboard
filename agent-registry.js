@@ -79,7 +79,14 @@
                 'forger':    { displayName:'Forger',     initials:'FG', colors:{ bg:'rgba(160,60,180,0.18)', border:'rgba(160,60,180,0.35)', text:'#c070d0' }, priority:6, fleet:true,  excluded:false },
                 'autour':    { displayName:'Autour',     initials:'AU', colors:{ bg:'rgba(200,80,80,0.18)',  border:'rgba(200,80,80,0.35)',  text:'#e06060' }, priority:7, fleet:true,  excluded:false },
                 'mensamusa': { displayName:'Mensamusa',  initials:'MM', colors:{ bg:'rgba(120,120,120,0.18)',border:'rgba(120,120,120,0.35)',text:'#aaa'    }, priority:8, fleet:true,  excluded:false },
-                'tele':      { displayName:'Tele',       initials:'TL', colors:{ bg:'rgba(80,80,80,0.18)',   border:'rgba(80,80,80,0.35)',   text:'#666'    }, priority:99,fleet:false, excluded:true  }
+                'tele':      { displayName:'Tele',       initials:'TL', colors:{ bg:'rgba(80,80,80,0.18)',   border:'rgba(80,80,80,0.35)',   text:'#666'    }, priority:99,fleet:false, excluded:true  },
+                'clair':     { displayName:'Clair',      initials:'CL', colors:{ bg:'rgba(80,150,200,0.12)', border:'rgba(80,150,200,0.25)', text:'#6a9cc0' }, priority:9, fleet:true,  excluded:false },
+                'eplusplus': { displayName:'E++',        initials:'E+', colors:{ bg:'rgba(100,100,100,0.12)',border:'rgba(100,100,100,0.25)',text:'#888'    }, priority:10,fleet:true,  excluded:false },
+                'kotler':    { displayName:'Kotler',     initials:'KT', colors:{ bg:'rgba(180,100,160,0.12)',border:'rgba(180,100,160,0.25)',text:'#b070a0' }, priority:11,fleet:true,  excluded:false },
+                'ledger':    { displayName:'Ledger',     initials:'LG', colors:{ bg:'rgba(140,140,80,0.12)', border:'rgba(140,140,80,0.25)', text:'#a0a060' }, priority:12,fleet:true,  excluded:false },
+                'atlas':     { displayName:'Atlas',      initials:'AT', colors:{ bg:'rgba(80,120,80,0.12)',  border:'rgba(80,120,80,0.25)',  text:'#609060' }, priority:13,fleet:true,  excluded:false },
+                'pulsar':    { displayName:'Pulsar',     initials:'PS', colors:{ bg:'rgba(80,80,140,0.12)',  border:'rgba(80,80,140,0.25)',  text:'#6060a0' }, priority:14,fleet:true,  excluded:false },
+                'abed':      { displayName:'Abed',       initials:'AB', colors:{ bg:'rgba(160,120,80,0.12)', border:'rgba(160,120,80,0.25)', text:'#a08060' }, priority:15,fleet:true,  excluded:false }
             },
             healthPriority: ['chad-yi', 'cerebronn', 'helios']
         };

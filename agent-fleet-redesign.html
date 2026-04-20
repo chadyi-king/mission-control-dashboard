@@ -5,7 +5,7 @@
 <div class="fleet-fullwidth" id="fleet-fullwidth">
     <div class="fleet-header">
         <div class="fleet-header-left">
-            <span class="fleet-title">AGENT FLEET</span>
+            <span class="fleet-title">THE SEVENTEEN</span>
             <span class="fleet-subtitle" id="fleet-status-summary">3 live · 5 queued</span>
         </div>
     </div>
@@ -391,6 +391,91 @@
                 </div>
             </div>
         </div>
+
+        <!-- Ghost Agents — not yet built -->
+        <div class="agent-card ghost-agent" data-agent="clair">
+            <div class="agent-card-header">
+                <div class="agent-status offline"></div>
+                <div class="agent-badge not-built">◌ PENDING</div>
+            </div>
+            <div class="agent-card-body">
+                <div class="agent-avatar dim">🔭</div>
+                <div class="agent-name">CLAIR</div>
+                <div class="agent-role">Streaming Scout</div>
+            </div>
+        </div>
+
+        <div class="agent-card ghost-agent" data-agent="eplusplus">
+            <div class="agent-card-header">
+                <div class="agent-status offline"></div>
+                <div class="agent-badge not-built">◌ PENDING</div>
+            </div>
+            <div class="agent-card-body">
+                <div class="agent-avatar dim">⚡</div>
+                <div class="agent-name">E++</div>
+                <div class="agent-role">Core Dev</div>
+            </div>
+        </div>
+
+        <div class="agent-card ghost-agent" data-agent="kotler">
+            <div class="agent-card-header">
+                <div class="agent-status offline"></div>
+                <div class="agent-badge not-built">◌ PENDING</div>
+            </div>
+            <div class="agent-card-body">
+                <div class="agent-avatar dim">📢</div>
+                <div class="agent-name">KOTLER</div>
+                <div class="agent-role">Marketing Ops</div>
+            </div>
+        </div>
+
+        <div class="agent-card ghost-agent" data-agent="ledger">
+            <div class="agent-card-header">
+                <div class="agent-status offline"></div>
+                <div class="agent-badge not-built">◌ PENDING</div>
+            </div>
+            <div class="agent-card-body">
+                <div class="agent-avatar dim">📒</div>
+                <div class="agent-name">LEDGER</div>
+                <div class="agent-role">Finance / CRM</div>
+            </div>
+        </div>
+
+        <div class="agent-card ghost-agent" data-agent="atlas">
+            <div class="agent-card-header">
+                <div class="agent-status offline"></div>
+                <div class="agent-badge not-built">◌ PENDING</div>
+            </div>
+            <div class="agent-card-body">
+                <div class="agent-avatar dim">🌍</div>
+                <div class="agent-name">ATLAS</div>
+                <div class="agent-role">Researcher</div>
+            </div>
+        </div>
+
+        <div class="agent-card ghost-agent" data-agent="pulsar">
+            <div class="agent-card-header">
+                <div class="agent-status offline"></div>
+                <div class="agent-badge not-built">◌ PENDING</div>
+            </div>
+            <div class="agent-card-body">
+                <div class="agent-avatar dim">📡</div>
+                <div class="agent-name">PULSAR</div>
+                <div class="agent-role">Data Sentinel</div>
+            </div>
+        </div>
+
+        <div class="agent-card ghost-agent" data-agent="abed">
+            <div class="agent-card-header">
+                <div class="agent-status offline"></div>
+                <div class="agent-badge not-built">◌ PENDING</div>
+            </div>
+            <div class="agent-card-body">
+                <div class="agent-avatar dim">🗣</div>
+                <div class="agent-name">ABED</div>
+                <div class="agent-role">Community Manager</div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -701,6 +786,25 @@
     font-size: 8px;
     color: rgba(140, 140, 160, 0.5);
     font-style: italic;
+}
+
+/* ── Ghost Agents (not yet built) ── */
+.agent-card.ghost-agent {
+    background: rgba(6, 6, 10, 0.5);
+    border: 1px dashed rgba(100, 100, 100, 0.2);
+    opacity: 0.65;
+    cursor: default;
+}
+.agent-card.ghost-agent:hover {
+    border-color: rgba(120, 120, 120, 0.3);
+    background: rgba(8, 8, 12, 0.6);
+    transform: none;
+}
+.agent-card.ghost-agent .agent-name {
+    color: rgba(180, 180, 200, 0.7);
+}
+.agent-card.ghost-agent .agent-role {
+    color: rgba(120, 120, 140, 0.5);
 }
 
 /* ── Responsive ── */
