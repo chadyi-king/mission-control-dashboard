@@ -4676,7 +4676,12 @@ function updateFleetPanel(data) {
         }
 
         if (domId === 'quanta') {
-            const bal = agent.balancePnl || (data.revenue && data.revenue.agents && data.revenue.agents.quanta ? '$' + data.revenue.agents.quanta.current_balance + ' / PnL $' + data.revenue.agents.quanta.today_pnl : null);
+            const revAgent = data.revenue && data.revenue.agents && data.revenue.agents.quanta;
+            let bal = agent.balancePnl;
+            if (!bal && revAgent) {
+                const totalPnl = (revAgent.current_balance || 0) - (revAgent.baseline_balance || 0);
+                bal = 'PnL ' + (totalPnl >= 0 ? '+' : '') + totalPnl.toFixed(2) + ' · today ' + (revAgent.today_pnl >= 0 ? '+' : '') + revAgent.today_pnl.toFixed(2);
+            }
             setText('quanta-balance', bal);
             setText('quanta-positions', agent.openPositions);
             setText('quanta-trades', agent.todaysTrades);
