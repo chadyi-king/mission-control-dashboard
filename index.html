@@ -132,6 +132,7 @@
                             <div class="stat-value" id="s-due-today">—</div>
                             <div class="stat-breakdown">
                                 <span class="sub-stat sub-alert" id="s-due-urgent">— urgent</span>
+                                <span class="sub-stat sub-warn" id="s-due-high">— high</span>
                                 <span class="sub-stat sub-normal" id="s-due-normal">— tomorrow</span>
                             </div>
                         </div>
@@ -144,6 +145,7 @@
                             <div class="stat-value stat-val-alert" id="s-overdue-total">—</div>
                             <div class="stat-breakdown">
                                 <span class="sub-stat sub-warn" id="s-overdue-week">— this week</span>
+                                <span class="sub-stat sub-alert" id="s-overdue-older">— older</span>
                                 <span class="sub-stat sub-muted" id="s-overdue-oldest">— oldest</span>
                             </div>
                         </div>
@@ -157,6 +159,7 @@
                             <div class="stat-breakdown">
                                 <span class="sub-stat sub-good" id="s-week-done">— done</span>
                                 <span class="sub-stat sub-warn" id="s-week-left">— left</span>
+                                <span class="sub-stat sub-alert" id="s-week-overdue">— overdue</span>
                             </div>
                         </div>
 
@@ -203,6 +206,7 @@
                             <div class="stat-breakdown">
                                 <span class="sub-stat sub-alert" id="s-blocked-stuck">— blocked</span>
                                 <span class="sub-stat sub-warn" id="s-blocked-paused">— paused</span>
+                                <span class="sub-stat sub-muted" id="s-blocked-longest">— longest</span>
                             </div>
                         </div>
 
@@ -277,27 +281,29 @@
                             </div>
                         </div>
 
-                        <div class="stat-card" id="stat-balance">
+                        <div class="stat-card" id="stat-best-agents">
                             <div class="stat-header">
-                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-                                <span class="stat-label">BALANCE</span>
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                                <span class="stat-label">BEST AGENTS</span>
                             </div>
-                            <div class="stat-value" id="s-pnl-balance">—</div>
+                            <div class="stat-value stat-val-good" id="s-best-agent-main">—</div>
                             <div class="stat-breakdown">
-                                <span class="sub-stat sub-muted" id="s-pnl-baseline">— baseline</span>
-                                <span class="sub-stat sub-muted" id="s-pnl-delta">— delta</span>
+                                <span class="sub-stat sub-good" id="s-best-1">—</span>
+                                <span class="sub-stat sub-warn" id="s-best-2">—</span>
+                                <span class="sub-stat sub-muted" id="s-best-3">—</span>
                             </div>
                         </div>
 
-                        <div class="stat-card" id="stat-total-pnl">
+                        <div class="stat-card" id="stat-worst-agents">
                             <div class="stat-header">
-                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                                <span class="stat-label">TOTAL PNL</span>
+                                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+                                <span class="stat-label">WORST AGENTS</span>
                             </div>
-                            <div class="stat-value" id="s-total-pnl">—</div>
+                            <div class="stat-value stat-val-alert" id="s-worst-agent-main">—</div>
                             <div class="stat-breakdown">
-                                <span class="sub-stat sub-agent" id="s-pnl-trades">— trades</span>
-                                <span class="sub-stat sub-muted" id="s-pnl-winrate">— win rate</span>
+                                <span class="sub-stat sub-alert" id="s-worst-1">—</span>
+                                <span class="sub-stat sub-warn" id="s-worst-2">—</span>
+                                <span class="sub-stat sub-muted" id="s-worst-3">—</span>
                             </div>
                         </div>
 

@@ -1807,6 +1807,7 @@ console.log('[Helios WS] connected:', wsUrl);
             })();
             set('s-due-today', dueToday.length);
             set('s-due-urgent', dueTodayHigh + ' urgent');
+            set('s-due-high', dueDeadline + ' overdue');
             set('s-due-normal', dueTomorrow + ' tomorrow');
 
             // 2. ACTION ITEMS — single aggregate: needsMe + review + input (deduplicated via lens)
@@ -1832,39 +1833,30 @@ console.log('[Helios WS] connected:', wsUrl);
             const revAgents = rev.agents || {};
             let weeklyProfit = 0;
             let weeklyLoss = 0;
-            let totalPNL = 0;
             let totalTrades = 0;
             let totalWins = 0;
-            let currentBalance = 0;
-            let baselineBalance = 0;
 
-            Object.entries(revAgents).forEach(([agentId, agentRev]) => {
-                const profit = parseFloat(agentRev.weekly_profit || 0);
-                const loss = parseFloat(agentRev.weekly_loss || 0);
-                weeklyProfit += Math.max(0, profit);
-                weeklyLoss += Math.max(0, loss);
-                totalPNL += parseFloat(agentRev.total_pnl || 0);
+            // Build agent PNL list for rankings (calculated from current - baseline)
+            const agentPNLs = Object.entries(revAgents).map(([agentId, agentRev]) => {
+                const current = parseFloat(agentRev.current_balance || 0);
+                const baseline = parseFloat(agentRev.baseline_balance || 0);
+                const pnl = current - baseline;
+                weeklyProfit += Math.max(0, parseFloat(agentRev.weekly_profit || 0));
+                weeklyLoss += Math.max(0, parseFloat(agentRev.weekly_loss || 0));
                 totalTrades += parseInt(agentRev.win_count || 0) + parseInt(agentRev.loss_count || 0);
                 totalWins += parseInt(agentRev.win_count || 0);
-                currentBalance += parseFloat(agentRev.current_balance || 0);
-                baselineBalance += parseFloat(agentRev.baseline_balance || 0);
-            });
+                return { id: agentId, pnl: pnl, current: current, baseline: baseline };
+            }).sort((a, b) => b.pnl - a.pnl); // desc by PNL
 
-            // Total lifetime PNL in cluster header
+            // Total PNL = sum(current - baseline) across all agents
+            const totalPNL = agentPNLs.reduce((sum, a) => sum + a.pnl, 0);
+
+            // Cluster header: total lifetime PNL
             const totalEl = document.getElementById('s-pnl-total-lifetime');
             if (totalEl) {
                 totalEl.textContent = (totalPNL >= 0 ? '+' : '') + totalPNL.toFixed(2) + ' total';
                 totalEl.className = 'cluster-total' + (totalPNL >= 0 ? ' positive' : ' negative');
             }
-
-            // BALANCE card
-            const balanceEl = document.getElementById('s-pnl-balance');
-            if (balanceEl) {
-                balanceEl.textContent = '$' + currentBalance.toFixed(2);
-            }
-            set('s-pnl-baseline', '$' + baselineBalance.toFixed(2) + ' baseline');
-            const delta = currentBalance - baselineBalance;
-            set('s-pnl-delta', (delta >= 0 ? '+' : '') + delta.toFixed(2) + ' delta');
 
             // WEEKLY PNL card
             const weeklyNet = weeklyProfit - weeklyLoss;
@@ -1877,15 +1869,31 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-pnl-weekly-loss', '-' + weeklyLoss.toFixed(2) + ' loss');
             set('s-pnl-weekly-net-sub', (weeklyNet >= 0 ? '+' : '') + weeklyNet.toFixed(2) + ' net');
 
-            // TOTAL PNL card
-            const totalPnlEl = document.getElementById('s-total-pnl');
-            if (totalPnlEl) {
-                totalPnlEl.textContent = (totalPNL >= 0 ? '+' : '') + totalPNL.toFixed(2);
-                totalPnlEl.className = 'stat-value' + (totalPNL >= 0 ? ' stat-val-good' : ' stat-val-alert');
+            // BEST AGENTS card (top 3 by PNL)
+            const best = agentPNLs.slice(0, 3);
+            const bestMain = best[0];
+            if (bestMain) {
+                set('s-best-agent-main', bestMain.id.toUpperCase() + ' ' + (bestMain.pnl >= 0 ? '+' : '') + bestMain.pnl.toFixed(2));
+                set('s-best-1', '1. ' + bestMain.id.toUpperCase() + ' ' + (bestMain.pnl >= 0 ? '+' : '') + bestMain.pnl.toFixed(2));
+            } else {
+                set('s-best-agent-main', '—');
+                set('s-best-1', '—');
             }
-            set('s-pnl-trades', totalTrades + ' trades');
-            const winRate = totalTrades > 0 ? Math.round((totalWins / totalTrades) * 100) : 0;
-            set('s-pnl-winrate', winRate + '% win rate');
+            set('s-best-2', best[1] ? '2. ' + best[1].id.toUpperCase() + ' ' + (best[1].pnl >= 0 ? '+' : '') + best[1].pnl.toFixed(2) : '—');
+            set('s-best-3', best[2] ? '3. ' + best[2].id.toUpperCase() + ' ' + (best[2].pnl >= 0 ? '+' : '') + best[2].pnl.toFixed(2) : '—');
+
+            // WORST AGENTS card (bottom 3 by PNL)
+            const worst = [...agentPNLs].reverse().slice(0, 3);
+            const worstMain = worst[0];
+            if (worstMain) {
+                set('s-worst-agent-main', worstMain.id.toUpperCase() + ' ' + (worstMain.pnl >= 0 ? '+' : '') + worstMain.pnl.toFixed(2));
+                set('s-worst-1', '1. ' + worstMain.id.toUpperCase() + ' ' + (worstMain.pnl >= 0 ? '+' : '') + worstMain.pnl.toFixed(2));
+            } else {
+                set('s-worst-agent-main', '—');
+                set('s-worst-1', '—');
+            }
+            set('s-worst-2', worst[1] ? '2. ' + worst[1].id.toUpperCase() + ' ' + (worst[1].pnl >= 0 ? '+' : '') + worst[1].pnl.toFixed(2) : '—');
+            set('s-worst-3', worst[2] ? '3. ' + worst[2].id.toUpperCase() + ' ' + (worst[2].pnl >= 0 ? '+' : '') + worst[2].pnl.toFixed(2) : '—');
 
             // 5. THIS WEEK — tasks due within the current Mon–Sun week
             const weekEnd = new Date(today); weekEnd.setDate(weekEnd.getDate() + (7 - today.getDay()) % 7 || 7);
@@ -1901,16 +1909,29 @@ console.log('[Helios WS] connected:', wsUrl);
                 return d >= weekStart7;
             }).length;
             const overdueThisWeekCount = openTasks.filter(t => t.deadline && isOverdue(t.deadline)).length;
+            const weekOverdueCount = thisWeekTasks.filter(t => t.deadline && isOverdue(t.deadline)).length;
             set('s-week-total', thisWeekTasks.length + doneThisWeekCount);
             set('s-week-done', doneThisWeekCount + ' done');
             set('s-week-left', thisWeekTasks.length + ' left');
+            set('s-week-overdue', weekOverdueCount + ' overdue');
 
             // 5. BLOCKED / PAUSED
             const blockedTasks = openTasks.filter(t => t.status === 'blocked');
             const pausedTasks = openTasks.filter(t => t.status === 'paused');
+            // Find oldest blocked task
+            let longestBlocked = '—';
+            if (blockedTasks.length > 0) {
+                const sortedBlocked = blockedTasks.filter(t => t.deadline).sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+                if (sortedBlocked.length > 0) {
+                    const oldest = new Date(sortedBlocked[0].deadline);
+                    const daysBlocked = Math.round((today - oldest) / (1000*60*60*24));
+                    longestBlocked = daysBlocked + 'd oldest';
+                }
+            }
             set('s-blocked-total', blockedTasks.length + pausedTasks.length);
             set('s-blocked-stuck', blockedTasks.length + ' blocked');
             set('s-blocked-paused', pausedTasks.length + ' paused');
+            set('s-blocked-longest', longestBlocked);
 
             // 6. VELOCITY (tasks done today)
             const doneTasks = tasks.filter(t => t.status === 'done');
@@ -1963,6 +1984,7 @@ console.log('[Helios WS] connected:', wsUrl);
             }
             set('s-overdue-total', allOverdue.length);
             set('s-overdue-week', overdueThisWeek.length + ' this week');
+            set('s-overdue-older', (allOverdue.length - overdueThisWeek.length) + ' older');
             set('s-overdue-oldest', oldestOverdue);
 
             // 9. COMPLETION — overall progress percentage
