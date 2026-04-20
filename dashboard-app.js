@@ -2218,7 +2218,7 @@ console.log('[Helios WS] connected:', wsUrl);
             const needsMeTasks = lens.needsMeTasks.slice(0, 10);
             const needsMeList = document.getElementById('recently-done-list');
             const needsMeCount = document.getElementById('recent-count');
-            if (needsMeList) needsMeList.innerHTML = buildTaskList(needsMeTasks, 6, 'No tasks queued directly for Chad Yi');
+            if (needsMeList) needsMeList.innerHTML = buildTaskList(needsMeTasks, 6, 'No tasks queued directly for Caleb');
             if (needsMeCount) needsMeCount.textContent = needsMeTasks.length;
 
             // ACTIVE WORK — only tasks explicitly marked active with verified live signals
