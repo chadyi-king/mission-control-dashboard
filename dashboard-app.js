@@ -192,6 +192,7 @@
                 B8: { name: 'Empyrean', description: 'Video production project' },
                 B9: { name: 'Ethereal', description: '3D printing venture' },
                 B10: { name: 'Epitaph', description: 'Data tracking project' },
+                B11: { name: 'EPEPTOME', description: 'Research peptides e-commerce' },
                 C1: { name: 'Real Estate', description: 'RES exam preparation, June 2026' },
                 C2: { name: 'Side Sales', description: 'Side sales operations' },
                 C3: { name: 'Vibe Coding', description: 'Games and apps — vibe coding side projects' }
