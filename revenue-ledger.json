@@ -32,6 +32,13 @@
       "balance": 3804.67,
       "pnl": 0,
       "note": "Balance 3804.67 | P/L +0.00 | Open 0"
+    },
+    {
+      "date": "2026-04-20",
+      "agent": "quanta",
+      "balance": 3804.67,
+      "pnl": 0,
+      "note": "Balance 3804.67 | P/L +0.00 | Open 0"
     }
   ],
   "weekly_rankings": {
