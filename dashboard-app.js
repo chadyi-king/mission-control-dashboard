@@ -1873,7 +1873,7 @@ console.log('[Helios WS] connected:', wsUrl);
             const best = agentPNLs.slice(0, 3);
             const bestMain = best[0];
             if (bestMain) {
-                set('s-best-agent-main', bestMain.id.toUpperCase() + ' ' + (bestMain.pnl >= 0 ? '+' : '') + bestMain.pnl.toFixed(2));
+                set('s-best-agent-main', bestMain.id.toUpperCase());
                 set('s-best-1', '1. ' + bestMain.id.toUpperCase() + ' ' + (bestMain.pnl >= 0 ? '+' : '') + bestMain.pnl.toFixed(2));
             } else {
                 set('s-best-agent-main', '—');
@@ -1886,7 +1886,7 @@ console.log('[Helios WS] connected:', wsUrl);
             const worst = [...agentPNLs].reverse().slice(0, 3);
             const worstMain = worst[0];
             if (worstMain) {
-                set('s-worst-agent-main', worstMain.id.toUpperCase() + ' ' + (worstMain.pnl >= 0 ? '+' : '') + worstMain.pnl.toFixed(2));
+                set('s-worst-agent-main', worstMain.id.toUpperCase());
                 set('s-worst-1', '1. ' + worstMain.id.toUpperCase() + ' ' + (worstMain.pnl >= 0 ? '+' : '') + worstMain.pnl.toFixed(2));
             } else {
                 set('s-worst-agent-main', '—');
