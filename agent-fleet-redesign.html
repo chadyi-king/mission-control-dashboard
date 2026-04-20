@@ -1,615 +1,501 @@
-<!-- ═══════════════════════════════════════════════════════════════
-     AGENT FLEET — Flat Bento Grid
-═══════════════════════════════════════════════════════════════ -->
-
-<div class="fleet-fullwidth" id="fleet-fullwidth">
-    <div class="fleet-header">
-        <div class="fleet-header-left">
-            <span class="fleet-title">AGENT FLEET</span>
-            <span class="fleet-subtitle" id="fleet-status-summary">3 live · 5 queued</span>
-        </div>
-    </div>
-
-    <div class="fleet-grid" id="fleet-grid">
-        <!-- Leadership Row -->
-        <div class="agent-card chad-yi-card" data-agent="chad-yi" onclick="toggleAgentDetails('chad-yi')">
-            <div class="agent-card-bg" style="background-image:url('assets/chad-yi-avatar.jpg')"></div>
-            <div class="agent-card-header">
-                <div class="agent-status live"></div>
-                <div class="agent-badge" id="chad-yi-badge">● LIVE</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/chad-yi-avatar.jpg" alt="CHAD_YI"></div>
-                <div class="agent-name">CHAD_YI</div>
-                <div class="agent-role">The Face</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="chad-yi-chevron">▼</span>
-            </div>
-            <div class="agent-details" id="chad-yi-details">
-                <div class="detail-row">
-                    <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="chad-yi-task">Dashboard sync and agent coordination</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="chad-yi-log">Responding via Telegram gateway</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="chad-yi-recent">Redesigned agent fleet UI · Fixed mobile interactions · Task triage</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="chad-yi-live">Process verified active</span>
-                </div>
-                <div class="detail-row last-seen">
-                    <span class="detail-val" id="chad-yi-seen">Last seen: just now</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="agent-card" data-agent="cerebronn" onclick="toggleAgentDetails('cerebronn')">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="cerebronn-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">B</div>
-                <div class="agent-name">CEREBRONN</div>
-                <div class="agent-role">The Brain</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="cerebronn-chevron">▼</span>
-            </div>
-            <div class="agent-details" id="cerebronn-details">
-                <div class="detail-row">
-                    <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="cerebronn-task">Planned for VS Code Studio deployment</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="cerebronn-log">No activity — agent not yet deployed</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="cerebronn-recent">Architecture planning · VS Code deployment design</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="cerebronn-live">No running process</span>
-                </div>
-                <div class="detail-row last-seen">
-                    <span class="detail-val" id="cerebronn-seen">Never active</span>
-                </div>
-                <div class="detail-row build-target">
-                    <span class="detail-key">Build Target</span>
-                    <span class="detail-val">April 30, 2026</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="agent-card" data-agent="helios" onclick="toggleAgentDetails('helios')">
-            <div class="agent-card-header">
-                <div class="agent-status live"></div>
-                <div class="agent-badge" id="helios-badge">● LIVE</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar">S</div>
-                <div class="agent-name">HELIOS</div>
-                <div class="agent-role">The Spine</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="helios-chevron">▼</span>
-            </div>
-            <div class="agent-details" id="helios-details">
-                <div class="detail-row">
-                    <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="helios-task">Dashboard sync + audit</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="helios-log">Synced dashboard data and ran enhanced audit</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="helios-recent">Auto-synced data.json · Ran enhanced audit · Fixed 3 integrity issues</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="helios-live">Cron active · Last audit: just now</span>
-                </div>
-                <div class="detail-row last-seen">
-                    <span class="detail-val" id="helios-seen">Last seen: just now</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="agent-card" data-agent="quanta" onclick="toggleAgentDetails('quanta')">
-            <div class="agent-card-header">
-                <div class="agent-status live"></div>
-                <div class="agent-badge" id="quanta-badge">● LIVE</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar">Q</div>
-                <div class="agent-name">QUANTA</div>
-                <div class="agent-role">Trading</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="quanta-chevron">▼</span>
-            </div>
-            <div class="agent-details" id="quanta-details">
-                <div class="detail-row">
-                    <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="quanta-task">Watching CallistoFx — live XAUUSD execution</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="quanta-log">Monitoring OANDA for XAUUSD signals</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="quanta-recent">Executed live XAUUSD trade · Monitored market open · Signal processing</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="quanta-live">Process running · 1 open trade</span>
-                </div>
-                <div class="detail-row last-seen">
-                    <span class="detail-val" id="quanta-seen">Last seen: just now</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Specialists Row -->
-        <div class="agent-card" data-agent="forger" onclick="toggleAgentDetails('forger')">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="forger-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">🔨</div>
-                <div class="agent-name">FORGER</div>
-                <div class="agent-role">Builder</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="forger-chevron">▼</span>
-            </div>
-            <div class="agent-details" id="forger-details">
-                <div class="detail-row">
-                    <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="forger-task">Queued for future deployment</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="forger-log">No activity — old service stopped</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="forger-recent">Queued for B6 Elluminate website rebuild</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="forger-live">No running process</span>
-                </div>
-                <div class="detail-row last-seen">
-                    <span class="detail-val" id="forger-seen">Never active</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="agent-card" data-agent="escritor" onclick="toggleAgentDetails('escritor')">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="escritor-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">✍️</div>
-                <div class="agent-name">ESCRITOR</div>
-                <div class="agent-role">Writing</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="escritor-chevron">▼</span>
-            </div>
-            <div class="agent-details" id="escritor-details">
-                <div class="detail-row">
-                    <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="escritor-task">Planned for RE:UNITE chapter automation</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="escritor-log">No activity — stale state from March 21</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="escritor-recent">Queued for RE:UNITE chapter automation</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="escritor-live">No running process</span>
-                </div>
-                <div class="detail-row last-seen">
-                    <span class="detail-val" id="escritor-seen">Never active</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="agent-card" data-agent="autour" onclick="toggleAgentDetails('autour')">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="autour-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">🎙️</div>
-                <div class="agent-name">AUTOUR</div>
-                <div class="agent-role">Content</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="autour-chevron">▼</span>
-            </div>
-            <div class="agent-details" id="autour-details">
-                <div class="detail-row">
-                    <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="autour-task">Planned for KOE media production</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="autour-log">No activity — agent not yet built</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="autour-recent">Queued for KOE media production pipeline</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="autour-live">No running process</span>
-                </div>
-                <div class="detail-row last-seen">
-                    <span class="detail-val" id="autour-seen">Never active</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="agent-card" data-agent="mensamusa" onclick="toggleAgentDetails('mensamusa')">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="mensamusa-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">📚</div>
-                <div class="agent-name">MENSAMUSA</div>
-                <div class="agent-role">Research</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="mensamusa-chevron">▼</span>
-            </div>
-            <div class="agent-details" id="mensamusa-details">
-                <div class="detail-row">
-                    <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="mensamusa-task">Deferred to future roadmap</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="mensamusa-log">No activity — agent not yet built</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="mensamusa-recent">Research roadmap planning</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="mensamusa-live">No running process</span>
-                </div>
-                <div class="detail-row last-seen">
-                    <span class="detail-val" id="mensamusa-seen">Never active</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<style>
-/* ═══════════════════════════════════════════════════════════════
-   FLAT AGENT FLEET — BENTO GRID
-═══════════════════════════════════════════════════════════════ */
-
-.fleet-fullwidth {
-    background: var(--bg-card, rgba(8, 8, 12, 0.88));
-    border: 1px solid rgba(220, 38, 38, 0.16);
-    border-radius: 6px;
-    padding: 16px 18px;
-    margin-bottom: 16px;
-}
-
-.fleet-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(220, 38, 38, 0.1);
-}
-
-.fleet-header-left {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-}
-
-.fleet-title {
-    font-family: var(--display-font, 'Orbitron', sans-serif);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: rgba(220, 60, 80, 0.95);
-    font-weight: 700;
-}
-
-.fleet-subtitle {
-    font-family: var(--tech-font, 'Rajdhani', sans-serif);
-    font-size: 10px;
-    color: rgba(160, 160, 180, 0.7);
-    letter-spacing: 0.05em;
-}
-
-/* ── Bento Grid ── */
-.fleet-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-/* ── Agent Card ── */
-.agent-card {
-    background: rgba(8, 8, 12, 0.7);
-    border: 1px solid rgba(220, 38, 38, 0.12);
-    border-radius: 6px;
-    padding: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
-
-.agent-card-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-size: cover;
-    background-position: center top;
-    opacity: 0.3;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.chad-yi-card {
-    border-color: rgba(220, 38, 38, 0.25);
-}
-
-.agent-card-header,
-.agent-card-body,
-.agent-card-footer,
-.agent-details {
-    position: relative;
-    z-index: 1;
-}
-
-.agent-card:hover {
-    border-color: rgba(220, 38, 38, 0.28);
-    background: rgba(12, 12, 18, 0.85);
-    transform: translateY(-1px);
-}
-
-.agent-card.expanded {
-    border-color: rgba(220, 38, 38, 0.35);
-    background: rgba(14, 14, 22, 0.9);
-}
-
-.agent-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.agent-status {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.agent-status.live {
-    background: #4ade80;
-    box-shadow: 0 0 8px #4ade80;
-}
-
-.agent-status.offline {
-    background: #555;
-    border: 1px solid #777;
-}
-
-.agent-badge {
-    font-family: var(--tech-font, 'Rajdhani', sans-serif);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    padding: 2px 8px;
-    border-radius: 3px;
-    background: rgba(74, 222, 128, 0.12);
-    color: #4ade80;
-}
-
-.agent-badge.not-built {
-    background: rgba(100, 100, 100, 0.12);
-    color: #888;
-    border: 1px dashed rgba(150, 150, 150, 0.25);
-}
-
-.agent-card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex: 1;
-}
-
-.agent-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    margin-bottom: 8px;
-    background: rgba(220, 38, 38, 0.12);
-    border: 1.5px solid rgba(220, 38, 38, 0.25);
-    overflow: hidden;
-}
-
-.agent-avatar.photo {
-    padding: 0;
-    background: transparent;
-}
-
-.agent-avatar.photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.agent-avatar.dim {
-    background: rgba(80, 80, 90, 0.15);
-    border-color: rgba(120, 120, 130, 0.25);
-    opacity: 0.7;
-    filter: grayscale(0.4);
-}
-
-.agent-name {
-    font-family: var(--display-font, 'Orbitron', sans-serif);
-    font-size: 12px;
-    color: rgba(230, 230, 245, 0.95);
-    letter-spacing: 0.03em;
-    margin-bottom: 2px;
-}
-
-.agent-role {
-    font-family: var(--tech-font, 'Rajdhani', sans-serif);
-    font-size: 9px;
-    color: rgba(160, 160, 180, 0.65);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.agent-card-footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 8px;
-}
-
-.agent-chevron {
-    font-size: 9px;
-    color: rgba(160, 160, 180, 0.45);
-    transition: transform 0.25s ease;
-}
-
-.agent-card.expanded .agent-chevron {
-    transform: rotate(180deg);
-    color: rgba(220, 38, 38, 0.7);
-}
-
-/* ── Expandable Details ── */
-.agent-details {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.25s ease, padding-top 0.25s ease;
-    width: 100%;
-    text-align: left;
-    margin-top: 0;
-    padding-top: 0;
-}
-
-.agent-card.expanded .agent-details {
-    max-height: 500px;
-    opacity: 1;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(220, 38, 38, 0.12);
-}
-
-.detail-row {
-    margin-bottom: 8px;
-}
-
-.detail-row:last-child {
-    margin-bottom: 0;
-}
-
-.detail-key {
-    display: block;
-    font-family: var(--tech-font, 'Rajdhani', sans-serif);
-    font-size: 7px;
-    color: rgba(140, 140, 160, 0.55);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 2px;
-}
-
-.detail-val {
-    display: block;
-    font-family: var(--mono-font, 'JetBrains Mono', monospace);
-    font-size: 9px;
-    color: rgba(200, 200, 220, 0.85);
-    line-height: 1.4;
-}
-
-.detail-row.build-target .detail-val {
-    color: rgba(220, 180, 100, 0.9);
-}
-
-.detail-row.last-seen {
-    margin-top: 6px;
-    padding-top: 6px;
-    border-top: 1px dashed rgba(120, 120, 130, 0.15);
-}
-
-.detail-row.last-seen .detail-val {
-    font-size: 8px;
-    color: rgba(140, 140, 160, 0.5);
-    font-style: italic;
-}
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-    .fleet-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .fleet-fullwidth {
-        padding: 12px 14px;
-    }
-    .fleet-header-left {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-    .agent-card {
-        padding: 12px;
-    }
-    .agent-avatar {
-        width: 34px;
-        height: 34px;
-        font-size: 13px;
-    }
-    .agent-name {
-        font-size: 11px;
-    }
-}
-</style>
+     1|<!-- ═══════════════════════════════════════════════════════════════
+     2|     AGENT FLEET — Flat Bento Grid
+     3|═══════════════════════════════════════════════════════════════ -->
+     4|
+     5|<div class="fleet-fullwidth" id="fleet-fullwidth">
+     6|    <div class="fleet-header">
+     7|        <div class="fleet-header-left">
+     8|            <span class="fleet-title">AGENT FLEET</span>
+     9|            <span class="fleet-subtitle" id="fleet-status-summary">3 live · 5 queued</span>
+    10|        </div>
+    11|    </div>
+    12|
+    13|    <div class="fleet-grid" id="fleet-grid">
+    14|        <!-- Leadership Row -->
+    15|        <div class="agent-card chad-yi-card" data-agent="chad-yi" onclick="toggleAgentDetails('chad-yi')">
+    16|            <div class="agent-card-bg" style="background-image:url('assets/chad-yi-avatar.jpg')"></div>
+    17|            <div class="agent-card-header">
+    18|                <div class="agent-status live"></div>
+    19|                <div class="agent-badge" id="chad-yi-badge">● LIVE</div>
+    20|            </div>
+    21|            <div class="agent-card-body">
+    22|                <div class="agent-avatar photo"><img src="assets/chad-yi-avatar.jpg" alt="CHAD_YI"></div>
+    23|                <div class="agent-name">CHAD_YI</div>
+    24|                <div class="agent-role">The Face</div>
+    25|            </div>
+    26|            <div class="agent-card-footer">
+    27|                <span class="agent-chevron" id="chad-yi-chevron">▼</span>
+    28|            </div>
+    29|            <div class="agent-details" id="chad-yi-details">
+    30|                <div class="detail-row">
+    31|                    <span class="detail-key">Current Task</span>
+    32|                    <span class="detail-val" id="chad-yi-task">Dashboard sync and agent coordination</span>
+    33|                </div>
+    34|                <div class="detail-row">
+    35|                    <span class="detail-key">Recent Activity</span>
+    36|                    <span class="detail-val" id="chad-yi-log">Responding via Telegram gateway</span>
+    37|                </div>
+    38|                <div class="detail-row">
+    39|                    <span class="detail-key">Recent Tasks</span>
+    40|                    <span class="detail-val" id="chad-yi-recent">Redesigned agent fleet UI · Fixed mobile interactions · Task triage</span>
+    41|                </div>
+    42|                <div class="detail-row">
+    43|                    <span class="detail-key">Live Status</span>
+    44|                    <span class="detail-val" id="chad-yi-live">Process verified active</span>
+    45|                </div>
+    46|                <div class="detail-row last-seen">
+    47|                    <span class="detail-val" id="chad-yi-seen">Last seen: just now</span>
+    48|                </div>
+    49|            </div>
+    50|        </div>
+    51|
+    52|        <div class="agent-card" data-agent="cerebronn" onclick="toggleAgentDetails('cerebronn')">
+    53|            <div class="agent-card-header">
+    54|                <div class="agent-status offline"></div>
+    55|                <div class="agent-badge not-built" id="cerebronn-badge">◌ NOT BUILT</div>
+    56|            </div>
+    57|            <div class="agent-card-body">
+    58|                <div class="agent-avatar dim">CB</div>
+    59|                <div class="agent-name">CEREBRONN</div>
+    60|                <div class="agent-role">The Brain</div>
+    61|            </div>
+    62|            <div class="agent-card-footer">
+    63|                <span class="agent-chevron" id="cerebronn-chevron">▼</span>
+    64|            </div>
+    65|            <div class="agent-details" id="cerebronn-details">
+    66|                <div class="detail-row">
+    67|                    <span class="detail-key">Current Task</span>
+    68|                    <span class="detail-val" id="cerebronn-task">Planned for VS Code Studio deployment</span>
+    69|                </div>
+    70|                <div class="detail-row">
+    71|                    <span class="detail-key">Recent Activity</span>
+    72|                    <span class="detail-val" id="cerebronn-log">No activity — agent not yet deployed</span>
+    73|                </div>
+    74|                <div class="detail-row">
+    75|                    <span class="detail-key">Recent Tasks</span>
+    76|                    <span class="detail-val" id="cerebronn-recent">Architecture planning · VS Code deployment design</span>
+    77|                </div>
+    78|                <div class="detail-row">
+    79|                    <span class="detail-key">Live Status</span>
+    80|                    <span class="detail-val" id="cerebronn-live">No running process</span>
+    81|                </div>
+    82|                <div class="detail-row last-seen">
+    83|                    <span class="detail-val" id="cerebronn-seen">Never active</span>
+    84|                </div>
+    85|                <div class="detail-row build-target">
+    86|                    <span class="detail-key">Build Target</span>
+    87|                    <span class="detail-val">April 30, 2026</span>
+    88|                </div>
+    89|            </div>
+    90|        </div>
+    91|
+    92|        <div class="agent-card" data-agent="helios" onclick="toggleAgentDetails('helios')">
+    93|            <div class="agent-card-header">
+    94|                <div class="agent-status live"></div>
+    95|                <div class="agent-badge" id="helios-badge">● LIVE</div>
+    96|            </div>
+    97|            <div class="agent-card-body">
+    98|                <div class="agent-avatar">HE</div>
+    99|                <div class="agent-name">HELIOS</div>
+   100|                <div class="agent-role">The Spine</div>
+   101|            </div>
+   102|            <div class="agent-card-footer">
+   103|                <span class="agent-chevron" id="helios-chevron">▼</span>
+   104|            </div>
+   105|            <div class="agent-details" id="helios-details">
+   106|                <div class="detail-row">
+   107|                    <span class="detail-key">Current Task</span>
+   108|                    <span class="detail-val" id="helios-task">Dashboard sync + audit</span>
+   109|                </div>
+   110|                <div class="detail-row">
+   111|                    <span class="detail-key">Recent Activity</span>
+   112|                    <span class="detail-val" id="helios-log">Synced dashboard data and ran enhanced audit</span>
+   113|                </div>
+   114|                <div class="detail-row">
+   115|                    <span class="detail-key">Recent Tasks</span>
+   116|                    <span class="detail-val" id="helios-recent">Auto-synced data.json · Ran enhanced audit · Fixed 3 integrity issues</span>
+   117|                </div>
+   118|                <div class="detail-row">
+   119|                    <span class="detail-key">Live Status</span>
+   120|                    <span class="detail-val" id="helios-live">Cron active · Last audit: just now</span>
+   121|                </div>
+   122|                <div class="detail-row last-seen">
+   123|                    <span class="detail-val" id="helios-seen">Last seen: just now</span>
+   124|                </div>
+   125|            </div>
+   126|        </div>
+   127|
+   128|        <div class="agent-card" data-agent="quanta" onclick="toggleAgentDetails('quanta')">
+   129|            <div class="agent-card-header">
+   130|                <div class="agent-status live"></div>
+   131|                <div class="agent-badge" id="quanta-badge">● LIVE</div>
+   132|            </div>
+   133|            <div class="agent-card-body">
+   134|                <div class="agent-avatar">QT</div>
+   135|                <div class="agent-name">QUANTA</div>
+   136|                <div class="agent-role">Trading</div>
+   137|            </div>
+   138|            <div class="agent-card-footer">
+   139|                <span class="agent-chevron" id="quanta-chevron">▼</span>
+   140|            </div>
+   141|            <div class="agent-details" id="quanta-details">
+   142|                <div class="detail-row">
+   143|                    <span class="detail-key">Current Task</span>
+   144|                    <span class="detail-val" id="quanta-task">Watching CallistoFx — live XAUUSD execution</span>
+   145|                </div>
+   146|                <div class="detail-row">
+   147|                    <span class="detail-key">Recent Activity</span>
+   148|                    <span class="detail-val" id="quanta-log">Monitoring OANDA for XAUUSD signals</span>
+   149|                </div>
+   150|                <div class="detail-row">
+   151|                    <span class="detail-key">Recent Tasks</span>
+   152|                    <span class="detail-val" id="quanta-recent">Executed live XAUUSD trade · Monitored market open · Signal processing</span>
+   153|                </div>
+   154|                <div class="detail-row">
+   155|                    <span class="detail-key">Live Status</span>
+   156|                    <span class="detail-val" id="quanta-live">Process running · 1 open trade</span>
+   157|                </div>
+   158|                <div class="detail-row last-seen">
+   159|                    <span class="detail-val" id="quanta-seen">Last seen: just now</span>
+   160|                </div>
+   161|            </div>
+   162|        </div>
+   163|
+   164|        <!-- Specialists Row -->
+   165|        <div class="agent-card" data-agent="forger" onclick="toggleAgentDetails('forger')">
+   166|            <div class="agent-card-header">
+   167|                <div class="agent-status offline"></div>
+   168|                <div class="agent-badge not-built" id="forger-badge">◌ NOT BUILT</div>
+   169|            </div>
+   170|            <div class="agent-card-body">
+   171|                <div class="agent-avatar dim">FG</div>
+   172|                <div class="agent-name">FORGER</div>
+   173|                <div class="agent-role">Builder</div>
+   174|            </div>
+   175|            <div class="agent-card-footer">
+   176|                <span class="agent-chevron" id="forger-chevron">▼</span>
+   177|            </div>
+   178|            <div class="agent-details" id="forger-details">
+   179|                <div class="detail-row">
+   180|                    <span class="detail-key">Current Task</span>
+   181|                    <span class="detail-val" id="forger-task">Queued for future deployment</span>
+   182|                </div>
+   183|                <div class="detail-row">
+   184|                    <span class="detail-key">Recent Activity</span>
+   185|                    <span class="detail-val" id="forger-log">No activity — old service stopped</span>
+   186|                </div>
+   187|                <div class="detail-row">
+   188|                    <span class="detail-key">Recent Tasks</span>
+   189|                    <span class="detail-val" id="forger-recent">Queued for B6 Elluminate website rebuild</span>
+   190|                </div>
+   191|                <div class="detail-row">
+   192|                    <span class="detail-key">Live Status</span>
+   193|                    <span class="detail-val" id="forger-live">No running process</span>
+   194|                </div>
+   195|                <div class="detail-row last-seen">
+   196|                    <span class="detail-val" id="forger-seen">Never active</span>
+   197|                </div>
+   198|            </div>
+   199|        </div>
+   200|
+   201|        <div class="agent-card" data-agent="escritor" onclick="toggleAgentDetails('escritor')">
+   202|            <div class="agent-card-header">
+   203|                <div class="agent-status offline"></div>
+   204|                <div class="agent-badge not-built" id="escritor-badge">◌ NOT BUILT</div>
+   205|            </div>
+   206|            <div class="agent-card-body">
+   207|                <div class="agent-avatar dim">ES</div>
+   208|                <div class="agent-name">ESCRITOR</div>
+   209|                <div class="agent-role">Writing</div>
+   210|            </div>
+   211|            <div class="agent-card-footer">
+   212|                <span class="agent-chevron" id="escritor-chevron">▼</span>
+   213|            </div>
+   214|            <div class="agent-details" id="escritor-details">
+   215|                <div class="detail-row">
+   216|                    <span class="detail-key">Current Task</span>
+   217|                    <span class="detail-val" id="escritor-task">Planned for RE:UNITE chapter automation</span>
+   218|                </div>
+   219|                <div class="detail-row">
+   220|                    <span class="detail-key">Recent Activity</span>
+   221|                    <span class="detail-val" id="escritor-log">No activity — stale state from March 21</span>
+   222|                </div>
+   223|                <div class="detail-row">
+   224|                    <span class="detail-key">Recent Tasks</span>
+   225|                    <span class="detail-val" id="escritor-recent">Queued for RE:UNITE chapter automation</span>
+   226|                </div>
+   227|                <div class="detail-row">
+   228|                    <span class="detail-key">Live Status</span>
+   229|                    <span class="detail-val" id="escritor-live">No running process</span>
+   230|                </div>
+   231|                <div class="detail-row last-seen">
+   232|                    <span class="detail-val" id="escritor-seen">Never active</span>
+   233|                </div>
+   234|            </div>
+   235|        </div>
+   236|
+   237|        <div class="agent-card" data-agent="autour" onclick="toggleAgentDetails('autour')">
+   238|            <div class="agent-card-header">
+   239|                <div class="agent-status offline"></div>
+   240|                <div class="agent-badge not-built" id="autour-badge">◌ NOT BUILT</div>
+   241|            </div>
+   242|            <div class="agent-card-body">
+   243|                <div class="agent-avatar dim">AU</div>
+   244|                <div class="agent-name">AUTOUR</div>
+   245|                <div class="agent-role">Content</div>
+   246|            </div>
+   247|            <div class="agent-card-footer">
+   248|                <span class="agent-chevron" id="autour-chevron">▼</span>
+   249|            </div>
+   250|            <div class="agent-details" id="autour-details">
+   251|                <div class="detail-row">
+   252|                    <span class="detail-key">Current Task</span>
+   253|                    <span class="detail-val" id="autour-task">Planned for KOE media production</span>
+   254|                </div>
+   255|                <div class="detail-row">
+   256|                    <span class="detail-key">Recent Activity</span>
+   257|                    <span class="detail-val" id="autour-log">No activity — agent not yet built</span>
+   258|                </div>
+   259|                <div class="detail-row">
+   260|                    <span class="detail-key">Recent Tasks</span>
+   261|                    <span class="detail-val" id="autour-recent">Queued for KOE media production pipeline</span>
+   262|                </div>
+   263|                <div class="detail-row">
+   264|                    <span class="detail-key">Live Status</span>
+   265|                    <span class="detail-val" id="autour-live">No running process</span>
+   266|                </div>
+   267|                <div class="detail-row last-seen">
+   268|                    <span class="detail-val" id="autour-seen">Never active</span>
+   269|                </div>
+   270|            </div>
+   271|        </div>
+   272|
+   273|        <div class="agent-card" data-agent="mensamusa" onclick="toggleAgentDetails('mensamusa')">
+   274|            <div class="agent-card-header">
+   275|                <div class="agent-status offline"></div>
+   276|                <div class="agent-badge not-built" id="mensamusa-badge">◌ NOT BUILT</div>
+   277|            </div>
+   278|            <div class="agent-card-body">
+   279|                <div class="agent-avatar dim">MM</div>
+   280|                <div class="agent-name">MENSAMUSA</div>
+   281|                <div class="agent-role">Research</div>
+   282|            </div>
+   283|            <div class="agent-card-footer">
+   284|                <span class="agent-chevron" id="mensamusa-chevron">▼</span>
+   285|            </div>
+   286|            <div class="agent-details" id="mensamusa-details">
+   287|                <div class="detail-row">
+   288|                    <span class="detail-key">Current Task</span>
+   289|                    <span class="detail-val" id="mensamusa-task">Deferred to future roadmap</span>
+   290|                </div>
+   291|                <div class="detail-row">
+   292|                    <span class="detail-key">Recent Activity</span>
+   293|                    <span class="detail-val" id="mensamusa-log">No activity — agent not yet built</span>
+   294|                </div>
+   295|                <div class="detail-row">
+   296|                    <span class="detail-key">Recent Tasks</span>
+   297|                    <span class="detail-val" id="mensamusa-recent">Research roadmap planning</span>
+   298|                </div>
+   299|                <div class="detail-row">
+   300|                    <span class="detail-key">Live Status</span>
+   301|                    <span class="detail-val" id="mensamusa-live">No running process</span>
+   302|                </div>
+   303|                <div class="detail-row last-seen">
+   304|                    <span class="detail-val" id="mensamusa-seen">Never active</span>
+   305|                </div>
+   306|            </div>
+   307|        </div>
+   308|    </div>
+   309|</div>
+   310|
+   311|<style>
+   312|/* ═══════════════════════════════════════════════════════════════
+   313|   FLAT AGENT FLEET — BENTO GRID
+   314|═══════════════════════════════════════════════════════════════ */
+   315|
+   316|.fleet-fullwidth {
+   317|    background: var(--bg-card, rgba(8, 8, 12, 0.88));
+   318|    border: 1px solid rgba(220, 38, 38, 0.16);
+   319|    border-radius: 6px;
+   320|    padding: 16px 18px;
+   321|    margin-bottom: 16px;
+   322|}
+   323|
+   324|.fleet-header {
+   325|    display: flex;
+   326|    justify-content: space-between;
+   327|    align-items: center;
+   328|    margin-bottom: 16px;
+   329|    padding-bottom: 10px;
+   330|    border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+   331|}
+   332|
+   333|.fleet-header-left {
+   334|    display: flex;
+   335|    align-items: baseline;
+   336|    gap: 12px;
+   337|}
+   338|
+   339|.fleet-title {
+   340|    font-family: var(--display-font, 'Orbitron', sans-serif);
+   341|    font-size: 11px;
+   342|    letter-spacing: 0.12em;
+   343|    color: rgba(220, 60, 80, 0.95);
+   344|    font-weight: 700;
+   345|}
+   346|
+   347|.fleet-subtitle {
+   348|    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+   349|    font-size: 10px;
+   350|    color: rgba(160, 160, 180, 0.7);
+   351|    letter-spacing: 0.05em;
+   352|}
+   353|
+   354|/* ── Bento Grid ── */
+   355|.fleet-grid {
+   356|    display: grid;
+   357|    grid-template-columns: repeat(4, 1fr);
+   358|    gap: 12px;
+   359|}
+   360|
+   361|/* ── Agent Card ── */
+   362|.agent-card {
+   363|    background: rgba(8, 8, 12, 0.7);
+   364|    border: 1px solid rgba(220, 38, 38, 0.12);
+   365|    border-radius: 6px;
+   366|    padding: 14px;
+   367|    cursor: pointer;
+   368|    transition: all 0.2s ease;
+   369|    display: flex;
+   370|    flex-direction: column;
+   371|    position: relative;
+   372|    overflow: hidden;
+   373|}
+   374|
+   375|.agent-card-bg {
+   376|    position: absolute;
+   377|    top: 0;
+   378|    left: 0;
+   379|    right: 0;
+   380|    bottom: 0;
+   381|    background-size: cover;
+   382|    background-position: center top;
+   383|    opacity: 0.3;
+   384|    z-index: 0;
+   385|    pointer-events: none;
+   386|}
+   387|
+   388|.chad-yi-card {
+   389|    border-color: rgba(220, 38, 38, 0.25);
+   390|}
+   391|
+   392|.agent-card-header,
+   393|.agent-card-body,
+   394|.agent-card-footer,
+   395|.agent-details {
+   396|    position: relative;
+   397|    z-index: 1;
+   398|}
+   399|
+   400|.agent-card:hover {
+   401|    border-color: rgba(220, 38, 38, 0.28);
+   402|    background: rgba(12, 12, 18, 0.85);
+   403|    transform: translateY(-1px);
+   404|}
+   405|
+   406|.agent-card.expanded {
+   407|    border-color: rgba(220, 38, 38, 0.35);
+   408|    background: rgba(14, 14, 22, 0.9);
+   409|}
+   410|
+   411|.agent-card-header {
+   412|    display: flex;
+   413|    justify-content: space-between;
+   414|    align-items: center;
+   415|    margin-bottom: 10px;
+   416|}
+   417|
+   418|.agent-status {
+   419|    width: 8px;
+   420|    height: 8px;
+   421|    border-radius: 50%;
+   422|    flex-shrink: 0;
+   423|}
+   424|
+   425|.agent-status.live {
+   426|    background: #4ade80;
+   427|    box-shadow: 0 0 8px #4ade80;
+   428|}
+   429|
+   430|.agent-status.offline {
+   431|    background: #555;
+   432|    border: 1px solid #777;
+   433|}
+   434|
+   435|.agent-badge {
+   436|    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+   437|    font-size: 9px;
+   438|    font-weight: 700;
+   439|    letter-spacing: 0.06em;
+   440|    padding: 2px 8px;
+   441|    border-radius: 3px;
+   442|    background: rgba(74, 222, 128, 0.12);
+   443|    color: #4ade80;
+   444|}
+   445|
+   446|.agent-badge.not-built {
+   447|    background: rgba(100, 100, 100, 0.12);
+   448|    color: #888;
+   449|    border: 1px dashed rgba(150, 150, 150, 0.25);
+   450|}
+   451|
+   452|.agent-card-body {
+   453|    display: flex;
+   454|    flex-direction: column;
+   455|    align-items: center;
+   456|    text-align: center;
+   457|    flex: 1;
+   458|}
+   459|
+   460|.agent-avatar {
+   461|    width: 38px;
+   462|    height: 38px;
+   463|    border-radius: 50%;
+   464|    display: flex;
+   465|    align-items: center;
+   466|    justify-content: center;
+   467|    font-size: 15px;
+   468|    margin-bottom: 8px;
+   469|    background: rgba(220, 38, 38, 0.12);
+   470|    border: 1.5px solid rgba(220, 38, 38, 0.25);
+   471|    overflow: hidden;
+   472|}
+   473|
+   474|.agent-avatar.photo {
+   475|    padding: 0;
+   476|    background: transparent;
+   477|}
+   478|
+   479|.agent-avatar.photo img {
+   480|    width: 100%;
+   481|    height: 100%;
+   482|    object-fit: cover;
+   483|}
+   484|
+   485|.agent-avatar.dim {
+   486|    background: rgba(80, 80, 90, 0.15);
+   487|    border-color: rgba(120, 120, 130, 0.25);
+   488|    opacity: 0.7;
+   489|    filter: grayscale(0.4);
+   490|}
+   491|
+   492|.agent-name {
+   493|    font-family: var(--display-font, 'Orbitron', sans-serif);
+   494|    font-size: 12px;
+   495|    color: rgba(230, 230, 245, 0.95);
+   496|    letter-spacing: 0.03em;
+   497|    margin-bottom: 2px;
+   498|}
+   499|
+   500|.agent-role {
+   501|

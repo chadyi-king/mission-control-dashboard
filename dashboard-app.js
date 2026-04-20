@@ -1832,30 +1832,41 @@ console.log('[Helios WS] connected:', wsUrl);
             const revAgents = rev.agents || {};
             let weeklyProfit = 0;
             let weeklyLoss = 0;
-            let bestAgent = { name: '—', amount: 0 };
-            let worstAgent = { name: '—', amount: 0 };
+            let totalPNL = 0;
+            let totalTrades = 0;
+            let totalWins = 0;
+            let currentBalance = 0;
+            let baselineBalance = 0;
 
             Object.entries(revAgents).forEach(([agentId, agentRev]) => {
                 const profit = parseFloat(agentRev.weekly_profit || 0);
                 const loss = parseFloat(agentRev.weekly_loss || 0);
                 weeklyProfit += Math.max(0, profit);
                 weeklyLoss += Math.max(0, loss);
-                const net = parseFloat(agentRev.total_pnl || 0);
-                if (net > bestAgent.amount) bestAgent = { name: agentId.toUpperCase(), amount: net };
-                if (net < worstAgent.amount || worstAgent.amount === 0) worstAgent = { name: agentId.toUpperCase(), amount: net };
+                totalPNL += parseFloat(agentRev.total_pnl || 0);
+                totalTrades += parseInt(agentRev.win_count || 0) + parseInt(agentRev.loss_count || 0);
+                totalWins += parseInt(agentRev.win_count || 0);
+                currentBalance += parseFloat(agentRev.current_balance || 0);
+                baselineBalance += parseFloat(agentRev.baseline_balance || 0);
             });
 
-            // Total lifetime PNL (sum of all agent total_pnl)
-            let totalPNL = 0;
-            Object.values(revAgents).forEach(a => {
-                totalPNL += parseFloat(a.total_pnl || 0);
-            });
+            // Total lifetime PNL in cluster header
             const totalEl = document.getElementById('s-pnl-total-lifetime');
             if (totalEl) {
                 totalEl.textContent = (totalPNL >= 0 ? '+' : '') + totalPNL.toFixed(2) + ' total';
                 totalEl.className = 'cluster-total' + (totalPNL >= 0 ? ' positive' : ' negative');
             }
 
+            // BALANCE card
+            const balanceEl = document.getElementById('s-pnl-balance');
+            if (balanceEl) {
+                balanceEl.textContent = '$' + currentBalance.toFixed(2);
+            }
+            set('s-pnl-baseline', '$' + baselineBalance.toFixed(2) + ' baseline');
+            const delta = currentBalance - baselineBalance;
+            set('s-pnl-delta', (delta >= 0 ? '+' : '') + delta.toFixed(2) + ' delta');
+
+            // WEEKLY PNL card
             const weeklyNet = weeklyProfit - weeklyLoss;
             const weeklyNetEl = document.getElementById('s-pnl-weekly-net');
             if (weeklyNetEl) {
@@ -1866,21 +1877,15 @@ console.log('[Helios WS] connected:', wsUrl);
             set('s-pnl-weekly-loss', '-' + weeklyLoss.toFixed(2) + ' loss');
             set('s-pnl-weekly-net-sub', (weeklyNet >= 0 ? '+' : '') + weeklyNet.toFixed(2) + ' net');
 
-            const bestEl = document.getElementById('s-best-agent-amount');
-            if (bestEl) {
-                bestEl.textContent = (bestAgent.amount >= 0 ? '+' : '') + bestAgent.amount.toFixed(2);
-                bestEl.className = 'stat-value' + (bestAgent.amount >= 0 ? ' stat-val-good' : ' stat-val-alert');
+            // TOTAL PNL card
+            const totalPnlEl = document.getElementById('s-total-pnl');
+            if (totalPnlEl) {
+                totalPnlEl.textContent = (totalPNL >= 0 ? '+' : '') + totalPNL.toFixed(2);
+                totalPnlEl.className = 'stat-value' + (totalPNL >= 0 ? ' stat-val-good' : ' stat-val-alert');
             }
-            set('s-best-agent-name', bestAgent.name);
-            set('s-best-agent-share', bestAgent.name !== '—' ? 'top agent' : '—');
-
-            const worstEl = document.getElementById('s-worst-agent-amount');
-            if (worstEl) {
-                worstEl.textContent = (worstAgent.amount >= 0 ? '+' : '') + worstAgent.amount.toFixed(2);
-                worstEl.className = 'stat-value' + (worstAgent.amount >= 0 ? ' stat-val-good' : ' stat-val-alert');
-            }
-            set('s-worst-agent-name', worstAgent.name);
-            set('s-worst-agent-streak', worstAgent.name !== '—' ? 'needs work' : '—');
+            set('s-pnl-trades', totalTrades + ' trades');
+            const winRate = totalTrades > 0 ? Math.round((totalWins / totalTrades) * 100) : 0;
+            set('s-pnl-winrate', winRate + '% win rate');
 
             // 5. THIS WEEK — tasks due within the current Mon–Sun week
             const weekEnd = new Date(today); weekEnd.setDate(weekEnd.getDate() + (7 - today.getDay()) % 7 || 7);
