@@ -2376,7 +2376,7 @@ body::before {
     min-height: 300px;
 }
 /* But regular ops cards keep their max-height */
-.cmd-card:not(.focus-card):not(.daily-briefing-card) .cmd-card-body {
+.cmd-card:not(.focus-card):not(.daily-briefing-card):not(.recently-done-card) .cmd-card-body {
     max-height: 220px;
 }
 
