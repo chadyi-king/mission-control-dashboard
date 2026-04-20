@@ -55,7 +55,7 @@
                 <div class="agent-badge not-built" id="cerebronn-badge">◌ NOT BUILT</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar dim">CB</div>
+                <div class="agent-avatar dim">B</div>
                 <div class="agent-name">CEREBRONN</div>
                 <div class="agent-role">The Brain</div>
             </div>
@@ -168,7 +168,7 @@
                 <div class="agent-badge not-built" id="forger-badge">◌ NOT BUILT</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar dim">FG</div>
+                <div class="agent-avatar dim">🔨</div>
                 <div class="agent-name">FORGER</div>
                 <div class="agent-role">Builder</div>
             </div>
@@ -204,7 +204,7 @@
                 <div class="agent-badge not-built" id="escritor-badge">◌ NOT BUILT</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar dim">ES</div>
+                <div class="agent-avatar dim">✍️</div>
                 <div class="agent-name">ESCRITOR</div>
                 <div class="agent-role">Writing</div>
             </div>
@@ -240,7 +240,7 @@
                 <div class="agent-badge not-built" id="autour-badge">◌ NOT BUILT</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar dim">AU</div>
+                <div class="agent-avatar dim">🎙️</div>
                 <div class="agent-name">AUTOUR</div>
                 <div class="agent-role">Content</div>
             </div>
@@ -276,7 +276,7 @@
                 <div class="agent-badge not-built" id="mensamusa-badge">◌ NOT BUILT</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar dim">MM</div>
+                <div class="agent-avatar dim">📚</div>
                 <div class="agent-name">MENSAMUSA</div>
                 <div class="agent-role">Research</div>
             </div>
@@ -498,3 +498,118 @@
 }
 
 .agent-role {
+    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+    font-size: 9px;
+    color: rgba(160, 160, 180, 0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.agent-card-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.agent-chevron {
+    font-size: 9px;
+    color: rgba(160, 160, 180, 0.45);
+    transition: transform 0.25s ease;
+}
+
+.agent-card.expanded .agent-chevron {
+    transform: rotate(180deg);
+    color: rgba(220, 38, 38, 0.7);
+}
+
+/* ── Expandable Details ── */
+.agent-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.25s ease, padding-top 0.25s ease;
+    width: 100%;
+    text-align: left;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.agent-card.expanded .agent-details {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(220, 38, 38, 0.12);
+}
+
+.detail-row {
+    margin-bottom: 8px;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.detail-key {
+    display: block;
+    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+    font-size: 7px;
+    color: rgba(140, 140, 160, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+}
+
+.detail-val {
+    display: block;
+    font-family: var(--mono-font, 'JetBrains Mono', monospace);
+    font-size: 9px;
+    color: rgba(200, 200, 220, 0.85);
+    line-height: 1.4;
+}
+
+.detail-row.build-target .detail-val {
+    color: rgba(220, 180, 100, 0.9);
+}
+
+.detail-row.last-seen {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(120, 120, 130, 0.15);
+}
+
+.detail-row.last-seen .detail-val {
+    font-size: 8px;
+    color: rgba(140, 140, 160, 0.5);
+    font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .fleet-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .fleet-fullwidth {
+        padding: 12px 14px;
+    }
+    .fleet-header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .agent-card {
+        padding: 12px;
+    }
+    .agent-avatar {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+    .agent-name {
+        font-size: 11px;
+    }
+}
+</style>
