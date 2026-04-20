@@ -1452,22 +1452,44 @@ body::before {
    STATS BAR — 8 Hierarchical Stat Cards
 ───────────────────────────────────────────────────── */
 .stats-bar {
-    display: flex;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
     padding: 12px 0 8px;
-    overflow-x: auto;
+    overflow-x: visible;
     overflow-y: visible;
-    flex-wrap: nowrap;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(220, 38, 38, 0.3) transparent;
 }
-.stats-bar::-webkit-scrollbar { height: 3px; }
-.stats-bar::-webkit-scrollbar-track { background: transparent; }
-.stats-bar::-webkit-scrollbar-thumb { background: rgba(220, 38, 38, 0.3); border-radius: 2px; }
+
+/* Cluster wrapper */
+.stat-cluster {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+/* Cluster label (Schedule, Progress, Operations, PNL) */
+.stat-cluster-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(220, 38, 38, 0.5);
+    text-align: center;
+    padding: 2px 4px;
+}
+
+/* Cards inside a cluster */
+.stat-cluster-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
 
 .stat-card {
-    flex: 0 0 148px;
-    min-width: 148px;
+    flex: unset;
+    min-width: 0;
     background: rgba(10, 10, 15, 0.85);
     border: 1px solid rgba(220, 38, 38, 0.18);
     border-radius: 6px;
@@ -2293,9 +2315,10 @@ body::before {
     .week-grid {
         grid-template-columns: repeat(4, 1fr);
     }
-    /* Stats bar mobile: vertical stack of clusters */
+    /* Stats bar mobile: stack clusters vertically, cards in 3-col grid */
     .stats-bar {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 10px;
         overflow-x: visible;
         padding: 10px 0;
@@ -2311,7 +2334,7 @@ body::before {
     }
     .stat-card {
         min-width: 0;
-        flex: 1;
+        flex: unset;
         padding: 10px;
     }
     .stat-value {
@@ -2504,13 +2527,9 @@ body::before {
 }
 .topbar-left { flex-shrink: 0; }
 
-/* ── Stats bar: ensure last stat-card isn't clipped by scrollbar */
-.stats-bar::after {
-    content: '';
-    display: block;
-    min-width: 8px;
-    flex-shrink: 0;
-}
+/* ── Stats bar: grid layout doesn't need scroll padding */
+/* Removed — grid layout handles spacing via gap */
+
 
 /* ── Command grid: enforce left cols stay equal width even when wrapping */
 @media (min-width: 769px) {
@@ -2923,21 +2942,17 @@ body::before {
 /* ─────────────────────────────────────────────────────
    STATS BAR — Center everything
 ───────────────────────────────────────────────────── */
-.stats-bar {
-    justify-content: center !important;
-}
-
 .stat-card {
-    text-align: center !important;
-    align-items: center !important;
+    text-align: center;
+    align-items: center;
 }
 
 .stat-card .stat-icon-label {
-    justify-content: center !important;
+    justify-content: center;
 }
 
 .stat-card .stat-value {
-    text-align: center !important;
+    text-align: center;
 }
 
 /* ─────────────────────────────────────────────────────
@@ -3245,28 +3260,26 @@ body::before {
     font-size: 11px !important;
 }
 
-/* ── MOBILE STATS BAR — 2 column grid on small screens ── */
-@media (max-width: 768px) {
+/* ── RESPONSIVE STATS BAR BREAKPOINTS ── */
+/* Medium screens: 2 clusters per row */
+@media (max-width: 1100px) {
     .stats-bar {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        flex-wrap: unset !important;
-        overflow-x: unset !important;
-    }
-    .stat-card {
-        flex: unset !important;
-        min-width: unset !important;
-    }
-    .week-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-@media (max-width: 480px) {
+/* Small screens: 1 cluster per row */
+@media (max-width: 600px) {
     .stats-bar {
-        grid-template-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr;
     }
-    .week-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
+    .stat-cluster-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Very small: cards can wrap to 2-col if needed */
+@media (max-width: 400px) {
+    .stat-cluster-cards {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
