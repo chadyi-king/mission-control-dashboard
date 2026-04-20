@@ -49,13 +49,14 @@
             </div>
         </div>
 
-        <div class="agent-card" data-agent="cerebronn" onclick="toggleAgentDetails('cerebronn')">
+        <div class="agent-card has-photo-bg" data-agent="cerebronn" onclick="toggleAgentDetails('cerebronn')">
+            <div class="card-bg-img" style="background-image: url('assets/cerebronn-avatar.jpg?v=1')"></div>
             <div class="agent-card-header">
                 <div class="agent-status offline"></div>
                 <div class="agent-badge not-built" id="cerebronn-badge">◌ NOT BUILT</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar photo dark-bg"><img src="assets/cerebronn-avatar.jpg?v=1" alt="CEREBRONN"></div>
+                <div class="agent-avatar photo"><img src="assets/cerebronn-avatar.jpg?v=1" alt="CEREBRONN"></div>
                 <div class="agent-name">CEREBRONN</div>
                 <div class="agent-role">The Brain</div>
             </div>
@@ -89,7 +90,8 @@
             </div>
         </div>
 
-        <div class="agent-card" data-agent="helios" onclick="toggleAgentDetails('helios')">
+        <div class="agent-card has-photo-bg" data-agent="helios" onclick="toggleAgentDetails('helios')">
+            <div class="card-bg-img" style="background-image: url('assets/helios-avatar.jpg')"></div>
             <div class="agent-card-header">
                 <div class="agent-status live"></div>
                 <div class="agent-badge" id="helios-badge">● LIVE</div>
@@ -125,7 +127,8 @@
             </div>
         </div>
 
-        <div class="agent-card" data-agent="quanta" onclick="toggleAgentDetails('quanta')">
+        <div class="agent-card has-photo-bg" data-agent="quanta" onclick="toggleAgentDetails('quanta')">
+            <div class="card-bg-img" style="background-image: url('assets/quanta-avatar.jpg')"></div>
             <div class="agent-card-header">
                 <div class="agent-status live"></div>
                 <div class="agent-badge" id="quanta-badge">● LIVE</div>
@@ -198,38 +201,39 @@
             </div>
         </div>
 
-        <div class="agent-card" data-agent="escritor" onclick="toggleAgentDetails('escritor')">
+        <div class="agent-card has-photo-bg" data-agent="escrita" onclick="toggleAgentDetails('escrita')">
+            <div class="card-bg-img" style="background-image: url('assets/escrita-avatar.jpg?v=1')"></div>
             <div class="agent-card-header">
                 <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="escritor-badge">◌ NOT BUILT</div>
+                <div class="agent-badge not-built" id="escrita-badge">◌ NOT BUILT</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar dim">✍️</div>
-                <div class="agent-name">ESCRITOR</div>
+                <div class="agent-avatar photo"><img src="assets/escrita-avatar.jpg?v=1" alt="ESCRITA"></div>
+                <div class="agent-name">ESCRITA</div>
                 <div class="agent-role">Writing</div>
             </div>
             <div class="agent-card-footer">
-                <span class="agent-chevron" id="escritor-chevron">▼</span>
+                <span class="agent-chevron" id="escrita-chevron">▼</span>
             </div>
-            <div class="agent-details" id="escritor-details">
+            <div class="agent-details" id="escrita-details">
                 <div class="detail-row">
                     <span class="detail-key">Current Task</span>
-                    <span class="detail-val" id="escritor-task">Planned for RE:UNITE chapter automation</span>
+                    <span class="detail-val" id="escrita-task">Planned for RE:UNITE chapter automation</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Recent Activity</span>
-                    <span class="detail-val" id="escritor-log">No activity — stale state from March 21</span>
+                    <span class="detail-val" id="escrita-log">No activity — stale state from March 21</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Recent Tasks</span>
-                    <span class="detail-val" id="escritor-recent">Queued for RE:UNITE chapter automation</span>
+                    <span class="detail-val" id="escrita-recent">Queued for RE:UNITE chapter automation</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="escritor-live">No running process</span>
+                    <span class="detail-val" id="escrita-live">No running process</span>
                 </div>
                 <div class="detail-row last-seen">
-                    <span class="detail-val" id="escritor-seen">Never active</span>
+                    <span class="detail-val" id="escrita-seen">Never active</span>
                 </div>
             </div>
         </div>
@@ -482,21 +486,29 @@
     object-fit: cover;
 }
 
-.agent-avatar.photo.dark-bg {
+/* Card background with agent photo — darkened behind content */
+.agent-card.has-photo-bg {
     position: relative;
+    overflow: hidden;
 }
 
-.agent-avatar.photo.dark-bg::after {
-    content: '';
+.agent-card.has-photo-bg .card-bg-img {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.15;
+    filter: brightness(0.4) saturate(0.7);
+    z-index: 0;
     pointer-events: none;
 }
 
-.agent-avatar.photo.dark-bg img {
-    filter: brightness(0.85);
+.agent-card.has-photo-bg .agent-card-header,
+.agent-card.has-photo-bg .agent-card-body,
+.agent-card.has-photo-bg .agent-card-footer,
+.agent-card.has-photo-bg .agent-details {
+    position: relative;
+    z-index: 1;
 }
 
 .agent-avatar.dim {
