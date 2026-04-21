@@ -458,6 +458,12 @@
             };
 
             data.tasks = data.tasks || {};
+            // Filter out removed/ghost tasks
+            Object.keys(data.tasks).forEach(taskId => {
+                if (data.tasks[taskId].status === 'removed') {
+                    delete data.tasks[taskId];
+                }
+            });
             Object.values(data.tasks).forEach(task => {
                 task.project = projectIdFromTask(task);
                 if (task.status !== 'done') {
@@ -561,7 +567,7 @@
 
                 cat.projects.forEach(projId => {
                     const tasks = data.tasks || {};
-                    const projTasks = Object.values(tasks).filter(t => (t.id || '').replace(/-\d+$/, '') === projId);
+                    const projTasks = Object.values(tasks).filter(t => t.project === projId && t.status !== 'removed');
                     const taskStats = calculateTaskStats(projTasks);
                     const projDetails = data.projectDetails && data.projectDetails[projId] ? data.projectDetails[projId] : {};
 
