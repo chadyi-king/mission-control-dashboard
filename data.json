@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T13:15:56.229971+08:00",
+  "lastUpdated": "2026-04-21T13:24:48.543796+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 69,
@@ -940,7 +940,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T13:15:56.231617+08:00",
+      "lastActive": "2026-04-21T13:24:48.552897+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,7 +949,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-21T13:15:00.344275+08:00",
+      "lastActive": "2026-04-21T13:24:27.532673+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1481,11 +1481,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T13:15:56.231617+08:00"
+        "lastActive": "2026-04-21T13:24:48.552897+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-21T13:15:00.344275+08:00"
+        "lastActive": "2026-04-21T13:24:27.532673+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1536,10 +1536,77 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T13:15:56.229971+08:00",
+    "lastRun": "2026-04-21T13:24:48.543796+08:00",
     "dataIntegrity": "ok",
     "taskCount": 71,
-    "findings": []
+    "findings": [],
+    "preflight": {
+      "runAt": "2026-04-21T13:24:48.555423+08:00",
+      "passed": true,
+      "blockingFailures": 0,
+      "checks": [
+        {
+          "id": "schema_keys_present",
+          "passed": true,
+          "blocking": true,
+          "details": "all required top-level keys present"
+        },
+        {
+          "id": "stats_consistency",
+          "passed": true,
+          "blocking": true,
+          "details": "stats reconcile with task set"
+        },
+        {
+          "id": "workflow_references",
+          "passed": true,
+          "blocking": true,
+          "details": "workflow IDs valid and visible"
+        },
+        {
+          "id": "workflow_status_alignment",
+          "passed": true,
+          "blocking": true,
+          "details": "all visible tasks exist in expected canonical lane"
+        },
+        {
+          "id": "attention_inputs_references",
+          "passed": true,
+          "blocking": true,
+          "details": "all needsAttention/inputsNeeded entries point to visible tasks"
+        },
+        {
+          "id": "project_rollups",
+          "passed": true,
+          "blocking": true,
+          "details": "project totals align"
+        },
+        {
+          "id": "daily_briefing_consistency",
+          "passed": true,
+          "blocking": true,
+          "details": "daily briefing aligns with stats/overdue"
+        },
+        {
+          "id": "agent_status_consistency",
+          "passed": true,
+          "blocking": true,
+          "details": "agent statuses valid for fleet tracking"
+        },
+        {
+          "id": "revenue_shape",
+          "passed": true,
+          "blocking": true,
+          "details": "revenue shape valid"
+        },
+        {
+          "id": "audit_coherence",
+          "passed": true,
+          "blocking": true,
+          "details": "audit timestamps/count coherent"
+        }
+      ]
+    }
   },
   "revenue": {
     "agents": {
