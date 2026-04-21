@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T23:55:29.194251+08:00",
+  "lastUpdated": "2026-04-22T00:01:02.842689+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 69,
@@ -940,7 +940,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T23:55:29.195705+08:00",
+      "lastActive": "2026-04-22T00:01:02.845060+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,7 +949,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-21T23:55:28.325338+08:00",
+      "lastActive": "2026-04-22T00:00:28.615401+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1467,7 +1467,7 @@
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-04-21",
+    "date": "2026-04-22",
     "summary": "📋 49 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
@@ -1481,11 +1481,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T23:55:29.195705+08:00"
+        "lastActive": "2026-04-22T00:01:02.845060+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-21T23:55:28.325338+08:00"
+        "lastActive": "2026-04-22T00:00:28.615401+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1513,35 +1513,35 @@
         "id": "A1-8",
         "title": "Create habit tracker in dashboard",
         "deadline": "2026-04-20",
-        "daysOverdue": 1
+        "daysOverdue": 2
       },
       {
         "id": "A1-10",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-09",
-        "daysOverdue": 12
+        "daysOverdue": 13
       },
       {
         "id": "A1-12",
         "title": "Fix Google Ads API",
         "deadline": "2026-04-16",
-        "daysOverdue": 5
+        "daysOverdue": 6
       },
       {
         "id": "B6-9",
         "title": "Order items for SPH event",
         "deadline": "2026-04-17",
-        "daysOverdue": 4
+        "daysOverdue": 5
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T23:55:29.194251+08:00",
+    "lastRun": "2026-04-22T00:01:02.842689+08:00",
     "dataIntegrity": "ok",
     "taskCount": 71,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-21T23:55:29.197366+08:00",
+      "runAt": "2026-04-22T00:01:02.846678+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1615,10 +1615,10 @@
         "current_balance": 3801.3,
         "baseline_balance": 3821.73,
         "weekly_profit": 0.0,
-        "weekly_loss": 37.98,
+        "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": -37.98,
+        "today_pnl": 0.0,
         "status": "active"
       }
     },
@@ -1662,6 +1662,13 @@
         "balance": 3801.3,
         "pnl": -37.98,
         "note": "Balance 3801.30 | P/L -37.98 today | Open 0"
+      },
+      {
+        "date": "2026-04-22",
+        "agent": "quanta",
+        "balance": 3801.3,
+        "pnl": 0.0,
+        "note": "Balance 3801.30 | P/L +0.00 today | Open 0"
       }
     ],
     "currency": "USD",
