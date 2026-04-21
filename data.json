@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T19:46:05.920279+08:00",
+  "lastUpdated": "2026-04-21T19:55:15.971953+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 69,
@@ -940,7 +940,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T19:46:05.922471+08:00",
+      "lastActive": "2026-04-21T19:55:15.973200+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,7 +949,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-21T19:45:43.225741+08:00",
+      "lastActive": "2026-04-21T19:54:16.552079+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1481,11 +1481,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T19:46:05.922471+08:00"
+        "lastActive": "2026-04-21T19:55:15.973200+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-21T19:45:43.225741+08:00"
+        "lastActive": "2026-04-21T19:54:16.552079+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1536,12 +1536,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T19:46:05.920279+08:00",
+    "lastRun": "2026-04-21T19:55:15.971953+08:00",
     "dataIntegrity": "ok",
     "taskCount": 71,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-21T19:46:05.923890+08:00",
+      "runAt": "2026-04-21T19:55:15.974785+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
