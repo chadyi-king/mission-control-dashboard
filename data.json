@@ -1,10 +1,10 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T12:57:17.391914+08:00",
+  "lastUpdated": "2026-04-21T12:57:38.540543+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 67,
-    "tasksLeft": 47,
+    "totalTasks": 68,
+    "tasksLeft": 48,
     "completedTasks": 20,
     "completedToday": 0,
     "completedThisWeek": 0,
@@ -13,7 +13,7 @@
     "active": 0,
     "blocked": 0,
     "review": 0,
-    "backlog": 45
+    "backlog": 46
   },
   "completions": {
     "today": [],
@@ -93,6 +93,7 @@
       "B5-1",
       "B6-5",
       "B7-1",
+      "B7-2",
       "B8-1",
       "B8-3",
       "B9-1",
@@ -145,6 +146,7 @@
       "B5-1",
       "B6-5",
       "B7-1",
+      "B7-2",
       "B8-1",
       "B8-3",
       "B9-1",
@@ -907,6 +909,16 @@
       "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-2": {
+      "id": "B7-2",
+      "title": "Finish framework for encompass website",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
     }
   },
   "recentWins": [],
@@ -926,7 +938,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T12:57:17.393090+08:00",
+      "lastActive": "2026-04-21T12:57:38.541745+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1225,9 +1237,10 @@
       "category": "B",
       "status": "pending",
       "tasks": [
-        "B7-1"
+        "B7-1",
+        "B7-2"
       ],
-      "totalTasks": 1,
+      "totalTasks": 2,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1436,7 +1449,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-21",
-    "summary": "📋 47 tasks in flight. Focus on top priorities.",
+    "summary": "📋 48 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1449,7 +1462,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T12:57:17.393090+08:00"
+        "lastActive": "2026-04-21T12:57:38.541745+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1504,9 +1517,9 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T12:57:17.391914+08:00",
+    "lastRun": "2026-04-21T12:57:38.540543+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 70,
+    "taskCount": 71,
     "findings": []
   },
   "revenue": {
