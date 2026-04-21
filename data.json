@@ -1,10 +1,10 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T12:57:38.540543+08:00",
+  "lastUpdated": "2026-04-21T12:57:55.969323+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 68,
-    "tasksLeft": 48,
+    "totalTasks": 69,
+    "tasksLeft": 49,
     "completedTasks": 20,
     "completedToday": 0,
     "completedThisWeek": 0,
@@ -13,7 +13,7 @@
     "active": 0,
     "blocked": 0,
     "review": 0,
-    "backlog": 46
+    "backlog": 47
   },
   "completions": {
     "today": [],
@@ -87,6 +87,7 @@
       "A5-5",
       "B1-1",
       "B1-2",
+      "B11-1",
       "B2-1",
       "B3-2",
       "B4-1",
@@ -140,6 +141,7 @@
       "A5-5",
       "B1-1",
       "B1-2",
+      "B11-1",
       "B2-1",
       "B3-2",
       "B4-1",
@@ -896,8 +898,8 @@
       "project": "B11",
       "category": "B",
       "agent": "Forger",
-      "status": "removed",
-      "priority": "high",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-04-21T07:28:32.446243+08:00"
     },
     "B8-3": {
@@ -938,7 +940,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T12:57:38.541745+08:00",
+      "lastActive": "2026-04-21T12:57:55.970481+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1449,7 +1451,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-21",
-    "summary": "📋 48 tasks in flight. Focus on top priorities.",
+    "summary": "📋 49 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1462,7 +1464,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T12:57:38.541745+08:00"
+        "lastActive": "2026-04-21T12:57:55.970481+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1517,7 +1519,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T12:57:38.540543+08:00",
+    "lastRun": "2026-04-21T12:57:55.969323+08:00",
     "dataIntegrity": "ok",
     "taskCount": 71,
     "findings": []
