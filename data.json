@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T13:13:17.222337+08:00",
+  "lastUpdated": "2026-04-21T13:15:56.229971+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 69,
@@ -940,7 +940,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T13:13:17.223597+08:00",
+      "lastActive": "2026-04-21T13:15:56.231617+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,7 +949,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-21T13:12:53.691160+08:00",
+      "lastActive": "2026-04-21T13:15:00.344275+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1025,7 +1025,8 @@
         "B7",
         "B8",
         "B9",
-        "B10"
+        "B10",
+        "B11"
       ]
     },
     "C": {
@@ -1285,6 +1286,18 @@
       "completedTasks": 0,
       "completionPct": 0
     },
+    "B11": {
+      "name": "EPEPTOME",
+      "description": "Research peptides e-commerce",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B11-1"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
     "C1": {
       "name": "Real Estate",
       "description": "RES exam June 2026",
@@ -1397,6 +1410,10 @@
       "name": "Epitaph",
       "description": "Legacy project"
     },
+    "B11": {
+      "name": "EPEPTOME",
+      "description": "Research peptides e-commerce"
+    },
     "C1": {
       "name": "Real Estate",
       "description": "RES exam June 2026"
@@ -1464,11 +1481,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T13:13:17.223597+08:00"
+        "lastActive": "2026-04-21T13:15:56.231617+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-21T13:12:53.691160+08:00"
+        "lastActive": "2026-04-21T13:15:00.344275+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1519,7 +1536,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T13:13:17.222337+08:00",
+    "lastRun": "2026-04-21T13:15:56.229971+08:00",
     "dataIntegrity": "ok",
     "taskCount": 71,
     "findings": []
