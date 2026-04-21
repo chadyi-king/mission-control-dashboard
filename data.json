@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T12:30:00.000000+08:00",
+  "lastUpdated": "2026-04-21T12:26:07.521403+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 64,
@@ -910,7 +910,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T12:16:09.867722+08:00",
+      "lastActive": "2026-04-21T12:26:07.522493+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -919,7 +919,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-21T12:15:15.787041+08:00",
+      "lastActive": "2026-04-21T12:25:43.600257+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1251,16 +1251,6 @@
       "completedTasks": 0,
       "completionPct": 0
     },
-    "B11": {
-      "name": "EPEPTOME",
-      "description": "Research peptides e-commerce",
-      "category": "B",
-      "status": "pending",
-      "tasks": [],
-      "totalTasks": 0,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
     "C1": {
       "name": "Real Estate",
       "description": "RES exam June 2026",
@@ -1373,10 +1363,6 @@
       "name": "Epitaph",
       "description": "Legacy project"
     },
-    "B11": {
-      "name": "EPEPTOME",
-      "description": "Research peptides e-commerce"
-    },
     "C1": {
       "name": "Real Estate",
       "description": "RES exam June 2026"
@@ -1444,11 +1430,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T12:16:09.867722+08:00"
+        "lastActive": "2026-04-21T12:26:07.522493+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-21T12:15:15.787041+08:00"
+        "lastActive": "2026-04-21T12:25:43.600257+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1499,7 +1485,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T12:16:09.865587+08:00",
+    "lastRun": "2026-04-21T12:26:07.521403+08:00",
     "dataIntegrity": "ok",
     "taskCount": 69,
     "findings": []
