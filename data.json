@@ -1,10 +1,10 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T12:56:09.226584+08:00",
+  "lastUpdated": "2026-04-21T12:56:32.302105+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 64,
-    "tasksLeft": 44,
+    "totalTasks": 66,
+    "tasksLeft": 46,
     "completedTasks": 20,
     "completedToday": 0,
     "completedThisWeek": 0,
@@ -13,7 +13,7 @@
     "active": 0,
     "blocked": 0,
     "review": 0,
-    "backlog": 42
+    "backlog": 44
   },
   "completions": {
     "today": [],
@@ -29,6 +29,8 @@
       "A1-10",
       "A1-12",
       "A1-13",
+      "A1-15",
+      "A1-16",
       "A1-8",
       "A1-9",
       "A6-15",
@@ -108,6 +110,8 @@
       "A1-10",
       "A1-12",
       "A1-13",
+      "A1-15",
+      "A1-16",
       "A1-8",
       "A1-9",
       "A6-15",
@@ -799,7 +803,7 @@
     },
     "A1-14": {
       "id": "A1-14",
-      "title": "Build EPEPTOME website — selling peptides for research (hold until prioritized)",
+      "title": "Build EPEPTOME website — selling peptides for research (DEPRECATED - moved to B11)",
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
@@ -846,8 +850,8 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "critical",
+      "status": "pending",
+      "priority": "medium",
       "deadline": "2026-04-22",
       "createdAt": "2026-04-21T07:28:32.446243+08:00"
     },
@@ -857,8 +861,8 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "critical",
+      "status": "pending",
+      "priority": "medium",
       "deadline": "2026-04-22",
       "createdAt": "2026-04-21T07:28:32.446243+08:00"
     },
@@ -910,7 +914,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T12:56:09.227874+08:00",
+      "lastActive": "2026-04-21T12:56:32.303470+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1027,11 +1031,13 @@
         "A1-11",
         "A1-12",
         "A1-13",
-        "A1-14"
+        "A1-14",
+        "A1-15",
+        "A1-16"
       ],
-      "totalTasks": 13,
+      "totalTasks": 15,
       "completedTasks": 7,
-      "completionPct": 54
+      "completionPct": 47
     },
     "A2": {
       "name": "RE:UNITE",
@@ -1417,7 +1423,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-21",
-    "summary": "📋 44 tasks in flight. Focus on top priorities.",
+    "summary": "📋 46 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1430,7 +1436,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T12:56:09.227874+08:00"
+        "lastActive": "2026-04-21T12:56:32.303470+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1485,7 +1491,7 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T12:56:09.226584+08:00",
+    "lastRun": "2026-04-21T12:56:32.302105+08:00",
     "dataIntegrity": "ok",
     "taskCount": 69,
     "findings": []
