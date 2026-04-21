@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-21T21:45:51.028750+08:00",
+  "lastUpdated": "2026-04-21T21:55:25.615869+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 69,
@@ -940,7 +940,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-21T21:45:51.031007+08:00",
+      "lastActive": "2026-04-21T21:55:25.617102+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,7 +949,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-21T21:45:03.763384+08:00",
+      "lastActive": "2026-04-21T21:54:48.681967+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1481,11 +1481,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-21T21:45:51.031007+08:00"
+        "lastActive": "2026-04-21T21:55:25.617102+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-21T21:45:03.763384+08:00"
+        "lastActive": "2026-04-21T21:54:48.681967+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1536,12 +1536,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-21T21:45:51.028750+08:00",
+    "lastRun": "2026-04-21T21:55:25.615869+08:00",
     "dataIntegrity": "ok",
     "taskCount": 71,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-21T21:45:51.032332+08:00",
+      "runAt": "2026-04-21T21:55:25.618565+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1612,20 +1612,20 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 3993.08,
+        "current_balance": 4046.52,
         "baseline_balance": 3821.73,
-        "weekly_profit": 153.8,
+        "weekly_profit": 207.25,
         "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 153.8,
+        "today_pnl": 207.25,
         "status": "active"
       }
     },
     "weekly_rankings": {
       "best": {
         "agent": "quanta",
-        "amount": 153.8,
+        "amount": 207.25,
         "period": "2026-04-21"
       },
       "worst": {
@@ -1659,9 +1659,9 @@
       {
         "date": "2026-04-21",
         "agent": "quanta",
-        "balance": 3993.08,
-        "pnl": 153.8,
-        "note": "Balance 3993.08 | P/L +153.80 today | Open 1"
+        "balance": 4046.52,
+        "pnl": 207.25,
+        "note": "Balance 4046.52 | P/L +207.25 today | Open 0"
       }
     ],
     "currency": "USD",
