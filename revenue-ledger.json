@@ -8,11 +8,11 @@
     "quanta": {
       "source": "oanda",
       "account_id": "001-003-8520002-001",
-      "current_balance": 3857.84,
+      "current_balance": 3801.3,
       "baseline_balance": 3821.73,
-      "weekly_profit": 18.56,
-      "weekly_loss": 0.0,
-      "total_pnl": 36.11,
+      "weekly_profit": 0,
+      "weekly_loss": 0,
+      "total_pnl": -20.43,
       "win_count": 0,
       "loss_count": 1,
       "status": "active"
@@ -43,21 +43,28 @@
     {
       "date": "2026-04-21",
       "agent": "quanta",
-      "balance": 3857.84,
-      "pnl": 18.56,
-      "note": "Balance 3857.84 | P/L +18.56 today | Open 0"
+      "balance": 3801.3,
+      "pnl": -37.98,
+      "note": "Balance 3801.30 | P/L -37.98 today | Open 0"
+    },
+    {
+      "date": "2026-04-22",
+      "agent": "quanta",
+      "balance": 3801.3,
+      "pnl": 0,
+      "note": "Balance 3801.30 | P/L +0.00 | Open 0"
     }
   ],
   "weekly_rankings": {
     "best": {
       "agent": "quanta",
-      "amount": 18.56,
-      "period": "2026-04-21"
+      "amount": 0,
+      "period": "2026-04-18"
     },
     "worst": {
       "agent": "quanta",
-      "amount": -17.06,
-      "period": "2026-04-17"
+      "amount": -37.98,
+      "period": "2026-04-21"
     }
   },
   "note_to_future_agents": "If you generate revenue for Caleb, append your daily/weekly PNL to this ledger under the 'agents' and 'daily_snapshots' keys. Helios reads this file and pushes it to the dashboard."
