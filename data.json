@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-22T23:56:59.293692+08:00",
+  "lastUpdated": "2026-04-23T00:11:59.781462+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 69,
@@ -920,7 +920,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-22T23:56:59.295033+08:00",
+      "lastActive": "2026-04-23T00:11:59.782442+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -929,7 +929,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-22T23:56:29.084504+08:00",
+      "lastActive": "2026-04-23T00:11:29.957882+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1443,11 +1443,23 @@
       "title": "Order items for SPH event",
       "reason": "overdue",
       "owner": "CHAD-YI"
+    },
+    {
+      "id": "A1-15",
+      "title": "Call back police to make report",
+      "reason": "overdue",
+      "owner": "CHAD_YI"
+    },
+    {
+      "id": "A1-16",
+      "title": "Reply lawyer email about payment extension",
+      "reason": "overdue",
+      "owner": "CHAD_YI"
     }
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-04-22",
+    "date": "2026-04-23",
     "summary": "📋 49 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
@@ -1461,11 +1473,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-22T23:56:59.295033+08:00"
+        "lastActive": "2026-04-23T00:11:59.782442+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-22T23:56:29.084504+08:00"
+        "lastActive": "2026-04-23T00:11:29.957882+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1493,35 +1505,47 @@
         "id": "A1-8",
         "title": "Create habit tracker in dashboard",
         "deadline": "2026-04-20",
-        "daysOverdue": 2
+        "daysOverdue": 3
       },
       {
         "id": "A1-10",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-09",
-        "daysOverdue": 13
+        "daysOverdue": 14
       },
       {
         "id": "A1-12",
         "title": "Fix Google Ads API",
         "deadline": "2026-04-16",
-        "daysOverdue": 6
+        "daysOverdue": 7
       },
       {
         "id": "B6-9",
         "title": "Order items for SPH event",
         "deadline": "2026-04-17",
-        "daysOverdue": 5
+        "daysOverdue": 6
+      },
+      {
+        "id": "A1-15",
+        "title": "Call back police to make report",
+        "deadline": "2026-04-22",
+        "daysOverdue": 1
+      },
+      {
+        "id": "A1-16",
+        "title": "Reply lawyer email about payment extension",
+        "deadline": "2026-04-22",
+        "daysOverdue": 1
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-04-22T23:56:59.293692+08:00",
+    "lastRun": "2026-04-23T00:11:59.781462+08:00",
     "dataIntegrity": "ok",
     "taskCount": 69,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-22T23:56:59.305370+08:00",
+      "runAt": "2026-04-23T00:11:59.783983+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1645,6 +1669,13 @@
       },
       {
         "date": "2026-04-22",
+        "agent": "quanta",
+        "balance": 3801.3,
+        "pnl": 0.0,
+        "note": "Balance 3801.30 | P/L +0.00 today | Open 2"
+      },
+      {
+        "date": "2026-04-23",
         "agent": "quanta",
         "balance": 3801.3,
         "pnl": 0.0,
