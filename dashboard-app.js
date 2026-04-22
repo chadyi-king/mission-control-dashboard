@@ -1843,13 +1843,36 @@ console.log('[Helios WS] connected:', wsUrl);
             let totalTrades = 0;
             let totalWins = 0;
 
+            // Calculate weekly PNL from daily_snapshots (not stale weekly_profit/loss fields)
+            const _pnlToday = new Date();
+            const weekStart = new Date(_pnlToday);
+            weekStart.setDate(weekStart.getDate() - _pnlToday.getDay() + (_pnlToday.getDay() === 0 ? -6 : 1)); // Monday
+            weekStart.setHours(0,0,0,0);
+
+            const snapshots = rev.daily_snapshots || [];
+            const thisWeekSnapshots = snapshots.filter(s => {
+                const sDate = new Date(s.date);
+                return sDate >= weekStart;
+            });
+
             // Build agent PNL list for rankings (calculated from current - baseline)
             const agentPNLs = Object.entries(revAgents).map(([agentId, agentRev]) => {
                 const current = parseFloat(agentRev.current_balance || 0);
                 const baseline = parseFloat(agentRev.baseline_balance || 0);
                 const pnl = current - baseline;
-                weeklyProfit += Math.max(0, parseFloat(agentRev.weekly_profit || 0));
-                weeklyLoss += Math.max(0, parseFloat(agentRev.weekly_loss || 0));
+                
+                // Calculate weekly profit/loss from this week's snapshots for this agent
+                const agentWeeklySnapshots = thisWeekSnapshots.filter(s => s.agent === agentId);
+                let agentWeeklyProfit = 0;
+                let agentWeeklyLoss = 0;
+                agentWeeklySnapshots.forEach(s => {
+                    const pnlVal = parseFloat(s.pnl || 0);
+                    if (pnlVal > 0) agentWeeklyProfit += pnlVal;
+                    else if (pnlVal < 0) agentWeeklyLoss += Math.abs(pnlVal);
+                });
+                
+                weeklyProfit += agentWeeklyProfit;
+                weeklyLoss += agentWeeklyLoss;
                 totalTrades += parseInt(agentRev.win_count || 0) + parseInt(agentRev.loss_count || 0);
                 totalWins += parseInt(agentRev.win_count || 0);
                 return { id: agentId, pnl: pnl, current: current, baseline: baseline };
