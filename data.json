@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-24T23:59:59.779566+08:00",
+  "lastUpdated": "2026-04-25T00:00:58.419556+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 69,
@@ -920,7 +920,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-24T23:59:59.781173+08:00",
+      "lastActive": "2026-04-25T00:00:58.421973+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -929,7 +929,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-24T23:59:34.211572+08:00",
+      "lastActive": "2026-04-25T00:00:34.276839+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1439,10 +1439,22 @@
       "owner": "CHAD_YI"
     },
     {
+      "id": "A1-13",
+      "title": "Create RES exam testing bot",
+      "reason": "overdue",
+      "owner": "CHAD_YI"
+    },
+    {
       "id": "B6-9",
       "title": "Order items for SPH event",
       "reason": "overdue",
       "owner": "CHAD-YI"
+    },
+    {
+      "id": "B8-2",
+      "title": "Figure out Higgsfield AI for marketing studio",
+      "reason": "overdue",
+      "owner": "CHAD_YI"
     },
     {
       "id": "A1-15",
@@ -1459,7 +1471,7 @@
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-04-24",
+    "date": "2026-04-25",
     "summary": "📋 49 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
@@ -1473,11 +1485,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-24T23:59:59.781173+08:00"
+        "lastActive": "2026-04-25T00:00:58.421973+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-24T23:59:34.211572+08:00"
+        "lastActive": "2026-04-25T00:00:34.276839+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1505,47 +1517,59 @@
         "id": "A1-8",
         "title": "Create habit tracker in dashboard",
         "deadline": "2026-04-20",
-        "daysOverdue": 4
+        "daysOverdue": 5
       },
       {
         "id": "A1-10",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-09",
-        "daysOverdue": 15
+        "daysOverdue": 16
       },
       {
         "id": "A1-12",
         "title": "Fix Google Ads API",
         "deadline": "2026-04-16",
-        "daysOverdue": 8
+        "daysOverdue": 9
+      },
+      {
+        "id": "A1-13",
+        "title": "Create RES exam testing bot",
+        "deadline": "2026-04-24",
+        "daysOverdue": 1
       },
       {
         "id": "B6-9",
         "title": "Order items for SPH event",
         "deadline": "2026-04-17",
-        "daysOverdue": 7
+        "daysOverdue": 8
+      },
+      {
+        "id": "B8-2",
+        "title": "Figure out Higgsfield AI for marketing studio",
+        "deadline": "2026-04-24",
+        "daysOverdue": 1
       },
       {
         "id": "A1-15",
         "title": "Call back police to make report",
         "deadline": "2026-04-22",
-        "daysOverdue": 2
+        "daysOverdue": 3
       },
       {
         "id": "A1-16",
         "title": "Reply lawyer email about payment extension",
         "deadline": "2026-04-22",
-        "daysOverdue": 2
+        "daysOverdue": 3
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-04-24T23:59:59.779566+08:00",
+    "lastRun": "2026-04-25T00:00:58.419556+08:00",
     "dataIntegrity": "ok",
     "taskCount": 69,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-24T23:59:59.782801+08:00",
+      "runAt": "2026-04-25T00:00:58.423446+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1640,13 +1664,6 @@
     },
     "daily_snapshots": [
       {
-        "date": "2026-04-17",
-        "agent": "quanta",
-        "balance": 3804.67,
-        "pnl": -17.06,
-        "note": "Baseline corrected to pre-loss capital. Actual balance 3804.67 reflects -17.06 loss."
-      },
-      {
         "date": "2026-04-18",
         "agent": "quanta",
         "balance": 3804.67,
@@ -1683,6 +1700,13 @@
       },
       {
         "date": "2026-04-24",
+        "agent": "quanta",
+        "balance": 3222.81,
+        "pnl": -170.85,
+        "note": "Balance 3222.81 | P/L -170.85 today | Open 2"
+      },
+      {
+        "date": "2026-04-25",
         "agent": "quanta",
         "balance": 3222.81,
         "pnl": -170.85,
