@@ -11,7 +11,7 @@
       "current_balance": 3222.81,
       "baseline_balance": 3821.73,
       "weekly_profit": 0.0,
-      "weekly_loss": 170.85,
+      "weekly_loss": 0.0,
       "total_pnl": -598.92,
       "win_count": 0,
       "loss_count": 1,
@@ -67,6 +67,13 @@
       "balance": 3222.81,
       "pnl": -170.85,
       "note": "Balance 3222.81 | P/L -170.85 today | Open 2"
+    },
+    {
+      "date": "2026-04-25",
+      "agent": "quanta",
+      "balance": 3222.81,
+      "pnl": 0.0,
+      "note": "Balance 3222.81 | P/L +0.00 today | Open 2"
     }
   ],
   "weekly_rankings": {
