@@ -192,8 +192,9 @@
       "agent": "CHAD_YI",
       "status": "pending",
       "priority": "medium",
-      "deadline": "2026-04-09",
-      "createdAt": "2026-03-10T00:00:00+08:00"
+      "deadline": "2026-04-28",
+      "createdAt": "2026-03-10T00:00:00+08:00",
+      "notes": "Shifted to Apr 28 (Tue)"
     },
     "A2-1": {
       "id": "A2-1",
@@ -791,10 +792,12 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-16",
-      "createdAt": "2026-03-17T00:00:00+08:00"
+      "status": "done",
+      "priority": "done",
+      "deadline": null,
+      "completedAt": "2026-04-24",
+      "createdAt": "2026-03-17T00:00:00+08:00",
+      "notes": "Fixed by Caleb on Apr 24"
     },
     "A1-13": {
       "id": "A1-13",
@@ -857,9 +860,10 @@
       "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-22",
-      "createdAt": "2026-04-21T07:28:32.446243+08:00"
+      "priority": "high",
+      "deadline": "2026-04-28",
+      "createdAt": "2026-03-25T00:00:00+08:00",
+      "notes": "Shifted to Apr 28 (Tue)"
     },
     "A1-16": {
       "id": "A1-16",
@@ -868,9 +872,10 @@
       "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-22",
-      "createdAt": "2026-04-21T07:28:32.446243+08:00"
+      "priority": "high",
+      "deadline": "2026-04-28",
+      "createdAt": "2026-03-25T00:00:00+08:00",
+      "notes": "Shifted to Apr 28 (Tue)"
     },
     "B11-1": {
       "id": "B11-1",
