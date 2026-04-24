@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-25T00:00:58.419556+08:00",
+  "lastUpdated": "2026-04-25T00:15:00.348128+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 69,
@@ -192,9 +192,8 @@
       "agent": "CHAD_YI",
       "status": "pending",
       "priority": "medium",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-03-10T00:00:00+08:00",
-      "notes": "Shifted to Apr 28 (Tue)"
+      "deadline": "2026-04-09",
+      "createdAt": "2026-03-10T00:00:00+08:00"
     },
     "A2-1": {
       "id": "A2-1",
@@ -792,12 +791,10 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
-      "deadline": null,
-      "completedAt": "2026-04-24",
-      "createdAt": "2026-03-17T00:00:00+08:00",
-      "notes": "Fixed by Caleb on Apr 24"
+      "status": "pending",
+      "priority": "medium",
+      "deadline": "2026-04-16",
+      "createdAt": "2026-03-17T00:00:00+08:00"
     },
     "A1-13": {
       "id": "A1-13",
@@ -860,10 +857,9 @@
       "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
-      "priority": "high",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-03-25T00:00:00+08:00",
-      "notes": "Shifted to Apr 28 (Tue)"
+      "priority": "medium",
+      "deadline": "2026-04-22",
+      "createdAt": "2026-03-25T00:00:00+08:00"
     },
     "A1-16": {
       "id": "A1-16",
@@ -872,10 +868,9 @@
       "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
-      "priority": "high",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-03-25T00:00:00+08:00",
-      "notes": "Shifted to Apr 28 (Tue)"
+      "priority": "medium",
+      "deadline": "2026-04-22",
+      "createdAt": "2026-03-25T00:00:00+08:00"
     },
     "B11-1": {
       "id": "B11-1",
@@ -925,7 +920,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-25T00:00:58.421973+08:00",
+      "lastActive": "2026-04-25T00:15:00.349352+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -934,7 +929,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-25T00:00:34.276839+08:00",
+      "lastActive": "2026-04-25T00:14:35.040025+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1490,11 +1485,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-25T00:00:58.421973+08:00"
+        "lastActive": "2026-04-25T00:15:00.349352+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-25T00:00:34.276839+08:00"
+        "lastActive": "2026-04-25T00:14:35.040025+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1569,12 +1564,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-25T00:00:58.419556+08:00",
+    "lastRun": "2026-04-25T00:15:00.348128+08:00",
     "dataIntegrity": "ok",
     "taskCount": 69,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-25T00:00:58.423446+08:00",
+      "runAt": "2026-04-25T00:15:00.358656+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1648,10 +1643,10 @@
         "current_balance": 3222.81,
         "baseline_balance": 3821.73,
         "weekly_profit": 0.0,
-        "weekly_loss": 170.85,
+        "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": -170.85,
+        "today_pnl": 0.0,
         "status": "active"
       }
     },
@@ -1714,8 +1709,8 @@
         "date": "2026-04-25",
         "agent": "quanta",
         "balance": 3222.81,
-        "pnl": -170.85,
-        "note": "Balance 3222.81 | P/L -170.85 today | Open 2"
+        "pnl": 0.0,
+        "note": "Balance 3222.81 | P/L +0.00 today | Open 2"
       }
     ],
     "currency": "USD",
