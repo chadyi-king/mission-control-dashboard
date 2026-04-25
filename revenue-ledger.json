@@ -10,7 +10,7 @@
       "account_id": "001-003-8520002-001",
       "current_balance": 3223.11,
       "baseline_balance": 3821.73,
-      "weekly_profit": 0.3,
+      "weekly_profit": 0.0,
       "weekly_loss": 0.0,
       "total_pnl": -598.62,
       "win_count": 0,
@@ -74,6 +74,13 @@
       "balance": 3223.11,
       "pnl": 0.3,
       "note": "Balance 3223.11 | P/L +0.30 today | Open 2"
+    },
+    {
+      "date": "2026-04-26",
+      "agent": "quanta",
+      "balance": 3223.11,
+      "pnl": 0.0,
+      "note": "Balance 3223.11 | P/L +0.00 today | Open 2"
     }
   ],
   "weekly_rankings": {
