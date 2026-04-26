@@ -81,6 +81,13 @@
       "balance": 3223.11,
       "pnl": 0.0,
       "note": "Balance 3223.11 | P/L +0.00 today | Open 2"
+    },
+    {
+      "date": "2026-04-27",
+      "agent": "quanta",
+      "balance": 3223.11,
+      "pnl": 0.0,
+      "note": "Balance 3223.11 | P/L +0.00 today | Open 2"
     }
   ],
   "weekly_rankings": {
