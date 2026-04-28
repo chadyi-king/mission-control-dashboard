@@ -10,7 +10,7 @@
       "account_id": "001-003-8520002-001",
       "current_balance": 3130.8,
       "baseline_balance": 3821.73,
-      "weekly_profit": 0.0,
+      "weekly_profit": 0,
       "weekly_loss": 2.88,
       "total_pnl": -690.93,
       "win_count": 0,
@@ -94,7 +94,7 @@
       "agent": "quanta",
       "balance": 3130.8,
       "pnl": -2.88,
-      "note": "Balance 3130.80 | P/L -2.88 today | Open 0"
+      "note": "Balance 3130.80 | P/L -2.88 | Open 0"
     }
   ],
   "weekly_rankings": {
