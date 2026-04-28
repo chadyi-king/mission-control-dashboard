@@ -1,11 +1,11 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-28T23:40:06.106394+08:00",
+  "lastUpdated": "2026-04-28T23:40:19.660459+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
-    "tasksLeft": 47,
-    "completedTasks": 21,
+    "tasksLeft": 46,
+    "completedTasks": 22,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
@@ -13,12 +13,12 @@
     "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 44
+    "backlog": 43
   },
   "completions": {
     "today": [],
     "this_week": [],
-    "all_time": 30
+    "all_time": 31
   },
   "weeklyProgress": {
     "completed": 0,
@@ -32,7 +32,6 @@
       "A7-1",
       "A7-3",
       "A7-4",
-      "B6-9",
       "B8-2",
       "C1-1",
       "C1-2"
@@ -62,6 +61,7 @@
       "B6-6",
       "B6-7",
       "B6-8",
+      "B6-9",
       "B8-6"
     ],
     "urgent": [],
@@ -118,7 +118,6 @@
       "A7-1",
       "A7-3",
       "A7-4",
-      "B6-9",
       "B8-2",
       "C1-1",
       "C1-2"
@@ -800,11 +799,12 @@
       "title": "Order items for SPH event",
       "project": "B6",
       "category": "B",
-      "agent": "CHAD-YI",
-      "status": "pending",
-      "priority": "medium",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
       "deadline": "2026-04-17",
-      "createdAt": "2026-03-18T00:00:00+08:00"
+      "createdAt": "2026-03-18T00:00:00+08:00",
+      "completedAt": "2026-04-28T23:40:19.660459+08:00"
     },
     "B8-2": {
       "id": "B8-2",
@@ -951,7 +951,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-28T23:40:06.107781+08:00",
+      "lastActive": "2026-04-28T23:40:19.661689+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1241,8 +1241,8 @@
         "B6-10"
       ],
       "totalTasks": 10,
-      "completedTasks": 7,
-      "completionPct": 70
+      "completedTasks": 8,
+      "completionPct": 80
     },
     "B7": {
       "name": "Encompasse",
@@ -1451,12 +1451,6 @@
       "owner": "Forger"
     },
     {
-      "id": "B6-9",
-      "title": "Order items for SPH event",
-      "reason": "overdue",
-      "owner": "CHAD-YI"
-    },
-    {
       "id": "B8-2",
       "title": "Figure out Higgsfield AI for marketing studio",
       "reason": "overdue",
@@ -1466,7 +1460,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-28",
-    "summary": "📋 47 tasks in flight. Focus on top priorities.",
+    "summary": "📋 46 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1479,7 +1473,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-28T23:40:06.107781+08:00"
+        "lastActive": "2026-04-28T23:40:19.661689+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1508,12 +1502,6 @@
     },
     "overdueTasks": [
       {
-        "id": "B6-9",
-        "title": "Order items for SPH event",
-        "deadline": "2026-04-17",
-        "daysOverdue": 11
-      },
-      {
         "id": "B8-2",
         "title": "Figure out Higgsfield AI for marketing studio",
         "deadline": "2026-04-24",
@@ -1522,12 +1510,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-28T23:40:06.106394+08:00",
+    "lastRun": "2026-04-28T23:40:19.660459+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-28T23:40:06.108961+08:00",
+      "runAt": "2026-04-28T23:40:19.662950+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
