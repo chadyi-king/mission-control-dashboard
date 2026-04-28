@@ -1,11 +1,11 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-28T23:30:05.039206+08:00",
+  "lastUpdated": "2026-04-28T23:38:23.170616+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 69,
-    "tasksLeft": 49,
-    "completedTasks": 20,
+    "totalTasks": 65,
+    "tasksLeft": 44,
+    "completedTasks": 21,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
@@ -13,7 +13,7 @@
     "active": 0,
     "blocked": 0,
     "review": 0,
-    "backlog": 47
+    "backlog": 42
   },
   "completions": {
     "today": [],
@@ -26,12 +26,7 @@
   },
   "workflow": {
     "pending": [
-      "A1-10",
       "A1-12",
-      "A1-13",
-      "A1-15",
-      "A1-16",
-      "A1-8",
       "A1-9",
       "A6-15",
       "A7-1",
@@ -46,6 +41,7 @@
     "done": [
       "A1-1",
       "A1-11",
+      "A1-13",
       "A1-2",
       "A1-4",
       "A1-5",
@@ -110,12 +106,7 @@
     "check this": [],
     "agent on it": [],
     "has deadline": [
-      "A1-10",
       "A1-12",
-      "A1-13",
-      "A1-15",
-      "A1-16",
-      "A1-8",
       "A1-9",
       "A6-15",
       "A7-1",
@@ -765,25 +756,26 @@
     },
     "A1-12": {
       "id": "A1-12",
-      "title": "Fix Google Ads API",
+      "title": "Reply to lawyer",
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
       "priority": "medium",
-      "deadline": "2026-04-16",
+      "deadline": "2026-04-28",
       "createdAt": "2026-03-17T00:00:00+08:00"
     },
     "A1-13": {
       "id": "A1-13",
-      "title": "Create RES exam testing bot",
+      "title": "Fix Google Ads API",
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
+      "status": "done",
+      "priority": "done",
       "deadline": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00"
+      "createdAt": "2026-03-25T00:00:00+08:00",
+      "completedAt": "2026-04-28T23:38:23.170616+08:00"
     },
     "A1-14": {
       "id": "A1-14",
@@ -834,7 +826,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "medium",
       "deadline": "2026-04-22",
       "createdAt": "2026-03-25T00:00:00+08:00"
@@ -845,7 +837,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "medium",
       "deadline": "2026-04-22",
       "createdAt": "2026-03-25T00:00:00+08:00"
@@ -920,7 +912,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "medium",
       "deadline": "2026-04-20",
       "createdAt": "2026-03-21T00:00:00+08:00"
@@ -931,7 +923,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "medium",
       "deadline": "2026-04-09",
       "createdAt": "2026-03-10T00:00:00+08:00"
@@ -954,7 +946,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-28T23:30:05.041354+08:00",
+      "lastActive": "2026-04-28T23:38:23.171947+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -963,7 +955,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-28T23:29:29.618509+08:00",
+      "lastActive": "2026-04-28T23:37:56.948536+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1070,15 +1062,11 @@
         "A1-11",
         "A1-12",
         "A1-13",
-        "A1-14",
-        "A1-15",
-        "A1-16",
-        "A1-8",
-        "A1-10"
+        "A1-14"
       ],
-      "totalTasks": 15,
-      "completedTasks": 7,
-      "completionPct": 47
+      "totalTasks": 11,
+      "completedTasks": 8,
+      "completionPct": 73
     },
     "A2": {
       "name": "RE:UNITE",
@@ -1455,18 +1443,6 @@
       "owner": "Forger"
     },
     {
-      "id": "A1-12",
-      "title": "Fix Google Ads API",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "A1-13",
-      "title": "Create RES exam testing bot",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
       "id": "B6-9",
       "title": "Order items for SPH event",
       "reason": "overdue",
@@ -1477,36 +1453,12 @@
       "title": "Figure out Higgsfield AI for marketing studio",
       "reason": "overdue",
       "owner": "CHAD_YI"
-    },
-    {
-      "id": "A1-15",
-      "title": "Call back police to make report",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "A1-16",
-      "title": "Reply lawyer email about payment extension",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "A1-8",
-      "title": "Create habit tracker in dashboard",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "A1-10",
-      "title": "Prepare wedding guest list",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
     }
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-28",
-    "summary": "📋 49 tasks in flight. Focus on top priorities.",
+    "summary": "📋 44 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1519,11 +1471,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-28T23:30:05.041354+08:00"
+        "lastActive": "2026-04-28T23:38:23.171947+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-28T23:29:29.618509+08:00"
+        "lastActive": "2026-04-28T23:37:56.948536+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1548,18 +1500,6 @@
     },
     "overdueTasks": [
       {
-        "id": "A1-12",
-        "title": "Fix Google Ads API",
-        "deadline": "2026-04-16",
-        "daysOverdue": 12
-      },
-      {
-        "id": "A1-13",
-        "title": "Create RES exam testing bot",
-        "deadline": "2026-04-24",
-        "daysOverdue": 4
-      },
-      {
         "id": "B6-9",
         "title": "Order items for SPH event",
         "deadline": "2026-04-17",
@@ -1570,40 +1510,16 @@
         "title": "Figure out Higgsfield AI for marketing studio",
         "deadline": "2026-04-24",
         "daysOverdue": 4
-      },
-      {
-        "id": "A1-15",
-        "title": "Call back police to make report",
-        "deadline": "2026-04-22",
-        "daysOverdue": 6
-      },
-      {
-        "id": "A1-16",
-        "title": "Reply lawyer email about payment extension",
-        "deadline": "2026-04-22",
-        "daysOverdue": 6
-      },
-      {
-        "id": "A1-8",
-        "title": "Create habit tracker in dashboard",
-        "deadline": "2026-04-20",
-        "daysOverdue": 8
-      },
-      {
-        "id": "A1-10",
-        "title": "Prepare wedding guest list",
-        "deadline": "2026-04-09",
-        "daysOverdue": 19
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-04-28T23:30:05.039206+08:00",
+    "lastRun": "2026-04-28T23:38:23.170616+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-28T23:30:05.042899+08:00",
+      "runAt": "2026-04-28T23:38:23.173318+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
