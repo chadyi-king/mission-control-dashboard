@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-29T01:25:35.701095+08:00",
+  "lastUpdated": "2026-04-29T01:30:56.663692+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -939,10 +939,10 @@
     "chad-yi": {
       "name": "Chad Yi",
       "role": "The Face — Primary interface",
-      "platform": "OpenClaw",
-      "status": "stale",
-      "currentTask": "Live session on Telegram",
-      "lastActive": "2026-04-16T20:07:36+08:00",
+      "platform": "Hermes Gateway",
+      "status": "active",
+      "currentTask": "Task coordination & reporting",
+      "lastActive": "2026-04-28T19:08:32.170884+08:00",
       "capabilities": []
     },
     "helios": {
@@ -951,7 +951,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-29T01:25:35.704409+08:00",
+      "lastActive": "2026-04-29T01:30:56.665697+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -960,7 +960,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-29T01:25:29.960725+08:00",
+      "lastActive": "2026-04-29T01:30:30.213661+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1480,16 +1480,16 @@
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
-        "status": "stale",
-        "lastActive": "2026-04-16T20:07:36+08:00"
+        "status": "active",
+        "lastActive": "2026-04-28T19:08:32.170884+08:00"
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-29T01:25:35.704409+08:00"
+        "lastActive": "2026-04-29T01:30:56.665697+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-29T01:25:29.960725+08:00"
+        "lastActive": "2026-04-29T01:30:30.213661+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1534,12 +1534,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-29T01:25:35.701095+08:00",
+    "lastRun": "2026-04-29T01:30:56.663692+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-29T01:25:35.706172+08:00",
+      "runAt": "2026-04-29T01:30:56.666683+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
