@@ -1,19 +1,19 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-28T23:38:45.623095+08:00",
+  "lastUpdated": "2026-04-28T23:40:06.106394+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 66,
-    "tasksLeft": 45,
+    "totalTasks": 68,
+    "tasksLeft": 47,
     "completedTasks": 21,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
     "urgent": 0,
-    "active": 0,
+    "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 43
+    "backlog": 44
   },
   "completions": {
     "today": [],
@@ -37,7 +37,9 @@
       "C1-1",
       "C1-2"
     ],
-    "active": [],
+    "active": [
+      "B6-10"
+    ],
     "review": [],
     "done": [
       "A1-1",
@@ -82,6 +84,7 @@
       "A4-4",
       "A5-4",
       "A5-5",
+      "A6-2",
       "B1-1",
       "B1-2",
       "B11-1",
@@ -105,7 +108,9 @@
     ],
     "waiting on you": [],
     "check this": [],
-    "agent on it": [],
+    "agent on it": [
+      "B6-10"
+    ],
     "has deadline": [
       "A1-12",
       "A1-9",
@@ -132,6 +137,7 @@
       "A4-4",
       "A5-4",
       "A5-5",
+      "A6-2",
       "B1-1",
       "B1-2",
       "B11-1",
@@ -880,11 +886,9 @@
       "project": "A6",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-04-20",
-      "createdAt": "2026-03-21T00:00:00+08:00",
-      "notes": "Was A1-8, moved to A6 - Mission Control dashboard feature"
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-03-21T00:00:00+08:00"
     },
     "A7-4": {
       "id": "A7-4",
@@ -899,12 +903,12 @@
     },
     "B6-10": {
       "id": "B6-10",
-      "title": "Build Kotler - unified Google Ads management system for all EXSTATIC brands",
+      "title": "Build Kotler - unified Google Ads management for all EXSTATIC brands",
+      "project": "B6",
+      "category": "B",
       "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "high",
-      "project": "A6",
-      "notes": "Caleb working on this Apr 27. Centralized ad management across all brands (B1-B10). Tagged as A6 Mission Control system.",
+      "status": "active",
+      "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A1-8": {
@@ -947,7 +951,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-28T23:38:45.624429+08:00",
+      "lastActive": "2026-04-28T23:40:06.107781+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -956,7 +960,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-28T23:37:56.948536+08:00",
+      "lastActive": "2026-04-28T23:40:05.455445+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1135,11 +1139,12 @@
       "status": "pending",
       "tasks": [
         "A6-14",
-        "A6-15"
+        "A6-15",
+        "A6-2"
       ],
-      "totalTasks": 2,
+      "totalTasks": 3,
       "completedTasks": 1,
-      "completionPct": 50
+      "completionPct": 33
     },
     "A7": {
       "name": "Wedding",
@@ -1222,7 +1227,7 @@
       "name": "Elluminate",
       "description": "Education & events",
       "category": "B",
-      "status": "pending",
+      "status": "active",
       "tasks": [
         "B6-1",
         "B6-2",
@@ -1232,11 +1237,12 @@
         "B6-7",
         "B6-8",
         "B6-5",
-        "B6-9"
+        "B6-9",
+        "B6-10"
       ],
-      "totalTasks": 9,
+      "totalTasks": 10,
       "completedTasks": 7,
-      "completionPct": 78
+      "completionPct": 70
     },
     "B7": {
       "name": "Encompasse",
@@ -1460,7 +1466,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-28",
-    "summary": "📋 45 tasks in flight. Focus on top priorities.",
+    "summary": "📋 47 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1473,11 +1479,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-28T23:38:45.624429+08:00"
+        "lastActive": "2026-04-28T23:40:06.107781+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-28T23:37:56.948536+08:00"
+        "lastActive": "2026-04-28T23:40:05.455445+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1516,12 +1522,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-28T23:38:45.623095+08:00",
+    "lastRun": "2026-04-28T23:40:06.106394+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-28T23:38:45.625872+08:00",
+      "runAt": "2026-04-28T23:40:06.108961+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
