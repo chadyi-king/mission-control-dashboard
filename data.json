@@ -1,10 +1,10 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-28T23:38:23.170616+08:00",
+  "lastUpdated": "2026-04-28T23:38:45.623095+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 65,
-    "tasksLeft": 44,
+    "totalTasks": 66,
+    "tasksLeft": 45,
     "completedTasks": 21,
     "completedToday": 0,
     "completedThisWeek": 0,
@@ -13,7 +13,7 @@
     "active": 0,
     "blocked": 0,
     "review": 0,
-    "backlog": 42
+    "backlog": 43
   },
   "completions": {
     "today": [],
@@ -31,6 +31,7 @@
       "A6-15",
       "A7-1",
       "A7-3",
+      "A7-4",
       "B6-9",
       "B8-2",
       "C1-1",
@@ -111,6 +112,7 @@
       "A6-15",
       "A7-1",
       "A7-3",
+      "A7-4",
       "B6-9",
       "B8-2",
       "C1-1",
@@ -890,11 +892,10 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "removed",
+      "status": "pending",
       "priority": "medium",
-      "deadline": "2026-04-09",
-      "createdAt": "2026-03-10T00:00:00+08:00",
-      "notes": "Was A1-10, moved to A7 - wedding planning"
+      "deadline": "2026-04-28",
+      "createdAt": "2026-03-10T00:00:00+08:00"
     },
     "B6-10": {
       "id": "B6-10",
@@ -946,7 +947,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-28T23:38:23.171947+08:00",
+      "lastActive": "2026-04-28T23:38:45.624429+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1148,11 +1149,12 @@
       "tasks": [
         "A7-1",
         "A7-2",
-        "A7-3"
+        "A7-3",
+        "A7-4"
       ],
-      "totalTasks": 3,
+      "totalTasks": 4,
       "completedTasks": 1,
-      "completionPct": 33
+      "completionPct": 25
     },
     "B1": {
       "name": "Exstatic",
@@ -1458,7 +1460,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-28",
-    "summary": "📋 44 tasks in flight. Focus on top priorities.",
+    "summary": "📋 45 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1471,7 +1473,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-28T23:38:23.171947+08:00"
+        "lastActive": "2026-04-28T23:38:45.624429+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1514,12 +1516,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-28T23:38:23.170616+08:00",
+    "lastRun": "2026-04-28T23:38:45.623095+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-28T23:38:23.173318+08:00",
+      "runAt": "2026-04-28T23:38:45.625872+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
