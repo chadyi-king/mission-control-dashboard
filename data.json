@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-29T23:45:20.573347+08:00",
+  "lastUpdated": "2026-04-30T00:00:38.128875+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -1002,7 +1002,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-29T23:45:20.575147+08:00",
+      "lastActive": "2026-04-30T00:00:38.131617+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1011,7 +1011,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-29T23:45:09.789519+08:00",
+      "lastActive": "2026-04-30T00:00:10.598729+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1516,7 +1516,7 @@
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-04-29",
+    "date": "2026-04-30",
     "summary": "📋 44 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
@@ -1530,11 +1530,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-29T23:45:20.575147+08:00"
+        "lastActive": "2026-04-30T00:00:38.131617+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-29T23:45:09.789519+08:00"
+        "lastActive": "2026-04-30T00:00:10.598729+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1562,23 +1562,23 @@
         "id": "B8-2",
         "title": "Figure out Higgsfield AI for marketing studio",
         "deadline": "2026-04-24",
-        "daysOverdue": 5
+        "daysOverdue": 6
       },
       {
         "id": "A7-4",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
-        "daysOverdue": 1
+        "daysOverdue": 2
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-04-29T23:45:20.573347+08:00",
+    "lastRun": "2026-04-30T00:00:38.128875+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-29T23:45:20.576093+08:00",
+      "runAt": "2026-04-30T00:00:38.133010+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1673,13 +1673,6 @@
     },
     "daily_snapshots": [
       {
-        "date": "2026-04-23",
-        "agent": "quanta",
-        "balance": 3393.66,
-        "pnl": -407.64,
-        "note": "Balance 3393.66 | P/L -407.64 today | Open 2"
-      },
-      {
         "date": "2026-04-24",
         "agent": "quanta",
         "balance": 3222.81,
@@ -1716,6 +1709,13 @@
       },
       {
         "date": "2026-04-29",
+        "agent": "quanta",
+        "balance": 3044.68,
+        "pnl": -125.3,
+        "note": "Balance 3044.68 | P/L -125.30 today | Open 0"
+      },
+      {
+        "date": "2026-04-30",
         "agent": "quanta",
         "balance": 3044.68,
         "pnl": -125.3,
