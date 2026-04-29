@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-29T14:31:04.320051+08:00",
+  "lastUpdated": "2026-04-29T14:45:19.104719+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -942,7 +942,7 @@
       "platform": "Hermes Gateway",
       "status": "active",
       "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-04-29T02:04:41.036279+08:00",
+      "lastActive": "2026-04-29T14:38:09.762894+08:00",
       "capabilities": []
     },
     "helios": {
@@ -951,7 +951,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-29T14:31:04.324099+08:00",
+      "lastActive": "2026-04-29T14:45:19.109128+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -960,7 +960,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-29T14:30:18.792318+08:00",
+      "lastActive": "2026-04-29T14:45:11.422894+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1481,15 +1481,15 @@
     "agentHealth": {
       "chad-yi": {
         "status": "active",
-        "lastActive": "2026-04-29T02:04:41.036279+08:00"
+        "lastActive": "2026-04-29T14:38:09.762894+08:00"
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-29T14:31:04.324099+08:00"
+        "lastActive": "2026-04-29T14:45:19.109128+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-29T14:30:18.792318+08:00"
+        "lastActive": "2026-04-29T14:45:11.422894+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1534,12 +1534,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-29T14:31:04.320051+08:00",
+    "lastRun": "2026-04-29T14:45:19.104719+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-29T14:31:04.331642+08:00",
+      "runAt": "2026-04-29T14:45:19.110984+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
