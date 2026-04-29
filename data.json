@@ -1,24 +1,49 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-04-29T16:15:21.050030+08:00",
+  "lastUpdated": "2026-04-29T16:30:49.277918+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
-    "tasksLeft": 46,
-    "completedTasks": 22,
+    "tasksLeft": 44,
+    "completedTasks": 24,
     "completedToday": 0,
-    "completedThisWeek": 0,
+    "completedThisWeek": 4,
     "critical": 0,
     "urgent": 0,
     "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 43
+    "backlog": 41
   },
   "completions": {
     "today": [],
-    "this_week": [],
-    "all_time": 31
+    "this_week": [
+      {
+        "id": "A1-12",
+        "title": "Reply to lawyer",
+        "date": "2026-04-28",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "B6-9",
+        "title": "Order items for SPH event",
+        "date": "2026-04-27",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "B6-3",
+        "title": "SPH items to order",
+        "date": "2026-04-27",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "C1-1",
+        "title": "Study for RES exam — Moved to Notebook LLM",
+        "date": "2026-04-28",
+        "agent": "CHAD_YI"
+      }
+    ],
+    "all_time": 37
   },
   "weeklyProgress": {
     "completed": 0,
@@ -26,14 +51,13 @@
   },
   "workflow": {
     "pending": [
-      "A1-12",
       "A1-9",
       "A6-15",
       "A7-1",
       "A7-3",
       "A7-4",
+      "B1-2",
       "B8-2",
-      "C1-1",
       "C1-2"
     ],
     "active": [
@@ -43,6 +67,7 @@
     "done": [
       "A1-1",
       "A1-11",
+      "A1-12",
       "A1-13",
       "A1-2",
       "A1-4",
@@ -62,7 +87,8 @@
       "B6-7",
       "B6-8",
       "B6-9",
-      "B8-6"
+      "B8-6",
+      "C1-1"
     ],
     "urgent": [],
     "blocked": [],
@@ -86,7 +112,6 @@
       "A5-5",
       "A6-2",
       "B1-1",
-      "B1-2",
       "B11-1",
       "B2-1",
       "B3-2",
@@ -112,14 +137,13 @@
       "B6-10"
     ],
     "has deadline": [
-      "A1-12",
       "A1-9",
       "A6-15",
       "A7-1",
       "A7-3",
       "A7-4",
+      "B1-2",
       "B8-2",
-      "C1-1",
       "C1-2"
     ],
     "todo": [
@@ -138,7 +162,6 @@
       "A5-5",
       "A6-2",
       "B1-1",
-      "B1-2",
       "B11-1",
       "B2-1",
       "B3-2",
@@ -401,8 +424,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01",
-      "completedAt": "2026-03-01",
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
       "createdAt": "2026-02-15T00:00:00"
     },
     "B6-4": {
@@ -476,12 +499,14 @@
     },
     "C1-1": {
       "id": "C1-1",
-      "title": "Study for RES exam — Upload all lectures, PowerPoints, PDFs, Q&A to Cowork for study system [2026-06-01]",
+      "title": "Study for RES exam — Moved to Notebook LLM",
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "C1-2": {
@@ -741,12 +766,12 @@
     },
     "B1-2": {
       "id": "B1-2",
-      "title": "Draft formal message to Charmaine about suing platform (not individuals) per lawyer/judge advice to claim money",
+      "title": "Draft formal message to Charmaine about suing platform",
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "backlog",
-      "priority": "low",
+      "status": "pending",
+      "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A1-11": {
@@ -767,9 +792,10 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-28",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
       "createdAt": "2026-03-17T00:00:00+08:00"
     },
     "A1-13": {
@@ -780,9 +806,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00",
-      "completedAt": "2026-04-28T23:38:23.170616+08:00"
+      "completed": "2026-04-24",
+      "completedAt": "2026-04-24",
+      "createdAt": "2026-03-25T00:00:00+08:00"
     },
     "A1-14": {
       "id": "A1-14",
@@ -802,9 +828,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-17",
-      "createdAt": "2026-03-18T00:00:00+08:00",
-      "completedAt": "2026-04-28T23:40:19.660459+08:00"
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
+      "createdAt": "2026-03-18T00:00:00+08:00"
     },
     "B8-2": {
       "id": "B8-2",
@@ -934,7 +960,32 @@
       "createdAt": "2026-03-10T00:00:00+08:00"
     }
   },
-  "recentWins": [],
+  "recentWins": [
+    {
+      "id": "A1-12",
+      "title": "Reply to lawyer",
+      "date": "2026-04-28",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "B6-9",
+      "title": "Order items for SPH event",
+      "date": "2026-04-27",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "B6-3",
+      "title": "SPH items to order",
+      "date": "2026-04-27",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "C1-1",
+      "title": "Study for RES exam — Moved to Notebook LLM",
+      "date": "2026-04-28",
+      "agent": "CHAD_YI"
+    }
+  ],
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
@@ -951,7 +1002,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-04-29T16:15:21.051679+08:00",
+      "lastActive": "2026-04-29T16:30:49.279793+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -960,7 +1011,7 @@
       "platform": "Telegram monitor",
       "status": "active",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-29T16:14:28.006514+08:00",
+      "lastActive": "2026-04-29T16:30:27.973580+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1070,8 +1121,8 @@
         "A1-14"
       ],
       "totalTasks": 11,
-      "completedTasks": 8,
-      "completionPct": 73
+      "completedTasks": 9,
+      "completionPct": 82
     },
     "A2": {
       "name": "RE:UNITE",
@@ -1318,8 +1369,8 @@
         "C1-2"
       ],
       "totalTasks": 2,
-      "completedTasks": 0,
-      "completionPct": 0
+      "completedTasks": 1,
+      "completionPct": 50
     },
     "C2": {
       "name": "Side Sales",
@@ -1451,12 +1502,6 @@
       "owner": "Forger"
     },
     {
-      "id": "A1-12",
-      "title": "Reply to lawyer",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
       "id": "B8-2",
       "title": "Figure out Higgsfield AI for marketing studio",
       "reason": "overdue",
@@ -1472,11 +1517,11 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-04-29",
-    "summary": "📋 46 tasks in flight. Focus on top priorities.",
+    "summary": "📋 44 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
-    "completedThisWeek": 0,
+    "completedThisWeek": 4,
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
@@ -1485,11 +1530,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-04-29T16:15:21.051679+08:00"
+        "lastActive": "2026-04-29T16:30:49.279793+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-04-29T16:14:28.006514+08:00"
+        "lastActive": "2026-04-29T16:30:27.973580+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1514,12 +1559,6 @@
     },
     "overdueTasks": [
       {
-        "id": "A1-12",
-        "title": "Reply to lawyer",
-        "deadline": "2026-04-28",
-        "daysOverdue": 1
-      },
-      {
         "id": "B8-2",
         "title": "Figure out Higgsfield AI for marketing studio",
         "deadline": "2026-04-24",
@@ -1534,12 +1573,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-04-29T16:15:21.050030+08:00",
+    "lastRun": "2026-04-29T16:30:49.277918+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-04-29T16:15:21.052563+08:00",
+      "runAt": "2026-04-29T16:30:49.281199+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
