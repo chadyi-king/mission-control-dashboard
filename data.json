@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-01T19:00:08.726417+08:00",
+  "lastUpdated": "2026-05-01T23:45:48.437063+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -993,7 +993,7 @@
       "platform": "Hermes Gateway",
       "status": "active",
       "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-05-01T18:40:28.838088+08:00",
+      "lastActive": "2026-05-01T23:43:34.701225+08:00",
       "capabilities": []
     },
     "helios": {
@@ -1002,7 +1002,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-01T19:00:08.728081+08:00",
+      "lastActive": "2026-05-01T23:45:48.439908+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1538,11 +1538,11 @@
     "agentHealth": {
       "chad-yi": {
         "status": "active",
-        "lastActive": "2026-05-01T18:40:28.838088+08:00"
+        "lastActive": "2026-05-01T23:43:34.701225+08:00"
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-01T19:00:08.728081+08:00"
+        "lastActive": "2026-05-01T23:45:48.439908+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1597,12 +1597,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-01T19:00:08.726417+08:00",
+    "lastRun": "2026-05-01T23:45:48.437063+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-01T19:00:08.729341+08:00",
+      "runAt": "2026-05-01T23:45:48.441262+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
