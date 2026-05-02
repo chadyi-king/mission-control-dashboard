@@ -3490,3 +3490,219 @@ body.sidebar-expanded .todays-focus-panel {
 body.sidebar-expanded .stats-bar {
     padding-left: 0;
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   AGENT KANBAN — Full-width expansion panels
+   ═══════════════════════════════════════════════════════════════ */
+
+.agent-wrapper {
+    display: contents;
+}
+
+.agent-kanban-fullwidth {
+    display: none;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+.agent-kanban-fullwidth.active {
+    display: block;
+}
+
+.kanban-container {
+    background: rgba(8, 8, 14, 0.95);
+    border: 1px solid rgba(220, 38, 38, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.kanban-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+}
+
+.kanban-title {
+    font-family: var(--display-font, 'Orbitron', sans-serif);
+    font-size: 14px;
+    color: rgba(230, 230, 245, 0.95);
+    letter-spacing: 0.03em;
+}
+
+.kanban-close {
+    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+    font-size: 11px;
+    color: rgba(160, 160, 180, 0.6);
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.kanban-close:hover {
+    color: rgba(220, 38, 38, 0.9);
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    min-height: 200px;
+}
+
+.kanban-col {
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid rgba(100, 100, 120, 0.1);
+    min-height: 150px;
+    transition: border-color 0.2s ease;
+}
+
+.kanban-col.drag-over {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(220, 38, 38, 0.05);
+}
+
+.kanban-col-title {
+    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(160, 160, 180, 0.85);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(100, 100, 120, 0.15);
+}
+
+.kanban-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.kanban-card {
+    background: rgba(30, 30, 45, 0.7);
+    border: 1px solid rgba(100, 100, 120, 0.15);
+    border-radius: 6px;
+    padding: 10px 12px;
+    cursor: grab;
+    transition: all 0.2s ease;
+}
+
+.kanban-card:hover {
+    border-color: rgba(220, 38, 38, 0.3);
+    background: rgba(40, 40, 60, 0.8);
+}
+
+.kanban-card.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.card-title {
+    font-family: var(--body-font, 'Inter', sans-serif);
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(220, 220, 240, 0.95);
+    margin-bottom: 4px;
+}
+
+.card-meta {
+    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+    font-size: 10px;
+    color: rgba(140, 140, 160, 0.7);
+    margin-bottom: 4px;
+}
+
+.card-date {
+    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+    font-size: 10px;
+    color: rgba(120, 120, 140, 0.6);
+}
+
+.card-status {
+    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+    font-size: 10px;
+    margin-top: 4px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.card-status.status-active {
+    color: rgba(80, 200, 120, 0.9);
+    background: rgba(80, 200, 120, 0.1);
+}
+
+.card-status.status-pending {
+    color: rgba(200, 180, 80, 0.9);
+    background: rgba(200, 180, 80, 0.1);
+}
+
+.card-status.status-done {
+    color: rgba(100, 160, 220, 0.9);
+    background: rgba(100, 160, 220, 0.1);
+}
+
+.card-status.status-handoff {
+    color: rgba(220, 100, 100, 0.9);
+    background: rgba(220, 100, 100, 0.1);
+}
+
+.card-status.status-draft {
+    color: rgba(180, 140, 220, 0.9);
+    background: rgba(180, 140, 220, 0.1);
+}
+
+.card-status.status-review {
+    color: rgba(220, 160, 80, 0.9);
+    background: rgba(220, 160, 80, 0.1);
+}
+
+.card-status.status-ready {
+    color: rgba(80, 200, 200, 0.9);
+    background: rgba(80, 200, 200, 0.1);
+}
+
+.card-attachments {
+    font-family: var(--tech-font, 'Rajdhani', sans-serif);
+    font-size: 10px;
+    color: rgba(140, 140, 160, 0.7);
+    margin-top: 4px;
+}
+
+@keyframes cardDrop {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .kanban-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .kanban-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .kanban-container {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .kanban-board {
+        grid-template-columns: 1fr;
+    }
+}
