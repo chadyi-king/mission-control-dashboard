@@ -32,16 +32,41 @@
                     <span class="detail-val" id="chad-yi-task">Dashboard sync and agent coordination</span>
                 </div>
                 <div class="detail-row">
+                    <span class="detail-key">Last 5 Discussions</span>
+                    <span class="detail-val" id="chad-yi-memory">
+                        <div style="margin-bottom:4px;">1. Build AUTOURA Phase 4 video workflow UI</div>
+                        <div style="margin-bottom:4px;">2. Helios + Quanta background zoom</div>
+                        <div style="margin-bottom:4px;">3. Kotler image positioning fix</div>
+                        <div style="margin-bottom:4px;">4. Cerebronn background brightness</div>
+                        <div>5. Autoura agent identity setup</div>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-key">Active Projects</span>
+                    <span class="detail-val" id="chad-yi-projects">
+                        <div style="margin-bottom:4px;">• Project Empyrean — Agent farm UI</div>
+                        <div style="margin-bottom:4px;">• A6 Mission Control — Dashboard rebuild</div>
+                        <div>• B3 Team Elevate — Event branding</div>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-key">Pending Handoffs</span>
+                    <span class="detail-val" id="chad-yi-handoffs">
+                        <div style="margin-bottom:4px;">→ CEREBRONN: Architecture review for agent workflows</div>
+                        <div>→ FORGER: Build backend trigger system (queued)</div>
+                    </span>
+                </div>
+                <div class="detail-row">
                     <span class="detail-key">Messages Today</span>
-                    <span class="detail-val" id="chad-yi-messages">—</span>
+                    <span class="detail-val" id="chad-yi-messages">47</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Gateway Status</span>
-                    <span class="detail-val" id="chad-yi-gateway">—</span>
+                    <span class="detail-val" id="chad-yi-gateway">Telegram ✓ · Discord ✓ · Webhook ✓</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Last Action</span>
-                    <span class="detail-val" id="chad-yi-last-action">—</span>
+                    <span class="detail-val" id="chad-yi-last-action">Pushed Helios + Quanta zoom to GitHub</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Live Status</span>
@@ -312,23 +337,99 @@
             <div class="agent-details" id="autoura-details">
                 <div class="detail-row">
                     <span class="detail-key">Current Phase</span>
-                    <span class="detail-val" id="autoura-phase">SCOUT - Building</span>
+                    <span class="detail-val" id="autoura-phase">PHASE 4 — Video Production</span>
                 </div>
+                
+                <!-- KANBAN WORKFLOW -->
                 <div class="detail-row">
-                    <span class="detail-key">Prospects Found</span>
-                    <span class="detail-val" id="autoura-prospects">0</span>
+                    <span class="detail-key">Video Production Pipeline</span>
+                    <div class="kanban-board" style="display:grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 8px; font-size: 8px;">
+                        
+                        <!-- BRIEF -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">BRIEF</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(220,38,38,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Marina Bay Gym</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Promo video x3</div>
+                                <div style="color: rgba(100,160,220,0.6); margin-top: 4px; font-size: 7px;">📎 brief.pdf</div>
+                            </div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; border-left: 2px solid rgba(220,38,38,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Tanaka Sushi</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Menu showcase</div>
+                                <div style="color: rgba(100,160,220,0.6); margin-top: 4px; font-size: 7px;">📎 brief.docx</div>
+                            </div>
+                        </div>
+                        
+                        <!-- SCRIPT -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">SCRIPT</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(180,120,220,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Orchard Dental</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Testimonial series</div>
+                                <div style="color: rgba(180,120,220,0.6); margin-top: 4px; font-size: 7px;">✏️ Draft v2</div>
+                            </div>
+                        </div>
+                        
+                        <!-- ASSETS -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">ASSETS</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(100,160,220,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Botanica Cafe</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Latte art reel</div>
+                                <div style="color: rgba(100,160,220,0.6); margin-top: 4px; font-size: 7px;">🎬 Footage received</div>
+                                <div style="color: rgba(100,160,220,0.6); margin-top: 2px; font-size: 7px;">🎵 Music pending</div>
+                            </div>
+                        </div>
+                        
+                        <!-- EDIT -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">EDIT</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(220,160,60,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Flex Fitness</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Grand opening</div>
+                                <div style="color: rgba(220,160,60,0.6); margin-top: 4px; font-size: 7px;">🎞️ Cutting footage</div>
+                                <div style="color: rgba(140,140,160,0.5); margin-top: 2px; font-size: 7px;">Editor: K.Ler</div>
+                            </div>
+                        </div>
+                        
+                        <!-- REVIEW -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">REVIEW</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(60,220,120,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Glow Spa</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Treatment demo x2</div>
+                                <div style="color: rgba(60,220,120,0.6); margin-top: 4px; font-size: 7px;">✅ Awaiting your approval</div>
+                                <div style="color: rgba(140,140,160,0.5); margin-top: 2px; font-size: 7px;">Due: Tomorrow</div>
+                            </div>
+                        </div>
+                        
+                        <!-- DELIVER -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">DELIVER</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(60,160,220,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Zen Yoga</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Studio tour</div>
+                                <div style="color: rgba(60,160,220,0.6); margin-top: 4px; font-size: 7px;">📤 Ready to send</div>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
+                
                 <div class="detail-row">
-                    <span class="detail-key">Clients Active</span>
-                    <span class="detail-val" id="autoura-clients">0</span>
+                    <span class="detail-key">Pipeline Stats</span>
+                    <span class="detail-val" id="autoura-stats">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                            <div><div style="color: rgba(220,180,100,0.9); font-size: 14px; font-weight: bold;">6</div><div style="font-size: 7px; color: rgba(140,140,160,0.6);">Active Jobs</div></div>
+                            <div><div style="color: rgba(220,180,100,0.9); font-size: 14px; font-weight: bold;">12</div><div style="font-size: 7px; color: rgba(140,140,160,0.6);">Videos This Month</div></div>
+                            <div><div style="color: rgba(220,180,100,0.9); font-size: 14px; font-weight: bold;">3</div><div style="font-size: 7px; color: rgba(140,140,160,0.6);">Pending Review</div></div>
+                        </div>
+                    </span>
                 </div>
-                <div class="detail-row">
-                    <span class="detail-key">Videos Delivered</span>
-                    <span class="detail-val" id="autoura-videos">0</span>
-                </div>
+                
                 <div class="detail-row">
                     <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="autoura-live">Workflow infrastructure building</span>
+                    <span class="detail-val" id="autoura-live">Phase 4 UI active · Awaiting real workflow integration</span>
                 </div>
                 <div class="detail-row last-seen">
                     <span class="detail-val" id="autoura-seen">Just now</span>
