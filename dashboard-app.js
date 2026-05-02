@@ -4611,14 +4611,32 @@ console.log('[Helios WS] connected:', wsUrl);
 
 function toggleAgentDetails(agentId) {
     const card = document.querySelector('.agent-card[data-agent="' + agentId + '"]');
+    const kanban = document.getElementById(agentId + '-kanban');
+    
     if (!card) return;
     
-    // Close all other expanded cards for cleaner UX
+    // Close all other expanded cards and kanbans for cleaner UX
     document.querySelectorAll('.agent-card.expanded').forEach(function(other) {
         if (other !== card) other.classList.remove('expanded');
     });
+    document.querySelectorAll('.agent-kanban-fullwidth.active').forEach(function(k) {
+        if (k !== kanban) {
+            k.classList.remove('active');
+            var otherId = k.id.replace('-kanban', '');
+            var otherCard = document.querySelector('.agent-card[data-agent="' + otherId + '"]');
+            if (otherCard) otherCard.classList.remove('expanded');
+        }
+    });
     
+    // Toggle current card and kanban
     card.classList.toggle('expanded');
+    if (kanban) {
+        if (kanban.classList.contains('active')) {
+            kanban.classList.remove('active');
+        } else {
+            kanban.classList.add('active');
+        }
+    }
 }
 
 function updateFleetPanel(data) {
