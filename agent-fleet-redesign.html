@@ -13,7 +13,7 @@
     <div class="fleet-grid" id="fleet-grid">
         <!-- Leadership Row -->
         <div class="agent-card chad-yi-card" data-agent="chad-yi" onclick="toggleAgentDetails('chad-yi')">
-            <div class="agent-card-bg" style="background-image:url('assets/chad-yi-avatar.jpg')"></div>
+            <div class="agent-card-bg" style="background-image:url('assets/chad-yi-avatar.jpg'); filter: brightness(0.4);"></div>
             <div class="agent-card-header">
                 <div class="agent-status live"></div>
                 <div class="agent-badge" id="chad-yi-badge">● LIVE</div>
@@ -32,16 +32,41 @@
                     <span class="detail-val" id="chad-yi-task">Dashboard sync and agent coordination</span>
                 </div>
                 <div class="detail-row">
+                    <span class="detail-key">Last 5 Discussions</span>
+                    <span class="detail-val" id="chad-yi-memory">
+                        <div style="margin-bottom:4px;">1. Build AUTOURA Phase 4 video workflow UI</div>
+                        <div style="margin-bottom:4px;">2. Helios + Quanta background zoom</div>
+                        <div style="margin-bottom:4px;">3. Kotler image positioning fix</div>
+                        <div style="margin-bottom:4px;">4. Cerebronn background brightness</div>
+                        <div>5. Autoura agent identity setup</div>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-key">Active Projects</span>
+                    <span class="detail-val" id="chad-yi-projects">
+                        <div style="margin-bottom:4px;">• Project Empyrean — Agent farm UI</div>
+                        <div style="margin-bottom:4px;">• A6 Mission Control — Dashboard rebuild</div>
+                        <div>• B3 Team Elevate — Event branding</div>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-key">Pending Handoffs</span>
+                    <span class="detail-val" id="chad-yi-handoffs">
+                        <div style="margin-bottom:4px;">→ CEREBRONN: Architecture review for agent workflows</div>
+                        <div>→ FORGER: Build backend trigger system (queued)</div>
+                    </span>
+                </div>
+                <div class="detail-row">
                     <span class="detail-key">Messages Today</span>
-                    <span class="detail-val" id="chad-yi-messages">—</span>
+                    <span class="detail-val" id="chad-yi-messages">47</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Gateway Status</span>
-                    <span class="detail-val" id="chad-yi-gateway">—</span>
+                    <span class="detail-val" id="chad-yi-gateway">Telegram ✓ · Discord ✓ · Webhook ✓</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Last Action</span>
-                    <span class="detail-val" id="chad-yi-last-action">—</span>
+                    <span class="detail-val" id="chad-yi-last-action">Pushed Helios + Quanta zoom to GitHub</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-key">Live Status</span>
@@ -54,7 +79,7 @@
         </div>
 
         <div class="agent-card has-photo-bg" data-agent="cerebronn" onclick="toggleAgentDetails('cerebronn')">
-            <div class="card-bg-img" style="background-image: url('assets/cerebronn-avatar.jpg?v=1')"></div>
+            <div class="card-bg-img" style="background-image: url('assets/cerebronn-avatar.jpg?v=1'); filter: brightness(1.5);""></div>
             <div class="agent-card-header">
                 <div class="agent-status offline"></div>
                 <div class="agent-badge not-built" id="cerebronn-badge">◌ NOT BUILT</div>
@@ -103,13 +128,13 @@
         </div>
 
         <div class="agent-card has-photo-bg" data-agent="helios" onclick="toggleAgentDetails('helios')">
-            <div class="card-bg-img" style="background-image: url('assets/helios-avatar.jpg')"></div>
+            <div class="card-bg-img" style="background-image: url('assets/helios-avatar.jpg'); background-position: center 20%; background-size: 180%;"></div>
             <div class="agent-card-header">
                 <div class="agent-status live"></div>
                 <div class="agent-badge" id="helios-badge">● LIVE</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/helios-avatar.jpg" alt="HELIOS"></div>
+                <div class="agent-avatar photo"><img src="assets/helios-avatar.jpg" alt="HELIOS" style="object-position: center 20%; transform: scale(1.3);"></div>
                 <div class="agent-name">HELIOS</div>
                 <div class="agent-role">The Spine</div>
             </div>
@@ -148,13 +173,13 @@
         </div>
 
         <div class="agent-card has-photo-bg" data-agent="quanta" onclick="toggleAgentDetails('quanta')">
-            <div class="card-bg-img" style="background-image: url('assets/quanta-avatar.jpg')"></div>
+            <div class="card-bg-img" style="background-image: url('assets/quanta-avatar.jpg'); background-position: center 20%; background-size: 180%;"></div>
             <div class="agent-card-header">
                 <div class="agent-status live"></div>
                 <div class="agent-badge" id="quanta-badge">● LIVE</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/quanta-avatar.jpg" alt="QUANTA"></div>
+                <div class="agent-avatar photo"><img src="assets/quanta-avatar.jpg" alt="QUANTA" style="object-position: center 20%; transform: scale(1.3);"></div>
                 <div class="agent-name">QUANTA</div>
                 <div class="agent-role">Trading</div>
             </div>
@@ -295,47 +320,119 @@
             </div>
         </div>
 
-        <div class="agent-card has-photo-bg" data-agent="autour" onclick="toggleAgentDetails('autour')">
-            <div class="card-bg-img" style="background-image: url('assets/autour-avatar.jpg?v=1')"></div>
+        <div class="agent-card has-photo-bg" data-agent="autoura" onclick="toggleAgentDetails('autoura')">
+            <div class="card-bg-img" style="background-image: url('assets/autour-avatar.jpg')"></div>
             <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="autour-badge">◌ NOT BUILT</div>
+                <div class="agent-status live"></div>
+                <div class="agent-badge" id="autoura-badge">● BUILDING</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/autour-avatar.jpg?v=1" alt="AUTOUR"></div>
-                <div class="agent-name">AUTOUR</div>
-                <div class="agent-role">Content</div>
+                <div class="agent-avatar photo"><img src="assets/autour-avatar.jpg" alt="AUTOURA"></div>
+                <div class="agent-name">AUTOURA</div>
+                <div class="agent-role">Content Creation & Client Acquisition</div>
             </div>
             <div class="agent-card-footer">
-                <span class="agent-chevron" id="autour-chevron">▼</span>
+                <span class="agent-chevron" id="autoura-chevron">▼</span>
             </div>
-            <div class="agent-details" id="autour-details">
+            <div class="agent-details" id="autoura-details">
                 <div class="detail-row">
-                    <span class="detail-key">Current Campaign</span>
-                    <span class="detail-val" id="autour-campaign">—</span>
+                    <span class="detail-key">Current Phase</span>
+                    <span class="detail-val" id="autoura-phase">PHASE 4 — Video Production</span>
                 </div>
+                
+                <!-- KANBAN WORKFLOW -->
                 <div class="detail-row">
-                    <span class="detail-key">Posts Scheduled</span>
-                    <span class="detail-val" id="autour-posts">—</span>
+                    <span class="detail-key">Video Production Pipeline</span>
+                    <div class="kanban-board" style="display:grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 8px; font-size: 8px;">
+                        
+                        <!-- BRIEF -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">BRIEF</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(220,38,38,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Marina Bay Gym</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Promo video x3</div>
+                                <div style="color: rgba(100,160,220,0.6); margin-top: 4px; font-size: 7px;">📎 brief.pdf</div>
+                            </div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; border-left: 2px solid rgba(220,38,38,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Tanaka Sushi</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Menu showcase</div>
+                                <div style="color: rgba(100,160,220,0.6); margin-top: 4px; font-size: 7px;">📎 brief.docx</div>
+                            </div>
+                        </div>
+                        
+                        <!-- SCRIPT -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">SCRIPT</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(180,120,220,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Orchard Dental</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Testimonial series</div>
+                                <div style="color: rgba(180,120,220,0.6); margin-top: 4px; font-size: 7px;">✏️ Draft v2</div>
+                            </div>
+                        </div>
+                        
+                        <!-- ASSETS -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">ASSETS</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(100,160,220,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Botanica Cafe</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Latte art reel</div>
+                                <div style="color: rgba(100,160,220,0.6); margin-top: 4px; font-size: 7px;">🎬 Footage received</div>
+                                <div style="color: rgba(100,160,220,0.6); margin-top: 2px; font-size: 7px;">🎵 Music pending</div>
+                            </div>
+                        </div>
+                        
+                        <!-- EDIT -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">EDIT</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(220,160,60,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Flex Fitness</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Grand opening</div>
+                                <div style="color: rgba(220,160,60,0.6); margin-top: 4px; font-size: 7px;">🎞️ Cutting footage</div>
+                                <div style="color: rgba(140,140,160,0.5); margin-top: 2px; font-size: 7px;">Editor: K.Ler</div>
+                            </div>
+                        </div>
+                        
+                        <!-- REVIEW -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">REVIEW</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(60,220,120,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Glow Spa</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Treatment demo x2</div>
+                                <div style="color: rgba(60,220,120,0.6); margin-top: 4px; font-size: 7px;">✅ Awaiting your approval</div>
+                                <div style="color: rgba(140,140,160,0.5); margin-top: 2px; font-size: 7px;">Due: Tomorrow</div>
+                            </div>
+                        </div>
+                        
+                        <!-- DELIVER -->
+                        <div class="kanban-col" style="background: rgba(20,20,30,0.6); border-radius: 6px; padding: 8px; border: 1px solid rgba(220,38,38,0.15);">
+                            <div style="color: rgba(220,180,100,0.9); font-weight: bold; margin-bottom: 8px; text-align: center; font-size: 9px;">DELIVER</div>
+                            <div class="kanban-card" style="background: rgba(40,40,60,0.5); border-radius: 4px; padding: 6px; margin-bottom: 6px; border-left: 2px solid rgba(60,160,220,0.5);">
+                                <div style="color: rgba(200,200,220,0.9); font-weight: bold;">Zen Yoga</div>
+                                <div style="color: rgba(140,140,160,0.7); margin-top: 2px;">Studio tour</div>
+                                <div style="color: rgba(60,160,220,0.6); margin-top: 4px; font-size: 7px;">📤 Ready to send</div>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
+                
                 <div class="detail-row">
-                    <span class="detail-key">Platform</span>
-                    <span class="detail-val" id="autour-platform">—</span>
+                    <span class="detail-key">Pipeline Stats</span>
+                    <span class="detail-val" id="autoura-stats">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                            <div><div style="color: rgba(220,180,100,0.9); font-size: 14px; font-weight: bold;">6</div><div style="font-size: 7px; color: rgba(140,140,160,0.6);">Active Jobs</div></div>
+                            <div><div style="color: rgba(220,180,100,0.9); font-size: 14px; font-weight: bold;">12</div><div style="font-size: 7px; color: rgba(140,140,160,0.6);">Videos This Month</div></div>
+                            <div><div style="color: rgba(220,180,100,0.9); font-size: 14px; font-weight: bold;">3</div><div style="font-size: 7px; color: rgba(140,140,160,0.6);">Pending Review</div></div>
+                        </div>
+                    </span>
                 </div>
-                <div class="detail-row">
-                    <span class="detail-key">Engagement</span>
-                    <span class="detail-val" id="autour-engagement">—</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-key">Content Pipeline</span>
-                    <span class="detail-val" id="autour-pipeline">—</span>
-                </div>
+                
                 <div class="detail-row">
                     <span class="detail-key">Live Status</span>
-                    <span class="detail-val" id="autour-live">No running process</span>
+                    <span class="detail-val" id="autoura-live">Phase 4 UI active · Awaiting real workflow integration</span>
                 </div>
                 <div class="detail-row last-seen">
-                    <span class="detail-val" id="autour-seen">Never active</span>
+                    <span class="detail-val" id="autoura-seen">Just now</span>
                 </div>
             </div>
         </div>
@@ -417,15 +514,40 @@
             </div>
         </div>
 
-        <div class="agent-card ghost-agent" data-agent="kotler">
+        <div class="agent-card has-photo-bg" data-agent="kotler" onclick="toggleAgentDetails('kotler')">
+            <div class="card-bg-img" style="background-image: url('assets/kotler-avatar.jpg'); background-position: center 10%; background-size: 180%;"></div>
             <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built">◌ PENDING</div>
+                <div class="agent-status live"></div>
+                <div class="agent-badge" id="kotler-badge">● LIVE</div>
             </div>
             <div class="agent-card-body">
-                <div class="agent-avatar dim">📢</div>
+                <div class="agent-avatar photo"><img src="assets/kotler-avatar.jpg" alt="KOTLER" style="object-position: center 10%; transform: scale(1.3);"></div>
                 <div class="agent-name">KOTLER</div>
-                <div class="agent-role">Marketing Ops</div>
+                <div class="agent-role">Google Ads Manager</div>
+            </div>
+            <div class="agent-card-footer">
+                <span class="agent-chevron" id="kotler-chevron">▼</span>
+            </div>
+            <div class="agent-details" id="kotler-details">
+                <div class="detail-row">
+                    <span class="detail-key">Current Campaign</span>
+                    <span class="detail-val" id="kotler-campaign">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-key">Ads Managed</span>
+                    <span class="detail-val" id="kotler-ads">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-key">Spend Today</span>
+                    <span class="detail-val" id="kotler-spend">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-key">Live Status</span>
+                    <span class="detail-val" id="kotler-live">Active - Google Ads</span>
+                </div>
+                <div class="detail-row last-seen">
+                    <span class="detail-val" id="kotler-seen">Monitoring campaigns</span>
+                </div>
             </div>
         </div>
 

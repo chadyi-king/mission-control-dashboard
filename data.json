@@ -4,46 +4,21 @@
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
-    "tasksLeft": 44,
-    "completedTasks": 24,
+    "tasksLeft": 46,
+    "completedTasks": 22,
     "completedToday": 0,
-    "completedThisWeek": 4,
+    "completedThisWeek": 0,
     "critical": 0,
     "urgent": 0,
     "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 41
+    "backlog": 43
   },
   "completions": {
     "today": [],
-    "this_week": [
-      {
-        "id": "A1-12",
-        "title": "Reply to lawyer",
-        "date": "2026-04-28",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "B6-9",
-        "title": "Order items for SPH event",
-        "date": "2026-04-27",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "B6-3",
-        "title": "SPH items to order",
-        "date": "2026-04-27",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "C1-1",
-        "title": "Study for RES exam — Moved to Notebook LLM",
-        "date": "2026-04-28",
-        "agent": "CHAD_YI"
-      }
-    ],
-    "all_time": 37
+    "this_week": [],
+    "all_time": 31
   },
   "weeklyProgress": {
     "completed": 0,
@@ -51,13 +26,14 @@
   },
   "workflow": {
     "pending": [
+      "A1-12",
       "A1-9",
       "A6-15",
       "A7-1",
       "A7-3",
       "A7-4",
-      "B1-2",
       "B8-2",
+      "C1-1",
       "C1-2"
     ],
     "active": [
@@ -67,7 +43,6 @@
     "done": [
       "A1-1",
       "A1-11",
-      "A1-12",
       "A1-13",
       "A1-2",
       "A1-4",
@@ -87,8 +62,7 @@
       "B6-7",
       "B6-8",
       "B6-9",
-      "B8-6",
-      "C1-1"
+      "B8-6"
     ],
     "urgent": [],
     "blocked": [],
@@ -112,6 +86,7 @@
       "A5-5",
       "A6-2",
       "B1-1",
+      "B1-2",
       "B11-1",
       "B2-1",
       "B3-2",
@@ -137,13 +112,14 @@
       "B6-10"
     ],
     "has deadline": [
+      "A1-12",
       "A1-9",
       "A6-15",
       "A7-1",
       "A7-3",
       "A7-4",
-      "B1-2",
       "B8-2",
+      "C1-1",
       "C1-2"
     ],
     "todo": [
@@ -162,6 +138,7 @@
       "A5-5",
       "A6-2",
       "B1-1",
+      "B1-2",
       "B11-1",
       "B2-1",
       "B3-2",
@@ -424,8 +401,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-04-27",
-      "completedAt": "2026-04-27",
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01",
       "createdAt": "2026-02-15T00:00:00"
     },
     "B6-4": {
@@ -499,14 +476,12 @@
     },
     "C1-1": {
       "id": "C1-1",
-      "title": "Study for RES exam — Moved to Notebook LLM",
+      "title": "Study for RES exam — Upload all lectures, PowerPoints, PDFs, Q&A to Cowork for study system [2026-06-01]",
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-28",
-      "completedAt": "2026-04-28",
+      "status": "pending",
+      "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "C1-2": {
@@ -766,12 +741,12 @@
     },
     "B1-2": {
       "id": "B1-2",
-      "title": "Draft formal message to Charmaine about suing platform",
+      "title": "Draft formal message to Charmaine about suing platform (not individuals) per lawyer/judge advice to claim money",
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A1-11": {
@@ -792,10 +767,9 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-28",
-      "completedAt": "2026-04-28",
+      "status": "pending",
+      "priority": "medium",
+      "deadline": "2026-04-28",
       "createdAt": "2026-03-17T00:00:00+08:00"
     },
     "A1-13": {
@@ -806,9 +780,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-04-24",
-      "completedAt": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00"
+      "deadline": "2026-04-24",
+      "createdAt": "2026-03-25T00:00:00+08:00",
+      "completedAt": "2026-04-24"
     },
     "A1-14": {
       "id": "A1-14",
@@ -828,9 +802,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-04-27",
-      "completedAt": "2026-04-27",
-      "createdAt": "2026-03-18T00:00:00+08:00"
+      "deadline": "2026-04-17",
+      "createdAt": "2026-03-18T00:00:00+08:00",
+      "completedAt": "2026-04-27"
     },
     "B8-2": {
       "id": "B8-2",
@@ -960,32 +934,7 @@
       "createdAt": "2026-03-10T00:00:00+08:00"
     }
   },
-  "recentWins": [
-    {
-      "id": "A1-12",
-      "title": "Reply to lawyer",
-      "date": "2026-04-28",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "B6-9",
-      "title": "Order items for SPH event",
-      "date": "2026-04-27",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "B6-3",
-      "title": "SPH items to order",
-      "date": "2026-04-27",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "C1-1",
-      "title": "Study for RES exam — Moved to Notebook LLM",
-      "date": "2026-04-28",
-      "agent": "CHAD_YI"
-    }
-  ],
+  "recentWins": [],
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
@@ -1002,7 +951,11 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
+<<<<<<< HEAD
       "lastActive": "2026-05-03T00:15:15.651475+08:00",
+=======
+      "lastActive": "2026-05-03T00:07:20.277937+08:00",
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
       "capabilities": []
     },
     "quanta": {
@@ -1011,7 +964,7 @@
       "platform": "Telegram monitor",
       "status": "stale",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-30T04:13:40.713974+08:00",
+      "lastActive": "2026-04-28T22:59:32.498137+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1121,8 +1074,8 @@
         "A1-14"
       ],
       "totalTasks": 11,
-      "completedTasks": 9,
-      "completionPct": 82
+      "completedTasks": 8,
+      "completionPct": 73
     },
     "A2": {
       "name": "RE:UNITE",
@@ -1369,8 +1322,8 @@
         "C1-2"
       ],
       "totalTasks": 2,
-      "completedTasks": 1,
-      "completionPct": 50
+      "completedTasks": 0,
+      "completionPct": 0
     },
     "C2": {
       "name": "Side Sales",
@@ -1508,6 +1461,12 @@
       "owner": "Forger"
     },
     {
+      "id": "A1-12",
+      "title": "Reply to lawyer",
+      "reason": "overdue",
+      "owner": "CHAD_YI"
+    },
+    {
       "id": "B8-2",
       "title": "Figure out Higgsfield AI for marketing studio",
       "reason": "overdue",
@@ -1529,11 +1488,15 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-05-03",
+<<<<<<< HEAD
     "summary": "📋 44 tasks in flight. Focus on top priorities.",
+=======
+    "summary": "📋 46 tasks in flight. Focus on top priorities.",
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
-    "completedThisWeek": 4,
+    "completedThisWeek": 0,
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
@@ -1542,11 +1505,15 @@
       },
       "helios": {
         "status": "active",
+<<<<<<< HEAD
         "lastActive": "2026-05-03T00:15:15.651475+08:00"
+=======
+        "lastActive": "2026-05-03T00:07:20.277937+08:00"
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
       },
       "quanta": {
         "status": "stale",
-        "lastActive": "2026-04-30T04:13:40.713974+08:00"
+        "lastActive": "2026-04-28T22:59:32.498137+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1575,6 +1542,15 @@
         "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
         "deadline": "2026-04-30",
         "daysOverdue": 3
+<<<<<<< HEAD
+=======
+      },
+      {
+        "id": "A1-12",
+        "title": "Reply to lawyer",
+        "deadline": "2026-04-28",
+        "daysOverdue": 5
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
       },
       {
         "id": "B8-2",
@@ -1597,12 +1573,20 @@
     ]
   },
   "audit": {
+<<<<<<< HEAD
     "lastRun": "2026-05-03T00:15:15.647658+08:00",
+=======
+    "lastRun": "2026-05-03T00:07:20.273798+08:00",
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
+<<<<<<< HEAD
       "runAt": "2026-05-03T00:15:15.655617+08:00",
+=======
+      "runAt": "2026-05-03T00:07:20.283294+08:00",
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1673,13 +1657,21 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 3047.0,
+        "current_balance": 3169.98,
         "baseline_balance": 3821.73,
+<<<<<<< HEAD
         "weekly_profit": 0.0,
         "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
         "today_pnl": 0.0,
+=======
+        "weekly_profit": 36.3,
+        "weekly_loss": 0.0,
+        "win_count": 0,
+        "loss_count": 1,
+        "today_pnl": 36.3,
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
         "status": "active"
       }
     },
@@ -1734,16 +1726,28 @@
       {
         "date": "2026-05-02",
         "agent": "quanta",
+<<<<<<< HEAD
         "balance": 3047.0,
         "pnl": 2.32,
         "note": "Balance 3047.00 | P/L +2.32 today | Open 1"
+=======
+        "balance": 3169.98,
+        "pnl": 36.3,
+        "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
       },
       {
         "date": "2026-05-03",
         "agent": "quanta",
+<<<<<<< HEAD
         "balance": 3047.0,
         "pnl": 0.0,
         "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
+=======
+        "balance": 3169.98,
+        "pnl": 36.3,
+        "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
+>>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
       }
     ],
     "currency": "USD",

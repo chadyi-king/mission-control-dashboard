@@ -1,0 +1,51 @@
+{
+  "agentId": "autoura",
+  "name": "Autoura",
+  "role": "content_acquisition_agent",
+  "specialty": "Client scouting, outreach, video creation, delivery",
+  "model": "kimi-coding/k2p5",
+  "status": "active",
+  "currentTask": "Building prospect scouting pipeline",
+  "project": "A3",
+  "projectName": "KOE + Client Acquisition",
+  "capabilities": [
+    "prospect_scouting",
+    "outreach_drafting",
+    "video_generation",
+    "client_management",
+    "workflow_automation"
+  ],
+  "workspace": "/home/chad-yi/.hermes/workspace/agents/autour",
+  "inbox": "/home/chad-yi/.hermes/workspace/agents/autour/inbox",
+  "outbox": "/home/chad-yi/.hermes/workspace/agents/autour/outbox",
+  "reportingTo": "chad_yi",
+  "auditPartner": "helios",
+  "autoSpawn": false,
+  "spawnConditions": {
+    "ready": true,
+    "blockers": [],
+    "firstTask": "Build prospect scouting system"
+  },
+  "humanGates": {
+    "outreachApproval": true,
+    "clientOnboarding": true,
+    "videoDelivery": true,
+    "scoutAutonomous": true,
+    "createAutonomous": true
+  },
+  "pipeline": {
+    "phase": "SCOUT",
+    "status": "building_infrastructure",
+    "prospectsFound": 0,
+    "outreachPending": 0,
+    "clientsActive": 0,
+    "videosDelivered": 0
+  },
+  "communicationProtocol": {
+    "checkInboxEveryMinutes": 30,
+    "reportProgressEveryHours": 4,
+    "escalateBlockersImmediately": true
+  },
+  "spawnedAt": "2026-05-02T18:30:00+08:00",
+  "lastActive": "2026-05-02T18:30:00+08:00"
+}
