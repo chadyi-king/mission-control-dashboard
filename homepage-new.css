@@ -3546,14 +3546,21 @@ body.sidebar-expanded .stats-bar {
 
 /* ── Bento Grid ── */
 .fleet-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ── Fleet Row ── */
+.fleet-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
 
-/* Agent Wrapper */
+/* ── Agent Wrapper ── */
 .agent-wrapper {
-    display: contents;
+    display: block;
 }
 
 /* ── Agent Card ── */
