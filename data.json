@@ -1,24 +1,49 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-03T00:15:15.647658+08:00",
+  "lastUpdated": "2026-05-03T00:30:44.905803+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
-    "tasksLeft": 46,
-    "completedTasks": 22,
+    "tasksLeft": 44,
+    "completedTasks": 24,
     "completedToday": 0,
-    "completedThisWeek": 0,
+    "completedThisWeek": 4,
     "critical": 0,
     "urgent": 0,
     "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 43
+    "backlog": 41
   },
   "completions": {
     "today": [],
-    "this_week": [],
-    "all_time": 31
+    "this_week": [
+      {
+        "id": "A1-12",
+        "title": "Reply to lawyer",
+        "date": "2026-04-28",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "B6-9",
+        "title": "Order items for SPH event",
+        "date": "2026-04-27",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "B6-3",
+        "title": "SPH items to order",
+        "date": "2026-04-27",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "C1-1",
+        "title": "Study for RES exam — Moved to Notebook LLM",
+        "date": "2026-04-28",
+        "agent": "CHAD_YI"
+      }
+    ],
+    "all_time": 37
   },
   "weeklyProgress": {
     "completed": 0,
@@ -26,14 +51,13 @@
   },
   "workflow": {
     "pending": [
-      "A1-12",
       "A1-9",
       "A6-15",
       "A7-1",
       "A7-3",
       "A7-4",
+      "B1-2",
       "B8-2",
-      "C1-1",
       "C1-2"
     ],
     "active": [
@@ -43,6 +67,7 @@
     "done": [
       "A1-1",
       "A1-11",
+      "A1-12",
       "A1-13",
       "A1-2",
       "A1-4",
@@ -62,7 +87,8 @@
       "B6-7",
       "B6-8",
       "B6-9",
-      "B8-6"
+      "B8-6",
+      "C1-1"
     ],
     "urgent": [],
     "blocked": [],
@@ -86,7 +112,6 @@
       "A5-5",
       "A6-2",
       "B1-1",
-      "B1-2",
       "B11-1",
       "B2-1",
       "B3-2",
@@ -112,14 +137,13 @@
       "B6-10"
     ],
     "has deadline": [
-      "A1-12",
       "A1-9",
       "A6-15",
       "A7-1",
       "A7-3",
       "A7-4",
+      "B1-2",
       "B8-2",
-      "C1-1",
       "C1-2"
     ],
     "todo": [
@@ -138,7 +162,6 @@
       "A5-5",
       "A6-2",
       "B1-1",
-      "B1-2",
       "B11-1",
       "B2-1",
       "B3-2",
@@ -160,6 +183,28 @@
     ]
   },
   "tasks": {
+    "A1-11": {
+      "id": "A1-11",
+      "title": "File personal taxes",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-16",
+      "completedAt": "2026-04-16",
+      "createdAt": "2026-04-02T00:00:00"
+    },
+    "B1-2": {
+      "id": "B1-2",
+      "title": "Draft formal message to Charmaine about suing platform",
+      "project": "B1",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "medium",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
     "A1-9": {
       "id": "A1-9",
       "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
@@ -170,6 +215,40 @@
       "priority": "medium",
       "deadline": "2026-12-31",
       "createdAt": "2026-12-01T00:00:00+08:00"
+    },
+    "A1-12": {
+      "id": "A1-12",
+      "title": "Reply to lawyer",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
+    },
+    "A1-13": {
+      "id": "A1-13",
+      "title": "Fix Google Ads API",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-24",
+      "completedAt": "2026-04-24",
+      "createdAt": "2026-04-10T00:00:00"
+    },
+    "A1-14": {
+      "id": "A1-14",
+      "title": "Build EPEPTOME website — selling peptides for research (DEPRECATED - moved to B11)",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A2-1": {
       "id": "A2-1",
@@ -290,8 +369,8 @@
       "agent": "Quanta",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-03-24T04:26:56.793914+08:00",
-      "completedAt": "2026-04-07T04:26:56.793914+08:00"
+      "completedAt": "2026-05-03T00:30:44.905803+08:00",
+      "createdAt": "2026-04-19T00:30:44.905803+08:00"
     },
     "A5-3": {
       "id": "A5-3",
@@ -301,8 +380,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-03-24T04:26:56.793914+08:00",
-      "completedAt": "2026-04-07T04:26:56.793914+08:00"
+      "completedAt": "2026-05-03T00:30:44.905803+08:00",
+      "createdAt": "2026-04-19T00:30:44.905803+08:00"
     },
     "A5-4": {
       "id": "A5-4",
@@ -322,6 +401,37 @@
       "agent": "CHAD_YI",
       "status": "backlog",
       "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A6-2": {
+      "id": "A6-2",
+      "title": "Create habit tracker in dashboard",
+      "project": "A6",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A6-15": {
+      "id": "A6-15",
+      "title": "Build Cerebronn as a proper bot in VS Code Studio",
+      "project": "A6",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "medium",
+      "deadline": "2026-04-30",
+      "createdAt": "2026-03-31T00:00:00+08:00"
+    },
+    "B6-10": {
+      "id": "B6-10",
+      "title": "Build Kotler - unified Google Ads management for all EXSTATIC brands",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "active",
+      "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A7-1": {
@@ -358,6 +468,37 @@
       "deadline": "2026-04-30",
       "createdAt": "2026-03-31T00:00:00+08:00"
     },
+    "A7-4": {
+      "id": "A7-4",
+      "title": "Prepare wedding guest list",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "medium",
+      "deadline": "2026-04-28",
+      "createdAt": "2026-03-29T00:00:00+08:00"
+    },
+    "B1-1": {
+      "id": "B1-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B1",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B2-1": {
+      "id": "B2-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B2",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
     "B3-1": {
       "id": "B3-1",
       "title": "Team Elevate website (Lovable)",
@@ -369,6 +510,36 @@
       "completed": "2026-02-05",
       "completedAt": "2026-02-05",
       "createdAt": "2026-01-22T00:00:00"
+    },
+    "B3-2": {
+      "id": "B3-2",
+      "title": "SEO + Google Ads setup — ① SEO optimization (3-step process) ② Google Ads (landing pages + checklist) ③ Social media ④ Client management",
+      "project": "B3",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B4-1": {
+      "id": "B4-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B4",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B5-1": {
+      "id": "B5-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B5",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B6-1": {
       "id": "B6-1",
@@ -390,8 +561,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-03-24T04:26:56.793914+08:00",
-      "completedAt": "2026-04-07T04:26:56.793914+08:00"
+      "completedAt": "2026-05-03T00:30:44.905803+08:00",
+      "createdAt": "2026-04-19T00:30:44.905803+08:00"
     },
     "B6-3": {
       "id": "B6-3",
@@ -401,9 +572,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01",
-      "completedAt": "2026-03-01",
-      "createdAt": "2026-02-15T00:00:00"
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
+      "createdAt": "2026-04-13T00:00:00"
     },
     "B6-4": {
       "id": "B6-4",
@@ -413,8 +584,18 @@
       "agent": "Forger",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-03-24T04:26:56.793914+08:00",
-      "completedAt": "2026-04-07T04:26:56.793914+08:00"
+      "completedAt": "2026-05-03T00:30:44.905803+08:00",
+      "createdAt": "2026-04-19T00:30:44.905803+08:00"
+    },
+    "B6-5": {
+      "id": "B6-5",
+      "title": "Google Ads + finish marketing — ① Google Ads (2 landing pages + checklist) ② Social media ③ Client management",
+      "project": "B6",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B6-6": {
       "id": "B6-6",
@@ -452,6 +633,69 @@
       "completedAt": "2026-03-18",
       "createdAt": "2026-03-04T00:00:00"
     },
+    "B6-9": {
+      "id": "B6-9",
+      "title": "Order items for SPH event",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
+      "createdAt": "2026-04-13T00:00:00"
+    },
+    "B7-1": {
+      "id": "B7-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-2": {
+      "id": "B7-2",
+      "title": "Finish framework for encompass website",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-1": {
+      "id": "B8-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-2": {
+      "id": "B8-2",
+      "title": "Figure out Higgsfield AI for marketing studio",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "medium",
+      "deadline": "2026-04-24",
+      "createdAt": "2026-03-25T00:00:00+08:00"
+    },
+    "B8-3": {
+      "id": "B8-3",
+      "title": "Research and fully understand Higgfields AI for Empyrean — AI UGC and Product Advertisements pathway",
+      "project": "B8",
+      "category": "B",
+      "agent": "Cerebronn",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
     "B8-6": {
       "id": "B8-6",
       "title": "Andre's video (changes done)",
@@ -464,6 +708,16 @@
       "completedAt": "2026-03-23",
       "createdAt": "2026-03-09T00:00:00"
     },
+    "B9-1": {
+      "id": "B9-1",
+      "title": "Full Shopify + marketing setup — ① Shopify website (not standard site) ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
     "B10-1": {
       "id": "B10-1",
       "title": "Corporate data tracking setup — Back burner, revisit end of year",
@@ -474,15 +728,27 @@
       "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
+    "B11-1": {
+      "id": "B11-1",
+      "title": "Create EPEPTOME website — sell research peptides",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
     "C1-1": {
       "id": "C1-1",
-      "title": "Study for RES exam — Upload all lectures, PowerPoints, PDFs, Q&A to Cowork for study system [2026-06-01]",
+      "title": "Study for RES exam — Moved to Notebook LLM",
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00"
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
     },
     "C1-2": {
       "id": "C1-2",
@@ -648,293 +914,34 @@
       "completed": "2026-02-15",
       "completedAt": "2026-02-15",
       "createdAt": "2026-02-01T00:00:00"
-    },
-    "B1-1": {
-      "id": "B1-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
-      "project": "B1",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B2-1": {
-      "id": "B2-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
-      "project": "B2",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B3-2": {
-      "id": "B3-2",
-      "title": "SEO + Google Ads setup — ① SEO optimization (3-step process) ② Google Ads (landing pages + checklist) ③ Social media ④ Client management",
-      "project": "B3",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B4-1": {
-      "id": "B4-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
-      "project": "B4",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B5-1": {
-      "id": "B5-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
-      "project": "B5",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B6-5": {
-      "id": "B6-5",
-      "title": "Google Ads + finish marketing — ① Google Ads (2 landing pages + checklist) ② Social media ③ Client management",
-      "project": "B6",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B7-1": {
-      "id": "B7-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
-      "project": "B7",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B8-1": {
-      "id": "B8-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
-      "project": "B8",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B9-1": {
-      "id": "B9-1",
-      "title": "Full Shopify + marketing setup — ① Shopify website (not standard site) ② SEO ③ Google Ads ④ Social media ⑤ Client management",
-      "project": "B9",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B1-2": {
-      "id": "B1-2",
-      "title": "Draft formal message to Charmaine about suing platform (not individuals) per lawyer/judge advice to claim money",
-      "project": "B1",
-      "category": "B",
-      "agent": "CHAD_YI",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A1-11": {
-      "id": "A1-11",
-      "title": "File personal taxes",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-16",
-      "completedAt": "2026-04-16",
-      "createdAt": "2026-04-02T00:00:00"
-    },
-    "A1-12": {
-      "id": "A1-12",
-      "title": "Reply to lawyer",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-03-17T00:00:00+08:00"
-    },
-    "A1-13": {
-      "id": "A1-13",
-      "title": "Fix Google Ads API",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
-      "deadline": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00",
-      "completedAt": "2026-04-24"
-    },
-    "A1-14": {
-      "id": "A1-14",
-      "title": "Build EPEPTOME website — selling peptides for research (DEPRECATED - moved to B11)",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B6-9": {
-      "id": "B6-9",
-      "title": "Order items for SPH event",
-      "project": "B6",
-      "category": "B",
-      "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
-      "deadline": "2026-04-17",
-      "createdAt": "2026-03-18T00:00:00+08:00",
-      "completedAt": "2026-04-27"
-    },
-    "B8-2": {
-      "id": "B8-2",
-      "title": "Figure out Higgsfield AI for marketing studio",
-      "project": "B8",
-      "category": "B",
-      "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00"
-    },
-    "A6-15": {
-      "id": "A6-15",
-      "title": "Build Cerebronn as a proper bot in VS Code Studio",
-      "project": "A6",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-30",
-      "createdAt": "2026-03-31T00:00:00+08:00"
-    },
-    "A1-15": {
-      "id": "A1-15",
-      "title": "Call back police to make report",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-04-22",
-      "createdAt": "2026-03-25T00:00:00+08:00"
-    },
-    "A1-16": {
-      "id": "A1-16",
-      "title": "Reply lawyer email about payment extension",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-04-22",
-      "createdAt": "2026-03-25T00:00:00+08:00"
-    },
-    "B11-1": {
-      "id": "B11-1",
-      "title": "Create EPEPTOME website — sell research peptides",
-      "project": "B11",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-04-21T07:28:32.446243+08:00"
-    },
-    "B8-3": {
-      "id": "B8-3",
-      "title": "Research and fully understand Higgfields AI for Empyrean — AI UGC and Product Advertisements pathway",
-      "project": "B8",
-      "category": "B",
-      "agent": "Cerebronn",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B7-2": {
-      "id": "B7-2",
-      "title": "Finish framework for encompass website",
-      "project": "B7",
-      "category": "B",
-      "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A6-2": {
-      "id": "A6-2",
-      "title": "Create habit tracker in dashboard",
-      "project": "A6",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-03-21T00:00:00+08:00"
-    },
-    "A7-4": {
-      "id": "A7-4",
-      "title": "Prepare wedding guest list",
-      "project": "A7",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-03-10T00:00:00+08:00"
-    },
-    "B6-10": {
-      "id": "B6-10",
-      "title": "Build Kotler - unified Google Ads management for all EXSTATIC brands",
-      "project": "B6",
-      "category": "B",
-      "agent": "CHAD_YI",
-      "status": "active",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A1-8": {
-      "id": "A1-8",
-      "title": "Create habit tracker in dashboard",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-04-20",
-      "createdAt": "2026-03-21T00:00:00+08:00"
-    },
-    "A1-10": {
-      "id": "A1-10",
-      "title": "Prepare wedding guest list",
-      "project": "A1",
-      "category": "A",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-04-09",
-      "createdAt": "2026-03-10T00:00:00+08:00"
     }
   },
-  "recentWins": [],
+  "recentWins": [
+    {
+      "id": "A1-12",
+      "title": "Reply to lawyer",
+      "date": "2026-04-28",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "B6-9",
+      "title": "Order items for SPH event",
+      "date": "2026-04-27",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "B6-3",
+      "title": "SPH items to order",
+      "date": "2026-04-27",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "C1-1",
+      "title": "Study for RES exam — Moved to Notebook LLM",
+      "date": "2026-04-28",
+      "agent": "CHAD_YI"
+    }
+  ],
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
@@ -951,11 +958,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-<<<<<<< HEAD
-      "lastActive": "2026-05-03T00:15:15.651475+08:00",
-=======
-      "lastActive": "2026-05-03T00:07:20.277937+08:00",
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
+      "lastActive": "2026-05-03T00:30:44.908953+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -964,7 +967,7 @@
       "platform": "Telegram monitor",
       "status": "stale",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-28T22:59:32.498137+08:00",
+      "lastActive": "2026-04-30T04:13:40.713974+08:00",
       "capabilities": []
     },
     "cerebronn": {
@@ -1061,21 +1064,21 @@
       "category": "A",
       "status": "pending",
       "tasks": [
+        "A1-11",
         "A1-9",
+        "A1-12",
+        "A1-13",
+        "A1-14",
         "A1-6",
         "A1-5",
         "A1-2",
         "A1-7",
         "A1-1",
-        "A1-4",
-        "A1-11",
-        "A1-12",
-        "A1-13",
-        "A1-14"
+        "A1-4"
       ],
       "totalTasks": 11,
-      "completedTasks": 8,
-      "completionPct": 73
+      "completedTasks": 9,
+      "completionPct": 82
     },
     "A2": {
       "name": "RE:UNITE",
@@ -1142,9 +1145,9 @@
       "category": "A",
       "status": "pending",
       "tasks": [
-        "A6-14",
+        "A6-2",
         "A6-15",
-        "A6-2"
+        "A6-14"
       ],
       "totalTasks": 3,
       "completedTasks": 1,
@@ -1171,8 +1174,8 @@
       "category": "B",
       "status": "pending",
       "tasks": [
-        "B1-1",
-        "B1-2"
+        "B1-2",
+        "B1-1"
       ],
       "totalTasks": 2,
       "completedTasks": 0,
@@ -1233,16 +1236,16 @@
       "category": "B",
       "status": "active",
       "tasks": [
+        "B6-10",
         "B6-1",
         "B6-2",
         "B6-3",
         "B6-4",
+        "B6-5",
         "B6-6",
         "B6-7",
         "B6-8",
-        "B6-5",
-        "B6-9",
-        "B6-10"
+        "B6-9"
       ],
       "totalTasks": 10,
       "completedTasks": 8,
@@ -1267,10 +1270,10 @@
       "category": "B",
       "status": "pending",
       "tasks": [
-        "B8-6",
         "B8-1",
         "B8-2",
-        "B8-3"
+        "B8-3",
+        "B8-6"
       ],
       "totalTasks": 4,
       "completedTasks": 1,
@@ -1322,8 +1325,8 @@
         "C1-2"
       ],
       "totalTasks": 2,
-      "completedTasks": 0,
-      "completionPct": 0
+      "completedTasks": 1,
+      "completionPct": 50
     },
     "C2": {
       "name": "Side Sales",
@@ -1449,20 +1452,20 @@
       "owner": "Escritor"
     },
     {
+      "id": "A6-15",
+      "title": "Build Cerebronn as a proper bot in VS Code Studio",
+      "reason": "overdue",
+      "owner": "CHAD_YI"
+    },
+    {
       "id": "A7-3",
       "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
       "reason": "overdue",
       "owner": "CHAD_YI"
     },
     {
-      "id": "B10-1",
-      "title": "Corporate data tracking setup — Back burner, revisit end of year",
-      "reason": "paused",
-      "owner": "Forger"
-    },
-    {
-      "id": "A1-12",
-      "title": "Reply to lawyer",
+      "id": "A7-4",
+      "title": "Prepare wedding guest list",
       "reason": "overdue",
       "owner": "CHAD_YI"
     },
@@ -1473,30 +1476,20 @@
       "owner": "CHAD_YI"
     },
     {
-      "id": "A6-15",
-      "title": "Build Cerebronn as a proper bot in VS Code Studio",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "A7-4",
-      "title": "Prepare wedding guest list",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
+      "id": "B10-1",
+      "title": "Corporate data tracking setup — Back burner, revisit end of year",
+      "reason": "paused",
+      "owner": "Forger"
     }
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-05-03",
-<<<<<<< HEAD
     "summary": "📋 44 tasks in flight. Focus on top priorities.",
-=======
-    "summary": "📋 46 tasks in flight. Focus on top priorities.",
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
-    "completedThisWeek": 0,
+    "completedThisWeek": 4,
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
@@ -1505,15 +1498,11 @@
       },
       "helios": {
         "status": "active",
-<<<<<<< HEAD
-        "lastActive": "2026-05-03T00:15:15.651475+08:00"
-=======
-        "lastActive": "2026-05-03T00:07:20.277937+08:00"
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
+        "lastActive": "2026-05-03T00:30:44.908953+08:00"
       },
       "quanta": {
         "status": "stale",
-        "lastActive": "2026-04-28T22:59:32.498137+08:00"
+        "lastActive": "2026-04-30T04:13:40.713974+08:00"
       },
       "cerebronn": {
         "status": "not_built_yet",
@@ -1538,29 +1527,14 @@
     },
     "overdueTasks": [
       {
-        "id": "A7-3",
-        "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
-        "deadline": "2026-04-30",
-        "daysOverdue": 3
-<<<<<<< HEAD
-=======
-      },
-      {
-        "id": "A1-12",
-        "title": "Reply to lawyer",
-        "deadline": "2026-04-28",
-        "daysOverdue": 5
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
-      },
-      {
-        "id": "B8-2",
-        "title": "Figure out Higgsfield AI for marketing studio",
-        "deadline": "2026-04-24",
-        "daysOverdue": 9
-      },
-      {
         "id": "A6-15",
         "title": "Build Cerebronn as a proper bot in VS Code Studio",
+        "deadline": "2026-04-30",
+        "daysOverdue": 3
+      },
+      {
+        "id": "A7-3",
+        "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
         "deadline": "2026-04-30",
         "daysOverdue": 3
       },
@@ -1569,24 +1543,22 @@
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
         "daysOverdue": 5
+      },
+      {
+        "id": "B8-2",
+        "title": "Figure out Higgsfield AI for marketing studio",
+        "deadline": "2026-04-24",
+        "daysOverdue": 9
       }
     ]
   },
   "audit": {
-<<<<<<< HEAD
-    "lastRun": "2026-05-03T00:15:15.647658+08:00",
-=======
-    "lastRun": "2026-05-03T00:07:20.273798+08:00",
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
+    "lastRun": "2026-05-03T00:30:44.905803+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 72,
+    "taskCount": 68,
     "findings": [],
     "preflight": {
-<<<<<<< HEAD
-      "runAt": "2026-05-03T00:15:15.655617+08:00",
-=======
-      "runAt": "2026-05-03T00:07:20.283294+08:00",
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
+      "runAt": "2026-05-03T00:30:44.912044+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1657,21 +1629,13 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 3169.98,
+        "current_balance": 3047.0,
         "baseline_balance": 3821.73,
-<<<<<<< HEAD
         "weekly_profit": 0.0,
         "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
         "today_pnl": 0.0,
-=======
-        "weekly_profit": 36.3,
-        "weekly_loss": 0.0,
-        "win_count": 0,
-        "loss_count": 1,
-        "today_pnl": 36.3,
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
         "status": "active"
       }
     },
@@ -1726,28 +1690,16 @@
       {
         "date": "2026-05-02",
         "agent": "quanta",
-<<<<<<< HEAD
         "balance": 3047.0,
         "pnl": 2.32,
         "note": "Balance 3047.00 | P/L +2.32 today | Open 1"
-=======
-        "balance": 3169.98,
-        "pnl": 36.3,
-        "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
       },
       {
         "date": "2026-05-03",
         "agent": "quanta",
-<<<<<<< HEAD
         "balance": 3047.0,
         "pnl": 0.0,
         "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
-=======
-        "balance": 3169.98,
-        "pnl": 36.3,
-        "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
->>>>>>> 3e0897f0544dc40d597b1e1ef8038c00fda053c9
       }
     ],
     "currency": "USD",
