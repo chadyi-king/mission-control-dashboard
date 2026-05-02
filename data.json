@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-02T23:52:19.662964+08:00",
+  "lastUpdated": "2026-05-03T00:07:20.273798+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -951,7 +951,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-02T23:52:19.671719+08:00",
+      "lastActive": "2026-05-03T00:07:20.277937+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1483,7 +1483,7 @@
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-05-02",
+    "date": "2026-05-03",
     "summary": "📋 46 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
@@ -1497,7 +1497,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-02T23:52:19.671719+08:00"
+        "lastActive": "2026-05-03T00:07:20.277937+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1529,41 +1529,41 @@
         "id": "A7-3",
         "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
         "deadline": "2026-04-30",
-        "daysOverdue": 2
+        "daysOverdue": 3
       },
       {
         "id": "A1-12",
         "title": "Reply to lawyer",
         "deadline": "2026-04-28",
-        "daysOverdue": 4
+        "daysOverdue": 5
       },
       {
         "id": "B8-2",
         "title": "Figure out Higgsfield AI for marketing studio",
         "deadline": "2026-04-24",
-        "daysOverdue": 8
+        "daysOverdue": 9
       },
       {
         "id": "A6-15",
         "title": "Build Cerebronn as a proper bot in VS Code Studio",
         "deadline": "2026-04-30",
-        "daysOverdue": 2
+        "daysOverdue": 3
       },
       {
         "id": "A7-4",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
-        "daysOverdue": 4
+        "daysOverdue": 5
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-05-02T23:52:19.662964+08:00",
+    "lastRun": "2026-05-03T00:07:20.273798+08:00",
     "dataIntegrity": "ok",
     "taskCount": 72,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-02T23:52:19.678111+08:00",
+      "runAt": "2026-05-03T00:07:20.283294+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1658,13 +1658,6 @@
     },
     "daily_snapshots": [
       {
-        "date": "2026-04-26",
-        "agent": "quanta",
-        "balance": 3223.11,
-        "pnl": 0.0,
-        "note": "Balance 3223.11 | P/L +0.00 today | Open 2"
-      },
-      {
         "date": "2026-04-27",
         "agent": "quanta",
         "balance": 3133.68,
@@ -1701,6 +1694,13 @@
       },
       {
         "date": "2026-05-02",
+        "agent": "quanta",
+        "balance": 3169.98,
+        "pnl": 36.3,
+        "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
+      },
+      {
+        "date": "2026-05-03",
         "agent": "quanta",
         "balance": 3169.98,
         "pnl": 36.3,
