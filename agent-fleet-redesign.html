@@ -11,502 +11,546 @@
     </div>
 
     <div class="fleet-grid" id="fleet-grid">
-        <!-- Leadership Row -->        <div class="agent-card chad-yi-card" data-agent="chad-yi" onclick="toggleAgentDetails('chad-yi')">
-            <div class="agent-card-bg" style="background-image:url('assets/chad-yi-avatar.jpg'); filter: brightness(0.4);"></div>
-            <div class="agent-card-header">
-                <div class="agent-status live"></div>
-                <div class="agent-badge" id="chad-yi-badge">● LIVE</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/chad-yi-avatar.jpg" alt="CHAD_YI"></div>
-                <div class="agent-name">CHAD_YI</div>
-                <div class="agent-role">The Face</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="chad-yi-chevron">▼</span>
-            </div>
-        </div>
-
-        <!-- CHAD FULL-WIDTH KANBAN -->
-        <div class="agent-kanban-fullwidth" id="chad-yi-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">📋 CHAD_YI — Task & Discussion Tracker</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('chad-yi')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="chad-yi">
-                    <div class="kanban-col" data-col="last-5">
-                        <div class="kanban-col-title">🗣️ Last 5 Discussions</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-task="autoura-phase4"><div class="card-title">Build AUTOURA Phase 4 workflow UI</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-date">Today</div></div>
-                            <div class="kanban-card" draggable="true" data-task="helios-zoom"><div class="card-title">Helios + Quanta background zoom</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-date">Today</div></div>
-                            <div class="kanban-card" draggable="true" data-task="kotler-fix"><div class="card-title">Kotler image positioning fix</div><div class="card-meta">📁 Non-Project</div><div class="card-date">Today</div></div>
-                            <div class="kanban-card" draggable="true" data-task="cerebronn-bg"><div class="card-title">Cerebronn background brightness</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-date">Today</div></div>
-                            <div class="kanban-card" draggable="true" data-task="autoura-id"><div class="card-title">Autoura agent identity setup</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-date">Today</div></div>
+        <div class="agent-wrapper" data-agent="chad-yi">
+            <div class="agent-card chad-yi-card" data-agent="chad-yi" onclick="toggleAgentDetails('chad-yi')">
+                        <div class="agent-card-bg" style="background-image:url('assets/chad-yi-avatar.jpg'); filter: brightness(0.4);"></div>
+                        <div class="agent-card-header">
+                            <div class="agent-status live"></div>
+                            <div class="agent-badge" id="chad-yi-badge">● LIVE</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar photo"><img src="assets/chad-yi-avatar.jpg" alt="CHAD_YI"></div>
+                            <div class="agent-name">CHAD_YI</div>
+                            <div class="agent-role">The Face</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="chad-yi-chevron">▼</span>
                         </div>
                     </div>
-                    <div class="kanban-col" data-col="project-tasks">
-                        <div class="kanban-col-title">📂 Project Tasks</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-task="empyrean-ui"><div class="card-title">Project Empyrean — Agent farm UI</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-status status-active">● Active</div></div>
-                            <div class="kanban-card" draggable="true" data-task="dashboard-rebuild"><div class="card-title">Dashboard rebuild with kanban</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-status status-active">● Active</div></div>
-                            <div class="kanban-card" draggable="true" data-task="team-elevate"><div class="card-title">B3 Team Elevate — Event branding</div><div class="card-meta">📁 B3 Team Elevate</div><div class="card-status status-pending">◌ Pending</div></div>
+
+                    <!-- CHAD FULL-WIDTH KANBAN -->
+                    <div class="agent-kanban-fullwidth" id="chad-yi-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">📋 CHAD_YI — Task & Discussion Tracker</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('chad-yi')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="chad-yi">
+                                <div class="kanban-col" data-col="last-5">
+                                    <div class="kanban-col-title">🗣️ Last 5 Discussions</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-task="autoura-phase4"><div class="card-title">Build AUTOURA Phase 4 workflow UI</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-date">Today</div></div>
+                                        <div class="kanban-card" draggable="true" data-task="helios-zoom"><div class="card-title">Helios + Quanta background zoom</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-date">Today</div></div>
+                                        <div class="kanban-card" draggable="true" data-task="kotler-fix"><div class="card-title">Kotler image positioning fix</div><div class="card-meta">📁 Non-Project</div><div class="card-date">Today</div></div>
+                                        <div class="kanban-card" draggable="true" data-task="cerebronn-bg"><div class="card-title">Cerebronn background brightness</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-date">Today</div></div>
+                                        <div class="kanban-card" draggable="true" data-task="autoura-id"><div class="card-title">Autoura agent identity setup</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-date">Today</div></div>
+                                    </div>
+                                </div>
+                                <div class="kanban-col" data-col="project-tasks">
+                                    <div class="kanban-col-title">📂 Project Tasks</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-task="empyrean-ui"><div class="card-title">Project Empyrean — Agent farm UI</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-status status-active">● Active</div></div>
+                                        <div class="kanban-card" draggable="true" data-task="dashboard-rebuild"><div class="card-title">Dashboard rebuild with kanban</div><div class="card-meta">📁 A6 Mission Control</div><div class="card-status status-active">● Active</div></div>
+                                        <div class="kanban-card" draggable="true" data-task="team-elevate"><div class="card-title">B3 Team Elevate — Event branding</div><div class="card-meta">📁 B3 Team Elevate</div><div class="card-status status-pending">◌ Pending</div></div>
+                                    </div>
+                                </div>
+                                <div class="kanban-col" data-col="non-project">
+                                    <div class="kanban-col-title">📝 Non-Project Tasks</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-task="cron-fix"><div class="card-title">Fix Helios cron rate limit issue</div><div class="card-meta">🔧 Infrastructure</div><div class="card-status status-done">✓ Done</div></div>
+                                        <div class="kanban-card" draggable="true" data-task="git-config"><div class="card-title">Git config user.name fix</div><div class="card-meta">🔧 Infrastructure</div><div class="card-status status-done">✓ Done</div></div>
+                                    </div>
+                                </div>
+                                <div class="kanban-col" data-col="cerebronn-handoff">
+                                    <div class="kanban-col-title">🧠 Discuss with CEREBRONN</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-task="agent-workflow-arch"><div class="card-title">Architecture review for agent workflows</div><div class="card-meta">🏗️ System Design</div><div class="card-status status-handoff">→ Handoff</div></div>
+                                        <div class="kanban-card" draggable="true" data-task="backend-triggers"><div class="card-title">Backend trigger system for card movement</div><div class="card-meta">🏗️ System Design</div><div class="card-status status-handoff">→ Handoff</div></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="kanban-col" data-col="non-project">
-                        <div class="kanban-col-title">📝 Non-Project Tasks</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-task="cron-fix"><div class="card-title">Fix Helios cron rate limit issue</div><div class="card-meta">🔧 Infrastructure</div><div class="card-status status-done">✓ Done</div></div>
-                            <div class="kanban-card" draggable="true" data-task="git-config"><div class="card-title">Git config user.name fix</div><div class="card-meta">🔧 Infrastructure</div><div class="card-status status-done">✓ Done</div></div>
+        </div>
+        <div class="agent-wrapper" data-agent="cerebronn">
+            <div class="agent-card has-photo-bg" data-agent="cerebronn" onclick="toggleAgentDetails('cerebronn')">
+                        <div class="card-bg-img" style="background-image: url('assets/cerebronn-avatar.jpg?v=1'); filter: brightness(1.5);""></div>
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built" id="cerebronn-badge">◌ NOT BUILT</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar photo"><img src="assets/cerebronn-avatar.jpg?v=1" alt="CEREBRONN"></div>
+                            <div class="agent-name">CEREBRONN</div>
+                            <div class="agent-role">The Brain</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="cerebronn-chevron">▼</span>
                         </div>
                     </div>
-                    <div class="kanban-col" data-col="cerebronn-handoff">
-                        <div class="kanban-col-title">🧠 Discuss with CEREBRONN</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-task="agent-workflow-arch"><div class="card-title">Architecture review for agent workflows</div><div class="card-meta">🏗️ System Design</div><div class="card-status status-handoff">→ Handoff</div></div>
-                            <div class="kanban-card" draggable="true" data-task="backend-triggers"><div class="card-title">Backend trigger system for card movement</div><div class="card-meta">🏗️ System Design</div><div class="card-status status-handoff">→ Handoff</div></div>
+
+                    <!-- CEREBRONN FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="cerebronn-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">🧠 CEREBRONN — Architecture & Build Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('cerebronn')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="cerebronn">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>        <div class="agent-card has-photo-bg" data-agent="cerebronn" onclick="toggleAgentDetails('cerebronn')">
-            <div class="card-bg-img" style="background-image: url('assets/cerebronn-avatar.jpg?v=1'); filter: brightness(1.5);""></div>
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="cerebronn-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/cerebronn-avatar.jpg?v=1" alt="CEREBRONN"></div>
-                <div class="agent-name">CEREBRONN</div>
-                <div class="agent-role">The Brain</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="cerebronn-chevron">▼</span>
-            </div>
         </div>
-
-        <!-- CEREBRONN FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="cerebronn-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">🧠 CEREBRONN — Architecture & Build Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('cerebronn')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="cerebronn">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card has-photo-bg" data-agent="helios" onclick="toggleAgentDetails('helios')">
-            <div class="card-bg-img" style="background-image: url('assets/helios-avatar.jpg'); background-position: center 20%; background-size: 180%;"></div>
-            <div class="agent-card-header">
-                <div class="agent-status live"></div>
-                <div class="agent-badge" id="helios-badge">● LIVE</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/helios-avatar.jpg" alt="HELIOS" style="object-position: center 20%; transform: scale(1.3);"></div>
-                <div class="agent-name">HELIOS</div>
-                <div class="agent-role">The Spine</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="helios-chevron">▼</span>
-            </div>
-        </div>
-
-        <!-- HELIOS FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="helios-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">☀️ HELIOS — Audit & Operations Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('helios')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="helios">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card has-photo-bg" data-agent="quanta" onclick="toggleAgentDetails('quanta')">
-            <div class="card-bg-img" style="background-image: url('assets/quanta-avatar.jpg'); background-position: center 20%; background-size: 180%;"></div>
-            <div class="agent-card-header">
-                <div class="agent-status live"></div>
-                <div class="agent-badge" id="quanta-badge">● LIVE</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/quanta-avatar.jpg" alt="QUANTA" style="object-position: center 20%; transform: scale(1.3);"></div>
-                <div class="agent-name">QUANTA</div>
-                <div class="agent-role">Trading</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="quanta-chevron">▼</span>
-            </div>
-        </div>
-
-        <!-- Specialists Row -->
-        <!-- QUANTA FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="quanta-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">📊 QUANTA — Trading Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('quanta')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="quanta">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card has-photo-bg" data-agent="forger" onclick="toggleAgentDetails('forger')">
-            <div class="card-bg-img" style="background-image: url('assets/forger-avatar.jpg?v=1')"></div>
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="forger-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/forger-avatar.jpg?v=1" alt="FORGER"></div>
-                <div class="agent-name">FORGER</div>
-                <div class="agent-role">Builder</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="forger-chevron">▼</span>
-            </div>
-        </div>
-
-        <!-- FORGER FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="forger-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">🔨 FORGER — Build Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('forger')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="forger">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card has-photo-bg" data-agent="escrita" onclick="toggleAgentDetails('escrita')">
-            <div class="card-bg-img" style="background-image: url('assets/escrita-avatar.jpg?v=1')"></div>
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="escrita-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/escrita-avatar.jpg?v=1" alt="ESCRITA"></div>
-                <div class="agent-name">ESCRITA</div>
-                <div class="agent-role">Writing</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="escrita-chevron">▼</span>
-            </div>
-        </div>
-
-        <!-- ESCRITA FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="escrita-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">✍️ ESCRITA — Writing Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('escrita')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="escrita">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card has-photo-bg" data-agent="autoura" onclick="toggleAgentDetails('autoura')">
-            <div class="card-bg-img" style="background-image: url('assets/autour-avatar.jpg')"></div>
-            <div class="agent-card-header">
-                <div class="agent-status live"></div>
-                <div class="agent-badge" id="autoura-badge">● BUILDING</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/autour-avatar.jpg" alt="AUTOURA"></div>
-                <div class="agent-name">AUTOURA</div>
-                <div class="agent-role">Content Creation & Client Acquisition</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="autoura-chevron">▼</span>
-            </div>
-        </div>
-
-        <!-- AUTOURA FULL-WIDTH KANBAN (PHASE 4) -->
-        <div class="agent-kanban-fullwidth" id="autoura-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">🎬 AUTOURA — Phase 4: Video Production Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('autoura')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="autoura">
-                    <div class="kanban-col" data-col="brief">
-                        <div class="kanban-col-title">📋 Brief</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-client="marina-bay-gym"><div class="card-title">Marina Bay Gym</div><div class="card-meta">Promo video x3</div><div class="card-attachments">📎 brief.pdf</div></div>
-                            <div class="kanban-card" draggable="true" data-client="tanaka-sushi"><div class="card-title">Tanaka Sushi</div><div class="card-meta">Menu showcase</div><div class="card-attachments">📎 brief.docx</div></div>
+        <div class="agent-wrapper" data-agent="helios">
+            <div class="agent-card has-photo-bg" data-agent="helios" onclick="toggleAgentDetails('helios')">
+                        <div class="card-bg-img" style="background-image: url('assets/helios-avatar.jpg'); background-position: center 20%; background-size: 180%;"></div>
+                        <div class="agent-card-header">
+                            <div class="agent-status live"></div>
+                            <div class="agent-badge" id="helios-badge">● LIVE</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar photo"><img src="assets/helios-avatar.jpg" alt="HELIOS" style="object-position: center 20%; transform: scale(1.3);"></div>
+                            <div class="agent-name">HELIOS</div>
+                            <div class="agent-role">The Spine</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="helios-chevron">▼</span>
                         </div>
                     </div>
-                    <div class="kanban-col" data-col="script">
-                        <div class="kanban-col-title">✏️ Script</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-client="orchard-dental"><div class="card-title">Orchard Dental</div><div class="card-meta">Testimonial series</div><div class="card-status status-draft">📝 Draft v2</div></div>
+
+                    <!-- HELIOS FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="helios-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">☀️ HELIOS — Audit & Operations Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('helios')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="helios">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="kanban-col" data-col="assets">
-                        <div class="kanban-col-title">🎬 Assets</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-client="botanica-cafe"><div class="card-title">Botanica Cafe</div><div class="card-meta">Latte art reel</div><div class="card-attachments">🎬 Footage received</div><div class="card-status status-pending">🎵 Music pending</div></div>
+        </div>
+        <div class="agent-wrapper" data-agent="quanta">
+            <div class="agent-card has-photo-bg" data-agent="quanta" onclick="toggleAgentDetails('quanta')">
+                        <div class="card-bg-img" style="background-image: url('assets/quanta-avatar.jpg'); background-position: center 20%; background-size: 180%;"></div>
+                        <div class="agent-card-header">
+                            <div class="agent-status live"></div>
+                            <div class="agent-badge" id="quanta-badge">● LIVE</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar photo"><img src="assets/quanta-avatar.jpg" alt="QUANTA" style="object-position: center 20%; transform: scale(1.3);"></div>
+                            <div class="agent-name">QUANTA</div>
+                            <div class="agent-role">Trading</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="quanta-chevron">▼</span>
                         </div>
                     </div>
-                    <div class="kanban-col" data-col="edit">
-                        <div class="kanban-col-title">🎞️ Edit</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-client="flex-fitness"><div class="card-title">Flex Fitness</div><div class="card-meta">Grand opening</div><div class="card-status status-active">🎞️ Cutting footage</div><div class="card-meta">Editor: K.Ler</div></div>
+
+                    <!-- Specialists Row -->
+                    <!-- QUANTA FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="quanta-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">📊 QUANTA — Trading Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('quanta')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="quanta">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="kanban-col" data-col="review">
-                        <div class="kanban-col-title">👁️ Review</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-client="glow-spa"><div class="card-title">Glow Spa</div><div class="card-meta">Treatment demo x2</div><div class="card-status status-review">✅ Awaiting approval</div><div class="card-date">Due: Tomorrow</div></div>
+        </div>
+        <div class="agent-wrapper" data-agent="forger">
+            <div class="agent-card has-photo-bg" data-agent="forger" onclick="toggleAgentDetails('forger')">
+                        <div class="card-bg-img" style="background-image: url('assets/forger-avatar.jpg?v=1')"></div>
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built" id="forger-badge">◌ NOT BUILT</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar photo"><img src="assets/forger-avatar.jpg?v=1" alt="FORGER"></div>
+                            <div class="agent-name">FORGER</div>
+                            <div class="agent-role">Builder</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="forger-chevron">▼</span>
                         </div>
                     </div>
-                    <div class="kanban-col" data-col="deliver">
-                        <div class="kanban-col-title">📤 Deliver</div>
-                        <div class="kanban-cards">
-                            <div class="kanban-card" draggable="true" data-client="zen-yoga"><div class="card-title">Zen Yoga</div><div class="card-meta">Studio tour</div><div class="card-status status-ready">📤 Ready to send</div></div>
+
+                    <!-- FORGER FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="forger-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">🔨 FORGER — Build Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('forger')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="forger">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>        <div class="agent-card" data-agent="mensamusa" onclick="toggleAgentDetails('mensamusa')">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built" id="mensamusa-badge">◌ NOT BUILT</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">📚</div>
-                <div class="agent-name">MENSAMUSA</div>
-                <div class="agent-role">Research</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="mensamusa-chevron">▼</span>
-            </div>
         </div>
+        <div class="agent-wrapper" data-agent="escrita">
+            <div class="agent-card has-photo-bg" data-agent="escrita" onclick="toggleAgentDetails('escrita')">
+                        <div class="card-bg-img" style="background-image: url('assets/escrita-avatar.jpg?v=1')"></div>
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built" id="escrita-badge">◌ NOT BUILT</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar photo"><img src="assets/escrita-avatar.jpg?v=1" alt="ESCRITA"></div>
+                            <div class="agent-name">ESCRITA</div>
+                            <div class="agent-role">Writing</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="escrita-chevron">▼</span>
+                        </div>
+                    </div>
 
-        <!-- Ghost Agents — not yet built -->
-        <!-- MENSAMUSA FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="mensamusa-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">📚 MENSAMUSA — Research Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('mensamusa')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="mensamusa">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card ghost-agent" data-agent="clair">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built">◌ PENDING</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">🔭</div>
-                <div class="agent-name">CLAIR</div>
-                <div class="agent-role">Streaming Scout</div>
-            </div>
+                    <!-- ESCRITA FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="escrita-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">✍️ ESCRITA — Writing Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('escrita')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="escrita">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
+                        </div>
+                    </div>
         </div>
+        <div class="agent-wrapper" data-agent="autoura">
+            <div class="agent-card has-photo-bg" data-agent="autoura" onclick="toggleAgentDetails('autoura')">
+                        <div class="card-bg-img" style="background-image: url('assets/autour-avatar.jpg')"></div>
+                        <div class="agent-card-header">
+                            <div class="agent-status live"></div>
+                            <div class="agent-badge" id="autoura-badge">● BUILDING</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar photo"><img src="assets/autour-avatar.jpg" alt="AUTOURA"></div>
+                            <div class="agent-name">AUTOURA</div>
+                            <div class="agent-role">Content Creation & Client Acquisition</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="autoura-chevron">▼</span>
+                        </div>
+                    </div>
 
-        <!-- CLAIR FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="clair-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">🔮 CLAIR — Clairvoyance Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('clair')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="clair">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card ghost-agent" data-agent="eplusplus">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built">◌ PENDING</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">⚡</div>
-                <div class="agent-name">E++</div>
-                <div class="agent-role">Core Dev</div>
-            </div>
+                    <!-- AUTOURA FULL-WIDTH KANBAN (PHASE 4) -->
+                    <div class="agent-kanban-fullwidth" id="autoura-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">🎬 AUTOURA — Phase 4: Video Production Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('autoura')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="autoura">
+                                <div class="kanban-col" data-col="brief">
+                                    <div class="kanban-col-title">📋 Brief</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-client="marina-bay-gym"><div class="card-title">Marina Bay Gym</div><div class="card-meta">Promo video x3</div><div class="card-attachments">📎 brief.pdf</div></div>
+                                        <div class="kanban-card" draggable="true" data-client="tanaka-sushi"><div class="card-title">Tanaka Sushi</div><div class="card-meta">Menu showcase</div><div class="card-attachments">📎 brief.docx</div></div>
+                                    </div>
+                                </div>
+                                <div class="kanban-col" data-col="script">
+                                    <div class="kanban-col-title">✏️ Script</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-client="orchard-dental"><div class="card-title">Orchard Dental</div><div class="card-meta">Testimonial series</div><div class="card-status status-draft">📝 Draft v2</div></div>
+                                    </div>
+                                </div>
+                                <div class="kanban-col" data-col="assets">
+                                    <div class="kanban-col-title">🎬 Assets</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-client="botanica-cafe"><div class="card-title">Botanica Cafe</div><div class="card-meta">Latte art reel</div><div class="card-attachments">🎬 Footage received</div><div class="card-status status-pending">🎵 Music pending</div></div>
+                                    </div>
+                                </div>
+                                <div class="kanban-col" data-col="edit">
+                                    <div class="kanban-col-title">🎞️ Edit</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-client="flex-fitness"><div class="card-title">Flex Fitness</div><div class="card-meta">Grand opening</div><div class="card-status status-active">🎞️ Cutting footage</div><div class="card-meta">Editor: K.Ler</div></div>
+                                    </div>
+                                </div>
+                                <div class="kanban-col" data-col="review">
+                                    <div class="kanban-col-title">👁️ Review</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-client="glow-spa"><div class="card-title">Glow Spa</div><div class="card-meta">Treatment demo x2</div><div class="card-status status-review">✅ Awaiting approval</div><div class="card-date">Due: Tomorrow</div></div>
+                                    </div>
+                                </div>
+                                <div class="kanban-col" data-col="deliver">
+                                    <div class="kanban-col-title">📤 Deliver</div>
+                                    <div class="kanban-cards">
+                                        <div class="kanban-card" draggable="true" data-client="zen-yoga"><div class="card-title">Zen Yoga</div><div class="card-meta">Studio tour</div><div class="card-status status-ready">📤 Ready to send</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         </div>
+        <div class="agent-wrapper" data-agent="mensamusa">
+            <div class="agent-card" data-agent="mensamusa" onclick="toggleAgentDetails('mensamusa')">
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built" id="mensamusa-badge">◌ NOT BUILT</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar dim">📚</div>
+                            <div class="agent-name">MENSAMUSA</div>
+                            <div class="agent-role">Research</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="mensamusa-chevron">▼</span>
+                        </div>
+                    </div>
 
-        <!-- EPLUSPLUS FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="eplusplus-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">⚡ EPLUSPLUS — Energy++ Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('eplusplus')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="eplusplus">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card has-photo-bg" data-agent="kotler" onclick="toggleAgentDetails('kotler')">
-            <div class="card-bg-img" style="background-image: url('assets/kotler-avatar.jpg'); background-position: center 10%; background-size: 180%;"></div>
-            <div class="agent-card-header">
-                <div class="agent-status live"></div>
-                <div class="agent-badge" id="kotler-badge">● LIVE</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar photo"><img src="assets/kotler-avatar.jpg" alt="KOTLER" style="object-position: center 10%; transform: scale(1.3);"></div>
-                <div class="agent-name">KOTLER</div>
-                <div class="agent-role">Google Ads Manager</div>
-            </div>
-            <div class="agent-card-footer">
-                <span class="agent-chevron" id="kotler-chevron">▼</span>
-            </div>
+                    <!-- Ghost Agents — not yet built -->
+                    <!-- MENSAMUSA FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="mensamusa-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">📚 MENSAMUSA — Research Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('mensamusa')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="mensamusa">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
+                        </div>
+                    </div>
         </div>
+        <div class="agent-wrapper" data-agent="clair">
+            <div class="agent-card ghost-agent" data-agent="clair">
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built">◌ PENDING</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar dim">🔭</div>
+                            <div class="agent-name">CLAIR</div>
+                            <div class="agent-role">Streaming Scout</div>
+                        </div>
+                    </div>
 
-        <!-- KOTLER FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="kotler-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">📢 KOTLER — Marketing Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('kotler')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="kotler">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card ghost-agent" data-agent="ledger">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built">◌ PENDING</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">📒</div>
-                <div class="agent-name">LEDGER</div>
-                <div class="agent-role">Finance / CRM</div>
-            </div>
+                    <!-- CLAIR FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="clair-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">🔮 CLAIR — Clairvoyance Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('clair')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="clair">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
+                        </div>
+                    </div>
         </div>
+        <div class="agent-wrapper" data-agent="eplusplus">
+            <div class="agent-card ghost-agent" data-agent="eplusplus">
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built">◌ PENDING</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar dim">⚡</div>
+                            <div class="agent-name">E++</div>
+                            <div class="agent-role">Core Dev</div>
+                        </div>
+                    </div>
 
-        <!-- LEDGER FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="ledger-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">📒 LEDGER — Ledger Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('ledger')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="ledger">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card ghost-agent" data-agent="atlas">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built">◌ PENDING</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">🌍</div>
-                <div class="agent-name">ATLAS</div>
-                <div class="agent-role">Researcher</div>
-            </div>
+                    <!-- EPLUSPLUS FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="eplusplus-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">⚡ EPLUSPLUS — Energy++ Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('eplusplus')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="eplusplus">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
+                        </div>
+                    </div>
         </div>
+        <div class="agent-wrapper" data-agent="kotler">
+            <div class="agent-card has-photo-bg" data-agent="kotler" onclick="toggleAgentDetails('kotler')">
+                        <div class="card-bg-img" style="background-image: url('assets/kotler-avatar.jpg'); background-position: center 10%; background-size: 180%;"></div>
+                        <div class="agent-card-header">
+                            <div class="agent-status live"></div>
+                            <div class="agent-badge" id="kotler-badge">● LIVE</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar photo"><img src="assets/kotler-avatar.jpg" alt="KOTLER" style="object-position: center 10%; transform: scale(1.3);"></div>
+                            <div class="agent-name">KOTLER</div>
+                            <div class="agent-role">Google Ads Manager</div>
+                        </div>
+                        <div class="agent-card-footer">
+                            <span class="agent-chevron" id="kotler-chevron">▼</span>
+                        </div>
+                    </div>
 
-        <!-- ATLAS FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="atlas-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">🗺️ ATLAS — Navigation Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('atlas')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="atlas">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card ghost-agent" data-agent="pulsar">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built">◌ PENDING</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">📡</div>
-                <div class="agent-name">PULSAR</div>
-                <div class="agent-role">Data Sentinel</div>
-            </div>
+                    <!-- KOTLER FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="kotler-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">📢 KOTLER — Marketing Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('kotler')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="kotler">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
+                        </div>
+                    </div>
         </div>
+        <div class="agent-wrapper" data-agent="ledger">
+            <div class="agent-card ghost-agent" data-agent="ledger">
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built">◌ PENDING</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar dim">📒</div>
+                            <div class="agent-name">LEDGER</div>
+                            <div class="agent-role">Finance / CRM</div>
+                        </div>
+                    </div>
 
-        <!-- PULSAR FULL-WIDTH KANBAN (EMPTY) -->
-        <div class="agent-kanban-fullwidth" id="pulsar-kanban">
-            <div class="kanban-container">
-                <div class="kanban-header">
-                    <span class="kanban-title">✨ PULSAR — Pulsar Pipeline</span>
-                    <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('pulsar')">✕ Close</span>
-                </div>
-                <div class="kanban-board" data-agent="pulsar">
-                    <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
-                    <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
-                </div>
-            </div>
-        </div>        <div class="agent-card ghost-agent" data-agent="abed">
-            <div class="agent-card-header">
-                <div class="agent-status offline"></div>
-                <div class="agent-badge not-built">◌ PENDING</div>
-            </div>
-            <div class="agent-card-body">
-                <div class="agent-avatar dim">🗣</div>
-                <div class="agent-name">ABED</div>
-                <div class="agent-role">Community Manager</div>
-            </div>
+                    <!-- LEDGER FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="ledger-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">📒 LEDGER — Ledger Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('ledger')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="ledger">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <div class="agent-wrapper" data-agent="atlas">
+            <div class="agent-card ghost-agent" data-agent="atlas">
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built">◌ PENDING</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar dim">🌍</div>
+                            <div class="agent-name">ATLAS</div>
+                            <div class="agent-role">Researcher</div>
+                        </div>
+                    </div>
+
+                    <!-- ATLAS FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="atlas-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">🗺️ ATLAS — Navigation Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('atlas')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="atlas">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <div class="agent-wrapper" data-agent="pulsar">
+            <div class="agent-card ghost-agent" data-agent="pulsar">
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built">◌ PENDING</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar dim">📡</div>
+                            <div class="agent-name">PULSAR</div>
+                            <div class="agent-role">Data Sentinel</div>
+                        </div>
+                    </div>
+
+                    <!-- PULSAR FULL-WIDTH KANBAN (EMPTY) -->
+                    <div class="agent-kanban-fullwidth" id="pulsar-kanban">
+                        <div class="kanban-container">
+                            <div class="kanban-header">
+                                <span class="kanban-title">✨ PULSAR — Pulsar Pipeline</span>
+                                <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('pulsar')">✕ Close</span>
+                            </div>
+                            <div class="kanban-board" data-agent="pulsar">
+                                <div class="kanban-col" data-col="phase-1"><div class="kanban-col-title">Phase 1</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-2"><div class="kanban-col-title">Phase 2</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-3"><div class="kanban-col-title">Phase 3</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-4"><div class="kanban-col-title">Phase 4</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-5"><div class="kanban-col-title">Phase 5</div><div class="kanban-cards"></div></div>
+                                <div class="kanban-col" data-col="phase-6"><div class="kanban-col-title">Phase 6</div><div class="kanban-cards"></div></div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <div class="agent-wrapper" data-agent="abed">
+            <div class="agent-card ghost-agent" data-agent="abed">
+                        <div class="agent-card-header">
+                            <div class="agent-status offline"></div>
+                            <div class="agent-badge not-built">◌ PENDING</div>
+                        </div>
+                        <div class="agent-card-body">
+                            <div class="agent-avatar dim">🗣</div>
+                            <div class="agent-name">ABED</div>
+                            <div class="agent-role">Community Manager</div>
+                        </div>
+                    </div>
         </div>
     </div>
 </div>
@@ -559,6 +603,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
+}
+
+/* Agent Wrapper */
+.agent-wrapper {
+    display: contents;
 }
 
 /* ── Agent Card ── */
