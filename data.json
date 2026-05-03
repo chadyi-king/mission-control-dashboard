@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-03T15:53:24.477250+08:00",
+  "lastUpdated": "2026-05-03T16:08:24.983837+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -907,7 +907,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-03T15:53:24.478506+08:00",
+      "lastActive": "2026-05-03T16:08:24.984925+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1453,7 +1453,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-03T15:53:24.478506+08:00"
+        "lastActive": "2026-05-03T16:08:24.984925+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1514,12 +1514,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-03T15:53:24.477250+08:00",
+    "lastRun": "2026-05-03T16:08:24.983837+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-03T15:53:24.479623+08:00",
+      "runAt": "2026-05-03T16:08:24.985989+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
