@@ -3561,6 +3561,7 @@ body.sidebar-expanded .stats-bar {
 /* ── Agent Wrapper ── */
 .agent-wrapper {
     display: block;
+    min-width: 0;
 }
 
 /* ── Agent Card ── */
@@ -3872,15 +3873,16 @@ body.sidebar-expanded .stats-bar {
 
 
 .agent-wrapper {
-    display: contents;
+    display: block;
+    min-width: 0;
 }
 
 .agent-kanban-fullwidth {
     display: none;
-    grid-column: 1 / -1;
     width: 100%;
     margin-top: 4px;
     margin-bottom: 12px;
+    box-sizing: border-box;
 }
 
 .agent-kanban-fullwidth.active {

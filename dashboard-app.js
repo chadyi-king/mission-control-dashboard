@@ -4610,32 +4610,41 @@ console.log('[Helios WS] connected:', wsUrl);
 ═══════════════════════════════════════════════════════════════ */
 
 function toggleAgentDetails(agentId) {
-    const card = document.querySelector('.agent-card[data-agent="' + agentId + '"]');
+    const wrapper = document.querySelector('.fleet-grid .agent-wrapper[data-agent="' + agentId + '"]');
+    const card = wrapper ? wrapper.querySelector('.agent-card') : null;
     const kanban = document.getElementById(agentId + '-kanban');
     
-    if (!card) return;
+    if (!card || !kanban) return;
     
-    // Close all other expanded cards and kanbans for cleaner UX
-    document.querySelectorAll('.agent-card.expanded').forEach(function(other) {
-        if (other !== card) other.classList.remove('expanded');
-    });
+    const isExpanded = kanban.classList.contains('active');
+    
+    // Close all other kanbans first
     document.querySelectorAll('.agent-kanban-fullwidth.active').forEach(function(k) {
         if (k !== kanban) {
             k.classList.remove('active');
-            var otherId = k.id.replace('-kanban', '');
-            var otherCard = document.querySelector('.agent-card[data-agent="' + otherId + '"]');
+            var otherAgent = k.id.replace('-kanban', '');
+            var otherWrapper = document.querySelector('.fleet-grid .agent-wrapper[data-agent="' + otherAgent + '"]');
+            var otherCard = otherWrapper ? otherWrapper.querySelector('.agent-card') : null;
             if (otherCard) otherCard.classList.remove('expanded');
         }
     });
     
-    // Toggle current card and kanban
-    card.classList.toggle('expanded');
-    if (kanban) {
-        if (kanban.classList.contains('active')) {
-            kanban.classList.remove('active');
-        } else {
-            kanban.classList.add('active');
+    // Toggle current
+    if (isExpanded) {
+        kanban.classList.remove('active');
+        card.classList.remove('expanded');
+    } else {
+        // Move kanban to right after the fleet-row containing this agent
+        var fleetRow = wrapper.closest('.fleet-row');
+        if (fleetRow && fleetRow.parentNode) {
+            fleetRow.parentNode.insertBefore(kanban, fleetRow.nextSibling);
         }
+        kanban.classList.add('active');
+        card.classList.add('expanded');
+        // Scroll kanban into view smoothly
+        setTimeout(function() {
+            kanban.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
     }
 }
 
@@ -4794,3 +4803,77 @@ function updateFleetPanel(data) {
     const summary = document.getElementById('fleet-status-summary');
     if (summary) summary.textContent = liveCount + ' live \u00b7 ' + queuedCount + ' queued';
 }
+
+// ── Drag and Drop for Kanban Cards (delegated, works after dynamic injection) ──
+(function() {
+    var draggedCard = null;
+    var dropCleanupTimer = null;
+
+    function initFleetDragDrop() {
+        // Use document-level delegation for drag events
+        document.addEventListener('dragstart', function(e) {
+            var card = e.target.closest('.kanban-card[draggable="true"]');
+            if (!card) return;
+            draggedCard = card;
+            card.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', card.dataset.task || '');
+        });
+
+        document.addEventListener('dragend', function(e) {
+            var card = e.target.closest('.kanban-card[draggable="true"]');
+            if (!card) return;
+            card.classList.remove('dragging');
+            draggedCard = null;
+            // Clean up drag-over states after a short delay
+            if (dropCleanupTimer) clearTimeout(dropCleanupTimer);
+            dropCleanupTimer = setTimeout(function() {
+                document.querySelectorAll('.kanban-col.drag-over').forEach(function(col) {
+                    col.classList.remove('drag-over');
+                });
+            }, 50);
+        });
+
+        document.addEventListener('dragover', function(e) {
+            var col = e.target.closest('.kanban-col');
+            if (!col || !draggedCard) return;
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            document.querySelectorAll('.kanban-col.drag-over').forEach(function(c) {
+                if (c !== col) c.classList.remove('drag-over');
+            });
+            col.classList.add('drag-over');
+        });
+
+        document.addEventListener('dragleave', function(e) {
+            var col = e.target.closest('.kanban-col');
+            if (!col) return;
+            if (!col.contains(e.relatedTarget)) {
+                col.classList.remove('drag-over');
+            }
+        });
+
+        document.addEventListener('drop', function(e) {
+            var col = e.target.closest('.kanban-col');
+            if (!col || !draggedCard) return;
+            e.preventDefault();
+            col.classList.remove('drag-over');
+
+            var cardsContainer = col.querySelector('.kanban-cards');
+            if (cardsContainer) {
+                cardsContainer.appendChild(draggedCard);
+                draggedCard.style.animation = 'none';
+                draggedCard.offsetHeight; // force reflow
+                draggedCard.style.animation = 'cardDrop 0.3s ease';
+            }
+            draggedCard = null;
+        });
+    }
+
+    // Init immediately if DOM is ready, otherwise wait
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFleetDragDrop);
+    } else {
+        initFleetDragDrop();
+    }
+})();
