@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-04T18:55:26.495389+08:00",
+  "lastUpdated": "2026-05-04T18:55:44.078884+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -231,10 +231,10 @@
       "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "project": "A2",
       "category": "A",
-      "agent": "Escritor",
+      "agent": "Escrita",
       "status": "paused",
       "priority": "medium",
-      "pauseReason": "Waiting for Escritor build",
+      "pauseReason": "Waiting for Escrita build",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-1": {
@@ -907,7 +907,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-04T18:55:26.498956+08:00",
+      "lastActive": "2026-05-04T18:55:44.079742+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1404,7 +1404,7 @@
       "id": "A2-1",
       "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "reason": "paused",
-      "owner": "Escritor"
+      "owner": "Escrita"
     },
     {
       "id": "A6-15",
@@ -1453,7 +1453,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-04T18:55:26.498956+08:00"
+        "lastActive": "2026-05-04T18:55:44.079742+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1514,12 +1514,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-04T18:55:26.495389+08:00",
+    "lastRun": "2026-05-04T18:55:44.078884+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-04T18:55:26.500313+08:00",
+      "runAt": "2026-05-04T18:55:44.080629+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
