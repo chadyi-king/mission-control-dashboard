@@ -4662,7 +4662,9 @@ function updateFleetPanel(data) {
         'quanta': 'quanta',
         'forger': 'forger',
         'escritor': 'escrita',
-        'autour': 'autour',
+        'escrita': 'escrita',
+        'autour': 'autoura',
+        'autoura': 'autoura',
         'mensamusa': 'mensamusa'
     };
 
@@ -4674,13 +4676,21 @@ function updateFleetPanel(data) {
 
         const s = (agent.status || 'offline').toLowerCase();
         const isLive = s === 'active' || s === 'working' || s === 'running_live';
+        const isPlanned = s === 'planned' || s === 'building';
+        const isExternal = s === 'external';
         const isNotBuilt = s === 'not_built_yet' || s === 'not_spawned' || s === 'error';
 
         if (isLive) liveCount++;
-        else if (isNotBuilt) queuedCount++;
+        else if (isNotBuilt || isPlanned) queuedCount++;
 
         if (badge) {
-            if (isNotBuilt) {
+            if (isExternal) {
+                badge.textContent = '\u25cc EXTERNAL';
+                badge.className = 'agent-badge not-built';
+            } else if (isPlanned) {
+                badge.textContent = s === 'building' ? '\u25cc BUILDING' : '\u25cc PLANNED';
+                badge.className = 'agent-badge not-built';
+            } else if (isNotBuilt) {
                 badge.textContent = '\u25cc NOT BUILT';
                 badge.className = 'agent-badge not-built';
             } else if (isLive) {
