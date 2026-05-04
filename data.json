@@ -1,11 +1,11 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-04T18:58:15.675696+08:00",
+  "lastUpdated": "2026-05-04T18:59:17.936072+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
-    "tasksLeft": 46,
-    "completedTasks": 22,
+    "tasksLeft": 44,
+    "completedTasks": 24,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
@@ -13,12 +13,12 @@
     "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 43
+    "backlog": 41
   },
   "completions": {
     "today": [],
     "this_week": [],
-    "all_time": 31
+    "all_time": 33
   },
   "weeklyProgress": {
     "completed": 0,
@@ -26,14 +26,13 @@
   },
   "workflow": {
     "pending": [
-      "A1-12",
       "A1-9",
       "A6-15",
       "A7-1",
       "A7-3",
       "A7-4",
+      "B1-2",
       "B8-2",
-      "C1-1",
       "C1-2"
     ],
     "active": [
@@ -43,6 +42,7 @@
     "done": [
       "A1-1",
       "A1-11",
+      "A1-12",
       "A1-13",
       "A1-2",
       "A1-4",
@@ -62,7 +62,8 @@
       "B6-7",
       "B6-8",
       "B6-9",
-      "B8-6"
+      "B8-6",
+      "C1-1"
     ],
     "urgent": [],
     "blocked": [],
@@ -86,7 +87,6 @@
       "A5-5",
       "A6-2",
       "B1-1",
-      "B1-2",
       "B11-1",
       "B2-1",
       "B3-2",
@@ -112,14 +112,13 @@
       "B6-10"
     ],
     "has deadline": [
-      "A1-12",
       "A1-9",
       "A6-15",
       "A7-1",
       "A7-3",
       "A7-4",
+      "B1-2",
       "B8-2",
-      "C1-1",
       "C1-2"
     ],
     "todo": [
@@ -138,7 +137,6 @@
       "A5-5",
       "A6-2",
       "B1-1",
-      "B1-2",
       "B11-1",
       "B2-1",
       "B3-2",
@@ -178,8 +176,8 @@
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "backlog",
-      "priority": "low",
+      "status": "pending",
+      "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A1-9": {
@@ -199,10 +197,11 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
+      "status": "done",
+      "priority": "done",
       "deadline": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00"
+      "createdAt": "2026-04-14T00:00:00",
+      "completedAt": "2026-05-04T18:59:17.936072+08:00"
     },
     "A1-13": {
       "id": "A1-13",
@@ -716,13 +715,15 @@
     },
     "C1-1": {
       "id": "C1-1",
-      "title": "Study for RES exam — Upload all lectures, PowerPoints, PDFs, Q&A to Cowork for study system [2026-06-01]",
+      "title": "Study for RES exam — Moved to Notebook LLM",
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "createdAt": "2026-04-14T00:00:00"
+      "status": "done",
+      "priority": "done",
+      "deadline": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00",
+      "completedAt": "2026-05-04T18:59:17.936072+08:00"
     },
     "C1-2": {
       "id": "C1-2",
@@ -916,7 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-04T18:58:15.678036+08:00",
+      "lastActive": "2026-05-04T18:59:17.937307+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1089,8 +1090,8 @@
         "A1-4"
       ],
       "totalTasks": 11,
-      "completedTasks": 8,
-      "completionPct": 73
+      "completedTasks": 9,
+      "completionPct": 82
     },
     "A2": {
       "name": "RE:UNITE",
@@ -1337,8 +1338,8 @@
         "C1-2"
       ],
       "totalTasks": 2,
-      "completedTasks": 0,
-      "completionPct": 0
+      "completedTasks": 1,
+      "completionPct": 50
     },
     "C2": {
       "name": "Side Sales",
@@ -1458,12 +1459,6 @@
   },
   "needsAttention": [
     {
-      "id": "A1-12",
-      "title": "Reply to lawyer",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
       "id": "A2-1",
       "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "reason": "paused",
@@ -1503,7 +1498,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-05-04",
-    "summary": "📋 46 tasks in flight. Focus on top priorities.",
+    "summary": "📋 44 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1520,7 +1515,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-04T18:58:15.678036+08:00"
+        "lastActive": "2026-05-04T18:59:17.937307+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1573,12 +1568,6 @@
     },
     "overdueTasks": [
       {
-        "id": "A1-12",
-        "title": "Reply to lawyer",
-        "deadline": "2026-04-28",
-        "daysOverdue": 6
-      },
-      {
         "id": "A6-15",
         "title": "Build Cerebronn as a proper bot in VS Code Studio",
         "deadline": "2026-04-30",
@@ -1605,12 +1594,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-04T18:58:15.675696+08:00",
+    "lastRun": "2026-05-04T18:59:17.936072+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-04T18:58:15.679633+08:00",
+      "runAt": "2026-05-04T18:59:17.938521+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
