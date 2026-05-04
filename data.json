@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-04T18:55:44.078884+08:00",
+  "lastUpdated": "2026-05-04T18:58:11.557303+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -894,72 +894,135 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
-      "role": "The Face — Primary interface",
-      "platform": "Hermes Gateway",
-      "status": "active",
-      "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-05-04T16:49:44.013163+08:00",
+      "role": "The Face - Primary interface",
+      "platform": "Hermes Gateway / Telegram",
+      "status": "stale",
+      "currentTask": "Live session on Telegram",
+      "lastActive": "2026-04-16T20:07:36+08:00",
+      "capabilities": []
+    },
+    "cerebronn": {
+      "name": "Cerebronn",
+      "role": "The Brain - Persistent memory & decisions",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "Architecture & deep reasoning (The Brain)",
+      "lastActive": "",
       "capabilities": []
     },
     "helios": {
       "name": "Helios",
-      "role": "The Spine — COO, auditor, reporter",
+      "role": "The Spine - COO, auditor, reporter",
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-04T18:55:44.079742+08:00",
+      "lastActive": "2026-05-04T18:58:11.559532+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
-      "role": "Trading — XAUUSD execution on OANDA",
-      "platform": "Telegram monitor",
+      "role": "Trading - OANDA execution/status",
+      "platform": "Telegram monitor / Quanta v3",
       "status": "stale",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
       "lastActive": "2026-04-28T22:59:32.498137+08:00",
       "capabilities": []
     },
-    "cerebronn": {
-      "name": "Cerebronn",
-      "role": "The Brain — Persistent memory & decisions",
-      "platform": "VS Code / Copilot",
-      "status": "not_built_yet",
-      "currentTask": "Architecture & deep reasoning (The Brain)",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "tele": {
-      "name": "Tele",
-      "role": "The Face — Telegram task management interface",
-      "platform": "Telegram Bot (@chad_yi_bot)",
-      "status": "not_built_yet",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "escritor": {
-      "name": "Escritor",
-      "role": "Story Agent — RE:UNITE novel writing",
-      "platform": "Systemd service",
-      "status": "not_built_yet",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
     "forger": {
       "name": "Forger",
-      "role": "Web Architect — websites, SEO, full-stack",
-      "platform": "Systemd service",
-      "status": "not_built_yet",
+      "role": "Web Architect - websites, SEO, full-stack",
+      "platform": "Hermes planned agent",
+      "status": "planned",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
     },
-    "autour": {
-      "name": "Autour",
-      "role": "Script Agent — KOE content & screenplays",
-      "platform": "Systemd service",
-      "status": "not_built_yet",
+    "escrita": {
+      "name": "Escrita",
+      "role": "Story Agent - RE:UNITE novel writing",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "autoura": {
+      "name": "Autoura",
+      "role": "Content Agent - KOE content, video, client acquisition",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "mensamusa": {
+      "name": "Mensamusa",
+      "role": "Research - knowledge and options intelligence",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "clair": {
+      "name": "Clair",
+      "role": "Streaming Scout",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "eplusplus": {
+      "name": "E++",
+      "role": "Core Dev",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "kotler": {
+      "name": "Kotler",
+      "role": "Marketing Ops - Google Ads Manager",
+      "platform": "External project",
+      "status": "external",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "ledger": {
+      "name": "Ledger",
+      "role": "Finance / CRM",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "atlas": {
+      "name": "Atlas",
+      "role": "Researcher",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "pulsar": {
+      "name": "Pulsar",
+      "role": "Data Sentinel",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "abed": {
+      "name": "Abed",
+      "role": "Community Manager",
+      "platform": "Hermes planned agent",
+      "status": "planned",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
@@ -1448,35 +1511,63 @@
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
-        "status": "active",
-        "lastActive": "2026-05-04T16:49:44.013163+08:00"
+        "status": "stale",
+        "lastActive": "2026-04-16T20:07:36+08:00"
+      },
+      "cerebronn": {
+        "status": "planned",
+        "lastActive": ""
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-04T18:55:44.079742+08:00"
+        "lastActive": "2026-05-04T18:58:11.559532+08:00"
       },
       "quanta": {
         "status": "stale",
         "lastActive": "2026-04-28T22:59:32.498137+08:00"
       },
-      "cerebronn": {
-        "status": "not_built_yet",
-        "lastActive": ""
-      },
-      "tele": {
-        "status": "not_built_yet",
-        "lastActive": ""
-      },
-      "escritor": {
-        "status": "not_built_yet",
-        "lastActive": ""
-      },
       "forger": {
-        "status": "not_built_yet",
+        "status": "planned",
         "lastActive": ""
       },
-      "autour": {
-        "status": "not_built_yet",
+      "escrita": {
+        "status": "planned",
+        "lastActive": ""
+      },
+      "autoura": {
+        "status": "planned",
+        "lastActive": ""
+      },
+      "mensamusa": {
+        "status": "planned",
+        "lastActive": ""
+      },
+      "clair": {
+        "status": "planned",
+        "lastActive": ""
+      },
+      "eplusplus": {
+        "status": "planned",
+        "lastActive": ""
+      },
+      "kotler": {
+        "status": "external",
+        "lastActive": ""
+      },
+      "ledger": {
+        "status": "planned",
+        "lastActive": ""
+      },
+      "atlas": {
+        "status": "planned",
+        "lastActive": ""
+      },
+      "pulsar": {
+        "status": "planned",
+        "lastActive": ""
+      },
+      "abed": {
+        "status": "planned",
         "lastActive": ""
       }
     },
@@ -1514,12 +1605,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-04T18:55:44.078884+08:00",
+    "lastRun": "2026-05-04T18:58:11.557303+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-04T18:55:44.080629+08:00",
+      "runAt": "2026-05-04T18:58:11.560965+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
