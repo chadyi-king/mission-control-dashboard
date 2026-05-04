@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-04T18:40:24.663541+08:00",
+  "lastUpdated": "2026-05-04T18:55:26.495389+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -345,8 +345,8 @@
       "agent": "Quanta",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-04-19T00:30:44.905803+08:00",
-      "completedAt": "2026-05-03T00:30:44.905803+08:00"
+      "createdAt": "2026-04-19T16:45:21.945506+08:00",
+      "completedAt": "2026-05-03T16:45:21.945506+08:00"
     },
     "A5-3": {
       "id": "A5-3",
@@ -356,8 +356,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-04-19T00:30:44.905803+08:00",
-      "completedAt": "2026-05-03T00:30:44.905803+08:00"
+      "createdAt": "2026-04-19T16:45:21.945506+08:00",
+      "completedAt": "2026-05-03T16:45:21.945506+08:00"
     },
     "A5-4": {
       "id": "A5-4",
@@ -537,8 +537,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-04-19T00:30:44.905803+08:00",
-      "completedAt": "2026-05-03T00:30:44.905803+08:00"
+      "createdAt": "2026-04-19T16:45:21.945506+08:00",
+      "completedAt": "2026-05-03T16:45:21.945506+08:00"
     },
     "B6-3": {
       "id": "B6-3",
@@ -560,8 +560,8 @@
       "agent": "Forger",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-04-19T00:30:44.905803+08:00",
-      "completedAt": "2026-05-03T00:30:44.905803+08:00"
+      "createdAt": "2026-04-19T16:45:21.945506+08:00",
+      "completedAt": "2026-05-03T16:45:21.945506+08:00"
     },
     "B6-5": {
       "id": "B6-5",
@@ -907,7 +907,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-04T18:40:24.664769+08:00",
+      "lastActive": "2026-05-04T18:55:26.498956+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1453,7 +1453,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-04T18:40:24.664769+08:00"
+        "lastActive": "2026-05-04T18:55:26.498956+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1514,12 +1514,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-04T18:40:24.663541+08:00",
+    "lastRun": "2026-05-04T18:55:26.495389+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-04T18:40:24.665878+08:00",
+      "runAt": "2026-05-04T18:55:26.500313+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
