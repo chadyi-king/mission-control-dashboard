@@ -1,13 +1,13 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-03T22:16:17.301982+08:00",
+  "lastUpdated": "2026-05-04T16:30:32.097881+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
     "tasksLeft": 44,
     "completedTasks": 24,
     "completedToday": 0,
-    "completedThisWeek": 4,
+    "completedThisWeek": 0,
     "critical": 0,
     "urgent": 0,
     "active": 1,
@@ -17,32 +17,7 @@
   },
   "completions": {
     "today": [],
-    "this_week": [
-      {
-        "id": "A1-12",
-        "title": "Reply to lawyer",
-        "date": "2026-04-28",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "B6-9",
-        "title": "Order items for SPH event",
-        "date": "2026-04-27",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "B6-3",
-        "title": "SPH items to order",
-        "date": "2026-04-27",
-        "agent": "CHAD_YI"
-      },
-      {
-        "id": "C1-1",
-        "title": "Study for RES exam — Moved to Notebook LLM",
-        "date": "2026-04-28",
-        "agent": "CHAD_YI"
-      }
-    ],
+    "this_week": [],
     "all_time": 37
   },
   "weeklyProgress": {
@@ -916,32 +891,7 @@
       "createdAt": "2026-02-01T00:00:00"
     }
   },
-  "recentWins": [
-    {
-      "id": "A1-12",
-      "title": "Reply to lawyer",
-      "date": "2026-04-28",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "B6-9",
-      "title": "Order items for SPH event",
-      "date": "2026-04-27",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "B6-3",
-      "title": "SPH items to order",
-      "date": "2026-04-27",
-      "agent": "CHAD_YI"
-    },
-    {
-      "id": "C1-1",
-      "title": "Study for RES exam — Moved to Notebook LLM",
-      "date": "2026-04-28",
-      "agent": "CHAD_YI"
-    }
-  ],
+  "recentWins": [],
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
@@ -949,7 +899,7 @@
       "platform": "Hermes Gateway",
       "status": "active",
       "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-05-03T17:05:27.772673+08:00",
+      "lastActive": "2026-05-04T16:29:18.219187+08:00",
       "capabilities": []
     },
     "helios": {
@@ -958,7 +908,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-03T22:16:17.304489+08:00",
+      "lastActive": "2026-05-04T16:30:32.100730+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1484,21 +1434,21 @@
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-05-03",
+    "date": "2026-05-04",
     "summary": "📋 44 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
-    "completedThisWeek": 4,
+    "completedThisWeek": 0,
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
         "status": "active",
-        "lastActive": "2026-05-03T17:05:27.772673+08:00"
+        "lastActive": "2026-05-04T16:29:18.219187+08:00"
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-03T22:16:17.304489+08:00"
+        "lastActive": "2026-05-04T16:30:32.100730+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1530,35 +1480,35 @@
         "id": "A6-15",
         "title": "Build Cerebronn as a proper bot in VS Code Studio",
         "deadline": "2026-04-30",
-        "daysOverdue": 3
+        "daysOverdue": 4
       },
       {
         "id": "A7-3",
         "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
         "deadline": "2026-04-30",
-        "daysOverdue": 3
+        "daysOverdue": 4
       },
       {
         "id": "A7-4",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
-        "daysOverdue": 5
+        "daysOverdue": 6
       },
       {
         "id": "B8-2",
         "title": "Figure out Higgsfield AI for marketing studio",
         "deadline": "2026-04-24",
-        "daysOverdue": 9
+        "daysOverdue": 10
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-05-03T22:16:17.301982+08:00",
+    "lastRun": "2026-05-04T16:30:32.097881+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-03T22:16:17.306053+08:00",
+      "runAt": "2026-05-04T16:30:32.102513+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1653,13 +1603,6 @@
     },
     "daily_snapshots": [
       {
-        "date": "2026-04-27",
-        "agent": "quanta",
-        "balance": 3133.68,
-        "pnl": -89.43,
-        "note": "Balance 3133.68 | P/L -89.43 today | Open 1"
-      },
-      {
         "date": "2026-04-28",
         "agent": "quanta",
         "balance": 3169.98,
@@ -1696,6 +1639,13 @@
       },
       {
         "date": "2026-05-03",
+        "agent": "quanta",
+        "balance": 3047.0,
+        "pnl": 0.0,
+        "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
+      },
+      {
+        "date": "2026-05-04",
         "agent": "quanta",
         "balance": 3047.0,
         "pnl": 0.0,
