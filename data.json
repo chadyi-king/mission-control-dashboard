@@ -1,10 +1,6 @@
 {
   "version": "3.0.0",
-<<<<<<< HEAD
-  "lastUpdated": "2026-05-04T19:00:32.455406+08:00",
-=======
-  "lastUpdated": "2026-05-04T18:46:01.992651+08:00",
->>>>>>> origin/main
+  "lastUpdated": "2026-05-04T19:01:46.861264+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -22,11 +18,7 @@
   "completions": {
     "today": [],
     "this_week": [],
-<<<<<<< HEAD
     "all_time": 33
-=======
-    "all_time": 37
->>>>>>> origin/main
   },
   "weeklyProgress": {
     "completed": 0,
@@ -180,7 +172,7 @@
     },
     "B1-2": {
       "id": "B1-2",
-      "title": "Draft formal message to Charmaine about suing platform",
+      "title": "Draft formal message to Charmaine about suing platform (not individuals) per lawyer/judge advice to claim money",
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
@@ -207,15 +199,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-<<<<<<< HEAD
       "deadline": "2026-04-28",
       "createdAt": "2026-04-14T00:00:00",
       "completedAt": "2026-05-04T18:59:17.936072+08:00"
-=======
-      "completed": "2026-04-28",
-      "completedAt": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00"
->>>>>>> origin/main
     },
     "A1-13": {
       "id": "A1-13",
@@ -225,9 +211,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-04-24",
-      "completedAt": "2026-04-24",
-      "createdAt": "2026-04-10T00:00:00"
+      "deadline": "2026-04-24",
+      "createdAt": "2026-04-10T00:00:00",
+      "completedAt": "2026-04-24"
     },
     "A1-14": {
       "id": "A1-14",
@@ -561,8 +547,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-04-27",
-      "completedAt": "2026-04-27",
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01",
       "createdAt": "2026-04-13T00:00:00"
     },
     "B6-4": {
@@ -630,9 +616,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-04-27",
-      "completedAt": "2026-04-27",
-      "createdAt": "2026-04-13T00:00:00"
+      "deadline": "2026-04-17",
+      "createdAt": "2026-04-13T00:00:00",
+      "completedAt": "2026-04-27"
     },
     "B7-1": {
       "id": "B7-1",
@@ -735,15 +721,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-<<<<<<< HEAD
       "deadline": "2026-04-28",
       "createdAt": "2026-04-14T00:00:00",
       "completedAt": "2026-05-04T18:59:17.936072+08:00"
-=======
-      "completed": "2026-04-28",
-      "completedAt": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00"
->>>>>>> origin/main
     },
     "C1-2": {
       "id": "C1-2",
@@ -915,7 +895,6 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
-<<<<<<< HEAD
       "role": "The Face - Primary interface",
       "platform": "Hermes Gateway / Telegram",
       "status": "stale",
@@ -930,13 +909,6 @@
       "status": "planned",
       "currentTask": "Architecture & deep reasoning (The Brain)",
       "lastActive": "",
-=======
-      "role": "The Face — Primary interface",
-      "platform": "Hermes Gateway",
-      "status": "active",
-      "currentTask": "Task coordination & reporting",
-      "lastActive": "2026-05-04T16:49:44.013163+08:00",
->>>>>>> origin/main
       "capabilities": []
     },
     "helios": {
@@ -945,11 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-<<<<<<< HEAD
-      "lastActive": "2026-05-04T19:00:32.457089+08:00",
-=======
-      "lastActive": "2026-05-04T18:46:01.994922+08:00",
->>>>>>> origin/main
+      "lastActive": "2026-05-04T19:01:46.862842+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -958,7 +926,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "stale",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-30T04:13:40.713974+08:00",
+      "lastActive": "2026-04-28T22:59:32.498137+08:00",
       "capabilities": []
     },
     "forger": {
@@ -1538,7 +1506,6 @@
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
-<<<<<<< HEAD
         "status": "stale",
         "lastActive": "2026-04-16T20:07:36+08:00"
       },
@@ -1548,19 +1515,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-04T19:00:32.457089+08:00"
-=======
-        "status": "active",
-        "lastActive": "2026-05-04T16:49:44.013163+08:00"
-      },
-      "helios": {
-        "status": "active",
-        "lastActive": "2026-05-04T18:46:01.994922+08:00"
->>>>>>> origin/main
+        "lastActive": "2026-05-04T19:01:46.862842+08:00"
       },
       "quanta": {
         "status": "stale",
-        "lastActive": "2026-04-30T04:13:40.713974+08:00"
+        "lastActive": "2026-04-28T22:59:32.498137+08:00"
       },
       "forger": {
         "status": "planned",
@@ -1635,20 +1594,12 @@
     ]
   },
   "audit": {
-<<<<<<< HEAD
-    "lastRun": "2026-05-04T19:00:32.455406+08:00",
-=======
-    "lastRun": "2026-05-04T18:46:01.992651+08:00",
->>>>>>> origin/main
+    "lastRun": "2026-05-04T19:01:46.861264+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-<<<<<<< HEAD
-      "runAt": "2026-05-04T19:00:32.458091+08:00",
-=======
-      "runAt": "2026-05-04T18:46:01.995826+08:00",
->>>>>>> origin/main
+      "runAt": "2026-05-04T19:01:46.863811+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1719,13 +1670,13 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 3047.0,
+        "current_balance": 3169.98,
         "baseline_balance": 3821.73,
-        "weekly_profit": 0.0,
+        "weekly_profit": 36.3,
         "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 0.0,
+        "today_pnl": 36.3,
         "status": "active"
       }
     },
@@ -1780,28 +1731,16 @@
       {
         "date": "2026-05-03",
         "agent": "quanta",
-<<<<<<< HEAD
         "balance": 3169.98,
         "pnl": 36.3,
         "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
-=======
-        "balance": 3047.0,
-        "pnl": 0.0,
-        "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
->>>>>>> origin/main
       },
       {
         "date": "2026-05-04",
         "agent": "quanta",
-<<<<<<< HEAD
         "balance": 3169.98,
         "pnl": 36.3,
         "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
-=======
-        "balance": 3047.0,
-        "pnl": 0.0,
-        "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
->>>>>>> origin/main
       }
     ],
     "currency": "USD",
