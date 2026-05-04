@@ -3368,7 +3368,7 @@ console.log('[Helios WS] connected:', wsUrl);
             // Convert agents object to array if needed
             const agentsArray = Array.isArray(agents) ? agents : Object.entries(agents).map(([id, data]) => ({
                 id,
-                name: id.charAt(0).toUpperCase() + id.slice(1).replace('_', ' '),
+                name: formatAgentDisplay(id),
                 ...data
             }));
             

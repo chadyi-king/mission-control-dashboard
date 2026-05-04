@@ -71,31 +71,34 @@
     function _builtinDefaults() {
         return {
             agents: {
-                'chad-yi':   { displayName:'Chad Yi',    initials:'CY', colors:{ bg:'rgba(255,140,0,0.18)',  border:'rgba(255,140,0,0.4)',   text:'#ff8c00' }, priority:1, fleet:true,  excluded:false, requirements:'Needs OpenClaw + Telegram to count as truly active; dashboard can only verify local presence.' },
-                'helios':    { displayName:'Helios',     initials:'HE', colors:{ bg:'rgba(220,38,38,0.18)',  border:'rgba(220,38,38,0.4)',   text:'#e04040' }, priority:2, fleet:true,  excluded:false, requirements:'Needs audit/update/reporting activity to count as active; dashboard checks latest sync.' },
-                'cerebronn': { displayName:'Cerebronn',  initials:'CB', colors:{ bg:'rgba(100,100,230,0.18)',border:'rgba(100,100,230,0.35)',text:'#9090ee' }, priority:3, fleet:true,  excluded:false, requirements:'Needs live planning/infrastructure use to count as active; dashboard only sees recent heartbeat.' },
+                'chad-yi':   { displayName:'Chad Yi',    initials:'CY', colors:{ bg:'rgba(255,140,0,0.18)',  border:'rgba(255,140,0,0.4)',   text:'#ff8c00' }, priority:1, fleet:true,  excluded:false, requirements:'Needs Hermes Gateway + Telegram to count as truly active; dashboard can verify local presence and recent Hermes signal.' },
+                'cerebronn': { displayName:'Cerebronn',  initials:'CB', colors:{ bg:'rgba(100,100,230,0.18)',border:'rgba(100,100,230,0.35)',text:'#9090ee' }, priority:2, fleet:true,  excluded:false, type:'planned', requirements:'Planned brain and decision layer. No live runtime required until built.' },
+                'helios':    { displayName:'Helios',     initials:'HE', colors:{ bg:'rgba(220,38,38,0.18)',  border:'rgba(220,38,38,0.4)',   text:'#e04040' }, priority:3, fleet:true,  excluded:false, requirements:'Needs audit/update/reporting activity to count as active; dashboard checks latest sync.' },
                 'quanta':    { displayName:'Quanta',     initials:'QT', colors:{ bg:'rgba(64,145,108,0.18)', border:'rgba(64,145,108,0.35)', text:'#77d8a8' }, priority:4, fleet:true,  excluded:false, requirements:'Needs Telegram-monitoring signal to count as active; dashboard only sees recent heartbeat.' },
-                'escritor':  { displayName:'Escritor',   initials:'ES', colors:{ bg:'rgba(180,120,60,0.18)', border:'rgba(180,120,60,0.35)', text:'#d4a040' }, priority:5, fleet:true,  excluded:false },
-                'forger':    { displayName:'Forger',     initials:'FG', colors:{ bg:'rgba(160,60,180,0.18)', border:'rgba(160,60,180,0.35)', text:'#c070d0' }, priority:6, fleet:true,  excluded:false },
-                'autour':    { displayName:'Autour',     initials:'AU', colors:{ bg:'rgba(200,80,80,0.18)',  border:'rgba(200,80,80,0.35)',  text:'#e06060' }, priority:7, fleet:true,  excluded:false },
-                'mensamusa': { displayName:'Mensamusa',  initials:'MM', colors:{ bg:'rgba(120,120,120,0.18)',border:'rgba(120,120,120,0.35)',text:'#aaa'    }, priority:8, fleet:true,  excluded:false },
-                'tele':      { displayName:'Tele',       initials:'TL', colors:{ bg:'rgba(80,80,80,0.18)',   border:'rgba(80,80,80,0.35)',   text:'#666'    }, priority:99,fleet:false, excluded:true  },
-                'clair':     { displayName:'Clair',      initials:'CL', colors:{ bg:'rgba(80,150,200,0.12)', border:'rgba(80,150,200,0.25)', text:'#6a9cc0' }, priority:9, fleet:true,  excluded:false },
-                'eplusplus': { displayName:'E++',        initials:'E+', colors:{ bg:'rgba(100,100,100,0.12)',border:'rgba(100,100,100,0.25)',text:'#888'    }, priority:10,fleet:true,  excluded:false },
-                'kotler':    { displayName:'Kotler',     initials:'KT', colors:{ bg:'rgba(180,100,160,0.12)',border:'rgba(180,100,160,0.25)',text:'#b070a0' }, priority:11,fleet:true,  excluded:false },
-                'ledger':    { displayName:'Ledger',     initials:'LG', colors:{ bg:'rgba(140,140,80,0.12)', border:'rgba(140,140,80,0.25)', text:'#a0a060' }, priority:12,fleet:true,  excluded:false },
-                'atlas':     { displayName:'Atlas',      initials:'AT', colors:{ bg:'rgba(80,120,80,0.12)',  border:'rgba(80,120,80,0.25)',  text:'#609060' }, priority:13,fleet:true,  excluded:false },
-                'pulsar':    { displayName:'Pulsar',     initials:'PS', colors:{ bg:'rgba(80,80,140,0.12)',  border:'rgba(80,80,140,0.25)',  text:'#6060a0' }, priority:14,fleet:true,  excluded:false },
-                'abed':      { displayName:'Abed',       initials:'AB', colors:{ bg:'rgba(160,120,80,0.12)', border:'rgba(160,120,80,0.25)', text:'#a08060' }, priority:15,fleet:true,  excluded:false }
+                'forger':    { displayName:'Forger',     initials:'FG', colors:{ bg:'rgba(160,60,180,0.18)', border:'rgba(160,60,180,0.35)', text:'#c070d0' }, priority:5, fleet:true,  excluded:false, type:'planned' },
+                'escrita':   { displayName:'Escrita',    initials:'ES', colors:{ bg:'rgba(180,120,60,0.18)', border:'rgba(180,120,60,0.35)', text:'#d4a040' }, priority:6, fleet:true,  excluded:false, type:'planned', requirements:'She-agent for writing and RE:UNITE content. Canonical ID replaces legacy escritor.' },
+                'autoura':   { displayName:'Autoura',    initials:'AU', colors:{ bg:'rgba(200,80,80,0.18)',  border:'rgba(200,80,80,0.35)',  text:'#e06060' }, priority:7, fleet:true,  excluded:false, type:'planned', requirements:'She-agent for content, scouting, and client acquisition. Canonical ID replaces legacy autour.' },
+                'mensamusa': { displayName:'Mensamusa',  initials:'MM', colors:{ bg:'rgba(120,120,120,0.18)',border:'rgba(120,120,120,0.35)',text:'#aaa'    }, priority:8, fleet:true,  excluded:false, type:'planned' },
+                'clair':     { displayName:'Clair',      initials:'CL', colors:{ bg:'rgba(80,150,200,0.12)', border:'rgba(80,150,200,0.25)', text:'#6a9cc0' }, priority:9, fleet:true,  excluded:false, type:'planned' },
+                'eplusplus': { displayName:'E++',        initials:'E+', colors:{ bg:'rgba(100,100,100,0.12)',border:'rgba(100,100,100,0.25)',text:'#888'    }, priority:10,fleet:true,  excluded:false, type:'planned' },
+                'kotler':    { displayName:'Kotler',     initials:'KT', colors:{ bg:'rgba(180,100,160,0.12)',border:'rgba(180,100,160,0.25)',text:'#b070a0' }, priority:11,fleet:true,  excluded:false, type:'external', requirements:'External Google Ads Manager project mapped to Hermes.' },
+                'ledger':    { displayName:'Ledger',     initials:'LG', colors:{ bg:'rgba(140,140,80,0.12)', border:'rgba(140,140,80,0.25)', text:'#a0a060' }, priority:12,fleet:true,  excluded:false, type:'planned' },
+                'atlas':     { displayName:'Atlas',      initials:'AT', colors:{ bg:'rgba(80,120,80,0.12)',  border:'rgba(80,120,80,0.25)',  text:'#609060' }, priority:13,fleet:true,  excluded:false, type:'planned' },
+                'pulsar':    { displayName:'Pulsar',     initials:'PS', colors:{ bg:'rgba(80,80,140,0.12)',  border:'rgba(80,80,140,0.25)',  text:'#6060a0' }, priority:14,fleet:true,  excluded:false, type:'planned' },
+                'abed':      { displayName:'Abed',       initials:'AB', colors:{ bg:'rgba(160,120,80,0.12)', border:'rgba(160,120,80,0.25)', text:'#a08060' }, priority:15,fleet:true,  excluded:false, type:'planned' }
             },
-            healthPriority: ['chad-yi', 'cerebronn', 'helios']
+            healthPriority: ['chad-yi', 'cerebronn', 'helios', 'quanta', 'forger', 'escrita', 'autoura', 'mensamusa', 'clair', 'eplusplus', 'kotler', 'ledger', 'atlas', 'pulsar', 'abed']
         };
     }
 
     /* ── Public API ─────────────────────────────────────────────────── */
 
     function normalizeAgentId(agent) {
-        return String(agent || '').trim().toLowerCase().replace(/_/g, '-');
+        var id = String(agent || '').trim().toLowerCase().replace(/_/g, '-');
+        if (id === 'escritor') return 'escrita';
+        if (id === 'autour') return 'autoura';
+        if (id === 'tele') return 'chad-yi';
+        return id;
     }
 
     function getAgentConfig(agent) {
@@ -148,6 +151,15 @@
         var lastSeen = agent.lastActive ? formatRelativeTimestamp(agent.lastActive) : 'No signal yet';
         var cfg = getAgentConfig(agentId);
         var req = cfg.requirements || '';
+        var status = String(agent.status || '').toLowerCase();
+
+        if (status === 'external' || cfg.type === 'external') {
+            return { tone:'offline', dotClass:'offline', label:'external', detail: req || agent.currentTask || 'Mapped external project.' };
+        }
+
+        if (status === 'planned' || status === 'not_built_yet' || cfg.type === 'planned') {
+            return { tone:'offline', dotClass:'offline', label:'planned', detail: req || agent.currentTask || 'Planned agent, not live yet.' };
+        }
 
         if (agent.status === 'blocked') {
             return { tone:'blocked', dotClass:'blocked', label:'blocked', detail: agent.currentTask || 'Waiting on input' };

@@ -4,7 +4,7 @@
     "chad-yi": {
       "displayName": "Chad Yi",
       "initials": "CY",
-      "opacity": 1.0,
+      "opacity": 1,
       "colors": {
         "bg": "rgba(255,140,0,0.18)",
         "border": "rgba(255,140,0,0.4)",
@@ -15,22 +15,7 @@
       "priority": 1,
       "fleet": true,
       "excluded": false,
-      "requirements": "Needs OpenClaw + Telegram to count as truly active; dashboard can only verify local presence."
-    },
-    "helios": {
-      "displayName": "Helios",
-      "initials": "HE",
-      "colors": {
-        "bg": "rgba(220,38,38,0.18)",
-        "border": "rgba(220,38,38,0.4)",
-        "text": "#e04040"
-      },
-      "role": "Operations / Sync",
-      "type": "local",
-      "priority": 2,
-      "fleet": true,
-      "excluded": false,
-      "requirements": "Needs audit/update/reporting activity to count as active; dashboard checks latest sync."
+      "requirements": "Needs Hermes Gateway + Telegram to count as truly active; dashboard can verify local presence and recent Hermes signal."
     },
     "cerebronn": {
       "displayName": "Cerebronn",
@@ -42,11 +27,26 @@
         "text": "#9090ee"
       },
       "role": "Strategy / Planning",
+      "type": "planned",
+      "priority": 2,
+      "fleet": true,
+      "excluded": false,
+      "requirements": "Planned brain and decision layer. No live runtime required until built."
+    },
+    "helios": {
+      "displayName": "Helios",
+      "initials": "HE",
+      "colors": {
+        "bg": "rgba(220,38,38,0.18)",
+        "border": "rgba(220,38,38,0.4)",
+        "text": "#e04040"
+      },
+      "role": "Operations / Sync",
       "type": "local",
       "priority": 3,
       "fleet": true,
       "excluded": false,
-      "requirements": "Needs live planning/infrastructure use to count as active; dashboard only sees recent heartbeat."
+      "requirements": "Needs audit/update/reporting activity to count as active; dashboard checks latest sync."
     },
     "quanta": {
       "displayName": "Quanta",
@@ -61,21 +61,7 @@
       "priority": 4,
       "fleet": true,
       "excluded": false,
-      "requirements": "Needs Telegram-monitoring signal to count as active; dashboard only sees recent heartbeat."
-    },
-    "escritor": {
-      "displayName": "Escritor",
-      "initials": "ES",
-      "colors": {
-        "bg": "rgba(180,120,60,0.18)",
-        "border": "rgba(180,120,60,0.35)",
-        "text": "#d4a040"
-      },
-      "role": "Writing / Content",
-      "type": "local",
-      "priority": 5,
-      "fleet": true,
-      "excluded": false
+      "requirements": "Trading status is read-only in this cleanup. Do not migrate runtime without a Quanta safety audit."
     },
     "forger": {
       "displayName": "Forger",
@@ -86,24 +72,40 @@
         "text": "#c070d0"
       },
       "role": "Code / Build",
-      "type": "local",
-      "priority": 6,
+      "type": "planned",
+      "priority": 5,
       "fleet": true,
       "excluded": false
     },
-    "autour": {
-      "displayName": "Autour",
+    "escrita": {
+      "displayName": "Escrita",
+      "initials": "ES",
+      "colors": {
+        "bg": "rgba(180,120,60,0.18)",
+        "border": "rgba(180,120,60,0.35)",
+        "text": "#d4a040"
+      },
+      "role": "Writing / Content",
+      "type": "planned",
+      "priority": 6,
+      "fleet": true,
+      "excluded": false,
+      "requirements": "She-agent for writing and RE:UNITE content. Canonical ID replaces legacy escritor."
+    },
+    "autoura": {
+      "displayName": "Autoura",
       "initials": "AU",
       "colors": {
         "bg": "rgba(200,80,80,0.18)",
         "border": "rgba(200,80,80,0.35)",
         "text": "#e06060"
       },
-      "role": "Media / KOE",
-      "type": "local",
+      "role": "Content Creation / Client Acquisition",
+      "type": "planned",
       "priority": 7,
       "fleet": true,
-      "excluded": false
+      "excluded": false,
+      "requirements": "She-agent for content, scouting, and client acquisition. Canonical ID replaces legacy autour."
     },
     "mensamusa": {
       "displayName": "Mensamusa",
@@ -114,24 +116,10 @@
         "text": "#aaa"
       },
       "role": "Research / Knowledge",
-      "type": "local",
+      "type": "planned",
       "priority": 8,
       "fleet": true,
       "excluded": false
-    },
-    "tele": {
-      "displayName": "Tele",
-      "initials": "TL",
-      "colors": {
-        "bg": "rgba(80,80,80,0.18)",
-        "border": "rgba(80,80,80,0.35)",
-        "text": "#666"
-      },
-      "role": "Telegram Bridge",
-      "type": "local",
-      "priority": 99,
-      "fleet": false,
-      "excluded": true
     },
     "clair": {
       "displayName": "Clair",
@@ -142,7 +130,7 @@
         "text": "#6a9cc0"
       },
       "role": "Streaming Scout",
-      "type": "local",
+      "type": "planned",
       "priority": 9,
       "fleet": true,
       "excluded": false
@@ -156,7 +144,7 @@
         "text": "#888"
       },
       "role": "Core Dev",
-      "type": "local",
+      "type": "planned",
       "priority": 10,
       "fleet": true,
       "excluded": false
@@ -164,17 +152,18 @@
     "kotler": {
       "displayName": "Kotler",
       "initials": "KT",
-      "opacity": 1.0,
+      "opacity": 1,
       "colors": {
         "bg": "rgba(180,100,160,0.12)",
         "border": "rgba(180,100,160,0.25)",
         "text": "#b070a0"
       },
       "role": "Marketing Ops",
-      "type": "local",
+      "type": "external",
       "priority": 11,
       "fleet": true,
-      "excluded": false
+      "excluded": false,
+      "requirements": "External Google Ads Manager project at /mnt/c/Users/chad_/Desktop/Kotler/Google Ads Manager."
     },
     "ledger": {
       "displayName": "Ledger",
@@ -185,7 +174,7 @@
         "text": "#a0a060"
       },
       "role": "Finance / CRM",
-      "type": "local",
+      "type": "planned",
       "priority": 12,
       "fleet": true,
       "excluded": false
@@ -199,7 +188,7 @@
         "text": "#609060"
       },
       "role": "Researcher",
-      "type": "local",
+      "type": "planned",
       "priority": 13,
       "fleet": true,
       "excluded": false
@@ -213,7 +202,7 @@
         "text": "#6060a0"
       },
       "role": "Data Sentinel",
-      "type": "local",
+      "type": "planned",
       "priority": 14,
       "fleet": true,
       "excluded": false
@@ -227,7 +216,7 @@
         "text": "#a08060"
       },
       "role": "Community Manager",
-      "type": "local",
+      "type": "planned",
       "priority": 15,
       "fleet": true,
       "excluded": false
@@ -236,10 +225,30 @@
   "healthPriority": [
     "chad-yi",
     "cerebronn",
-    "helios"
+    "helios",
+    "quanta",
+    "forger",
+    "escrita",
+    "autoura",
+    "mensamusa",
+    "clair",
+    "eplusplus",
+    "kotler",
+    "ledger",
+    "atlas",
+    "pulsar",
+    "abed"
   ],
   "meta": {
-    "description": "Central agent registry \u2014 single source of truth for all agent display config.",
-    "lastUpdated": "2025-07-24"
+    "description": "Central Hermes agent registry - single source of truth for dashboard display config.",
+    "lastUpdated": "2026-05-04",
+    "agentCount": 15,
+    "removedActiveIds": [
+      "tele"
+    ],
+    "aliases": {
+      "escritor": "escrita",
+      "autour": "autoura"
+    }
   }
 }
