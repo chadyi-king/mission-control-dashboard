@@ -127,16 +127,16 @@
     {
       "date": "2026-05-03",
       "agent": "quanta",
-      "balance": 3169.98,
-      "pnl": 36.3,
-      "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
+      "balance": 3047.0,
+      "pnl": 0.0,
+      "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
     },
     {
       "date": "2026-05-04",
       "agent": "quanta",
-      "balance": 3169.98,
-      "pnl": 36.3,
-      "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
+      "balance": 3047.0,
+      "pnl": 0.0,
+      "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
     },
     {
       "date": "2026-05-05",
