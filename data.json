@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-05T17:31:03.648829+08:00",
+  "lastUpdated": "2026-05-05T17:36:51.411236+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -917,7 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-05T17:31:03.650091+08:00",
+      "lastActive": "2026-05-05T17:36:51.413475+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1515,7 +1515,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-05T17:31:03.650091+08:00"
+        "lastActive": "2026-05-05T17:36:51.413475+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1594,12 +1594,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-05T17:31:03.648829+08:00",
+    "lastRun": "2026-05-05T17:36:51.411236+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-05T17:31:03.651440+08:00",
+      "runAt": "2026-05-05T17:36:51.414890+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1670,13 +1670,13 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 3169.98,
+        "current_balance": 3049.35,
         "baseline_balance": 3821.73,
-        "weekly_profit": 36.3,
+        "weekly_profit": 2.35,
         "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 36.3,
+        "today_pnl": 2.35,
         "status": "active"
       }
     },
@@ -1738,9 +1738,9 @@
       {
         "date": "2026-05-05",
         "agent": "quanta",
-        "balance": 3169.98,
-        "pnl": 36.3,
-        "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
+        "balance": 3049.35,
+        "pnl": 2.35,
+        "note": "Balance 3049.35 | P/L +2.35 today | Open 1"
       }
     ],
     "currency": "USD",
