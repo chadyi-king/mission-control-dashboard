@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-05T23:55:53.731772+08:00",
+  "lastUpdated": "2026-05-06T00:01:01.415542+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -917,7 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-05T23:55:53.733096+08:00",
+      "lastActive": "2026-05-06T00:01:01.417332+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,9 +949,9 @@
     },
     "autoura": {
       "name": "Autoura",
-      "role": "Content Agent - KOE content, video, client acquisition",
-      "platform": "Hermes planned agent",
-      "status": "planned",
+      "role": "On-demand ad strategist - story-first blueprints, Higgsfield prompt packs, clip review",
+      "platform": "Hermes on-demand / Higgsfield after approval",
+      "status": "active_on_demand",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
@@ -1491,7 +1491,7 @@
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-05-05",
+    "date": "2026-05-06",
     "summary": "📋 43 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
@@ -1509,7 +1509,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-05T23:55:53.733096+08:00"
+        "lastActive": "2026-05-06T00:01:01.417332+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1524,7 +1524,7 @@
         "lastActive": ""
       },
       "autoura": {
-        "status": "planned",
+        "status": "active_on_demand",
         "lastActive": ""
       },
       "mensamusa": {
@@ -1565,29 +1565,29 @@
         "id": "A6-15",
         "title": "Build Cerebronn as a proper bot in VS Code Studio",
         "deadline": "2026-04-30",
-        "daysOverdue": 5
+        "daysOverdue": 6
       },
       {
         "id": "A7-3",
         "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
         "deadline": "2026-04-30",
-        "daysOverdue": 5
+        "daysOverdue": 6
       },
       {
         "id": "A7-4",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
-        "daysOverdue": 7
+        "daysOverdue": 8
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-05-05T23:55:53.731772+08:00",
+    "lastRun": "2026-05-06T00:01:01.415542+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-05T23:55:53.734646+08:00",
+      "runAt": "2026-05-06T00:01:01.418453+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1682,13 +1682,6 @@
     },
     "daily_snapshots": [
       {
-        "date": "2026-04-29",
-        "agent": "quanta",
-        "balance": 3044.68,
-        "pnl": -125.3,
-        "note": "Balance 3044.68 | P/L -125.30 today | Open 0"
-      },
-      {
         "date": "2026-04-30",
         "agent": "quanta",
         "balance": 3044.68,
@@ -1725,6 +1718,13 @@
       },
       {
         "date": "2026-05-05",
+        "agent": "quanta",
+        "balance": 3049.35,
+        "pnl": 2.35,
+        "note": "Balance 3049.35 | P/L +2.35 today | Open 1"
+      },
+      {
+        "date": "2026-05-06",
         "agent": "quanta",
         "balance": 3049.35,
         "pnl": 2.35,
