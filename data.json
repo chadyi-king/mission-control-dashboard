@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-05T22:00:40.289844+08:00",
+  "lastUpdated": "2026-05-05T22:10:49.324670+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -917,7 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-05T22:00:40.291713+08:00",
+      "lastActive": "2026-05-05T22:10:49.325990+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,9 +949,9 @@
     },
     "autoura": {
       "name": "Autoura",
-      "role": "On-demand ad strategist - story-first blueprints, Higgsfield prompt packs, clip review",
-      "platform": "Hermes on-demand / Higgsfield after approval",
-      "status": "active_on_demand",
+      "role": "Content Agent - KOE content, video, client acquisition",
+      "platform": "Hermes planned agent",
+      "status": "planned",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
@@ -1509,7 +1509,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-05T22:00:40.291713+08:00"
+        "lastActive": "2026-05-05T22:10:49.325990+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1524,7 +1524,7 @@
         "lastActive": ""
       },
       "autoura": {
-        "status": "active_on_demand",
+        "status": "planned",
         "lastActive": ""
       },
       "mensamusa": {
@@ -1582,12 +1582,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-05T22:00:40.289844+08:00",
+    "lastRun": "2026-05-05T22:10:49.324670+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-05T22:00:40.292811+08:00",
+      "runAt": "2026-05-05T22:10:49.327389+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
