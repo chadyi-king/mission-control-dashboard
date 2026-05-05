@@ -1,11 +1,11 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-06T00:15:25.262589+08:00",
+  "lastUpdated": "2026-05-06T00:30:52.981333+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
-    "tasksLeft": 43,
-    "completedTasks": 25,
+    "tasksLeft": 44,
+    "completedTasks": 24,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
@@ -13,12 +13,12 @@
     "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 40
+    "backlog": 41
   },
   "completions": {
     "today": [],
     "this_week": [],
-    "all_time": 34
+    "all_time": 37
   },
   "weeklyProgress": {
     "completed": 0,
@@ -32,6 +32,7 @@
       "A7-3",
       "A7-4",
       "B1-2",
+      "B8-2",
       "C1-2"
     ],
     "active": [
@@ -61,7 +62,6 @@
       "B6-7",
       "B6-8",
       "B6-9",
-      "B8-2",
       "B8-6",
       "C1-1"
     ],
@@ -118,6 +118,7 @@
       "A7-3",
       "A7-4",
       "B1-2",
+      "B8-2",
       "C1-2"
     ],
     "todo": [
@@ -171,7 +172,7 @@
     },
     "B1-2": {
       "id": "B1-2",
-      "title": "Draft formal message to Charmaine about suing platform (not individuals) per lawyer/judge advice to claim money",
+      "title": "Draft formal message to Charmaine about suing platform",
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
@@ -198,9 +199,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00",
-      "completedAt": "2026-05-04T18:59:17.936072+08:00"
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
     },
     "A1-13": {
       "id": "A1-13",
@@ -210,9 +211,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-24",
-      "createdAt": "2026-04-10T00:00:00",
-      "completedAt": "2026-04-24"
+      "completed": "2026-04-24",
+      "completedAt": "2026-04-24",
+      "createdAt": "2026-04-10T00:00:00"
     },
     "A1-14": {
       "id": "A1-14",
@@ -229,10 +230,10 @@
       "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "project": "A2",
       "category": "A",
-      "agent": "Escrita",
+      "agent": "Escritor",
       "status": "paused",
       "priority": "medium",
-      "pauseReason": "Waiting for Escrita build",
+      "pauseReason": "Waiting for Escritor build",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-1": {
@@ -343,8 +344,8 @@
       "agent": "Quanta",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-04-19T16:45:21.945506+08:00",
-      "completedAt": "2026-05-03T16:45:21.945506+08:00"
+      "completedAt": "2026-05-06T00:30:52.981333+08:00",
+      "createdAt": "2026-04-22T00:30:52.981333+08:00"
     },
     "A5-3": {
       "id": "A5-3",
@@ -354,8 +355,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-04-19T16:45:21.945506+08:00",
-      "completedAt": "2026-05-03T16:45:21.945506+08:00"
+      "completedAt": "2026-05-06T00:30:52.981333+08:00",
+      "createdAt": "2026-04-22T00:30:52.981333+08:00"
     },
     "A5-4": {
       "id": "A5-4",
@@ -535,8 +536,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-04-19T16:45:21.945506+08:00",
-      "completedAt": "2026-05-03T16:45:21.945506+08:00"
+      "completedAt": "2026-05-06T00:30:52.981333+08:00",
+      "createdAt": "2026-04-22T00:30:52.981333+08:00"
     },
     "B6-3": {
       "id": "B6-3",
@@ -546,8 +547,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01",
-      "completedAt": "2026-03-01",
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
       "createdAt": "2026-04-13T00:00:00"
     },
     "B6-4": {
@@ -558,8 +559,8 @@
       "agent": "Forger",
       "status": "done",
       "priority": "done",
-      "createdAt": "2026-04-19T16:45:21.945506+08:00",
-      "completedAt": "2026-05-03T16:45:21.945506+08:00"
+      "completedAt": "2026-05-06T00:30:52.981333+08:00",
+      "createdAt": "2026-04-22T00:30:52.981333+08:00"
     },
     "B6-5": {
       "id": "B6-5",
@@ -615,9 +616,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-17",
-      "createdAt": "2026-04-13T00:00:00",
-      "completedAt": "2026-04-27"
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
+      "createdAt": "2026-04-13T00:00:00"
     },
     "B7-1": {
       "id": "B7-1",
@@ -655,11 +656,10 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
+      "status": "pending",
+      "priority": "medium",
       "deadline": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00",
-      "completedAt": "2026-05-05T17:39:18.048687+08:00"
+      "createdAt": "2026-03-25T00:00:00+08:00"
     },
     "B8-3": {
       "id": "B8-3",
@@ -721,9 +721,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00",
-      "completedAt": "2026-05-04T18:59:17.936072+08:00"
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
     },
     "C1-2": {
       "id": "C1-2",
@@ -895,10 +895,6 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
-<<<<<<< HEAD
-      "role": "The Face - Primary interface",
-      "platform": "Hermes Gateway / Telegram",
-=======
       "role": "The Face — Primary interface",
       "platform": "Hermes Gateway",
       "status": "active",
@@ -912,141 +908,59 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-06T00:15:25.265280+08:00",
+      "lastActive": "2026-05-06T00:30:52.984177+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
       "role": "Trading — XAUUSD execution on OANDA",
       "platform": "Telegram monitor",
->>>>>>> 6c4078b9b ([helios] auto-sync data.json)
       "status": "stale",
-      "currentTask": "Live session on Telegram",
-      "lastActive": "2026-04-16T20:07:36+08:00",
+      "currentTask": "Watching CallistoFx — live XAUUSD execution",
+      "lastActive": "2026-04-30T04:13:40.713974+08:00",
       "capabilities": []
     },
     "cerebronn": {
       "name": "Cerebronn",
-      "role": "The Brain - Persistent memory & decisions",
-      "platform": "Hermes planned agent",
-      "status": "planned",
+      "role": "The Brain — Persistent memory & decisions",
+      "platform": "VS Code / Copilot",
+      "status": "not_built_yet",
       "currentTask": "Architecture & deep reasoning (The Brain)",
       "lastActive": "",
       "capabilities": []
     },
-    "helios": {
-      "name": "Helios",
-      "role": "The Spine - COO, auditor, reporter",
-      "platform": "Systemd service",
-      "status": "active",
-      "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-06T00:10:55.623884+08:00",
+    "tele": {
+      "name": "Tele",
+      "role": "The Face — Telegram task management interface",
+      "platform": "Telegram Bot (@chad_yi_bot)",
+      "status": "not_built_yet",
+      "currentTask": "",
+      "lastActive": "",
       "capabilities": []
     },
-    "quanta": {
-      "name": "Quanta",
-      "role": "Trading - OANDA execution/status",
-      "platform": "Telegram monitor / Quanta v3",
-      "status": "stale",
-      "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-28T22:59:32.498137+08:00",
+    "escritor": {
+      "name": "Escritor",
+      "role": "Story Agent — RE:UNITE novel writing",
+      "platform": "Systemd service",
+      "status": "not_built_yet",
+      "currentTask": "",
+      "lastActive": "",
       "capabilities": []
     },
     "forger": {
       "name": "Forger",
-      "role": "Web Architect - websites, SEO, full-stack",
-      "platform": "Hermes planned agent",
-      "status": "planned",
+      "role": "Web Architect — websites, SEO, full-stack",
+      "platform": "Systemd service",
+      "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
     },
-    "escrita": {
-      "name": "Escrita",
-      "role": "Story Agent - RE:UNITE novel writing",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "autoura": {
-      "name": "Autoura",
-      "role": "Content Agent - KOE content, video, client acquisition",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "mensamusa": {
-      "name": "Mensamusa",
-      "role": "Research - knowledge and options intelligence",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "clair": {
-      "name": "Clair",
-      "role": "Streaming Scout",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "eplusplus": {
-      "name": "E++",
-      "role": "Core Dev",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "kotler": {
-      "name": "Kotler",
-      "role": "Marketing Ops - Google Ads Manager",
-      "platform": "External project",
-      "status": "external",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "ledger": {
-      "name": "Ledger",
-      "role": "Finance / CRM",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "atlas": {
-      "name": "Atlas",
-      "role": "Researcher",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "pulsar": {
-      "name": "Pulsar",
-      "role": "Data Sentinel",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "abed": {
-      "name": "Abed",
-      "role": "Community Manager",
-      "platform": "Hermes planned agent",
-      "status": "planned",
+    "autour": {
+      "name": "Autour",
+      "role": "Script Agent — KOE content & screenplays",
+      "platform": "Systemd service",
+      "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
@@ -1312,8 +1226,8 @@
         "B8-6"
       ],
       "totalTasks": 4,
-      "completedTasks": 2,
-      "completionPct": 50
+      "completedTasks": 1,
+      "completionPct": 25
     },
     "B9": {
       "name": "Ethereal",
@@ -1485,7 +1399,7 @@
       "id": "A2-1",
       "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "reason": "paused",
-      "owner": "Escrita"
+      "owner": "Escritor"
     },
     {
       "id": "A6-15",
@@ -1506,6 +1420,12 @@
       "owner": "CHAD_YI"
     },
     {
+      "id": "B8-2",
+      "title": "Figure out Higgsfield AI for marketing studio",
+      "reason": "overdue",
+      "owner": "CHAD_YI"
+    },
+    {
       "id": "B10-1",
       "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "reason": "paused",
@@ -1515,11 +1435,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-05-06",
-<<<<<<< HEAD
-    "summary": "📋 43 tasks in flight. Focus on top priorities.",
-=======
     "summary": "📋 44 tasks in flight. Focus on top priorities.",
->>>>>>> 6c4078b9b ([helios] auto-sync data.json)
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1527,72 +1443,35 @@
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
-<<<<<<< HEAD
-        "status": "stale",
-        "lastActive": "2026-04-16T20:07:36+08:00"
-      },
-      "cerebronn": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "helios": {
-        "status": "active",
-        "lastActive": "2026-05-06T00:10:55.623884+08:00"
-=======
         "status": "active",
         "lastActive": "2026-05-04T19:15:35.366632+08:00"
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-06T00:15:25.265280+08:00"
->>>>>>> 6c4078b9b ([helios] auto-sync data.json)
+        "lastActive": "2026-05-06T00:30:52.984177+08:00"
       },
       "quanta": {
         "status": "stale",
-        "lastActive": "2026-04-28T22:59:32.498137+08:00"
+        "lastActive": "2026-04-30T04:13:40.713974+08:00"
+      },
+      "cerebronn": {
+        "status": "not_built_yet",
+        "lastActive": ""
+      },
+      "tele": {
+        "status": "not_built_yet",
+        "lastActive": ""
+      },
+      "escritor": {
+        "status": "not_built_yet",
+        "lastActive": ""
       },
       "forger": {
-        "status": "planned",
+        "status": "not_built_yet",
         "lastActive": ""
       },
-      "escrita": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "autoura": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "mensamusa": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "clair": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "eplusplus": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "kotler": {
-        "status": "external",
-        "lastActive": ""
-      },
-      "ledger": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "atlas": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "pulsar": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "abed": {
-        "status": "planned",
+      "autour": {
+        "status": "not_built_yet",
         "lastActive": ""
       }
     },
@@ -1614,33 +1493,22 @@
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
         "daysOverdue": 8
-<<<<<<< HEAD
-=======
       },
       {
         "id": "B8-2",
         "title": "Figure out Higgsfield AI for marketing studio",
         "deadline": "2026-04-24",
         "daysOverdue": 12
->>>>>>> 6c4078b9b ([helios] auto-sync data.json)
       }
     ]
   },
   "audit": {
-<<<<<<< HEAD
-    "lastRun": "2026-05-06T00:10:55.622629+08:00",
-=======
-    "lastRun": "2026-05-06T00:15:25.262589+08:00",
->>>>>>> 6c4078b9b ([helios] auto-sync data.json)
+    "lastRun": "2026-05-06T00:30:52.981333+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-<<<<<<< HEAD
-      "runAt": "2026-05-06T00:10:55.634607+08:00",
-=======
-      "runAt": "2026-05-06T00:15:25.267596+08:00",
->>>>>>> 6c4078b9b ([helios] auto-sync data.json)
+      "runAt": "2026-05-06T00:30:52.985061+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1735,16 +1603,6 @@
     },
     "daily_snapshots": [
       {
-<<<<<<< HEAD
-=======
-        "date": "2026-04-29",
-        "agent": "quanta",
-        "balance": 3044.68,
-        "pnl": -125.3,
-        "note": "Balance 3044.68 | P/L -125.30 today | Open 0"
-      },
-      {
->>>>>>> 6c4078b9b ([helios] auto-sync data.json)
         "date": "2026-04-30",
         "agent": "quanta",
         "balance": 3044.68,
@@ -1768,16 +1626,16 @@
       {
         "date": "2026-05-03",
         "agent": "quanta",
-        "balance": 3169.98,
-        "pnl": 36.3,
-        "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
+        "balance": 3047.0,
+        "pnl": 0.0,
+        "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
       },
       {
         "date": "2026-05-04",
         "agent": "quanta",
-        "balance": 3169.98,
-        "pnl": 36.3,
-        "note": "Balance 3169.98 | P/L +36.30 today | Open 1"
+        "balance": 3047.0,
+        "pnl": 0.0,
+        "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
       },
       {
         "date": "2026-05-05",
@@ -1790,19 +1648,8 @@
         "date": "2026-05-06",
         "agent": "quanta",
         "balance": 3049.35,
-        "pnl": 0.0,
-<<<<<<< HEAD
-        "note": "Balance 3049.35 | P/L +0.00 today | Open 1"
-=======
-        "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
-      },
-      {
-        "date": "2026-05-06",
-        "agent": "quanta",
-        "balance": 3049.35,
         "pnl": 2.35,
         "note": "Balance 3049.35 | P/L +2.35 today | Open 1"
->>>>>>> 6c4078b9b ([helios] auto-sync data.json)
       }
     ],
     "currency": "USD",
