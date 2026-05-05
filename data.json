@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-06T00:10:55.622629+08:00",
+  "lastUpdated": "2026-05-06T00:15:25.262589+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -895,8 +895,31 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
+<<<<<<< HEAD
       "role": "The Face - Primary interface",
       "platform": "Hermes Gateway / Telegram",
+=======
+      "role": "The Face — Primary interface",
+      "platform": "Hermes Gateway",
+      "status": "active",
+      "currentTask": "Task coordination & reporting",
+      "lastActive": "2026-05-04T19:15:35.366632+08:00",
+      "capabilities": []
+    },
+    "helios": {
+      "name": "Helios",
+      "role": "The Spine — COO, auditor, reporter",
+      "platform": "Systemd service",
+      "status": "active",
+      "currentTask": "Dashboard sync + audit",
+      "lastActive": "2026-05-06T00:15:25.265280+08:00",
+      "capabilities": []
+    },
+    "quanta": {
+      "name": "Quanta",
+      "role": "Trading — XAUUSD execution on OANDA",
+      "platform": "Telegram monitor",
+>>>>>>> 6c4078b9b ([helios] auto-sync data.json)
       "status": "stale",
       "currentTask": "Live session on Telegram",
       "lastActive": "2026-04-16T20:07:36+08:00",
@@ -1492,7 +1515,11 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-05-06",
+<<<<<<< HEAD
     "summary": "📋 43 tasks in flight. Focus on top priorities.",
+=======
+    "summary": "📋 44 tasks in flight. Focus on top priorities.",
+>>>>>>> 6c4078b9b ([helios] auto-sync data.json)
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1500,6 +1527,7 @@
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
+<<<<<<< HEAD
         "status": "stale",
         "lastActive": "2026-04-16T20:07:36+08:00"
       },
@@ -1510,6 +1538,14 @@
       "helios": {
         "status": "active",
         "lastActive": "2026-05-06T00:10:55.623884+08:00"
+=======
+        "status": "active",
+        "lastActive": "2026-05-04T19:15:35.366632+08:00"
+      },
+      "helios": {
+        "status": "active",
+        "lastActive": "2026-05-06T00:15:25.265280+08:00"
+>>>>>>> 6c4078b9b ([helios] auto-sync data.json)
       },
       "quanta": {
         "status": "stale",
@@ -1578,16 +1614,33 @@
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
         "daysOverdue": 8
+<<<<<<< HEAD
+=======
+      },
+      {
+        "id": "B8-2",
+        "title": "Figure out Higgsfield AI for marketing studio",
+        "deadline": "2026-04-24",
+        "daysOverdue": 12
+>>>>>>> 6c4078b9b ([helios] auto-sync data.json)
       }
     ]
   },
   "audit": {
+<<<<<<< HEAD
     "lastRun": "2026-05-06T00:10:55.622629+08:00",
+=======
+    "lastRun": "2026-05-06T00:15:25.262589+08:00",
+>>>>>>> 6c4078b9b ([helios] auto-sync data.json)
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
+<<<<<<< HEAD
       "runAt": "2026-05-06T00:10:55.634607+08:00",
+=======
+      "runAt": "2026-05-06T00:15:25.267596+08:00",
+>>>>>>> 6c4078b9b ([helios] auto-sync data.json)
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1660,11 +1713,11 @@
         "source": "oanda",
         "current_balance": 3049.35,
         "baseline_balance": 3821.73,
-        "weekly_profit": 0.0,
+        "weekly_profit": 2.35,
         "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 0.0,
+        "today_pnl": 2.35,
         "status": "active"
       }
     },
@@ -1682,6 +1735,16 @@
     },
     "daily_snapshots": [
       {
+<<<<<<< HEAD
+=======
+        "date": "2026-04-29",
+        "agent": "quanta",
+        "balance": 3044.68,
+        "pnl": -125.3,
+        "note": "Balance 3044.68 | P/L -125.30 today | Open 0"
+      },
+      {
+>>>>>>> 6c4078b9b ([helios] auto-sync data.json)
         "date": "2026-04-30",
         "agent": "quanta",
         "balance": 3044.68,
@@ -1728,7 +1791,18 @@
         "agent": "quanta",
         "balance": 3049.35,
         "pnl": 0.0,
+<<<<<<< HEAD
         "note": "Balance 3049.35 | P/L +0.00 today | Open 1"
+=======
+        "note": "Balance 3047.00 | P/L +0.00 today | Open 1"
+      },
+      {
+        "date": "2026-05-06",
+        "agent": "quanta",
+        "balance": 3049.35,
+        "pnl": 2.35,
+        "note": "Balance 3049.35 | P/L +2.35 today | Open 1"
+>>>>>>> 6c4078b9b ([helios] auto-sync data.json)
       }
     ],
     "currency": "USD",
