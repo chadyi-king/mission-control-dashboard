@@ -1,11 +1,11 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-05T17:39:10.674824+08:00",
+  "lastUpdated": "2026-05-05T17:39:18.048687+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
-    "tasksLeft": 44,
-    "completedTasks": 24,
+    "tasksLeft": 43,
+    "completedTasks": 25,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
@@ -13,12 +13,12 @@
     "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 41
+    "backlog": 40
   },
   "completions": {
     "today": [],
     "this_week": [],
-    "all_time": 33
+    "all_time": 34
   },
   "weeklyProgress": {
     "completed": 0,
@@ -32,7 +32,6 @@
       "A7-3",
       "A7-4",
       "B1-2",
-      "B8-2",
       "C1-2"
     ],
     "active": [
@@ -62,6 +61,7 @@
       "B6-7",
       "B6-8",
       "B6-9",
+      "B8-2",
       "B8-6",
       "C1-1"
     ],
@@ -118,7 +118,6 @@
       "A7-3",
       "A7-4",
       "B1-2",
-      "B8-2",
       "C1-2"
     ],
     "todo": [
@@ -656,10 +655,11 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
+      "status": "done",
+      "priority": "done",
       "deadline": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00"
+      "createdAt": "2026-03-25T00:00:00+08:00",
+      "completedAt": "2026-05-05T17:39:18.048687+08:00"
     },
     "B8-3": {
       "id": "B8-3",
@@ -917,7 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-05T17:39:10.675862+08:00",
+      "lastActive": "2026-05-05T17:39:18.049749+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1289,8 +1289,8 @@
         "B8-6"
       ],
       "totalTasks": 4,
-      "completedTasks": 1,
-      "completionPct": 25
+      "completedTasks": 2,
+      "completionPct": 50
     },
     "B9": {
       "name": "Ethereal",
@@ -1483,12 +1483,6 @@
       "owner": "CHAD_YI"
     },
     {
-      "id": "B8-2",
-      "title": "Figure out Higgsfield AI for marketing studio",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
       "id": "B10-1",
       "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "reason": "paused",
@@ -1498,7 +1492,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-05-05",
-    "summary": "📋 44 tasks in flight. Focus on top priorities.",
+    "summary": "📋 43 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1515,7 +1509,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-05T17:39:10.675862+08:00"
+        "lastActive": "2026-05-05T17:39:18.049749+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1584,22 +1578,16 @@
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
         "daysOverdue": 7
-      },
-      {
-        "id": "B8-2",
-        "title": "Figure out Higgsfield AI for marketing studio",
-        "deadline": "2026-04-24",
-        "daysOverdue": 11
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-05-05T17:39:10.674824+08:00",
+    "lastRun": "2026-05-05T17:39:18.048687+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-05T17:39:10.677075+08:00",
+      "runAt": "2026-05-05T17:39:18.050953+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
