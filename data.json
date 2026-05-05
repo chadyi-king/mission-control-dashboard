@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-06T00:01:01.415542+08:00",
+  "lastUpdated": "2026-05-06T00:10:55.622629+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -917,7 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-06T00:01:01.417332+08:00",
+      "lastActive": "2026-05-06T00:10:55.623884+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,9 +949,9 @@
     },
     "autoura": {
       "name": "Autoura",
-      "role": "On-demand ad strategist - story-first blueprints, Higgsfield prompt packs, clip review",
-      "platform": "Hermes on-demand / Higgsfield after approval",
-      "status": "active_on_demand",
+      "role": "Content Agent - KOE content, video, client acquisition",
+      "platform": "Hermes planned agent",
+      "status": "planned",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
@@ -1509,7 +1509,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-06T00:01:01.417332+08:00"
+        "lastActive": "2026-05-06T00:10:55.623884+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1524,7 +1524,7 @@
         "lastActive": ""
       },
       "autoura": {
-        "status": "active_on_demand",
+        "status": "planned",
         "lastActive": ""
       },
       "mensamusa": {
@@ -1582,12 +1582,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-06T00:01:01.415542+08:00",
+    "lastRun": "2026-05-06T00:10:55.622629+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-06T00:01:01.418453+08:00",
+      "runAt": "2026-05-06T00:10:55.634607+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1660,11 +1660,11 @@
         "source": "oanda",
         "current_balance": 3049.35,
         "baseline_balance": 3821.73,
-        "weekly_profit": 2.35,
+        "weekly_profit": 0.0,
         "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 2.35,
+        "today_pnl": 0.0,
         "status": "active"
       }
     },
@@ -1727,8 +1727,8 @@
         "date": "2026-05-06",
         "agent": "quanta",
         "balance": 3049.35,
-        "pnl": 2.35,
-        "note": "Balance 3049.35 | P/L +2.35 today | Open 1"
+        "pnl": 0.0,
+        "note": "Balance 3049.35 | P/L +0.00 today | Open 1"
       }
     ],
     "currency": "USD",
