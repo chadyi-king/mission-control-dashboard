@@ -1,6 +1,7 @@
 {
   "version": "3.0.0",
   "lastUpdated": "2026-05-06T14:31:06.654469+08:00",
+
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -909,6 +910,7 @@
       "status": "active",
       "currentTask": "Dashboard sync + audit",
       "lastActive": "2026-05-06T14:31:06.656174+08:00",
+
       "capabilities": []
     },
     "quanta": {
@@ -1449,6 +1451,7 @@
       "helios": {
         "status": "active",
         "lastActive": "2026-05-06T14:31:06.656174+08:00"
+
       },
       "quanta": {
         "status": "stale",
@@ -1504,11 +1507,13 @@
   },
   "audit": {
     "lastRun": "2026-05-06T14:31:06.654469+08:00",
+
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
       "runAt": "2026-05-06T14:31:06.657134+08:00",
+
       "passed": true,
       "blockingFailures": 0,
       "checks": [
