@@ -396,45 +396,62 @@
 <div class="agent-kanban-fullwidth" id="autoura-kanban">
     <div class="kanban-container">
         <div class="kanban-header">
-            <span class="kanban-title">🎬 AUTOURA — Phase 4: Video Production Pipeline</span>
-            <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('autoura')">✕ Close</span>
+            <span class="kanban-title">AUTOURA - EXSTATIC Growth & Ad Production Pipeline</span>
+            <span class="kanban-close" onclick="event.stopPropagation(); toggleAgentDetails('autoura')">Close</span>
         </div>
         <div class="kanban-board" data-agent="autoura">
-            <div class="kanban-col" data-col="brief">
-                <div class="kanban-col-title">📋 Brief</div>
+            <div class="kanban-col" data-col="scout-queue">
+                <div class="kanban-col-title">Scout Queue</div>
                 <div class="kanban-cards">
-                    <div class="kanban-card" draggable="true" data-client="marina-bay-gym"><div class="card-title">Marina Bay Gym</div><div class="card-meta">Promo video x3</div><div class="card-attachments">📎 brief.pdf</div></div>
-                    <div class="kanban-card" draggable="true" data-client="tanaka-sushi"><div class="card-title">Tanaka Sushi</div><div class="card-meta">Menu showcase</div><div class="card-attachments">📎 brief.docx</div></div>
+                    <div class="kanban-card" draggable="true" data-client="autoura-scout-audit"><div class="card-title">Autoura phase 1 audit</div><div class="card-meta">ICP, search recipes, lead scoring, evidence</div><div class="card-status status-active">Active: 7.7/10</div></div>
                 </div>
             </div>
-            <div class="kanban-col" data-col="script">
-                <div class="kanban-col-title">✏️ Script</div>
+            <div class="kanban-col" data-col="qualified-leads">
+                <div class="kanban-col-title">Qualified Leads</div>
                 <div class="kanban-cards">
-                    <div class="kanban-card" draggable="true" data-client="orchard-dental"><div class="card-title">Orchard Dental</div><div class="card-meta">Testimonial series</div><div class="card-status status-draft">📝 Draft v2</div></div>
+                    <div class="kanban-card" draggable="true" data-client="fake-sme-flow"><div class="card-title">Harbour Kettlebell Studio</div><div class="card-meta">Fixture lead score: 82/100</div><div class="card-status status-pending">Qualified fixture</div></div>
                 </div>
             </div>
-            <div class="kanban-col" data-col="assets">
-                <div class="kanban-col-title">🎬 Assets</div>
+            <div class="kanban-col" data-col="outreach-drafts">
+                <div class="kanban-col-title">Outreach Drafts</div>
                 <div class="kanban-cards">
-                    <div class="kanban-card" draggable="true" data-client="botanica-cafe"><div class="card-title">Botanica Cafe</div><div class="card-meta">Latte art reel</div><div class="card-attachments">🎬 Footage received</div><div class="card-status status-pending">🎵 Music pending</div></div>
+                    <div class="kanban-card" draggable="true" data-client="outreach-approval-gate"><div class="card-title">Approval-gated drafts</div><div class="card-meta">No emails or DMs sent automatically</div><div class="card-status status-review">Caleb review required</div></div>
                 </div>
             </div>
-            <div class="kanban-col" data-col="edit">
-                <div class="kanban-col-title">🎞️ Edit</div>
+            <div class="kanban-col" data-col="interested">
+                <div class="kanban-col-title">Interested</div>
                 <div class="kanban-cards">
-                    <div class="kanban-card" draggable="true" data-client="flex-fitness"><div class="card-title">Flex Fitness</div><div class="card-meta">Grand opening</div><div class="card-status status-active">🎞️ Cutting footage</div><div class="card-meta">Editor: K.Ler</div></div>
+                    <div class="kanban-card" draggable="true" data-client="reply-classifier"><div class="card-title">Reply classifier</div><div class="card-meta">Interested, unsure, price objection, not now, no fit</div><div class="card-status status-pending">Phase 2 queued</div></div>
+                </div>
+            </div>
+            <div class="kanban-col" data-col="intake">
+                <div class="kanban-col-title">Intake</div>
+                <div class="kanban-cards">
+                    <div class="kanban-card" draggable="true" data-client="intake-checklist"><div class="card-title">Client intake checklist</div><div class="card-meta">Product truth, claims, CTA, assets, buyer moment</div><div class="card-status status-active">Phase 3 queued</div></div>
+                </div>
+            </div>
+            <div class="kanban-col" data-col="blueprint-ready">
+                <div class="kanban-col-title">Blueprint Ready</div>
+                <div class="kanban-cards">
+                    <div class="kanban-card" draggable="true" data-client="fire-terminator-test"><div class="card-title">Fire Terminator validation</div><div class="card-meta">Story-first AD BLUEPRINT fixture</div><div class="card-status status-ready">No generation</div></div>
+                </div>
+            </div>
+            <div class="kanban-col" data-col="production-gate">
+                <div class="kanban-col-title">Production Gate</div>
+                <div class="kanban-cards">
+                    <div class="kanban-card" draggable="true" data-client="higgsfield-gate"><div class="card-title">Higgsfield approval gate</div><div class="card-meta">Credits are blocked until Caleb approves</div><div class="card-status status-review">Approval required</div></div>
                 </div>
             </div>
             <div class="kanban-col" data-col="review">
-                <div class="kanban-col-title">👁️ Review</div>
+                <div class="kanban-col-title">Review</div>
                 <div class="kanban-cards">
-                    <div class="kanban-card" draggable="true" data-client="glow-spa"><div class="card-title">Glow Spa</div><div class="card-meta">Treatment demo x2</div><div class="card-status status-review">✅ Awaiting approval</div><div class="card-date">Due: Tomorrow</div></div>
+                    <div class="kanban-card" draggable="true" data-client="showcase-review"><div class="card-title">Client showcase package</div><div class="card-meta">Compare clips against blueprint</div><div class="card-status status-pending">Phase 5 scaffold</div></div>
                 </div>
             </div>
-            <div class="kanban-col" data-col="deliver">
-                <div class="kanban-col-title">📤 Deliver</div>
+            <div class="kanban-col" data-col="delivery-learning">
+                <div class="kanban-col-title">Delivery/Learning</div>
                 <div class="kanban-cards">
-                    <div class="kanban-card" draggable="true" data-client="zen-yoga"><div class="card-title">Zen Yoga</div><div class="card-meta">Studio tour</div><div class="card-status status-ready">📤 Ready to send</div></div>
+                    <div class="kanban-card" draggable="true" data-client="posting-learning-loop"><div class="card-title">Posting and learning loop</div><div class="card-meta">Scheduler and analytics not connected yet</div><div class="card-status status-pending">Phase 6 scaffold</div></div>
                 </div>
             </div>
         </div>
