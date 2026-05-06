@@ -1,11 +1,11 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-06T12:15:37.266943+08:00",
+  "lastUpdated": "2026-05-06T12:45:22.473231+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
-    "tasksLeft": 43,
-    "completedTasks": 25,
+    "tasksLeft": 44,
+    "completedTasks": 24,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
@@ -13,12 +13,12 @@
     "active": 1,
     "blocked": 0,
     "review": 0,
-    "backlog": 40
+    "backlog": 41
   },
   "completions": {
     "today": [],
     "this_week": [],
-    "all_time": 34
+    "all_time": 37
   },
   "weeklyProgress": {
     "completed": 0,
@@ -32,6 +32,7 @@
       "A7-3",
       "A7-4",
       "B1-2",
+      "B8-2",
       "C1-2"
     ],
     "active": [
@@ -61,7 +62,6 @@
       "B6-7",
       "B6-8",
       "B6-9",
-      "B8-2",
       "B8-6",
       "C1-1"
     ],
@@ -118,6 +118,7 @@
       "A7-3",
       "A7-4",
       "B1-2",
+      "B8-2",
       "C1-2"
     ],
     "todo": [
@@ -171,7 +172,7 @@
     },
     "B1-2": {
       "id": "B1-2",
-      "title": "Draft formal message to Charmaine about suing platform (not individuals) per lawyer/judge advice to claim money",
+      "title": "Draft formal message to Charmaine about suing platform",
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
@@ -198,9 +199,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00",
-      "completedAt": "2026-04-28"
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
     },
     "A1-13": {
       "id": "A1-13",
@@ -210,13 +211,13 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-24",
-      "createdAt": "2026-04-10T00:00:00",
-      "completedAt": "2026-04-24"
+      "completed": "2026-04-24",
+      "completedAt": "2026-04-24",
+      "createdAt": "2026-04-10T00:00:00"
     },
     "A1-14": {
       "id": "A1-14",
-      "title": "Build EPEPTOME website \u2014 selling peptides for research (DEPRECATED - moved to B11)",
+      "title": "Build EPEPTOME website — selling peptides for research (DEPRECATED - moved to B11)",
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
@@ -226,18 +227,18 @@
     },
     "A2-1": {
       "id": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "project": "A2",
       "category": "A",
-      "agent": "Escrita",
+      "agent": "Escritor",
       "status": "paused",
       "priority": "medium",
-      "pauseReason": "Waiting for Escrita build",
+      "pauseReason": "Waiting for Escritor build",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-1": {
       "id": "A3-1",
-      "title": "Script 1 \u2014 Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare \u2014 principalities not flesh and blood)",
+      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -247,7 +248,7 @@
     },
     "A3-2": {
       "id": "A3-2",
-      "title": "Script 2 \u2014 Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -257,7 +258,7 @@
     },
     "A3-3": {
       "id": "A3-3",
-      "title": "Script 3 \u2014 Christian faith & Gen Z + continuation of spiritual warfare series",
+      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
@@ -307,7 +308,7 @@
     },
     "A4-2": {
       "id": "A4-2",
-      "title": "Interview streaming management companies \u2014 must handle clipping, social media, content strategy",
+      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
@@ -317,7 +318,7 @@
     },
     "A4-3": {
       "id": "A4-3",
-      "title": "Define content strategy \u2014 what to stream, how to grow audience",
+      "title": "Define content strategy — what to stream, how to grow audience",
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
@@ -369,7 +370,7 @@
     },
     "A5-5": {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
@@ -433,7 +434,7 @@
     },
     "A7-3": {
       "id": "A7-3",
-      "title": "Send invitations \u2014 Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
+      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
@@ -455,7 +456,7 @@
     },
     "B1-1": {
       "id": "B1-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B1",
       "category": "B",
       "agent": "Forger",
@@ -465,7 +466,7 @@
     },
     "B2-1": {
       "id": "B2-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B2",
       "category": "B",
       "agent": "Forger",
@@ -487,7 +488,7 @@
     },
     "B3-2": {
       "id": "B3-2",
-      "title": "SEO + Google Ads setup \u2014 \u2460 SEO optimization (3-step process) \u2461 Google Ads (landing pages + checklist) \u2462 Social media \u2463 Client management",
+      "title": "SEO + Google Ads setup — ① SEO optimization (3-step process) ② Google Ads (landing pages + checklist) ③ Social media ④ Client management",
       "project": "B3",
       "category": "B",
       "agent": "Forger",
@@ -497,7 +498,7 @@
     },
     "B4-1": {
       "id": "B4-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B4",
       "category": "B",
       "agent": "Forger",
@@ -507,7 +508,7 @@
     },
     "B5-1": {
       "id": "B5-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B5",
       "category": "B",
       "agent": "Forger",
@@ -546,13 +547,13 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01",
-      "completedAt": "2026-03-01",
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
       "createdAt": "2026-04-13T00:00:00"
     },
     "B6-4": {
       "id": "B6-4",
-      "title": "SEO setup \u2014 Basic complete (meta tags, H1s). Content ongoing",
+      "title": "SEO setup — Basic complete (meta tags, H1s). Content ongoing",
       "project": "B6",
       "category": "B",
       "agent": "Forger",
@@ -563,7 +564,7 @@
     },
     "B6-5": {
       "id": "B6-5",
-      "title": "Google Ads + finish marketing \u2014 \u2460 Google Ads (2 landing pages + checklist) \u2461 Social media \u2462 Client management",
+      "title": "Google Ads + finish marketing — ① Google Ads (2 landing pages + checklist) ② Social media ③ Client management",
       "project": "B6",
       "category": "B",
       "agent": "Forger",
@@ -615,13 +616,13 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-17",
-      "createdAt": "2026-04-13T00:00:00",
-      "completedAt": "2026-04-27"
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
+      "createdAt": "2026-04-13T00:00:00"
     },
     "B7-1": {
       "id": "B7-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B7",
       "category": "B",
       "agent": "Forger",
@@ -641,7 +642,7 @@
     },
     "B8-1": {
       "id": "B8-1",
-      "title": "Full website + marketing setup \u2014 \u2460 Website design \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B8",
       "category": "B",
       "agent": "Forger",
@@ -655,15 +656,14 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "done",
-      "priority": "done",
+      "status": "pending",
+      "priority": "medium",
       "deadline": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00",
-      "completedAt": "2026-05-06T12:01:14.911299+08:00"
+      "createdAt": "2026-03-25T00:00:00+08:00"
     },
     "B8-3": {
       "id": "B8-3",
-      "title": "Research and fully understand Higgfields AI for Empyrean \u2014 AI UGC and Product Advertisements pathway",
+      "title": "Research and fully understand Higgfields AI for Empyrean — AI UGC and Product Advertisements pathway",
       "project": "B8",
       "category": "B",
       "agent": "Cerebronn",
@@ -685,7 +685,7 @@
     },
     "B9-1": {
       "id": "B9-1",
-      "title": "Full Shopify + marketing setup \u2014 \u2460 Shopify website (not standard site) \u2461 SEO \u2462 Google Ads \u2463 Social media \u2464 Client management",
+      "title": "Full Shopify + marketing setup — ① Shopify website (not standard site) ② SEO ③ Google Ads ④ Social media ⑤ Client management",
       "project": "B9",
       "category": "B",
       "agent": "Forger",
@@ -695,7 +695,7 @@
     },
     "B10-1": {
       "id": "B10-1",
-      "title": "Corporate data tracking setup \u2014 Back burner, revisit end of year",
+      "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "project": "B10",
       "category": "B",
       "agent": "Forger",
@@ -705,7 +705,7 @@
     },
     "B11-1": {
       "id": "B11-1",
-      "title": "Create EPEPTOME website \u2014 sell research peptides",
+      "title": "Create EPEPTOME website — sell research peptides",
       "project": "B11",
       "category": "B",
       "agent": "Forger",
@@ -715,15 +715,15 @@
     },
     "C1-1": {
       "id": "C1-1",
-      "title": "Study for RES exam \u2014 Moved to Notebook LLM",
+      "title": "Study for RES exam — Moved to Notebook LLM",
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00",
-      "completedAt": "2026-04-28"
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
     },
     "C1-2": {
       "id": "C1-2",
@@ -748,7 +748,7 @@
     },
     "C2-2": {
       "id": "C2-2",
-      "title": "Research remote sales companies \u2014 Look for high-commission roles (base $60k negotiable to $35-40k)",
+      "title": "Research remote sales companies — Look for high-commission roles (base $60k negotiable to $35-40k)",
       "project": "C2",
       "category": "C",
       "agent": "CHAD_YI",
@@ -758,7 +758,7 @@
     },
     "C3-1": {
       "id": "C3-1",
-      "title": "Research Gather Town \u2014 2D virtual workspace platform. Custom map creation possible with object library + interactive elements. AI can DESIGN concepts but building requires manual work or API. Good for team building activities",
+      "title": "Research Gather Town — 2D virtual workspace platform. Custom map creation possible with object library + interactive elements. AI can DESIGN concepts but building requires manual work or API. Good for team building activities",
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
@@ -895,7 +895,7 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
-      "role": "The Face \u2014 Primary interface",
+      "role": "The Face — Primary interface",
       "platform": "Hermes Gateway",
       "status": "active",
       "currentTask": "Task coordination & reporting",
@@ -904,126 +904,63 @@
     },
     "helios": {
       "name": "Helios",
-      "role": "The Spine - COO, auditor, reporter",
+      "role": "The Spine — COO, auditor, reporter",
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-06T12:11:47.225544+08:00",
+      "lastActive": "2026-05-06T12:45:22.474732+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
-      "role": "Trading - OANDA execution/status",
-      "platform": "Telegram monitor / Quanta v3",
+      "role": "Trading — XAUUSD execution on OANDA",
+      "platform": "Telegram monitor",
       "status": "stale",
-      "currentTask": "Watching CallistoFx \u2014 live XAUUSD execution",
-      "lastActive": "2026-04-28T22:59:32.498137+08:00",
+      "currentTask": "Watching CallistoFx — live XAUUSD execution",
+      "lastActive": "2026-04-30T04:13:40.713974+08:00",
       "capabilities": []
     },
     "cerebronn": {
       "name": "Cerebronn",
-      "role": "The Brain - Persistent memory & decisions",
-      "platform": "Hermes planned agent",
-      "status": "planned",
+      "role": "The Brain — Persistent memory & decisions",
+      "platform": "VS Code / Copilot",
+      "status": "not_built_yet",
       "currentTask": "Architecture & deep reasoning (The Brain)",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "tele": {
+      "name": "Tele",
+      "role": "The Face — Telegram task management interface",
+      "platform": "Telegram Bot (@chad_yi_bot)",
+      "status": "not_built_yet",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "escritor": {
+      "name": "Escritor",
+      "role": "Story Agent — RE:UNITE novel writing",
+      "platform": "Systemd service",
+      "status": "not_built_yet",
+      "currentTask": "",
       "lastActive": "",
       "capabilities": []
     },
     "forger": {
       "name": "Forger",
-      "role": "Web Architect - websites, SEO, full-stack",
-      "platform": "Hermes planned agent",
-      "status": "planned",
+      "role": "Web Architect — websites, SEO, full-stack",
+      "platform": "Systemd service",
+      "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
     },
-    "escrita": {
-      "name": "Escrita",
-      "role": "Story Agent - RE:UNITE novel writing",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "autoura": {
-      "name": "Autoura",
-      "role": "Content Agent - KOE content, video, client acquisition",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "mensamusa": {
-      "name": "Mensamusa",
-      "role": "Research - knowledge and options intelligence",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "clair": {
-      "name": "Clair",
-      "role": "Streaming Scout",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "eplusplus": {
-      "name": "E++",
-      "role": "Core Dev",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "kotler": {
-      "name": "Kotler",
-      "role": "Marketing Ops - Google Ads Manager",
-      "platform": "External project",
-      "status": "external",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "ledger": {
-      "name": "Ledger",
-      "role": "Finance / CRM",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "atlas": {
-      "name": "Atlas",
-      "role": "Researcher",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "pulsar": {
-      "name": "Pulsar",
-      "role": "Data Sentinel",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "abed": {
-      "name": "Abed",
-      "role": "Community Manager",
-      "platform": "Hermes planned agent",
-      "status": "planned",
+    "autour": {
+      "name": "Autour",
+      "role": "Script Agent — KOE content & screenplays",
+      "platform": "Systemd service",
+      "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
@@ -1289,8 +1226,8 @@
         "B8-6"
       ],
       "totalTasks": 4,
-      "completedTasks": 2,
-      "completionPct": 50
+      "completedTasks": 1,
+      "completionPct": 25
     },
     "B9": {
       "name": "Ethereal",
@@ -1460,9 +1397,9 @@
   "needsAttention": [
     {
       "id": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "reason": "paused",
-      "owner": "Escrita"
+      "owner": "Escritor"
     },
     {
       "id": "A6-15",
@@ -1472,7 +1409,7 @@
     },
     {
       "id": "A7-3",
-      "title": "Send invitations \u2014 Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
+      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
       "reason": "overdue",
       "owner": "CHAD_YI"
     },
@@ -1483,8 +1420,14 @@
       "owner": "CHAD_YI"
     },
     {
+      "id": "B8-2",
+      "title": "Figure out Higgsfield AI for marketing studio",
+      "reason": "overdue",
+      "owner": "CHAD_YI"
+    },
+    {
       "id": "B10-1",
-      "title": "Corporate data tracking setup \u2014 Back burner, revisit end of year",
+      "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "reason": "paused",
       "owner": "Forger"
     }
@@ -1492,7 +1435,7 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-05-06",
-    "summary": "\ud83d\udccb 43 tasks in flight. Focus on top priorities.",
+    "summary": "📋 44 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1500,63 +1443,35 @@
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
-        "status": "stale",
-        "lastActive": "2026-04-16T20:07:36+08:00"
-      },
-      "cerebronn": {
-        "status": "planned",
-        "lastActive": ""
+        "status": "active",
+        "lastActive": "2026-05-06T04:47:01.830135+08:00"
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-06T12:15:37.268798+08:00"
+        "lastActive": "2026-05-06T12:45:22.474732+08:00"
       },
       "quanta": {
         "status": "stale",
-        "lastActive": "2026-04-28T22:59:32.498137+08:00"
+        "lastActive": "2026-04-30T04:13:40.713974+08:00"
+      },
+      "cerebronn": {
+        "status": "not_built_yet",
+        "lastActive": ""
+      },
+      "tele": {
+        "status": "not_built_yet",
+        "lastActive": ""
+      },
+      "escritor": {
+        "status": "not_built_yet",
+        "lastActive": ""
       },
       "forger": {
-        "status": "planned",
+        "status": "not_built_yet",
         "lastActive": ""
       },
-      "escrita": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "autoura": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "mensamusa": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "clair": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "eplusplus": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "kotler": {
-        "status": "external",
-        "lastActive": ""
-      },
-      "ledger": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "atlas": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "pulsar": {
-        "status": "planned",
-        "lastActive": ""
-      },
-      "abed": {
-        "status": "planned",
+      "autour": {
+        "status": "not_built_yet",
         "lastActive": ""
       }
     },
@@ -1569,7 +1484,7 @@
       },
       {
         "id": "A7-3",
-        "title": "Send invitations \u2014 Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
+        "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
         "deadline": "2026-04-30",
         "daysOverdue": 6
       },
@@ -1578,16 +1493,22 @@
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
         "daysOverdue": 8
+      },
+      {
+        "id": "B8-2",
+        "title": "Figure out Higgsfield AI for marketing studio",
+        "deadline": "2026-04-24",
+        "daysOverdue": 12
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-05-06T12:15:37.266943+08:00",
+    "lastRun": "2026-05-06T12:45:22.473231+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-06T12:15:37.269752+08:00",
+      "runAt": "2026-05-06T12:45:22.475639+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1660,11 +1581,11 @@
         "source": "oanda",
         "current_balance": 3049.35,
         "baseline_balance": 3821.73,
-        "weekly_profit": 0.0,
+        "weekly_profit": 2.35,
         "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 0.0,
+        "today_pnl": 2.35,
         "status": "active"
       }
     },
@@ -1727,8 +1648,8 @@
         "date": "2026-05-06",
         "agent": "quanta",
         "balance": 3049.35,
-        "pnl": 0.0,
-        "note": "Balance 3049.35 | P/L +0.00 today | Open 1"
+        "pnl": 2.35,
+        "note": "Balance 3049.35 | P/L +2.35 today | Open 1"
       }
     ],
     "currency": "USD",
