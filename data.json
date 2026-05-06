@@ -908,7 +908,11 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
+<<<<<<< HEAD
       "lastActive": "2026-05-06T11:00:59.405209+08:00",
+=======
+      "lastActive": "2026-05-06T10:56:42.457458+08:00",
+>>>>>>> c4c90024fd9c0c886cab799fa12cf56869996053
       "capabilities": []
     },
     "quanta": {
@@ -1448,7 +1452,11 @@
       },
       "helios": {
         "status": "active",
+<<<<<<< HEAD
         "lastActive": "2026-05-06T11:00:59.405209+08:00"
+=======
+        "lastActive": "2026-05-06T10:56:42.457458+08:00"
+>>>>>>> c4c90024fd9c0c886cab799fa12cf56869996053
       },
       "quanta": {
         "status": "stale",
@@ -1503,12 +1511,20 @@
     ]
   },
   "audit": {
+<<<<<<< HEAD
     "lastRun": "2026-05-06T11:00:59.402802+08:00",
+=======
+    "lastRun": "2026-05-06T10:56:42.456289+08:00",
+>>>>>>> c4c90024fd9c0c886cab799fa12cf56869996053
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
+<<<<<<< HEAD
       "runAt": "2026-05-06T11:00:59.406436+08:00",
+=======
+      "runAt": "2026-05-06T10:56:42.458830+08:00",
+>>>>>>> c4c90024fd9c0c886cab799fa12cf56869996053
       "passed": true,
       "blockingFailures": 0,
       "checks": [
