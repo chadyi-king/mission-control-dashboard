@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-06T16:30:53.088207+08:00",
+  "lastUpdated": "2026-05-06T16:42:11.179446+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -189,8 +189,8 @@
       "status": "done",
       "priority": "done",
       "deadline": "2026-04-28",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "A1-14": {
       "id": "A1-14",
@@ -211,8 +211,8 @@
       "status": "done",
       "priority": "done",
       "deadline": "2026-04-24",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "A2-1": {
       "id": "A2-1",
@@ -333,8 +333,8 @@
       "agent": "Quanta",
       "status": "done",
       "priority": "done",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "A5-3": {
       "id": "A5-3",
@@ -344,8 +344,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "A5-4": {
       "id": "A5-4",
@@ -535,8 +535,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "B6-3": {
       "id": "B6-3",
@@ -558,8 +558,8 @@
       "agent": "Forger",
       "status": "done",
       "priority": "done",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "B6-5": {
       "id": "B6-5",
@@ -616,8 +616,8 @@
       "status": "done",
       "priority": "done",
       "deadline": "2026-04-17",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "B7-1": {
       "id": "B7-1",
@@ -658,8 +658,8 @@
       "status": "done",
       "priority": "done",
       "deadline": "2026-04-24",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "B8-3": {
       "id": "B8-3",
@@ -722,8 +722,8 @@
       "status": "done",
       "priority": "done",
       "deadline": "2026-04-28",
-      "completedAt": "2026-05-06T16:30:53.088207+08:00",
-      "createdAt": "2026-04-22T16:30:53.088207+08:00"
+      "createdAt": "2026-04-22T16:30:53.088207+08:00",
+      "completedAt": "2026-05-06T16:30:53.088207+08:00"
     },
     "C1-2": {
       "id": "C1-2",
@@ -917,7 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-06T16:30:53.089538+08:00",
+      "lastActive": "2026-05-06T16:42:11.180680+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -949,9 +949,9 @@
     },
     "autoura": {
       "name": "Autoura",
-      "role": "Supervised growth agent - SME scouting, approval-gated outreach, client intake, story-first blueprints, Higgsfield prompt packs, clip review",
-      "platform": "Hermes on-demand / Higgsfield after approval",
-      "status": "active_on_demand",
+      "role": "Content Agent - KOE content, video, client acquisition",
+      "platform": "Hermes planned agent",
+      "status": "planned",
       "currentTask": "",
       "lastActive": "",
       "capabilities": []
@@ -1509,7 +1509,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-06T16:30:53.089538+08:00"
+        "lastActive": "2026-05-06T16:42:11.180680+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1524,7 +1524,7 @@
         "lastActive": ""
       },
       "autoura": {
-        "status": "active_on_demand",
+        "status": "planned",
         "lastActive": ""
       },
       "mensamusa": {
@@ -1582,12 +1582,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-06T16:30:53.088207+08:00",
+    "lastRun": "2026-05-06T16:42:11.179446+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-06T16:30:53.090572+08:00",
+      "runAt": "2026-05-06T16:42:11.182148+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
