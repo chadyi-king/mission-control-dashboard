@@ -1,11 +1,11 @@
 {
   "agentId": "autoura",
   "name": "Autoura",
-  "role": "content_acquisition_agent",
-  "specialty": "Client scouting, outreach, video creation, delivery",
+  "role": "supervised_growth_outreach_ad_production_agent",
+  "specialty": "30/30 phase 1-3 automation: scout, outreach, intake, blueprint",
   "model": "kimi-coding/k2p5",
   "status": "active",
-  "currentTask": "Building prospect scouting pipeline",
+  "currentTask": "Improving Phase 1 search reproducibility toward 10/10",
   "project": "A3",
   "projectName": "KOE + Client Acquisition",
   "capabilities": [
@@ -34,18 +34,27 @@
     "createAutonomous": true
   },
   "pipeline": {
-    "phase": "SCOUT",
-    "status": "building_infrastructure",
+    "phase": "PHASE_1_3_30_30_AUTOMATION",
+    "status": "progressive_self_improvement",
     "prospectsFound": 0,
     "outreachPending": 0,
     "clientsActive": 0,
-    "videosDelivered": 0
+    "videosDelivered": 0,
+    "auditScore": 23.6,
+    "auditScoreScale": "30",
+    "phaseScores": {
+      "phase1ScoutQualify": 7.7,
+      "phase2ProposeOutreach": 7.4,
+      "phase3IntakeBlueprint": 8.5
+    },
+    "activePhase": "phase1ScoutQualify",
+    "activeSubscore": "searchReproducibility"
   },
   "communicationProtocol": {
     "checkInboxEveryMinutes": 30,
-    "reportProgressEveryHours": 4,
+    "reportProgressEveryHours": 3,
     "escalateBlockersImmediately": true
   },
   "spawnedAt": "2026-05-02T18:30:00+08:00",
-  "lastActive": "2026-05-02T18:30:00+08:00"
+  "lastActive": "2026-05-06T21:15:00+08:00"
 }
