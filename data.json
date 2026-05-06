@@ -895,6 +895,7 @@
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
+<<<<<<< HEAD
       "role": "The Face — Primary interface",
       "platform": "Hermes Gateway",
       "status": "active",
@@ -918,6 +919,13 @@
       "status": "stale",
       "currentTask": "Watching CallistoFx — live XAUUSD execution",
       "lastActive": "2026-04-30T04:13:40.713974+08:00",
+=======
+      "role": "The Face - Primary interface",
+      "platform": "Hermes Gateway / Telegram",
+      "status": "stale",
+      "currentTask": "Live session on Telegram",
+      "lastActive": "2026-04-16T20:07:36+08:00",
+>>>>>>> d8ad60878aa96e219dfecd813573d58548c2bbb2
       "capabilities": []
     },
     "cerebronn": {
@@ -929,6 +937,7 @@
       "lastActive": "",
       "capabilities": []
     },
+<<<<<<< HEAD
     "tele": {
       "name": "Tele",
       "role": "The Face — Telegram task management interface",
@@ -945,6 +954,24 @@
       "status": "not_built_yet",
       "currentTask": "",
       "lastActive": "",
+=======
+    "helios": {
+      "name": "Helios",
+      "role": "The Spine - COO, auditor, reporter",
+      "platform": "Systemd service",
+      "status": "active",
+      "currentTask": "Dashboard sync + audit",
+      "lastActive": "2026-05-06T12:41:49.740960+08:00",
+      "capabilities": []
+    },
+    "quanta": {
+      "name": "Quanta",
+      "role": "Trading - OANDA execution/status",
+      "platform": "Telegram monitor / Quanta v3",
+      "status": "stale",
+      "currentTask": "Watching CallistoFx — live XAUUSD execution",
+      "lastActive": "2026-04-28T22:59:32.498137+08:00",
+>>>>>>> d8ad60878aa96e219dfecd813573d58548c2bbb2
       "capabilities": []
     },
     "forger": {
@@ -1435,7 +1462,11 @@
   "inputsNeeded": [],
   "dailyBriefing": {
     "date": "2026-05-06",
+<<<<<<< HEAD
     "summary": "📋 44 tasks in flight. Focus on top priorities.",
+=======
+    "summary": "📋 43 tasks in flight. Focus on top priorities.",
+>>>>>>> d8ad60878aa96e219dfecd813573d58548c2bbb2
     "focus": 0,
     "blockers": 0,
     "completedToday": 0,
@@ -1448,7 +1479,11 @@
       },
       "helios": {
         "status": "active",
+<<<<<<< HEAD
         "lastActive": "2026-05-06T12:45:22.474732+08:00"
+=======
+        "lastActive": "2026-05-06T12:41:49.740960+08:00"
+>>>>>>> d8ad60878aa96e219dfecd813573d58548c2bbb2
       },
       "quanta": {
         "status": "stale",
@@ -1503,12 +1538,20 @@
     ]
   },
   "audit": {
+<<<<<<< HEAD
     "lastRun": "2026-05-06T12:45:22.473231+08:00",
+=======
+    "lastRun": "2026-05-06T12:41:49.739892+08:00",
+>>>>>>> d8ad60878aa96e219dfecd813573d58548c2bbb2
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
+<<<<<<< HEAD
       "runAt": "2026-05-06T12:45:22.475639+08:00",
+=======
+      "runAt": "2026-05-06T12:41:49.742243+08:00",
+>>>>>>> d8ad60878aa96e219dfecd813573d58548c2bbb2
       "passed": true,
       "blockingFailures": 0,
       "checks": [
