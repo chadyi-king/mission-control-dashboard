@@ -12,10 +12,12 @@
       "baseline_balance": 3821.73,
       "weekly_profit": 0.0,
       "weekly_loss": 0.0,
-      "total_pnl": 96178.27,
+      "total_pnl": 0.0,
       "win_count": 0,
       "loss_count": 1,
-      "status": "active"
+      "status": "unverified_account_reset",
+      "pnl_status": "blocked",
+      "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
     }
   },
   "daily_snapshots": [
@@ -185,7 +187,8 @@
       "agent": "quanta",
       "balance": 100000.0,
       "pnl": 0.0,
-      "note": "Balance 100000.00 | P/L +0.00 today | Open 0"
+      "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+      "verified": false
     }
   ],
   "weekly_rankings": {

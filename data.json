@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-11T23:46:20.291825+08:00",
+  "lastUpdated": "2026-05-11T23:47:29.070702+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -917,17 +917,24 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-11T23:46:20.293400+08:00",
+      "lastActive": "2026-05-11T23:47:29.073878+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
       "role": "Trading - OANDA execution/status",
       "platform": "Telegram monitor / Quanta v3",
-      "status": "stale",
-      "currentTask": "Watching CallistoFx — live XAUUSD execution",
-      "lastActive": "2026-04-28T22:59:32.498137+08:00",
-      "capabilities": []
+      "status": "active",
+      "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
+      "lastActive": "2026-05-11T23:46:10.094456+08:00",
+      "capabilities": [],
+      "runtimeStatus": "scheduled_worker",
+      "tradingMode": "off",
+      "statusReporting": "active",
+      "openTrades": 0,
+      "pendingOrders": 0,
+      "accountMode": "practice_or_unknown",
+      "warnings": []
     },
     "forger": {
       "name": "Forger",
@@ -1509,11 +1516,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-11T23:46:20.293400+08:00"
+        "lastActive": "2026-05-11T23:47:29.073878+08:00"
       },
       "quanta": {
-        "status": "stale",
-        "lastActive": "2026-04-28T22:59:32.498137+08:00"
+        "status": "active",
+        "lastActive": "2026-05-11T23:46:10.094456+08:00"
       },
       "forger": {
         "status": "planned",
@@ -1582,12 +1589,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-05-11T23:46:20.291825+08:00",
+    "lastRun": "2026-05-11T23:47:29.070702+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-11T23:46:20.294910+08:00",
+      "runAt": "2026-05-11T23:47:29.085473+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1665,7 +1672,10 @@
         "win_count": 0,
         "loss_count": 1,
         "today_pnl": 0.0,
-        "status": "active"
+        "status": "unverified_account_reset",
+        "pnl_status": "blocked",
+        "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified.",
+        "account_id": "101-003-23656635-001"
       }
     },
     "weekly_rankings": {
@@ -1728,10 +1738,16 @@
         "agent": "quanta",
         "balance": 100000.0,
         "pnl": 0.0,
-        "note": "Balance 100000.00 | P/L +0.00 today | Open 0"
+        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+        "verified": false
       }
     ],
     "currency": "USD",
     "tracking_started": "2026-04-17"
+  },
+  "taskBoard": {
+    "queueCount": 0,
+    "lastEvent": null,
+    "status": "ready"
   }
 }
