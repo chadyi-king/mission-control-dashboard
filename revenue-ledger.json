@@ -7,12 +7,12 @@
   "agents": {
     "quanta": {
       "source": "oanda",
-      "account_id": "001-003-8520002-001",
-      "current_balance": 3049.35,
+      "account_id": "101-003-23656635-001",
+      "current_balance": 100000.0,
       "baseline_balance": 3821.73,
-      "weekly_profit": 2.35,
+      "weekly_profit": 0.0,
       "weekly_loss": 0.0,
-      "total_pnl": -772.38,
+      "total_pnl": 96178.27,
       "win_count": 0,
       "loss_count": 1,
       "status": "active"
@@ -183,9 +183,9 @@
     {
       "date": "2026-05-11",
       "agent": "quanta",
-      "balance": 3049.35,
-      "pnl": 2.35,
-      "note": "Balance 3049.35 | P/L +2.35 today | Open 1"
+      "balance": 100000.0,
+      "pnl": 0.0,
+      "note": "Balance 100000.00 | P/L +0.00 today | Open 0"
     }
   ],
   "weekly_rankings": {
