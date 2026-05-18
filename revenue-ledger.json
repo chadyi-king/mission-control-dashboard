@@ -238,6 +238,14 @@
       "pnl": 0.0,
       "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
       "verified": false
+    },
+    {
+      "date": "2026-05-19",
+      "agent": "quanta",
+      "balance": 100000.0,
+      "pnl": 0.0,
+      "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+      "verified": false
     }
   ],
   "weekly_rankings": {
