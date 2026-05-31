@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-05-25T04:28:04.433586+08:00",
+  "lastUpdated": "2026-05-31T20:18:13.809050+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -917,7 +917,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-05-25T04:28:04.438757+08:00",
+      "lastActive": "2026-05-31T20:18:13.813232+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1504,7 +1504,7 @@
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-05-25",
+    "date": "2026-05-31",
     "summary": "📋 43 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
@@ -1522,7 +1522,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-05-25T04:28:04.438757+08:00"
+        "lastActive": "2026-05-31T20:18:13.813232+08:00"
       },
       "quanta": {
         "status": "stale",
@@ -1578,35 +1578,35 @@
         "id": "A6-15",
         "title": "Build Cerebronn as a proper bot in VS Code Studio",
         "deadline": "2026-04-30",
-        "daysOverdue": 25
+        "daysOverdue": 31
       },
       {
         "id": "A7-3",
         "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
         "deadline": "2026-04-30",
-        "daysOverdue": 25
+        "daysOverdue": 31
       },
       {
         "id": "A7-4",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
-        "daysOverdue": 27
+        "daysOverdue": 33
       },
       {
         "id": "C1-2",
         "title": "Register for RES exam",
         "deadline": "2026-05-15",
-        "daysOverdue": 10
+        "daysOverdue": 16
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-05-25T04:28:04.433586+08:00",
+    "lastRun": "2026-05-31T20:18:13.809050+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-05-25T04:28:04.460191+08:00",
+      "runAt": "2026-05-31T20:18:13.829958+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1704,14 +1704,6 @@
     },
     "daily_snapshots": [
       {
-        "date": "2026-05-18",
-        "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
-        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-        "verified": false
-      },
-      {
         "date": "2026-05-19",
         "agent": "quanta",
         "balance": 100000.0,
@@ -1753,6 +1745,14 @@
       },
       {
         "date": "2026-05-25",
+        "agent": "quanta",
+        "balance": 100000.0,
+        "pnl": 0.0,
+        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+        "verified": false
+      },
+      {
+        "date": "2026-05-31",
         "agent": "quanta",
         "balance": 100000.0,
         "pnl": 0.0,
