@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-01T12:30:48.349510+08:00",
+  "lastUpdated": "2026-06-01T14:28:05.151401+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -917,16 +917,16 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-01T12:30:48.351761+08:00",
+      "lastActive": "2026-06-01T14:28:05.157864+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
       "role": "Trading - OANDA execution/status",
       "platform": "Telegram monitor / Quanta v3",
-      "status": "active",
+      "status": "stale",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-01T12:29:09.611472+08:00",
+      "lastActive": "2026-06-01T12:34:32.306591+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -1522,11 +1522,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-01T12:30:48.351761+08:00"
+        "lastActive": "2026-06-01T14:28:05.157864+08:00"
       },
       "quanta": {
-        "status": "active",
-        "lastActive": "2026-06-01T12:29:09.611472+08:00"
+        "status": "stale",
+        "lastActive": "2026-06-01T12:34:32.306591+08:00"
       },
       "forger": {
         "status": "planned",
@@ -1601,12 +1601,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-06-01T12:30:48.349510+08:00",
+    "lastRun": "2026-06-01T14:28:05.151401+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-01T12:30:48.359954+08:00",
+      "runAt": "2026-06-01T14:28:05.187011+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
