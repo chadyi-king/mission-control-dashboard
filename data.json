@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-05T14:04:45.303313+08:00",
+  "lastUpdated": "2026-06-07T23:49:51.651371+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 68,
@@ -917,16 +917,16 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-05T14:04:45.304687+08:00",
+      "lastActive": "2026-06-07T23:49:51.653064+08:00",
       "capabilities": []
     },
     "quanta": {
       "name": "Quanta",
       "role": "Trading - OANDA execution/status",
       "platform": "Telegram monitor / Quanta v3",
-      "status": "active",
+      "status": "stale",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-05T14:00:44.053763+08:00",
+      "lastActive": "2026-06-05T14:06:33.155051+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -1510,7 +1510,7 @@
   ],
   "inputsNeeded": [],
   "dailyBriefing": {
-    "date": "2026-06-05",
+    "date": "2026-06-07",
     "summary": "📋 43 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 0,
@@ -1528,11 +1528,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-05T14:04:45.304687+08:00"
+        "lastActive": "2026-06-07T23:49:51.653064+08:00"
       },
       "quanta": {
-        "status": "active",
-        "lastActive": "2026-06-05T14:00:44.053763+08:00"
+        "status": "stale",
+        "lastActive": "2026-06-05T14:06:33.155051+08:00"
       },
       "forger": {
         "status": "planned",
@@ -1584,41 +1584,41 @@
         "id": "A6-15",
         "title": "Build Cerebronn as a proper bot in VS Code Studio",
         "deadline": "2026-04-30",
-        "daysOverdue": 36
+        "daysOverdue": 38
       },
       {
         "id": "A7-1",
         "title": "Finalize wedding theme",
         "deadline": "2026-06-01",
-        "daysOverdue": 4
+        "daysOverdue": 6
       },
       {
         "id": "A7-3",
         "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
         "deadline": "2026-04-30",
-        "daysOverdue": 36
+        "daysOverdue": 38
       },
       {
         "id": "A7-4",
         "title": "Prepare wedding guest list",
         "deadline": "2026-04-28",
-        "daysOverdue": 38
+        "daysOverdue": 40
       },
       {
         "id": "C1-2",
         "title": "Register for RES exam",
         "deadline": "2026-05-15",
-        "daysOverdue": 21
+        "daysOverdue": 23
       }
     ]
   },
   "audit": {
-    "lastRun": "2026-06-05T14:04:45.303313+08:00",
+    "lastRun": "2026-06-07T23:49:51.651371+08:00",
     "dataIntegrity": "ok",
     "taskCount": 68,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-05T14:04:45.313071+08:00",
+      "runAt": "2026-06-07T23:49:51.662760+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -1711,18 +1711,10 @@
       "worst": {
         "agent": "quanta",
         "amount": 0.0,
-        "period": "2026-05-01"
+        "period": "2026-05-03"
       }
     },
     "daily_snapshots": [
-      {
-        "date": "2026-05-25",
-        "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
-        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-        "verified": false
-      },
       {
         "date": "2026-05-31",
         "agent": "quanta",
@@ -1765,6 +1757,14 @@
       },
       {
         "date": "2026-06-05",
+        "agent": "quanta",
+        "balance": 100000.0,
+        "pnl": 0.0,
+        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+        "verified": false
+      },
+      {
+        "date": "2026-06-07",
         "agent": "quanta",
         "balance": 100000.0,
         "pnl": 0.0,
