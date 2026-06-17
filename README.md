@@ -25,4 +25,4 @@ Dashboard for managing projects, tasks, and AI agents.
 1. Push to GitHub repository
 2. Go to Settings > Pages
 3. Select "Deploy from branch" > "main"
-4. Your site will be live at `https://chadyi-king.github.io/mission-control-dashboard/index.html`
+4. Your site will be live at `https://chadyi-king.github.io/mission-control-dashboard/index.html`# Force refresh Wed Jun 17 18:08:01 +08 2026
