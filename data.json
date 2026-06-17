@@ -1,40 +1,65 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-17T16:15:41.587654+08:00",
+  "lastUpdated": "2026-06-17T16:16:02.871188+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 68,
-    "tasksLeft": 43,
-    "completedTasks": 25,
-    "completedToday": 0,
-    "completedThisWeek": 0,
+    "totalTasks": 75,
+    "tasksLeft": 48,
+    "completedTasks": 27,
+    "completedToday": 2,
+    "completedThisWeek": 2,
     "critical": 0,
     "urgent": 0,
-    "active": 1,
-    "blocked": 0,
+    "active": 2,
+    "blocked": 1,
     "review": 0,
-    "backlog": 40
+    "backlog": 42
   },
   "completions": {
-    "today": [],
-    "this_week": [],
-    "all_time": 34
+    "today": [
+      {
+        "id": "A7-1",
+        "title": "Finalize wedding theme — BLACK AND WHITE",
+        "date": "2026-06-17",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "A7-4",
+        "title": "Prepare wedding guest list",
+        "date": "2026-06-17",
+        "agent": "CHAD_YI"
+      }
+    ],
+    "this_week": [
+      {
+        "id": "A7-1",
+        "title": "Finalize wedding theme — BLACK AND WHITE",
+        "date": "2026-06-17",
+        "agent": "CHAD_YI"
+      },
+      {
+        "id": "A7-4",
+        "title": "Prepare wedding guest list",
+        "date": "2026-06-17",
+        "agent": "CHAD_YI"
+      }
+    ],
+    "all_time": 44
   },
   "weeklyProgress": {
-    "completed": 0,
+    "completed": 2,
     "started": 0
   },
   "workflow": {
     "pending": [
-      "A1-9",
-      "A6-15",
-      "A7-1",
       "A7-3",
-      "A7-4",
       "B1-2",
+      "B1-3",
+      "B1-4",
       "C1-2"
     ],
     "active": [
+      "A6-16",
       "B6-10"
     ],
     "review": [],
@@ -51,7 +76,9 @@
       "A5-1",
       "A5-3",
       "A6-14",
+      "A7-1",
       "A7-2",
+      "A7-4",
       "B3-1",
       "B6-1",
       "B6-2",
@@ -66,9 +93,12 @@
       "C1-1"
     ],
     "urgent": [],
-    "blocked": [],
+    "blocked": [
+      "A2-1"
+    ],
     "paused": [
-      "A2-1",
+      "A5-4",
+      "A5-5",
       "B10-1"
     ],
     "backlog": [
@@ -79,13 +109,17 @@
       "A3-4",
       "A3-5",
       "A3-6",
+      "A3-7",
+      "A3-8",
+      "A3-9",
       "A4-1",
       "A4-2",
       "A4-3",
       "A4-4",
-      "A5-4",
-      "A5-5",
-      "A6-2",
+      "A7-5",
+      "A7-6",
+      "A7-7",
+      "A7-8",
       "B1-1",
       "B11-1",
       "B2-1",
@@ -106,18 +140,19 @@
       "C3-4",
       "C3-5"
     ],
-    "waiting on you": [],
+    "waiting on you": [
+      "A2-1"
+    ],
     "check this": [],
     "agent on it": [
+      "A6-16",
       "B6-10"
     ],
     "has deadline": [
-      "A1-9",
-      "A6-15",
-      "A7-1",
       "A7-3",
-      "A7-4",
       "B1-2",
+      "B1-3",
+      "B1-4",
       "C1-2"
     ],
     "todo": [
@@ -128,13 +163,17 @@
       "A3-4",
       "A3-5",
       "A3-6",
+      "A3-7",
+      "A3-8",
+      "A3-9",
       "A4-1",
       "A4-2",
       "A4-3",
       "A4-4",
-      "A5-4",
-      "A5-5",
-      "A6-2",
+      "A7-5",
+      "A7-6",
+      "A7-7",
+      "A7-8",
       "B1-1",
       "B11-1",
       "B2-1",
@@ -187,9 +226,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00",
-      "completedAt": "2026-04-28"
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
     },
     "A1-13": {
       "id": "A1-13",
@@ -199,9 +238,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-24",
-      "createdAt": "2026-04-10T00:00:00",
-      "completedAt": "2026-04-24"
+      "completed": "2026-04-24",
+      "completedAt": "2026-04-24",
+      "createdAt": "2026-04-10T00:00:00"
     },
     "A1-14": {
       "id": "A1-14",
@@ -218,10 +257,10 @@
       "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "project": "A2",
       "category": "A",
-      "agent": "Escrita",
-      "status": "paused",
+      "agent": "ESCRITA",
+      "status": "blocked",
       "priority": "medium",
-      "pauseReason": "Waiting for Escrita build",
+      "blockReason": "Waiting for Caleb to start brainstorm",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-1": {
@@ -352,8 +391,9 @@
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "backlog",
-      "priority": "low",
+      "status": "paused",
+      "priority": "medium",
+      "pauseReason": "Trading on hold after losses",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A5-5": {
@@ -362,8 +402,9 @@
       "project": "A5",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "backlog",
-      "priority": "low",
+      "status": "paused",
+      "priority": "medium",
+      "pauseReason": "Trading on hold after losses",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A6-2": {
@@ -372,7 +413,7 @@
       "project": "A6",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -382,7 +423,7 @@
       "project": "A6",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "medium",
       "deadline": "2026-04-30",
       "createdAt": "2026-03-31T00:00:00+08:00"
@@ -399,13 +440,14 @@
     },
     "A7-1": {
       "id": "A7-1",
-      "title": "Finalize wedding theme",
+      "title": "Finalize wedding theme — BLACK AND WHITE",
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-06-01",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-06-17",
+      "completedAt": "2026-06-17",
       "createdAt": "2026-05-02T00:00:00+08:00"
     },
     "A7-2": {
@@ -422,13 +464,12 @@
     },
     "A7-3": {
       "id": "A7-3",
-      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
+      "title": "Send invitations — RSVP by end of June",
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
       "status": "pending",
       "priority": "medium",
-      "deadline": "2026-04-30",
       "createdAt": "2026-03-31T00:00:00+08:00"
     },
     "A7-4": {
@@ -437,9 +478,10 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
-      "priority": "medium",
-      "deadline": "2026-04-28",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-06-17",
+      "completedAt": "2026-06-17",
       "createdAt": "2026-03-29T00:00:00+08:00"
     },
     "B1-1": {
@@ -535,8 +577,8 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "completed": "2026-03-01",
-      "completedAt": "2026-03-01",
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
       "createdAt": "2026-04-13T00:00:00"
     },
     "B6-4": {
@@ -604,9 +646,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-17",
-      "createdAt": "2026-04-13T00:00:00",
-      "completedAt": "2026-04-27"
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
+      "createdAt": "2026-04-13T00:00:00"
     },
     "B7-1": {
       "id": "B7-1",
@@ -710,9 +752,9 @@
       "agent": "CHAD_YI",
       "status": "done",
       "priority": "done",
-      "deadline": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00",
-      "completedAt": "2026-04-28"
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
     },
     "C1-2": {
       "id": "C1-2",
@@ -747,7 +789,7 @@
     },
     "C3-1": {
       "id": "C3-1",
-      "title": "Research Gather Town — 2D virtual workspace platform. Custom map creation possible with object library + interactive elements. AI can DESIGN concepts but building requires manual work or API. Good for team building activities",
+      "title": "Research Gather Town — 2D virtual workspace platform. Custom map creation possible with object library + interactive elements",
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
@@ -882,103 +924,101 @@
     "A3-7": {
       "id": "A3-7",
       "title": "Script 4 — [NEED TOPIC FROM CALEB]",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "backlog",
       "project": "A3",
-      "notes": "KOE YouTube script 4 of 6. Topic TBD.",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-8": {
       "id": "A3-8",
       "title": "Script 5 — [NEED TOPIC FROM CALEB]",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "backlog",
       "project": "A3",
-      "notes": "KOE YouTube script 5 of 6. Topic TBD.",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A3-9": {
       "id": "A3-9",
       "title": "Script 6 — [NEED TOPIC FROM CALEB]",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "backlog",
       "project": "A3",
-      "notes": "KOE YouTube script 6 of 6. Topic TBD.",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B1-3": {
       "id": "B1-3",
       "title": "Text Charmaine about refund",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "urgent",
       "project": "B1",
-      "notes": "Due: Sunday (this week)",
-      "due": "2026-06-22",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B1-4": {
       "id": "B1-4",
       "title": "Text Ian from WGC/EPOS about refund",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "urgent",
       "project": "B1",
-      "notes": "Due: Sunday (this week)",
-      "due": "2026-06-22",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "pending",
+      "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A6-16": {
       "id": "A6-16",
-      "title": "Fix dashboard functionality - stats cards, agent faces, Kanban boards",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "high",
+      "title": "Fix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions",
       "project": "A6",
-      "notes": "Fix: 1) Stats cards from top nav, 2) Agent faces/icons, 3) Kanban board per agent with clear task instructions",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "active",
+      "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A7-5": {
       "id": "A7-5",
       "title": "Plan bridesmaid and groomsmen party",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "backlog",
       "project": "A7",
-      "notes": "After RSVP sent out",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A7-6": {
       "id": "A7-6",
       "title": "Prepare gifts for bridesmaids and groomsmen",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "backlog",
       "project": "A7",
-      "notes": "After RSVP sent out",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A7-7": {
       "id": "A7-7",
       "title": "Create WhatsApp group for wedding party",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "backlog",
       "project": "A7",
-      "notes": "Include all bridesmaids and groomsmen",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A7-8": {
       "id": "A7-8",
       "title": "Distribute roles and responsibilities to wedding party",
-      "agent": "CHAD_YI",
-      "status": "removed",
-      "priority": "backlog",
       "project": "A7",
-      "notes": "After WhatsApp group is created",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A1-9": {
@@ -987,13 +1027,38 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "medium",
       "deadline": "2026-12-31",
       "createdAt": "2026-12-01T00:00:00+08:00"
     }
   },
-  "recentWins": [],
+  "recentWins": [
+    {
+      "id": "A7-1",
+      "title": "Finalize wedding theme — BLACK AND WHITE",
+      "date": "2026-06-17",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "A7-4",
+      "title": "Prepare wedding guest list",
+      "date": "2026-06-17",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "A7-1",
+      "title": "Finalize wedding theme — BLACK AND WHITE",
+      "date": "2026-06-17",
+      "agent": "CHAD_YI"
+    },
+    {
+      "id": "A7-4",
+      "title": "Prepare wedding guest list",
+      "date": "2026-06-17",
+      "agent": "CHAD_YI"
+    }
+  ],
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
@@ -1019,7 +1084,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-17T16:15:41.589532+08:00",
+      "lastActive": "2026-06-17T16:16:02.872684+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1195,18 +1260,17 @@
         "A1-2",
         "A1-7",
         "A1-1",
-        "A1-4",
-        "A1-9"
+        "A1-4"
       ],
-      "totalTasks": 11,
+      "totalTasks": 10,
       "completedTasks": 9,
-      "completionPct": 82
+      "completionPct": 90
     },
     "A2": {
       "name": "RE:UNITE",
       "description": "Novel writing project",
       "category": "A",
-      "status": "pending",
+      "status": "blocked",
       "tasks": [
         "A2-1"
       ],
@@ -1225,9 +1289,12 @@
         "A3-3",
         "A3-4",
         "A3-5",
-        "A3-6"
+        "A3-6",
+        "A3-7",
+        "A3-8",
+        "A3-9"
       ],
-      "totalTasks": 6,
+      "totalTasks": 9,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1265,15 +1332,14 @@
       "name": "Mission Control",
       "description": "Dashboard & infrastructure",
       "category": "A",
-      "status": "pending",
+      "status": "active",
       "tasks": [
-        "A6-2",
-        "A6-15",
-        "A6-14"
+        "A6-14",
+        "A6-16"
       ],
-      "totalTasks": 3,
+      "totalTasks": 2,
       "completedTasks": 1,
-      "completionPct": 33
+      "completionPct": 50
     },
     "A7": {
       "name": "Wedding",
@@ -1284,11 +1350,15 @@
         "A7-1",
         "A7-2",
         "A7-3",
-        "A7-4"
+        "A7-4",
+        "A7-5",
+        "A7-6",
+        "A7-7",
+        "A7-8"
       ],
-      "totalTasks": 4,
-      "completedTasks": 1,
-      "completionPct": 25
+      "totalTasks": 8,
+      "completedTasks": 3,
+      "completionPct": 38
     },
     "B1": {
       "name": "Exstatic",
@@ -1297,9 +1367,11 @@
       "status": "pending",
       "tasks": [
         "B1-2",
-        "B1-1"
+        "B1-1",
+        "B1-3",
+        "B1-4"
       ],
-      "totalTasks": 2,
+      "totalTasks": 4,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1570,31 +1642,19 @@
     {
       "id": "A2-1",
       "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "reason": "blocked",
+      "owner": "ESCRITA"
+    },
+    {
+      "id": "A5-4",
+      "title": "Add AXI/MT5 for QUANTA with same trading logic",
       "reason": "paused",
-      "owner": "Escrita"
-    },
-    {
-      "id": "A6-15",
-      "title": "Build Cerebronn as a proper bot in VS Code Studio",
-      "reason": "overdue",
       "owner": "CHAD_YI"
     },
     {
-      "id": "A7-1",
-      "title": "Finalize wedding theme",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "A7-3",
-      "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
-    },
-    {
-      "id": "A7-4",
-      "title": "Prepare wedding guest list",
-      "reason": "overdue",
+      "id": "A5-5",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
+      "reason": "paused",
       "owner": "CHAD_YI"
     },
     {
@@ -1610,14 +1670,22 @@
       "owner": "CHAD_YI"
     }
   ],
-  "inputsNeeded": [],
+  "inputsNeeded": [
+    {
+      "taskId": "A2-1",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "agent": "ESCRITA",
+      "reason": "Blocked — needs input",
+      "blockedSince": "2026-02-01T00:00:00+08:00"
+    }
+  ],
   "dailyBriefing": {
     "date": "2026-06-17",
-    "summary": "📋 43 tasks in flight. Focus on top priorities.",
+    "summary": "✅ 2 tasks completed today. 48 remaining.",
     "focus": 0,
-    "blockers": 0,
-    "completedToday": 0,
-    "completedThisWeek": 0,
+    "blockers": 1,
+    "completedToday": 2,
+    "completedThisWeek": 2,
     "topPriorities": [],
     "agentHealth": {
       "chad-yi": {
@@ -1630,7 +1698,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-17T16:15:41.589532+08:00"
+        "lastActive": "2026-06-17T16:16:02.872684+08:00"
       },
       "quanta": {
         "status": "active",
@@ -1683,30 +1751,6 @@
     },
     "overdueTasks": [
       {
-        "id": "A6-15",
-        "title": "Build Cerebronn as a proper bot in VS Code Studio",
-        "deadline": "2026-04-30",
-        "daysOverdue": 48
-      },
-      {
-        "id": "A7-1",
-        "title": "Finalize wedding theme",
-        "deadline": "2026-06-01",
-        "daysOverdue": 16
-      },
-      {
-        "id": "A7-3",
-        "title": "Send invitations — Talk to groomsmen, Jamie talks to bridesmaids to formally ask them",
-        "deadline": "2026-04-30",
-        "daysOverdue": 48
-      },
-      {
-        "id": "A7-4",
-        "title": "Prepare wedding guest list",
-        "deadline": "2026-04-28",
-        "daysOverdue": 50
-      },
-      {
         "id": "C1-2",
         "title": "Register for RES exam",
         "deadline": "2026-05-15",
@@ -1715,12 +1759,12 @@
     ]
   },
   "audit": {
-    "lastRun": "2026-06-17T16:15:41.587654+08:00",
+    "lastRun": "2026-06-17T16:16:02.871188+08:00",
     "dataIntegrity": "ok",
     "taskCount": 78,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-17T16:15:41.596058+08:00",
+      "runAt": "2026-06-17T16:16:02.879803+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
