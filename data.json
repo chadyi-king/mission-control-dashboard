@@ -1,11 +1,11 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-17T17:30:45.196815+08:00",
+  "lastUpdated": "2026-06-17T17:45:50.672423+08:00",
   "updatedBy": "helios-v3",
   "stats": {
-    "totalTasks": 75,
-    "tasksLeft": 48,
-    "completedTasks": 27,
+    "totalTasks": 106,
+    "tasksLeft": 77,
+    "completedTasks": 29,
     "completedToday": 2,
     "completedThisWeek": 2,
     "critical": 0,
@@ -13,7 +13,7 @@
     "active": 2,
     "blocked": 1,
     "review": 0,
-    "backlog": 42
+    "backlog": 71
   },
   "completions": {
     "today": [
@@ -44,7 +44,7 @@
         "agent": "CHAD_YI"
       }
     ],
-    "all_time": 44
+    "all_time": 46
   },
   "weeklyProgress": {
     "completed": 2,
@@ -53,7 +53,6 @@
   "workflow": {
     "pending": [
       "A7-3",
-      "B1-2",
       "B1-3",
       "B1-4",
       "C1-2"
@@ -84,11 +83,13 @@
       "B6-2",
       "B6-3",
       "B6-4",
+      "B6-5",
       "B6-6",
       "B6-7",
       "B6-8",
       "B6-9",
       "B8-2",
+      "B8-3",
       "B8-6",
       "C1-1"
     ],
@@ -122,23 +123,53 @@
       "A7-8",
       "B1-1",
       "B11-1",
+      "B11-2",
+      "B11-3",
+      "B11-4",
+      "B11-5",
+      "B11-6",
+      "B11-7",
       "B2-1",
       "B3-2",
+      "B3-3",
       "B4-1",
       "B5-1",
-      "B6-5",
       "B7-1",
       "B7-2",
+      "B7-3",
+      "B7-4",
+      "B7-5",
+      "B7-6",
+      "B7-7",
       "B8-1",
-      "B8-3",
+      "B8-10",
+      "B8-11",
+      "B8-12",
+      "B8-13",
+      "B8-14",
+      "B8-4",
+      "B8-5",
+      "B8-7",
+      "B8-8",
+      "B8-9",
       "B9-1",
+      "B9-2",
+      "B9-3",
+      "B9-4",
+      "B9-5",
+      "B9-6",
+      "B9-7",
       "C2-1",
       "C2-2",
       "C3-1",
       "C3-2",
       "C3-3",
-      "C3-4",
-      "C3-5"
+      "C3-6",
+      "C4-1",
+      "C4-2",
+      "C4-3",
+      "C4-4",
+      "C4-5"
     ],
     "waiting on you": [
       "A2-1"
@@ -150,7 +181,6 @@
     ],
     "has deadline": [
       "A7-3",
-      "B1-2",
       "B1-3",
       "B1-4",
       "C1-2"
@@ -176,23 +206,53 @@
       "A7-8",
       "B1-1",
       "B11-1",
+      "B11-2",
+      "B11-3",
+      "B11-4",
+      "B11-5",
+      "B11-6",
+      "B11-7",
       "B2-1",
       "B3-2",
+      "B3-3",
       "B4-1",
       "B5-1",
-      "B6-5",
       "B7-1",
       "B7-2",
+      "B7-3",
+      "B7-4",
+      "B7-5",
+      "B7-6",
+      "B7-7",
       "B8-1",
-      "B8-3",
+      "B8-10",
+      "B8-11",
+      "B8-12",
+      "B8-13",
+      "B8-14",
+      "B8-4",
+      "B8-5",
+      "B8-7",
+      "B8-8",
+      "B8-9",
       "B9-1",
+      "B9-2",
+      "B9-3",
+      "B9-4",
+      "B9-5",
+      "B9-6",
+      "B9-7",
       "C2-1",
       "C2-2",
       "C3-1",
       "C3-2",
       "C3-3",
-      "C3-4",
-      "C3-5"
+      "C3-6",
+      "C4-1",
+      "C4-2",
+      "C4-3",
+      "C4-4",
+      "C4-5"
     ]
   },
   "tasks": {
@@ -214,7 +274,7 @@
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "pending",
+      "status": "removed",
       "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -598,9 +658,10 @@
       "project": "B6",
       "category": "B",
       "agent": "Forger",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-02-01T00:00:00+08:00",
+      "completedAt": "2026-06-17T17:32:48.512259+08:00"
     },
     "B6-6": {
       "id": "B6-6",
@@ -652,7 +713,7 @@
     },
     "B7-1": {
       "id": "B7-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "title": "Design website layout and structure — Homepage, services, about, contact pages",
       "project": "B7",
       "category": "B",
       "agent": "Forger",
@@ -662,17 +723,17 @@
     },
     "B7-2": {
       "id": "B7-2",
-      "title": "Finish framework for encompass website",
+      "title": "Write website copy and content — Brand messaging, service descriptions, SEO content",
       "project": "B7",
       "category": "B",
-      "agent": "Forger",
+      "agent": "CHAD_YI",
       "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "B8-1": {
       "id": "B8-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "title": "Design website layout and structure — Homepage, portfolio, services, contact pages",
       "project": "B8",
       "category": "B",
       "agent": "Forger",
@@ -694,13 +755,14 @@
     },
     "B8-3": {
       "id": "B8-3",
-      "title": "Research and fully understand Higgfields AI for Empyrean — AI UGC and Product Advertisements pathway",
+      "title": "Research Higgsfield AI pathway — AI UGC and Product Advertisements",
       "project": "B8",
       "category": "B",
       "agent": "Cerebronn",
-      "status": "backlog",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-02-01T00:00:00+08:00",
+      "completedAt": "2026-06-17T17:37:42.491870+08:00"
     },
     "B8-6": {
       "id": "B8-6",
@@ -716,7 +778,7 @@
     },
     "B9-1": {
       "id": "B9-1",
-      "title": "Full Shopify + marketing setup — ① Shopify website (not standard site) ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "title": "Set up Shopify store — Theme selection, product catalog, payment gateways",
       "project": "B9",
       "category": "B",
       "agent": "Forger",
@@ -736,7 +798,7 @@
     },
     "B11-1": {
       "id": "B11-1",
-      "title": "Create EPEPTOME website — sell research peptides",
+      "title": "Design website layout — Homepage, product catalog, about, contact pages",
       "project": "B11",
       "category": "B",
       "agent": "Forger",
@@ -758,13 +820,13 @@
     },
     "C1-2": {
       "id": "C1-2",
-      "title": "Register for RES exam",
+      "title": "Register for RES exam — October or December 2026 session",
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
       "status": "pending",
       "priority": "medium",
-      "deadline": "2026-05-15",
+      "deadline": "2026-10-01",
       "createdAt": "2026-04-15T00:00:00+08:00"
     },
     "C2-1": {
@@ -823,7 +885,7 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -833,7 +895,7 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "backlog",
+      "status": "removed",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1031,6 +1093,346 @@
       "priority": "medium",
       "deadline": "2026-12-31",
       "createdAt": "2026-12-01T00:00:00+08:00"
+    },
+    "B3-3": {
+      "id": "B3-3",
+      "title": "Add Team Building section to website — Create subdomain or page for team building activities (escape rooms, laser tag, etc.) alongside large-scale events",
+      "project": "B3",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-3": {
+      "id": "B7-3",
+      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-4": {
+      "id": "B7-4",
+      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-5": {
+      "id": "B7-5",
+      "title": "Add contact forms and CTAs — Lead capture, booking integration",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-6": {
+      "id": "B7-6",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-7": {
+      "id": "B7-7",
+      "title": "Finish framework for encompass website",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-4": {
+      "id": "B8-4",
+      "title": "Write website copy and content — AI marketing services, case studies, pricing",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-5": {
+      "id": "B8-5",
+      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-7": {
+      "id": "B8-7",
+      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-8": {
+      "id": "B8-8",
+      "title": "Add portfolio showcase — Higgsfield AI video examples, client work",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-9": {
+      "id": "B8-9",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-2": {
+      "id": "B9-2",
+      "title": "Design store layout and branding — Homepage, product pages, checkout flow",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-3": {
+      "id": "B9-3",
+      "title": "Write product descriptions and copy — SEO-optimized, persuasive sales copy",
+      "project": "B9",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-4": {
+      "id": "B9-4",
+      "title": "Configure shipping and fulfillment — Rates, zones, automated notifications",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-5": {
+      "id": "B9-5",
+      "title": "Set up payment processing — Stripe, PayPal, local payment methods",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-6": {
+      "id": "B9-6",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-7": {
+      "id": "B9-7",
+      "title": "Add analytics and tracking — Google Analytics, Facebook Pixel, conversion tracking",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-2": {
+      "id": "B11-2",
+      "title": "Set up e-commerce platform — Payment gateways, shipping, inventory management",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-3": {
+      "id": "B11-3",
+      "title": "Write product descriptions — Research peptides, benefits, usage guidelines",
+      "project": "B11",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-4": {
+      "id": "B11-4",
+      "title": "Ensure legal compliance — Disclaimers, research-use-only labels, age verification",
+      "project": "B11",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-5": {
+      "id": "B11-5",
+      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-6": {
+      "id": "B11-6",
+      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-7": {
+      "id": "B11-7",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C3-6": {
+      "id": "C3-6",
+      "title": "EXODEUS - Riftborn — Create new game: MegaMan + SKUL inspired action-platformer with roguelike elements",
+      "project": "C3",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-10": {
+      "id": "B8-10",
+      "title": "Create Higgsfield AI video for TRME — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-11": {
+      "id": "B8-11",
+      "title": "Create Higgsfield AI video for Fire Terminator — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-12": {
+      "id": "B8-12",
+      "title": "Create Higgsfield AI video for DOTERRA — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-13": {
+      "id": "B8-13",
+      "title": "Create Higgsfield AI video for HEI Legacy — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-14": {
+      "id": "B8-14",
+      "title": "Create Higgsfield AI video for Day Zero with Andre — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-1": {
+      "id": "C4-1",
+      "title": "Build website for HEI Legacy (with Marylyn) — Landing page, about, services, contact",
+      "project": "C4",
+      "category": "C",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-2": {
+      "id": "C4-2",
+      "title": "Build website for Day Zero with Andre — Landing page, program details, booking, testimonials",
+      "project": "C4",
+      "category": "C",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-3": {
+      "id": "C4-3",
+      "title": "Build website for Envision Electrical — Data center engineers, electrical infrastructure services, contact/quote forms",
+      "project": "C4",
+      "category": "C",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-4": {
+      "id": "C4-4",
+      "title": "Create portfolio showcase for Website Services — Case studies, client testimonials, service packages",
+      "project": "C4",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-5": {
+      "id": "C4-5",
+      "title": "Set up lead capture system — Contact forms, CRM integration, automated follow-ups",
+      "project": "C4",
+      "category": "C",
+      "agent": "Forger",
+      "status": "backlog",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
     }
   },
   "recentWins": [
@@ -1084,7 +1486,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-17T17:30:45.198504+08:00",
+      "lastActive": "2026-06-17T17:45:50.674591+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1093,7 +1495,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "active",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-17T17:28:20.301977+08:00",
+      "lastActive": "2026-06-17T17:40:10.034964+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -1366,12 +1768,11 @@
       "category": "B",
       "status": "pending",
       "tasks": [
-        "B1-2",
         "B1-1",
         "B1-3",
         "B1-4"
       ],
-      "totalTasks": 4,
+      "totalTasks": 3,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1394,11 +1795,12 @@
       "status": "pending",
       "tasks": [
         "B3-1",
-        "B3-2"
+        "B3-2",
+        "B3-3"
       ],
-      "totalTasks": 2,
+      "totalTasks": 3,
       "completedTasks": 1,
-      "completionPct": 50
+      "completionPct": 33
     },
     "B4": {
       "name": "Pesta Fiesta",
@@ -1442,8 +1844,8 @@
         "B6-9"
       ],
       "totalTasks": 10,
-      "completedTasks": 8,
-      "completionPct": 80
+      "completedTasks": 9,
+      "completionPct": 90
     },
     "B7": {
       "name": "Encompasse",
@@ -1452,9 +1854,14 @@
       "status": "pending",
       "tasks": [
         "B7-1",
-        "B7-2"
+        "B7-2",
+        "B7-3",
+        "B7-4",
+        "B7-5",
+        "B7-6",
+        "B7-7"
       ],
-      "totalTasks": 2,
+      "totalTasks": 7,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1467,11 +1874,21 @@
         "B8-1",
         "B8-2",
         "B8-3",
-        "B8-6"
+        "B8-6",
+        "B8-4",
+        "B8-5",
+        "B8-7",
+        "B8-8",
+        "B8-9",
+        "B8-10",
+        "B8-11",
+        "B8-12",
+        "B8-13",
+        "B8-14"
       ],
-      "totalTasks": 4,
-      "completedTasks": 2,
-      "completionPct": 50
+      "totalTasks": 14,
+      "completedTasks": 3,
+      "completionPct": 21
     },
     "B9": {
       "name": "Ethereal",
@@ -1479,9 +1896,15 @@
       "category": "B",
       "status": "pending",
       "tasks": [
-        "B9-1"
+        "B9-1",
+        "B9-2",
+        "B9-3",
+        "B9-4",
+        "B9-5",
+        "B9-6",
+        "B9-7"
       ],
-      "totalTasks": 1,
+      "totalTasks": 7,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1503,9 +1926,15 @@
       "category": "B",
       "status": "pending",
       "tasks": [
-        "B11-1"
+        "B11-1",
+        "B11-2",
+        "B11-3",
+        "B11-4",
+        "B11-5",
+        "B11-6",
+        "B11-7"
       ],
-      "totalTasks": 1,
+      "totalTasks": 7,
       "completedTasks": 0,
       "completionPct": 0
     },
@@ -1544,10 +1973,9 @@
         "C3-1",
         "C3-2",
         "C3-3",
-        "C3-4",
-        "C3-5"
+        "C3-6"
       ],
-      "totalTasks": 5,
+      "totalTasks": 4,
       "completedTasks": 0,
       "completionPct": 0
     }
@@ -1662,12 +2090,6 @@
       "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "reason": "paused",
       "owner": "Forger"
-    },
-    {
-      "id": "C1-2",
-      "title": "Register for RES exam",
-      "reason": "overdue",
-      "owner": "CHAD_YI"
     }
   ],
   "inputsNeeded": [
@@ -1681,7 +2103,7 @@
   ],
   "dailyBriefing": {
     "date": "2026-06-17",
-    "summary": "✅ 2 tasks completed today. 48 remaining.",
+    "summary": "✅ 2 tasks completed today. 77 remaining.",
     "focus": 0,
     "blockers": 1,
     "completedToday": 2,
@@ -1698,11 +2120,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-17T17:30:45.198504+08:00"
+        "lastActive": "2026-06-17T17:45:50.674591+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-17T17:28:20.301977+08:00"
+        "lastActive": "2026-06-17T17:40:10.034964+08:00"
       },
       "forger": {
         "status": "planned",
@@ -1749,22 +2171,15 @@
         "lastActive": ""
       }
     },
-    "overdueTasks": [
-      {
-        "id": "C1-2",
-        "title": "Register for RES exam",
-        "deadline": "2026-05-15",
-        "daysOverdue": 33
-      }
-    ]
+    "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-17T17:30:45.196815+08:00",
+    "lastRun": "2026-06-17T17:45:50.672423+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 78,
+    "taskCount": 112,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-17T17:30:45.205712+08:00",
+      "runAt": "2026-06-17T17:45:50.705521+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
