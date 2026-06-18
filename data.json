@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-19T00:45:53.178867+08:00",
+  "lastUpdated": "2026-06-19T00:55:09.922378+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 106,
@@ -1461,7 +1461,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-19T00:45:53.181285+08:00",
+      "lastActive": "2026-06-19T00:55:09.923582+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1470,7 +1470,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "active",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-19T00:39:57.144689+08:00",
+      "lastActive": "2026-06-19T00:51:25.581832+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -2095,11 +2095,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-19T00:45:53.181285+08:00"
+        "lastActive": "2026-06-19T00:55:09.923582+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-19T00:39:57.144689+08:00"
+        "lastActive": "2026-06-19T00:51:25.581832+08:00"
       },
       "forger": {
         "status": "planned",
@@ -2149,12 +2149,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-19T00:45:53.178867+08:00",
+    "lastRun": "2026-06-19T00:55:09.922378+08:00",
     "dataIntegrity": "ok",
     "taskCount": 112,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-19T00:45:53.216328+08:00",
+      "runAt": "2026-06-19T00:55:09.931186+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
