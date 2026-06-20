@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-21T00:17:53.416181+08:00",
+  "lastUpdated": "2026-06-21T00:30:12.309702+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 106,
@@ -1461,7 +1461,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-21T00:17:53.418283+08:00",
+      "lastActive": "2026-06-21T00:30:12.311405+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1470,7 +1470,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "active",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-21T00:15:22.112792+08:00",
+      "lastActive": "2026-06-21T00:27:27.800702+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -1617,8 +1617,7 @@
       "projects": [
         "C1",
         "C2",
-        "C3",
-        "C4"
+        "C3"
       ]
     }
   },
@@ -1954,22 +1953,6 @@
       "totalTasks": 4,
       "completedTasks": 0,
       "completionPct": 0
-    },
-    "C4": {
-      "name": "Website Services",
-      "description": "Client website projects and portfolio",
-      "category": "C",
-      "status": "pending",
-      "tasks": [
-        "C4-1",
-        "C4-2",
-        "C4-3",
-        "C4-4",
-        "C4-5"
-      ],
-      "totalTasks": 5,
-      "completedTasks": 0,
-      "completionPct": 0
     }
   },
   "projectDetails": {
@@ -2056,10 +2039,6 @@
     "C3": {
       "name": "Vibe Code Games",
       "description": "Games & interactive experiences"
-    },
-    "C4": {
-      "name": "Website Services",
-      "description": "Client website projects and portfolio"
     }
   },
   "needsAttention": [
@@ -2116,11 +2095,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-21T00:17:53.418283+08:00"
+        "lastActive": "2026-06-21T00:30:12.311405+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-21T00:15:22.112792+08:00"
+        "lastActive": "2026-06-21T00:27:27.800702+08:00"
       },
       "forger": {
         "status": "planned",
@@ -2170,12 +2149,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-21T00:17:53.416181+08:00",
+    "lastRun": "2026-06-21T00:30:12.309702+08:00",
     "dataIntegrity": "ok",
     "taskCount": 112,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-21T00:17:53.426206+08:00",
+      "runAt": "2026-06-21T00:30:12.319160+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
