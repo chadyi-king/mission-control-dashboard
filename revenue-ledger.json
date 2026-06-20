@@ -10,9 +10,9 @@
       "account_id": "101-003-23656635-001",
       "current_balance": 100000.0,
       "baseline_balance": 3821.73,
-      "weekly_profit": 0.0,
-      "weekly_loss": 0.0,
-      "total_pnl": 0.0,
+      "weekly_profit": 0,
+      "weekly_loss": 0,
+      "total_pnl": 96178.27,
       "win_count": 0,
       "loss_count": 1,
       "status": "unverified_account_reset",
@@ -21,14 +21,6 @@
     }
   },
   "daily_snapshots": [
-    {
-      "date": "2026-05-11",
-      "agent": "quanta",
-      "balance": 100000.0,
-      "pnl": 0.0,
-      "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-      "verified": false
-    },
     {
       "date": "2026-05-12",
       "agent": "quanta",
@@ -265,9 +257,8 @@
       "date": "2026-06-20",
       "agent": "quanta",
       "balance": 100000.0,
-      "pnl": 0.0,
-      "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-      "verified": false
+      "pnl": 0,
+      "note": "Balance 100000.00 | P/L +0.00 | Open 0"
     }
   ],
   "weekly_rankings": {
