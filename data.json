@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-20T23:58:21.784376+08:00",
+  "lastUpdated": "2026-06-21T00:00:55.366766+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 106,
@@ -1461,7 +1461,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-20T23:58:21.786129+08:00",
+      "lastActive": "2026-06-21T00:00:55.368840+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -2077,7 +2077,7 @@
     }
   ],
   "dailyBriefing": {
-    "date": "2026-06-20",
+    "date": "2026-06-21",
     "summary": "📋 77 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 1,
@@ -2095,7 +2095,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-20T23:58:21.786129+08:00"
+        "lastActive": "2026-06-21T00:00:55.368840+08:00"
       },
       "quanta": {
         "status": "active",
@@ -2149,12 +2149,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-20T23:58:21.784376+08:00",
+    "lastRun": "2026-06-21T00:00:55.366766+08:00",
     "dataIntegrity": "ok",
     "taskCount": 112,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-20T23:58:21.794446+08:00",
+      "runAt": "2026-06-21T00:00:55.375530+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -2242,23 +2242,15 @@
       "best": {
         "agent": "quanta",
         "amount": 0.0,
-        "period": "2026-05-12"
+        "period": "2026-05-13"
       },
       "worst": {
         "agent": "quanta",
         "amount": 0.0,
-        "period": "2026-05-12"
+        "period": "2026-05-13"
       }
     },
     "daily_snapshots": [
-      {
-        "date": "2026-06-11",
-        "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
-        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-        "verified": false
-      },
       {
         "date": "2026-06-12",
         "agent": "quanta",
@@ -2301,6 +2293,14 @@
       },
       {
         "date": "2026-06-20",
+        "agent": "quanta",
+        "balance": 100000.0,
+        "pnl": 0.0,
+        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+        "verified": false
+      },
+      {
+        "date": "2026-06-21",
         "agent": "quanta",
         "balance": 100000.0,
         "pnl": 0.0,
