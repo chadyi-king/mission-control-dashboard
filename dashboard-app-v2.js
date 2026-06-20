@@ -749,11 +749,22 @@ console.log('[Helios WS] connected:', wsUrl);
         async function loadData() {
             try {
                 console.log('Loading data...');
-                const response = await fetch('https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json?t=' + Date.now()); // local data — always fresh
+                // Try local data.json first (live file), fallback to GitHub raw
+                let response;
+                let source = 'local';
+                try {
+                    response = await fetch('data.json?t=' + Date.now());
+                    if (!response.ok) throw new Error('local fetch failed');
+                } catch (localErr) {
+                    console.warn('Local data.json not available, falling back to GitHub:', localErr);
+                    response = await fetch('https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json?t=' + Date.now());
+                    source = 'github';
+                }
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! status: ${response.status} (source: ${source})`);
                 }
                 appData = normalizeDashboardData(await response.json());
+                console.log('Data loaded from ' + source + ':', Object.keys(appData));
                 console.log('Data loaded:', Object.keys(appData));
                 console.log('Stats:', appData.stats);
                 console.log('Tasks count:', Object.keys(appData.tasks || {}).length);
