@@ -1,3 +1,6 @@
+        // Clear stale localStorage cache on every load
+        try { localStorage.removeItem('rs_dashboard_cache'); } catch(e) {}
+
         // Global data store
         let appData = null;
         let allProjects = [];
