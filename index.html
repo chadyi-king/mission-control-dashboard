@@ -15,6 +15,22 @@
     <link rel="stylesheet" href="homepage-new.css">
 </head>
 <body>
+    <!-- CACHE BUST: force fresh JS/CSS on every load -->
+    <script>
+        (function() {
+            // Append cache-buster to all script tags that haven't loaded yet
+            var scripts = document.querySelectorAll('script[src]');
+            scripts.forEach(function(s) {
+                if (s.src.indexOf('?') === -1) {
+                    s.src = s.src + '?_cb=' + Date.now();
+                } else if (s.src.indexOf('_cb=') === -1) {
+                    s.src = s.src + '&_cb=' + Date.now();
+                }
+            });
+            // Clear any stale localStorage
+            try { localStorage.removeItem('rs_dashboard_cache'); } catch(e) {}
+        })();
+    </script>
     <!-- Background: nebula + red sun — images go in /assets/ -->
     <div id="bg-sun" aria-hidden="true"></div>
     <!-- Hyperspace Starfield Canvas -->
