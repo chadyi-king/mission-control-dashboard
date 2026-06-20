@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-21T00:45:13.818381+08:00",
+  "lastUpdated": "2026-06-21T00:45:59.465244+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 106,
@@ -1461,7 +1461,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-21T00:45:13.820007+08:00",
+      "lastActive": "2026-06-21T00:45:59.467496+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1617,7 +1617,8 @@
       "projects": [
         "C1",
         "C2",
-        "C3"
+        "C3",
+        "C4"
       ]
     }
   },
@@ -1953,6 +1954,22 @@
       "totalTasks": 4,
       "completedTasks": 0,
       "completionPct": 0
+    },
+    "C4": {
+      "name": "Website Services",
+      "description": "Client website projects and portfolio",
+      "category": "C",
+      "status": "pending",
+      "tasks": [
+        "C4-1",
+        "C4-2",
+        "C4-3",
+        "C4-4",
+        "C4-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 0,
+      "completionPct": 0
     }
   },
   "projectDetails": {
@@ -2039,6 +2056,10 @@
     "C3": {
       "name": "Vibe Code Games",
       "description": "Games & interactive experiences"
+    },
+    "C4": {
+      "name": "Website Services",
+      "description": "Client website projects and portfolio"
     }
   },
   "needsAttention": [
@@ -2095,7 +2116,7 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-21T00:45:13.820007+08:00"
+        "lastActive": "2026-06-21T00:45:59.467496+08:00"
       },
       "quanta": {
         "status": "active",
@@ -2149,12 +2170,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-21T00:45:13.818381+08:00",
+    "lastRun": "2026-06-21T00:45:59.465244+08:00",
     "dataIntegrity": "ok",
     "taskCount": 112,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-21T00:45:13.829141+08:00",
+      "runAt": "2026-06-21T00:45:59.499892+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
