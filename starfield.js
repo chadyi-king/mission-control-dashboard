@@ -205,18 +205,38 @@
         setLoadingState(false, false);
     }
 
+    function installProjectRosterRepair() {
+        if (typeof normalizeDashboardData !== 'function') return false;
+        if (normalizeDashboardData.__projectRosterRepaired) return true;
+
+        var originalNormalize = normalizeDashboardData;
+        var wrappedNormalize = function normalizeDashboardDataWithProjectRoster(rawData) {
+            return ensureProjectRoster(originalNormalize(rawData));
+        };
+        wrappedNormalize.__projectRosterRepaired = true;
+
+        window.normalizeDashboardData = wrappedNormalize;
+        try {
+            normalizeDashboardData = wrappedNormalize;
+        } catch (error) {
+            console.warn('[Dashboard] Normalizer replacement warning:', error);
+        }
+        return true;
+    }
+
     function installFreshDataLoader() {
         if (typeof normalizeDashboardData !== 'function' || typeof buildProjectsFromData !== 'function') {
             console.warn('[Dashboard] Cache/data patch loaded before dashboard-app.js; using existing loader.');
             return;
         }
 
+        installProjectRosterRepair();
+
         window.loadData = async function loadDataWithFreshCache() {
             try {
                 setLoadingState(true, false);
                 var rawData = await fetchFreshDashboardData();
                 var normalized = normalizeDashboardData(rawData);
-                ensureProjectRoster(normalized);
                 writeVersionedCache(normalized);
                 renderDashboardData(normalized);
             } catch (error) {
