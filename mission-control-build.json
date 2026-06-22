@@ -1,0 +1,14 @@
+{
+  "kind": "mission-control-dashboard-build-marker",
+  "dashboardBuildId": "20260622-root-rebuild-5",
+  "appBuildId": "20260622-root-rebuild-4",
+  "source": "rebuilt-dashboard-root",
+  "expected": {
+    "projects": 22,
+    "requiredProject": "C4",
+    "requiredProjectName": "Website Services",
+    "visibleTasks": 106,
+    "doneTasks": 29
+  },
+  "notes": "If this file is visible at the GitHub Pages URL, Pages is serving the rebuilt dashboard source. It is diagnostic only, not task truth."
+}
