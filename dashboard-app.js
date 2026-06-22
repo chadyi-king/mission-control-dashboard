@@ -1,13 +1,31 @@
 (() => {
   'use strict';
 
-  const BUILD_ID = '20260622-root-rebuild-4';
+  const BUILD_ID = '20260622-visual-restore-1';
   const DATA_FILE = 'data.json';
   const FLEET_ORDER = [
     'chad-yi', 'cerebronn', 'helios', 'quanta', 'forger', 'escrita', 'autoura',
     'mensamusa', 'clair', 'eplusplus', 'kotler', 'ledger', 'atlas', 'pulsar', 'abed'
   ];
   const BOARD_LANES = ['open', 'active', 'needs_review', 'blocked', 'paused'];
+  const AGENT_VISUALS = {
+    'chad-yi': { display: 'CHAD_YI', role: 'The Face', image: 'assets/chad-yi-avatar.jpg' },
+    cerebronn: { display: 'CEREBRONN', role: 'The Brain', image: 'assets/cerebronn-avatar.jpg?v=1' },
+    helios: { display: 'HELIOS', role: 'The Spine', image: 'assets/helios-avatar.jpg', position: 'center 20%' },
+    quanta: { display: 'QUANTA', role: 'Trading', image: 'assets/quanta-avatar.jpg', position: 'center 20%' },
+    forger: { display: 'FORGER', role: 'Builder', image: 'assets/forger-avatar.jpg?v=1' },
+    escrita: { display: 'ESCRITA', role: 'Writing', image: 'assets/escrita-avatar.jpg?v=1' },
+    autoura: { display: 'AUTOURA', role: 'Content Creation & Client Acquisition', image: 'assets/autour-avatar.jpg' },
+    mensamusa: { display: 'MENSAMUSA', role: 'Research', initials: 'MM' },
+    clair: { display: 'CLAIR', role: 'Streaming Scout', initials: 'CL' },
+    eplusplus: { display: 'E++', role: 'Core Dev', initials: 'E+' },
+    kotler: { display: 'KOTLER', role: 'Google Ads Manager', image: 'assets/kotler-avatar.jpg', position: 'center 10%' },
+    ledger: { display: 'LEDGER', role: 'Finance / CRM', initials: 'LG' },
+    atlas: { display: 'ATLAS', role: 'Researcher', initials: 'AT' },
+    pulsar: { display: 'PULSAR', role: 'Data Sentinel', initials: 'PS' },
+    abed: { display: 'ABED', role: 'Community Manager', initials: 'AB' }
+  };
+
   const state = {
     raw: {},
     tasks: [],
@@ -193,15 +211,18 @@
 
     return ids.map((id) => {
       const record = rawAgents[id] || rawAgents[id.replace(/-/g, '_')] || rawAgents[id.toUpperCase()] || {};
+      const visual = AGENT_VISUALS[id] || {};
       return {
         id,
-        name: record.name || agentName(id),
-        initials: agentInitials(record.name || agentName(id), id),
-        role: record.role || record.role_tagline || fallbackRole(id),
+        name: record.name || visual.display || agentName(id),
+        initials: record.initials || visual.initials || agentInitials(record.name || visual.display || agentName(id), id),
+        role: record.role || record.role_tagline || visual.role || fallbackRole(id),
         status: normalizeAgentStatus(record.status || fallbackAgentStatus(id)),
         platform: record.platform || '',
         currentTask: record.currentTask || '',
-        lastActive: record.lastActive || ''
+        lastActive: record.lastActive || '',
+        image: visual.image || '',
+        imagePosition: visual.position || 'center'
       };
     });
   }
@@ -241,7 +262,9 @@
   function renderAll() {
     renderStarfield();
     renderStats();
+    renderCommandStrip();
     renderTicker();
+    renderAgentRail();
     renderBriefing();
     renderQueues();
     renderFocus();
@@ -253,8 +276,9 @@
   }
 
   function renderStats() {
+    setText('build-id', BUILD_ID.replace('20260622-', ''));
     setText('stat-total', state.stats.total);
-    setText('stat-open', `${state.stats.open} open`);
+    setText('stat-open', `${state.stats.open} left`);
     setText('stat-done', state.stats.done);
     setText('stat-rate', `${state.stats.completionRate}% complete`);
     setText('stat-projects', state.stats.projects);
@@ -267,19 +291,50 @@
     setText('stat-live-agents', `${state.stats.liveAgents} live/ext`);
   }
 
+  function renderCommandStrip() {
+    const c4 = state.projects.find((project) => project.id === 'C4');
+    const metrics = [
+      ['Projects', state.stats.projects, 'info'],
+      ['Tasks', state.stats.total, ''],
+      ['Done', state.stats.done, 'good'],
+      ['Left', state.stats.open, 'warn'],
+      ['Active', state.stats.active, 'info'],
+      ['Review', state.stats.needsReview, 'warn'],
+      ['Input', state.stats.input, state.stats.input ? 'alert' : ''],
+      ['Blocked', state.stats.blocked, state.stats.blocked ? 'alert' : ''],
+      ['Paused', state.stats.paused, 'warn'],
+      ['C4', c4 ? 'OK' : 'MISS', c4 ? 'good' : 'alert']
+    ];
+    const strip = $('cmd-strip');
+    if (!strip) return;
+    strip.innerHTML = metrics.map(([label, value, tone]) => `
+      <div class="cmd-stat ${esc(tone)}"><div class="cmd-stat-value">${esc(value)}</div><div class="cmd-stat-label">${esc(label)}</div></div>
+    `).join('');
+  }
+
   function renderTicker() {
     const c4 = state.projects.find((project) => project.id === 'C4');
     const active = state.queues.active.map((task) => task.id).join(', ') || 'none';
     setText('ticker', `BUILD ${BUILD_ID} | ${state.stats.projects} projects | ${state.stats.total} tasks | ${state.stats.done} done | C4 ${c4 ? c4.name : 'missing'} | active ${active}`);
   }
 
+  function renderAgentRail() {
+    const rail = $('agent-rail');
+    if (!rail) return;
+    rail.innerHTML = state.agents.map((agent) => `
+      <div class="agent-pill" data-agent-rail="${esc(agent.id)}"><span class="pill-dot ${esc(agent.status)}"></span>${esc(displayAgentName(agent))}<span class="pill-seen">${esc(statusShort(agent.status))}</span></div>
+    `).join('');
+  }
+
   function renderBriefing() {
     const briefing = state.raw.dailyBriefing || {};
-    const summary = briefing.summary || `${state.stats.open} open tasks across ${state.stats.projects} projects.`;
-    $('daily-briefing').innerHTML = `
+    const summary = briefing.summary || `${state.stats.open} tasks left across ${state.stats.projects} projects. C4 is ${state.stats.hasC4 ? 'visible' : 'missing'}.`;
+    const target = $('daily-briefing');
+    if (!target) return;
+    target.innerHTML = `
       <div>${esc(summary)}</div>
       <div class="briefing-metrics">
-        ${metric('Open', state.stats.open)}
+        ${metric('Left', state.stats.open)}
         ${metric('Active', state.stats.active)}
         ${metric('Blocked', state.stats.blocked)}
         ${metric('Done', state.stats.done)}
@@ -291,16 +346,22 @@
     setText('review-count', state.queues.review.length);
     setText('input-count', state.queues.input.length);
     setText('caleb-count', state.queues.caleb.length);
-    $('review-list').innerHTML = taskRows(state.queues.review, 'No tasks awaiting review.');
-    $('input-list').innerHTML = taskRows(state.queues.input, 'No input requests right now.');
-    $('caleb-list').innerHTML = taskRows(state.queues.caleb.slice(0, 10), 'Caleb queue is clear.');
+    const review = $('review-list');
+    const input = $('input-list');
+    const caleb = $('caleb-list');
+    if (review) review.innerHTML = taskRows(state.queues.review, 'No tasks awaiting review.');
+    if (input) input.innerHTML = taskRows(state.queues.input, 'No input requests right now.');
+    if (caleb) caleb.innerHTML = taskRows(state.queues.caleb.slice(0, 10), 'Caleb queue is clear.');
   }
 
   function renderFocus() {
     const ordered = state.visualFocusOrder.length
       ? state.visualFocusOrder.map((id) => state.taskMap.get(id)).filter(Boolean)
       : state.queues.focus;
-    $('focus-list').innerHTML = ordered.length
+    setText('focus-total-count', `${ordered.length} tasks`);
+    const list = $('focus-list');
+    if (!list) return;
+    list.innerHTML = ordered.length
       ? ordered.map((task, index) => `
         <div class="focus-card" draggable="true" data-task-id="${esc(task.id)}">
           <div class="task-title">${index + 1}. ${esc(task.title)}</div>
@@ -310,7 +371,7 @@
       : '<div class="empty-state">No focus tasks available.</div>';
     wireDragList('focus-list', (ids) => {
       state.visualFocusOrder = ids;
-      showToast('Priority order changed visually. Canonical persistence requires Hermes API.');
+      showToast('Priority order changed on this screen. Canonical persistence needs Hermes API.');
       renderFocus();
     });
   }
@@ -323,27 +384,32 @@
       return date;
     });
     setText('week-window', `${formatDay(days[0])} - ${formatDay(days[6])}`);
-    $('week-calendar').innerHTML = days.map((date, index) => {
+    const target = $('week-calendar');
+    if (!target) return;
+    target.innerHTML = days.map((date, index) => {
       const iso = isoDate(date);
       const due = state.tasks.filter((task) => task.status !== 'done' && task.deadline === iso).slice(0, 6);
       const activeToday = index === 0 ? state.queues.active.filter((task) => !task.deadline).slice(0, 4) : [];
       const items = uniqueTasks([...due, ...activeToday]);
       return `<div class="day-col ${index === 0 ? 'today' : ''}">
         <div class="day-name"><span>${date.toLocaleDateString('en-US', { weekday: 'short' })}</span><span>${date.getDate()}</span></div>
-        ${items.length ? items.map((task) => `<span class="day-chip" data-task-id="${esc(task.id)}">${esc(task.id)} ${esc(task.title.slice(0, 32))}</span>`).join('') : '<div class="empty-state">clear</div>'}
+        ${items.length ? items.map((task) => `<span class="day-chip" data-task-id="${esc(task.id)}">${esc(task.id)} ${esc(task.title.slice(0, 34))}</span>`).join('') : '<div class="empty-state">clear</div>'}
       </div>`;
     }).join('');
   }
 
   function renderAgentBoardSelector() {
     const select = $('agent-board-select');
+    if (!select) return;
     const current = state.boardAgentId || select.value || 'chad-yi';
-    select.innerHTML = state.agents.map((agent) => `<option value="${esc(agent.id)}">${esc(agent.name)}</option>`).join('');
+    select.innerHTML = state.agents.map((agent) => `<option value="${esc(agent.id)}">${esc(displayAgentName(agent))}</option>`).join('');
     select.value = state.agents.some((agent) => agent.id === current) ? current : 'chad-yi';
     state.boardAgentId = select.value;
   }
 
   function renderAgentBoard() {
+    const board = $('agent-board');
+    if (!board) return;
     const agentId = state.boardAgentId || 'chad-yi';
     const laneTasks = Object.fromEntries(BOARD_LANES.map((lane) => [lane, []]));
     state.tasks
@@ -353,7 +419,7 @@
         laneTasks[lane].push(task);
       });
 
-    $('agent-board').innerHTML = BOARD_LANES.map((lane) => `<div class="kanban-col" data-lane="${esc(lane)}">
+    board.innerHTML = BOARD_LANES.map((lane) => `<div class="kanban-col" data-lane="${esc(lane)}">
       <div class="kanban-title"><span>${esc(statusLabel(lane))}</span><b>${laneTasks[lane].length}</b></div>
       ${laneTasks[lane].map((task) => `<div class="kanban-card" draggable="true" data-task-id="${esc(task.id)}"><b>${esc(task.id)}</b><br>${esc(task.title)}</div>`).join('') || '<div class="empty-state">empty</div>'}
     </div>`).join('');
@@ -361,17 +427,28 @@
   }
 
   function renderFleet() {
-    setText('fleet-count', `${state.agents.length} agents`);
-    $('fleet-grid').innerHTML = state.agents.map((agent) => `<article class="agent-card">
-      <div class="agent-top"><div class="agent-avatar">${esc(agent.initials)}</div><div><div class="agent-name">${esc(agent.name)}</div><div class="agent-status">${esc(agent.status)}</div></div></div>
-      <div class="agent-role">${esc(agent.role)}</div>
-      ${agent.currentTask ? `<div class="agent-status">${esc(agent.currentTask)}</div>` : ''}
-    </article>`).join('');
+    setText('fleet-count', `${state.stats.liveAgents} live/ext - ${state.agents.length} mapped`);
+    const grid = $('fleet-grid');
+    if (!grid) return;
+    grid.innerHTML = state.agents.map((agent) => {
+      const image = agent.image ? `<div class="card-bg-img" style="background-image:url('${esc(assetUrl(agent.image))}');background-position:${esc(agent.imagePosition)};"></div>` : '';
+      const avatar = agent.image
+        ? `<div class="agent-avatar photo"><img src="${esc(assetUrl(agent.image))}" alt="${esc(displayAgentName(agent))}"></div>`
+        : `<div class="agent-avatar">${esc(agent.initials)}</div>`;
+      return `<article class="agent-card ${agent.image ? 'has-photo-bg' : 'ghost-agent'}" data-agent-card="${esc(agent.id)}">
+        ${image}
+        <div class="agent-card-header"><span class="agent-status-dot ${esc(agent.status)}"></span><span class="agent-badge ${isLiveAgent(agent.status) ? 'live' : 'not-built'}">${esc(statusBadge(agent.status))}</span></div>
+        <div class="agent-card-body">${avatar}<div class="agent-name">${esc(displayAgentName(agent))}</div><div class="agent-role">${esc(agent.role)}</div></div>
+        <div class="agent-card-footer">${esc(agent.currentTask || statusLabel(agent.status))}</div>
+      </article>`;
+    }).join('');
   }
 
   function renderProjects() {
-    const query = $('project-search').value.trim().toLowerCase();
-    const status = $('status-filter').value;
+    const search = $('project-search');
+    const filter = $('status-filter');
+    const query = search ? search.value.trim().toLowerCase() : '';
+    const status = filter ? filter.value : '';
     const html = state.categories.map((category) => {
       const projects = category.projects.filter((project) => {
         const matchesQuery = !query || project.searchText.includes(query);
@@ -384,7 +461,8 @@
         <div class="project-grid">${projects.map(projectCard).join('')}</div>
       </section>`;
     }).join('');
-    $('project-categories').innerHTML = html || '<div class="empty-state">No projects match this filter.</div>';
+    const target = $('project-categories');
+    if (target) target.innerHTML = html || '<div class="empty-state">No projects match this filter.</div>';
   }
 
   function projectCard(project) {
@@ -413,14 +491,16 @@
     if (!task) return;
     setText('modal-id', `${task.id} | ${task.project}`);
     setText('modal-title', task.title || task.id);
-    $('modal-meta').innerHTML = [
+    const meta = $('modal-meta');
+    if (meta) meta.innerHTML = [
       badge(statusLabel(task.status), task.status),
       badge(task.priority, task.priority),
       badge(agentName(task.agentId), ''),
       task.deadline ? badge(`Due ${task.deadline}`, '') : ''
     ].join('');
     setText('modal-description', task.description || task.notes || task.blockReason || task.pauseReason || `Project ${task.project}. Source status: ${task.sourceStatus || task.status}.`);
-    $('task-modal').hidden = false;
+    const modal = $('task-modal');
+    if (modal) modal.hidden = false;
   }
 
   function metric(label, value) {
@@ -432,46 +512,45 @@
   }
 
   function statusLabel(status) {
-    return status === 'needs_review' ? 'Needs Review' : status === 'input_requested' ? 'Input Requested' : titleCase(status);
+    return status === 'needs_review' ? 'Needs Review' : status === 'input_requested' ? 'Input Requested' : status === 'active_on_demand' ? 'Building' : titleCase(status);
+  }
+
+  function statusShort(status) {
+    if (status === 'active') return 'live';
+    if (status === 'active_on_demand') return 'build';
+    if (status === 'external') return 'ext';
+    if (status === 'planned') return 'plan';
+    return String(status || 'plan').slice(0, 5);
+  }
+
+  function statusBadge(status) {
+    if (status === 'active') return 'LIVE';
+    if (status === 'active_on_demand') return 'BUILDING';
+    if (status === 'external') return 'EXTERNAL';
+    if (status === 'blocked') return 'BLOCKED';
+    if (status === 'paused') return 'PAUSED';
+    return 'NOT BUILT';
+  }
+
+  function isLiveAgent(status) {
+    return ['active', 'active_on_demand', 'external'].includes(status);
+  }
+
+  function displayAgentName(agent) {
+    return (AGENT_VISUALS[agent.id]?.display || agent.name || agentName(agent.id)).toUpperCase();
   }
 
   function agentName(id) {
-    const names = {
-      'chad-yi': 'Chad Yi',
-      cerebronn: 'Cerebronn',
-      helios: 'Helios',
-      quanta: 'Quanta',
-      forger: 'Forger',
-      escrita: 'Escrita',
-      autoura: 'Autoura',
-      mensamusa: 'Mensamusa',
-      clair: 'Clair',
-      eplusplus: 'E++',
-      kotler: 'Kotler',
-      ledger: 'Ledger',
-      atlas: 'Atlas',
-      pulsar: 'Pulsar',
-      abed: 'Abed'
-    };
+    const names = Object.fromEntries(Object.entries(AGENT_VISUALS).map(([key, value]) => [key, value.display || titleCase(key)]));
     return names[id] || titleCase(id);
   }
 
   function fallbackRole(id) {
-    const roles = {
-      'chad-yi': 'The Face - primary command identity',
-      cerebronn: 'The Brain - strategy layer',
-      helios: 'The Spine - audit and sync',
-      quanta: 'Trading status and analytics',
-      forger: 'Build and web implementation',
-      escrita: 'Story and RE:UNITE writing',
-      autoura: 'Growth, scouting, and story-first ads',
-      kotler: 'External Google Ads manager'
-    };
-    return roles[id] || 'Planned specialist agent';
+    return AGENT_VISUALS[id]?.role || 'Planned specialist agent';
   }
 
   function fallbackAgentStatus(id) {
-    if (id === 'helios' || id === 'quanta') return 'active';
+    if (id === 'chad-yi' || id === 'helios' || id === 'quanta') return 'active';
     if (id === 'autoura') return 'active_on_demand';
     if (id === 'kotler') return 'external';
     return 'planned';
@@ -479,19 +558,24 @@
 
   function normalizeAgentStatus(value) {
     const raw = String(value || '').toLowerCase();
-    if (raw.includes('active_on_demand')) return 'active_on_demand';
+    if (raw.includes('active_on_demand') || raw.includes('building')) return 'active_on_demand';
     if (raw.includes('external')) return 'external';
     if (raw.includes('blocked')) return 'blocked';
     if (raw.includes('paused')) return 'paused';
     if (raw.includes('stale')) return 'stale';
     if (raw.includes('active') || raw.includes('live')) return 'active';
-    if (raw.includes('planned') || raw.includes('not_built')) return 'planned';
+    if (raw.includes('planned') || raw.includes('not_built') || raw.includes('pending')) return 'planned';
     return raw || 'planned';
   }
 
   function agentInitials(name, id) {
     if (id === 'eplusplus') return 'E+';
     return String(name || id).split(/[\s-]+/).filter(Boolean).map((part) => part[0]).join('').slice(0, 2).toUpperCase();
+  }
+
+  function assetUrl(path) {
+    const joiner = path.includes('?') ? '&' : '?';
+    return `${path}${joiner}build=${encodeURIComponent(BUILD_ID)}`;
   }
 
   function uniqueTasks(tasks) {
@@ -566,17 +650,17 @@
 
   function wireKanban() {
     let dragged = null;
-    document.querySelectorAll('.kanban-card').forEach((card) => {
+    document.querySelectorAll('#agent-board .kanban-card').forEach((card) => {
       card.addEventListener('dragstart', () => { dragged = card; card.style.opacity = '.45'; });
       card.addEventListener('dragend', () => { card.style.opacity = ''; dragged = null; });
     });
-    document.querySelectorAll('.kanban-col').forEach((column) => {
+    document.querySelectorAll('#agent-board .kanban-col').forEach((column) => {
       column.addEventListener('dragover', (event) => event.preventDefault());
       column.addEventListener('drop', (event) => {
         event.preventDefault();
         if (!dragged) return;
         state.visualBoardMoves.set(dragged.dataset.taskId, column.dataset.lane);
-        showToast('Agent board move changed visually. Canonical persistence requires Hermes API.');
+        showToast('Agent board move changed on this screen. Canonical persistence needs Hermes API.');
         renderAgentBoard();
       });
     });
@@ -589,7 +673,10 @@
   }
 
   function isoDate(date) {
-    return date.toISOString().slice(0, 10);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   function formatDay(date) {
@@ -601,7 +688,7 @@
     if (!canvas || canvas.dataset.ready) return;
     canvas.dataset.ready = '1';
     const ctx = canvas.getContext('2d');
-    const stars = Array.from({ length: 120 }, () => ({
+    const stars = Array.from({ length: 130 }, () => ({
       x: Math.random(), y: Math.random(), r: Math.random() * 1.4 + 0.2, a: Math.random() * 0.75 + 0.2
     }));
     function resize() {
@@ -627,8 +714,18 @@
   }
 
   document.addEventListener('click', (event) => {
+    const agentCard = event.target.closest('[data-agent-card]');
+    if (agentCard) {
+      const select = $('agent-board-select');
+      state.boardAgentId = agentCard.dataset.agentCard;
+      if (select) select.value = state.boardAgentId;
+      renderAgentBoard();
+      showToast(`${agentName(state.boardAgentId)} board selected.`);
+      return;
+    }
+
     const taskElement = event.target.closest('[data-task-id]');
-    if (taskElement && !event.target.closest('.kanban-col')) openTask(taskElement.dataset.taskId);
+    if (taskElement) openTask(taskElement.dataset.taskId);
 
     const projectElement = event.target.closest('[data-project-id]');
     if (projectElement) {
@@ -636,21 +733,26 @@
       if (project && project.tasks[0]) openTask(project.tasks[0].id);
     }
 
-    if (event.target.id === 'modal-close' || event.target.id === 'task-modal') $('task-modal').hidden = true;
+    const modal = $('task-modal');
+    if ((event.target.id === 'modal-close' || event.target.id === 'task-modal') && modal) modal.hidden = true;
     if (event.target.matches('[data-refresh]')) loadData();
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') $('task-modal').hidden = true;
+    const modal = $('task-modal');
+    if (event.key === 'Escape' && modal) modal.hidden = true;
     if (event.key === 'Enter') {
       const taskElement = event.target.closest('[data-task-id]');
       if (taskElement) openTask(taskElement.dataset.taskId);
     }
   });
 
-  $('project-search').addEventListener('input', renderProjects);
-  $('status-filter').addEventListener('change', renderProjects);
-  $('agent-board-select').addEventListener('change', (event) => {
+  const projectSearch = $('project-search');
+  const statusFilter = $('status-filter');
+  const boardSelect = $('agent-board-select');
+  if (projectSearch) projectSearch.addEventListener('input', renderProjects);
+  if (statusFilter) statusFilter.addEventListener('change', renderProjects);
+  if (boardSelect) boardSelect.addEventListener('change', (event) => {
     state.boardAgentId = event.target.value;
     renderAgentBoard();
   });
