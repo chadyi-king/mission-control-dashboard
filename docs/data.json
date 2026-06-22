@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-22T23:45:12.499060+08:00",
+  "lastUpdated": "2026-06-23T00:00:13.364450+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 106,
@@ -1435,7 +1435,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-22T23:45:12.501164+08:00",
+      "lastActive": "2026-06-23T00:00:13.366849+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1444,7 +1444,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "active",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-22T23:39:42.217253+08:00",
+      "lastActive": "2026-06-22T23:57:30.110075+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -2072,7 +2072,7 @@
     }
   ],
   "dailyBriefing": {
-    "date": "2026-06-22",
+    "date": "2026-06-23",
     "summary": "📋 77 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 1,
@@ -2090,11 +2090,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-22T23:45:12.501164+08:00"
+        "lastActive": "2026-06-23T00:00:13.366849+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-22T23:39:42.217253+08:00"
+        "lastActive": "2026-06-22T23:57:30.110075+08:00"
       },
       "forger": {
         "status": "planned",
@@ -2144,12 +2144,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-22T23:45:12.499060+08:00",
+    "lastRun": "2026-06-23T00:00:13.364450+08:00",
     "dataIntegrity": "ok",
     "taskCount": 112,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-22T23:45:12.528941+08:00",
+      "runAt": "2026-06-23T00:00:13.374231+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -2236,23 +2236,15 @@
       "best": {
         "agent": "quanta",
         "amount": 0,
-        "period": "2026-05-14"
+        "period": "2026-05-15"
       },
       "worst": {
         "agent": "quanta",
         "amount": 0,
-        "period": "2026-05-14"
+        "period": "2026-05-15"
       }
     },
     "daily_snapshots": [
-      {
-        "date": "2026-06-16",
-        "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
-        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-        "verified": false
-      },
       {
         "date": "2026-06-17",
         "agent": "quanta",
@@ -2295,6 +2287,14 @@
       },
       {
         "date": "2026-06-22",
+        "agent": "quanta",
+        "balance": 100000,
+        "pnl": 0,
+        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+        "verified": false
+      },
+      {
+        "date": "2026-06-23",
         "agent": "quanta",
         "balance": 100000,
         "pnl": 0,
