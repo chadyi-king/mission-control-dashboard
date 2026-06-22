@@ -70,13 +70,14 @@ jobs:
           const html = fs.readFileSync('_site/index.html', 'utf8');
           const app = fs.readFileSync('_site/dashboard-app.js', 'utf8');
           const data = JSON.parse(fs.readFileSync('_site/data.json', 'utf8'));
-          const buildId = '20260622-root-rebuild-4';
+          const assetBuildId = '20260622-root-rebuild-5';
+          const appBuildId = '20260622-root-rebuild-4';
 
           const mustContain = [
             ['index.html', html, 'RED SUN COMMAND'],
-            ['index.html', html, `main-styles.css?v=${buildId}`],
-            ['index.html', html, `dashboard-app.js?v=${buildId}`],
-            ['dashboard-app.js', app, `BUILD_ID = '${buildId}'`],
+            ['index.html', html, `main-styles.css?v=${assetBuildId}`],
+            ['index.html', html, `dashboard-app.js?v=${assetBuildId}`],
+            ['dashboard-app.js', app, `BUILD_ID = '${appBuildId}'`],
             ['dashboard-app.js', app, "cache: 'no-store'"],
             ['dashboard-app.js', app, "url.searchParams.set('t'"]
           ];
