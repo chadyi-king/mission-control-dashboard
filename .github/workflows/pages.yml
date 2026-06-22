@@ -31,6 +31,32 @@ jobs:
           mkdir -p _site
           cp index.html main-styles.css dashboard-app.js data.json .nojekyll _site/
 
+      - name: Sanitize public dashboard snapshot
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const file = '_site/data.json';
+          const sensitive = new Set([
+            'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
+            'refresh_token', 'refreshtoken', 'token', 'secret', 'password', 'credential', 'credentials'
+          ]);
+          const normalize = (key) => String(key).trim().toLowerCase().replace(/[\s-]+/g, '_');
+          const sanitize = (value) => {
+            if (Array.isArray(value)) return value.map(sanitize);
+            if (value && typeof value === 'object') {
+              return Object.fromEntries(Object.entries(value)
+                .filter(([key]) => {
+                  const name = normalize(key);
+                  return !sensitive.has(name) && !sensitive.has(name.replace(/_/g, ''));
+                })
+                .map(([key, item]) => [key, sanitize(item)]));
+            }
+            return value;
+          };
+          const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+          fs.writeFileSync(file, `${JSON.stringify(sanitize(data), null, 2)}\n`);
+          NODE
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
