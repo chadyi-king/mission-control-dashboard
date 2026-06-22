@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-23T03:45:29.615206+08:00",
+  "lastUpdated": "2026-06-23T04:00:32.335179+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 106,
@@ -1435,7 +1435,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-23T03:45:29.617388+08:00",
+      "lastActive": "2026-06-23T04:00:32.337250+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1444,7 +1444,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "active",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-23T03:42:59.088596+08:00",
+      "lastActive": "2026-06-23T03:55:46.530442+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -2090,11 +2090,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-23T03:45:29.617388+08:00"
+        "lastActive": "2026-06-23T04:00:32.337250+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-23T03:42:59.088596+08:00"
+        "lastActive": "2026-06-23T03:55:46.530442+08:00"
       },
       "forger": {
         "status": "planned",
@@ -2144,12 +2144,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-23T03:45:29.615206+08:00",
+    "lastRun": "2026-06-23T04:00:32.335179+08:00",
     "dataIntegrity": "ok",
     "taskCount": 112,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-23T03:45:29.624437+08:00",
+      "runAt": "2026-06-23T04:00:32.344506+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -2220,27 +2220,28 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 100000,
+        "current_balance": 100000.0,
         "baseline_balance": 3821.73,
-        "weekly_profit": 0,
-        "weekly_loss": 0,
+        "weekly_profit": 0.0,
+        "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 0,
+        "today_pnl": 0.0,
         "status": "unverified_account_reset",
         "pnl_status": "blocked",
-        "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
+        "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified.",
+        "account_id": "101-003-23656635-001"
       }
     },
     "weekly_rankings": {
       "best": {
         "agent": "quanta",
-        "amount": 0,
+        "amount": 0.0,
         "period": "2026-05-15"
       },
       "worst": {
         "agent": "quanta",
-        "amount": 0,
+        "amount": 0.0,
         "period": "2026-05-15"
       }
     },
@@ -2248,56 +2249,56 @@
       {
         "date": "2026-06-17",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-18",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-19",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-20",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-21",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-22",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-23",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       }
