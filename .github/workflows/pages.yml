@@ -57,6 +57,96 @@ jobs:
           fs.writeFileSync(file, `${JSON.stringify(sanitize(data), null, 2)}\n`);
           NODE
 
+      - name: Verify rebuilt dashboard artifact
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const requiredFiles = ['index.html', 'main-styles.css', 'dashboard-app.js', 'data.json', '.nojekyll'];
+          const failures = [];
+          for (const file of requiredFiles) {
+            if (!fs.existsSync(`_site/${file}`)) failures.push(`missing artifact file: ${file}`);
+          }
+
+          const html = fs.readFileSync('_site/index.html', 'utf8');
+          const app = fs.readFileSync('_site/dashboard-app.js', 'utf8');
+          const data = JSON.parse(fs.readFileSync('_site/data.json', 'utf8'));
+          const buildId = '20260622-root-rebuild-4';
+
+          const mustContain = [
+            ['index.html', html, 'RED SUN COMMAND'],
+            ['index.html', html, `main-styles.css?v=${buildId}`],
+            ['index.html', html, `dashboard-app.js?v=${buildId}`],
+            ['dashboard-app.js', app, `BUILD_ID = '${buildId}'`],
+            ['dashboard-app.js', app, "cache: 'no-store'"],
+            ['dashboard-app.js', app, "url.searchParams.set('t'"]
+          ];
+          for (const [file, body, needle] of mustContain) {
+            if (!body.includes(needle)) failures.push(`${file} missing ${needle}`);
+          }
+
+          const forbiddenPatterns = [
+            ['index.html', html, /dashboard-current\.json|app-20260622-source-of-truth-v3\.html|api\.github\.com|localStorage|GitHub PAT/i],
+            ['dashboard-app.js', app, /dashboard-current\.json|api\.github\.com|localStorage|GitHub PAT/i]
+          ];
+          for (const [file, body, pattern] of forbiddenPatterns) {
+            if (pattern.test(body)) failures.push(`${file} contains old dashboard write/cache pattern: ${pattern}`);
+          }
+
+          const aliases = {
+            backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
+            check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested',
+            in_progress: 'active'
+          };
+          const normalizeStatus = (status) => {
+            const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
+            return aliases[raw] || raw || 'open';
+          };
+          const tasks = Object.entries(data.tasks || {})
+            .filter(([, task]) => task && typeof task === 'object')
+            .map(([id, task]) => ({ id: task.id || id, ...task }))
+            .filter((task) => normalizeStatus(task.status) !== 'removed');
+          const done = tasks.filter((task) => normalizeStatus(task.status) === 'done');
+          const projects = new Set();
+          Object.keys(data.projects || {}).forEach((id) => projects.add(String(id).toUpperCase()));
+          Object.keys(data.projectDetails || {}).forEach((id) => projects.add(String(id).toUpperCase()));
+          Object.values(data.categories || {}).forEach((category) => (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase())));
+          tasks.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
+          const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
+
+          if (projects.size !== 22) failures.push(`expected 22 projects, found ${projects.size}`);
+          if (!projects.has('C4')) failures.push('missing C4');
+          if (c4.name !== 'Website Services') failures.push(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
+          if (tasks.length !== 106) failures.push(`expected 106 visible tasks, found ${tasks.length}`);
+          if (done.length !== 29) failures.push(`expected 29 done tasks, found ${done.length}`);
+
+          const sensitive = new Set([
+            'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
+            'refresh_token', 'refreshtoken', 'token', 'secret', 'password', 'credential', 'credentials'
+          ]);
+          const normalizeKey = (key) => String(key).trim().toLowerCase().replace(/[\s-]+/g, '_');
+          const sensitivePaths = (value, path = 'root') => {
+            const found = [];
+            if (Array.isArray(value)) {
+              value.forEach((item, index) => found.push(...sensitivePaths(item, `${path}[${index}]`)));
+            } else if (value && typeof value === 'object') {
+              Object.entries(value).forEach(([key, item]) => {
+                const name = normalizeKey(key);
+                if (sensitive.has(name) || sensitive.has(name.replace(/_/g, ''))) found.push(`${path}.${key}`);
+                found.push(...sensitivePaths(item, `${path}.${key}`));
+              });
+            }
+            return found;
+          };
+          const sensitiveFound = sensitivePaths(data);
+          if (sensitiveFound.length) failures.push(`sensitive public keys remain: ${sensitiveFound.slice(0, 5).join(', ')}`);
+
+          if (failures.length) {
+            console.error(failures.map((failure) => `- ${failure}`).join('\n'));
+            process.exit(1);
+          }
+          console.log('Mission Control Pages artifact verified: rebuilt root, C4, 22 projects, 106 tasks, 29 done.');
+          NODE
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
