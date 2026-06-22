@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - gh-pages
   workflow_dispatch:
 
 permissions:
@@ -12,8 +13,8 @@ permissions:
   id-token: write
 
 env:
-  DASHBOARD_ASSET_BUILD_ID: 20260622-root-rebuild-5
-  DASHBOARD_APP_BUILD_ID: 20260622-root-rebuild-4
+  DASHBOARD_BUILD_ID: 20260622-visual-restore-1
+  DASHBOARD_APP_FILE: app-20260622-visual-restore-1.html
 
 concurrency:
   group: github-pages
@@ -33,7 +34,8 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site
-          cp index.html main-styles.css dashboard-hermes-bridge.js dashboard-app.js data.json mission-control-build.json .nojekyll _site/
+          cp index.html main-styles.css dashboard-hermes-bridge.js dashboard-app.js data.json mission-control-build.json dashboard-current.json "$DASHBOARD_APP_FILE" .nojekyll _site/
+          if [ -d assets ]; then cp -R assets _site/assets; fi
 
       - name: Sanitize public dashboard snapshot
         run: |
@@ -61,44 +63,54 @@ jobs:
           fs.writeFileSync(file, `${JSON.stringify(sanitize(data), null, 2)}\n`);
           NODE
 
-      - name: Verify rebuilt dashboard artifact
+      - name: Verify bootloader visual restore artifact
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const requiredFiles = ['index.html', 'main-styles.css', 'dashboard-hermes-bridge.js', 'dashboard-app.js', 'data.json', 'mission-control-build.json', '.nojekyll'];
+          const buildId = process.env.DASHBOARD_BUILD_ID;
+          const appFile = process.env.DASHBOARD_APP_FILE;
+          const requiredFiles = [
+            'index.html', 'main-styles.css', 'dashboard-hermes-bridge.js', 'dashboard-app.js',
+            'data.json', 'mission-control-build.json', 'dashboard-current.json', appFile, '.nojekyll'
+          ];
           const failures = [];
           for (const file of requiredFiles) {
             if (!fs.existsSync(`_site/${file}`)) failures.push(`missing artifact file: ${file}`);
           }
 
           const html = fs.readFileSync('_site/index.html', 'utf8');
+          const appHtml = fs.readFileSync(`_site/${appFile}`, 'utf8');
+          const styles = fs.readFileSync('_site/main-styles.css', 'utf8');
           const bridge = fs.readFileSync('_site/dashboard-hermes-bridge.js', 'utf8');
           const app = fs.readFileSync('_site/dashboard-app.js', 'utf8');
           const data = JSON.parse(fs.readFileSync('_site/data.json', 'utf8'));
           const marker = JSON.parse(fs.readFileSync('_site/mission-control-build.json', 'utf8'));
-          const assetBuildId = process.env.DASHBOARD_ASSET_BUILD_ID;
-          const appBuildId = process.env.DASHBOARD_APP_BUILD_ID;
+          const current = JSON.parse(fs.readFileSync('_site/dashboard-current.json', 'utf8'));
 
           const mustContain = [
-            ['index.html', html, 'RED SUN COMMAND'],
-            ['index.html', html, `main-styles.css?v=${assetBuildId}`],
-            ['index.html', html, `dashboard-hermes-bridge.js?v=${assetBuildId}`],
-            ['index.html', html, `dashboard-app.js?v=${assetBuildId}`],
+            ['index.html', html, 'dashboard-current.json'],
+            ['index.html', html, appFile],
+            ['app html', appHtml, 'RED SUN COMMAND'],
+            ['app html', appHtml, `main-styles.css?build=${buildId}`],
+            ['app html', appHtml, `dashboard-app.js?build=${buildId}`],
+            ['main-styles.css', styles, '.agent-rail'],
+            ['main-styles.css', styles, '.fleet-grid'],
             ['dashboard-hermes-bridge.js', bridge, '__MISSION_CONTROL_HERMES__'],
             ['dashboard-hermes-bridge.js', bridge, '/api/sync'],
             ['dashboard-hermes-bridge.js', bridge, '/api/dashboard-intents'],
-            ['dashboard-app.js', app, `BUILD_ID = '${appBuildId}'`],
+            ['dashboard-app.js', app, `BUILD_ID = '${buildId}'`],
             ['dashboard-app.js', app, "cache: 'no-store'"],
-            ['dashboard-app.js', app, "url.searchParams.set('t'"]
+            ['dashboard-app.js', app, "const AGENT_VISUALS"]
           ];
           for (const [file, body, needle] of mustContain) {
             if (!body.includes(needle)) failures.push(`${file} missing ${needle}`);
           }
 
           const forbiddenPatterns = [
-            ['index.html', html, /dashboard-current\.json|app-20260622-source-of-truth-v3\.html|api\.github\.com|localStorage|GitHub PAT/i],
-            ['dashboard-hermes-bridge.js', bridge, /dashboard-current\.json|app-20260622-source-of-truth-v3\.html|api\.github\.com|localStorage|GitHub PAT/i],
-            ['dashboard-app.js', app, /dashboard-current\.json|app-20260622-source-of-truth-v3\.html|api\.github\.com|localStorage|GitHub PAT/i]
+            ['index.html', html, /api\.github\.com|localStorage|GitHub PAT|Personal Access Token/i],
+            ['app html', appHtml, /api\.github\.com|localStorage|GitHub PAT|Personal Access Token/i],
+            ['dashboard-hermes-bridge.js', bridge, /api\.github\.com|GitHub PAT|Personal Access Token/i],
+            ['dashboard-app.js', app, /api\.github\.com|GitHub PAT|Personal Access Token/i]
           ];
           for (const [file, body, pattern] of forbiddenPatterns) {
             if (pattern.test(body)) failures.push(`${file} contains old dashboard write/cache pattern: ${pattern}`);
@@ -131,10 +143,12 @@ jobs:
           if (tasks.length !== 106) failures.push(`expected 106 visible tasks, found ${tasks.length}`);
           if (done.length !== 29) failures.push(`expected 29 done tasks, found ${done.length}`);
           if (marker.kind !== 'mission-control-dashboard-build-marker') failures.push('build marker kind mismatch');
-          if (marker.dashboardBuildId !== assetBuildId) failures.push(`build marker dashboardBuildId mismatch: ${marker.dashboardBuildId}`);
-          if (marker.expected?.visibleTasks !== 106 || marker.expected?.doneTasks !== 29 || marker.expected?.projects !== 22 || marker.expected?.requiredProject !== 'C4') {
-            failures.push('build marker expected counts mismatch');
-          }
+          if (marker.dashboardBuildId !== buildId) failures.push(`build marker dashboardBuildId mismatch: ${marker.dashboardBuildId}`);
+          if (marker.currentApp !== appFile) failures.push(`build marker currentApp mismatch: ${marker.currentApp}`);
+          if (current.currentApp !== appFile) failures.push(`dashboard-current currentApp mismatch: ${current.currentApp}`);
+          if (current.appBuildId !== buildId) failures.push(`dashboard-current appBuildId mismatch: ${current.appBuildId}`);
+          if (marker.expected?.visibleTasks !== 106 || marker.expected?.doneTasks !== 29 || marker.expected?.projects !== 22 || marker.expected?.requiredProject !== 'C4') failures.push('build marker expected counts mismatch');
+          if (current.expected?.visibleTasks !== 106 || current.expected?.doneTasks !== 29 || current.expected?.projects !== 22 || current.expected?.requiredProject !== 'C4') failures.push('dashboard-current expected counts mismatch');
 
           const sensitive = new Set([
             'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
@@ -143,9 +157,8 @@ jobs:
           const normalizeKey = (key) => String(key).trim().toLowerCase().replace(/[\s-]+/g, '_');
           const sensitivePaths = (value, path = 'root') => {
             const found = [];
-            if (Array.isArray(value)) {
-              value.forEach((item, index) => found.push(...sensitivePaths(item, `${path}[${index}]`)));
-            } else if (value && typeof value === 'object') {
+            if (Array.isArray(value)) value.forEach((item, index) => found.push(...sensitivePaths(item, `${path}[${index}]`)));
+            else if (value && typeof value === 'object') {
               Object.entries(value).forEach(([key, item]) => {
                 const name = normalizeKey(key);
                 if (sensitive.has(name) || sensitive.has(name.replace(/_/g, ''))) found.push(`${path}.${key}`);
@@ -161,7 +174,7 @@ jobs:
             console.error(failures.map((failure) => `- ${failure}`).join('\n'));
             process.exit(1);
           }
-          console.log('Mission Control Pages artifact verified: rebuilt root, optional Hermes bridge, build marker, C4, 22 projects, 106 tasks, 29 done.');
+          console.log('Mission Control Pages artifact verified: root bootloader, current manifest, visual restore app, assets, C4, 22 projects, 106 tasks, 29 done.');
           NODE
 
       - name: Upload Pages artifact
