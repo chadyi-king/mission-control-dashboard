@@ -38,7 +38,7 @@ jobs:
           node <<'NODE'
           const fs = require('fs');
           const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
-          const sensitive = new Set([
+          const sensitiveKeys = new Set([
             'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
             'refresh_token', 'refreshtoken', 'token', 'secret', 'password', 'credential', 'credentials'
           ]);
@@ -59,7 +59,7 @@ jobs:
             } else if (value && typeof value === 'object') {
               Object.entries(value).forEach(([key, item]) => {
                 const name = normalizeKey(key);
-                if (sensitive.has(name) || sensitive.has(name.replace(/_/g, ''))) found.push(`${path}.${key}`);
+                if (sensitiveKeys.has(name) || sensitiveKeys.has(name.replace(/_/g, ''))) found.push(`${path}.${key}`);
                 found.push(...sensitivePaths(item, `${path}.${key}`));
               });
             }
@@ -82,8 +82,8 @@ jobs:
           if (projects.size !== 22) failures.push(`expected 22 projects, found ${projects.size}`);
           if (!projects.has('C4')) failures.push('missing C4');
           if (c4.name && c4.name !== 'Website Services') failures.push(`C4 has wrong name: ${JSON.stringify(c4.name)}`);
-          const sensitive = sensitivePaths(data);
-          if (sensitive.length) failures.push(`sensitive public keys remain: ${sensitive.slice(0, 5).join(', ')}`);
+          const sensitiveFound = sensitivePaths(data);
+          if (sensitiveFound.length) failures.push(`sensitive public keys remain: ${sensitiveFound.slice(0, 5).join(', ')}`);
           if (failures.length) throw new Error(`Refusing to sync dashboard branches: ${failures.join('; ')}`);
           NODE
 
