@@ -1,0 +1,134 @@
+name: Repair GitHub Pages Source
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/pages-source-repair.yml
+
+permissions:
+  contents: write
+  pages: write
+  actions: read
+
+jobs:
+  repair-pages-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dashboard repo
+        uses: actions/checkout@v7
+
+      - name: Repair Pages source and write diagnostic
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const repo = process.env.REPOSITORY;
+          const token = process.env.GITHUB_TOKEN;
+          const base = `https://api.github.com/repos/${repo}`;
+          const headers = {
+            Accept: 'application/vnd.github+json',
+            Authorization: `Bearer ${token}`,
+            'X-GitHub-Api-Version': '2022-11-28',
+            'User-Agent': 'mission-control-pages-repair'
+          };
+
+          async function request(path, options = {}) {
+            const response = await fetch(`${base}${path}`, {
+              ...options,
+              headers: {
+                ...headers,
+                ...(options.headers || {})
+              }
+            });
+            const text = await response.text();
+            let body;
+            try { body = text ? JSON.parse(text) : null; } catch { body = text; }
+            return { status: response.status, ok: response.ok, body };
+          }
+
+          function redact(value) {
+            if (Array.isArray(value)) return value.map(redact);
+            if (value && typeof value === 'object') {
+              return Object.fromEntries(Object.entries(value)
+                .filter(([key]) => !/token|secret|credential|password/i.test(key))
+                .map(([key, item]) => [key, redact(item)]));
+            }
+            return value;
+          }
+
+          const before = await request('/pages');
+          const desired = {
+            build_type: 'legacy',
+            source: {
+              branch: 'gh-pages',
+              path: '/'
+            }
+          };
+
+          let repair;
+          if (before.status === 404) {
+            repair = await request('/pages', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(desired)
+            });
+          } else {
+            repair = await request('/pages', {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(desired)
+            });
+          }
+
+          const after = await request('/pages');
+          const deployRuns = await request('/actions/workflows/pages.yml/runs?per_page=5');
+          const syncRuns = await request('/actions/workflows/sync-dashboard-branches.yml/runs?per_page=5');
+          const now = new Date().toISOString();
+          const pageUrl = after.body?.html_url || after.body?.url || 'https://chadyi-king.github.io/mission-control-dashboard/';
+          const source = after.body?.source ? JSON.stringify(after.body.source) : 'unknown';
+
+          const report = [
+            '# GitHub Pages State',
+            '',
+            `Generated: ${now}`,
+            `Repository: ${repo}`,
+            `Target URL: ${pageUrl}`,
+            `Desired source: gh-pages / root`,
+            `Observed source: ${source}`,
+            '',
+            '## Repair Result',
+            '',
+            `Before status: ${before.status}`,
+            `Repair status: ${repair.status}`,
+            `After status: ${after.status}`,
+            '',
+            '## Raw Redacted Evidence',
+            '',
+            '```json',
+            JSON.stringify(redact({ before, repair, after, deployRuns, syncRuns }), null, 2),
+            '```',
+            ''
+          ].join('\n');
+
+          fs.writeFileSync('PAGES_STATE.md', report, 'utf8');
+          if (!repair.ok) {
+            console.error(`Pages source repair did not succeed: HTTP ${repair.status}`);
+          }
+          NODE
+
+      - name: Commit diagnostic report
+        run: |
+          if git diff --quiet -- PAGES_STATE.md; then
+            echo "PAGES_STATE.md unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PAGES_STATE.md
+          git commit -m "chore: record GitHub Pages state"
+          git push
