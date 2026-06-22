@@ -23,6 +23,7 @@ Rules:
 - The dashboard reads generated snapshot data and renders it through one normalized model.
 - The dashboard may express visual workflow intent, such as queue reorder or agent-board movement, only through Hermes/local API when available.
 - The dashboard must not store GitHub tokens, write directly to GitHub, or treat localStorage/browser state as source of truth.
+- Public snapshots must strip broker account identifiers, tokens, API keys, credentials, secrets, and passwords.
 
 ## Active Runtime Files
 
@@ -85,14 +86,20 @@ GitHub Pages must publish this dashboard at:
 
 `https://chadyi-king.github.io/mission-control-dashboard/`
 
-Expected Pages setting:
+Preferred Pages setting:
+
+- Source: `GitHub Actions`
+- Workflow: `.github/workflows/pages.yml`
+
+The Actions workflow deploys the same static dashboard, but sanitizes the public `data.json` artifact before publishing.
+
+Branch publishing fallback:
 
 - Source: Deploy from a branch
 - Branch: `gh-pages`
 - Folder: `/ (root)`
+- Only use this after the checked-in `data.json` has been regenerated/sanitized from Hermes canonical state.
 
 The `main`, `master`, `sidebar-redesign`, and `gh-pages` branches are kept aligned to the rebuilt dashboard source to avoid branch-source confusion.
-
-A GitHub Actions Pages workflow also exists at `.github/workflows/pages.yml` for repositories configured to publish with Actions. If the live root URL shows the old PAT/settings dashboard while branch contents show the rebuilt source, the failure is in GitHub Pages source/deployment state, not in `data.json` or the dashboard JavaScript.
 
 Do not add Render, a second dashboard URL, or an in-repo dashboard archive unless Caleb explicitly approves it.
