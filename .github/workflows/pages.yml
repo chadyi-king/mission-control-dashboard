@@ -14,7 +14,7 @@ permissions:
 
 env:
   DASHBOARD_BUILD_ID: 20260623-backend-contract-1
-  DASHBOARD_ASSET_BUILD_ID: 20260622-visual-restore-1
+  DASHBOARD_ASSET_BUILD_ID: 20260623-cachebreak-1
   DASHBOARD_APP_FILE: app-20260623-backend-contract-1.html
 
 concurrency:
