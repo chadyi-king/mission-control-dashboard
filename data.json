@@ -2220,28 +2220,27 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 100000.0,
+        "current_balance": 100000,
         "baseline_balance": 3821.73,
-        "weekly_profit": 0.0,
-        "weekly_loss": 0.0,
+        "weekly_profit": 0,
+        "weekly_loss": 0,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 0.0,
+        "today_pnl": 0,
         "status": "unverified_account_reset",
         "pnl_status": "blocked",
-        "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified.",
-        "account_id": "101-003-23656635-001"
+        "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
       }
     },
     "weekly_rankings": {
       "best": {
         "agent": "quanta",
-        "amount": 0.0,
+        "amount": 0,
         "period": "2026-05-14"
       },
       "worst": {
         "agent": "quanta",
-        "amount": 0.0,
+        "amount": 0,
         "period": "2026-05-14"
       }
     },
@@ -2249,56 +2248,56 @@
       {
         "date": "2026-06-16",
         "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
+        "balance": 100000,
+        "pnl": 0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-17",
         "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
+        "balance": 100000,
+        "pnl": 0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-18",
         "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
+        "balance": 100000,
+        "pnl": 0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-19",
         "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
+        "balance": 100000,
+        "pnl": 0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-20",
         "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
+        "balance": 100000,
+        "pnl": 0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-21",
         "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
+        "balance": 100000,
+        "pnl": 0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-22",
         "agent": "quanta",
-        "balance": 100000.0,
-        "pnl": 0.0,
+        "balance": 100000,
+        "pnl": 0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       }
