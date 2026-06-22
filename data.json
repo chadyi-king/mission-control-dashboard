@@ -1,233 +1,356 @@
 {
-  "version": "3.0.0",
-  "lastUpdated": "2026-06-23T04:13:24.275688+08:00",
-  "updatedBy": "helios-v3",
-  "stats": {
-    "totalTasks": 106,
-    "tasksLeft": 77,
-    "completedTasks": 29,
-    "completedToday": 0,
-    "completedThisWeek": 0,
-    "critical": 0,
-    "urgent": 0,
-    "active": 2,
-    "blocked": 1,
-    "review": 0,
-    "backlog": 71
-  },
-  "completions": {
-    "today": [],
-    "this_week": [],
-    "all_time": 46
-  },
-  "weeklyProgress": {
-    "completed": 0,
-    "started": 0
-  },
-  "workflow": {
-    "pending": [
-      "A7-3",
-      "B1-3",
-      "B1-4",
-      "C1-2"
-    ],
-    "active": [
-      "A6-16",
-      "B6-10"
-    ],
-    "review": [],
-    "done": [
-      "A1-1",
-      "A1-11",
-      "A1-12",
-      "A1-13",
-      "A1-2",
-      "A1-4",
-      "A1-5",
-      "A1-6",
-      "A1-7",
-      "A5-1",
-      "A5-3",
-      "A6-14",
-      "A7-1",
-      "A7-2",
-      "A7-4",
-      "B3-1",
-      "B6-1",
-      "B6-2",
-      "B6-3",
-      "B6-4",
-      "B6-5",
-      "B6-6",
-      "B6-7",
-      "B6-8",
-      "B6-9",
-      "B8-2",
-      "B8-3",
-      "B8-6",
-      "C1-1"
-    ],
-    "urgent": [],
-    "blocked": [
-      "A2-1"
-    ],
-    "paused": [
-      "A5-4",
-      "A5-5",
-      "B10-1"
-    ],
-    "backlog": [
-      "A1-14",
-      "A3-1",
-      "A3-2",
-      "A3-3",
-      "A3-4",
-      "A3-5",
-      "A3-6",
-      "A3-7",
-      "A3-8",
-      "A3-9",
-      "A4-1",
-      "A4-2",
-      "A4-3",
-      "A4-4",
-      "A7-5",
-      "A7-6",
-      "A7-7",
-      "A7-8",
-      "B1-1",
-      "B11-1",
-      "B11-2",
-      "B11-3",
-      "B11-4",
-      "B11-5",
-      "B11-6",
-      "B11-7",
-      "B2-1",
-      "B3-2",
-      "B3-3",
-      "B4-1",
-      "B5-1",
-      "B7-1",
-      "B7-2",
-      "B7-3",
-      "B7-4",
-      "B7-5",
-      "B7-6",
-      "B7-7",
-      "B8-1",
-      "B8-10",
-      "B8-11",
-      "B8-12",
-      "B8-13",
-      "B8-14",
-      "B8-4",
-      "B8-5",
-      "B8-7",
-      "B8-8",
-      "B8-9",
-      "B9-1",
-      "B9-2",
-      "B9-3",
-      "B9-4",
-      "B9-5",
-      "B9-6",
-      "B9-7",
-      "C2-1",
-      "C2-2",
-      "C3-1",
-      "C3-2",
-      "C3-3",
-      "C3-6",
-      "C4-1",
-      "C4-2",
-      "C4-3",
-      "C4-4",
-      "C4-5"
-    ],
-    "waiting on you": [
-      "A2-1"
-    ],
-    "check this": [],
-    "agent on it": [
-      "A6-16",
-      "B6-10"
-    ],
-    "has deadline": [
-      "A7-3",
-      "B1-3",
-      "B1-4",
-      "C1-2"
-    ],
-    "todo": [
-      "A1-14",
-      "A3-1",
-      "A3-2",
-      "A3-3",
-      "A3-4",
-      "A3-5",
-      "A3-6",
-      "A3-7",
-      "A3-8",
-      "A3-9",
-      "A4-1",
-      "A4-2",
-      "A4-3",
-      "A4-4",
-      "A7-5",
-      "A7-6",
-      "A7-7",
-      "A7-8",
-      "B1-1",
-      "B11-1",
-      "B11-2",
-      "B11-3",
-      "B11-4",
-      "B11-5",
-      "B11-6",
-      "B11-7",
-      "B2-1",
-      "B3-2",
-      "B3-3",
-      "B4-1",
-      "B5-1",
-      "B7-1",
-      "B7-2",
-      "B7-3",
-      "B7-4",
-      "B7-5",
-      "B7-6",
-      "B7-7",
-      "B8-1",
-      "B8-10",
-      "B8-11",
-      "B8-12",
-      "B8-13",
-      "B8-14",
-      "B8-4",
-      "B8-5",
-      "B8-7",
-      "B8-8",
-      "B8-9",
-      "B9-1",
-      "B9-2",
-      "B9-3",
-      "B9-4",
-      "B9-5",
-      "B9-6",
-      "B9-7",
-      "C2-1",
-      "C2-2",
-      "C3-1",
-      "C3-2",
-      "C3-3",
-      "C3-6",
-      "C4-1",
-      "C4-2",
-      "C4-3",
-      "C4-4",
-      "C4-5"
-    ]
+  "version": "2026-06-23-canonical-v1",
+  "lastUpdated": "2026-06-23T05:00:23.692855+08:00",
+  "updatedBy": "chad-yi",
+  "projects": {
+    "A1": {
+      "name": "Personal",
+      "description": "Personal life tasks",
+      "category": "A",
+      "status": "pending",
+      "tasks": [
+        "A1-11",
+        "A1-12",
+        "A1-13",
+        "A1-14",
+        "A1-6",
+        "A1-5",
+        "A1-2",
+        "A1-7",
+        "A1-1",
+        "A1-4"
+      ],
+      "totalTasks": 10,
+      "completedTasks": 9,
+      "completionPct": 90
+    },
+    "A2": {
+      "name": "RE:UNITE",
+      "description": "Novel writing project",
+      "category": "A",
+      "status": "blocked",
+      "tasks": [
+        "A2-1"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "A3": {
+      "name": "KOE",
+      "description": "Content creation",
+      "category": "A",
+      "status": "pending",
+      "tasks": [
+        "A3-1",
+        "A3-2",
+        "A3-3",
+        "A3-4",
+        "A3-5",
+        "A3-6",
+        "A3-7",
+        "A3-8",
+        "A3-9"
+      ],
+      "totalTasks": 9,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "A4": {
+      "name": "Streaming",
+      "description": "VTuber streaming setup",
+      "category": "A",
+      "status": "pending",
+      "tasks": [
+        "A4-1",
+        "A4-2",
+        "A4-3",
+        "A4-4"
+      ],
+      "totalTasks": 4,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "A5": {
+      "name": "Trading",
+      "description": "Quanta trading bot & strategy",
+      "category": "A",
+      "status": "pending",
+      "tasks": [
+        "A5-1",
+        "A5-3",
+        "A5-4",
+        "A5-5"
+      ],
+      "totalTasks": 4,
+      "completedTasks": 2,
+      "completionPct": 50
+    },
+    "A6": {
+      "name": "Mission Control",
+      "description": "Dashboard & infrastructure",
+      "category": "A",
+      "status": "active",
+      "tasks": [
+        "A6-14",
+        "A6-16"
+      ],
+      "totalTasks": 2,
+      "completedTasks": 1,
+      "completionPct": 50
+    },
+    "A7": {
+      "name": "Wedding",
+      "description": "Wedding planning",
+      "category": "A",
+      "status": "pending",
+      "tasks": [
+        "A7-1",
+        "A7-2",
+        "A7-3",
+        "A7-4",
+        "A7-5",
+        "A7-6",
+        "A7-7",
+        "A7-8"
+      ],
+      "totalTasks": 8,
+      "completedTasks": 3,
+      "completionPct": 38
+    },
+    "B1": {
+      "name": "Exstatic",
+      "description": "Umbrella company",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B1-1",
+        "B1-3",
+        "B1-4"
+      ],
+      "totalTasks": 3,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B2": {
+      "name": "Energize",
+      "description": "Energy drinks brand",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B2-1"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B3": {
+      "name": "Team Elevate",
+      "description": "Events company",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B3-1",
+        "B3-2",
+        "B3-3"
+      ],
+      "totalTasks": 3,
+      "completedTasks": 1,
+      "completionPct": 33
+    },
+    "B4": {
+      "name": "Pesta Fiesta",
+      "description": "Party planning",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B4-1"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B5": {
+      "name": "Enticipate",
+      "description": "Marketing agency",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B5-1"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B6": {
+      "name": "Elluminate",
+      "description": "Education & events",
+      "category": "B",
+      "status": "active",
+      "tasks": [
+        "B6-10",
+        "B6-1",
+        "B6-2",
+        "B6-3",
+        "B6-4",
+        "B6-5",
+        "B6-6",
+        "B6-7",
+        "B6-8",
+        "B6-9"
+      ],
+      "totalTasks": 10,
+      "completedTasks": 9,
+      "completionPct": 90
+    },
+    "B7": {
+      "name": "Encompasse",
+      "description": "Consulting",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B7-1",
+        "B7-2",
+        "B7-3",
+        "B7-4",
+        "B7-5",
+        "B7-6",
+        "B7-7"
+      ],
+      "totalTasks": 7,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B8": {
+      "name": "Empyrean",
+      "description": "Media production",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B8-1",
+        "B8-2",
+        "B8-3",
+        "B8-6",
+        "B8-4",
+        "B8-5",
+        "B8-7",
+        "B8-8",
+        "B8-9",
+        "B8-10",
+        "B8-11",
+        "B8-12",
+        "B8-13",
+        "B8-14"
+      ],
+      "totalTasks": 14,
+      "completedTasks": 3,
+      "completionPct": 21
+    },
+    "B9": {
+      "name": "Ethereal",
+      "description": "Creative studio",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B9-1",
+        "B9-2",
+        "B9-3",
+        "B9-4",
+        "B9-5",
+        "B9-6",
+        "B9-7"
+      ],
+      "totalTasks": 7,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B10": {
+      "name": "Epitaph",
+      "description": "Legacy project",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B10-1"
+      ],
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "B11": {
+      "name": "EPEPTOME",
+      "description": "Research peptides e-commerce",
+      "category": "B",
+      "status": "pending",
+      "tasks": [
+        "B11-1",
+        "B11-2",
+        "B11-3",
+        "B11-4",
+        "B11-5",
+        "B11-6",
+        "B11-7"
+      ],
+      "totalTasks": 7,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "C1": {
+      "name": "Real Estate",
+      "description": "RES exam June 2026",
+      "category": "C",
+      "status": "pending",
+      "tasks": [
+        "C1-1",
+        "C1-2"
+      ],
+      "totalTasks": 2,
+      "completedTasks": 1,
+      "completionPct": 50
+    },
+    "C2": {
+      "name": "Side Sales",
+      "description": "Portfolio & client outreach",
+      "category": "C",
+      "status": "pending",
+      "tasks": [
+        "C2-1",
+        "C2-2"
+      ],
+      "totalTasks": 2,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "C3": {
+      "name": "Vibe Code Games",
+      "description": "Games & interactive experiences",
+      "category": "C",
+      "status": "pending",
+      "tasks": [
+        "C3-1",
+        "C3-2",
+        "C3-3",
+        "C3-6"
+      ],
+      "totalTasks": 4,
+      "completedTasks": 0,
+      "completionPct": 0
+    },
+    "C4": {
+      "name": "Website Services",
+      "description": "Client website projects and portfolio",
+      "category": "C",
+      "status": "pending",
+      "tasks": [
+        "C4-1",
+        "C4-2",
+        "C4-3",
+        "C4-4",
+        "C4-5"
+      ],
+      "totalTasks": 5,
+      "completedTasks": 0,
+      "completionPct": 0
+    }
   },
   "tasks": {
     "A1-11": {
@@ -1409,7 +1532,138 @@
       "createdAt": "2026-02-01T00:00:00+08:00"
     }
   },
-  "recentWins": [],
+  "projectDetails": {
+    "A1": {
+      "name": "Personal",
+      "description": "Personal life tasks"
+    },
+    "A2": {
+      "name": "RE:UNITE",
+      "description": "Novel writing project"
+    },
+    "A3": {
+      "name": "KOE",
+      "description": "Content creation"
+    },
+    "A4": {
+      "name": "Streaming",
+      "description": "VTuber streaming setup"
+    },
+    "A5": {
+      "name": "Trading",
+      "description": "Quanta trading bot & strategy"
+    },
+    "A6": {
+      "name": "Mission Control",
+      "description": "Dashboard & infrastructure"
+    },
+    "A7": {
+      "name": "Wedding",
+      "description": "Wedding planning"
+    },
+    "B1": {
+      "name": "Exstatic",
+      "description": "Umbrella company"
+    },
+    "B2": {
+      "name": "Energize",
+      "description": "Energy drinks brand"
+    },
+    "B3": {
+      "name": "Team Elevate",
+      "description": "Events company"
+    },
+    "B4": {
+      "name": "Pesta Fiesta",
+      "description": "Party planning"
+    },
+    "B5": {
+      "name": "Enticipate",
+      "description": "Marketing agency"
+    },
+    "B6": {
+      "name": "Elluminate",
+      "description": "Education & events"
+    },
+    "B7": {
+      "name": "Encompasse",
+      "description": "Consulting"
+    },
+    "B8": {
+      "name": "Empyrean",
+      "description": "Media production"
+    },
+    "B9": {
+      "name": "Ethereal",
+      "description": "Creative studio"
+    },
+    "B10": {
+      "name": "Epitaph",
+      "description": "Legacy project"
+    },
+    "B11": {
+      "name": "EPEPTOME",
+      "description": "Research peptides e-commerce"
+    },
+    "C1": {
+      "name": "Real Estate",
+      "description": "RES exam June 2026"
+    },
+    "C2": {
+      "name": "Side Sales",
+      "description": "Portfolio & client outreach"
+    },
+    "C3": {
+      "name": "Vibe Code Games",
+      "description": "Games & interactive experiences"
+    },
+    "C4": {
+      "name": "Website Services",
+      "description": "Client website projects and portfolio"
+    }
+  },
+  "categories": {
+    "A": {
+      "name": "Ambition",
+      "description": "Personal Projects",
+      "projects": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7"
+      ]
+    },
+    "B": {
+      "name": "Business",
+      "description": "Active Ventures",
+      "projects": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11"
+      ]
+    },
+    "C": {
+      "name": "Callings",
+      "description": "Side Projects",
+      "projects": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ]
+    }
+  },
   "agents": {
     "chad-yi": {
       "name": "Chad Yi",
@@ -1554,487 +1808,219 @@
       "capabilities": []
     }
   },
-  "categories": {
-    "A": {
-      "name": "Ambition",
-      "description": "Personal Projects",
-      "projects": [
-        "A1",
-        "A2",
-        "A3",
-        "A4",
-        "A5",
-        "A6",
-        "A7"
-      ]
-    },
-    "B": {
-      "name": "Business",
-      "description": "Active Ventures",
-      "projects": [
-        "B1",
-        "B2",
-        "B3",
-        "B4",
-        "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
-        "B10",
-        "B11"
-      ]
-    },
-    "C": {
-      "name": "Callings",
-      "description": "Side Projects",
-      "projects": [
-        "C1",
-        "C2",
-        "C3",
-        "C4"
-      ]
-    }
+  "completions": {
+    "today": [],
+    "this_week": [],
+    "all_time": 46
   },
-  "projects": {
-    "A1": {
-      "name": "Personal",
-      "description": "Personal life tasks",
-      "category": "A",
-      "status": "pending",
-      "tasks": [
-        "A1-11",
-        "A1-12",
-        "A1-13",
-        "A1-14",
-        "A1-6",
-        "A1-5",
-        "A1-2",
-        "A1-7",
-        "A1-1",
-        "A1-4"
-      ],
-      "totalTasks": 10,
-      "completedTasks": 9,
-      "completionPct": 90
-    },
-    "A2": {
-      "name": "RE:UNITE",
-      "description": "Novel writing project",
-      "category": "A",
-      "status": "blocked",
-      "tasks": [
-        "A2-1"
-      ],
-      "totalTasks": 1,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "A3": {
-      "name": "KOE",
-      "description": "Content creation",
-      "category": "A",
-      "status": "pending",
-      "tasks": [
-        "A3-1",
-        "A3-2",
-        "A3-3",
-        "A3-4",
-        "A3-5",
-        "A3-6",
-        "A3-7",
-        "A3-8",
-        "A3-9"
-      ],
-      "totalTasks": 9,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "A4": {
-      "name": "Streaming",
-      "description": "VTuber streaming setup",
-      "category": "A",
-      "status": "pending",
-      "tasks": [
-        "A4-1",
-        "A4-2",
-        "A4-3",
-        "A4-4"
-      ],
-      "totalTasks": 4,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "A5": {
-      "name": "Trading",
-      "description": "Quanta trading bot & strategy",
-      "category": "A",
-      "status": "pending",
-      "tasks": [
-        "A5-1",
-        "A5-3",
-        "A5-4",
-        "A5-5"
-      ],
-      "totalTasks": 4,
-      "completedTasks": 2,
-      "completionPct": 50
-    },
-    "A6": {
-      "name": "Mission Control",
-      "description": "Dashboard & infrastructure",
-      "category": "A",
-      "status": "active",
-      "tasks": [
-        "A6-14",
-        "A6-16"
-      ],
-      "totalTasks": 2,
-      "completedTasks": 1,
-      "completionPct": 50
-    },
-    "A7": {
-      "name": "Wedding",
-      "description": "Wedding planning",
-      "category": "A",
-      "status": "pending",
-      "tasks": [
-        "A7-1",
-        "A7-2",
-        "A7-3",
-        "A7-4",
-        "A7-5",
-        "A7-6",
-        "A7-7",
-        "A7-8"
-      ],
-      "totalTasks": 8,
-      "completedTasks": 3,
-      "completionPct": 38
-    },
-    "B1": {
-      "name": "Exstatic",
-      "description": "Umbrella company",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B1-1",
-        "B1-3",
-        "B1-4"
-      ],
-      "totalTasks": 3,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "B2": {
-      "name": "Energize",
-      "description": "Energy drinks brand",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B2-1"
-      ],
-      "totalTasks": 1,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "B3": {
-      "name": "Team Elevate",
-      "description": "Events company",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B3-1",
-        "B3-2",
-        "B3-3"
-      ],
-      "totalTasks": 3,
-      "completedTasks": 1,
-      "completionPct": 33
-    },
-    "B4": {
-      "name": "Pesta Fiesta",
-      "description": "Party planning",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B4-1"
-      ],
-      "totalTasks": 1,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "B5": {
-      "name": "Enticipate",
-      "description": "Marketing agency",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B5-1"
-      ],
-      "totalTasks": 1,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "B6": {
-      "name": "Elluminate",
-      "description": "Education & events",
-      "category": "B",
-      "status": "active",
-      "tasks": [
-        "B6-10",
-        "B6-1",
-        "B6-2",
-        "B6-3",
-        "B6-4",
-        "B6-5",
-        "B6-6",
-        "B6-7",
-        "B6-8",
-        "B6-9"
-      ],
-      "totalTasks": 10,
-      "completedTasks": 9,
-      "completionPct": 90
-    },
-    "B7": {
-      "name": "Encompasse",
-      "description": "Consulting",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B7-1",
-        "B7-2",
-        "B7-3",
-        "B7-4",
-        "B7-5",
-        "B7-6",
-        "B7-7"
-      ],
-      "totalTasks": 7,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "B8": {
-      "name": "Empyrean",
-      "description": "Media production",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B8-1",
-        "B8-2",
-        "B8-3",
-        "B8-6",
-        "B8-4",
-        "B8-5",
-        "B8-7",
-        "B8-8",
-        "B8-9",
-        "B8-10",
-        "B8-11",
-        "B8-12",
-        "B8-13",
-        "B8-14"
-      ],
-      "totalTasks": 14,
-      "completedTasks": 3,
-      "completionPct": 21
-    },
-    "B9": {
-      "name": "Ethereal",
-      "description": "Creative studio",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B9-1",
-        "B9-2",
-        "B9-3",
-        "B9-4",
-        "B9-5",
-        "B9-6",
-        "B9-7"
-      ],
-      "totalTasks": 7,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "B10": {
-      "name": "Epitaph",
-      "description": "Legacy project",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B10-1"
-      ],
-      "totalTasks": 1,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "B11": {
-      "name": "EPEPTOME",
-      "description": "Research peptides e-commerce",
-      "category": "B",
-      "status": "pending",
-      "tasks": [
-        "B11-1",
-        "B11-2",
-        "B11-3",
-        "B11-4",
-        "B11-5",
-        "B11-6",
-        "B11-7"
-      ],
-      "totalTasks": 7,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "C1": {
-      "name": "Real Estate",
-      "description": "RES exam June 2026",
-      "category": "C",
-      "status": "pending",
-      "tasks": [
-        "C1-1",
-        "C1-2"
-      ],
-      "totalTasks": 2,
-      "completedTasks": 1,
-      "completionPct": 50
-    },
-    "C2": {
-      "name": "Side Sales",
-      "description": "Portfolio & client outreach",
-      "category": "C",
-      "status": "pending",
-      "tasks": [
-        "C2-1",
-        "C2-2"
-      ],
-      "totalTasks": 2,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "C3": {
-      "name": "Vibe Code Games",
-      "description": "Games & interactive experiences",
-      "category": "C",
-      "status": "pending",
-      "tasks": [
-        "C3-1",
-        "C3-2",
-        "C3-3",
-        "C3-6"
-      ],
-      "totalTasks": 4,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "C4": {
-      "name": "Website Services",
-      "description": "Client website projects and portfolio",
-      "category": "C",
-      "status": "pending",
-      "tasks": [
-        "C4-1",
-        "C4-2",
-        "C4-3",
-        "C4-4",
-        "C4-5"
-      ],
-      "totalTasks": 5,
-      "completedTasks": 0,
-      "completionPct": 0
-    }
+  "weeklyProgress": {
+    "completed": 0,
+    "started": 0
   },
-  "projectDetails": {
-    "A1": {
-      "name": "Personal",
-      "description": "Personal life tasks"
-    },
-    "A2": {
-      "name": "RE:UNITE",
-      "description": "Novel writing project"
-    },
-    "A3": {
-      "name": "KOE",
-      "description": "Content creation"
-    },
-    "A4": {
-      "name": "Streaming",
-      "description": "VTuber streaming setup"
-    },
-    "A5": {
-      "name": "Trading",
-      "description": "Quanta trading bot & strategy"
-    },
-    "A6": {
-      "name": "Mission Control",
-      "description": "Dashboard & infrastructure"
-    },
-    "A7": {
-      "name": "Wedding",
-      "description": "Wedding planning"
-    },
-    "B1": {
-      "name": "Exstatic",
-      "description": "Umbrella company"
-    },
-    "B2": {
-      "name": "Energize",
-      "description": "Energy drinks brand"
-    },
-    "B3": {
-      "name": "Team Elevate",
-      "description": "Events company"
-    },
-    "B4": {
-      "name": "Pesta Fiesta",
-      "description": "Party planning"
-    },
-    "B5": {
-      "name": "Enticipate",
-      "description": "Marketing agency"
-    },
-    "B6": {
-      "name": "Elluminate",
-      "description": "Education & events"
-    },
-    "B7": {
-      "name": "Encompasse",
-      "description": "Consulting"
-    },
-    "B8": {
-      "name": "Empyrean",
-      "description": "Media production"
-    },
-    "B9": {
-      "name": "Ethereal",
-      "description": "Creative studio"
-    },
-    "B10": {
-      "name": "Epitaph",
-      "description": "Legacy project"
-    },
-    "B11": {
-      "name": "EPEPTOME",
-      "description": "Research peptides e-commerce"
-    },
-    "C1": {
-      "name": "Real Estate",
-      "description": "RES exam June 2026"
-    },
-    "C2": {
-      "name": "Side Sales",
-      "description": "Portfolio & client outreach"
-    },
-    "C3": {
-      "name": "Vibe Code Games",
-      "description": "Games & interactive experiences"
-    },
-    "C4": {
-      "name": "Website Services",
-      "description": "Client website projects and portfolio"
-    }
+  "workflow": {
+    "pending": [
+      "A7-3",
+      "B1-3",
+      "B1-4",
+      "C1-2"
+    ],
+    "active": [
+      "A6-16",
+      "B6-10"
+    ],
+    "review": [],
+    "done": [
+      "A1-1",
+      "A1-11",
+      "A1-12",
+      "A1-13",
+      "A1-2",
+      "A1-4",
+      "A1-5",
+      "A1-6",
+      "A1-7",
+      "A5-1",
+      "A5-3",
+      "A6-14",
+      "A7-1",
+      "A7-2",
+      "A7-4",
+      "B3-1",
+      "B6-1",
+      "B6-2",
+      "B6-3",
+      "B6-4",
+      "B6-5",
+      "B6-6",
+      "B6-7",
+      "B6-8",
+      "B6-9",
+      "B8-2",
+      "B8-3",
+      "B8-6",
+      "C1-1"
+    ],
+    "urgent": [],
+    "blocked": [
+      "A2-1"
+    ],
+    "paused": [
+      "A5-4",
+      "A5-5",
+      "B10-1"
+    ],
+    "backlog": [
+      "A1-14",
+      "A3-1",
+      "A3-2",
+      "A3-3",
+      "A3-4",
+      "A3-5",
+      "A3-6",
+      "A3-7",
+      "A3-8",
+      "A3-9",
+      "A4-1",
+      "A4-2",
+      "A4-3",
+      "A4-4",
+      "A7-5",
+      "A7-6",
+      "A7-7",
+      "A7-8",
+      "B1-1",
+      "B11-1",
+      "B11-2",
+      "B11-3",
+      "B11-4",
+      "B11-5",
+      "B11-6",
+      "B11-7",
+      "B2-1",
+      "B3-2",
+      "B3-3",
+      "B4-1",
+      "B5-1",
+      "B7-1",
+      "B7-2",
+      "B7-3",
+      "B7-4",
+      "B7-5",
+      "B7-6",
+      "B7-7",
+      "B8-1",
+      "B8-10",
+      "B8-11",
+      "B8-12",
+      "B8-13",
+      "B8-14",
+      "B8-4",
+      "B8-5",
+      "B8-7",
+      "B8-8",
+      "B8-9",
+      "B9-1",
+      "B9-2",
+      "B9-3",
+      "B9-4",
+      "B9-5",
+      "B9-6",
+      "B9-7",
+      "C2-1",
+      "C2-2",
+      "C3-1",
+      "C3-2",
+      "C3-3",
+      "C3-6",
+      "C4-1",
+      "C4-2",
+      "C4-3",
+      "C4-4",
+      "C4-5"
+    ],
+    "waiting on you": [
+      "A2-1"
+    ],
+    "check this": [],
+    "agent on it": [
+      "A6-16",
+      "B6-10"
+    ],
+    "has deadline": [
+      "A7-3",
+      "B1-3",
+      "B1-4",
+      "C1-2"
+    ],
+    "todo": [
+      "A1-14",
+      "A3-1",
+      "A3-2",
+      "A3-3",
+      "A3-4",
+      "A3-5",
+      "A3-6",
+      "A3-7",
+      "A3-8",
+      "A3-9",
+      "A4-1",
+      "A4-2",
+      "A4-3",
+      "A4-4",
+      "A7-5",
+      "A7-6",
+      "A7-7",
+      "A7-8",
+      "B1-1",
+      "B11-1",
+      "B11-2",
+      "B11-3",
+      "B11-4",
+      "B11-5",
+      "B11-6",
+      "B11-7",
+      "B2-1",
+      "B3-2",
+      "B3-3",
+      "B4-1",
+      "B5-1",
+      "B7-1",
+      "B7-2",
+      "B7-3",
+      "B7-4",
+      "B7-5",
+      "B7-6",
+      "B7-7",
+      "B8-1",
+      "B8-10",
+      "B8-11",
+      "B8-12",
+      "B8-13",
+      "B8-14",
+      "B8-4",
+      "B8-5",
+      "B8-7",
+      "B8-8",
+      "B8-9",
+      "B9-1",
+      "B9-2",
+      "B9-3",
+      "B9-4",
+      "B9-5",
+      "B9-6",
+      "B9-7",
+      "C2-1",
+      "C2-2",
+      "C3-1",
+      "C3-2",
+      "C3-3",
+      "C3-6",
+      "C4-1",
+      "C4-2",
+      "C4-3",
+      "C4-4",
+      "C4-5"
+    ]
   },
   "needsAttention": [
     {
@@ -2379,5 +2365,19 @@
     "2026-02-15": [
       "A1-4"
     ]
+  },
+  "recentWins": [],
+  "stats": {
+    "totalTasks": 106,
+    "tasksLeft": 77,
+    "completedTasks": 29,
+    "completedToday": 0,
+    "completedThisWeek": 0,
+    "critical": 0,
+    "urgent": 0,
+    "active": 2,
+    "blocked": 1,
+    "review": 0,
+    "backlog": 71
   }
 }
