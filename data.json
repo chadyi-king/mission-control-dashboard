@@ -1,6 +1,6 @@
 {
   "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-23T05:07:24.529971+08:00",
+  "lastUpdated": "2026-06-23T05:16:23.439941+08:00",
   "updatedBy": "chad-yi",
   "projects": {
     "A1": {
@@ -18,9 +18,7 @@
         "A1-2",
         "A1-7",
         "A1-1",
-        "A1-4",
-        "TEST-1",
-        "TEST-1"
+        "A1-4"
       ],
       "totalTasks": 10,
       "completedTasks": 9,
@@ -1532,16 +1530,6 @@
       "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "TEST-1": {
-      "id": "TEST-1",
-      "title": "Test task from Telegram handler",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "medium",
-      "createdAt": "2026-06-23T05:07:17.739099+08:00"
     }
   },
   "projectDetails": {
