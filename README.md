@@ -47,4 +47,12 @@ The snapshot used for this rebuild must preserve:
 
 GitHub Pages remains the only deployment target. Do not create Render or another hosting target for this dashboard unless Caleb explicitly asks.
 
-Pushes to `main` publish the root URL after GitHub Pages propagation.
+Expected Pages setting:
+
+- Source: Deploy from a branch
+- Branch: `gh-pages`
+- Folder: `/ (root)`
+
+`main`, `sidebar-redesign`, and `gh-pages` should all mirror the rebuilt dashboard source. If the live root URL serves the old PAT/settings dashboard, the repo source is not the problem; GitHub Pages is publishing an old artifact or the wrong source setting.
+
+An optional GitHub Actions workflow exists at `.github/workflows/pages.yml`, but branch publishing from `gh-pages` is the simplest expected source for this static dashboard.
