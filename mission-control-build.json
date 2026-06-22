@@ -2,8 +2,11 @@
   "kind": "mission-control-dashboard-build-marker",
   "dashboardBuildId": "20260622-visual-restore-1",
   "appBuildId": "20260622-visual-restore-1",
-  "source": "gh-pages-root-visual-restore",
-  "forcedDeployTrigger": "gh-pages-direct-20260622-visual-restore-1",
+  "source": "gh-pages-root-bootloader",
+  "rootLoader": "index.html",
+  "currentManifest": "dashboard-current.json",
+  "currentApp": "app-20260622-visual-restore-1.html",
+  "forcedDeployTrigger": "gh-pages-direct-20260622-visual-restore-bootloader-1",
   "expected": {
     "projects": 22,
     "requiredProject": "C4",
@@ -28,5 +31,5 @@
       "OpenClaw dashboard paths"
     ]
   },
-  "notes": "Diagnostic only. Task truth remains the Hermes canonical state, published to public data.json as a sanitized dashboard snapshot."
+  "notes": "Diagnostic only. Root index.html is now a no-cache bootloader. Task truth remains the Hermes canonical state, published to public data.json as a sanitized dashboard snapshot."
 }
