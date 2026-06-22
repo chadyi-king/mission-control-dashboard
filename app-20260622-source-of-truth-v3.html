@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Control Dashboard</title>
+  <style>
+    html, body { margin: 0; min-height: 100%; background: #050507; color: rgba(235,235,245,.86); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .boot { min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; text-align: center; }
+    .boot-title { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(220, 60, 80, .9); margin-bottom: 8px; }
+    .boot-sub { font-size: 13px; color: rgba(180,185,205,.72); }
+    .boot-error { max-width: 720px; line-height: 1.55; }
+    .boot-error code { color: #ffb86b; }
+  </style>
+</head>
+<body>
+  <div class="boot" id="boot-state">
+    <div>
+      <div class="boot-title">Mission Control</div>
+      <div class="boot-sub">Loading current dashboard build...</div>
+    </div>
+  </div>
+  <script>
+    (async function bootMissionControlApp() {
+      const BUILD_ID = '20260622-source-of-truth-v3';
+      const RAW_APP_HTML = 'https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/625301397a88f7a33f1797d2fa1a2d91fb90b932/index.html';
+      const bootState = document.getElementById('boot-state');
+
+      function showError(message, detail) {
+        bootState.innerHTML = '<div class="boot-error"><div class="boot-title">Dashboard Load Blocked</div>' +
+          '<div class="boot-sub">' + message + '</div>' +
+          (detail ? '<pre style="white-space:pre-wrap;text-align:left;margin-top:16px;color:rgba(230,190,150,.9)">' + String(detail).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])) + '</pre>' : '') +
+          '<div class="boot-sub" style="margin-top:16px">Build: <code>' + BUILD_ID + '</code></div></div>';
+      }
+
+      try {
+        const dataResponse = await fetch('data.json?boot=' + Date.now(), { cache: 'no-store' });
+        const data = await dataResponse.json();
+        const hasC4 = Boolean((data.projects && data.projects.C4) || (data.projectDetails && data.projectDetails.C4));
+        const totalTasks = Number(data.stats && data.stats.totalTasks);
+        const doneTasks = Number(data.stats && data.stats.completedTasks);
+        if (!hasC4 || totalTasks !== 106 || doneTasks !== 29) {
+          console.warn('[Mission Control Boot] Data preflight mismatch', { hasC4, totalTasks, doneTasks });
+        }
+      } catch (error) {
+        console.warn('[Mission Control Boot] Data preflight failed; continuing to app shell.', error);
+      }
+
+      try {
+        const response = await fetch(RAW_APP_HTML + '?boot=' + Date.now(), { cache: 'no-store' });
+        if (!response.ok) throw new Error('Raw dashboard shell returned HTTP ' + response.status);
+        const html = await response.text();
+        if (!html.includes('dashboard-app.js') || !html.includes('agent-registry.js')) {
+          throw new Error('Fetched dashboard shell did not look like the Mission Control app.');
+        }
+        const bootMarker = '<script>window.MISSION_CONTROL_BOOT_BUILD=' + JSON.stringify(BUILD_ID) + ';<\\/script>';
+        document.open();
+        document.write(html.replace('</head>', bootMarker + '</head>'));
+        document.close();
+      } catch (error) {
+        console.error('[Mission Control Boot] Failed to load dashboard app shell.', error);
+        showError('The root loader could not fetch the current dashboard shell. This is a load-path problem, not missing task data.', error && (error.stack || error.message || error));
+      }
+    })();
+  </script>
+</body>
+</html>
