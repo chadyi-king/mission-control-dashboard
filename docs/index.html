@@ -7,128 +7,63 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Mission Control Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main-styles.css?v=20260622-root-rebuild-5">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #050508; color: rgba(255,255,255,.92); font-family: Arial, sans-serif; }
+    body { display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at 50% 35%, rgba(220,20,60,.18), transparent 32%), #050508; }
+    .boot { width: min(520px, 100%); border: 1px solid rgba(220,20,60,.35); background: rgba(8,8,13,.88); padding: 22px; border-radius: 8px; box-shadow: 0 18px 70px rgba(0,0,0,.55); }
+    .brand { color: #dc143c; font-weight: 800; font-size: 14px; text-transform: uppercase; margin-bottom: 8px; }
+    .status { color: rgba(230,232,245,.7); line-height: 1.45; }
+    .error { color: #ff7070; margin-top: 12px; white-space: pre-wrap; }
+  </style>
 </head>
 <body>
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="solar-corona" aria-hidden="true"></div>
-  <div class="red-sun" aria-hidden="true"></div>
-  <div class="planet-horizon" aria-hidden="true"></div>
-
-  <header class="topbar">
-    <div class="brand-lockup">
-      <span class="brand-orb" aria-hidden="true"></span>
-      <div>
-        <div class="brand-title">RED SUN COMMAND</div>
-        <div class="brand-subtitle">Mission Control Dashboard</div>
-      </div>
-    </div>
-    <div class="ticker" id="ticker">Loading mission intelligence...</div>
-    <div class="sync-chip" id="sync-chip">BOOTING</div>
-  </header>
-
-  <main class="dashboard-shell">
-    <section class="hero-band" id="home-section">
-      <div class="hero-copy">
-        <div class="system-label">Hermes Control Surface</div>
-        <h1>Mission Control</h1>
-        <p>One visual command layer for Caleb, Hermes, Helios, and the agent fleet.</p>
-      </div>
-      <div class="truth-panel">
-        <div class="truth-row"><span>Canonical intent</span><strong>Hermes state</strong></div>
-        <div class="truth-row"><span>Public snapshot</span><strong>data.json</strong></div>
-        <div class="truth-row"><span>Dashboard writes</span><strong>Queue / board only</strong></div>
-      </div>
-    </section>
-
-    <section class="stats-grid" aria-label="Mission statistics">
-      <article class="stat-card"><span>Total Tasks</span><strong id="stat-total">-</strong><em id="stat-open">- open</em></article>
-      <article class="stat-card"><span>Completed</span><strong id="stat-done">-</strong><em id="stat-rate">-</em></article>
-      <article class="stat-card"><span>Projects</span><strong id="stat-projects">-</strong><em id="stat-c4">C4 checking</em></article>
-      <article class="stat-card"><span>Needs Caleb</span><strong id="stat-caleb">-</strong><em id="stat-input">- input</em></article>
-      <article class="stat-card"><span>Active Work</span><strong id="stat-active">-</strong><em id="stat-blocked">- blocked</em></article>
-      <article class="stat-card"><span>Fleet</span><strong id="stat-agents">-</strong><em id="stat-live-agents">- live</em></article>
-    </section>
-
-    <section class="command-grid">
-      <article class="panel panel-large" id="briefing-panel">
-        <div class="panel-head"><span>Daily Briefing</span><button type="button" data-refresh>Refresh</button></div>
-        <div id="daily-briefing" class="briefing-body loading-card">Loading briefing...</div>
-      </article>
-
-      <article class="panel" id="review-panel">
-        <div class="panel-head"><span>Awaiting Review</span><small id="review-count">0</small></div>
-        <div id="review-list" class="task-list"></div>
-      </article>
-
-      <article class="panel" id="input-panel">
-        <div class="panel-head"><span>Input Requested</span><small id="input-count">0</small></div>
-        <div id="input-list" class="task-list"></div>
-      </article>
-
-      <article class="panel" id="caleb-panel">
-        <div class="panel-head"><span>Caleb's Queue</span><small id="caleb-count">0</small></div>
-        <div id="caleb-list" class="task-list"></div>
-      </article>
-
-      <article class="panel panel-large" id="focus-panel">
-        <div class="panel-head"><span>Today's Focus / Priority Queue</span><small>visual order only</small></div>
-        <div id="focus-list" class="focus-list" aria-live="polite"></div>
-      </article>
-
-      <article class="panel panel-large" id="week-panel">
-        <div class="panel-head"><span>Week Calendar</span><small id="week-window">SGT</small></div>
-        <div id="week-calendar" class="week-calendar"></div>
-      </article>
-    </section>
-
-    <section class="panel" id="agent-board-panel">
-      <div class="panel-head">
-        <span>Agent Workflow Boards</span>
-        <select id="agent-board-select" aria-label="Choose agent board"></select>
-      </div>
-      <div id="agent-board" class="kanban-board"></div>
-    </section>
-
-    <section class="panel" id="fleet-panel">
-      <div class="panel-head"><span>Agent Fleet</span><small id="fleet-count">0 agents</small></div>
-      <div id="fleet-grid" class="fleet-grid"></div>
-    </section>
-
-    <section class="panel" id="projects-panel">
-      <div class="panel-head">
-        <span>Project Categories</span>
-        <div class="filters">
-          <input id="project-search" type="search" placeholder="Search projects or tasks" autocomplete="off">
-          <select id="status-filter" aria-label="Filter by status">
-            <option value="">All status</option>
-            <option value="open">Open</option>
-            <option value="active">Active</option>
-            <option value="blocked">Blocked</option>
-            <option value="paused">Paused</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-      </div>
-      <div id="project-categories" class="category-stack"></div>
-    </section>
+  <main class="boot" id="boot">
+    <div class="brand">RED SUN COMMAND</div>
+    <div class="status" id="boot-status">Loading Mission Control...</div>
+    <div class="error" id="boot-error" hidden></div>
   </main>
 
-  <div id="task-modal" class="modal-overlay" hidden>
-    <article class="task-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button type="button" class="modal-close" id="modal-close" aria-label="Close task detail">x</button>
-      <div class="modal-kicker" id="modal-id">TASK</div>
-      <h2 id="modal-title">Task detail</h2>
-      <div class="modal-meta" id="modal-meta"></div>
-      <p id="modal-description"></p>
-    </article>
-  </div>
+  <script>
+    (async function bootMissionControl() {
+      const status = document.getElementById('boot-status');
+      const errorBox = document.getElementById('boot-error');
+      const BOOT_ID = '20260622-visual-restore-1';
 
-  <div id="toast" class="toast" hidden></div>
-  <script src="dashboard-hermes-bridge.js?v=20260622-root-rebuild-5" defer></script>
-  <script src="dashboard-app.js?v=20260622-root-rebuild-5" defer></script>
+      function withNoCache(path, build) {
+        const url = new URL(path, window.location.href);
+        url.searchParams.set('build', build || BOOT_ID);
+        url.searchParams.set('t', String(Date.now()));
+        return url.toString();
+      }
+
+      try {
+        const manifestResponse = await fetch(withNoCache('dashboard-current.json', BOOT_ID), {
+          cache: 'no-store',
+          headers: { 'Cache-Control': 'no-cache' }
+        });
+        if (!manifestResponse.ok) throw new Error('dashboard-current.json HTTP ' + manifestResponse.status);
+        const manifest = await manifestResponse.json();
+        const appFile = manifest.currentApp || 'app-20260622-visual-restore-1.html';
+        const appBuild = manifest.appBuildId || manifest.dashboardBuildId || BOOT_ID;
+        status.textContent = 'Loading ' + appBuild + '...';
+
+        const appResponse = await fetch(withNoCache(appFile, appBuild), {
+          cache: 'no-store',
+          headers: { 'Cache-Control': 'no-cache' }
+        });
+        if (!appResponse.ok) throw new Error(appFile + ' HTTP ' + appResponse.status);
+        const html = await appResponse.text();
+        document.open();
+        document.write(html);
+        document.close();
+      } catch (error) {
+        console.error('[Mission Control Boot]', error);
+        status.textContent = 'Mission Control could not boot.';
+        errorBox.hidden = false;
+        errorBox.textContent = error.message || String(error);
+      }
+    })();
+  </script>
 </body>
 </html>
