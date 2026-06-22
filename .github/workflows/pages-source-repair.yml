@@ -15,6 +15,7 @@ permissions:
 
 jobs:
   repair-pages-source:
+    # Keep this workflow explicit: it repairs the repo Pages source, not dashboard data.
     runs-on: ubuntu-latest
     steps:
       - name: Checkout dashboard repo
