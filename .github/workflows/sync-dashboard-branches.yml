@@ -11,6 +11,7 @@ on:
       - dashboard-hermes-bridge.js
       - dashboard-app.js
       - data.json
+      - mission-control-build.json
       - .nojekyll
       - docs/**
       - README.md
