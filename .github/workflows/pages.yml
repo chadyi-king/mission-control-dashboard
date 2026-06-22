@@ -40,7 +40,7 @@ jobs:
           cp index.html main-styles.css dashboard-hermes-bridge.js dashboard-app.js dashboard-visual-state-hydrator.js data.json mission-control-build.json dashboard-current.json "$DASHBOARD_APP_FILE" .nojekyll _site/
           if [ -d assets ]; then cp -R assets _site/assets; fi
 
-      - name: Sanitize public dashboard snapshot
+      - name: Normalize and sanitize public dashboard snapshot
         run: |
           node <<'NODE'
           const fs = require('fs');
@@ -49,21 +49,90 @@ jobs:
             'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
             'refresh_token', 'refreshtoken', 'token', 'secret', 'password', 'credential', 'credentials'
           ]);
-          const normalize = (key) => String(key).trim().toLowerCase().replace(/[\s-]+/g, '_');
+          const aliases = {
+            backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
+            check_this: 'needs_review', 'waiting_on_you': 'input_requested', 'waiting on you': 'input_requested',
+            needs_input: 'input_requested', in_progress: 'active', 'agent on it': 'active', 'check this': 'needs_review'
+          };
+          const canonicalBuckets = ['open', 'active', 'input_requested', 'needs_review', 'blocked', 'paused', 'done'];
+          const normalizeKey = (key) => String(key).trim().toLowerCase().replace(/[\s-]+/g, '_');
+          const normalizeStatus = (status) => {
+            const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
+            return aliases[raw] || raw || 'open';
+          };
           const sanitize = (value) => {
             if (Array.isArray(value)) return value.map(sanitize);
             if (value && typeof value === 'object') {
               return Object.fromEntries(Object.entries(value)
                 .filter(([key]) => {
-                  const name = normalize(key);
+                  const name = normalizeKey(key);
                   return !sensitive.has(name) && !sensitive.has(name.replace(/_/g, ''));
                 })
                 .map(([key, item]) => [key, sanitize(item)]));
             }
             return value;
           };
-          const data = JSON.parse(fs.readFileSync(file, 'utf8'));
-          fs.writeFileSync(file, `${JSON.stringify(sanitize(data), null, 2)}\n`);
+          const taskEntries = (snapshot) => {
+            const tasks = snapshot.tasks || {};
+            if (Array.isArray(tasks)) return tasks.map((task, index) => [task?.id || `task-${index + 1}`, task]).filter(([, task]) => task && typeof task === 'object');
+            return Object.entries(tasks).filter(([, task]) => task && typeof task === 'object');
+          };
+          const normalizeTasks = (snapshot) => {
+            for (const [id, task] of taskEntries(snapshot)) {
+              task.id = task.id || id;
+              task.status = normalizeStatus(task.status);
+            }
+          };
+          const visibleTasks = (snapshot) => taskEntries(snapshot)
+            .map(([id, task]) => ({ id: task.id || id, ...task }))
+            .filter((task) => normalizeStatus(task.status) !== 'removed');
+          const deriveWorkflow = (snapshot) => {
+            const workflow = Object.fromEntries(canonicalBuckets.map((bucket) => [bucket, []]));
+            workflow.urgent = [];
+            for (const task of visibleTasks(snapshot)) {
+              const status = canonicalBuckets.includes(normalizeStatus(task.status)) ? normalizeStatus(task.status) : 'open';
+              workflow[status].push(task.id);
+              const priority = String(task.priority || '').trim().toLowerCase();
+              if (['critical', 'urgent', 'high'].includes(priority) && status !== 'done') workflow.urgent.push(task.id);
+            }
+            return workflow;
+          };
+          const deriveStats = (snapshot) => {
+            const existing = snapshot.stats || {};
+            const tasks = visibleTasks(snapshot);
+            const count = (status) => tasks.filter((task) => normalizeStatus(task.status) === status).length;
+            const done = count('done');
+            const keep = Object.fromEntries(Object.entries(existing).filter(([key]) => ![
+              'totalTasks', 'tasksLeft', 'completedTasks', 'backlog', 'pending', 'review', 'todo',
+              'open', 'active', 'blocked', 'needsReview', 'inputRequested', 'paused'
+            ].includes(key)));
+            return {
+              ...keep,
+              totalTasks: tasks.length,
+              tasksLeft: tasks.length - done,
+              completedTasks: done,
+              open: count('open'),
+              active: count('active'),
+              blocked: count('blocked'),
+              needsReview: count('needs_review'),
+              inputRequested: count('input_requested'),
+              paused: count('paused')
+            };
+          };
+
+          const data = sanitize(JSON.parse(fs.readFileSync(file, 'utf8')));
+          normalizeTasks(data);
+          data.workflow = deriveWorkflow(data);
+          data.stats = deriveStats(data);
+          data.visualWorkflowState = data.visualWorkflowState || { priorityQueueOrder: [], agentBoards: {} };
+          data.canonicalState = {
+            ...(data.canonicalState || {}),
+            dashboardDataRole: 'generated sanitized snapshot',
+            publicSnapshotSanitized: true,
+            workflowBucketsNormalized: true,
+            visualWorkflowStatePublished: true
+          };
+          fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
           NODE
 
       - name: Verify bootloader backend contract artifact
@@ -162,6 +231,18 @@ jobs:
           if (marker.expected?.visibleTasks !== 106 || marker.expected?.doneTasks !== 29 || marker.expected?.projects !== 22 || marker.expected?.requiredProject !== 'C4') failures.push('build marker expected counts mismatch');
           if (current.expected?.visibleTasks !== 106 || current.expected?.doneTasks !== 29 || current.expected?.projects !== 22 || current.expected?.requiredProject !== 'C4') failures.push('dashboard-current expected counts mismatch');
 
+          const legacyPublicKeys = new Set(['backlog', 'pending', 'review', 'todo', 'in_progress']);
+          const legacyTaskStatuses = [...new Set(tasks.map((task) => String(task.status || '').trim().toLowerCase().replace(/[\s-]+/g, '_')).filter((status) => legacyPublicKeys.has(status)))];
+          const legacyWorkflowKeys = Object.keys(data.workflow || {}).filter((key) => legacyPublicKeys.has(String(key).trim().toLowerCase().replace(/[\s-]+/g, '_')));
+          const legacyStatsKeys = Object.keys(data.stats || {}).filter((key) => legacyPublicKeys.has(String(key).trim().toLowerCase().replace(/[\s-]+/g, '_')));
+          if (legacyTaskStatuses.length) failures.push(`legacy task statuses remain: ${legacyTaskStatuses.join(', ')}`);
+          if (legacyWorkflowKeys.length) failures.push(`legacy workflow buckets remain: ${legacyWorkflowKeys.join(', ')}`);
+          if (legacyStatsKeys.length) failures.push(`legacy stats keys remain: ${legacyStatsKeys.join(', ')}`);
+          for (const bucket of ['open', 'active', 'input_requested', 'needs_review', 'blocked', 'paused', 'done']) {
+            if (!Array.isArray(data.workflow?.[bucket])) failures.push(`missing canonical workflow bucket: ${bucket}`);
+          }
+          if (!data.visualWorkflowState || typeof data.visualWorkflowState !== 'object') failures.push('missing visualWorkflowState');
+
           const sensitive = new Set([
             'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
             'refresh_token', 'refreshtoken', 'token', 'secret', 'password', 'credential', 'credentials'
@@ -186,7 +267,7 @@ jobs:
             console.error(failures.map((failure) => `- ${failure}`).join('\n'));
             process.exit(1);
           }
-          console.log('Mission Control Pages artifact verified: gh-pages source, root bootloader, current manifest, visual restore app, visual workflow hydrator, assets, C4, 22 projects, 106 tasks, 29 done.');
+          console.log('Mission Control Pages artifact verified: gh-pages source, root bootloader, current manifest, visual restore app, canonical public data artifact, visual workflow hydrator, assets, C4, 22 projects, 106 tasks, 29 done.');
           NODE
 
       - name: Upload Pages artifact
