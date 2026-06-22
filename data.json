@@ -1,6 +1,6 @@
 {
   "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-23T05:06:57.267047+08:00",
+  "lastUpdated": "2026-06-23T05:07:24.529971+08:00",
   "updatedBy": "chad-yi",
   "projects": {
     "A1": {
@@ -19,6 +19,7 @@
         "A1-7",
         "A1-1",
         "A1-4",
+        "TEST-1",
         "TEST-1"
       ],
       "totalTasks": 10,
@@ -1538,9 +1539,9 @@
       "project": "A1",
       "category": "A",
       "agent": "chad-yi",
-      "status": "removed",
+      "status": "open",
       "priority": "medium",
-      "createdAt": "2026-06-23T05:06:39.026820+08:00"
+      "createdAt": "2026-06-23T05:07:17.739099+08:00"
     }
   },
   "projectDetails": {
