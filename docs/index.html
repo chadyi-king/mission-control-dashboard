@@ -18,6 +18,7 @@
   </style>
 </head>
 <body>
+  <!-- Main docs fallback redeploy trigger: 20260623-backend-contract-docs-1 -->
   <main class="boot" id="boot">
     <div class="brand">RED SUN COMMAND</div>
     <div class="status" id="boot-status">Loading Mission Control...</div>
@@ -28,7 +29,7 @@
     (async function bootMissionControl() {
       const status = document.getElementById('boot-status');
       const errorBox = document.getElementById('boot-error');
-      const BOOT_ID = '20260622-visual-restore-1';
+      const BOOT_ID = '20260623-backend-contract-docs-1';
 
       function withNoCache(path, build) {
         const url = new URL(path, window.location.href);
@@ -44,9 +45,9 @@
         });
         if (!manifestResponse.ok) throw new Error('dashboard-current.json HTTP ' + manifestResponse.status);
         const manifest = await manifestResponse.json();
-        const appFile = manifest.currentApp || 'app-20260622-visual-restore-1.html';
+        const appFile = manifest.currentApp || 'app-20260623-backend-contract-1.html';
         const appBuild = manifest.appBuildId || manifest.dashboardBuildId || BOOT_ID;
-        status.textContent = 'Loading ' + appBuild + '...';
+        status.textContent = 'Loading Mission Control...';
 
         const appResponse = await fetch(withNoCache(appFile, appBuild), {
           cache: 'no-store',

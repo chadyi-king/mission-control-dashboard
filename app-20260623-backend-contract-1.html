@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Mission Control Dashboard</title>
+  <style>
+    html, body { margin: 0; min-height: 100%; background: #050508; color: rgba(255,255,255,.92); font-family: Arial, sans-serif; }
+    body { display: grid; place-items: center; padding: 24px; }
+    .boot { width: min(520px, 100%); border: 1px solid rgba(220,20,60,.35); background: rgba(8,8,13,.88); padding: 22px; border-radius: 8px; }
+    .brand { color: #dc143c; font-weight: 800; font-size: 14px; text-transform: uppercase; margin-bottom: 8px; }
+    .status { color: rgba(230,232,245,.7); line-height: 1.45; }
+    .error { color: #ff7070; margin-top: 12px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <!-- Main backend contract wrapper: 20260623-backend-contract-1 -->
+  <main class="boot">
+    <div class="brand">RED SUN COMMAND</div>
+    <div class="status" id="status">Loading Mission Control...</div>
+    <div class="error" id="error" hidden></div>
+  </main>
+
+  <script>
+    (async function loadRestoredApp() {
+      const status = document.getElementById('status');
+      const error = document.getElementById('error');
+      const BUILD_ID = '20260623-backend-contract-1';
+      const LEGACY_VISUAL_APP = 'app-20260622-visual-restore-1.html';
+
+      function withNoCache(path, build) {
+        const url = new URL(path, window.location.href);
+        url.searchParams.set('build', build || BUILD_ID);
+        url.searchParams.set('t', String(Date.now()));
+        return url.toString();
+      }
+
+      try {
+        const response = await fetch(withNoCache(LEGACY_VISUAL_APP, BUILD_ID), {
+          cache: 'no-store',
+          headers: { 'Cache-Control': 'no-cache' }
+        });
+        if (!response.ok) throw new Error(LEGACY_VISUAL_APP + ' HTTP ' + response.status);
+        let html = await response.text();
+        html = html.replace('</body>', '  <script src="dashboard-visual-state-hydrator.js?build=20260623-backend-contract-1" defer><\/script>\n</body>');
+        document.open();
+        document.write(html);
+        document.close();
+      } catch (loadError) {
+        console.error('[Mission Control Main App]', loadError);
+        status.textContent = 'Mission Control could not boot.';
+        error.hidden = false;
+        error.textContent = loadError.message || String(loadError);
+      }
+    })();
+  </script>
+</body>
+</html>
