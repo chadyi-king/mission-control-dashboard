@@ -68,13 +68,22 @@ jobs:
             try {
               const rootUrl = `${base}?${cacheKey}-${attempt}`;
               const dataUrl = `${base}data.json?${cacheKey}-${attempt}`;
+              const bridgeUrl = `${base}dashboard-hermes-bridge.js?v=20260622-root-rebuild-5&${cacheKey}-${attempt}`;
               const appUrl = `${base}dashboard-app.js?v=20260622-root-rebuild-5&${cacheKey}-${attempt}`;
               const root = await fetchText(rootUrl);
               assert(root.response.ok, `root HTTP ${root.response.status}`);
               assert(root.text.includes('RED SUN COMMAND'), 'root did not contain rebuilt Red Sun dashboard shell');
               assert(root.text.includes('main-styles.css?v=20260622-root-rebuild-5'), 'root did not reference refreshed CSS asset');
+              assert(root.text.includes('dashboard-hermes-bridge.js?v=20260622-root-rebuild-5'), 'root did not reference Hermes bridge asset');
               assert(root.text.includes('dashboard-app.js?v=20260622-root-rebuild-5'), 'root did not reference refreshed JS asset');
               assert(!/dashboard-current\.json|app-20260622-source-of-truth-v3\.html|localStorage|GitHub PAT/i.test(root.text), 'root contains old dashboard boot/cache/write pattern');
+
+              const bridge = await fetchText(bridgeUrl);
+              assert(bridge.response.ok, `dashboard-hermes-bridge.js HTTP ${bridge.response.status}`);
+              assert(bridge.text.includes('__MISSION_CONTROL_HERMES__'), 'Hermes bridge missing global bridge object');
+              assert(bridge.text.includes('/api/sync'), 'Hermes bridge missing sync endpoint');
+              assert(bridge.text.includes('/api/dashboard-intents'), 'Hermes bridge missing dashboard intent endpoint');
+              assert(!/dashboard-current\.json|api\.github\.com|localStorage|GitHub PAT/i.test(bridge.text), 'Hermes bridge contains old write/cache pattern');
 
               const app = await fetchText(appUrl);
               assert(app.response.ok, `dashboard-app.js HTTP ${app.response.status}`);
@@ -86,7 +95,7 @@ jobs:
               const dataFetch = await fetchText(dataUrl);
               assert(dataFetch.response.ok, `data.json HTTP ${dataFetch.response.status}`);
               verifySnapshot(JSON.parse(dataFetch.text));
-              console.log('Live Mission Control verified: rebuilt root, refreshed assets, C4, 22 projects, 106 tasks, 29 done.');
+              console.log('Live Mission Control verified: rebuilt root, Hermes bridge, refreshed assets, C4, 22 projects, 106 tasks, 29 done.');
               process.exit(0);
             } catch (error) {
               lastError = error;
