@@ -43,16 +43,28 @@ The snapshot used for this rebuild must preserve:
 - 29 completed tasks
 - 15 visible fleet agents
 
+## Public Snapshot Sanitization
+
+The public dashboard must not expose broker account identifiers, tokens, credentials, or secrets.
+
+The GitHub Actions Pages workflow sanitizes the deployment artifact copy of `data.json` before publishing. Hermes local publishers also strip sensitive-looking keys from generated snapshots.
+
 ## Deployment
 
 GitHub Pages remains the only deployment target. Do not create Render or another hosting target for this dashboard unless Caleb explicitly asks.
 
-Expected Pages setting:
+Preferred Pages setting:
+
+- Source: `GitHub Actions`
+- Workflow: `.github/workflows/pages.yml`
+
+Why: the workflow publishes the same static dashboard at the same URL, but sanitizes the public `data.json` artifact first.
+
+Branch publishing fallback:
 
 - Source: Deploy from a branch
 - Branch: `gh-pages`
 - Folder: `/ (root)`
+- Only use this after the checked-in `data.json` has been regenerated/sanitized from Hermes canonical state.
 
-`main`, `master`, `sidebar-redesign`, and `gh-pages` should all mirror the rebuilt dashboard source. If the live root URL serves the old PAT/settings dashboard, the repo source is not the problem; GitHub Pages is publishing an old artifact or the wrong source setting.
-
-An optional GitHub Actions workflow exists at `.github/workflows/pages.yml`, but branch publishing from `gh-pages` is the simplest expected source for this static dashboard.
+`main`, `master`, `sidebar-redesign`, and `gh-pages` should all mirror the rebuilt dashboard source. If the live root URL serves the old PAT/settings dashboard while branch contents show the rebuilt source, the failure is in GitHub Pages source/deployment state, not in `data.json` or the dashboard JavaScript.
