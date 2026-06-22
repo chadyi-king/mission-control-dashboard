@@ -1,0 +1,86 @@
+name: Sanitize Dashboard Data Snapshot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - data.json
+      - .github/workflows/sanitize-dashboard-data.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sanitize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dashboard repo
+        uses: actions/checkout@v6
+
+      - name: Sanitize public data.json
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const file = 'data.json';
+          const sensitive = new Set([
+            'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
+            'refresh_token', 'refreshtoken', 'token', 'secret', 'password', 'credential', 'credentials'
+          ]);
+          const normalizeStatus = (status) => {
+            const aliases = { backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review', check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested', in_progress: 'active' };
+            const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
+            return aliases[raw] || raw || 'open';
+          };
+          const normalizeKey = (key) => String(key).trim().toLowerCase().replace(/[\s-]+/g, '_');
+          const sanitize = (value) => {
+            if (Array.isArray(value)) return value.map(sanitize);
+            if (value && typeof value === 'object') {
+              return Object.fromEntries(Object.entries(value)
+                .filter(([key]) => {
+                  const name = normalizeKey(key);
+                  return !sensitive.has(name) && !sensitive.has(name.replace(/_/g, ''));
+                })
+                .map(([key, item]) => [key, sanitize(item)]));
+            }
+            return value;
+          };
+          const taskList = (snapshot) => Object.entries(snapshot.tasks || {})
+            .filter(([, task]) => task && typeof task === 'object')
+            .map(([id, task]) => ({ id: task.id || id, ...task }));
+          const projectIds = (snapshot, tasks) => {
+            const ids = new Set();
+            Object.keys(snapshot.projects || {}).forEach((id) => ids.add(String(id).toUpperCase()));
+            Object.keys(snapshot.projectDetails || {}).forEach((id) => ids.add(String(id).toUpperCase()));
+            Object.values(snapshot.categories || {}).forEach((category) => (category.projects || []).forEach((id) => ids.add(String(id).toUpperCase())));
+            tasks.forEach((task) => { if (task.project) ids.add(String(task.project).toUpperCase()); });
+            return ids;
+          };
+          const data = sanitize(JSON.parse(fs.readFileSync(file, 'utf8')));
+          const tasks = taskList(data).filter((task) => normalizeStatus(task.status) !== 'removed');
+          const done = tasks.filter((task) => normalizeStatus(task.status) === 'done');
+          const projects = projectIds(data, tasks);
+          const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
+          const failures = [];
+          if (tasks.length !== 106) failures.push(`expected 106 visible tasks, found ${tasks.length}`);
+          if (done.length !== 29) failures.push(`expected 29 done tasks, found ${done.length}`);
+          if (projects.size !== 22) failures.push(`expected 22 projects, found ${projects.size}`);
+          if (!projects.has('C4')) failures.push('missing C4');
+          if (c4.name && c4.name !== 'Website Services') failures.push(`C4 has wrong name: ${JSON.stringify(c4.name)}`);
+          if (failures.length) throw new Error(`Refusing to sanitize invalid dashboard data: ${failures.join('; ')}`);
+          fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+          NODE
+
+      - name: Commit sanitized data
+        run: |
+          if git diff --quiet -- data.json; then
+            echo "data.json already sanitized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "chore: sanitize public dashboard data"
+          git push
