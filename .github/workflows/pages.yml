@@ -29,7 +29,7 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site
-          cp index.html main-styles.css dashboard-app.js data.json .nojekyll _site/
+          cp index.html main-styles.css dashboard-hermes-bridge.js dashboard-app.js data.json .nojekyll _site/
 
       - name: Sanitize public dashboard snapshot
         run: |
@@ -61,13 +61,14 @@ jobs:
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const requiredFiles = ['index.html', 'main-styles.css', 'dashboard-app.js', 'data.json', '.nojekyll'];
+          const requiredFiles = ['index.html', 'main-styles.css', 'dashboard-hermes-bridge.js', 'dashboard-app.js', 'data.json', '.nojekyll'];
           const failures = [];
           for (const file of requiredFiles) {
             if (!fs.existsSync(`_site/${file}`)) failures.push(`missing artifact file: ${file}`);
           }
 
           const html = fs.readFileSync('_site/index.html', 'utf8');
+          const bridge = fs.readFileSync('_site/dashboard-hermes-bridge.js', 'utf8');
           const app = fs.readFileSync('_site/dashboard-app.js', 'utf8');
           const data = JSON.parse(fs.readFileSync('_site/data.json', 'utf8'));
           const assetBuildId = '20260622-root-rebuild-5';
@@ -76,7 +77,11 @@ jobs:
           const mustContain = [
             ['index.html', html, 'RED SUN COMMAND'],
             ['index.html', html, `main-styles.css?v=${assetBuildId}`],
+            ['index.html', html, `dashboard-hermes-bridge.js?v=${assetBuildId}`],
             ['index.html', html, `dashboard-app.js?v=${assetBuildId}`],
+            ['dashboard-hermes-bridge.js', bridge, '__MISSION_CONTROL_HERMES__'],
+            ['dashboard-hermes-bridge.js', bridge, '/api/sync'],
+            ['dashboard-hermes-bridge.js', bridge, '/api/dashboard-intents'],
             ['dashboard-app.js', app, `BUILD_ID = '${appBuildId}'`],
             ['dashboard-app.js', app, "cache: 'no-store'"],
             ['dashboard-app.js', app, "url.searchParams.set('t'"]
@@ -87,7 +92,8 @@ jobs:
 
           const forbiddenPatterns = [
             ['index.html', html, /dashboard-current\.json|app-20260622-source-of-truth-v3\.html|api\.github\.com|localStorage|GitHub PAT/i],
-            ['dashboard-app.js', app, /dashboard-current\.json|api\.github\.com|localStorage|GitHub PAT/i]
+            ['dashboard-hermes-bridge.js', bridge, /dashboard-current\.json|app-20260622-source-of-truth-v3\.html|api\.github\.com|localStorage|GitHub PAT/i],
+            ['dashboard-app.js', app, /dashboard-current\.json|app-20260622-source-of-truth-v3\.html|api\.github\.com|localStorage|GitHub PAT/i]
           ];
           for (const [file, body, pattern] of forbiddenPatterns) {
             if (pattern.test(body)) failures.push(`${file} contains old dashboard write/cache pattern: ${pattern}`);
@@ -145,7 +151,7 @@ jobs:
             console.error(failures.map((failure) => `- ${failure}`).join('\n'));
             process.exit(1);
           }
-          console.log('Mission Control Pages artifact verified: rebuilt root, C4, 22 projects, 106 tasks, 29 done.');
+          console.log('Mission Control Pages artifact verified: rebuilt root, optional Hermes bridge, C4, 22 projects, 106 tasks, 29 done.');
           NODE
 
       - name: Upload Pages artifact
