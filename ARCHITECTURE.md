@@ -81,4 +81,18 @@ Old snapshot statuses are normalized for display:
 
 ## Deployment
 
-GitHub Pages serves the `main` branch root. Do not add Render, a second dashboard URL, or an in-repo dashboard archive unless Caleb explicitly approves it.
+GitHub Pages must publish this dashboard at:
+
+`https://chadyi-king.github.io/mission-control-dashboard/`
+
+Expected Pages setting:
+
+- Source: Deploy from a branch
+- Branch: `gh-pages`
+- Folder: `/ (root)`
+
+The `main`, `sidebar-redesign`, and `gh-pages` branches are kept aligned to the rebuilt dashboard source to avoid branch-source confusion.
+
+A GitHub Actions Pages workflow also exists at `.github/workflows/pages.yml` for repositories configured to publish with Actions. If the live root URL shows the old PAT/settings dashboard while branch contents show the rebuilt source, the failure is in GitHub Pages source/deployment state, not in `data.json` or the dashboard JavaScript.
+
+Do not add Render, a second dashboard URL, or an in-repo dashboard archive unless Caleb explicitly approves it.
