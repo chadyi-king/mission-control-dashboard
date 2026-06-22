@@ -12,6 +12,7 @@ on:
       - dashboard-app.js
       - data.json
       - .nojekyll
+      - docs/**
       - README.md
       - ARCHITECTURE.md
       - .github/workflows/pages.yml
