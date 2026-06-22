@@ -16,7 +16,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify GitHub Pages root and data snapshot
+      - name: Verify GitHub Pages bootloader, app, assets, and data snapshot
         run: |
           node <<'NODE'
           const assert = (condition, message) => {
@@ -32,6 +32,11 @@ jobs:
             });
             const text = await response.text();
             return { response, text };
+          };
+          const jsonFrom = async (url) => {
+            const { response, text } = await fetchText(url);
+            assert(response.ok, `${url} HTTP ${response.status}`);
+            return JSON.parse(text);
           };
           const aliases = {
             backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
@@ -60,42 +65,59 @@ jobs:
             assert(tasks.length === 106, `expected 106 visible tasks, found ${tasks.length}`);
             assert(done.length === 29, `expected 29 done tasks, found ${done.length}`);
           };
+          const assertNoOldBrowserWritePath = (label, text) => {
+            assert(!/GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist/i.test(text), `${label} contains old browser write/PAT pattern`);
+          };
 
           const base = 'https://chadyi-king.github.io/mission-control-dashboard/';
-          const cacheKey = `verify-${Date.now()}`;
           let lastError;
           for (let attempt = 1; attempt <= 8; attempt += 1) {
+            const cacheKey = `verify-${Date.now()}-${attempt}`;
             try {
-              const rootUrl = `${base}?${cacheKey}-${attempt}`;
-              const dataUrl = `${base}data.json?${cacheKey}-${attempt}`;
-              const bridgeUrl = `${base}dashboard-hermes-bridge.js?v=20260622-root-rebuild-5&${cacheKey}-${attempt}`;
-              const appUrl = `${base}dashboard-app.js?v=20260622-root-rebuild-5&${cacheKey}-${attempt}`;
+              const rootUrl = `${base}?${cacheKey}`;
               const root = await fetchText(rootUrl);
               assert(root.response.ok, `root HTTP ${root.response.status}`);
-              assert(root.text.includes('RED SUN COMMAND'), 'root did not contain rebuilt Red Sun dashboard shell');
-              assert(root.text.includes('main-styles.css?v=20260622-root-rebuild-5'), 'root did not reference refreshed CSS asset');
-              assert(root.text.includes('dashboard-hermes-bridge.js?v=20260622-root-rebuild-5'), 'root did not reference Hermes bridge asset');
-              assert(root.text.includes('dashboard-app.js?v=20260622-root-rebuild-5'), 'root did not reference refreshed JS asset');
-              assert(!/dashboard-current\.json|app-20260622-source-of-truth-v3\.html|localStorage|GitHub PAT/i.test(root.text), 'root contains old dashboard boot/cache/write pattern');
+              assert(root.text.includes('dashboard-current.json'), 'root did not load dashboard-current.json boot manifest');
+              assert(root.text.includes('app-20260623-backend-contract-1.html'), 'root did not reference current backend-contract app');
+              assert(root.text.includes('RED SUN COMMAND'), 'root did not contain Red Sun boot shell');
+              assertNoOldBrowserWritePath('root', root.text);
 
-              const bridge = await fetchText(bridgeUrl);
+              const manifest = await jsonFrom(`${base}dashboard-current.json?${cacheKey}`);
+              assert(manifest.dashboardBuildId === '20260623-backend-contract-1', `manifest dashboardBuildId mismatch: ${manifest.dashboardBuildId}`);
+              assert(manifest.appBuildId === '20260622-visual-restore-1', `manifest appBuildId mismatch: ${manifest.appBuildId}`);
+              assert(manifest.currentApp === 'app-20260623-backend-contract-1.html', `manifest currentApp mismatch: ${manifest.currentApp}`);
+
+              const appHtml = await fetchText(`${base}${manifest.currentApp}?${cacheKey}`);
+              assert(appHtml.response.ok, `${manifest.currentApp} HTTP ${appHtml.response.status}`);
+              assert(appHtml.text.includes('main-styles.css?build=20260622-visual-restore-1'), 'app html did not reference restored CSS asset');
+              assert(appHtml.text.includes('dashboard-hermes-bridge.js?build=20260622-visual-restore-1'), 'app html did not reference Hermes bridge asset');
+              assert(appHtml.text.includes('dashboard-app.js?build=20260622-visual-restore-1'), 'app html did not reference dashboard app JS asset');
+              assert(appHtml.text.includes('dashboard-visual-state-hydrator.js?build=20260623-backend-contract-1'), 'app html did not reference visual workflow hydrator');
+              assertNoOldBrowserWritePath('app html', appHtml.text);
+
+              const bridge = await fetchText(`${base}dashboard-hermes-bridge.js?${cacheKey}`);
               assert(bridge.response.ok, `dashboard-hermes-bridge.js HTTP ${bridge.response.status}`);
               assert(bridge.text.includes('__MISSION_CONTROL_HERMES__'), 'Hermes bridge missing global bridge object');
               assert(bridge.text.includes('/api/sync'), 'Hermes bridge missing sync endpoint');
               assert(bridge.text.includes('/api/dashboard-intents'), 'Hermes bridge missing dashboard intent endpoint');
-              assert(!/dashboard-current\.json|api\.github\.com|localStorage|GitHub PAT/i.test(bridge.text), 'Hermes bridge contains old write/cache pattern');
+              assertNoOldBrowserWritePath('Hermes bridge', bridge.text);
 
-              const app = await fetchText(appUrl);
+              const app = await fetchText(`${base}dashboard-app.js?${cacheKey}`);
               assert(app.response.ok, `dashboard-app.js HTTP ${app.response.status}`);
-              assert(app.text.includes("BUILD_ID = '20260622-root-rebuild-4'"), 'dashboard app missing expected internal build id');
+              assert(app.text.includes("BUILD_ID = '20260622-visual-restore-1'"), 'dashboard app missing expected internal build id');
               assert(app.text.includes("cache: 'no-store'"), 'dashboard app missing no-store data fetch');
               assert(app.text.includes("url.searchParams.set('t'"), 'dashboard app missing timestamp cache buster');
-              assert(!/dashboard-current\.json|api\.github\.com|localStorage|GitHub PAT/i.test(app.text), 'dashboard app contains old write/cache pattern');
+              assertNoOldBrowserWritePath('dashboard app', app.text);
 
-              const dataFetch = await fetchText(dataUrl);
-              assert(dataFetch.response.ok, `data.json HTTP ${dataFetch.response.status}`);
-              verifySnapshot(JSON.parse(dataFetch.text));
-              console.log('Live Mission Control verified: rebuilt root, Hermes bridge, refreshed assets, C4, 22 projects, 106 tasks, 29 done.');
+              const hydrator = await fetchText(`${base}dashboard-visual-state-hydrator.js?${cacheKey}`);
+              assert(hydrator.response.ok, `dashboard-visual-state-hydrator.js HTTP ${hydrator.response.status}`);
+              assert(hydrator.text.includes('visualWorkflowState'), 'visual hydrator missing visualWorkflowState');
+              assert(hydrator.text.includes('priorityQueueOrder'), 'visual hydrator missing priorityQueueOrder');
+              assert(hydrator.text.includes('agentBoards'), 'visual hydrator missing agentBoards');
+
+              const data = await jsonFrom(`${base}data.json?${cacheKey}`);
+              verifySnapshot(data);
+              console.log('Live Mission Control verified: bootloader, manifest, app html, assets, Hermes bridge, visual workflow hydrator, C4, 22 projects, 106 tasks, 29 done.');
               process.exit(0);
             } catch (error) {
               lastError = error;
