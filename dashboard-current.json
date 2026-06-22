@@ -1,7 +1,7 @@
 {
   "kind": "mission-control-dashboard-current-app",
-  "dashboardBuildId": "20260623-backend-contract-1",
-  "appBuildId": "20260622-visual-restore-1",
+  "dashboardBuildId": "20260623-cachebreak-1",
+  "appBuildId": "20260623-cachebreak-1",
   "currentApp": "app-20260623-backend-contract-1.html",
   "dataSnapshot": "data.json",
   "expected": {
@@ -11,5 +11,5 @@
     "visibleTasks": 106,
     "doneTasks": 29
   },
-  "notes": "Root index.html is a no-cache bootloader. This manifest selects the current versioned dashboard app while keeping the browser URL at /mission-control-dashboard/. data.json is generated from Hermes canonical state."
+  "notes": "Cache-busting build. Root index.html is a no-cache bootloader. This manifest selects the current versioned dashboard app while keeping the browser URL at /mission-control-dashboard/. data.json is generated from Hermes canonical state."
 }
