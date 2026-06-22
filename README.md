@@ -53,6 +53,6 @@ Expected Pages setting:
 - Branch: `gh-pages`
 - Folder: `/ (root)`
 
-`main`, `sidebar-redesign`, and `gh-pages` should all mirror the rebuilt dashboard source. If the live root URL serves the old PAT/settings dashboard, the repo source is not the problem; GitHub Pages is publishing an old artifact or the wrong source setting.
+`main`, `master`, `sidebar-redesign`, and `gh-pages` should all mirror the rebuilt dashboard source. If the live root URL serves the old PAT/settings dashboard, the repo source is not the problem; GitHub Pages is publishing an old artifact or the wrong source setting.
 
 An optional GitHub Actions workflow exists at `.github/workflows/pages.yml`, but branch publishing from `gh-pages` is the simplest expected source for this static dashboard.
