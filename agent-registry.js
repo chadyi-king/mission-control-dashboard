@@ -30,7 +30,7 @@
     };
 
     /* ── Mission Control task contract ──────────────────────────────── */
-    const DASHBOARD_TASK_CONTRACT_VERSION = '20260622-source-of-truth-v1';
+    const DASHBOARD_TASK_CONTRACT_VERSION = '20260622-source-of-truth-v2';
     const DASHBOARD_CACHE_KEY = 'rs_dashboard_cache';
     const DASHBOARD_BUILD_KEY = 'rs_dashboard_build_id';
 
@@ -97,6 +97,131 @@
         if (raw === 'medium') return 'medium';
         if (raw === 'done') return 'done';
         return 'low';
+    }
+
+    function _compareProjectIds(a, b) {
+        var ma = String(a || '').match(/^([A-Z]+)(\d+)$/i);
+        var mb = String(b || '').match(/^([A-Z]+)(\d+)$/i);
+        if (ma && mb && ma[1].toUpperCase() === mb[1].toUpperCase()) return Number(ma[2]) - Number(mb[2]);
+        return String(a || '').localeCompare(String(b || ''), undefined, { numeric: true });
+    }
+
+    function _categoryName(categoryId, data) {
+        var cat = data && data.categories && data.categories[categoryId];
+        if (cat && cat.name) return categoryId + ' - ' + cat.name;
+        if (categoryId === 'A') return 'A - Ambition';
+        if (categoryId === 'B') return 'B - Business';
+        if (categoryId === 'C') return 'C - Callings';
+        return categoryId;
+    }
+
+    function _defaultProjectDetails(projectId) {
+        var defaults = {
+            A1: { name: 'Personal', description: 'Personal life tasks' },
+            A2: { name: 'RE:UNITE', description: 'Novel writing project' },
+            A3: { name: 'KOE', description: 'Content creation' },
+            A4: { name: 'Streaming', description: 'VTuber streaming setup' },
+            A5: { name: 'Trading', description: 'Quanta trading bot & strategy' },
+            A6: { name: 'Mission Control', description: 'Dashboard & infrastructure' },
+            A7: { name: 'Wedding', description: 'Wedding planning' },
+            B1: { name: 'Exstatic', description: 'Umbrella company' },
+            B2: { name: 'Energize', description: 'Energy drinks brand' },
+            B3: { name: 'Team Elevate', description: 'Events company' },
+            B4: { name: 'Pesta Fiesta', description: 'Party planning' },
+            B5: { name: 'Enticipate', description: 'Marketing agency' },
+            B6: { name: 'Elluminate', description: 'Education & events' },
+            B7: { name: 'Encompasse', description: 'Consulting' },
+            B8: { name: 'Empyrean', description: 'Media production' },
+            B9: { name: 'Ethereal', description: 'Creative studio' },
+            B10: { name: 'Epitaph', description: 'Legacy project' },
+            B11: { name: 'EPEPTOME', description: 'Research peptides e-commerce' },
+            C1: { name: 'Real Estate', description: 'RES exam June 2026' },
+            C2: { name: 'Side Sales', description: 'Portfolio & client outreach' },
+            C3: { name: 'Vibe Code Games', description: 'Games & interactive experiences' },
+            C4: { name: 'Website Services', description: 'Client website projects and portfolio' }
+        };
+        return defaults[projectId] || { name: projectId, description: 'Project workspace' };
+    }
+
+    function _ensureCategoryBucket(data, categoryId) {
+        data.projects = data.projects || {};
+        var bucket = data.projects[categoryId];
+        if (!bucket || Array.isArray(bucket) || !Array.isArray(bucket.projects)) {
+            bucket = Object.assign({ name: _categoryName(categoryId, data), projects: [] }, (bucket && !Array.isArray(bucket)) ? bucket : {});
+            bucket.projects = Array.isArray(bucket.projects) ? bucket.projects : [];
+            data.projects[categoryId] = bucket;
+        }
+        return bucket;
+    }
+
+    function _ensureProjectRoster(data) {
+        if (!data || typeof data !== 'object') return data;
+        data.tasks = data.tasks || {};
+        data.projectDetails = data.projectDetails || {};
+        data.projects = data.projects || {};
+
+        var ids = new Set();
+        var tasksByProject = {};
+
+        Object.keys(data.tasks).forEach(function (taskId) {
+            var task = data.tasks[taskId];
+            if (!task || typeof task !== 'object') return;
+            var projectId = _projectIdFromTask(task, taskId);
+            if (!projectId) return;
+            ids.add(projectId);
+            task.project = projectId;
+            task.category = task.category || projectId.charAt(0);
+            if (!tasksByProject[projectId]) tasksByProject[projectId] = [];
+            tasksByProject[projectId].push(task.id || taskId);
+        });
+
+        Object.keys(data.projectDetails).forEach(function (projectId) {
+            if (/^[A-Z]+\d+$/i.test(projectId)) ids.add(projectId.toUpperCase());
+        });
+
+        Object.keys(data.projects).forEach(function (key) {
+            var value = data.projects[key];
+            if (/^[A-Z]+\d+$/i.test(key)) {
+                var projectId = key.toUpperCase();
+                ids.add(projectId);
+                if (value && typeof value === 'object' && !Array.isArray(value)) {
+                    data.projectDetails[projectId] = Object.assign({}, value, data.projectDetails[projectId] || {});
+                }
+            } else if (value && Array.isArray(value.projects)) {
+                value.projects.forEach(function (projectId) {
+                    if (/^[A-Z]+\d+$/i.test(projectId)) ids.add(projectId.toUpperCase());
+                });
+            }
+        });
+
+        Object.keys(data.categories || {}).forEach(function (categoryId) {
+            var cat = data.categories[categoryId];
+            (cat && Array.isArray(cat.projects) ? cat.projects : []).forEach(function (projectId) {
+                if (/^[A-Z]+\d+$/i.test(projectId)) ids.add(projectId.toUpperCase());
+            });
+        });
+
+        Array.from(ids).sort(_compareProjectIds).forEach(function (projectId) {
+            var categoryId = projectId.charAt(0);
+            var defaults = _defaultProjectDetails(projectId);
+            var detail = Object.assign({}, defaults, data.projectDetails[projectId] || {});
+            var taskIds = tasksByProject[projectId] || detail.tasks || [];
+            var projectTasks = taskIds.map(function (id) { return data.tasks[id]; }).filter(Boolean);
+            var completed = projectTasks.filter(function (task) { return normalizeTaskStatus(task.status) === 'done'; }).length;
+            detail.category = detail.category || categoryId;
+            detail.tasks = taskIds.slice().sort(function (a, b) { return String(a).localeCompare(String(b), undefined, { numeric: true }); });
+            detail.totalTasks = projectTasks.length || detail.totalTasks || detail.tasks.length || 0;
+            detail.completedTasks = completed;
+            detail.completionPct = detail.totalTasks ? Math.round((completed / detail.totalTasks) * 100) : (detail.completionPct || 0);
+            detail.status = typeof global.deriveProjectStatus === 'function' ? global.deriveProjectStatus(projectTasks) : (detail.status || 'open');
+            data.projectDetails[projectId] = detail;
+
+            var bucket = _ensureCategoryBucket(data, categoryId);
+            if (bucket.projects.indexOf(projectId) === -1) bucket.projects.push(projectId);
+            bucket.projects = bucket.projects.slice().sort(_compareProjectIds);
+        });
+
+        return data;
     }
 
     function _normalizeDashboardTaskData(data) {
@@ -186,6 +311,7 @@
             backlog: 0,
             done: done
         });
+        _ensureProjectRoster(data);
         data.dashboardTaskContract = global.DASHBOARD_TASK_CONTRACT;
         return data;
     }
@@ -577,6 +703,7 @@
     global.isUserAgent         = isUserAgent;
     global.getAgentSignalMeta  = getAgentSignalMeta;
     global.normalizeTaskStatus = normalizeTaskStatus;
+    global.ensureProjectRoster = _ensureProjectRoster;
 
     /* ── Boot ────────────────────────────────────────────────────────── */
     _loadRegistry();
