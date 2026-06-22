@@ -29,8 +29,27 @@ Rules:
 
 - `index.html` - root app shell at the GitHub Pages URL.
 - `main-styles.css` - Red Sun / Mission Control visual system.
+- `dashboard-hermes-bridge.js` - optional local Hermes API bridge for fresher reads and approved visual write-intents.
 - `dashboard-app.js` - snapshot loader, normalizer, derived dashboard model, rendering, read-only task modal, visual queue/board behavior.
 - `data.json` - public generated snapshot.
+
+## Optional Hermes API Bridge
+
+`dashboard-hermes-bridge.js` is inactive by default on the public GitHub Pages URL.
+
+Enable it only for local Hermes/API testing with:
+
+- `?hermes=local`
+- `?hermesApi=http://127.0.0.1:8000`
+
+When enabled, it:
+
+- tries `GET /api/sync` before falling back to public `data.json`
+- sends approved visual workflow intent to `POST /api/dashboard-intents`
+- keeps `data.json` as fallback, not truth
+- does not use localStorage
+- does not hold GitHub tokens or PATs
+- does not add tasks, mark done, set deadlines, assign owners, touch trading, touch ads spend, change credentials, or post publicly
 
 ## Removed Runtime Patterns
 
