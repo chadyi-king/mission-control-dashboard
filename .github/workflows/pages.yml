@@ -33,7 +33,7 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site
-          cp index.html main-styles.css dashboard-hermes-bridge.js dashboard-app.js data.json .nojekyll _site/
+          cp index.html main-styles.css dashboard-hermes-bridge.js dashboard-app.js data.json mission-control-build.json .nojekyll _site/
 
       - name: Sanitize public dashboard snapshot
         run: |
@@ -65,7 +65,7 @@ jobs:
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const requiredFiles = ['index.html', 'main-styles.css', 'dashboard-hermes-bridge.js', 'dashboard-app.js', 'data.json', '.nojekyll'];
+          const requiredFiles = ['index.html', 'main-styles.css', 'dashboard-hermes-bridge.js', 'dashboard-app.js', 'data.json', 'mission-control-build.json', '.nojekyll'];
           const failures = [];
           for (const file of requiredFiles) {
             if (!fs.existsSync(`_site/${file}`)) failures.push(`missing artifact file: ${file}`);
@@ -75,6 +75,7 @@ jobs:
           const bridge = fs.readFileSync('_site/dashboard-hermes-bridge.js', 'utf8');
           const app = fs.readFileSync('_site/dashboard-app.js', 'utf8');
           const data = JSON.parse(fs.readFileSync('_site/data.json', 'utf8'));
+          const marker = JSON.parse(fs.readFileSync('_site/mission-control-build.json', 'utf8'));
           const assetBuildId = process.env.DASHBOARD_ASSET_BUILD_ID;
           const appBuildId = process.env.DASHBOARD_APP_BUILD_ID;
 
@@ -129,6 +130,11 @@ jobs:
           if (c4.name !== 'Website Services') failures.push(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
           if (tasks.length !== 106) failures.push(`expected 106 visible tasks, found ${tasks.length}`);
           if (done.length !== 29) failures.push(`expected 29 done tasks, found ${done.length}`);
+          if (marker.kind !== 'mission-control-dashboard-build-marker') failures.push('build marker kind mismatch');
+          if (marker.dashboardBuildId !== assetBuildId) failures.push(`build marker dashboardBuildId mismatch: ${marker.dashboardBuildId}`);
+          if (marker.expected?.visibleTasks !== 106 || marker.expected?.doneTasks !== 29 || marker.expected?.projects !== 22 || marker.expected?.requiredProject !== 'C4') {
+            failures.push('build marker expected counts mismatch');
+          }
 
           const sensitive = new Set([
             'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
@@ -155,7 +161,7 @@ jobs:
             console.error(failures.map((failure) => `- ${failure}`).join('\n'));
             process.exit(1);
           }
-          console.log('Mission Control Pages artifact verified: rebuilt root, optional Hermes bridge, C4, 22 projects, 106 tasks, 29 done.');
+          console.log('Mission Control Pages artifact verified: rebuilt root, optional Hermes bridge, build marker, C4, 22 projects, 106 tasks, 29 done.');
           NODE
 
       - name: Upload Pages artifact
