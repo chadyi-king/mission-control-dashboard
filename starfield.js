@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var DASHBOARD_BUILD_ID = '20260621-0200-cache-data-fix';
+    var DASHBOARD_BUILD_ID = '20260622-telegram-only-writes';
     var DASHBOARD_CACHE_KEY = 'rs_dashboard_cache';
     var DASHBOARD_BUILD_KEY = 'rs_dashboard_build_id';
     var RAW_DATA_URL = 'https://raw.githubusercontent.com/chadyi-king/mission-control-dashboard/main/data.json';
@@ -224,6 +224,89 @@
         return true;
     }
 
+    function showDashboardWriteDisabled(action) {
+        var message = 'Dashboard task writes are disabled. Use Telegram/Hermes to add, assign, mark done, set deadlines, or change task truth.';
+        if (action) message += ' Blocked action: ' + action + '.';
+        console.warn('[Dashboard Write Policy]', message);
+        if (typeof showToast === 'function') {
+            showToast(message, 'warn', 6500);
+        } else if (typeof alert === 'function') {
+            alert(message);
+        }
+    }
+
+    function installDashboardWriteGuards() {
+        window.DASHBOARD_WRITE_POLICY = {
+            version: DASHBOARD_BUILD_ID,
+            sourceOfTruth: 'Hermes canonical state via Telegram/Hermes',
+            dashboardWrites: 'disabled',
+            allowedLocally: ['view', 'filter', 'expand', 'drag-reorder-local-priority']
+        };
+
+        window.commitTaskDoneToGitHub = async function commitTaskDoneToGitHubDisabled(taskId) {
+            showDashboardWriteDisabled('GitHub data.json commit for ' + (taskId || 'task'));
+            return false;
+        };
+        try { commitTaskDoneToGitHub = window.commitTaskDoneToGitHub; } catch (error) {}
+
+        window.apiTaskAction = async function apiTaskActionDisabled(event, taskId, action) {
+            if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+            if (event && typeof event.preventDefault === 'function') event.preventDefault();
+            showDashboardWriteDisabled((action || 'task action') + ' for ' + (taskId || 'task'));
+            return false;
+        };
+        try { apiTaskAction = window.apiTaskAction; } catch (error) {}
+
+        window.markFocusDone = function markFocusDoneDisabled(taskId) {
+            showDashboardWriteDisabled('mark done for ' + (taskId || 'task'));
+            return false;
+        };
+        try { markFocusDone = window.markFocusDone; } catch (error) {}
+
+        window.markFocusDoneNew = function markFocusDoneNewDisabled(event, taskId) {
+            if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+            showDashboardWriteDisabled('mark done for ' + (taskId || 'task'));
+            return false;
+        };
+        try { markFocusDoneNew = window.markFocusDoneNew; } catch (error) {}
+
+        window.submitInlineTask = function submitInlineTaskDisabled() {
+            showDashboardWriteDisabled('new task creation');
+            return false;
+        };
+        try { submitInlineTask = window.submitInlineTask; } catch (error) {}
+
+        window.toggleInlineTaskForm = function toggleInlineTaskFormDisabled() {
+            showDashboardWriteDisabled('inline task creation');
+            return false;
+        };
+        try { toggleInlineTaskForm = window.toggleInlineTaskForm; } catch (error) {}
+
+        window.assignFocusTask = function assignFocusTaskDisabled(taskId) {
+            showDashboardWriteDisabled('assignment for ' + (taskId || 'task'));
+            return false;
+        };
+        try { assignFocusTask = window.assignFocusTask; } catch (error) {}
+
+        window.assignModalTask = function assignModalTaskDisabled() {
+            showDashboardWriteDisabled('task assignment');
+            return false;
+        };
+        try { assignModalTask = window.assignModalTask; } catch (error) {}
+
+        window.openSettingsModal = function openSettingsModalDisabled() {
+            showDashboardWriteDisabled('GitHub PAT settings');
+            return false;
+        };
+        try { openSettingsModal = window.openSettingsModal; } catch (error) {}
+
+        window.saveSettingsPAT = function saveSettingsPATDisabled() {
+            showDashboardWriteDisabled('saving GitHub PAT');
+            return false;
+        };
+        try { saveSettingsPAT = window.saveSettingsPAT; } catch (error) {}
+    }
+
     function installFreshDataLoader() {
         if (typeof normalizeDashboardData !== 'function' || typeof buildProjectsFromData !== 'function') {
             console.warn('[Dashboard] Cache/data patch loaded before dashboard-app.js; using existing loader.');
@@ -259,6 +342,7 @@
 
     resetDashboardCacheIfNeeded();
     installFreshDataLoader();
+    installDashboardWriteGuards();
 })();
 
 (function() {
