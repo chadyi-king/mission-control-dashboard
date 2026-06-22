@@ -16,6 +16,7 @@ on:
       - README.md
       - ARCHITECTURE.md
       - .github/workflows/pages.yml
+      - .github/workflows/pages-source-repair.yml
       - .github/workflows/sanitize-dashboard-data.yml
       - .github/workflows/sync-dashboard-branches.yml
       - .github/workflows/verify-live-dashboard.yml
