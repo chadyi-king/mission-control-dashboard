@@ -1,0 +1,17 @@
+{
+  "build": "20260622-source-of-truth-v3",
+  "entry": "app-20260622-source-of-truth-v3.html",
+  "sourceCommit": "625301397a88f7a33f1797d2fa1a2d91fb90b932",
+  "dataPath": "data.json",
+  "expected": {
+    "projectCount": 22,
+    "totalTasks": 106,
+    "completedTasks": 29,
+    "requiredProject": "C4"
+  },
+  "ownership": {
+    "taskWrites": "Telegram/Hermes",
+    "dashboardRole": "read-only status surface",
+    "snapshotPublisher": "Helios"
+  }
+}
