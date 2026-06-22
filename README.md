@@ -1,28 +1,50 @@
 # Mission Control Dashboard
 
-Dashboard for managing projects, tasks, and AI agents.
+Static GitHub Pages dashboard for Hermes Mission Control.
 
-## Projects
-- A2 RE: UNITE (Story Writing)
-- B1 Team Elevate (Website Dev)
-- B2 ETHEREAL (3D Printing)
+Live URL: https://chadyi-king.github.io/mission-control-dashboard/
 
-## Features
-- Click projects to expand tasks
-- Spawn Agent buttons
-- Progress tracking
-- Dark theme with crimson accents
+## Current Contract
 
-## Setup
-1. Open `index.html` in browser
-2. Or deploy to GitHub Pages
+- This repo serves the public dashboard UI and the generated public snapshot `data.json`.
+- The long-term canonical state belongs to Hermes at `/home/chad-yi/.hermes/workspace/state/mission-control.json`.
+- `data.json` is treated as a generated/sanitized dashboard snapshot, not as the durable control-plane truth.
+- Telegram/Hermes is the primary command surface for adding tasks, marking done, assigning owners, setting deadlines, or changing task content.
+- Dashboard writes are limited to visual workflow intent such as priority queue reorder or agent-board movement, and those must go through Hermes/local API when available.
 
-## Deployment policy
-- GitHub Pages is the only deployment target: https://chadyi-king.github.io/mission-control-dashboard/
-- No Render deployment. Do not create or link one.
+## Rebuild Notes
 
-## Deploy to GitHub Pages
-1. Push to GitHub repository
-2. Go to Settings > Pages
-3. Select "Deploy from branch" > "main"
-4. Your site will be live at `https://chadyi-king.github.io/mission-control-dashboard/index.html`# Force refresh Wed Jun 17 18:08:01 +08 2026
+The active dashboard was rebuilt from scratch on 2026-06-22 to remove the old split-brain dashboard runtime.
+
+Removed from active runtime:
+
+- raw-GitHub HTML bootloader
+- dashboard-current manifest
+- browser GitHub PAT workflow
+- localStorage task-cache source of truth
+- old modal/task mutation scripts
+- old patch stylesheets and app-v2 fragments
+- old standalone agent-registry runtime
+
+The active public app is intentionally small:
+
+- `index.html` - static shell
+- `main-styles.css` - Red Sun visual system
+- `dashboard-app.js` - one normalized read model used by all dashboard sections
+- `data.json` - generated public snapshot
+
+## Acceptance Anchors
+
+The snapshot used for this rebuild must preserve:
+
+- 22 projects
+- C4 / Website Services
+- 106 visible tasks
+- 29 completed tasks
+- 15 visible fleet agents
+
+## Deployment
+
+GitHub Pages remains the only deployment target. Do not create Render or another hosting target for this dashboard unless Caleb explicitly asks.
+
+Pushes to `main` publish the root URL after GitHub Pages propagation.
