@@ -8,6 +8,7 @@ on:
     paths:
       - index.html
       - main-styles.css
+      - dashboard-hermes-bridge.js
       - dashboard-app.js
       - data.json
       - .nojekyll
@@ -16,6 +17,7 @@ on:
       - .github/workflows/pages.yml
       - .github/workflows/sanitize-dashboard-data.yml
       - .github/workflows/sync-dashboard-branches.yml
+      - .github/workflows/verify-live-dashboard.yml
 
 permissions:
   contents: write
