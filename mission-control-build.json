@@ -3,6 +3,7 @@
   "dashboardBuildId": "20260622-root-rebuild-5",
   "appBuildId": "20260622-root-rebuild-4",
   "source": "rebuilt-dashboard-root",
+  "forcedDeployTrigger": "gh-pages-direct-20260622-1",
   "expected": {
     "projects": 22,
     "requiredProject": "C4",
