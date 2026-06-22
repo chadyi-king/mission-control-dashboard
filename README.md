@@ -34,6 +34,8 @@ The active public app is intentionally small:
 - `dashboard-app.js` - one normalized read model used by all dashboard sections
 - `data.json` - generated public snapshot
 
+`docs/` exists only as a GitHub Pages source fallback mirror for repos accidentally configured to publish from `main / docs`. It is not a legacy dashboard, not an archive, and not a second data truth. Root files remain the source to edit; `docs/` must mirror the same rebuilt files.
+
 ## Optional Hermes API Bridge
 
 By default, the public GitHub Pages dashboard reads only the generated `data.json` snapshot. It does not auto-probe local services from the public URL.
@@ -77,6 +79,13 @@ Branch publishing fallback:
 - Source: Deploy from a branch
 - Branch: `gh-pages`
 - Folder: `/ (root)`
-- Only use this after the checked-in `data.json` has been regenerated/sanitized from Hermes canonical state.
+
+Emergency fallback if GitHub Pages is already configured this way and cannot be changed immediately:
+
+- Source: Deploy from a branch
+- Branch: `main`
+- Folder: `/docs`
+
+Only use branch fallback after the checked-in `data.json` has been regenerated/sanitized from Hermes canonical state.
 
 `main`, `master`, `sidebar-redesign`, and `gh-pages` should all mirror the rebuilt dashboard source. If the live root URL serves the old PAT/settings dashboard while branch contents show the rebuilt source, the failure is in GitHub Pages source/deployment state, not in `data.json` or the dashboard JavaScript.
