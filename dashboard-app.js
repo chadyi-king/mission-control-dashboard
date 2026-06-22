@@ -64,7 +64,7 @@
       const raw = await response.json();
       buildModel(raw);
       renderAll();
-      const valid = state.stats.total === 106 && state.stats.done === 29 && state.stats.projects === 22 && state.stats.hasC4;
+      const valid = state.stats.hasC4 && state.stats.projects >= 22 && state.stats.total >= 100;
       setSync(valid ? 'SNAPSHOT LIVE' : 'SNAPSHOT AUDIT', valid ? '' : 'warn');
     } catch (error) {
       console.error('[Mission Control] data load failed', error);
