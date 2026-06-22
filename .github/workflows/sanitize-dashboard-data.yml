@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - data.json
+      - docs/data.json
       - .github/workflows/sanitize-dashboard-data.yml
 
 permissions:
@@ -20,11 +21,11 @@ jobs:
       - name: Checkout dashboard repo
         uses: actions/checkout@v7
 
-      - name: Sanitize public data.json
+      - name: Sanitize public dashboard snapshots
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const file = 'data.json';
+          const files = ['data.json', 'docs/data.json'];
           const sensitive = new Set([
             'account_id', 'accountid', 'api_key', 'apikey', 'access_token', 'accesstoken',
             'refresh_token', 'refreshtoken', 'token', 'secret', 'password', 'credential', 'credentials'
@@ -58,29 +59,36 @@ jobs:
             tasks.forEach((task) => { if (task.project) ids.add(String(task.project).toUpperCase()); });
             return ids;
           };
-          const data = sanitize(JSON.parse(fs.readFileSync(file, 'utf8')));
-          const tasks = taskList(data).filter((task) => normalizeStatus(task.status) !== 'removed');
-          const done = tasks.filter((task) => normalizeStatus(task.status) === 'done');
-          const projects = projectIds(data, tasks);
-          const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
-          const failures = [];
-          if (tasks.length !== 106) failures.push(`expected 106 visible tasks, found ${tasks.length}`);
-          if (done.length !== 29) failures.push(`expected 29 done tasks, found ${done.length}`);
-          if (projects.size !== 22) failures.push(`expected 22 projects, found ${projects.size}`);
-          if (!projects.has('C4')) failures.push('missing C4');
-          if (c4.name && c4.name !== 'Website Services') failures.push(`C4 has wrong name: ${JSON.stringify(c4.name)}`);
-          if (failures.length) throw new Error(`Refusing to sanitize invalid dashboard data: ${failures.join('; ')}`);
-          fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+          const validate = (data, file) => {
+            const tasks = taskList(data).filter((task) => normalizeStatus(task.status) !== 'removed');
+            const done = tasks.filter((task) => normalizeStatus(task.status) === 'done');
+            const projects = projectIds(data, tasks);
+            const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
+            const failures = [];
+            if (tasks.length !== 106) failures.push(`expected 106 visible tasks, found ${tasks.length}`);
+            if (done.length !== 29) failures.push(`expected 29 done tasks, found ${done.length}`);
+            if (projects.size !== 22) failures.push(`expected 22 projects, found ${projects.size}`);
+            if (!projects.has('C4')) failures.push('missing C4');
+            if (c4.name && c4.name !== 'Website Services') failures.push(`C4 has wrong name: ${JSON.stringify(c4.name)}`);
+            if (failures.length) throw new Error(`Refusing to sanitize invalid ${file}: ${failures.join('; ')}`);
+          };
+
+          const primary = sanitize(JSON.parse(fs.readFileSync('data.json', 'utf8')));
+          validate(primary, 'data.json');
+          fs.mkdirSync('docs', { recursive: true });
+          for (const file of files) {
+            fs.writeFileSync(file, `${JSON.stringify(primary, null, 2)}\n`, 'utf8');
+          }
           NODE
 
       - name: Commit sanitized data
         run: |
-          if git diff --quiet -- data.json; then
-            echo "data.json already sanitized."
+          if git diff --quiet -- data.json docs/data.json; then
+            echo "dashboard data snapshots already sanitized and mirrored."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add data.json docs/data.json
           git commit -m "chore: sanitize public dashboard data"
           git push
