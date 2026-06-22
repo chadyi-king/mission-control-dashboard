@@ -29,6 +29,364 @@
         text:   '#888'
     };
 
+    /* ── Mission Control task contract ──────────────────────────────── */
+    const DASHBOARD_TASK_CONTRACT_VERSION = '20260622-source-of-truth-v1';
+    const DASHBOARD_CACHE_KEY = 'rs_dashboard_cache';
+    const DASHBOARD_BUILD_KEY = 'rs_dashboard_build_id';
+
+    global.DASHBOARD_BUILD_ID = DASHBOARD_TASK_CONTRACT_VERSION;
+    global.DASHBOARD_TASK_CONTRACT = {
+        version: DASHBOARD_TASK_CONTRACT_VERSION,
+        sourceOfTruth: 'Hermes canonical task state via Telegram/Hermes',
+        dashboardRole: 'read-only generated snapshot viewer',
+        generatedSnapshot: 'data.json',
+        canonicalStatuses: ['open', 'active', 'review', 'input_requested', 'blocked', 'paused', 'done'],
+        normalizedAliases: {
+            backlog: 'open',
+            pending: 'open',
+            todo: 'open',
+            in_progress: 'active',
+            needs_review: 'review',
+            needs_input: 'input_requested'
+        },
+        dashboardWrites: 'disabled'
+    };
+
+    function _clearStaleDashboardCache() {
+        try {
+            var previous = localStorage.getItem(DASHBOARD_BUILD_KEY);
+            if (previous !== DASHBOARD_TASK_CONTRACT_VERSION) {
+                localStorage.removeItem(DASHBOARD_CACHE_KEY);
+                localStorage.removeItem('rs_done_tasks');
+                localStorage.setItem(DASHBOARD_BUILD_KEY, DASHBOARD_TASK_CONTRACT_VERSION);
+            }
+        } catch (e) {}
+    }
+
+    function normalizeTaskStatus(status) {
+        var raw = String(status || '').trim().toLowerCase().replace(/[\s-]+/g, '_');
+        if (!raw) return 'open';
+        if (raw === 'done' || raw === 'complete' || raw === 'completed') return 'done';
+        if (raw === 'active' || raw === 'agent_on_it' || raw === 'working' || raw === 'in_progress') return 'active';
+        if (raw === 'review' || raw === 'needs_review' || raw === 'check_this' || raw === 'awaiting_review') return 'review';
+        if (raw === 'input_requested' || raw === 'needs_input' || raw === 'waiting_on_you' || raw === 'waiting_for_caleb') return 'input_requested';
+        if (raw === 'blocked' || raw === 'stuck') return 'blocked';
+        if (raw === 'paused' || raw === 'pause' || raw === 'on_hold') return 'paused';
+        if (raw === 'removed' || raw === 'deleted') return 'removed';
+        return 'open';
+    }
+
+    function _projectIdFromTask(task, fallbackId) {
+        var raw = '';
+        if (task && task.project) raw = String(task.project);
+        if (!raw && task && task.id) raw = String(task.id);
+        if (!raw && fallbackId) raw = String(fallbackId);
+        var match = raw.trim().match(/^([A-Z]+\d+)/i);
+        return match ? match[1].toUpperCase() : '';
+    }
+
+    function _visibleTasks(data) {
+        return Object.values(data && data.tasks ? data.tasks : {}).filter(function (task) {
+            return task && normalizeTaskStatus(task.status) !== 'removed';
+        });
+    }
+
+    function _priority(task) {
+        var raw = String((task && task.priority) || '').toLowerCase();
+        if (raw === 'critical' || raw === 'urgent' || raw === 'high') return 'high';
+        if (raw === 'medium') return 'medium';
+        if (raw === 'done') return 'done';
+        return 'low';
+    }
+
+    function _normalizeDashboardTaskData(data) {
+        if (!data || typeof data !== 'object') return data;
+        data.tasks = data.tasks || {};
+        data.workflow = data.workflow || {};
+        data.needsAttention = Array.isArray(data.needsAttention) ? data.needsAttention : [];
+        data.inputsNeeded = Array.isArray(data.inputsNeeded) ? data.inputsNeeded : Object.values(data.inputsNeeded || {});
+
+        Object.keys(data.tasks).forEach(function (taskId) {
+            var task = data.tasks[taskId];
+            if (!task || typeof task !== 'object') return;
+            task.id = task.id || taskId;
+            var sourceStatus = String(task.status || 'open');
+            var canonicalStatus = normalizeTaskStatus(sourceStatus);
+            if (canonicalStatus === 'removed') {
+                delete data.tasks[taskId];
+                return;
+            }
+            if (canonicalStatus !== sourceStatus.toLowerCase()) task.sourceStatus = task.sourceStatus || sourceStatus;
+            task.status = canonicalStatus;
+            task.project = _projectIdFromTask(task, taskId) || task.project || '';
+            task.category = task.category || (task.project ? task.project.charAt(0) : '');
+            if (task.status !== 'done') task.priority = _priority(task);
+        });
+
+        var tasks = _visibleTasks(data);
+        var byStatus = { open: [], active: [], review: [], input_requested: [], blocked: [], paused: [], done: [], urgent: [] };
+        tasks.forEach(function (task) {
+            var status = normalizeTaskStatus(task.status);
+            if (!byStatus[status]) byStatus[status] = [];
+            byStatus[status].push(task.id);
+            if (status !== 'done' && _priority(task) === 'high') byStatus.urgent.push(task.id);
+        });
+
+        var inputIds = new Set(data.inputsNeeded.map(function (item) { return item && (item.taskId || item.id); }).filter(Boolean));
+        var seenAttention = new Set();
+        data.needsAttention = data.needsAttention.filter(function (item) {
+            var id = item && (item.id || item.taskId);
+            if (!id || !data.tasks[id] || data.tasks[id].status === 'done' || seenAttention.has(id)) return false;
+            seenAttention.add(id);
+            return true;
+        });
+
+        data.workflow = Object.assign({}, data.workflow, {
+            open: byStatus.open.slice(),
+            pending: [],
+            backlog: [],
+            todo: byStatus.open.slice(),
+            active: byStatus.active.slice(),
+            review: byStatus.review.slice(),
+            input_requested: byStatus.input_requested.slice(),
+            blocked: byStatus.blocked.slice(),
+            paused: byStatus.paused.slice(),
+            urgent: byStatus.urgent.slice(),
+            done: byStatus.done.slice(),
+            'waiting on you': Array.from(inputIds).filter(function (id) { return data.tasks[id] && data.tasks[id].status !== 'done'; }),
+            'check this': byStatus.review.slice(),
+            'agent on it': byStatus.active.slice(),
+            'has deadline': tasks.filter(function (task) { return task.status !== 'done' && task.deadline; }).map(function (task) { return task.id; })
+        });
+
+        var total = tasks.length;
+        var done = byStatus.done.length;
+        data.stats = Object.assign({}, data.stats || {}, {
+            totalTasks: total,
+            tasksLeft: total - done,
+            completedTasks: done,
+            active: byStatus.active.length,
+            blocked: byStatus.blocked.length,
+            paused: byStatus.paused.length,
+            review: byStatus.review.length,
+            inputRequested: byStatus.input_requested.length + data.workflow['waiting on you'].length,
+            urgent: byStatus.urgent.length,
+            open: byStatus.open.length,
+            pending: 0,
+            backlog: 0,
+            completionRate: Math.round((done / Math.max(1, total)) * 100),
+            needsAttention: data.needsAttention.length
+        });
+        data.taskSummary = Object.assign({}, data.taskSummary || {}, {
+            urgent: data.stats.urgent,
+            active: data.stats.active,
+            blocked: data.stats.blocked,
+            paused: data.stats.paused,
+            open: data.stats.open,
+            backlog: 0,
+            done: done
+        });
+        data.dashboardTaskContract = global.DASHBOARD_TASK_CONTRACT;
+        return data;
+    }
+
+    function _isUserOwnedTask(task) {
+        var raw = task && (task.agent || task.assignedTo || task.owner || '');
+        var id = normalizeAgentId(raw);
+        return !id || id === 'chad-yi' || id === 'chad' || id === 'caleb' || id === 'caleb-yi';
+    }
+
+    function _inputTaskIdSet(data) {
+        var inputs = Array.isArray(data && data.inputsNeeded) ? data.inputsNeeded : Object.values(data && data.inputsNeeded || {});
+        return new Set(inputs.map(function (item) { return item && (item.taskId || item.id); }).filter(Boolean));
+    }
+
+    function _attentionFromOthersSet(data) {
+        var attention = Array.isArray(data && data.needsAttention) ? data.needsAttention : [];
+        return new Set(attention.filter(function (item) {
+            var owner = item && (item.owner || item.requiredBy || item.agent || '');
+            return !owner || !isUserAgent(owner);
+        }).map(function (item) { return item && (item.id || item.taskId); }).filter(Boolean));
+    }
+
+    function _fallbackSortTasks(tasks) {
+        var rank = { high: 0, medium: 1, low: 2, done: 3 };
+        return (tasks || []).slice().sort(function (a, b) { return (rank[_priority(a)] || 9) - (rank[_priority(b)] || 9); });
+    }
+
+    function _installTaskContract() {
+        if (global.__missionControlEarlyTaskContractInstalled) return;
+        if (typeof global.normalizeDashboardData !== 'function') return;
+        global.__missionControlEarlyTaskContractInstalled = true;
+
+        var originalNormalize = global.normalizeDashboardData;
+        var wrappedNormalize = function normalizeDashboardDataWithCanonicalTasks(rawData) {
+            return _normalizeDashboardTaskData(originalNormalize(rawData));
+        };
+        wrappedNormalize.__taskContractNormalized = true;
+        global.normalizeDashboardData = wrappedNormalize;
+        try { global.eval('normalizeDashboardData = window.normalizeDashboardData'); } catch (e) {}
+
+        var laneResolver = function getTaskPrimaryLaneCanonical(task, data) {
+            if (!task) return { key: 'open-work', label: 'Open Work' };
+            var status = normalizeTaskStatus(task.status);
+            var inputIds = _inputTaskIdSet(data || global.appData || {});
+            var attentionFromOthers = _attentionFromOthersSet(data || global.appData || {});
+            if (status === 'done') return { key: 'completed', label: 'Completed' };
+            if (status === 'review') return { key: 'needs-review', label: 'Needs My Review' };
+            if (status === 'input_requested' || inputIds.has(task.id) || attentionFromOthers.has(task.id)) return { key: 'needs-input', label: 'Needs My Input' };
+            if ((status === 'active' || status === 'blocked') && _isUserOwnedTask(task)) return { key: 'needs-me', label: status === 'blocked' ? 'Needs Me To Unblock' : 'Needs Me' };
+            if (status === 'active') return { key: 'active-work', label: 'Active Work' };
+            return { key: 'open-work', label: status === 'paused' ? 'Paused Work' : 'Open Work' };
+        };
+        global.getTaskPrimaryLane = laneResolver;
+        try { global.eval('getTaskPrimaryLane = window.getTaskPrimaryLane'); } catch (e) {}
+
+        global.calculateTaskStats = function calculateTaskStatsCanonical(tasks) {
+            var visible = (tasks || []).filter(function (task) { return task && normalizeTaskStatus(task.status) !== 'removed'; });
+            var openTasks = visible.filter(function (task) { return task.status !== 'done'; });
+            return {
+                total: visible.length,
+                pending: 0,
+                open: visible.filter(function (task) { return task.status === 'open'; }).length,
+                active: visible.filter(function (task) { return task.status === 'active'; }).length,
+                blocked: visible.filter(function (task) { return task.status === 'blocked'; }).length,
+                paused: visible.filter(function (task) { return task.status === 'paused'; }).length,
+                review: visible.filter(function (task) { return task.status === 'review'; }).length,
+                done: visible.filter(function (task) { return task.status === 'done'; }).length,
+                left: openTasks.length,
+                highPriority: openTasks.filter(function (task) { return _priority(task) === 'high'; }).length,
+                mediumPriority: openTasks.filter(function (task) { return _priority(task) === 'medium'; }).length,
+                lowPriority: openTasks.filter(function (task) { return _priority(task) === 'low'; }).length,
+                urgent: openTasks.filter(function (task) { return _priority(task) === 'high'; }).length
+            };
+        };
+        try { global.eval('calculateTaskStats = window.calculateTaskStats'); } catch (e) {}
+
+        global.deriveProjectStatus = function deriveProjectStatusCanonical(projTasks) {
+            var tasks = projTasks || [];
+            if (!tasks.length) return 'open';
+            if (tasks.some(function (task) { return task.status === 'blocked'; })) return 'blocked';
+            if (tasks.some(function (task) { return task.status === 'active'; })) return 'active';
+            if (tasks.some(function (task) { return task.status === 'review' || task.status === 'input_requested'; })) return 'review';
+            if (tasks.every(function (task) { return task.status === 'done'; })) return 'done';
+            if (tasks.some(function (task) { return task.status === 'paused'; })) return 'paused';
+            return 'open';
+        };
+        try { global.eval('deriveProjectStatus = window.deriveProjectStatus'); } catch (e) {}
+
+        global.getDashboardLens = function getDashboardLensCanonical(data) {
+            var tasks = _visibleTasks(data || {});
+            var today = typeof global.sgtToday === 'function' ? global.sgtToday() : new Date();
+            today.setHours(0, 0, 0, 0);
+            var weekStart = new Date(today);
+            weekStart.setDate(weekStart.getDate() - 6);
+            var groups = { needsMe: [], needsReview: [], needsInput: [], activeWork: [], otherOpen: [], completed: [] };
+            tasks.forEach(function (task) {
+                var lane = laneResolver(task, data).key;
+                if (lane === 'completed') groups.completed.push(task);
+                else if (lane === 'needs-review') groups.needsReview.push(task);
+                else if (lane === 'needs-input') groups.needsInput.push(task);
+                else if (lane === 'needs-me') groups.needsMe.push(task);
+                else if (lane === 'active-work') groups.activeWork.push(task);
+                else groups.otherOpen.push(task);
+            });
+            Object.keys(groups).forEach(function (key) {
+                groups[key] = key === 'completed'
+                    ? groups[key].slice().sort(function (a, b) { return new Date(b.completedAt || 0) - new Date(a.completedAt || 0); })
+                    : _fallbackSortTasks(groups[key]);
+            });
+            var completedToday = tasks.filter(function (task) {
+                if (task.status !== 'done' || !task.completedAt) return false;
+                var date = new Date(task.completedAt); date.setHours(0, 0, 0, 0);
+                return date.getTime() === today.getTime();
+            });
+            var completedWeek = tasks.filter(function (task) { return task.status === 'done' && task.completedAt && new Date(task.completedAt) >= weekStart; });
+            var overdueTasks = tasks.filter(function (task) {
+                if (task.status === 'done' || !task.deadline) return false;
+                var date = new Date(task.deadline); date.setHours(0, 0, 0, 0);
+                return date < today;
+            });
+            var needsAttentionIds = new Set((Array.isArray(data && data.needsAttention) ? data.needsAttention : []).map(function (item) { return item && (item.id || item.taskId); }).filter(Boolean));
+            var attentionTasks = _fallbackSortTasks([].concat(
+                tasks.filter(function (task) { return task.status === 'blocked'; }),
+                overdueTasks,
+                tasks.filter(function (task) { return needsAttentionIds.has(task.id); })
+            ));
+            var seen = new Set();
+            attentionTasks = attentionTasks.filter(function (task) { if (!task || seen.has(task.id)) return false; seen.add(task.id); return true; });
+            var aggregate = [].concat(groups.needsMe, groups.needsReview, groups.needsInput);
+            var aggregateIds = new Set(aggregate.map(function (task) { return task.id; }));
+            var attentionIds = new Set(attentionTasks.map(function (task) { return task.id; }));
+            var nextUpTasks = _fallbackSortTasks(tasks.filter(function (task) { return task.status !== 'done' && task.status !== 'paused' && !aggregateIds.has(task.id) && !attentionIds.has(task.id); }));
+            return {
+                today: today,
+                tasks: tasks,
+                completedToday: completedToday,
+                completedWeek: completedWeek,
+                attentionTasks: attentionTasks,
+                needsMeTasks: groups.needsMe,
+                needsMeAggregate: aggregate,
+                reviewTasks: groups.needsReview,
+                myInputTasks: groups.needsInput,
+                activeWorkTasks: groups.activeWork,
+                nextUpTasks: nextUpTasks,
+                openTasks: groups.otherOpen
+            };
+        };
+        try { global.eval('getDashboardLens = window.getDashboardLens'); } catch (e) {}
+
+        if (typeof global.showToast !== 'function') {
+            global.showToast = function (message) { console.warn('[Dashboard Write Policy]', message); };
+        }
+        function writeDisabled(action) {
+            var msg = 'Dashboard task writes are disabled. Use Telegram/Hermes as the task source of truth.' + (action ? ' Blocked: ' + action + '.' : '');
+            console.warn('[Dashboard Write Policy]', msg);
+            try { global.showToast(msg, 'warn', 6500); } catch (e) {}
+            return false;
+        }
+        global.DASHBOARD_WRITE_POLICY = { version: DASHBOARD_TASK_CONTRACT_VERSION, dashboardWrites: 'disabled' };
+        ['commitTaskDoneToGitHub', 'submitInlineTask', 'toggleInlineTaskForm', 'assignFocusTask', 'assignModalTask', 'modalMarkDone', 'modalMarkActive', 'modalMarkBlocked', 'openSettingsModal', 'saveSettingsPAT'].forEach(function (name) {
+            global[name] = function () { return writeDisabled(name); };
+            try { global.eval(name + ' = window.' + name); } catch (e) {}
+        });
+        global.apiTaskAction = function (event, taskId, action) {
+            if (event && typeof event.stopPropagation === 'function') event.stopPropagation();
+            if (event && typeof event.preventDefault === 'function') event.preventDefault();
+            return writeDisabled((action || 'task action') + (taskId ? ' for ' + taskId : ''));
+        };
+        try { global.eval('apiTaskAction = window.apiTaskAction'); } catch (e) {}
+
+        var style = document.getElementById('dashboard-readonly-task-contract-style') || document.createElement('style');
+        style.id = 'dashboard-readonly-task-contract-style';
+        style.textContent = [
+            '.focus-quick-actions,.focus-add-btn,.inline-task-form{display:none!important}',
+            '.focus-readonly-chip{font-size:9px;letter-spacing:.08em;color:rgba(160,170,190,.72);border:1px solid rgba(160,170,190,.18);padding:2px 6px;border-radius:4px}',
+            '.dashboard-readonly-note{margin-left:8px;font-size:9px;letter-spacing:.08em;color:rgba(160,170,190,.72);font-weight:600}',
+            '.task-modal-readonly strong::after{content:" · Telegram/Hermes owns task truth"}'
+        ].join('\n');
+        if (!style.parentNode) document.head.appendChild(style);
+
+        var settings = document.getElementById('settings-modal');
+        if (settings && settings.parentNode) settings.parentNode.removeChild(settings);
+        var pendingOption = document.querySelector('#filter-status option[value="pending"]');
+        if (pendingOption) { pendingOption.value = 'open'; pendingOption.textContent = 'Open'; }
+        var pendingStatLabel = document.querySelector('#cat-tasks-pending + .dashboard-stat-label');
+        if (pendingStatLabel) pendingStatLabel.textContent = 'Open';
+        var focusLabel = document.querySelector('.focus-top5-label');
+        if (focusLabel && !focusLabel.querySelector('.dashboard-readonly-note')) {
+            var note = document.createElement('span');
+            note.className = 'dashboard-readonly-note';
+            note.textContent = 'LOCAL REORDER ONLY';
+            focusLabel.appendChild(note);
+        }
+    }
+
+    _clearStaleDashboardCache();
+    document.addEventListener('DOMContentLoaded', _installTaskContract);
+    global.setTimeout(_installTaskContract, 0);
+    global.setTimeout(_installTaskContract, 1000);
+
     /* ── Load registry JSON ─────────────────────────────────────────── */
     function _loadRegistry() {
         // Synchronous fetch (blocking) during page load so every
@@ -218,6 +576,7 @@
     global.isAgentExcluded     = isAgentExcluded;
     global.isUserAgent         = isUserAgent;
     global.getAgentSignalMeta  = getAgentSignalMeta;
+    global.normalizeTaskStatus = normalizeTaskStatus;
 
     /* ── Boot ────────────────────────────────────────────────────────── */
     _loadRegistry();
