@@ -104,7 +104,8 @@
         const entry = manifest.entry || 'app-20260622-source-of-truth-v3.html';
         const separator = entry.indexOf('?') === -1 ? '?' : '&';
         const hash = window.location.hash || '';
-        frame.src = entry + separator + 'build=' + encodeURIComponent(manifest.build || 'current') + '&boot=' + Date.now() + hash;
+        const appUrl = entry + separator + 'build=' + encodeURIComponent(manifest.build || 'current') + '&boot=' + Date.now() + hash;
+
         frame.onload = function () {
           frame.style.display = 'block';
           bootState.style.display = 'none';
@@ -112,6 +113,7 @@
         frame.onerror = function () {
           showError('The current dashboard app file failed to load.', entry);
         };
+        frame.src = appUrl;
       } catch (error) {
         console.error('[Mission Control Root] Boot failed.', error);
         showError('The dashboard root loader could not load the current manifest/data/app path.', error && (error.stack || error.message || error));
