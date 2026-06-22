@@ -30,8 +30,20 @@ The active public app is intentionally small:
 
 - `index.html` - static shell
 - `main-styles.css` - Red Sun visual system
+- `dashboard-hermes-bridge.js` - optional local Hermes API bridge for fresher reads and approved visual write-intents
 - `dashboard-app.js` - one normalized read model used by all dashboard sections
 - `data.json` - generated public snapshot
+
+## Optional Hermes API Bridge
+
+By default, the public GitHub Pages dashboard reads only the generated `data.json` snapshot. It does not auto-probe local services from the public URL.
+
+For local Hermes testing, open the dashboard with one of these query parameters:
+
+- `?hermes=local`
+- `?hermesApi=http://127.0.0.1:8000`
+
+When enabled, `dashboard-hermes-bridge.js` tries `GET /api/sync` before falling back to `data.json`, and sends approved visual workflow intents to `POST /api/dashboard-intents`. It does not store tokens, write to GitHub, use localStorage, add tasks, mark tasks done, assign owners, set deadlines, or change canonical statuses directly.
 
 ## Acceptance Anchors
 
