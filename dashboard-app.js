@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const BUILD_ID = '20260622-visual-restore-1';
+  const BUILD_ID = '20260623-cachebreak-1';
   const DATA_FILE = 'data.json';
   const FLEET_ORDER = [
     'chad-yi', 'cerebronn', 'helios', 'quanta', 'forger', 'escrita', 'autoura',
