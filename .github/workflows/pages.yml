@@ -11,6 +11,10 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  DASHBOARD_ASSET_BUILD_ID: 20260622-root-rebuild-5
+  DASHBOARD_APP_BUILD_ID: 20260622-root-rebuild-4
+
 concurrency:
   group: github-pages
   cancel-in-progress: true
@@ -20,10 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Prepare static dashboard artifact
         run: |
@@ -71,8 +75,8 @@ jobs:
           const bridge = fs.readFileSync('_site/dashboard-hermes-bridge.js', 'utf8');
           const app = fs.readFileSync('_site/dashboard-app.js', 'utf8');
           const data = JSON.parse(fs.readFileSync('_site/data.json', 'utf8'));
-          const assetBuildId = '20260622-root-rebuild-5';
-          const appBuildId = '20260622-root-rebuild-4';
+          const assetBuildId = process.env.DASHBOARD_ASSET_BUILD_ID;
+          const appBuildId = process.env.DASHBOARD_APP_BUILD_ID;
 
           const mustContain = [
             ['index.html', html, 'RED SUN COMMAND'],
@@ -155,7 +159,7 @@ jobs:
           NODE
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
@@ -168,4 +172,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
