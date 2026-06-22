@@ -2,123 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mission Control Dashboard</title>
-  <style>
-    html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #050507;
-      color: rgba(235,235,245,.86);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    #mission-control-frame {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      border: 0;
-      background: #050507;
-      display: none;
-    }
-    #boot-state {
-      position: fixed;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      box-sizing: border-box;
-      text-align: center;
-      background: radial-gradient(circle at 50% 42%, rgba(120, 20, 24, .32), rgba(5, 5, 7, 1) 62%);
-    }
-    .boot-title {
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(220, 60, 80, .95);
-      margin-bottom: 8px;
-    }
-    .boot-sub {
-      font-size: 13px;
-      color: rgba(180,185,205,.76);
-      line-height: 1.5;
-    }
-    .boot-error {
-      max-width: 760px;
-      line-height: 1.55;
-    }
-    .boot-error code {
-      color: #ffb86b;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main-styles.css?v=20260622-root-rebuild-1">
 </head>
 <body>
-  <div id="boot-state">
-    <div>
-      <div class="boot-title">Mission Control</div>
-      <div class="boot-sub">Loading current dashboard build...</div>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="solar-corona" aria-hidden="true"></div>
+  <div class="red-sun" aria-hidden="true"></div>
+  <div class="planet-horizon" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand-lockup">
+      <span class="brand-orb" aria-hidden="true"></span>
+      <div>
+        <div class="brand-title">RED SUN COMMAND</div>
+        <div class="brand-subtitle">Mission Control Dashboard</div>
+      </div>
     </div>
+    <div class="ticker" id="ticker">Loading mission intelligence...</div>
+    <div class="sync-chip" id="sync-chip">BOOTING</div>
+  </header>
+
+  <main class="dashboard-shell">
+    <section class="hero-band" id="home-section">
+      <div class="hero-copy">
+        <div class="system-label">Hermes Control Surface</div>
+        <h1>Mission Control</h1>
+        <p>One visual command layer for Caleb, Hermes, Helios, and the agent fleet.</p>
+      </div>
+      <div class="truth-panel">
+        <div class="truth-row"><span>Canonical intent</span><strong>Hermes state</strong></div>
+        <div class="truth-row"><span>Public snapshot</span><strong>data.json</strong></div>
+        <div class="truth-row"><span>Dashboard writes</span><strong>Queue / board only</strong></div>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Mission statistics">
+      <article class="stat-card"><span>Total Tasks</span><strong id="stat-total">-</strong><em id="stat-open">- open</em></article>
+      <article class="stat-card"><span>Completed</span><strong id="stat-done">-</strong><em id="stat-rate">-</em></article>
+      <article class="stat-card"><span>Projects</span><strong id="stat-projects">-</strong><em id="stat-c4">C4 checking</em></article>
+      <article class="stat-card"><span>Needs Caleb</span><strong id="stat-caleb">-</strong><em id="stat-input">- input</em></article>
+      <article class="stat-card"><span>Active Work</span><strong id="stat-active">-</strong><em id="stat-blocked">- blocked</em></article>
+      <article class="stat-card"><span>Fleet</span><strong id="stat-agents">-</strong><em id="stat-live-agents">- live</em></article>
+    </section>
+
+    <section class="command-grid">
+      <article class="panel panel-large" id="briefing-panel">
+        <div class="panel-head"><span>Daily Briefing</span><button type="button" data-refresh>Refresh</button></div>
+        <div id="daily-briefing" class="briefing-body loading-card">Loading briefing...</div>
+      </article>
+
+      <article class="panel" id="review-panel">
+        <div class="panel-head"><span>Awaiting Review</span><small id="review-count">0</small></div>
+        <div id="review-list" class="task-list"></div>
+      </article>
+
+      <article class="panel" id="input-panel">
+        <div class="panel-head"><span>Input Requested</span><small id="input-count">0</small></div>
+        <div id="input-list" class="task-list"></div>
+      </article>
+
+      <article class="panel" id="caleb-panel">
+        <div class="panel-head"><span>Caleb's Queue</span><small id="caleb-count">0</small></div>
+        <div id="caleb-list" class="task-list"></div>
+      </article>
+
+      <article class="panel panel-large" id="focus-panel">
+        <div class="panel-head"><span>Today's Focus / Priority Queue</span><small>visual order only</small></div>
+        <div id="focus-list" class="focus-list" aria-live="polite"></div>
+      </article>
+
+      <article class="panel panel-large" id="week-panel">
+        <div class="panel-head"><span>Week Calendar</span><small id="week-window">SGT</small></div>
+        <div id="week-calendar" class="week-calendar"></div>
+      </article>
+    </section>
+
+    <section class="panel" id="agent-board-panel">
+      <div class="panel-head">
+        <span>Agent Workflow Boards</span>
+        <select id="agent-board-select" aria-label="Choose agent board"></select>
+      </div>
+      <div id="agent-board" class="kanban-board"></div>
+    </section>
+
+    <section class="panel" id="fleet-panel">
+      <div class="panel-head"><span>Agent Fleet</span><small id="fleet-count">0 agents</small></div>
+      <div id="fleet-grid" class="fleet-grid"></div>
+    </section>
+
+    <section class="panel" id="projects-panel">
+      <div class="panel-head">
+        <span>Project Categories</span>
+        <div class="filters">
+          <input id="project-search" type="search" placeholder="Search projects or tasks" autocomplete="off">
+          <select id="status-filter" aria-label="Filter by status">
+            <option value="">All status</option>
+            <option value="open">Open</option>
+            <option value="active">Active</option>
+            <option value="blocked">Blocked</option>
+            <option value="paused">Paused</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+      </div>
+      <div id="project-categories" class="category-stack"></div>
+    </section>
+  </main>
+
+  <div id="task-modal" class="modal-overlay" hidden>
+    <article class="task-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Close task detail">x</button>
+      <div class="modal-kicker" id="modal-id">TASK</div>
+      <h2 id="modal-title">Task detail</h2>
+      <div class="modal-meta" id="modal-meta"></div>
+      <p id="modal-description"></p>
+    </article>
   </div>
-  <iframe id="mission-control-frame" title="Mission Control Dashboard"></iframe>
-  <script>
-    (async function bootMissionControlRoot() {
-      const MANIFEST_URL = 'dashboard-current.json?boot=' + Date.now();
-      const DATA_URL = 'data.json?boot=' + Date.now();
-      const bootState = document.getElementById('boot-state');
-      const frame = document.getElementById('mission-control-frame');
 
-      function escapeHtml(value) {
-        return String(value).replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
-      }
-
-      function showError(message, detail) {
-        bootState.innerHTML = '<div class="boot-error"><div class="boot-title">Dashboard Load Blocked</div>' +
-          '<div class="boot-sub">' + escapeHtml(message) + '</div>' +
-          (detail ? '<pre style="white-space:pre-wrap;text-align:left;margin-top:16px;color:rgba(230,190,150,.9)">' + escapeHtml(detail) + '</pre>' : '') +
-          '</div>';
-      }
-
-      async function loadJson(url) {
-        const response = await fetch(url, { cache: 'no-store' });
-        if (!response.ok) throw new Error(url + ' returned HTTP ' + response.status);
-        return response.json();
-      }
-
-      try {
-        const manifest = await loadJson(MANIFEST_URL);
-        const data = await loadJson(DATA_URL);
-        const hasC4 = Boolean((data.projects && data.projects.C4) || (data.projectDetails && data.projectDetails.C4));
-        const totalTasks = Number(data.stats && data.stats.totalTasks);
-        const doneTasks = Number(data.stats && data.stats.completedTasks);
-        const expected = manifest.expected || {};
-
-        if (!hasC4 || totalTasks !== Number(expected.totalTasks) || doneTasks !== Number(expected.completedTasks)) {
-          console.warn('[Mission Control Root] Data preflight mismatch', { hasC4, totalTasks, doneTasks, expected });
-        }
-
-        const entry = manifest.entry || 'app-20260622-source-of-truth-v3.html';
-        const separator = entry.indexOf('?') === -1 ? '?' : '&';
-        const hash = window.location.hash || '';
-        const appUrl = entry + separator + 'build=' + encodeURIComponent(manifest.build || 'current') + '&boot=' + Date.now() + hash;
-
-        frame.onload = function () {
-          frame.style.display = 'block';
-          bootState.style.display = 'none';
-        };
-        frame.onerror = function () {
-          showError('The current dashboard app file failed to load.', entry);
-        };
-        frame.src = appUrl;
-      } catch (error) {
-        console.error('[Mission Control Root] Boot failed.', error);
-        showError('The dashboard root loader could not load the current manifest/data/app path.', error && (error.stack || error.message || error));
-      }
-    })();
-  </script>
+  <div id="toast" class="toast" hidden></div>
+  <script src="dashboard-app.js?v=20260622-root-rebuild-1" defer></script>
 </body>
 </html>
