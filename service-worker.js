@@ -3,7 +3,7 @@
 // any older service worker at this path, clear stale browser caches, reload open
 // dashboard clients once, and then unregister itself.
 
-const CACHE_KILLER_ID = 'mission-control-cache-killer-20260624-1';
+const CACHE_KILLER_ID = 'mission-control-cache-killer-20260624-2';
 
 async function clearAllCaches() {
   if (!self.caches) return;
