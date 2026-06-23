@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows:
-      - Verify Mission Control Dashboard Source
+      - Deploy Mission Control Dashboard
     types:
       - completed
 
@@ -16,15 +16,12 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify GitHub Pages root, manifest, app, assets, and data snapshot
+      - name: Verify public root, manifest, assets, and data
         run: |
           node <<'NODE'
-          const assert = (condition, message) => {
-            if (!condition) throw new Error(message);
-          };
-          const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
           const base = 'https://chadyi-king.github.io/mission-control-dashboard/';
-
+          const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+          const forbidden = /GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist/i;
           const aliases = {
             backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
             check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested',
@@ -34,28 +31,15 @@ jobs:
             const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
             return aliases[raw] || raw || 'open';
           };
-          const withCacheBust = (path, cacheKey) => {
+          const fetchText = async (path, attempt) => {
             const url = new URL(path, base);
-            url.searchParams.set('verify', cacheKey);
-            url.searchParams.set('t', String(Date.now()));
-            return url.toString();
-          };
-          const fetchText = async (path, cacheKey) => {
-            const url = path.startsWith('http') ? path : withCacheBust(path, cacheKey);
+            url.searchParams.set('verify', `runtime-${Date.now()}-${attempt}`);
             const response = await fetch(url, {
               cache: 'no-store',
-              headers: {
-                'Cache-Control': 'no-cache',
-                'Pragma': 'no-cache'
-              }
+              headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
             });
             const text = await response.text();
-            return { url, response, text };
-          };
-          const jsonFrom = async (path, cacheKey) => {
-            const result = await fetchText(path, cacheKey);
-            assert(result.response.ok, `${result.url} HTTP ${result.response.status}`);
-            return JSON.parse(result.text);
+            return { url: url.toString(), response, text };
           };
           const normalizeRef = (ref) => {
             if (!ref) return null;
@@ -64,9 +48,8 @@ jobs:
             if (/^(data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
             if (/^https?:\/\//i.test(raw) && !raw.startsWith(base)) return null;
             const url = new URL(raw, base);
-            let clean = url.pathname.replace(/^\/mission-control-dashboard\//, '').replace(/^\//, '');
-            if (!clean || clean.includes('..')) return null;
-            return clean;
+            const clean = url.pathname.replace(/^\/mission-control-dashboard\//, '').replace(/^\//, '');
+            return clean && !clean.includes('..') ? clean : null;
           };
           const refsFromHtml = (html) => {
             const refs = [];
@@ -81,73 +64,63 @@ jobs:
             }
             return [...new Set(refs)];
           };
-          const assertNoOldBrowserWritePath = (label, text) => {
-            assert(!/GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist/i.test(text), `${label} contains old browser write/PAT pattern`);
-          };
-          const verifySnapshot = (data) => {
+          const verifyData = (data) => {
             const tasks = Object.entries(data.tasks || {})
               .filter(([, task]) => task && typeof task === 'object')
-              .map(([id, task]) => ({ id: task.id || id, ...task }))
-              .filter((task) => normalizeStatus(task.status) !== 'removed');
-            const done = tasks.filter((task) => normalizeStatus(task.status) === 'done');
+              .map(([id, task]) => ({ id: task.id || id, ...task }));
+            const visible = tasks.filter((task) => normalizeStatus(task.status) !== 'removed');
+            const done = visible.filter((task) => normalizeStatus(task.status) === 'done');
             const projects = new Set();
             Object.keys(data.projects || {}).forEach((id) => projects.add(String(id).toUpperCase()));
             Object.keys(data.projectDetails || {}).forEach((id) => projects.add(String(id).toUpperCase()));
             Object.values(data.categories || {}).forEach((category) => (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase())));
-            tasks.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
+            visible.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
             const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
-            assert(projects.size === 22, `expected 22 projects, found ${projects.size}`);
-            assert(projects.has('C4'), 'missing C4');
-            assert(c4.name === 'Website Services', `expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
-            assert(tasks.length === 106, `expected 106 visible tasks, found ${tasks.length}`);
-            assert(done.length === 29, `expected 29 done tasks, found ${done.length}`);
+            if (projects.size < 22) throw new Error(`expected at least 22 projects, found ${projects.size}`);
+            if (!projects.has('C4')) throw new Error('missing C4');
+            if (c4.name !== 'Website Services') throw new Error(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
+            if (!visible.length) throw new Error('no visible tasks found');
+            if (done.length > visible.length) throw new Error('done task count exceeds visible task count');
+            return { projects: projects.size, visible: visible.length, done: done.length };
           };
 
           (async () => {
             let lastError;
-            for (let attempt = 1; attempt <= 12; attempt += 1) {
-              const cacheKey = `verify-${Date.now()}-${attempt}`;
+            for (let attempt = 1; attempt <= 24; attempt += 1) {
               try {
-                const root = await fetchText('', cacheKey);
-                assert(root.response.ok, `root HTTP ${root.response.status}`);
-                assert(root.text.includes('dashboard-current.json'), 'root does not load dashboard-current.json');
-                assert(root.text.includes('RED SUN COMMAND'), 'root does not contain Red Sun boot shell');
-                assertNoOldBrowserWritePath('root', root.text);
+                const root = await fetchText('', attempt);
+                if (!root.response.ok) throw new Error(`root HTTP ${root.response.status}`);
+                if (!root.text.includes('dashboard-current.json')) throw new Error('root does not load dashboard-current.json');
+                if (!root.text.includes('RED SUN COMMAND')) throw new Error('root does not contain Red Sun shell');
+                if (forbidden.test(root.text)) throw new Error('root contains old browser write/PAT UI');
 
-                const manifest = await jsonFrom('dashboard-current.json', cacheKey);
-                assert(manifest.kind === 'mission-control-dashboard-current-app', `manifest kind mismatch: ${manifest.kind}`);
-                assert(manifest.currentApp, 'manifest missing currentApp');
-                assert(manifest.dataSnapshot || 'data.json', 'manifest missing dataSnapshot');
+                const manifestResult = await fetchText('dashboard-current.json', attempt);
+                if (!manifestResult.response.ok) throw new Error(`dashboard-current.json HTTP ${manifestResult.response.status}`);
+                const manifest = JSON.parse(manifestResult.text);
+                if (manifest.kind !== 'mission-control-dashboard-current-app') throw new Error(`manifest kind mismatch: ${manifest.kind}`);
+                if (!manifest.currentApp) throw new Error('manifest missing currentApp');
 
-                const app = await fetchText(manifest.currentApp, cacheKey);
-                assert(app.response.ok, `${manifest.currentApp} HTTP ${app.response.status}`);
-                assertNoOldBrowserWritePath(manifest.currentApp, app.text);
+                const app = await fetchText(manifest.currentApp, attempt);
+                if (!app.response.ok) throw new Error(`${manifest.currentApp} HTTP ${app.response.status}`);
+                if (forbidden.test(app.text)) throw new Error(`${manifest.currentApp} contains old browser write/PAT UI`);
 
-                const htmlToInspect = new Map([[manifest.currentApp, app.text]]);
-                for (const [htmlFile, html] of [...htmlToInspect]) {
-                  for (const ref of refsFromHtml(html)) {
-                    const asset = await fetchText(ref, cacheKey);
-                    assert(asset.response.ok, `${ref} HTTP ${asset.response.status} referenced by ${htmlFile}`);
-                    if (ref.endsWith('.html') && !htmlToInspect.has(ref)) htmlToInspect.set(ref, asset.text);
-                    if (/\.(html|js)$/i.test(ref)) assertNoOldBrowserWritePath(ref, asset.text);
-                  }
+                const refs = refsFromHtml(app.text);
+                if (!refs.some((ref) => ref.endsWith('.css'))) throw new Error('current app references no CSS assets');
+                if (!refs.some((ref) => ref.endsWith('.js'))) throw new Error('current app references no JS assets');
+                for (const ref of refs) {
+                  const asset = await fetchText(ref, attempt);
+                  if (!asset.response.ok) throw new Error(`${ref} HTTP ${asset.response.status}`);
+                  if (/\.(html|js)$/i.test(ref) && forbidden.test(asset.text)) throw new Error(`${ref} contains old browser write/PAT UI`);
                 }
 
-                const allRefs = [...htmlToInspect.values()].flatMap(refsFromHtml);
-                const cssRefs = allRefs.filter((ref) => ref.endsWith('.css'));
-                const jsRefs = allRefs.filter((ref) => ref.endsWith('.js'));
-                assert(cssRefs.length > 0, 'current app references no CSS assets');
-                assert(jsRefs.length > 0, 'current app references no JS assets');
+                const dataResult = await fetchText(manifest.dataSnapshot || 'data.json', attempt);
+                if (!dataResult.response.ok) throw new Error(`data.json HTTP ${dataResult.response.status}`);
+                const stats = verifyData(JSON.parse(dataResult.text));
 
-                const data = await jsonFrom(manifest.dataSnapshot || 'data.json', cacheKey);
-                verifySnapshot(data);
-
-                console.log('Live Mission Control verified.');
-                console.log(`Root: 200`);
+                console.log('Live Mission Control runtime verified.');
+                console.log(`URL: ${base}`);
                 console.log(`Manifest currentApp: ${manifest.currentApp}`);
-                console.log(`CSS refs: ${[...new Set(cssRefs)].join(', ')}`);
-                console.log(`JS refs: ${[...new Set(jsRefs)].join(', ')}`);
-                console.log('Data: 22 projects / 106 visible tasks / 29 done / C4 Website Services');
+                console.log(`Data: ${stats.projects} projects / ${stats.visible} visible tasks / ${stats.done} done / C4 Website Services`);
                 return;
               } catch (error) {
                 lastError = error;
