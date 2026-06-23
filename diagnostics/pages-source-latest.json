@@ -1,8 +1,8 @@
 {
   "kind": "mission-control-pages-source-diagnostic",
-  "generatedAt": "2026-06-23T18:18:41.341Z",
-  "generatedByWorkflowRun": "28047362739",
-  "diagnosticCommit": "d25b3739f7253ac70fba04eb36d8d1921618f0d8",
+  "generatedAt": "2026-06-23T18:32:09.717Z",
+  "generatedByWorkflowRun": "28048153084",
+  "diagnosticCommit": "c48a6eeccb49ac217c6182848c05e29adf54b386",
   "repository": "chadyi-king/mission-control-dashboard",
   "apiStatus": {
     "pages": "ok",
@@ -25,15 +25,63 @@
   },
   "recentWorkflowRuns": [
     {
-      "id": 28047362739,
+      "id": 28048153084,
       "name": "Diagnose GitHub Pages Source",
       "event": "push",
       "status": "in_progress",
       "conclusion": null,
       "head_branch": "main",
+      "head_sha": "c48a6eeccb49ac217c6182848c05e29adf54b386",
+      "created_at": "2026-06-23T18:32:03Z",
+      "updated_at": "2026-06-23T18:32:06Z",
+      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28048153084"
+    },
+    {
+      "id": 28048010062,
+      "name": "Verify Live Mission Control Dashboard",
+      "event": "workflow_run",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_branch": "main",
+      "head_sha": "f4f346aa36ec076f8d86529de4b92f168a914831",
+      "created_at": "2026-06-23T18:29:39Z",
+      "updated_at": "2026-06-23T18:29:40Z",
+      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28048010062"
+    },
+    {
+      "id": 28047990027,
+      "name": "Deploy Mission Control Dashboard",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_branch": "main",
+      "head_sha": "f4f346aa36ec076f8d86529de4b92f168a914831",
+      "created_at": "2026-06-23T18:29:19Z",
+      "updated_at": "2026-06-23T18:29:34Z",
+      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28047990027"
+    },
+    {
+      "id": 28047909335,
+      "name": "Deploy Mission Control Dashboard",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_branch": "main",
+      "head_sha": "e2c725f743f028f1cfa648b56621dd78802643c3",
+      "created_at": "2026-06-23T18:27:57Z",
+      "updated_at": "2026-06-23T18:28:11Z",
+      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28047909335"
+    },
+    {
+      "id": 28047362739,
+      "name": "Diagnose GitHub Pages Source",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "head_branch": "main",
       "head_sha": "d25b3739f7253ac70fba04eb36d8d1921618f0d8",
       "created_at": "2026-06-23T18:18:33Z",
-      "updated_at": "2026-06-23T18:18:37Z",
+      "updated_at": "2026-06-23T18:18:45Z",
       "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28047362739"
     },
     {
@@ -119,57 +167,31 @@
       "created_at": "2026-06-23T18:13:24Z",
       "updated_at": "2026-06-23T18:13:35Z",
       "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28047064705"
-    },
-    {
-      "id": 28047052684,
-      "name": "pages build and deployment",
-      "event": "dynamic",
-      "status": "completed",
-      "conclusion": "cancelled",
-      "head_branch": "gh-pages",
-      "head_sha": "21b633bccde9c23740b256116dcece17899a4272",
-      "created_at": "2026-06-23T18:13:12Z",
-      "updated_at": "2026-06-23T18:14:31Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28047052684"
-    },
-    {
-      "id": 28047038656,
-      "name": "Sync Dashboard Publishing Branch",
-      "event": "push",
-      "status": "completed",
-      "conclusion": "failure",
-      "head_branch": "main",
-      "head_sha": "da7f18f7f3f22879aad04dd44785fff7be42ba9b",
-      "created_at": "2026-06-23T18:12:58Z",
-      "updated_at": "2026-06-23T18:13:14Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28047038656"
-    },
-    {
-      "id": 28046929452,
-      "name": "Diagnose GitHub Pages Source",
-      "event": "push",
-      "status": "completed",
-      "conclusion": "failure",
-      "head_branch": "main",
-      "head_sha": "d74cbdb2710b38564fbc63388a98952a88f5db6a",
-      "created_at": "2026-06-23T18:11:06Z",
-      "updated_at": "2026-06-23T18:11:20Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28046929452"
-    },
-    {
-      "id": 28046814110,
-      "name": "Diagnose GitHub Pages Source",
-      "event": "push",
-      "status": "completed",
-      "conclusion": "failure",
-      "head_branch": "main",
-      "head_sha": "59e8e4cefa533d762330d5b0a6eb6f2f119ee2d4",
-      "created_at": "2026-06-23T18:09:05Z",
-      "updated_at": "2026-06-23T18:09:13Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28046814110"
     }
   ],
   "recentGithubPagesDeployments": [
+    {
+      "id": 5170630413,
+      "sha": "f4f346aa36ec076f8d86529de4b92f168a914831",
+      "ref": "main",
+      "task": "deploy",
+      "environment": "github-pages",
+      "original_environment": "github-pages",
+      "created_at": "2026-06-23T18:29:20Z",
+      "updated_at": "2026-06-23T18:29:34Z",
+      "statuses_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5170630413/statuses"
+    },
+    {
+      "id": 5170615160,
+      "sha": "e2c725f743f028f1cfa648b56621dd78802643c3",
+      "ref": "main",
+      "task": "deploy",
+      "environment": "github-pages",
+      "original_environment": "github-pages",
+      "created_at": "2026-06-23T18:27:58Z",
+      "updated_at": "2026-06-23T18:28:11Z",
+      "statuses_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5170615160/statuses"
+    },
     {
       "id": 5170482635,
       "sha": "95dae299f598130101492760ec9e1180edf685b4",
@@ -279,28 +301,6 @@
       "created_at": "2026-06-23T17:43:59Z",
       "updated_at": "2026-06-23T17:44:12Z",
       "statuses_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5170091594/statuses"
-    },
-    {
-      "id": 5170088817,
-      "sha": "ba4758c5cbe11485a9451ef552444c94a929800b",
-      "ref": "gh-pages",
-      "task": "deploy",
-      "environment": "github-pages",
-      "original_environment": "github-pages",
-      "created_at": "2026-06-23T17:43:45Z",
-      "updated_at": "2026-06-23T17:43:54Z",
-      "statuses_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5170088817/statuses"
-    },
-    {
-      "id": 5169998889,
-      "sha": "e5231e96df35d654e5566287b2fa89cfdfe125ac",
-      "ref": "main",
-      "task": "deploy",
-      "environment": "github-pages",
-      "original_environment": "github-pages",
-      "created_at": "2026-06-23T17:36:28Z",
-      "updated_at": "2026-06-23T18:00:43Z",
-      "statuses_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5169998889/statuses"
     }
   ]
 }
