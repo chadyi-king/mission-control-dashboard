@@ -1,6 +1,6 @@
 {
   "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-23T17:40:22.746244+08:00",
+  "lastUpdated": "2026-06-23T17:42:29.727811+08:00",
   "updatedBy": "chad-yi",
   "projects": {
     "A1": {
@@ -658,7 +658,7 @@
     },
     "B1-1": {
       "id": "B1-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "title": "B1 EPOS: Full website + marketing setup",
       "project": "B1",
       "category": "B",
       "agent": "forger",
@@ -669,7 +669,7 @@
     },
     "B2-1": {
       "id": "B2-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "title": "B2 Team Elevate: Full website + marketing setup",
       "project": "B2",
       "category": "B",
       "agent": "forger",
@@ -703,7 +703,7 @@
     },
     "B4-1": {
       "id": "B4-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "title": "B4 Elluminate: Full website + marketing setup",
       "project": "B4",
       "category": "B",
       "agent": "forger",
@@ -714,7 +714,7 @@
     },
     "B5-1": {
       "id": "B5-1",
-      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "title": "B5 EXSTATIC: Full website + marketing setup",
       "project": "B5",
       "category": "B",
       "agent": "forger",
@@ -1244,7 +1244,7 @@
     },
     "B7-3": {
       "id": "B7-3",
-      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "title": "B7 Envision: Set up domain and hosting",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -1255,7 +1255,7 @@
     },
     "B7-4": {
       "id": "B7-4",
-      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "title": "B7 Envision: Implement responsive design",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -1310,7 +1310,7 @@
     },
     "B8-5": {
       "id": "B8-5",
-      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "title": "B8 AI Marketing: Set up domain and hosting",
       "project": "B8",
       "category": "B",
       "agent": "forger",
@@ -1321,7 +1321,7 @@
     },
     "B8-7": {
       "id": "B8-7",
-      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "title": "B8 AI Marketing: Implement responsive design",
       "project": "B8",
       "category": "B",
       "agent": "forger",
@@ -1453,7 +1453,7 @@
     },
     "B11-5": {
       "id": "B11-5",
-      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "title": "B11 EPEPTOME: Set up domain and hosting",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1464,7 +1464,7 @@
     },
     "B11-6": {
       "id": "B11-6",
-      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "title": "B11 EPEPTOME: Implement responsive design",
       "project": "B11",
       "category": "B",
       "agent": "forger",
