@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows:
-      - Deploy Mission Control Dashboard
+      - Sync Dashboard Publishing Branch
     types:
       - completed
 
@@ -15,11 +15,15 @@ jobs:
   verify-live:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    env:
+      EXPECTED_SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
     steps:
-      - name: Verify public root, manifest, assets, and data
+      - name: Verify public root, proof, manifest, assets, and data
         run: |
           node <<'NODE'
+          const crypto = require('crypto');
           const base = 'https://chadyi-king.github.io/mission-control-dashboard/';
+          const expectedSourceSha = process.env.EXPECTED_SOURCE_SHA || '';
           const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
           const forbidden = /GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist/i;
           const aliases = {
@@ -33,7 +37,8 @@ jobs:
           };
           const fetchText = async (path, attempt) => {
             const url = new URL(path, base);
-            url.searchParams.set('verify', `runtime-${Date.now()}-${attempt}`);
+            url.searchParams.set('verify', `${expectedSourceSha || 'manual'}-${attempt}`);
+            url.searchParams.set('t', String(Date.now()));
             const response = await fetch(url, {
               cache: 'no-store',
               headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
@@ -86,7 +91,7 @@ jobs:
 
           (async () => {
             let lastError;
-            for (let attempt = 1; attempt <= 24; attempt += 1) {
+            for (let attempt = 1; attempt <= 40; attempt += 1) {
               try {
                 const root = await fetchText('', attempt);
                 if (!root.response.ok) throw new Error(`root HTTP ${root.response.status}`);
@@ -94,11 +99,20 @@ jobs:
                 if (!root.text.includes('RED SUN COMMAND')) throw new Error('root does not contain Red Sun shell');
                 if (forbidden.test(root.text)) throw new Error('root contains old browser write/PAT UI');
 
+                const proofResult = await fetchText('deployment-proof.json', attempt);
+                if (!proofResult.response.ok) throw new Error(`deployment-proof.json HTTP ${proofResult.response.status}`);
+                const proof = JSON.parse(proofResult.text);
+                if (proof.kind !== 'mission-control-dashboard-deployment-proof') throw new Error(`proof kind mismatch: ${proof.kind}`);
+                if (expectedSourceSha && proof.sourceSha !== expectedSourceSha) {
+                  throw new Error(`proof sourceSha mismatch: live ${proof.sourceSha} expected ${expectedSourceSha}`);
+                }
+
                 const manifestResult = await fetchText('dashboard-current.json', attempt);
                 if (!manifestResult.response.ok) throw new Error(`dashboard-current.json HTTP ${manifestResult.response.status}`);
                 const manifest = JSON.parse(manifestResult.text);
                 if (manifest.kind !== 'mission-control-dashboard-current-app') throw new Error(`manifest kind mismatch: ${manifest.kind}`);
                 if (!manifest.currentApp) throw new Error('manifest missing currentApp');
+                if (proof.currentApp && proof.currentApp !== manifest.currentApp) throw new Error(`proof currentApp mismatch: ${proof.currentApp} vs ${manifest.currentApp}`);
 
                 const app = await fetchText(manifest.currentApp, attempt);
                 if (!app.response.ok) throw new Error(`${manifest.currentApp} HTTP ${app.response.status}`);
@@ -113,12 +127,17 @@ jobs:
                   if (/\.(html|js)$/i.test(ref) && forbidden.test(asset.text)) throw new Error(`${ref} contains old browser write/PAT UI`);
                 }
 
-                const dataResult = await fetchText(manifest.dataSnapshot || 'data.json', attempt);
-                if (!dataResult.response.ok) throw new Error(`data.json HTTP ${dataResult.response.status}`);
-                const stats = verifyData(JSON.parse(dataResult.text));
+                const dataPath = manifest.dataSnapshot || 'data.json';
+                const dataResult = await fetchText(dataPath, attempt);
+                if (!dataResult.response.ok) throw new Error(`${dataPath} HTTP ${dataResult.response.status}`);
+                const dataText = dataResult.text;
+                const liveDataHash = crypto.createHash('sha256').update(dataText).digest('hex');
+                if (proof.dataSha256 && proof.dataSha256 !== liveDataHash) throw new Error('proof data hash does not match live data');
+                const stats = verifyData(JSON.parse(dataText));
 
                 console.log('Live Mission Control runtime verified.');
                 console.log(`URL: ${base}`);
+                console.log(`Proof sourceSha: ${proof.sourceSha}`);
                 console.log(`Manifest currentApp: ${manifest.currentApp}`);
                 console.log(`Data: ${stats.projects} projects / ${stats.visible} visible tasks / ${stats.done} done / C4 Website Services`);
                 return;
