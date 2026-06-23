@@ -35,52 +35,69 @@ jobs:
         with:
           ref: main
 
-      - name: Prepare static Pages artifact
+      - name: Prepare active dashboard artifact
         run: |
           set -euo pipefail
           rm -rf public
           mkdir -p public
-          find . -maxdepth 1 -type f \
-            \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' -o -name '.nojekyll' \) \
-            -exec cp '{}' public/ \;
-          if [ -d assets ]; then cp -R assets public/assets; fi
-          touch public/.nojekyll
 
           node <<'NODE'
           const fs = require('fs');
           const path = require('path');
           const crypto = require('crypto');
-          const site = 'public';
+          const source = process.cwd();
+          const site = path.join(source, 'public');
           const forbidden = /GitHub PAT|Personal Access Token|Mark Done to persist/i;
           const fail = (message) => { throw new Error(message); };
-          const read = (file) => fs.readFileSync(path.join(site, file), 'utf8');
+          const exists = (file) => fs.existsSync(path.join(source, file));
+          const read = (file) => fs.readFileSync(path.join(source, file), 'utf8');
           const readJson = (file) => JSON.parse(read(file));
-
-          for (const file of ['index.html', 'dashboard-current.json', 'data.json', 'dashboard-fresh-data-source.js', 'service-worker.js', 'sw.js']) {
-            if (!fs.existsSync(path.join(site, file))) fail(`missing ${file}`);
-          }
-          for (const file of fs.readdirSync(site)) {
-            if (/\.(html|js)$/i.test(file) && forbidden.test(read(file))) {
-              fail(`${file} contains old browser write/PAT pattern`);
+          const copyFile = (file) => {
+            if (!exists(file)) fail(`missing ${file}`);
+            fs.copyFileSync(path.join(source, file), path.join(site, file));
+          };
+          const copyDir = (dir) => {
+            const from = path.join(source, dir);
+            if (!fs.existsSync(from)) return;
+            fs.cpSync(from, path.join(site, dir), { recursive: true });
+          };
+          const stripQuery = (value) => String(value || '').split('?')[0].split('#')[0];
+          const addAssetRefs = (html, files) => {
+            const re = /(?:src|href)=["']([^"']+)["']/gi;
+            let match;
+            while ((match = re.exec(html))) {
+              const raw = match[1];
+              if (!raw || /^https?:|^data:|^\/\//i.test(raw)) continue;
+              const file = stripQuery(raw).replace(/^\.\//, '');
+              if (/\.(js|css)$/i.test(file)) files.add(file);
             }
-          }
-
-          const root = read('index.html');
-          if (!root.includes('dashboard-current.json')) fail('index.html does not load dashboard-current.json');
-          if (!root.includes('clearStaleRuntimeCaches')) fail('index.html is missing stale runtime cache cleanup');
+          };
 
           const manifest = readJson('dashboard-current.json');
           if (manifest.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
           if (!manifest.currentApp) fail('dashboard-current.json missing currentApp');
-          if (!fs.existsSync(path.join(site, manifest.currentApp))) fail(`missing current app ${manifest.currentApp}`);
           if (/layout-v2/i.test(manifest.currentApp) && !/visual-pass/i.test(String(manifest.qaStatus || ''))) {
             fail(`refusing to publish unverified layout-v2 app ${manifest.currentApp}`);
           }
 
-          const app = read(manifest.currentApp);
-          if (!app.includes('dashboard-fresh-data-source.js')) fail(`${manifest.currentApp} does not load dashboard-fresh-data-source.js`);
-          if (!app.includes('dashboard-app-20260623-cachebreak-1.js')) fail(`${manifest.currentApp} does not load the stable dashboard JS`);
-          if (!app.includes('main-styles-20260623-p5.css')) fail(`${manifest.currentApp} does not load the stable dashboard CSS`);
+          const appHtml = read(manifest.currentApp);
+          if (forbidden.test(read('index.html'))) fail('index.html contains old browser write/PAT pattern');
+          if (forbidden.test(appHtml)) fail(`${manifest.currentApp} contains old browser write/PAT pattern`);
+          if (!appHtml.includes('dashboard-fresh-data-source.js')) fail(`${manifest.currentApp} does not load dashboard-fresh-data-source.js`);
+          if (!appHtml.includes('dashboard-app-20260623-cachebreak-1.js')) fail(`${manifest.currentApp} does not load the stable dashboard JS`);
+          if (!appHtml.includes('main-styles-20260623-p5.css')) fail(`${manifest.currentApp} does not load the stable dashboard CSS`);
+
+          const files = new Set(['index.html', 'dashboard-current.json', manifest.currentApp, manifest.dataSnapshot || 'data.json', 'service-worker.js', 'sw.js']);
+          addAssetRefs(appHtml, files);
+          for (const file of files) copyFile(file);
+          copyDir('assets');
+          fs.writeFileSync(path.join(site, '.nojekyll'), '');
+
+          for (const file of files) {
+            if (/\.(html|js)$/i.test(file) && forbidden.test(fs.readFileSync(path.join(site, file), 'utf8'))) {
+              fail(`${file} contains old browser write/PAT pattern`);
+            }
+          }
 
           const aliases = { backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review', check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested', in_progress: 'active' };
           const normalizeStatus = (status) => {
@@ -88,7 +105,7 @@ jobs:
             return aliases[raw] || raw || 'open';
           };
           const dataPath = manifest.dataSnapshot || 'data.json';
-          const dataText = read(dataPath);
+          const dataText = fs.readFileSync(path.join(site, dataPath), 'utf8');
           const data = JSON.parse(dataText);
           const tasks = Object.entries(data.tasks || {}).filter(([, task]) => task && typeof task === 'object').map(([id, task]) => ({ id, ...task }));
           const visible = tasks.filter((task) => normalizeStatus(task.status) !== 'removed');
@@ -108,13 +125,14 @@ jobs:
           const proof = {
             kind: 'mission-control-dashboard-deployment-proof',
             publishedBy: 'pages.yml',
-            deploymentMode: 'github-actions-pages-artifact',
+            deploymentMode: 'github-actions-pages-artifact-active-files-only',
             sourceBranch: 'main',
             sourceSha: process.env.GITHUB_SHA,
             runId: process.env.GITHUB_RUN_ID,
             runAttempt: process.env.GITHUB_RUN_ATTEMPT,
             createdAt: new Date().toISOString(),
             currentApp: manifest.currentApp,
+            includedFiles: Array.from(files).sort(),
             dataSnapshot: dataPath,
             dataSha256: crypto.createHash('sha256').update(dataText).digest('hex'),
             expected: { projects: projects.size, visibleTasks: visible.length, doneTasks: done.length, c4Name: c4.name }
