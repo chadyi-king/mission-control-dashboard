@@ -1,5 +1,5 @@
 name: Diagnose GitHub Pages Source
-# Diagnostic trigger: 20260624-002
+# Diagnostic trigger: 20260624-actions-switch-1
 
 on:
   workflow_dispatch:
