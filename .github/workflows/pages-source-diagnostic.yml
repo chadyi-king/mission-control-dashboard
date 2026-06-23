@@ -1,5 +1,5 @@
 name: Diagnose GitHub Pages Source
-# Diagnostic trigger: 20260624-actions-switch-2
+# Diagnostic trigger: 20260624-root-stabilize-1
 
 on:
   workflow_dispatch:
