@@ -1,126 +1,17 @@
-name: Repair Mission Control Pages Artifact
+name: Archived - Mission Control Pages Artifact Repair
 
 on:
-  workflow_run:
-    workflows:
-      - Deploy Mission Control Dashboard
-    types:
-      - completed
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-environment:
-  name: github-pages
-  url: ${{ steps.deployment.outputs.page_url }}
-
-concurrency:
-  group: github-pages-repair
-  cancel-in-progress: true
 
 jobs:
-  repair-pages-artifact:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+  archived:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout gh-pages dashboard source
-        uses: actions/checkout@v7
-        with:
-          ref: gh-pages
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v6
-
-      - name: Build complete static artifact
+      - name: Explain archived workflow
         run: |
-          set -euo pipefail
-          rm -rf _site
-          mkdir -p _site
-
-          # Copy all static root assets. The primary deploy used to copy only
-          # main-styles.css, which allowed versioned CSS such as
-          # main-styles-20260623-p5.css to exist in git but 404 on Pages.
-          find . -maxdepth 1 -type f \
-            \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' -o -name '.nojekyll' \) \
-            -exec cp '{}' _site/ \;
-
-          if [ -d assets ]; then cp -R assets _site/assets; fi
-
-          echo 'Repair artifact contents:'
-          find _site -maxdepth 2 -type f | sort
-
-      - name: Verify complete artifact
-        run: |
-          node <<'NODE'
-          const fs = require('fs');
-          const failures = [];
-          const current = JSON.parse(fs.readFileSync('_site/dashboard-current.json', 'utf8'));
-          const appFile = current.currentApp;
-          if (!appFile) failures.push('dashboard-current.json missing currentApp');
-          if (appFile && !fs.existsSync(`_site/${appFile}`)) failures.push(`missing current app ${appFile}`);
-
-          const appHtml = appFile && fs.existsSync(`_site/${appFile}`)
-            ? fs.readFileSync(`_site/${appFile}`, 'utf8')
-            : '';
-          const cssRefs = [...appHtml.matchAll(/<link[^>]+href=["']([^"']+\.css(?:\?[^"']*)?)["']/g)]
-            .map((match) => match[1].split('?')[0]);
-          const jsRefs = [...appHtml.matchAll(/<script[^>]+src=["']([^"']+\.js(?:\?[^"']*)?)["']/g)]
-            .map((match) => match[1].split('?')[0]);
-
-          for (const css of cssRefs) {
-            if (!fs.existsSync(`_site/${css}`)) failures.push(`missing referenced CSS ${css}`);
-          }
-          for (const js of jsRefs) {
-            if (!fs.existsSync(`_site/${js}`)) failures.push(`missing referenced JS ${js}`);
-          }
-
-          for (const file of ['index.html', 'dashboard-current.json', 'data.json', '.nojekyll']) {
-            if (!fs.existsSync(`_site/${file}`)) failures.push(`missing required file ${file}`);
-          }
-
-          const data = JSON.parse(fs.readFileSync('_site/data.json', 'utf8'));
-          const normalizeStatus = (value) => String(value || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
-          const tasks = Object.values(data.tasks || {}).filter((task) => task && typeof task === 'object');
-          const visible = tasks.filter((task) => normalizeStatus(task.status) !== 'removed');
-          const done = visible.filter((task) => normalizeStatus(task.status) === 'done');
-          const projectIds = new Set([
-            ...Object.keys(data.projects || {}),
-            ...Object.keys(data.projectDetails || {})
-          ].map((id) => String(id).toUpperCase()));
-          Object.values(data.categories || {}).forEach((category) => {
-            (category.projects || []).forEach((id) => projectIds.add(String(id).toUpperCase()));
-          });
-          const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
-
-          if (projectIds.size !== 22) failures.push(`expected 22 projects, found ${projectIds.size}`);
-          if (!projectIds.has('C4')) failures.push('missing C4 project');
-          if (c4.name !== 'Website Services') failures.push(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
-          if (visible.length !== 106) failures.push(`expected 106 visible tasks, found ${visible.length}`);
-          if (done.length !== 29) failures.push(`expected 29 done tasks, found ${done.length}`);
-
-          if (!fs.existsSync('_site/main-styles-20260623-p5.css')) {
-            failures.push('main-styles-20260623-p5.css missing from artifact');
-          }
-
-          if (failures.length) {
-            console.error(failures.join('\n'));
-            process.exit(1);
-          }
-          console.log('Repair artifact verified.');
-          console.log(`App: ${appFile}`);
-          console.log(`CSS refs: ${cssRefs.join(', ') || '(none)'}`);
-          console.log(`JS refs: ${jsRefs.join(', ') || '(none)'}`);
-          console.log(`Projects: ${projectIds.size}; visible tasks: ${visible.length}; done: ${done.length}; C4: ${c4.name}`);
-          NODE
-
-      - name: Upload repaired Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: _site
-
-      - name: Deploy repaired artifact to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+          echo 'This repair workflow is intentionally archived.'
+          echo 'Mission Control uses gh-pages / root as the single GitHub Pages publish path.'
+          echo 'The active workflow verifies the gh-pages root source instead of deploying a competing Pages artifact.'
