@@ -18,6 +18,7 @@
   </style>
 </head>
 <body>
+  <!-- Main branch fallback redeploy trigger: 20260623-backend-contract-main-4 -->
   <main class="boot" id="boot">
     <div class="brand">RED SUN COMMAND</div>
     <div class="status" id="boot-status">Loading Mission Control...</div>
@@ -28,7 +29,7 @@
     (async function bootMissionControl() {
       const status = document.getElementById('boot-status');
       const errorBox = document.getElementById('boot-error');
-      const BOOT_ID = '20260624-root-cache-kill-1';
+      const BOOT_ID = '20260623-backend-contract-main-4';
 
       function withNoCache(path, build) {
         const url = new URL(path, window.location.href);
@@ -37,43 +38,15 @@
         return url.toString();
       }
 
-      async function clearStaleRuntimeCaches() {
-        let hadController = false;
-        try {
-          hadController = !!(navigator.serviceWorker && navigator.serviceWorker.controller);
-          if ('serviceWorker' in navigator) {
-            const registrations = await navigator.serviceWorker.getRegistrations();
-            await Promise.all(registrations.map((registration) => registration.unregister().catch(() => false)));
-          }
-        } catch (error) {
-          console.warn('[Mission Control Boot] service worker cleanup skipped', error);
-        }
-
-        try {
-          if ('caches' in window) {
-            const keys = await caches.keys();
-            await Promise.all(keys.map((key) => caches.delete(key).catch(() => false)));
-          }
-        } catch (error) {
-          console.warn('[Mission Control Boot] cache cleanup skipped', error);
-        }
-
-        if (hadController && !sessionStorage.getItem('mission-control-cache-kill-reloaded')) {
-          sessionStorage.setItem('mission-control-cache-kill-reloaded', BOOT_ID);
-          status.textContent = 'Refreshing Mission Control runtime...';
-          window.location.replace(window.location.href);
-          return false;
-        }
-        return true;
-      }
-
       try {
-        const canContinue = await clearStaleRuntimeCaches();
-        if (!canContinue) return;
-
-        // Force layout v2 - bypass manifest CDN cache
-        const appFile = 'app-20260624-layout-v2.html';
-        const appBuild = '20260624-layout-v2';
+        const manifestResponse = await fetch(withNoCache('dashboard-current.json', BOOT_ID), {
+          cache: 'no-store',
+          headers: { 'Cache-Control': 'no-cache' }
+        });
+        if (!manifestResponse.ok) throw new Error('dashboard-current.json HTTP ' + manifestResponse.status);
+        const manifest = await manifestResponse.json();
+        const appFile = manifest.currentApp || 'app-20260623-backend-contract-1.html';
+        const appBuild = manifest.appBuildId || manifest.dashboardBuildId || BOOT_ID;
         status.textContent = 'Loading Mission Control...';
 
         const appResponse = await fetch(withNoCache(appFile, appBuild), {
@@ -81,7 +54,6 @@
           headers: { 'Cache-Control': 'no-cache' }
         });
         if (!appResponse.ok) throw new Error(appFile + ' HTTP ' + appResponse.status);
-
         const html = await appResponse.text();
         document.open();
         document.write(html);
