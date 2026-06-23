@@ -1,6 +1,6 @@
 {
   "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-23T05:28:56.730019+08:00",
+  "lastUpdated": "2026-06-23T17:03:35.708352+08:00",
   "updatedBy": "chad-yi",
   "projects": {
     "A1": {
@@ -19,7 +19,8 @@
         "A1-7",
         "A1-1",
         "A1-4",
-        "TEST-2"
+        "TEST-2",
+        "TEMP-TEST"
       ],
       "totalTasks": 10,
       "completedTasks": 9,
@@ -1542,6 +1543,16 @@
       "priority": "medium",
       "createdAt": "2026-06-23T05:16:36.425548+08:00",
       "completedAt": "2026-06-23T05:18:45.878289+08:00"
+    },
+    "TEMP-TEST": {
+      "id": "TEMP-TEST",
+      "title": "Temporary test task for validation",
+      "project": "A1",
+      "category": "A",
+      "agent": "chad-yi",
+      "status": "open",
+      "priority": "medium",
+      "createdAt": "2026-06-23T17:03:35.683619+08:00"
     }
   },
   "projectDetails": {
@@ -2222,9 +2233,9 @@
         "baseline_balance": 3821.73,
         "weekly_profit": 0,
         "weekly_loss": 0,
-        "total_pnl": 96178.27,
         "win_count": 0,
         "loss_count": 1,
+        "today_pnl": 0,
         "status": "unverified_account_reset",
         "pnl_status": "blocked",
         "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
@@ -2301,9 +2312,7 @@
       }
     ],
     "currency": "USD",
-    "tracking_started": "2026-04-17",
-    "version": "1.0.0",
-    "starting_balance": 3821.73
+    "tracking_started": "2026-04-17"
   },
   "taskBoard": {
     "queueCount": 0,
