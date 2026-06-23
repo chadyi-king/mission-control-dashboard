@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>RED SUN COMMAND — Mission Control</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='s' cx='42%25' cy='38%25' r='62%25'><stop offset='0%25' stop-color='%23FFEE99'/><stop offset='15%25' stop-color='%23FF6B00'/><stop offset='35%25' stop-color='%23DC143C'/><stop offset='65%25' stop-color='%233a0000'/><stop offset='100%25' stop-color='%23080000'/></radialGradient></defs><circle cx='50' cy='50' r='48' fill='url(%23s)'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main-styles-20260623-p5.css?build=20260624-layout-v2">
+</head>
+<body>
+  <div id="bg-sun" aria-hidden="true"></div>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="solar-corona" aria-hidden="true"></div>
+  <div class="rs-bg-sun" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="red-sun-orb" aria-hidden="true"></div>
+      <div class="brand-copy">
+        <div class="topbar-brand-name-v2">RED SUN COMMAND</div>
+        <div class="mission-title">Mission Control Dashboard</div>
+      </div>
+    </div>
+    <div class="topbar-center">
+      <div class="topbar-ticker" id="ticker">
+        <span class="ticker-item alert">A3-9: Script 3 of 6 overdue by 5 days</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item">CHAD_YI completed 3 tasks today</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item warn">B7-2: Website copy needs review</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item">QUANTA: P&L report ready</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item info">A1-5: Pay electricity bill — due tomorrow</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item">CEREBRONN: Architecture review complete</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item alert">B8-10: TRME video — awaiting assets</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="sync-chip" id="agent-count">3/16 LIVE</div>
+      <div class="last-audit-badge">AUDIT <span class="lad-value" id="last-audit">2m ago</span></div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Cluster 1: Schedule -->
+    <section class="cluster">
+      <div class="cluster-header">
+        <h2 class="cluster-title">SCHEDULE</h2>
+        <span class="cluster-subtitle">Time-critical operations</span>
+      </div>
+      <div class="cluster-grid three-col">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-icon">⚡</span>
+            <span class="metric-label">DUE TODAY</span>
+          </div>
+          <div class="metric-value" id="due-today">-</div>
+          <div class="metric-breakdown">
+            <span class="breakdown-item warn" id="due-urgent">- urgent</span>
+            <span class="breakdown-item" id="due-tomorrow">- tomorrow</span>
+          </div>
+        </div>
+        <div class="metric-card alert">
+          <div class="metric-header">
+            <span class="metric-icon">🔴</span>
+            <span class="metric-label">OVERDUE</span>
+          </div>
+          <div class="metric-value" id="overdue">-</div>
+          <div class="metric-breakdown">
+            <span class="breakdown-item" id="overdue-week">- this week</span>
+            <span class="breakdown-item alert" id="overdue-critical">- critical</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-icon">📅</span>
+            <span class="metric-label">THIS WEEK</span>
+          </div>
+          <div class="metric-value" id="this-week">-</div>
+          <div class="metric-breakdown">
+            <span class="breakdown-item good" id="week-done">- done</span>
+            <span class="breakdown-item" id="week-left">- left</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cluster 2: Progress + Operations -->
+    <section class="cluster">
+      <div class="cluster-header">
+        <h2 class="cluster-title">PROGRESS & OPERATIONS</h2>
+        <span class="cluster-subtitle">Project health & fleet status</span>
+      </div>
+      <div class="cluster-grid two-col">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">PROJECTS</span>
+            <span class="panel-badge" id="project-count">-</span>
+          </div>
+          <div class="panel-body">
+            <div class="progress-row">
+              <span class="progress-label">On Track</span>
+              <span class="progress-bar"><span class="progress-fill good" id="proj-ontrack-bar" style="width: 0%"></span></span>
+              <span class="progress-value good" id="proj-ontrack">-</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">At Risk</span>
+              <span class="progress-bar"><span class="progress-fill warn" id="proj-atrisk-bar" style="width: 0%"></span></span>
+              <span class="progress-value warn" id="proj-atrisk">-</span>
+            </div>
+            <div class="progress-row">
+              <span class="progress-label">Delayed</span>
+              <span class="progress-bar"><span class="progress-fill" id="proj-delayed-bar" style="width: 0%"></span></span>
+              <span class="progress-value" id="proj-delayed">-</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">COMPLETION</span>
+            <span class="panel-badge good" id="completion-rate">-%</span>
+          </div>
+          <div class="panel-body">
+            <div class="stat-row">
+              <span class="stat-label">Done</span>
+              <span class="stat-value good" id="done-count">-</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Total</span>
+              <span class="stat-value" id="total-count">-</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Open</span>
+              <span class="stat-value" id="open-count">-</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">BLOCKED</span>
+            <span class="panel-badge" id="blocked-count">-</span>
+          </div>
+          <div class="panel-body">
+            <div class="stat-row">
+              <span class="stat-label">Blocked</span>
+              <span class="stat-value warn" id="blocked-stat">-</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Paused</span>
+              <span class="stat-value" id="paused-stat">-</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Active</span>
+              <span class="stat-value good" id="active-stat">-</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">FLEET</span>
+            <span class="panel-badge" id="fleet-count">-</span>
+          </div>
+          <div class="panel-body">
+            <div class="stat-row">
+              <span class="stat-label">Online</span>
+              <span class="stat-value good" id="fleet-online">-</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Offline</span>
+              <span class="stat-value" id="fleet-offline">-</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Stale</span>
+              <span class="stat-value warn" id="fleet-stale">-</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel wide">
+          <div class="panel-header">
+            <span class="panel-title">NEEDS YOU</span>
+            <span class="panel-badge warn" id="needs-you">-</span>
+          </div>
+          <div class="panel-body">
+            <div class="needs-grid">
+              <div class="needs-item">
+                <span class="needs-label">To Do</span>
+                <span class="needs-value" id="todo-count">-</span>
+              </div>
+              <div class="needs-item">
+                <span class="needs-label">Review</span>
+                <span class="needs-value" id="review-count">-</span>
+              </div>
+              <div class="needs-item">
+                <span class="needs-label">Input</span>
+                <span class="needs-value" id="input-count">-</span>
+              </div>
+              <div class="needs-item">
+                <span class="needs-label">Blocked</span>
+                <span class="needs-value warn" id="blocked-needs">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cluster 3: P&L -->
+    <section class="cluster">
+      <div class="cluster-header">
+        <h2 class="cluster-title">P&L</h2>
+        <span class="cluster-subtitle">Profit & Loss — Weekly</span>
+      </div>
+      <div class="cluster-grid four-col">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-icon">💰</span>
+            <span class="metric-label">WEEKLY PROFIT</span>
+          </div>
+          <div class="metric-value good" id="pnl-profit">+0.00</div>
+          <div class="metric-breakdown">
+            <span class="breakdown-item" id="pnl-profit-note">No data</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-icon">⭐</span>
+            <span class="metric-label">BEST AGENT</span>
+          </div>
+          <div class="metric-value" id="pnl-best">—</div>
+          <div class="metric-breakdown">
+            <span class="breakdown-item" id="pnl-best-note">No data</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-icon">⚠️</span>
+            <span class="metric-label">WORST AGENT</span>
+          </div>
+          <div class="metric-value warn" id="pnl-worst">QUANTA</div>
+          <div class="metric-breakdown">
+            <span class="breakdown-item alert" id="pnl-worst-note">needs work</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-icon">📊</span>
+            <span class="metric-label">NET</span>
+          </div>
+          <div class="metric-value" id="pnl-net">+0.00</div>
+          <div class="metric-breakdown">
+            <span class="breakdown-item" id="pnl-net-profit">Profit: +0.00</span>
+            <span class="breakdown-item" id="pnl-net-loss">Loss: -0.00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent Fleet with Expandable Kanban -->
+    <section class="cluster">
+      <div class="cluster-header">
+        <h2 class="cluster-title">AGENT FLEET</h2>
+        <span class="cluster-subtitle" id="fleet-subtitle">- live · - offline</span>
+      </div>
+      <div class="fleet-grid" id="fleet-grid">
+        <!-- Agents rendered by JS -->
+      </div>
+    </section>
+  </main>
+
+  <div id="task-modal" class="modal-overlay" hidden>
+    <article class="task-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Close task detail">x</button>
+      <div class="modal-kicker" id="modal-id">TASK</div>
+      <h2 id="modal-title">Task detail</h2>
+      <div class="modal-meta" id="modal-meta"></div>
+      <p id="modal-description"></p>
+    </article>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="dashboard-fresh-data-source.js?build=20260624-github-api-data-2" defer></script>
+  <script src="dashboard-hermes-bridge.js?build=20260623-cachebreak-1" defer></script>
+  <script src="dashboard-app-20260623-cachebreak-1.js?build=20260623-cachebreak-1" defer></script>
+</body>
+</html>
