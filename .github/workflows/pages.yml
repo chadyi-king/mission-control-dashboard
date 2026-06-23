@@ -9,13 +9,15 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: mission-control-dashboard-source-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  verify-gh-pages-root:
+  verify-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout GitHub Pages branch source
@@ -23,21 +25,22 @@ jobs:
         with:
           ref: gh-pages
 
-      - name: Build verification artifact from gh-pages root
+      - name: Build complete static artifact from gh-pages root
         run: |
           set -euo pipefail
           rm -rf _site
           mkdir -p _site
 
-          # GitHub Pages is configured for gh-pages / root. This workflow must
-          # verify that exact source instead of deploying a competing artifact.
+          # Copy every static dashboard root asset. This prevents versioned files
+          # such as main-styles-20260623-p5.css from existing in git but missing
+          # from an Actions Pages artifact.
           find . -maxdepth 1 -type f \
             \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' -o -name '.nojekyll' \) \
             -exec cp '{}' _site/ \;
 
           if [ -d assets ]; then cp -R assets _site/assets; fi
 
-          echo 'Verification artifact contents:'
+          echo 'Static artifact contents:'
           find _site -maxdepth 2 -type f | sort
 
       - name: Verify dashboard source contract
@@ -61,7 +64,7 @@ jobs:
           const marker = exists('mission-control-build.json') ? readJson('mission-control-build.json') : {};
           const expected = current.expected || marker.expected || {};
           const currentApp = current.currentApp || marker.currentApp;
-          const dataSnapshot = current.dataSnapshot || 'data.json';
+          const dataSnapshot = current.dataSnapshot || marker.dataSnapshot || 'data.json';
 
           if (current.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
           if (!currentApp) fail('dashboard-current.json missing currentApp');
@@ -180,3 +183,59 @@ jobs:
           console.log(`JS refs: ${referencedJs.join(', ')}`);
           console.log('Expected counts: 22 projects / 106 visible tasks / 29 done / C4 Website Services');
           NODE
+
+      - name: Detect GitHub Pages publishing mode
+        id: pages_mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const repo = process.env.GITHUB_REPOSITORY;
+          const token = process.env.GH_TOKEN;
+          const output = process.env.GITHUB_OUTPUT;
+          const summary = process.env.GITHUB_STEP_SUMMARY;
+          const res = await fetch(`https://api.github.com/repos/${repo}/pages`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28',
+              'User-Agent': 'mission-control-dashboard'
+            }
+          });
+          if (!res.ok) {
+            const body = await res.text();
+            throw new Error(`Could not read Pages settings: HTTP ${res.status} ${body}`);
+          }
+          const pages = await res.json();
+          const buildType = pages.build_type || 'unknown';
+          const sourceBranch = pages.source?.branch || '';
+          const sourcePath = pages.source?.path || '';
+          const deployWithActions = buildType === 'workflow';
+          fs.appendFileSync(output, `build_type=${buildType}\n`);
+          fs.appendFileSync(output, `source_branch=${sourceBranch}\n`);
+          fs.appendFileSync(output, `source_path=${sourcePath}\n`);
+          fs.appendFileSync(output, `deploy_with_actions=${deployWithActions ? 'true' : 'false'}\n`);
+          fs.appendFileSync(summary, `## Mission Control Pages mode\n\n`);
+          fs.appendFileSync(summary, `- build_type: ${buildType}\n`);
+          fs.appendFileSync(summary, `- source: ${sourceBranch || '(none)'} ${sourcePath || ''}\n`);
+          fs.appendFileSync(summary, `- deploy_with_actions: ${deployWithActions}\n`);
+          console.log({ buildType, sourceBranch, sourcePath, deployWithActions });
+          NODE
+
+      - name: Upload Pages artifact for Actions publishing mode
+        if: steps.pages_mode.outputs.deploy_with_actions == 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      - name: Deploy Pages artifact for Actions publishing mode
+        if: steps.pages_mode.outputs.deploy_with_actions == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+      - name: Confirm branch publishing mode
+        if: steps.pages_mode.outputs.deploy_with_actions != 'true'
+        run: |
+          echo 'GitHub Pages is not in Actions publishing mode.'
+          echo 'Verified gh-pages / root source and skipped competing artifact deployment.'
