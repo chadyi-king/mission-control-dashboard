@@ -1,5 +1,5 @@
 name: Diagnose GitHub Pages Source
-# Diagnostic trigger: 20260624-pages-status-3
+# Diagnostic trigger: 20260624-pages-status-4
 
 on:
   workflow_dispatch:
