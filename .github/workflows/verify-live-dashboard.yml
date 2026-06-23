@@ -77,6 +77,7 @@ jobs:
             const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
             return { projects: projects.size, visible: visible.length, done: done.length, c4Name: c4.name };
           };
+          const intText = (value) => Number.parseInt(String(value || '').replace(/[^0-9-]/g, ''), 10);
           const writeProof = (proof) => {
             fs.writeFileSync(proofPath, JSON.stringify(proof, null, 2) + '\n');
           };
@@ -159,12 +160,18 @@ jobs:
                 proof.observed.dataSha256 = crypto.createHash('sha256').update(dataText).digest('hex');
                 proof.observed.stats = stats;
 
+                const expected = deploymentProof.expected || {};
+                const expectedProjects = Number(expected.projects || 0);
+                const expectedVisible = Number(expected.visibleTasks || 0);
+                const expectedDone = Number(expected.doneTasks || 0);
+                proof.observed.expectedCounts = { expectedProjects, expectedVisible, expectedDone };
+
                 proof.checks.rootHttpOk = proof.observed.rootStatus === 200;
                 proof.checks.noOldPatUi = !forbidden.test(dom.text);
                 proof.checks.snapshotLive = dom.syncChip === 'SNAPSHOT LIVE' || dom.text.includes('SNAPSHOT LIVE');
-                proof.checks.projects22 = String(dom.statProjects).trim() === '22' && stats.projects >= 22;
-                proof.checks.visible106 = String(dom.statTotal).trim() === '106' && stats.visible === 106;
-                proof.checks.done29 = String(dom.statDone).trim() === '29' && stats.done === 29;
+                proof.checks.projectsMatch = intText(dom.statProjects) === expectedProjects && stats.projects === expectedProjects && expectedProjects >= 22;
+                proof.checks.visibleTasksMatch = intText(dom.statTotal) === expectedVisible && stats.visible === expectedVisible && expectedVisible > 0;
+                proof.checks.doneTasksMatch = intText(dom.statDone) === expectedDone && stats.done === expectedDone && expectedDone >= 0;
                 proof.checks.c4Visible = /\bC4\b/.test(dom.text) && /Website Services/.test(dom.text) && stats.c4Name === 'Website Services';
                 proof.checks.proofKind = deploymentProof.kind === 'mission-control-dashboard-deployment-proof';
                 proof.checks.proofSourceSha = !expectedSourceSha || deploymentProof.sourceSha === expectedSourceSha;
