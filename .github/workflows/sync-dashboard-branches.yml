@@ -57,23 +57,34 @@ jobs:
           const fail = (message) => { throw new Error(message); };
           const read = (file) => fs.readFileSync(path.join(site, file), 'utf8');
           const readJson = (file) => JSON.parse(read(file));
+
           for (const file of ['index.html', 'dashboard-current.json', 'data.json', 'dashboard-fresh-data-source.js', 'service-worker.js', 'sw.js']) {
             if (!fs.existsSync(path.join(site, file))) fail(`missing ${file}`);
           }
+
           for (const file of fs.readdirSync(site)) {
             if (/\.(html|js)$/i.test(file) && forbidden.test(read(file))) {
               fail(`${file} contains old browser write/PAT pattern`);
             }
           }
-          const app = read('app-20260623-cachebreak-1.html');
-          if (!app.includes('dashboard-fresh-data-source.js')) fail('current app does not load dashboard-fresh-data-source.js');
+
           const root = read('index.html');
           if (!root.includes('dashboard-current.json')) fail('index.html does not load dashboard-current.json');
           if (!root.includes('clearStaleRuntimeCaches')) fail('index.html is missing stale runtime cache cleanup');
+
           const manifest = readJson('dashboard-current.json');
           if (manifest.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
           if (!manifest.currentApp) fail('dashboard-current.json missing currentApp');
           if (!fs.existsSync(path.join(site, manifest.currentApp))) fail(`missing current app ${manifest.currentApp}`);
+          if (/layout-v2/i.test(manifest.currentApp) && !/visual-pass/i.test(String(manifest.qaStatus || ''))) {
+            fail(`refusing to publish unverified layout-v2 app ${manifest.currentApp}`);
+          }
+
+          const app = read(manifest.currentApp);
+          if (!app.includes('dashboard-fresh-data-source.js')) fail(`${manifest.currentApp} does not load dashboard-fresh-data-source.js`);
+          if (!app.includes('dashboard-app-20260623-cachebreak-1.js')) fail(`${manifest.currentApp} does not load the stable dashboard JS`);
+          if (!app.includes('main-styles-20260623-p5.css')) fail(`${manifest.currentApp} does not load the stable dashboard CSS`);
+
           const dataPath = manifest.dataSnapshot || 'data.json';
           if (!fs.existsSync(path.join(site, dataPath))) fail(`missing data snapshot ${dataPath}`);
 
@@ -113,7 +124,7 @@ jobs:
             expected: { projects: projects.size, visibleTasks: visible.length, doneTasks: done.length, c4Name: c4.name }
           };
           fs.writeFileSync(path.join(site, 'deployment-proof.json'), JSON.stringify(proof, null, 2) + '\n');
-          console.log(`Mission Control artifact verified: ${projects.size} projects / ${visible.length} visible tasks / ${done.length} done / C4 Website Services`);
+          console.log(`Mission Control artifact verified: ${projects.size} projects / ${visible.length} visible tasks / ${done.length} done / C4 Website Services / ${manifest.currentApp}`);
           NODE
 
       - name: Checkout gh-pages publishing branch
