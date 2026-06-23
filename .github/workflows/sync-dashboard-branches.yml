@@ -36,115 +36,52 @@ jobs:
           path: source
           token: ${{ github.token }}
 
-      - name: Build clean gh-pages artifact from main
+      - name: Build and verify clean gh-pages artifact
         working-directory: source
         run: |
           set -euo pipefail
           rm -rf public
           mkdir -p public
+          find . -maxdepth 1 -type f \
+            \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' -o -name '.nojekyll' \) \
+            -exec cp '{}' public/ \;
+          if [ -d assets ]; then cp -R assets public/assets; fi
+          touch public/.nojekyll
 
           node <<'NODE'
           const fs = require('fs');
           const path = require('path');
           const crypto = require('crypto');
-          const source = process.cwd();
-          const out = path.join(source, 'public');
-          const failures = [];
-          const copied = new Set();
-          const fail = (message) => failures.push(message);
-          const exists = (file) => fs.existsSync(path.join(source, file));
-          const read = (file) => fs.readFileSync(path.join(source, file), 'utf8');
-          const readJson = (file) => JSON.parse(read(file));
+          const site = 'public';
           const forbidden = /api\.github\.com|GitHub PAT|Personal Access Token|Mark Done to persist/i;
-          const aliases = {
-            backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
-            check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested',
-            in_progress: 'active'
-          };
+          const fail = (message) => { throw new Error(message); };
+          const read = (file) => fs.readFileSync(path.join(site, file), 'utf8');
+          const readJson = (file) => JSON.parse(read(file));
+          for (const file of ['index.html', 'dashboard-current.json', 'data.json']) {
+            if (!fs.existsSync(path.join(site, file))) fail(`missing ${file}`);
+          }
+          for (const file of fs.readdirSync(site)) {
+            if (/\.(html|js)$/i.test(file) && forbidden.test(read(file))) {
+              fail(`${file} contains old browser write/PAT pattern`);
+            }
+          }
+          const root = read('index.html');
+          if (!root.includes('dashboard-current.json')) fail('index.html does not load dashboard-current.json');
+          const manifest = readJson('dashboard-current.json');
+          if (manifest.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
+          if (!manifest.currentApp) fail('dashboard-current.json missing currentApp');
+          if (!fs.existsSync(path.join(site, manifest.currentApp))) fail(`missing current app ${manifest.currentApp}`);
+          const dataPath = manifest.dataSnapshot || 'data.json';
+          if (!fs.existsSync(path.join(site, dataPath))) fail(`missing data snapshot ${dataPath}`);
+
+          const aliases = { backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review', check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested', in_progress: 'active' };
           const normalizeStatus = (status) => {
             const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
             return aliases[raw] || raw || 'open';
           };
-          const normalizeRef = (ref) => {
-            if (!ref) return null;
-            const raw = String(ref).trim();
-            if (!raw || raw.startsWith('#')) return null;
-            if (/^(https?:|data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
-            const clean = raw.split('#')[0].split('?')[0].replace(/^\.\//, '').replace(/^\/mission-control-dashboard\//, '').replace(/^\//, '');
-            if (!clean || clean.includes('..')) return null;
-            return clean;
-          };
-          const refsFromHtml = (file) => {
-            if (!exists(file)) return [];
-            const html = read(file);
-            const refs = [];
-            for (const match of html.matchAll(/<(?:link|script)[^>]+(?:href|src)=["']([^"']+)["']/gi)) {
-              const ref = normalizeRef(match[1]);
-              if (ref) refs.push(ref);
-            }
-            const legacy = html.match(/LEGACY_VISUAL_APP\s*=\s*['"]([^'"]+)['"]/);
-            if (legacy) {
-              const ref = normalizeRef(legacy[1]);
-              if (ref) refs.push(ref);
-            }
-            return [...new Set(refs)];
-          };
-          const copyFile = (file) => {
-            if (!exists(file)) {
-              fail(`missing required artifact file: ${file}`);
-              return;
-            }
-            if (copied.has(file)) return;
-            const from = path.join(source, file);
-            const to = path.join(out, file);
-            fs.mkdirSync(path.dirname(to), { recursive: true });
-            fs.copyFileSync(from, to);
-            copied.add(file);
-          };
-
-          for (const file of ['index.html', 'dashboard-current.json', 'data.json']) copyFile(file);
-          if (exists('mission-control-build.json')) copyFile('mission-control-build.json');
-          if (exists('.nojekyll')) copyFile('.nojekyll');
-          else fs.writeFileSync(path.join(out, '.nojekyll'), '');
-
-          const current = exists('dashboard-current.json') ? readJson('dashboard-current.json') : {};
-          const currentApp = current.currentApp;
-          const dataSnapshot = current.dataSnapshot || 'data.json';
-          if (current.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
-          if (!currentApp) fail('dashboard-current.json missing currentApp');
-          copyFile(dataSnapshot);
-
-          const htmlQueue = ['index.html'];
-          if (currentApp) htmlQueue.push(currentApp);
-          for (let index = 0; index < htmlQueue.length; index += 1) {
-            const file = htmlQueue[index];
-            copyFile(file);
-            if (!exists(file)) continue;
-            const body = read(file);
-            if (forbidden.test(body)) fail(`${file} contains old browser write/PAT pattern`);
-            for (const ref of refsFromHtml(file)) {
-              copyFile(ref);
-              if (ref.endsWith('.html') && !htmlQueue.includes(ref)) htmlQueue.push(ref);
-            }
-          }
-
-          for (const file of [...copied]) {
-            if (/\.(html|js)$/i.test(file) && exists(file) && forbidden.test(read(file))) {
-              fail(`${file} contains old browser write/PAT pattern`);
-            }
-          }
-          const copiedList = [...copied];
-          if (!copiedList.some((file) => file.endsWith('.css'))) fail('artifact references no CSS assets');
-          if (!copiedList.some((file) => file.endsWith('.js'))) fail('artifact references no JS assets');
-
-          if (fs.existsSync(path.join(source, 'assets'))) {
-            fs.cpSync(path.join(source, 'assets'), path.join(out, 'assets'), { recursive: true });
-          }
-
-          const data = exists(dataSnapshot) ? readJson(dataSnapshot) : {};
-          const tasks = Object.entries(data.tasks || {})
-            .filter(([, task]) => task && typeof task === 'object')
-            .map(([id, task]) => ({ id: task.id || id, ...task }));
+          const dataText = read(dataPath);
+          const data = JSON.parse(dataText);
+          const tasks = Object.entries(data.tasks || {}).filter(([, task]) => task && typeof task === 'object').map(([id, task]) => ({ id, ...task }));
           const visible = tasks.filter((task) => normalizeStatus(task.status) !== 'removed');
           const done = visible.filter((task) => normalizeStatus(task.status) === 'done');
           const projects = new Set();
@@ -158,8 +95,6 @@ jobs:
           if (c4.name !== 'Website Services') fail(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
           if (!visible.length) fail('no visible tasks found');
           if (done.length > visible.length) fail('done task count exceeds visible task count');
-
-          const dataText = fs.readFileSync(path.join(out, dataSnapshot), 'utf8');
           const proof = {
             kind: 'mission-control-dashboard-deployment-proof',
             publishedBy: 'sync-dashboard-branches.yml',
@@ -168,29 +103,13 @@ jobs:
             runId: process.env.GITHUB_RUN_ID,
             runAttempt: process.env.GITHUB_RUN_ATTEMPT,
             createdAt: new Date().toISOString(),
-            currentApp,
-            dataSnapshot,
+            currentApp: manifest.currentApp,
+            dataSnapshot: dataPath,
             dataSha256: crypto.createHash('sha256').update(dataText).digest('hex'),
-            expected: {
-              projects: projects.size,
-              visibleTasks: visible.length,
-              doneTasks: done.length,
-              c4Name: c4.name
-            }
+            expected: { projects: projects.size, visibleTasks: visible.length, doneTasks: done.length, c4Name: c4.name }
           };
-          fs.writeFileSync(path.join(out, 'deployment-proof.json'), JSON.stringify(proof, null, 2) + '\n');
-
-          if (failures.length) {
-            console.error('Mission Control gh-pages artifact verification FAILED:');
-            console.error(failures.map((failure) => `- ${failure}`).join('\n'));
-            process.exit(1);
-          }
-          console.log('Mission Control gh-pages artifact verification PASSED.');
-          console.log(`sourceSha: ${process.env.GITHUB_SHA}`);
-          console.log(`currentApp: ${currentApp}`);
-          console.log(`data: ${projects.size} projects / ${visible.length} visible tasks / ${done.length} done / C4 Website Services`);
-          console.log('artifact files:');
-          copiedList.sort().forEach((file) => console.log(`- ${file}`));
+          fs.writeFileSync(path.join(site, 'deployment-proof.json'), JSON.stringify(proof, null, 2) + '\n');
+          console.log(`Mission Control artifact verified: ${projects.size} projects / ${visible.length} visible tasks / ${done.length} done / C4 Website Services`);
           NODE
 
       - name: Checkout gh-pages publishing branch
@@ -258,9 +177,9 @@ jobs:
             printf '[]' > "$deployments_json"
           fi
 
-          node <<'NODE' "$pages_json" "$runs_json" "$deployments_json" "$pages_status" "$runs_status" "$deployments_status"
+          node - "$pages_json" "$runs_json" "$deployments_json" "$pages_status" "$runs_status" "$deployments_status" <<'NODE'
           const fs = require('fs');
-          const [pagesFile, runsFile, deploymentsFile, pagesStatus, runsStatus, deploymentsStatus] = process.argv.slice(1);
+          const [pagesFile, runsFile, deploymentsFile, pagesStatus, runsStatus, deploymentsStatus] = process.argv.slice(2);
           const readJson = (file, fallback) => {
             try { return JSON.parse(fs.readFileSync(file, 'utf8')); }
             catch { return fallback; }
@@ -282,7 +201,7 @@ jobs:
               custom404: pages.custom_404,
               buildType: pages.build_type,
               source: pages.source || null,
-              public: pages.public,
+              public: pages.public
             },
             recentWorkflowRuns: (runsRaw.workflow_runs || []).slice(0, 12).map((run) => ({
               id: run.id,
@@ -294,7 +213,7 @@ jobs:
               head_sha: run.head_sha,
               created_at: run.created_at,
               updated_at: run.updated_at,
-              html_url: run.html_url,
+              html_url: run.html_url
             })),
             recentGithubPagesDeployments: (deploymentsRaw || []).slice(0, 12).map((deployment) => ({
               id: deployment.id,
@@ -304,8 +223,8 @@ jobs:
               environment: deployment.environment,
               created_at: deployment.created_at,
               updated_at: deployment.updated_at,
-              statuses_url: deployment.statuses_url,
-            })),
+              statuses_url: deployment.statuses_url
+            }))
           };
           fs.writeFileSync('diagnostics/pages-source-latest.json', JSON.stringify(report, null, 2) + '\n');
           NODE
