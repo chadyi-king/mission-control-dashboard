@@ -191,36 +191,42 @@ jobs:
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const repo = process.env.GITHUB_REPOSITORY;
-          const token = process.env.GH_TOKEN;
-          const output = process.env.GITHUB_OUTPUT;
-          const summary = process.env.GITHUB_STEP_SUMMARY;
-          const res = await fetch(`https://api.github.com/repos/${repo}/pages`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              Accept: 'application/vnd.github+json',
-              'X-GitHub-Api-Version': '2022-11-28',
-              'User-Agent': 'mission-control-dashboard'
+
+          (async () => {
+            const repo = process.env.GITHUB_REPOSITORY;
+            const token = process.env.GH_TOKEN;
+            const output = process.env.GITHUB_OUTPUT;
+            const summary = process.env.GITHUB_STEP_SUMMARY;
+            const res = await fetch(`https://api.github.com/repos/${repo}/pages`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                Accept: 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28',
+                'User-Agent': 'mission-control-dashboard'
+              }
+            });
+            if (!res.ok) {
+              const body = await res.text();
+              throw new Error(`Could not read Pages settings: HTTP ${res.status} ${body}`);
             }
+            const pages = await res.json();
+            const buildType = pages.build_type || 'unknown';
+            const sourceBranch = pages.source?.branch || '';
+            const sourcePath = pages.source?.path || '';
+            const deployWithActions = buildType === 'workflow';
+            fs.appendFileSync(output, `build_type=${buildType}\n`);
+            fs.appendFileSync(output, `source_branch=${sourceBranch}\n`);
+            fs.appendFileSync(output, `source_path=${sourcePath}\n`);
+            fs.appendFileSync(output, `deploy_with_actions=${deployWithActions ? 'true' : 'false'}\n`);
+            fs.appendFileSync(summary, `## Mission Control Pages mode\n\n`);
+            fs.appendFileSync(summary, `- build_type: ${buildType}\n`);
+            fs.appendFileSync(summary, `- source: ${sourceBranch || '(none)'} ${sourcePath || ''}\n`);
+            fs.appendFileSync(summary, `- deploy_with_actions: ${deployWithActions}\n`);
+            console.log({ buildType, sourceBranch, sourcePath, deployWithActions });
+          })().catch((error) => {
+            console.error(error);
+            process.exit(1);
           });
-          if (!res.ok) {
-            const body = await res.text();
-            throw new Error(`Could not read Pages settings: HTTP ${res.status} ${body}`);
-          }
-          const pages = await res.json();
-          const buildType = pages.build_type || 'unknown';
-          const sourceBranch = pages.source?.branch || '';
-          const sourcePath = pages.source?.path || '';
-          const deployWithActions = buildType === 'workflow';
-          fs.appendFileSync(output, `build_type=${buildType}\n`);
-          fs.appendFileSync(output, `source_branch=${sourceBranch}\n`);
-          fs.appendFileSync(output, `source_path=${sourcePath}\n`);
-          fs.appendFileSync(output, `deploy_with_actions=${deployWithActions ? 'true' : 'false'}\n`);
-          fs.appendFileSync(summary, `## Mission Control Pages mode\n\n`);
-          fs.appendFileSync(summary, `- build_type: ${buildType}\n`);
-          fs.appendFileSync(summary, `- source: ${sourceBranch || '(none)'} ${sourcePath || ''}\n`);
-          fs.appendFileSync(summary, `- deploy_with_actions: ${deployWithActions}\n`);
-          console.log({ buildType, sourceBranch, sourcePath, deployWithActions });
           NODE
 
       - name: Upload Pages artifact for Actions publishing mode
