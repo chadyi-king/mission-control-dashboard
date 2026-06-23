@@ -39,14 +39,9 @@
       }
 
       try {
-        const manifestResponse = await fetch(withNoCache('dashboard-current.json', BOOT_ID), {
-          cache: 'no-store',
-          headers: { 'Cache-Control': 'no-cache' }
-        });
-        if (!manifestResponse.ok) throw new Error('dashboard-current.json HTTP ' + manifestResponse.status);
-        const manifest = await manifestResponse.json();
-        const appFile = manifest.currentApp || 'app-20260623-backend-contract-1.html';
-        const appBuild = manifest.appBuildId || manifest.dashboardBuildId || BOOT_ID;
+        // Force load working cachebreak-1 app - bypass CDN cache issues
+        const appFile = 'app-20260623-cachebreak-1.html';
+        const appBuild = '20260623-cachebreak-1';
         status.textContent = 'Loading Mission Control...';
 
         const appResponse = await fetch(withNoCache(appFile, appBuild), {
