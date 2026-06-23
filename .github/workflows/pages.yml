@@ -76,6 +76,10 @@ jobs:
           NODE
 
       - name: Prepare static dashboard artifact
+        env:
+          JS_FILE: ${{ steps.manifest.outputs.JS_FILE }}
+          DASHBOARD_APP_FILE: ${{ steps.manifest.outputs.DASHBOARD_APP_FILE }}
+          VISUAL_APP_FILE: ${{ steps.manifest.outputs.VISUAL_APP_FILE }}
         run: |
           rm -rf _site
           mkdir -p _site
