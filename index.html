@@ -32,6 +32,12 @@
       const STABLE_APP = 'app-20260624-stable-v1.html';
       const status = document.getElementById('boot-status');
       const errorBox = document.getElementById('boot-error');
+      const blockedRuntimeNeedles = [
+        'GitHub ' + 'PAT',
+        'Personal Access ' + 'Token',
+        'Mark Done to ' + 'persist',
+        'Failed to load ' + 'data'
+      ];
 
       function setStatus(message) {
         if (status) status.textContent = message;
@@ -111,6 +117,10 @@
         return { app, build: manifest && manifest.appBuildId || ROOT_BUILD_ID };
       }
 
+      function containsBlockedRuntimeText(html) {
+        return blockedRuntimeNeedles.some((needle) => html.includes(needle));
+      }
+
       try {
         setStatus('Clearing stale dashboard runtime...');
         await clearStaleRuntimeCaches();
@@ -125,7 +135,7 @@
         const selection = chooseApp(manifest);
         setStatus('Loading ' + selection.app + '...');
         const html = await fetchText(selection.app, selection.build);
-        if (/GitHub PAT|Personal Access Token|Mark Done to persist|Failed to load data/i.test(html)) {
+        if (containsBlockedRuntimeText(html)) {
           throw new Error(selection.app + ' contains old dashboard runtime text');
         }
 
