@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  <!-- Main backend contract wrapper: 20260623-backend-contract-1 -->
+  <!-- Main backend contract wrapper: 20260623-cachebreak-1 -->
   <main class="boot">
     <div class="brand">RED SUN COMMAND</div>
     <div class="status" id="status">Loading Mission Control...</div>
@@ -28,7 +28,7 @@
     (async function loadRestoredApp() {
       const status = document.getElementById('status');
       const error = document.getElementById('error');
-      const BUILD_ID = '20260623-backend-contract-1';
+      const BUILD_ID = '20260623-cachebreak-1';
       const LEGACY_VISUAL_APP = 'app-20260623-cachebreak-1.html';
 
       function withNoCache(path, build) {
@@ -45,7 +45,7 @@
         });
         if (!response.ok) throw new Error(LEGACY_VISUAL_APP + ' HTTP ' + response.status);
         let html = await response.text();
-        html = html.replace('</body>', '  <script src="dashboard-visual-state-hydrator.js?build=20260623-backend-contract-1" defer><\/script>\n</body>');
+        html = html.replace('</body>', '  <script src="dashboard-visual-state-hydrator.js?build=20260623-cachebreak-1" defer><\/script>\n</body>');
         document.open();
         document.write(html);
         document.close();
