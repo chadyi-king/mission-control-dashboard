@@ -11,53 +11,134 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; background: #050508; color: rgba(255,255,255,.92); font-family: Arial, sans-serif; }
     body { display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at 50% 35%, rgba(220,20,60,.18), transparent 32%), #050508; }
-    .boot { width: min(520px, 100%); border: 1px solid rgba(220,20,60,.35); background: rgba(8,8,13,.88); padding: 22px; border-radius: 8px; box-shadow: 0 18px 70px rgba(0,0,0,.55); }
-    .brand { color: #dc143c; font-weight: 800; font-size: 14px; text-transform: uppercase; margin-bottom: 8px; }
-    .status { color: rgba(230,232,245,.7); line-height: 1.45; }
+    .boot { width: min(560px, 100%); border: 1px solid rgba(220,20,60,.35); background: rgba(8,8,13,.88); padding: 22px; border-radius: 8px; box-shadow: 0 18px 70px rgba(0,0,0,.55); }
+    .brand { color: #dc143c; font-weight: 800; font-size: 14px; text-transform: uppercase; margin-bottom: 8px; letter-spacing: .08em; }
+    .status { color: rgba(230,232,245,.74); line-height: 1.45; }
     .error { color: #ff7070; margin-top: 12px; white-space: pre-wrap; }
+    .hint { margin-top: 12px; color: rgba(230,232,245,.45); font-size: 12px; }
   </style>
 </head>
 <body>
-  <!-- Main branch fallback redeploy trigger: 20260623-backend-contract-main-4 -->
   <main class="boot" id="boot">
     <div class="brand">RED SUN COMMAND</div>
     <div class="status" id="boot-status">Loading Mission Control...</div>
     <div class="error" id="boot-error" hidden></div>
+    <div class="hint" id="boot-hint">Bootloader 20260624-root-stabilize-1</div>
   </main>
 
   <script>
     (async function bootMissionControl() {
+      const ROOT_BUILD_ID = '20260624-root-stabilize-1';
+      const STABLE_APP = 'app-20260624-stable-v1.html';
       const status = document.getElementById('boot-status');
       const errorBox = document.getElementById('boot-error');
-      const BOOT_ID = '20260623-backend-contract-main-4';
+
+      function setStatus(message) {
+        if (status) status.textContent = message;
+      }
 
       function withNoCache(path, build) {
         const url = new URL(path, window.location.href);
-        url.searchParams.set('build', build || BOOT_ID);
+        url.searchParams.set('build', build || ROOT_BUILD_ID);
         url.searchParams.set('t', String(Date.now()));
         return url.toString();
       }
 
-      try {
-        // Force load working cachebreak-1 app - bypass CDN cache issues
-        const appFile = 'app-20260623-cachebreak-1.html';
-        const appBuild = '20260623-cachebreak-1';
-        status.textContent = 'Loading Mission Control...';
-
-        const appResponse = await fetch(withNoCache(appFile, appBuild), {
+      async function fetchText(path, build) {
+        const response = await fetch(withNoCache(path, build), {
           cache: 'no-store',
-          headers: { 'Cache-Control': 'no-cache' }
+          headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' }
         });
-        if (!appResponse.ok) throw new Error(appFile + ' HTTP ' + appResponse.status);
-        const html = await appResponse.text();
+        if (!response.ok) throw new Error(path + ' HTTP ' + response.status);
+        return response.text();
+      }
+
+      async function fetchJson(path, build) {
+        return JSON.parse(await fetchText(path, build));
+      }
+
+      async function clearStaleRuntimeCaches() {
+        try {
+          if ('caches' in window) {
+            const keys = await caches.keys();
+            await Promise.all(keys
+              .filter((key) => /mission|dashboard|red-sun|workbox|github-pages/i.test(key))
+              .map((key) => caches.delete(key)));
+          }
+        } catch (error) {
+          console.warn('[Mission Control Boot] cache cleanup skipped', error);
+        }
+
+        try {
+          if (window.localStorage) {
+            const keys = Object.keys(window.localStorage);
+            keys
+              .filter((key) => /mission[-_ ]?control|dashboard|github.*token|pat/i.test(key))
+              .forEach((key) => window.localStorage.removeItem(key));
+          }
+        } catch (error) {
+          console.warn('[Mission Control Boot] local storage cleanup skipped', error);
+        }
+
+        try {
+          if ('serviceWorker' in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations
+              .filter((registration) => registration.scope && registration.scope.includes('/mission-control-dashboard/'))
+              .map((registration) => registration.unregister()));
+          }
+        } catch (error) {
+          console.warn('[Mission Control Boot] service worker cleanup skipped', error);
+        }
+      }
+
+      async function registerCacheKiller() {
+        if (!('serviceWorker' in navigator)) return;
+        try {
+          await navigator.serviceWorker.register(withNoCache('service-worker.js', ROOT_BUILD_ID), { scope: './' });
+        } catch (error) {
+          console.warn('[Mission Control Boot] cache killer registration skipped', error);
+        }
+      }
+
+      function chooseApp(manifest) {
+        const app = String(manifest && manifest.currentApp || STABLE_APP);
+        const qaStatus = String(manifest && manifest.qaStatus || '');
+        if (/layout-v2/i.test(app) && !/visual-pass/i.test(qaStatus)) {
+          console.warn('[Mission Control Boot] layout-v2 is not QA-approved; falling back to stable app.');
+          return { app: STABLE_APP, build: '20260624-stable-v1' };
+        }
+        return { app, build: manifest && manifest.appBuildId || ROOT_BUILD_ID };
+      }
+
+      try {
+        setStatus('Clearing stale dashboard runtime...');
+        await clearStaleRuntimeCaches();
+        registerCacheKiller();
+
+        setStatus('Reading dashboard manifest...');
+        const manifest = await fetchJson('dashboard-current.json', ROOT_BUILD_ID);
+        if (!manifest || manifest.kind !== 'mission-control-dashboard-current-app') {
+          throw new Error('dashboard-current.json kind mismatch');
+        }
+
+        const selection = chooseApp(manifest);
+        setStatus('Loading ' + selection.app + '...');
+        const html = await fetchText(selection.app, selection.build);
+        if (/GitHub PAT|Personal Access Token|Mark Done to persist|Failed to load data/i.test(html)) {
+          throw new Error(selection.app + ' contains old dashboard runtime text');
+        }
+
         document.open();
         document.write(html);
         document.close();
       } catch (error) {
         console.error('[Mission Control Boot]', error);
-        status.textContent = 'Mission Control could not boot.';
-        errorBox.hidden = false;
-        errorBox.textContent = error.message || String(error);
+        setStatus('Mission Control could not boot.');
+        if (errorBox) {
+          errorBox.hidden = false;
+          errorBox.textContent = error.message || String(error);
+        }
       }
     })();
   </script>
