@@ -41,7 +41,6 @@ jobs:
           npx playwright install --with-deps chromium
 
       - name: Verify public root URL runtime
-        id: runtime
         working-directory: /tmp/mission-control-playwright
         env:
           PROOF_PATH: ${{ github.workspace }}/diagnostics/live-runtime-proof-latest.json
@@ -69,6 +68,9 @@ jobs:
             const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
             return aliases[raw] || raw || 'open';
           };
+          const intText = (value) => Number.parseInt(String(value || '').replace(/[^0-9-]/g, ''), 10);
+          const writeProof = (proof) => fs.writeFileSync(proofPath, JSON.stringify(proof, null, 2) + '\n');
+
           const verifyData = (data) => {
             const tasks = Object.entries(data.tasks || {})
               .filter(([, task]) => task && typeof task === 'object')
@@ -83,7 +85,7 @@ jobs:
             const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
             return { projects: projects.size, visible: visible.length, done: done.length, c4Name: c4.name };
           };
-          const intText = (value) => Number.parseInt(String(value || '').replace(/[^0-9-]/g, ''), 10);
+
           const readGitHubData = async (request) => {
             const apiUrl = `https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=${Date.now()}`;
             const response = await request.get(apiUrl, { headers: { Accept: 'application/vnd.github+json' } });
@@ -93,16 +95,16 @@ jobs:
             JSON.parse(text);
             return { text, sha: payload.sha || '', status: response.status() };
           };
-          const writeProof = (proof) => fs.writeFileSync(proofPath, JSON.stringify(proof, null, 2) + '\n');
 
           (async () => {
             let lastProof = null;
-            for (let attempt = 1; attempt <= 40; attempt += 1) {
+            for (let attempt = 1; attempt <= 32; attempt += 1) {
               const browser = await chromium.launch({ headless: true });
               const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 1440, height: 1100 } });
               const page = await context.newPage();
               const proof = {
                 kind: 'mission-control-live-runtime-proof',
+                verifierBuild: '20260624-direct-root-aware-1',
                 generatedAt: new Date().toISOString(),
                 attempt,
                 url: base,
@@ -119,9 +121,10 @@ jobs:
                 await page.waitForFunction(() => {
                   const source = window.__MISSION_CONTROL_DATA_SOURCE__;
                   const text = document.body ? document.body.innerText : '';
-                  return source?.mode === 'github-api-main' || text.includes('DATA ERROR') || text.includes('Failed to load data') || text.includes('GitHub Personal Access Token');
+                  const total = document.querySelector('#stat-total')?.textContent || '';
+                  return source?.mode === 'github-api-main' || /DATA ERROR|Failed to load data|Personal Access Token/i.test(text) || /\d+/.test(total);
                 }, { timeout: 60000 }).catch(() => null);
-                await page.waitForTimeout(1000);
+                await page.waitForTimeout(1200);
 
                 const dom = await page.evaluate(() => {
                   const text = document.body ? document.body.innerText : '';
@@ -129,7 +132,9 @@ jobs:
                   return {
                     title: document.title,
                     text,
-                    textSample: text.slice(0, 2200),
+                    textSample: text.slice(0, 2600),
+                    rootMode: window.__MISSION_CONTROL_ROOT_MODE__ || '',
+                    rootBuild: window.__MISSION_CONTROL_ROOT_BUILD__ || '',
                     syncChip: q('#sync-chip'),
                     statTotal: q('#stat-total'),
                     statDone: q('#stat-done'),
@@ -137,12 +142,25 @@ jobs:
                     statC4: q('#stat-c4'),
                     buildId: q('#build-id'),
                     dataSource: window.__MISSION_CONTROL_DATA_SOURCE__ || null,
-                    resourceNames: performance.getEntriesByType('resource').map((entry) => entry.name).slice(-120)
+                    fleetCards: document.querySelectorAll('#fleet-grid .agent-card, #fleet-grid [class*="agent"]').length,
+                    statCards: document.querySelectorAll('.stat-card').length,
+                    categoryCards: document.querySelectorAll('.project-card, [class*="project-card"]').length,
+                    resourceNames: performance.getEntriesByType('resource').map((entry) => entry.name).slice(-160)
                   };
                 });
 
+                const manifestResponse = await context.request.get(new URL('dashboard-current.json', base).toString(), { headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } });
+                const manifest = await manifestResponse.json().catch(() => ({}));
+                const proofResponse = await context.request.get(new URL('deployment-proof.json', base).toString(), { headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } });
+                const deploymentProof = await proofResponse.json().catch(() => ({}));
+                const githubData = await readGitHubData(context.request);
+                const dataText = githubData.text;
+                const stats = verifyData(JSON.parse(dataText));
+
                 proof.observed.dom = {
                   title: dom.title,
+                  rootMode: dom.rootMode,
+                  rootBuild: dom.rootBuild,
                   syncChip: dom.syncChip,
                   statTotal: dom.statTotal,
                   statDone: dom.statDone,
@@ -150,50 +168,47 @@ jobs:
                   statC4: dom.statC4,
                   buildId: dom.buildId,
                   dataSource: dom.dataSource,
+                  fleetCards: dom.fleetCards,
+                  statCards: dom.statCards,
+                  categoryCards: dom.categoryCards,
                   textSample: dom.textSample,
                   resourceNames: dom.resourceNames
                 };
-
-                const manifestResponse = await context.request.get(new URL('dashboard-current.json', base).toString(), { headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } });
                 proof.observed.manifestStatus = manifestResponse.status();
-                const manifest = await manifestResponse.json();
                 proof.observed.manifest = manifest;
-
-                const proofResponse = await context.request.get(new URL('deployment-proof.json', base).toString(), { headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } });
                 proof.observed.proofStatus = proofResponse.status();
-                const deploymentProof = await proofResponse.json().catch(() => ({}));
                 proof.observed.deploymentProof = deploymentProof;
-
-                const githubData = await readGitHubData(context.request);
-                const dataText = githubData.text;
-                const data = JSON.parse(dataText);
-                const stats = verifyData(data);
                 proof.observed.githubDataStatus = githubData.status;
                 proof.observed.githubDataSha = githubData.sha;
                 proof.observed.dataSha256 = crypto.createHash('sha256').update(dataText).digest('hex');
                 proof.observed.stats = stats;
 
+                const text = dom.text || '';
+                const loadedStableApp = dom.resourceNames.some((name) => name.includes(manifest.currentApp || 'app-20260624-stable-v1.html'));
+                const directRoot = dom.rootMode === 'direct-stable-v1' || dom.rootBuild === '20260624-root-direct-stable-1';
                 const deploymentMode = String(deploymentProof.deploymentMode || '');
+
                 proof.checks.rootHttpOk = proof.observed.rootStatus === 200;
-                proof.checks.noOldPatUi = !forbidden.test(dom.text);
-                proof.checks.snapshotLive = dom.syncChip === 'SNAPSHOT LIVE' || dom.text.includes('SNAPSHOT LIVE');
+                proof.checks.noOldPatUi = !forbidden.test(text);
+                proof.checks.redSunDesign = /RED SUN COMMAND/i.test(text) && dom.statCards >= 6 && dom.fleetCards >= 10;
+                proof.checks.snapshotLive = dom.syncChip === 'SNAPSHOT LIVE' || text.includes('SNAPSHOT LIVE');
                 proof.checks.githubApiDataSource = dom.dataSource?.mode === 'github-api-main';
                 proof.checks.dataSourceBuildV2 = dom.dataSource?.buildId === '20260624-github-api-data-2';
                 proof.checks.projectsMatch = intText(dom.statProjects) === stats.projects && stats.projects >= 22;
                 proof.checks.visibleTasksMatch = intText(dom.statTotal) === stats.visible && stats.visible > 0;
                 proof.checks.doneTasksMatch = intText(dom.statDone) === stats.done && stats.done >= 0;
-                proof.checks.c4Visible = /\bC4\b/.test(dom.text) && /Website Services/.test(dom.text) && stats.c4Name === 'Website Services';
+                proof.checks.c4Visible = /\bC4\b/.test(text) && /Website Services/.test(text) && stats.c4Name === 'Website Services';
+                proof.checks.directRootOrStableApp = directRoot || loadedStableApp;
+                proof.checks.freshDataSourceLoaded = dom.resourceNames.some((name) => name.includes('dashboard-fresh-data-source.js'));
                 proof.checks.branchDeployment = deploymentProof.publishedBy === 'sync-dashboard-branches.yml' && /gh-pages/.test(deploymentMode);
                 proof.checks.proofSourceSha = !expectedSourceSha || !deploymentProof.sourceSha || deploymentProof.sourceSha === expectedSourceSha;
-                proof.checks.currentAppLoaded = dom.resourceNames.some((name) => name.includes(manifest.currentApp));
-                proof.checks.freshDataSourceLoaded = dom.resourceNames.some((name) => name.includes('dashboard-fresh-data-source.js?build=20260624-github-api-data-2'));
 
                 const failed = Object.entries(proof.checks).filter(([, value]) => !value).map(([key]) => key);
                 if (failed.length) throw new Error(`failed checks: ${failed.join(', ')}`);
 
                 proof.pass = true;
                 writeProof(proof);
-                console.log(`Live root runtime verified from GitHub API data: ${stats.projects} projects / ${stats.visible} visible tasks / ${stats.done} done / C4 Website Services`);
+                console.log(`Live root runtime verified: ${stats.projects} projects / ${stats.visible} visible tasks / ${stats.done} done / C4 Website Services / ${directRoot ? 'direct root' : 'stable app resource'}`);
                 await browser.close();
                 return;
               } catch (error) {
@@ -202,7 +217,7 @@ jobs:
                 writeProof(proof);
                 console.log(`Attempt ${attempt} failed: ${proof.errors.join('; ')}`);
                 await browser.close().catch(() => null);
-                if (attempt < 40) await sleep(15000);
+                if (attempt < 32) await sleep(15000);
               }
             }
             writeProof(lastProof || { kind: 'mission-control-live-runtime-proof', pass: false, errors: ['no proof collected'] });
@@ -227,6 +242,7 @@ jobs:
             echo 'No live runtime proof changes to commit.'
           else
             git commit -m 'Capture live dashboard runtime proof'
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
 
