@@ -1,11 +1,12 @@
 {
   "kind": "mission-control-dashboard-build-marker",
-  "dashboardBuildId": "20260623-cachebreak-1",
-  "appBuildId": "20260623-cachebreak-1",
-  "source": "gh-pages-canonical",
+  "dashboardBuildId": "20260623-cachebreak-2",
+  "appBuildId": "20260623-layout-v2",
+  "source": "gh-pages-root",
   "rootLoader": "index.html",
   "currentManifest": "dashboard-current.json",
-  "currentApp": "app-20260623-backend-contract-1.html",
+  "currentApp": "app-20260623-layout-v2.html",
+  "dataSnapshot": "data.json",
   "expected": {
     "projects": 22,
     "requiredProject": "C4",
@@ -16,8 +17,8 @@
   "backendContract": {
     "canonicalState": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
     "publicSnapshot": "data.json",
-    "dashboardWrites": ["priority_queue_reorder", "agent_board_move"],
+    "dashboardWrites": [],
     "forbiddenBrowserWrites": ["GitHub PAT", "mark done", "set deadline", "assign owner"]
   },
-  "notes": "Build marker aligned with dashboard-current.json. Verification reads manifest first, then verifies actual referenced files."
+  "notes": "GitHub Pages is published from gh-pages / root. index.html is a stable manifest bootloader. dashboard-current.json selects the current app."
 }
