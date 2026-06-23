@@ -237,14 +237,83 @@
 
   function buildQueues(tasks, raw) {
     const inputIds = new Set(asArray(raw.inputsNeeded).map((item) => item.taskId || item.id).filter(Boolean));
+    
+    // 1. Review: strictly needs_review status
     const review = tasks.filter((task) => task.status === 'needs_review');
-    const input = tasks.filter((task) => task.status === 'input_requested' || task.status === 'blocked' || inputIds.has(task.id));
+    
+    // 2. Input Requested: strictly input_requested OR explicitly in inputsNeeded
+    // Does NOT include blocked tasks
+    const input = tasks.filter((task) => task.status === 'input_requested' || inputIds.has(task.id));
+    
+    // 3. Blocked: strictly blocked status
+    const blocked = tasks.filter((task) => task.status === 'blocked');
+    
+    // 4. Active: strictly active status
     const active = tasks.filter((task) => task.status === 'active');
-    const high = tasks.filter((task) => task.priority === 'high');
-    const caleb = tasks.filter((task) => task.status !== 'done' && task.agentId === 'chad-yi');
-    const focus = uniqueTasks([...input, ...review, ...active, ...high, ...caleb]).slice(0, 12);
-    const priority = uniqueTasks([...high, ...input, ...review, ...active, ...tasks.filter((task) => task.status === 'open')]);
-    return { review, input, active, high, caleb, focus, priority };
+    
+    // 5. High priority (for focus sorting)
+    const high = tasks.filter((task) => task.priority === 'high' && task.status !== 'done');
+    
+    // 6. Caleb's Queue: tasks that ACTUALLY need Caleb's attention
+    // - input_requested (Caleb needs to answer)
+    // - blocked (Caleb may need to unblock)
+    // - needs_review (Caleb needs to review)
+    // - active tasks owned by Caleb
+    // - overdue/soon tasks with deadlines
+    const today = isoDate(new Date());
+    const caleb = tasks.filter((task) => {
+      if (task.status === 'done' || task.status === 'removed') return false;
+      if (task.agentId !== 'chad-yi') return false;
+      // Only include if it needs attention
+      return task.status === 'input_requested' || 
+             task.status === 'blocked' || 
+             task.status === 'needs_review' ||
+             task.status === 'active' ||
+             (task.deadline && task.deadline <= today);
+    });
+    
+    // 7. Today's Focus: sorted by urgency signals
+    // Order: blocked/input > review > active > due soon > high priority > open
+    const focusTasks = uniqueTasks([...blocked, ...input, ...review, ...active, ...high, ...caleb]);
+    const focus = sortByUrgency(focusTasks).slice(0, 12);
+    
+    // 8. Priority queue (for agent boards)
+    const priority = uniqueTasks([...high, ...blocked, ...input, ...review, ...active, ...tasks.filter((task) => task.status === 'open')]);
+    
+    return { review, input, blocked, active, high, caleb, focus, priority };
+  }
+
+  function sortByUrgency(tasks) {
+    const today = isoDate(new Date());
+    const tomorrow = isoDate(new Date(Date.now() + 86400000));
+    
+    return tasks.sort((a, b) => {
+      // Urgency score: higher = more urgent
+      const score = (task) => {
+        let s = 0;
+        // Blocked or input requested = highest
+        if (task.status === 'blocked' || task.status === 'input_requested') s += 100;
+        // Needs review = high
+        if (task.status === 'needs_review') s += 80;
+        // Active = medium-high
+        if (task.status === 'active') s += 60;
+        // Due today = very high
+        if (task.deadline && task.deadline <= today) s += 90;
+        // Due tomorrow = high
+        if (task.deadline && task.deadline === tomorrow) s += 70;
+        // Due within week = medium
+        if (task.deadline && task.deadline > tomorrow) {
+          const daysUntil = Math.ceil((new Date(task.deadline) - new Date(today)) / 86400000);
+          if (daysUntil <= 7) s += 50;
+        }
+        // High priority = boost
+        if (task.priority === 'high') s += 40;
+        // Medium priority = small boost
+        if (task.priority === 'medium') s += 20;
+        return s;
+      };
+      return score(b) - score(a);
+    });
   }
 
   function buildStats() {
@@ -256,7 +325,7 @@
       open: state.tasks.length - done,
       active: count('active'),
       blocked: count('blocked'),
-      input: state.queues.input.length,
+      input: state.queues.input ? state.queues.input.length : 0,
       needsReview: count('needs_review'),
       paused: count('paused'),
       projects: state.projects.length,
@@ -291,7 +360,7 @@
     setText('stat-rate', `${state.stats.completionRate}% complete`);
     setText('stat-projects', state.stats.projects);
     setText('stat-c4', state.stats.hasC4 ? 'C4 visible' : 'C4 missing');
-    setText('stat-caleb', state.queues.caleb.length);
+    setText('stat-caleb', state.queues.caleb ? state.queues.caleb.length : 0);
     setText('stat-input', `${state.stats.input} input`);
     setText('stat-active', state.stats.active);
     setText('stat-blocked', `${state.stats.blocked} blocked`);
@@ -335,37 +404,110 @@
   }
 
   function renderBriefing() {
-    const briefing = state.raw.dailyBriefing || {};
-    const summary = briefing.summary || `${state.stats.open} tasks left across ${state.stats.projects} projects. C4 is ${state.stats.hasC4 ? 'visible' : 'missing'}.`;
+    const today = isoDate(new Date());
+    const blocked = state.queues.blocked || [];
+    const input = state.queues.input || [];
+    const review = state.queues.review || [];
+    const caleb = state.queues.caleb || [];
+    const active = state.queues.active || [];
+    
+    // Build actionable summary
+    const parts = [];
+    
+    if (blocked.length > 0) {
+      parts.push(`🚫 ${blocked.length} blocked — needs action to unblock`);
+    }
+    if (input.length > 0) {
+      parts.push(`❓ ${input.length} waiting for your input`);
+    }
+    if (review.length > 0) {
+      parts.push(`👀 ${review.length} ready for review`);
+    }
+    if (caleb.length > 0 && blocked.length === 0 && input.length === 0) {
+      parts.push(`📋 ${caleb.length} tasks need your attention`);
+    }
+    if (active.length > 0) {
+      parts.push(`⚡ ${active.length} active`);
+    }
+    if (parts.length === 0) {
+      parts.push('✅ All clear — no urgent items');
+    }
+    
+    // Add deadline warning
+    const overdue = state.tasks.filter((t) => t.deadline && t.deadline < today && t.status !== 'done');
+    const dueToday = state.tasks.filter((t) => t.deadline === today && t.status !== 'done');
+    if (overdue.length > 0) {
+      parts.push(`⏰ ${overdue.length} overdue`);
+    }
+    if (dueToday.length > 0) {
+      parts.push(`📅 ${dueToday.length} due today`);
+    }
+    
+    const summary = parts.join(' · ');
+    
     const target = $('daily-briefing');
     if (!target) return;
     target.innerHTML = `
-      <div>${esc(summary)}</div>
+      <div class="briefing-summary">${esc(summary)}</div>
       <div class="briefing-metrics">
-        ${metric('Left', state.stats.open)}
-        ${metric('Active', state.stats.active)}
-        ${metric('Blocked', state.stats.blocked)}
-        ${metric('Done', state.stats.done)}
+        ${metric('Blocked', blocked.length)}
+        ${metric('Input', input.length)}
+        ${metric('Review', review.length)}
+        ${metric('Active', active.length)}
       </div>
+      <div class="briefing-note">Update tasks through Telegram/Hermes</div>
     `;
   }
 
   function renderQueues() {
-    setText('review-count', state.queues.review.length);
-    setText('input-count', state.queues.input.length);
-    setText('caleb-count', state.queues.caleb.length);
-    const review = $('review-list');
-    const input = $('input-list');
-    const caleb = $('caleb-list');
-    if (review) review.innerHTML = taskRows(state.queues.review, 'No tasks awaiting review.');
-    if (input) input.innerHTML = taskRows(state.queues.input, 'No input requests right now.');
-    if (caleb) caleb.innerHTML = taskRows(state.queues.caleb.slice(0, 10), 'Caleb queue is clear.');
+    const blocked = state.queues.blocked || [];
+    const input = state.queues.input || [];
+    const review = state.queues.review || [];
+    const caleb = state.queues.caleb || [];
+    
+    // Update counts
+    setText('review-count', review.length);
+    setText('input-count', input.length);
+    setText('blocked-count', blocked.length);
+    setText('caleb-count', caleb.length);
+    
+    const reviewList = $('review-list');
+    const inputList = $('input-list');
+    const blockedList = $('blocked-list');
+    const calebList = $('caleb-list');
+    
+    if (reviewList) {
+      reviewList.innerHTML = review.length 
+        ? taskRows(review.slice(0, 5), '') 
+        : '<div class="empty-state">No tasks awaiting review. Mark a task "needs review" to see it here.</div>';
+    }
+    
+    if (inputList) {
+      inputList.innerHTML = input.length
+        ? taskRows(input.slice(0, 5), '')
+        : '<div class="empty-state">No input requests. Ask Hermes to mark a task "input requested" when you need Caleb to answer.</div>';
+    }
+    
+    if (blockedList) {
+      blockedList.innerHTML = blocked.length
+        ? taskRows(blocked.slice(0, 5), '')
+        : '<div class="empty-state">No blocked tasks. A task is blocked when an agent cannot continue due to an obstacle.</div>';
+    }
+    
+    if (calebList) {
+      if (caleb.length === 0) {
+        calebList.innerHTML = '<div class="empty-state">Caleb\'s queue is clear. No urgent items need your attention.</div>';
+      } else {
+        // Sort Caleb's queue by urgency
+        const sorted = sortByUrgency([...caleb]).slice(0, 8);
+        calebList.innerHTML = taskRows(sorted, '');
+      }
+    }
   }
 
   function renderFocus() {
-    const ordered = state.visualFocusOrder.length
-      ? state.visualFocusOrder.map((id) => state.taskMap.get(id)).filter(Boolean)
-      : state.queues.focus;
+    // Use the pre-sorted focus queue from buildQueues
+    const ordered = state.queues.focus || [];
     setText('focus-total-count', `${ordered.length} tasks`);
     const list = $('focus-list');
     if (!list) return;
@@ -373,10 +515,10 @@
       ? ordered.map((task, index) => `
         <div class="focus-card" draggable="true" data-task-id="${esc(task.id)}">
           <div class="task-title">${index + 1}. ${esc(task.title)}</div>
-          <div class="task-meta"><span>${esc(task.id)}</span><span>${esc(task.project)}</span><span class="badge ${esc(task.status)}">${esc(statusLabel(task.status))}</span><span>${esc(agentName(task.agentId))}</span></div>
+          <div class="task-meta"><span>${esc(task.id)}</span><span>${esc(task.project)}</span><span class="badge ${esc(task.status)}">${esc(statusLabel(task.status))}</span><span>${esc(agentName(task.agentId))}</span>${task.deadline ? `<span>📅 ${esc(task.deadline)}</span>` : ''}</div>
         </div>
       `).join('')
-      : '<div class="empty-state">No focus tasks available.</div>';
+      : '<div class="empty-state">No focus tasks. Mark tasks as blocked, input requested, or active to see them here.</div>';
     wireDragList('focus-list', async (ids) => {
       const ok = await persistPriorityOrder(ids);
       if (!ok) renderFocus();
@@ -393,16 +535,33 @@
     setText('week-window', `${formatDay(days[0])} - ${formatDay(days[6])}`);
     const target = $('week-calendar');
     if (!target) return;
+    
+    // Count tasks with deadlines
+    const tasksWithDeadlines = state.tasks.filter((t) => t.deadline && t.status !== 'done').length;
+    
     target.innerHTML = days.map((date, index) => {
       const iso = isoDate(date);
       const due = state.tasks.filter((task) => task.status !== 'done' && task.deadline === iso).slice(0, 6);
       const activeToday = index === 0 ? state.queues.active.filter((task) => !task.deadline).slice(0, 4) : [];
       const items = uniqueTasks([...due, ...activeToday]);
+      
+      // Show deadline count in header if tasks exist
+      const dueCount = due.length;
+      const dueBadge = dueCount > 0 ? `<span class="due-badge">${dueCount}</span>` : '';
+      
       return `<div class="day-col ${index === 0 ? 'today' : ''}">
-        <div class="day-name"><span>${date.toLocaleDateString('en-US', { weekday: 'short' })}</span><span>${date.getDate()}</span></div>
-        ${items.length ? items.map((task) => `<span class="day-chip" data-task-id="${esc(task.id)}">${esc(task.id)} ${esc(task.title.slice(0, 34))}</span>`).join('') : '<div class="empty-state">clear</div>'}
+        <div class="day-name"><span>${date.toLocaleDateString('en-US', { weekday: 'short' })}</span><span>${date.getDate()}</span>${dueBadge}</div>
+        ${items.length ? items.map((task) => `<span class="day-chip ${task.status}" data-task-id="${esc(task.id)}">${esc(task.id)} ${esc(task.title.slice(0, 34))}</span>`).join('') : '<div class="empty-state">—</div>'}
       </div>`;
     }).join('');
+    
+    // Add helpful note if few deadlines
+    if (tasksWithDeadlines < 5) {
+      const note = document.createElement('div');
+      note.className = 'week-note';
+      note.innerHTML = `📅 ${tasksWithDeadlines} tasks have deadlines. Say "Set deadline for TASK-ID to YYYY-MM-DD" in Telegram to add more.`;
+      target.appendChild(note);
+    }
   }
 
   function renderAgentBoardSelector() {
