@@ -4,12 +4,13 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows:
-      - Sync Dashboard Publishing Branch
+      - Deploy Mission Control Dashboard
     types:
       - completed
 
 permissions:
-  contents: read
+  contents: write
+  actions: read
 
 jobs:
   verify-live:
@@ -17,15 +18,42 @@ jobs:
     runs-on: ubuntu-latest
     env:
       EXPECTED_SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+      DASHBOARD_URL: https://chadyi-king.github.io/mission-control-dashboard/
     steps:
-      - name: Verify public root, proof, manifest, assets, and data
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ github.token }}
+
+      - name: Install Playwright browser
         run: |
+          set -euo pipefail
+          mkdir -p /tmp/mission-control-playwright
+          cd /tmp/mission-control-playwright
+          npm init -y >/dev/null 2>&1
+          npm install playwright@latest >/dev/null 2>&1
+          npx playwright install --with-deps chromium
+
+      - name: Verify public root URL runtime
+        id: runtime
+        working-directory: /tmp/mission-control-playwright
+        env:
+          PROOF_PATH: ${{ github.workspace }}/diagnostics/live-runtime-proof-latest.json
+          EXIT_CODE_PATH: ${{ github.workspace }}/diagnostics/live-runtime-exit-code.txt
+        run: |
+          set +e
+          mkdir -p "${GITHUB_WORKSPACE}/diagnostics"
           node <<'NODE'
+          const fs = require('fs');
           const crypto = require('crypto');
-          const base = 'https://chadyi-king.github.io/mission-control-dashboard/';
+          const { chromium } = require('playwright');
+
+          const base = process.env.DASHBOARD_URL;
           const expectedSourceSha = process.env.EXPECTED_SOURCE_SHA || '';
+          const proofPath = process.env.PROOF_PATH;
+          const forbidden = /GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist|Failed to load data/i;
           const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-          const forbidden = /GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist/i;
           const aliases = {
             backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
             check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested',
@@ -34,40 +62,6 @@ jobs:
           const normalizeStatus = (status) => {
             const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
             return aliases[raw] || raw || 'open';
-          };
-          const fetchText = async (path, attempt) => {
-            const url = new URL(path, base);
-            url.searchParams.set('verify', `${expectedSourceSha || 'manual'}-${attempt}`);
-            url.searchParams.set('t', String(Date.now()));
-            const response = await fetch(url, {
-              cache: 'no-store',
-              headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-            });
-            const text = await response.text();
-            return { url: url.toString(), response, text };
-          };
-          const normalizeRef = (ref) => {
-            if (!ref) return null;
-            const raw = String(ref).trim();
-            if (!raw || raw.startsWith('#')) return null;
-            if (/^(data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
-            if (/^https?:\/\//i.test(raw) && !raw.startsWith(base)) return null;
-            const url = new URL(raw, base);
-            const clean = url.pathname.replace(/^\/mission-control-dashboard\//, '').replace(/^\//, '');
-            return clean && !clean.includes('..') ? clean : null;
-          };
-          const refsFromHtml = (html) => {
-            const refs = [];
-            for (const match of html.matchAll(/<(?:link|script)[^>]+(?:href|src)=["']([^"']+)["']/gi)) {
-              const ref = normalizeRef(match[1]);
-              if (ref) refs.push(ref);
-            }
-            const legacy = html.match(/LEGACY_VISUAL_APP\s*=\s*['"]([^'"]+)['"]/);
-            if (legacy) {
-              const ref = normalizeRef(legacy[1]);
-              if (ref) refs.push(ref);
-            }
-            return [...new Set(refs)];
           };
           const verifyData = (data) => {
             const tasks = Object.entries(data.tasks || {})
@@ -81,75 +75,151 @@ jobs:
             Object.values(data.categories || {}).forEach((category) => (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase())));
             visible.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
             const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
-            if (projects.size < 22) throw new Error(`expected at least 22 projects, found ${projects.size}`);
-            if (!projects.has('C4')) throw new Error('missing C4');
-            if (c4.name !== 'Website Services') throw new Error(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
-            if (!visible.length) throw new Error('no visible tasks found');
-            if (done.length > visible.length) throw new Error('done task count exceeds visible task count');
-            return { projects: projects.size, visible: visible.length, done: done.length };
+            return { projects: projects.size, visible: visible.length, done: done.length, c4Name: c4.name };
+          };
+          const writeProof = (proof) => {
+            fs.writeFileSync(proofPath, JSON.stringify(proof, null, 2) + '\n');
           };
 
           (async () => {
-            let lastError;
+            let lastProof = null;
             for (let attempt = 1; attempt <= 40; attempt += 1) {
+              const browser = await chromium.launch({ headless: true });
+              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 1440, height: 1100 } });
+              const page = await context.newPage();
+              const proof = {
+                kind: 'mission-control-live-runtime-proof',
+                generatedAt: new Date().toISOString(),
+                attempt,
+                url: base,
+                expectedSourceSha,
+                pass: false,
+                checks: {},
+                observed: {},
+                errors: []
+              };
               try {
-                const root = await fetchText('', attempt);
-                if (!root.response.ok) throw new Error(`root HTTP ${root.response.status}`);
-                if (!root.text.includes('dashboard-current.json')) throw new Error('root does not load dashboard-current.json');
-                if (!root.text.includes('RED SUN COMMAND')) throw new Error('root does not contain Red Sun shell');
-                if (forbidden.test(root.text)) throw new Error('root contains old browser write/PAT UI');
+                const response = await page.goto(base, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                proof.observed.rootStatus = response ? response.status() : null;
+                await page.waitForTimeout(3500);
+                await page.waitForFunction(() => {
+                  const text = document.body ? document.body.innerText : '';
+                  return text.includes('SNAPSHOT LIVE') || text.includes('DATA ERROR') || text.includes('GitHub Personal Access Token') || text.includes('Failed to load data');
+                }, { timeout: 45000 }).catch(() => null);
 
-                const proofResult = await fetchText('deployment-proof.json', attempt);
-                if (!proofResult.response.ok) throw new Error(`deployment-proof.json HTTP ${proofResult.response.status}`);
-                const proof = JSON.parse(proofResult.text);
-                if (proof.kind !== 'mission-control-dashboard-deployment-proof') throw new Error(`proof kind mismatch: ${proof.kind}`);
-                if (expectedSourceSha && proof.sourceSha !== expectedSourceSha) {
-                  throw new Error(`proof sourceSha mismatch: live ${proof.sourceSha} expected ${expectedSourceSha}`);
-                }
+                const dom = await page.evaluate(() => {
+                  const text = document.body ? document.body.innerText : '';
+                  const q = (selector) => document.querySelector(selector)?.textContent?.trim() || '';
+                  return {
+                    title: document.title,
+                    text,
+                    textSample: text.slice(0, 1800),
+                    syncChip: q('#sync-chip'),
+                    statTotal: q('#stat-total'),
+                    statDone: q('#stat-done'),
+                    statProjects: q('#stat-projects'),
+                    statC4: q('#stat-c4'),
+                    buildId: q('#build-id'),
+                    resourceNames: performance.getEntriesByType('resource').map((entry) => entry.name).slice(-80)
+                  };
+                });
+                proof.observed.dom = {
+                  title: dom.title,
+                  syncChip: dom.syncChip,
+                  statTotal: dom.statTotal,
+                  statDone: dom.statDone,
+                  statProjects: dom.statProjects,
+                  statC4: dom.statC4,
+                  buildId: dom.buildId,
+                  textSample: dom.textSample,
+                  resourceNames: dom.resourceNames
+                };
 
-                const manifestResult = await fetchText('dashboard-current.json', attempt);
-                if (!manifestResult.response.ok) throw new Error(`dashboard-current.json HTTP ${manifestResult.response.status}`);
-                const manifest = JSON.parse(manifestResult.text);
-                if (manifest.kind !== 'mission-control-dashboard-current-app') throw new Error(`manifest kind mismatch: ${manifest.kind}`);
-                if (!manifest.currentApp) throw new Error('manifest missing currentApp');
-                if (proof.currentApp && proof.currentApp !== manifest.currentApp) throw new Error(`proof currentApp mismatch: ${proof.currentApp} vs ${manifest.currentApp}`);
+                const proofResponse = await context.request.get(new URL('deployment-proof.json', base).toString(), {
+                  headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                });
+                proof.observed.proofStatus = proofResponse.status();
+                const deploymentProof = await proofResponse.json();
+                proof.observed.deploymentProof = deploymentProof;
 
-                const app = await fetchText(manifest.currentApp, attempt);
-                if (!app.response.ok) throw new Error(`${manifest.currentApp} HTTP ${app.response.status}`);
-                if (forbidden.test(app.text)) throw new Error(`${manifest.currentApp} contains old browser write/PAT UI`);
+                const manifestResponse = await context.request.get(new URL('dashboard-current.json', base).toString(), {
+                  headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                });
+                proof.observed.manifestStatus = manifestResponse.status();
+                const manifest = await manifestResponse.json();
+                proof.observed.manifest = manifest;
 
-                const refs = refsFromHtml(app.text);
-                if (!refs.some((ref) => ref.endsWith('.css'))) throw new Error('current app references no CSS assets');
-                if (!refs.some((ref) => ref.endsWith('.js'))) throw new Error('current app references no JS assets');
-                for (const ref of refs) {
-                  const asset = await fetchText(ref, attempt);
-                  if (!asset.response.ok) throw new Error(`${ref} HTTP ${asset.response.status}`);
-                  if (/\.(html|js)$/i.test(ref) && forbidden.test(asset.text)) throw new Error(`${ref} contains old browser write/PAT UI`);
-                }
+                const dataResponse = await context.request.get(new URL(manifest.dataSnapshot || 'data.json', base).toString(), {
+                  headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                });
+                proof.observed.dataStatus = dataResponse.status();
+                const dataText = await dataResponse.text();
+                const data = JSON.parse(dataText);
+                const stats = verifyData(data);
+                proof.observed.dataSha256 = crypto.createHash('sha256').update(dataText).digest('hex');
+                proof.observed.stats = stats;
 
-                const dataPath = manifest.dataSnapshot || 'data.json';
-                const dataResult = await fetchText(dataPath, attempt);
-                if (!dataResult.response.ok) throw new Error(`${dataPath} HTTP ${dataResult.response.status}`);
-                const dataText = dataResult.text;
-                const liveDataHash = crypto.createHash('sha256').update(dataText).digest('hex');
-                if (proof.dataSha256 && proof.dataSha256 !== liveDataHash) throw new Error('proof data hash does not match live data');
-                const stats = verifyData(JSON.parse(dataText));
+                proof.checks.rootHttpOk = proof.observed.rootStatus === 200;
+                proof.checks.noOldPatUi = !forbidden.test(dom.text);
+                proof.checks.snapshotLive = dom.syncChip === 'SNAPSHOT LIVE' || dom.text.includes('SNAPSHOT LIVE');
+                proof.checks.projects22 = String(dom.statProjects).trim() === '22' && stats.projects >= 22;
+                proof.checks.visible106 = String(dom.statTotal).trim() === '106' && stats.visible === 106;
+                proof.checks.done29 = String(dom.statDone).trim() === '29' && stats.done === 29;
+                proof.checks.c4Visible = /\bC4\b/.test(dom.text) && /Website Services/.test(dom.text) && stats.c4Name === 'Website Services';
+                proof.checks.proofKind = deploymentProof.kind === 'mission-control-dashboard-deployment-proof';
+                proof.checks.proofSourceSha = !expectedSourceSha || deploymentProof.sourceSha === expectedSourceSha;
+                proof.checks.proofDataHash = !deploymentProof.dataSha256 || deploymentProof.dataSha256 === proof.observed.dataSha256;
+                proof.checks.actionsDeployment = deploymentProof.publishedBy === 'pages.yml' && deploymentProof.deploymentMode === 'github-actions-pages';
+                proof.checks.currentAppLoaded = dom.resourceNames.some((name) => name.includes(manifest.currentApp));
+                proof.checks.dataLoaded = dom.resourceNames.some((name) => name.includes(manifest.dataSnapshot || 'data.json'));
 
-                console.log('Live Mission Control runtime verified.');
-                console.log(`URL: ${base}`);
-                console.log(`Proof sourceSha: ${proof.sourceSha}`);
-                console.log(`Manifest currentApp: ${manifest.currentApp}`);
-                console.log(`Data: ${stats.projects} projects / ${stats.visible} visible tasks / ${stats.done} done / C4 Website Services`);
+                const failed = Object.entries(proof.checks).filter(([, value]) => !value).map(([key]) => key);
+                if (failed.length) throw new Error(`failed checks: ${failed.join(', ')}`);
+
+                proof.pass = true;
+                writeProof(proof);
+                console.log(`Live root runtime verified: ${stats.projects} projects / ${stats.visible} visible tasks / ${stats.done} done / C4 Website Services`);
+                await browser.close();
                 return;
               } catch (error) {
-                lastError = error;
-                console.log(`Attempt ${attempt} failed: ${error.message}`);
-                await sleep(15000);
+                proof.errors.push(error.message || String(error));
+                lastProof = proof;
+                writeProof(proof);
+                console.log(`Attempt ${attempt} failed: ${proof.errors.join('; ')}`);
+                await browser.close().catch(() => null);
+                if (attempt < 40) await sleep(15000);
               }
             }
-            throw lastError;
+            writeProof(lastProof || { kind: 'mission-control-live-runtime-proof', pass: false, errors: ['no proof collected'] });
+            process.exit(1);
           })().catch((error) => {
-            console.error(error);
+            writeProof({ kind: 'mission-control-live-runtime-proof', pass: false, generatedAt: new Date().toISOString(), url: base, expectedSourceSha, errors: [error.message || String(error)] });
             process.exit(1);
           });
           NODE
+          code=$?
+          echo "$code" > "${EXIT_CODE_PATH}"
+          exit 0
+
+      - name: Commit live runtime proof
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add diagnostics/live-runtime-proof-latest.json diagnostics/live-runtime-exit-code.txt || true
+          if git diff --cached --quiet; then
+            echo 'No live runtime proof changes to commit.'
+          else
+            git commit -m 'Capture live dashboard runtime proof'
+            git push origin HEAD:main
+          fi
+
+      - name: Fail if live runtime proof failed
+        if: always()
+        run: |
+          code=$(cat diagnostics/live-runtime-exit-code.txt 2>/dev/null || echo 1)
+          if [ "$code" != "0" ]; then
+            echo 'Live root URL did not verify. See diagnostics/live-runtime-proof-latest.json.'
+            exit "$code"
+          fi
