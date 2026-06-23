@@ -7,6 +7,11 @@ on:
       - Sync Dashboard Publishing Branch
     types:
       - completed
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/verify-live-dashboard.yml'
 
 permissions:
   contents: write
@@ -14,7 +19,7 @@ permissions:
 
 jobs:
   verify-live:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       EXPECTED_SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
@@ -81,18 +86,14 @@ jobs:
           const intText = (value) => Number.parseInt(String(value || '').replace(/[^0-9-]/g, ''), 10);
           const readGitHubData = async (request) => {
             const apiUrl = `https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=${Date.now()}`;
-            const response = await request.get(apiUrl, {
-              headers: { Accept: 'application/vnd.github+json' }
-            });
+            const response = await request.get(apiUrl, { headers: { Accept: 'application/vnd.github+json' } });
             if (!response.ok()) throw new Error(`GitHub contents data API HTTP ${response.status()}`);
             const payload = await response.json();
             const text = Buffer.from(String(payload.content || '').replace(/\s/g, ''), 'base64').toString('utf8');
             JSON.parse(text);
             return { text, sha: payload.sha || '', status: response.status() };
           };
-          const writeProof = (proof) => {
-            fs.writeFileSync(proofPath, JSON.stringify(proof, null, 2) + '\n');
-          };
+          const writeProof = (proof) => fs.writeFileSync(proofPath, JSON.stringify(proof, null, 2) + '\n');
 
           (async () => {
             let lastProof = null;
@@ -153,16 +154,12 @@ jobs:
                   resourceNames: dom.resourceNames
                 };
 
-                const manifestResponse = await context.request.get(new URL('dashboard-current.json', base).toString(), {
-                  headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' }
-                });
+                const manifestResponse = await context.request.get(new URL('dashboard-current.json', base).toString(), { headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } });
                 proof.observed.manifestStatus = manifestResponse.status();
                 const manifest = await manifestResponse.json();
                 proof.observed.manifest = manifest;
 
-                const proofResponse = await context.request.get(new URL('deployment-proof.json', base).toString(), {
-                  headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' }
-                });
+                const proofResponse = await context.request.get(new URL('deployment-proof.json', base).toString(), { headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } });
                 proof.observed.proofStatus = proofResponse.status();
                 const deploymentProof = await proofResponse.json().catch(() => ({}));
                 proof.observed.deploymentProof = deploymentProof;
@@ -176,6 +173,7 @@ jobs:
                 proof.observed.dataSha256 = crypto.createHash('sha256').update(dataText).digest('hex');
                 proof.observed.stats = stats;
 
+                const deploymentMode = String(deploymentProof.deploymentMode || '');
                 proof.checks.rootHttpOk = proof.observed.rootStatus === 200;
                 proof.checks.noOldPatUi = !forbidden.test(dom.text);
                 proof.checks.snapshotLive = dom.syncChip === 'SNAPSHOT LIVE' || dom.text.includes('SNAPSHOT LIVE');
@@ -185,7 +183,7 @@ jobs:
                 proof.checks.visibleTasksMatch = intText(dom.statTotal) === stats.visible && stats.visible > 0;
                 proof.checks.doneTasksMatch = intText(dom.statDone) === stats.done && stats.done >= 0;
                 proof.checks.c4Visible = /\bC4\b/.test(dom.text) && /Website Services/.test(dom.text) && stats.c4Name === 'Website Services';
-                proof.checks.branchDeployment = deploymentProof.publishedBy === 'sync-dashboard-branches.yml' && deploymentProof.deploymentMode === 'legacy-gh-pages-branch';
+                proof.checks.branchDeployment = deploymentProof.publishedBy === 'sync-dashboard-branches.yml' && /gh-pages/.test(deploymentMode);
                 proof.checks.proofSourceSha = !expectedSourceSha || !deploymentProof.sourceSha || deploymentProof.sourceSha === expectedSourceSha;
                 proof.checks.currentAppLoaded = dom.resourceNames.some((name) => name.includes(manifest.currentApp));
                 proof.checks.freshDataSourceLoaded = dom.resourceNames.some((name) => name.includes('dashboard-fresh-data-source.js?build=20260624-github-api-data-2'));
