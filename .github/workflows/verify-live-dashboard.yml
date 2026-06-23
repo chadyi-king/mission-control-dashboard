@@ -52,7 +52,7 @@ jobs:
           const base = process.env.DASHBOARD_URL;
           const expectedSourceSha = process.env.EXPECTED_SOURCE_SHA || '';
           const proofPath = process.env.PROOF_PATH;
-          const forbidden = /GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist|Failed to load data/i;
+          const forbidden = /GitHub PAT|Personal Access Token|Mark Done to persist|Failed to load data/i;
           const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
           const aliases = {
             backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
@@ -78,6 +78,17 @@ jobs:
             return { projects: projects.size, visible: visible.length, done: done.length, c4Name: c4.name };
           };
           const intText = (value) => Number.parseInt(String(value || '').replace(/[^0-9-]/g, ''), 10);
+          const readGitHubData = async (request) => {
+            const apiUrl = `https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=${Date.now()}`;
+            const response = await request.get(apiUrl, {
+              headers: { Accept: 'application/vnd.github+json', 'Cache-Control': 'no-cache', Pragma: 'no-cache' }
+            });
+            if (!response.ok()) throw new Error(`GitHub contents data API HTTP ${response.status()}`);
+            const payload = await response.json();
+            const text = Buffer.from(String(payload.content || '').replace(/\s/g, ''), 'base64').toString('utf8');
+            JSON.parse(text);
+            return { text, sha: payload.sha || '', status: response.status() };
+          };
           const writeProof = (proof) => {
             fs.writeFileSync(proofPath, JSON.stringify(proof, null, 2) + '\n');
           };
@@ -121,7 +132,8 @@ jobs:
                     statProjects: q('#stat-projects'),
                     statC4: q('#stat-c4'),
                     buildId: q('#build-id'),
-                    resourceNames: performance.getEntriesByType('resource').map((entry) => entry.name).slice(-80)
+                    dataSource: window.__MISSION_CONTROL_DATA_SOURCE__ || null,
+                    resourceNames: performance.getEntriesByType('resource').map((entry) => entry.name).slice(-100)
                   };
                 });
                 proof.observed.dom = {
@@ -132,31 +144,31 @@ jobs:
                   statProjects: dom.statProjects,
                   statC4: dom.statC4,
                   buildId: dom.buildId,
+                  dataSource: dom.dataSource,
                   textSample: dom.textSample,
                   resourceNames: dom.resourceNames
                 };
 
                 const proofResponse = await context.request.get(new URL('deployment-proof.json', base).toString(), {
-                  headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                  headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' }
                 });
                 proof.observed.proofStatus = proofResponse.status();
                 const deploymentProof = await proofResponse.json();
                 proof.observed.deploymentProof = deploymentProof;
 
                 const manifestResponse = await context.request.get(new URL('dashboard-current.json', base).toString(), {
-                  headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                  headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' }
                 });
                 proof.observed.manifestStatus = manifestResponse.status();
                 const manifest = await manifestResponse.json();
                 proof.observed.manifest = manifest;
 
-                const dataResponse = await context.request.get(new URL(manifest.dataSnapshot || 'data.json', base).toString(), {
-                  headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-                });
-                proof.observed.dataStatus = dataResponse.status();
-                const dataText = await dataResponse.text();
+                const githubData = await readGitHubData(context.request);
+                const dataText = githubData.text;
                 const data = JSON.parse(dataText);
                 const stats = verifyData(data);
+                proof.observed.githubDataStatus = githubData.status;
+                proof.observed.githubDataSha = githubData.sha;
                 proof.observed.dataSha256 = crypto.createHash('sha256').update(dataText).digest('hex');
                 proof.observed.stats = stats;
 
@@ -169,16 +181,17 @@ jobs:
                 proof.checks.rootHttpOk = proof.observed.rootStatus === 200;
                 proof.checks.noOldPatUi = !forbidden.test(dom.text);
                 proof.checks.snapshotLive = dom.syncChip === 'SNAPSHOT LIVE' || dom.text.includes('SNAPSHOT LIVE');
-                proof.checks.projectsMatch = intText(dom.statProjects) === expectedProjects && stats.projects === expectedProjects && expectedProjects >= 22;
-                proof.checks.visibleTasksMatch = intText(dom.statTotal) === expectedVisible && stats.visible === expectedVisible && expectedVisible > 0;
-                proof.checks.doneTasksMatch = intText(dom.statDone) === expectedDone && stats.done === expectedDone && expectedDone >= 0;
+                proof.checks.projectsMatch = intText(dom.statProjects) === stats.projects && stats.projects >= 22;
+                proof.checks.visibleTasksMatch = intText(dom.statTotal) === stats.visible && stats.visible > 0;
+                proof.checks.doneTasksMatch = intText(dom.statDone) === stats.done && stats.done >= 0;
                 proof.checks.c4Visible = /\bC4\b/.test(dom.text) && /Website Services/.test(dom.text) && stats.c4Name === 'Website Services';
                 proof.checks.proofKind = deploymentProof.kind === 'mission-control-dashboard-deployment-proof';
                 proof.checks.proofSourceSha = !expectedSourceSha || deploymentProof.sourceSha === expectedSourceSha;
                 proof.checks.proofDataHash = !deploymentProof.dataSha256 || deploymentProof.dataSha256 === proof.observed.dataSha256;
                 proof.checks.branchDeployment = deploymentProof.publishedBy === 'sync-dashboard-branches.yml' && deploymentProof.deploymentMode === 'legacy-gh-pages-branch';
                 proof.checks.currentAppLoaded = dom.resourceNames.some((name) => name.includes(manifest.currentApp));
-                proof.checks.dataLoaded = dom.resourceNames.some((name) => name.includes(manifest.dataSnapshot || 'data.json'));
+                proof.checks.freshDataSourceLoaded = dom.resourceNames.some((name) => name.includes('dashboard-fresh-data-source.js'));
+                proof.checks.githubApiDataLoaded = dom.resourceNames.some((name) => name.includes('api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json')) || dom.dataSource?.mode === 'github-api-main';
 
                 const failed = Object.entries(proof.checks).filter(([, value]) => !value).map(([key]) => key);
                 if (failed.length) throw new Error(`failed checks: ${failed.join(', ')}`);
