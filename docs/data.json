@@ -2222,9 +2222,9 @@
         "baseline_balance": 3821.73,
         "weekly_profit": 0,
         "weekly_loss": 0,
+        "total_pnl": 96178.27,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 0,
         "status": "unverified_account_reset",
         "pnl_status": "blocked",
         "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
@@ -2301,7 +2301,9 @@
       }
     ],
     "currency": "USD",
-    "tracking_started": "2026-04-17"
+    "tracking_started": "2026-04-17",
+    "version": "1.0.0",
+    "starting_balance": 3821.73
   },
   "taskBoard": {
     "queueCount": 0,
