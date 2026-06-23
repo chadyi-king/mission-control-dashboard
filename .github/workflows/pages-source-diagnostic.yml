@@ -1,4 +1,5 @@
 name: Diagnose GitHub Pages Source
+# Diagnostic trigger: 20260624-001
 
 on:
   workflow_dispatch:
