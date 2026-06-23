@@ -1,9 +1,14 @@
 {
   "kind": "mission-control-dashboard-current-app",
-  "dashboardBuildId": "20260623-cachebreak-1",
-  "appBuildId": "20260623-cachebreak-1",
-  "currentApp": "app-20260623-cachebreak-1.html",
+  "dashboardBuildId": "20260624-root-stabilize-1",
+  "appBuildId": "20260624-stable-v1",
+  "currentApp": "app-20260624-stable-v1.html",
   "dataSnapshot": "data.json",
+  "minimumExpected": {
+    "projects": 22,
+    "requiredProject": "C4",
+    "requiredProjectName": "Website Services"
+  },
   "expected": {
     "projects": 22,
     "requiredProject": "C4",
@@ -11,5 +16,6 @@
     "visibleTasks": 106,
     "doneTasks": 29
   },
-  "notes": "Cache-busting build. Root index.html is a no-cache bootloader. This manifest selects the current versioned dashboard app while keeping the browser URL at /mission-control-dashboard/. data.json is generated from Hermes canonical state."
+  "qaStatus": "stable-rollback-from-layout-v2",
+  "notes": "Stable v1 restores the RED SUN COMMAND dashboard shell and keeps data.json generated from Hermes canonical state. Layout-v2 remains inactive until it has full CSS/JS support and visual QA proof."
 }
