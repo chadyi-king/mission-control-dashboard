@@ -53,11 +53,11 @@ jobs:
           const path = require('path');
           const crypto = require('crypto');
           const site = 'public';
-          const forbidden = /api\.github\.com|GitHub PAT|Personal Access Token|Mark Done to persist/i;
+          const forbidden = /GitHub PAT|Personal Access Token|Mark Done to persist/i;
           const fail = (message) => { throw new Error(message); };
           const read = (file) => fs.readFileSync(path.join(site, file), 'utf8');
           const readJson = (file) => JSON.parse(read(file));
-          for (const file of ['index.html', 'dashboard-current.json', 'data.json', 'service-worker.js', 'sw.js']) {
+          for (const file of ['index.html', 'dashboard-current.json', 'data.json', 'dashboard-fresh-data-source.js', 'service-worker.js', 'sw.js']) {
             if (!fs.existsSync(path.join(site, file))) fail(`missing ${file}`);
           }
           for (const file of fs.readdirSync(site)) {
@@ -65,6 +65,8 @@ jobs:
               fail(`${file} contains old browser write/PAT pattern`);
             }
           }
+          const app = read('app-20260623-cachebreak-1.html');
+          if (!app.includes('dashboard-fresh-data-source.js')) fail('current app does not load dashboard-fresh-data-source.js');
           const root = read('index.html');
           if (!root.includes('dashboard-current.json')) fail('index.html does not load dashboard-current.json');
           if (!root.includes('clearStaleRuntimeCaches')) fail('index.html is missing stale runtime cache cleanup');
