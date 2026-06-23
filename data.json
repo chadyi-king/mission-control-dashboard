@@ -1,6 +1,6 @@
 {
   "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-23T17:09:51.580240+08:00",
+  "lastUpdated": "2026-06-23T17:11:26.992423+08:00",
   "updatedBy": "chad-yi",
   "projects": {
     "A1": {
@@ -350,17 +350,6 @@
         "C4-5"
       ],
       "totalTasks": 5,
-      "completedTasks": 0,
-      "completionPct": 0
-    },
-    "Z99": {
-      "id": "Z99",
-      "name": "Test Project",
-      "description": "",
-      "category": "Z",
-      "status": "pending",
-      "tasks": [],
-      "totalTasks": 0,
       "completedTasks": 0,
       "completionPct": 0
     }
@@ -1654,11 +1643,6 @@
     "C4": {
       "name": "Website Services",
       "description": "Client website projects and portfolio"
-    },
-    "Z99": {
-      "name": "Test Project",
-      "description": "",
-      "resources": []
     }
   },
   "categories": {
