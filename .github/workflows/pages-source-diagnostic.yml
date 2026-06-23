@@ -1,5 +1,5 @@
 name: Diagnose GitHub Pages Source
-# Diagnostic trigger: 20260624-root-stabilize-1
+# Diagnostic trigger: 20260624-pages-status-1
 
 on:
   workflow_dispatch:
@@ -67,59 +67,94 @@ jobs:
 
           node - "$pages_json" "$runs_json" "$deployments_json" "$pages_status" "$runs_status" "$deployments_status" <<'NODE'
           const fs = require('fs');
+          const https = require('https');
           const [pagesFile, runsFile, deploymentsFile, pagesStatus, runsStatus, deploymentsStatus] = process.argv.slice(2);
           const readJson = (file, fallback) => {
             try { return JSON.parse(fs.readFileSync(file, 'utf8')); }
             catch { return fallback; }
           };
-          const pages = readJson(pagesFile, {});
-          const runsRaw = readJson(runsFile, { workflow_runs: [] });
-          const deploymentsRaw = readJson(deploymentsFile, []);
-          const interestingRuns = (runsRaw.workflow_runs || []).slice(0, 12).map((run) => ({
-            id: run.id,
-            name: run.name,
-            event: run.event,
-            status: run.status,
-            conclusion: run.conclusion,
-            head_branch: run.head_branch,
-            head_sha: run.head_sha,
-            created_at: run.created_at,
-            updated_at: run.updated_at,
-            html_url: run.html_url
-          }));
-          const deployments = (deploymentsRaw || []).slice(0, 12).map((deployment) => ({
-            id: deployment.id,
-            sha: deployment.sha,
-            ref: deployment.ref,
-            task: deployment.task,
-            environment: deployment.environment,
-            original_environment: deployment.original_environment,
-            created_at: deployment.created_at,
-            updated_at: deployment.updated_at,
-            statuses_url: deployment.statuses_url
-          }));
-          const report = {
-            kind: 'mission-control-pages-source-diagnostic',
-            generatedAt: new Date().toISOString(),
-            generatedByWorkflowRun: process.env.RUN_ID,
-            diagnosticCommit: process.env.SHA,
-            repository: process.env.REPO,
-            apiStatus: { pages: pagesStatus, actions: runsStatus, deployments: deploymentsStatus },
-            pages: {
-              status: pages.status,
-              url: pages.html_url || pages.url,
-              cname: pages.cname || null,
-              custom404: pages.custom_404,
-              buildType: pages.build_type,
-              source: pages.source || null,
-              protectedDomainState: pages.protected_domain_state || null,
-              pendingDomainUnverifiedAt: pages.pending_domain_unverified_at || null,
-              public: pages.public
-            },
-            recentWorkflowRuns: interestingRuns,
-            recentGithubPagesDeployments: deployments
-          };
-          fs.writeFileSync('diagnostics/pages-source-latest.json', JSON.stringify(report, null, 2) + '\n');
+          const apiJson = (url) => new Promise((resolve) => {
+            const options = {
+              headers: {
+                Authorization: `Bearer ${process.env.GH_TOKEN}`,
+                Accept: 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28',
+                'User-Agent': 'mission-control-pages-diagnostic'
+              }
+            };
+            https.get(url, options, (res) => {
+              let body = '';
+              res.on('data', (chunk) => { body += chunk; });
+              res.on('end', () => {
+                try { resolve({ status: res.statusCode, body: JSON.parse(body) }); }
+                catch { resolve({ status: res.statusCode, body }); }
+              });
+            }).on('error', (error) => resolve({ status: 'error', body: error.message }));
+          });
+
+          (async () => {
+            const pages = readJson(pagesFile, {});
+            const runsRaw = readJson(runsFile, { workflow_runs: [] });
+            const deploymentsRaw = readJson(deploymentsFile, []);
+            const interestingRuns = (runsRaw.workflow_runs || []).slice(0, 12).map((run) => ({
+              id: run.id,
+              name: run.name,
+              event: run.event,
+              status: run.status,
+              conclusion: run.conclusion,
+              head_branch: run.head_branch,
+              head_sha: run.head_sha,
+              created_at: run.created_at,
+              updated_at: run.updated_at,
+              html_url: run.html_url
+            }));
+            const deployments = await Promise.all((deploymentsRaw || []).slice(0, 12).map(async (deployment) => {
+              const statuses = deployment.statuses_url ? await apiJson(deployment.statuses_url) : { status: 'missing', body: [] };
+              return {
+                id: deployment.id,
+                sha: deployment.sha,
+                ref: deployment.ref,
+                task: deployment.task,
+                environment: deployment.environment,
+                original_environment: deployment.original_environment,
+                created_at: deployment.created_at,
+                updated_at: deployment.updated_at,
+                statuses_url: deployment.statuses_url,
+                statuses
+              };
+            }));
+            const report = {
+              kind: 'mission-control-pages-source-diagnostic',
+              generatedAt: new Date().toISOString(),
+              generatedByWorkflowRun: process.env.RUN_ID,
+              diagnosticCommit: process.env.SHA,
+              repository: process.env.REPO,
+              apiStatus: { pages: pagesStatus, actions: runsStatus, deployments: deploymentsStatus },
+              pages: {
+                status: pages.status,
+                url: pages.html_url || pages.url,
+                cname: pages.cname || null,
+                custom404: pages.custom_404,
+                buildType: pages.build_type,
+                source: pages.source || null,
+                protectedDomainState: pages.protected_domain_state || null,
+                pendingDomainUnverifiedAt: pages.pending_domain_unverified_at || null,
+                public: pages.public
+              },
+              recentWorkflowRuns: interestingRuns,
+              recentGithubPagesDeployments: deployments
+            };
+            fs.writeFileSync('diagnostics/pages-source-latest.json', JSON.stringify(report, null, 2) + '\n');
+          })().catch((error) => {
+            fs.writeFileSync('diagnostics/pages-source-latest.json', JSON.stringify({
+              kind: 'mission-control-pages-source-diagnostic',
+              generatedAt: new Date().toISOString(),
+              generatedByWorkflowRun: process.env.RUN_ID,
+              diagnosticCommit: process.env.SHA,
+              repository: process.env.REPO,
+              error: error.message || String(error)
+            }, null, 2) + '\n');
+          });
           NODE
 
       - name: Commit diagnostic report
