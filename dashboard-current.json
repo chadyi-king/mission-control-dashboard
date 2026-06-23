@@ -1,6 +1,6 @@
 {
   "kind": "mission-control-dashboard-current-app",
-  "dashboardBuildId": "20260624-actions-root-1",
+  "dashboardBuildId": "20260624-root-cache-kill-1",
   "appBuildId": "20260623-cachebreak-1",
   "currentApp": "app-20260623-cachebreak-1.html",
   "dataSnapshot": "data.json",
@@ -9,5 +9,5 @@
     "requiredProject": "C4",
     "requiredProjectName": "Website Services"
   },
-  "notes": "Actions deployment build. Root index.html is a no-cache bootloader. This manifest selects the current versioned dashboard app while keeping the browser URL at /mission-control-dashboard/. data.json is generated from Hermes canonical state and task counts may change when Telegram/Hermes updates tasks."
+  "notes": "Active deployment path is main -> sync-dashboard-branches.yml -> gh-pages / root because GitHub Pages currently reports build_type=legacy and source=gh-pages. Root index.html is a no-cache bootloader with stale service-worker/cache cleanup. data.json is generated from Hermes canonical state and task counts may change when Telegram/Hermes updates tasks."
 }
