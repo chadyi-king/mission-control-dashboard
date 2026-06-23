@@ -1,5 +1,5 @@
 name: Diagnose GitHub Pages Source
-# Diagnostic trigger: 20260624-001
+# Diagnostic trigger: 20260624-002
 
 on:
   workflow_dispatch:
@@ -65,9 +65,9 @@ jobs:
             printf '[]' > "$deployments_json"
           fi
 
-          node <<'NODE' "$pages_json" "$runs_json" "$deployments_json" "$pages_status" "$runs_status" "$deployments_status"
+          node - "$pages_json" "$runs_json" "$deployments_json" "$pages_status" "$runs_status" "$deployments_status" <<'NODE'
           const fs = require('fs');
-          const [pagesFile, runsFile, deploymentsFile, pagesStatus, runsStatus, deploymentsStatus] = process.argv.slice(1);
+          const [pagesFile, runsFile, deploymentsFile, pagesStatus, runsStatus, deploymentsStatus] = process.argv.slice(2);
           const readJson = (file, fallback) => {
             try { return JSON.parse(fs.readFileSync(file, 'utf8')); }
             catch { return fallback; }
@@ -85,7 +85,7 @@ jobs:
             head_sha: run.head_sha,
             created_at: run.created_at,
             updated_at: run.updated_at,
-            html_url: run.html_url,
+            html_url: run.html_url
           }));
           const deployments = (deploymentsRaw || []).slice(0, 12).map((deployment) => ({
             id: deployment.id,
@@ -96,7 +96,7 @@ jobs:
             original_environment: deployment.original_environment,
             created_at: deployment.created_at,
             updated_at: deployment.updated_at,
-            statuses_url: deployment.statuses_url,
+            statuses_url: deployment.statuses_url
           }));
           const report = {
             kind: 'mission-control-pages-source-diagnostic',
@@ -114,10 +114,10 @@ jobs:
               source: pages.source || null,
               protectedDomainState: pages.protected_domain_state || null,
               pendingDomainUnverifiedAt: pages.pending_domain_unverified_at || null,
-              public: pages.public,
+              public: pages.public
             },
             recentWorkflowRuns: interestingRuns,
-            recentGithubPagesDeployments: deployments,
+            recentGithubPagesDeployments: deployments
           };
           fs.writeFileSync('diagnostics/pages-source-latest.json', JSON.stringify(report, null, 2) + '\n');
           NODE
