@@ -20,5 +20,14 @@
     "dashboardWrites": [],
     "forbiddenBrowserWrites": ["GitHub PAT", "mark done", "set deadline", "assign owner"]
   },
+  "deploymentContract": {
+    "singlePublisher": ".github/workflows/sync-dashboard-branches.yml",
+    "publisherName": "Publish Mission Control Dashboard",
+    "publishes": "main to gh-pages only",
+    "pagesSource": "gh-pages / root",
+    "liveVerifier": ".github/workflows/verify-live-dashboard.yml",
+    "duplicateRepairWorkflowsArchived": true,
+    "automaticSnapshotRewritersArchived": true
+  },
   "notes": "GitHub Pages is published from gh-pages / root. index.html is a stable manifest bootloader. dashboard-current.json selects the current app."
 }
