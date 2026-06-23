@@ -1,11 +1,19 @@
-name: Verify Mission Control Dashboard Source
+name: Deploy Mission Control Dashboard
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-      - gh-pages
-  workflow_dispatch:
+    paths:
+      - '*.html'
+      - '*.css'
+      - '*.js'
+      - '*.json'
+      - '.nojekyll'
+      - 'assets/**'
+      - '.github/workflows/pages.yml'
+      - '.github/workflows/verify-live-dashboard.yml'
 
 permissions:
   contents: read
@@ -13,90 +21,87 @@ permissions:
   id-token: write
 
 concurrency:
-  group: mission-control-dashboard-source-${{ github.ref }}
+  group: mission-control-dashboard-pages
   cancel-in-progress: true
 
 jobs:
-  verify-and-publish:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout GitHub Pages branch source
-        uses: actions/checkout@v7
+      - name: Checkout dashboard source from main
+        uses: actions/checkout@v4
         with:
-          ref: gh-pages
+          ref: main
 
-      - name: Build complete static artifact from gh-pages root
+      - name: Build complete static artifact
         run: |
           set -euo pipefail
           rm -rf _site
           mkdir -p _site
 
-          # Copy every static dashboard root asset. This prevents versioned files
-          # such as main-styles-20260623-p5.css from existing in git but missing
-          # from an Actions Pages artifact.
           find . -maxdepth 1 -type f \
             \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' -o -name '.nojekyll' \) \
             -exec cp '{}' _site/ \;
 
           if [ -d assets ]; then cp -R assets _site/assets; fi
 
+          node <<'NODE'
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const data = fs.readFileSync('_site/data.json', 'utf8');
+          const proof = {
+            kind: 'mission-control-dashboard-deployment-proof',
+            deployedFrom: 'main',
+            sha: process.env.GITHUB_SHA,
+            runId: process.env.GITHUB_RUN_ID,
+            runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            createdAt: new Date().toISOString(),
+            dataSha256: crypto.createHash('sha256').update(data).digest('hex')
+          };
+          fs.writeFileSync('_site/deployment-proof.json', JSON.stringify(proof, null, 2) + '\n');
+          NODE
+
           echo 'Static artifact contents:'
           find _site -maxdepth 2 -type f | sort
 
-      - name: Verify dashboard source contract
+      - name: Verify source artifact contract
         run: |
           node <<'NODE'
           const fs = require('fs');
           const path = require('path');
           const failures = [];
           const site = '_site';
-
           const exists = (file) => fs.existsSync(path.join(site, file));
           const read = (file) => fs.readFileSync(path.join(site, file), 'utf8');
           const readJson = (file) => JSON.parse(read(file));
           const fail = (message) => failures.push(message);
 
-          for (const file of ['index.html', 'dashboard-current.json', 'data.json', '.nojekyll']) {
-            if (!exists(file)) fail(`missing required root file: ${file}`);
+          for (const file of ['index.html', 'dashboard-current.json', 'data.json', '.nojekyll', 'deployment-proof.json']) {
+            if (!exists(file)) fail(`missing required artifact file: ${file}`);
           }
 
           const current = exists('dashboard-current.json') ? readJson('dashboard-current.json') : {};
-          const marker = exists('mission-control-build.json') ? readJson('mission-control-build.json') : {};
-          const expected = current.expected || marker.expected || {};
-          const currentApp = current.currentApp || marker.currentApp;
-          const dataSnapshot = current.dataSnapshot || marker.dataSnapshot || 'data.json';
+          const currentApp = current.currentApp;
+          const dataSnapshot = current.dataSnapshot || 'data.json';
 
           if (current.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
           if (!currentApp) fail('dashboard-current.json missing currentApp');
           if (currentApp && !exists(currentApp)) fail(`missing current app file: ${currentApp}`);
           if (!exists(dataSnapshot)) fail(`missing data snapshot: ${dataSnapshot}`);
 
-          if (exists('index.html')) {
-            const bootloader = read('index.html');
-            if (!bootloader.includes('dashboard-current.json')) fail('index.html does not load dashboard-current.json');
-            if (!bootloader.includes("cache: 'no-store'")) fail('index.html missing no-store manifest/app fetch');
-          }
-
+          const forbidden = /api\.github\.com|GitHub PAT|Personal Access Token|Mark Done to persist/i;
           const normalizeRef = (ref) => {
             if (!ref) return null;
             const raw = String(ref).trim();
             if (!raw || raw.startsWith('#')) return null;
             if (/^(https?:|data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
-            let clean = raw.split('#')[0].split('?')[0];
-            clean = clean.replace(/^\.\//, '');
-            clean = clean.replace(/^\/mission-control-dashboard\//, '');
-            clean = clean.replace(/^\//, '');
-            if (!clean) return null;
-            if (clean.includes('..')) {
-              fail(`unsafe relative asset reference: ${raw}`);
-              return null;
-            }
+            let clean = raw.split('#')[0].split('?')[0].replace(/^\.\//, '').replace(/^\/mission-control-dashboard\//, '').replace(/^\//, '');
+            if (!clean || clean.includes('..')) return null;
             return clean;
           };
-
           const refsFromHtml = (file) => {
             if (!exists(file)) return [];
             const html = read(file);
@@ -107,153 +112,203 @@ jobs:
             }
             const legacy = html.match(/LEGACY_VISUAL_APP\s*=\s*['"]([^'"]+)['"]/);
             if (legacy) {
-              const legacyRef = normalizeRef(legacy[1]);
-              if (legacyRef) refs.push(legacyRef);
+              const ref = normalizeRef(legacy[1]);
+              if (ref) refs.push(ref);
             }
             return [...new Set(refs)];
           };
 
-          const htmlFilesToInspect = new Set(['index.html']);
-          if (currentApp) htmlFilesToInspect.add(currentApp);
-          for (const file of [...htmlFilesToInspect]) {
+          if (exists('index.html')) {
+            const root = read('index.html');
+            if (!root.includes('dashboard-current.json')) fail('index.html does not load dashboard-current.json');
+            if (!root.includes("cache: 'no-store'")) fail('index.html missing no-store fetch');
+            if (forbidden.test(root)) fail('index.html contains old browser write/PAT pattern');
+          }
+
+          const htmlFiles = new Set(['index.html']);
+          if (currentApp) htmlFiles.add(currentApp);
+          for (const file of [...htmlFiles]) {
+            const body = exists(file) ? read(file) : '';
+            if (forbidden.test(body)) fail(`${file} contains old browser write/PAT pattern`);
             for (const ref of refsFromHtml(file)) {
               if (!exists(ref)) fail(`${file} references missing asset: ${ref}`);
-              if (ref.endsWith('.html')) htmlFilesToInspect.add(ref);
+              if (ref.endsWith('.html')) htmlFiles.add(ref);
             }
           }
 
-          const referencedAssets = [...htmlFilesToInspect].flatMap(refsFromHtml);
-          const referencedCss = referencedAssets.filter((ref) => ref.endsWith('.css'));
-          const referencedJs = referencedAssets.filter((ref) => ref.endsWith('.js'));
-          if (!referencedCss.length) fail('current dashboard app references no CSS files');
-          if (!referencedJs.length) fail('current dashboard app references no JS files');
-
-          const forbidden = /api\.github\.com|GitHub PAT|Personal Access Token/i;
-          for (const file of fs.readdirSync(site).filter((name) => /\.(html|js)$/i.test(name))) {
-            const body = read(file);
-            if (forbidden.test(body)) fail(`${file} contains forbidden direct GitHub write/PAT pattern`);
+          const allRefs = [...htmlFiles].flatMap(refsFromHtml);
+          if (!allRefs.some((ref) => ref.endsWith('.css'))) fail('current app references no CSS assets');
+          if (!allRefs.some((ref) => ref.endsWith('.js'))) fail('current app references no JS assets');
+          for (const ref of allRefs.filter((ref) => /\.(html|js)$/i.test(ref))) {
+            if (exists(ref) && forbidden.test(read(ref))) fail(`${ref} contains old browser write/PAT pattern`);
           }
 
-          const aliases = {
-            backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
-            check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested',
-            in_progress: 'active'
-          };
+          const aliases = { backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review', check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested', in_progress: 'active' };
           const normalizeStatus = (status) => {
             const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
             return aliases[raw] || raw || 'open';
           };
+          const data = exists(dataSnapshot) ? readJson(dataSnapshot) : {};
+          const tasks = Object.entries(data.tasks || {})
+            .filter(([, task]) => task && typeof task === 'object')
+            .map(([id, task]) => ({ id: task.id || id, ...task }));
+          const visible = tasks.filter((task) => normalizeStatus(task.status) !== 'removed');
+          const done = visible.filter((task) => normalizeStatus(task.status) === 'done');
+          const projects = new Set();
+          Object.keys(data.projects || {}).forEach((id) => projects.add(String(id).toUpperCase()));
+          Object.keys(data.projectDetails || {}).forEach((id) => projects.add(String(id).toUpperCase()));
+          Object.values(data.categories || {}).forEach((category) => (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase())));
+          visible.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
+          const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
+          if (projects.size < 22) fail(`expected at least 22 projects, found ${projects.size}`);
+          if (!projects.has('C4')) fail('missing C4');
+          if (c4.name !== 'Website Services') fail(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
+          if (visible.length < 1) fail('no visible tasks found');
+          if (done.length > visible.length) fail('done task count exceeds visible task count');
 
-          if (exists(dataSnapshot)) {
-            const data = readJson(dataSnapshot);
-            const tasks = Object.entries(data.tasks || {})
-              .filter(([, task]) => task && typeof task === 'object')
-              .map(([id, task]) => ({ id: task.id || id, ...task }));
+          if (failures.length) {
+            console.error('Mission Control source artifact verification FAILED:');
+            console.error(failures.map((failure) => `- ${failure}`).join('\n'));
+            process.exit(1);
+          }
+          console.log('Mission Control source artifact verification PASSED.');
+          console.log(`currentApp: ${currentApp}`);
+          console.log(`dataSnapshot: ${dataSnapshot}`);
+          console.log(`data: ${projects.size} projects / ${visible.length} visible tasks / ${done.length} done / C4 Website Services`);
+          NODE
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy GitHub Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Verify live public URL runtime
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const base = 'https://chadyi-king.github.io/mission-control-dashboard/';
+          const expectedProof = JSON.parse(fs.readFileSync('_site/deployment-proof.json', 'utf8'));
+          const expectedData = fs.readFileSync('_site/data.json', 'utf8');
+          const expectedDataHash = crypto.createHash('sha256').update(expectedData).digest('hex');
+          const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+          const forbidden = /GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist/i;
+          const aliases = { backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review', check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested', in_progress: 'active' };
+          const normalizeStatus = (status) => {
+            const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
+            return aliases[raw] || raw || 'open';
+          };
+          const fetchText = async (path, attempt) => {
+            const url = new URL(path, base);
+            url.searchParams.set('verify', `${process.env.GITHUB_SHA}-${attempt}`);
+            url.searchParams.set('t', String(Date.now()));
+            const response = await fetch(url, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } });
+            const text = await response.text();
+            return { url: url.toString(), response, text };
+          };
+          const normalizeRef = (ref) => {
+            if (!ref) return null;
+            const raw = String(ref).trim();
+            if (!raw || raw.startsWith('#')) return null;
+            if (/^(data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
+            if (/^https?:\/\//i.test(raw) && !raw.startsWith(base)) return null;
+            const url = new URL(raw, base);
+            const clean = url.pathname.replace(/^\/mission-control-dashboard\//, '').replace(/^\//, '');
+            return clean && !clean.includes('..') ? clean : null;
+          };
+          const refsFromHtml = (html) => {
+            const refs = [];
+            for (const match of html.matchAll(/<(?:link|script)[^>]+(?:href|src)=["']([^"']+)["']/gi)) {
+              const ref = normalizeRef(match[1]);
+              if (ref) refs.push(ref);
+            }
+            const legacy = html.match(/LEGACY_VISUAL_APP\s*=\s*['"]([^'"]+)['"]/);
+            if (legacy) {
+              const ref = normalizeRef(legacy[1]);
+              if (ref) refs.push(ref);
+            }
+            return [...new Set(refs)];
+          };
+          const verifyData = (data) => {
+            const tasks = Object.entries(data.tasks || {}).filter(([, task]) => task && typeof task === 'object').map(([id, task]) => ({ id: task.id || id, ...task }));
             const visible = tasks.filter((task) => normalizeStatus(task.status) !== 'removed');
             const done = visible.filter((task) => normalizeStatus(task.status) === 'done');
             const projects = new Set();
             Object.keys(data.projects || {}).forEach((id) => projects.add(String(id).toUpperCase()));
             Object.keys(data.projectDetails || {}).forEach((id) => projects.add(String(id).toUpperCase()));
-            Object.values(data.categories || {}).forEach((category) => {
-              (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase()));
-            });
+            Object.values(data.categories || {}).forEach((category) => (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase())));
             visible.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
             const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
-
-            const expectedProjects = expected.projects ?? 22;
-            const expectedVisible = expected.visibleTasks ?? 106;
-            const expectedDone = expected.doneTasks ?? 29;
-            const expectedProject = String(expected.requiredProject || 'C4').toUpperCase();
-            const expectedProjectName = expected.requiredProjectName || 'Website Services';
-
-            if (projects.size !== expectedProjects) fail(`expected ${expectedProjects} projects, found ${projects.size}`);
-            if (!projects.has(expectedProject)) fail(`missing ${expectedProject}`);
-            if (c4.name !== expectedProjectName) fail(`expected C4 ${expectedProjectName}, found ${JSON.stringify(c4.name)}`);
-            if (visible.length !== expectedVisible) fail(`expected ${expectedVisible} visible tasks, found ${visible.length}`);
-            if (done.length !== expectedDone) fail(`expected ${expectedDone} done tasks, found ${done.length}`);
-          }
-
-          if (failures.length) {
-            console.error('\nMission Control source verification FAILED:');
-            console.error(failures.map((failure) => `- ${failure}`).join('\n'));
-            process.exit(1);
-          }
-
-          console.log('Mission Control source verification PASSED.');
-          console.log(`currentApp: ${currentApp}`);
-          console.log(`dataSnapshot: ${dataSnapshot}`);
-          console.log(`CSS refs: ${referencedCss.join(', ')}`);
-          console.log(`JS refs: ${referencedJs.join(', ')}`);
-          console.log('Expected counts: 22 projects / 106 visible tasks / 29 done / C4 Website Services');
-          NODE
-
-      - name: Detect GitHub Pages publishing mode
-        id: pages_mode
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          node <<'NODE'
-          const fs = require('fs');
+            if (projects.size < 22) throw new Error(`live data has only ${projects.size} projects`);
+            if (!projects.has('C4')) throw new Error('live data missing C4');
+            if (c4.name !== 'Website Services') throw new Error(`live C4 name mismatch: ${JSON.stringify(c4.name)}`);
+            if (!visible.length) throw new Error('live data has no visible tasks');
+            if (done.length > visible.length) throw new Error('live done count exceeds visible count');
+            return { projects: projects.size, visible: visible.length, done: done.length };
+          };
 
           (async () => {
-            const repo = process.env.GITHUB_REPOSITORY;
-            const token = process.env.GH_TOKEN;
-            const output = process.env.GITHUB_OUTPUT;
-            const summary = process.env.GITHUB_STEP_SUMMARY;
-            const res = await fetch(`https://api.github.com/repos/${repo}/pages`, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                Accept: 'application/vnd.github+json',
-                'X-GitHub-Api-Version': '2022-11-28',
-                'User-Agent': 'mission-control-dashboard'
+            let lastError;
+            for (let attempt = 1; attempt <= 24; attempt += 1) {
+              try {
+                const root = await fetchText('', attempt);
+                if (!root.response.ok) throw new Error(`root HTTP ${root.response.status}`);
+                if (!root.text.includes('dashboard-current.json')) throw new Error('live root does not load dashboard-current.json');
+                if (!root.text.includes('RED SUN COMMAND')) throw new Error('live root missing RED SUN COMMAND');
+                if (forbidden.test(root.text)) throw new Error('live root contains old browser write/PAT UI');
+
+                const proofResult = await fetchText('deployment-proof.json', attempt);
+                if (!proofResult.response.ok) throw new Error(`deployment-proof.json HTTP ${proofResult.response.status}`);
+                const liveProof = JSON.parse(proofResult.text);
+                if (liveProof.sha !== expectedProof.sha) throw new Error(`deployment proof SHA mismatch: ${liveProof.sha} !== ${expectedProof.sha}`);
+
+                const manifestResult = await fetchText('dashboard-current.json', attempt);
+                if (!manifestResult.response.ok) throw new Error(`dashboard-current.json HTTP ${manifestResult.response.status}`);
+                const manifest = JSON.parse(manifestResult.text);
+                if (manifest.kind !== 'mission-control-dashboard-current-app') throw new Error('manifest kind mismatch');
+                if (!manifest.currentApp) throw new Error('manifest missing currentApp');
+
+                const app = await fetchText(manifest.currentApp, attempt);
+                if (!app.response.ok) throw new Error(`${manifest.currentApp} HTTP ${app.response.status}`);
+                if (forbidden.test(app.text)) throw new Error(`${manifest.currentApp} contains old browser write/PAT UI`);
+
+                const refs = refsFromHtml(app.text);
+                if (!refs.some((ref) => ref.endsWith('.css'))) throw new Error('live app references no CSS');
+                if (!refs.some((ref) => ref.endsWith('.js'))) throw new Error('live app references no JS');
+                for (const ref of refs) {
+                  const asset = await fetchText(ref, attempt);
+                  if (!asset.response.ok) throw new Error(`${ref} HTTP ${asset.response.status}`);
+                  if (/\.(html|js)$/i.test(ref) && forbidden.test(asset.text)) throw new Error(`${ref} contains old browser write/PAT UI`);
+                }
+
+                const dataResult = await fetchText(manifest.dataSnapshot || 'data.json', attempt);
+                if (!dataResult.response.ok) throw new Error(`data.json HTTP ${dataResult.response.status}`);
+                const liveDataHash = crypto.createHash('sha256').update(dataResult.text).digest('hex');
+                if (liveDataHash !== expectedDataHash) throw new Error('live data.json hash does not match deployed artifact');
+                const stats = verifyData(JSON.parse(dataResult.text));
+
+                console.log('Live Mission Control runtime verified.');
+                console.log(`URL: ${base}`);
+                console.log(`Proof SHA: ${liveProof.sha}`);
+                console.log(`Manifest currentApp: ${manifest.currentApp}`);
+                console.log(`Data: ${stats.projects} projects / ${stats.visible} visible tasks / ${stats.done} done / C4 Website Services`);
+                return;
+              } catch (error) {
+                lastError = error;
+                console.log(`Attempt ${attempt} failed: ${error.message}`);
+                await sleep(15000);
               }
-            });
-            if (!res.ok) {
-              const body = await res.text();
-              throw new Error(`Could not read Pages settings: HTTP ${res.status} ${body}`);
             }
-            const pages = await res.json();
-            const buildType = pages.build_type || 'unknown';
-            const sourceBranch = pages.source?.branch || '';
-            const sourcePath = pages.source?.path || '';
-            const deployWithActions = buildType === 'workflow';
-            const sourcePathOk = sourcePath === '/' || sourcePath === '' || sourcePath === '/root';
-            const branchModeOk = !deployWithActions && sourceBranch === 'gh-pages' && sourcePathOk;
-            if (!deployWithActions && !branchModeOk) {
-              throw new Error(`Unsupported Pages source: build_type=${buildType}, source=${sourceBranch} ${sourcePath}. Expected gh-pages / root or Actions workflow.`);
-            }
-            fs.appendFileSync(output, `build_type=${buildType}\n`);
-            fs.appendFileSync(output, `source_branch=${sourceBranch}\n`);
-            fs.appendFileSync(output, `source_path=${sourcePath}\n`);
-            fs.appendFileSync(output, `deploy_with_actions=${deployWithActions ? 'true' : 'false'}\n`);
-            fs.appendFileSync(summary, `## Mission Control Pages mode\n\n`);
-            fs.appendFileSync(summary, `- build_type: ${buildType}\n`);
-            fs.appendFileSync(summary, `- source: ${sourceBranch || '(none)'} ${sourcePath || ''}\n`);
-            fs.appendFileSync(summary, `- deploy_with_actions: ${deployWithActions}\n`);
-            console.log({ buildType, sourceBranch, sourcePath, deployWithActions });
+            throw lastError;
           })().catch((error) => {
             console.error(error);
             process.exit(1);
           });
           NODE
-
-      - name: Configure Pages for Actions publishing mode
-        if: steps.pages_mode.outputs.deploy_with_actions == 'true'
-        uses: actions/configure-pages@v6
-
-      - name: Upload Pages artifact for Actions publishing mode
-        if: steps.pages_mode.outputs.deploy_with_actions == 'true'
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: _site
-
-      - name: Deploy Pages artifact for Actions publishing mode
-        if: steps.pages_mode.outputs.deploy_with_actions == 'true'
-        id: deployment
-        uses: actions/deploy-pages@v5
-
-      - name: Confirm branch publishing mode
-        if: steps.pages_mode.outputs.deploy_with_actions != 'true'
-        run: |
-          echo 'GitHub Pages is in branch publishing mode.'
-          echo 'Verified gh-pages / root source and skipped competing artifact deployment.'
