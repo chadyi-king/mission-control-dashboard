@@ -26,6 +26,11 @@
     abed: { display: 'ABED', role: 'Community Manager', initials: 'AB' }
   };
 
+  // Public GitHub Pages is read-only by default.
+  // Intent persistence is enabled only when a Hermes API URL is explicitly injected.
+  const HERMES_API_URL = window.__HERMES_API_URL__ || null;
+  const HERMES_API_CONFIGURED = !!HERMES_API_URL;
+
   const state = {
     raw: {},
     tasks: [],
@@ -37,7 +42,9 @@
     stats: {},
     boardAgentId: 'chad-yi',
     visualFocusOrder: [],
-    visualBoardMoves: new Map()
+    visualBoardMoves: new Map(),
+    hermesApiAvailable: false,
+    hermesApiChecked: false
   };
 
   const $ = (id) => document.getElementById(id);
@@ -63,6 +70,7 @@
       if (!response.ok) throw new Error(`${DATA_FILE} returned HTTP ${response.status}`);
       const raw = await response.json();
       buildModel(raw);
+      await detectHermesApi();
       renderAll();
       const valid = state.stats.hasC4 && state.stats.projects >= 22 && state.stats.total >= 100;
       setSync(valid ? 'SNAPSHOT LIVE' : 'SNAPSHOT AUDIT', valid ? '' : 'warn');
@@ -369,10 +377,9 @@
         </div>
       `).join('')
       : '<div class="empty-state">No focus tasks available.</div>';
-    wireDragList('focus-list', (ids) => {
-      state.visualFocusOrder = ids;
-      showToast('Priority order changed on this screen. Canonical persistence needs Hermes API.');
-      renderFocus();
+    wireDragList('focus-list', async (ids) => {
+      const ok = await persistPriorityOrder(ids);
+      if (!ok) renderFocus();
     });
   }
 
@@ -629,9 +636,97 @@
     showToast.timer = setTimeout(() => { toast.hidden = true; }, 4200);
   }
 
+  function isDashboardReadOnly() {
+    return !state.hermesApiAvailable;
+  }
+
+  async function detectHermesApi() {
+    state.hermesApiChecked = true;
+    state.hermesApiAvailable = false;
+    if (!HERMES_API_CONFIGURED) return false;
+    try {
+      const response = await fetch(`${HERMES_API_URL.replace(/\/$/, '')}/health`, {
+        method: 'GET',
+        cache: 'no-store'
+      });
+      state.hermesApiAvailable = response.ok;
+      return state.hermesApiAvailable;
+    } catch (error) {
+      console.info('[Mission Control] Hermes API unavailable; dashboard remains read-only.');
+      state.hermesApiAvailable = false;
+      return false;
+    }
+  }
+
+  async function submitDashboardIntent(intentType, payload) {
+    if (isDashboardReadOnly()) {
+      showToast('Dashboard is read-only. Update through Telegram/Hermes.');
+      return false;
+    }
+    try {
+      const response = await fetch(`${HERMES_API_URL.replace(/\/$/, '')}/mission-control/intents`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ intentType, payload, buildId: BUILD_ID })
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const result = await response.json().catch(() => ({}));
+      if (result && result.ok === false) throw new Error(result.error || 'Intent rejected');
+      return true;
+    } catch (error) {
+      console.warn('[Mission Control] intent failed', intentType, error);
+      showToast('Move was not saved. Update through Telegram/Hermes.');
+      return false;
+    }
+  }
+
+  async function persistPriorityOrder(ids) {
+    if (isDashboardReadOnly()) {
+      showToast('Dashboard is read-only. Update through Telegram/Hermes.');
+      return false;
+    }
+    const ok = await submitDashboardIntent('priority_queue_reorder', { taskIds: ids });
+    if (ok) {
+      state.visualFocusOrder = ids;
+      showToast('Priority order saved.');
+      renderFocus();
+      return true;
+    }
+    return false;
+  }
+
+  async function persistAgentBoardMove(taskId, lane) {
+    if (isDashboardReadOnly()) {
+      showToast('Dashboard is read-only. Update through Telegram/Hermes.');
+      return false;
+    }
+    const ok = await submitDashboardIntent('agent_board_move', { taskId, lane, agentId: state.boardAgentId });
+    if (ok) {
+      state.visualBoardMoves.set(taskId, lane);
+      showToast('Agent board move saved.');
+      renderAgentBoard();
+      return true;
+    }
+    return false;
+  }
+
   function wireDragList(containerId, onOrder) {
     const container = $(containerId);
     if (!container) return;
+
+    // If dashboard is read-only, disable drag and show message on attempt
+    if (isDashboardReadOnly()) {
+      container.querySelectorAll('[draggable="true"]').forEach((item) => {
+        item.setAttribute('draggable', 'false');
+        item.style.cursor = 'default';
+        item.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          showToast('Dashboard is read-only. Update through Telegram/Hermes.');
+        });
+      });
+      return;
+    }
+
     let dragged = null;
     container.querySelectorAll('[draggable="true"]').forEach((item) => {
       item.addEventListener('dragstart', () => { dragged = item; item.style.opacity = '.45'; });
@@ -649,6 +744,19 @@
   }
 
   function wireKanban() {
+    // If dashboard is read-only, disable drag and show message on attempt
+    if (isDashboardReadOnly()) {
+      document.querySelectorAll('#agent-board .kanban-card').forEach((card) => {
+        card.setAttribute('draggable', 'false');
+        card.style.cursor = 'default';
+        card.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          showToast('Dashboard is read-only. Update through Telegram/Hermes.');
+        });
+      });
+      return;
+    }
+
     let dragged = null;
     document.querySelectorAll('#agent-board .kanban-card').forEach((card) => {
       card.addEventListener('dragstart', () => { dragged = card; card.style.opacity = '.45'; });
@@ -656,12 +764,11 @@
     });
     document.querySelectorAll('#agent-board .kanban-col').forEach((column) => {
       column.addEventListener('dragover', (event) => event.preventDefault());
-      column.addEventListener('drop', (event) => {
+      column.addEventListener('drop', async (event) => {
         event.preventDefault();
         if (!dragged) return;
-        state.visualBoardMoves.set(dragged.dataset.taskId, column.dataset.lane);
-        showToast('Agent board move changed on this screen. Canonical persistence needs Hermes API.');
-        renderAgentBoard();
+        const ok = await persistAgentBoardMove(dragged.dataset.taskId, column.dataset.lane);
+        if (!ok) renderAgentBoard();
       });
     });
   }
