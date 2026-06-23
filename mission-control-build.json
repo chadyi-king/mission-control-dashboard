@@ -1,18 +1,16 @@
 {
   "kind": "mission-control-dashboard-build-marker",
-  "dashboardBuildId": "20260623-cachebreak-2",
-  "appBuildId": "20260623-layout-v2",
-  "source": "gh-pages-root",
+  "dashboardBuildId": "20260624-actions-root-1",
+  "appBuildId": "20260623-cachebreak-1",
+  "source": "main-root-actions-artifact",
   "rootLoader": "index.html",
   "currentManifest": "dashboard-current.json",
-  "currentApp": "app-20260623-layout-v2.html",
+  "currentApp": "app-20260623-cachebreak-1.html",
   "dataSnapshot": "data.json",
-  "expected": {
+  "minimumExpected": {
     "projects": 22,
     "requiredProject": "C4",
-    "requiredProjectName": "Website Services",
-    "visibleTasks": 106,
-    "doneTasks": 29
+    "requiredProjectName": "Website Services"
   },
   "backendContract": {
     "canonicalState": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
@@ -21,13 +19,13 @@
     "forbiddenBrowserWrites": ["GitHub PAT", "mark done", "set deadline", "assign owner"]
   },
   "deploymentContract": {
-    "singlePublisher": ".github/workflows/sync-dashboard-branches.yml",
-    "publisherName": "Publish Mission Control Dashboard",
-    "publishes": "main to gh-pages only",
-    "pagesSource": "gh-pages / root",
+    "singlePublisher": ".github/workflows/pages.yml",
+    "publisherName": "Deploy Mission Control Dashboard",
+    "publishes": "main root static files to GitHub Pages artifact",
+    "requiredProof": "deployment-proof.json must match the deploying commit SHA on the live public URL",
     "liveVerifier": ".github/workflows/verify-live-dashboard.yml",
-    "duplicateRepairWorkflowsArchived": true,
+    "legacyBranchSyncDisabled": true,
     "automaticSnapshotRewritersArchived": true
   },
-  "notes": "GitHub Pages is published from gh-pages / root. index.html is a stable manifest bootloader. dashboard-current.json selects the current app."
+  "notes": "GitHub Pages should be served by the Actions artifact from main. index.html is a stable manifest bootloader. dashboard-current.json selects the current app. data.json task counts are dynamic and must not be hardcoded in deployment checks."
 }
