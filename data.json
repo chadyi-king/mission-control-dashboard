@@ -1,6 +1,6 @@
 {
   "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-23T17:23:08.838305+08:00",
+  "lastUpdated": "2026-06-23T17:23:10.942719+08:00",
   "updatedBy": "chad-yi",
   "projects": {
     "A1": {
@@ -1561,7 +1561,7 @@
       "project": "A1",
       "category": "A",
       "agent": "chad-yi",
-      "status": "open",
+      "status": "removed",
       "priority": "medium",
       "createdAt": "2026-06-23T17:23:08.813810+08:00"
     }
