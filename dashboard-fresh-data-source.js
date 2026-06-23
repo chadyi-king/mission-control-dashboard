@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const DATA_SOURCE_BUILD_ID = '20260624-github-api-data-1';
+  const DATA_SOURCE_BUILD_ID = '20260624-github-api-data-2';
   const API_URL = 'https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main';
   const originalFetch = window.fetch.bind(window);
 
@@ -28,13 +28,15 @@
   async function fetchGitHubData() {
     const url = new URL(API_URL);
     url.searchParams.set('t', String(Date.now()));
+
+    // Keep this as a simple browser CORS request. Custom request headers such as
+    // Cache-Control trigger preflight and can make api.github.com fail as
+    // "Failed to fetch" in browsers, which silently falls back to stale Pages data.
     const response = await originalFetch(url.toString(), {
       cache: 'no-store',
-      headers: {
-        Accept: 'application/vnd.github+json',
-        'Cache-Control': 'no-cache'
-      }
+      headers: { Accept: 'application/vnd.github+json' }
     });
+
     if (!response.ok) throw new Error(`GitHub data API returned HTTP ${response.status}`);
     const payload = await response.json();
     const text = decodeBase64Utf8(payload.content);
