@@ -1,138 +1,17 @@
-name: Publish Mission Control Dashboard
+name: Deprecated Dashboard Branch Sync Disabled
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - '*.html'
-      - '*.css'
-      - '*.js'
-      - '*.json'
-      - '.nojekyll'
-      - 'assets/**'
-      - '.github/workflows/pages.yml'
-      - '.github/workflows/sync-dashboard-branches.yml'
-      - '.github/workflows/verify-live-dashboard.yml'
 
 permissions:
-  contents: write
-
-concurrency:
-  group: mission-control-dashboard-publish
-  cancel-in-progress: true
+  contents: read
 
 jobs:
-  publish-gh-pages:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout dashboard source
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-
-      - name: Verify dashboard source before publishing
+      - name: Explain disabled publisher
         run: |
-          node <<'NODE'
-          const fs = require('fs');
-          const failures = [];
-          const exists = (file) => fs.existsSync(file);
-          const read = (file) => fs.readFileSync(file, 'utf8');
-          const readJson = (file) => JSON.parse(read(file));
-          const fail = (message) => failures.push(message);
-
-          for (const file of ['index.html', 'dashboard-current.json', 'data.json', '.nojekyll']) {
-            if (!exists(file)) fail(`missing required root file: ${file}`);
-          }
-
-          const current = exists('dashboard-current.json') ? readJson('dashboard-current.json') : {};
-          const expected = current.expected || {};
-          const currentApp = current.currentApp;
-          const dataSnapshot = current.dataSnapshot || 'data.json';
-
-          if (current.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
-          if (!currentApp) fail('dashboard-current.json missing currentApp');
-          if (currentApp && !exists(currentApp)) fail(`missing current app file: ${currentApp}`);
-          if (!exists(dataSnapshot)) fail(`missing data snapshot: ${dataSnapshot}`);
-
-          const normalizeRef = (ref) => {
-            if (!ref) return null;
-            const raw = String(ref).trim();
-            if (!raw || raw.startsWith('#')) return null;
-            if (/^(https?:|data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
-            const clean = raw.split('#')[0].split('?')[0].replace(/^\.\//, '').replace(/^\//, '');
-            return clean && !clean.includes('..') ? clean : null;
-          };
-          const refsFromHtml = (file) => {
-            if (!exists(file)) return [];
-            const html = read(file);
-            const refs = [];
-            for (const match of html.matchAll(/<(?:link|script)[^>]+(?:href|src)=["']([^"']+)["']/gi)) {
-              const ref = normalizeRef(match[1]);
-              if (ref) refs.push(ref);
-            }
-            const legacy = html.match(/LEGACY_VISUAL_APP\s*=\s*['"]([^'"]+)['"]/);
-            if (legacy) {
-              const ref = normalizeRef(legacy[1]);
-              if (ref) refs.push(ref);
-            }
-            return [...new Set(refs)];
-          };
-
-          const htmlFiles = new Set(['index.html']);
-          if (currentApp) htmlFiles.add(currentApp);
-          for (const file of [...htmlFiles]) {
-            for (const ref of refsFromHtml(file)) {
-              if (!exists(ref)) fail(`${file} references missing asset: ${ref}`);
-              if (ref.endsWith('.html')) htmlFiles.add(ref);
-            }
-          }
-          const refs = [...htmlFiles].flatMap(refsFromHtml);
-          if (!refs.some((ref) => ref.endsWith('.css'))) fail('current app references no CSS assets');
-          if (!refs.some((ref) => ref.endsWith('.js'))) fail('current app references no JS assets');
-
-          const forbidden = /api\.github\.com|GitHub PAT|Personal Access Token/i;
-          for (const file of fs.readdirSync('.').filter((name) => /\.(html|js)$/i.test(name))) {
-            if (forbidden.test(read(file))) fail(`${file} contains forbidden direct GitHub write/PAT pattern`);
-          }
-
-          const aliases = { backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review', check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested', in_progress: 'active' };
-          const normalizeStatus = (status) => {
-            const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
-            return aliases[raw] || raw || 'open';
-          };
-          if (exists(dataSnapshot)) {
-            const data = readJson(dataSnapshot);
-            const tasks = Object.entries(data.tasks || {})
-              .filter(([, task]) => task && typeof task === 'object')
-              .map(([id, task]) => ({ id: task.id || id, ...task }));
-            const visible = tasks.filter((task) => normalizeStatus(task.status) !== 'removed');
-            const done = visible.filter((task) => normalizeStatus(task.status) === 'done');
-            const projects = new Set();
-            Object.keys(data.projects || {}).forEach((id) => projects.add(String(id).toUpperCase()));
-            Object.keys(data.projectDetails || {}).forEach((id) => projects.add(String(id).toUpperCase()));
-            Object.values(data.categories || {}).forEach((category) => (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase())));
-            visible.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
-            const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
-            if (projects.size !== (expected.projects ?? 22)) fail(`expected ${expected.projects ?? 22} projects, found ${projects.size}`);
-            if (!projects.has(String(expected.requiredProject || 'C4').toUpperCase())) fail('missing C4');
-            if (c4.name !== (expected.requiredProjectName || 'Website Services')) fail(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
-            if (visible.length !== (expected.visibleTasks ?? 106)) fail(`expected ${expected.visibleTasks ?? 106} visible tasks, found ${visible.length}`);
-            if (done.length !== (expected.doneTasks ?? 29)) fail(`expected ${expected.doneTasks ?? 29} done tasks, found ${done.length}`);
-          }
-
-          if (failures.length) {
-            console.error('Mission Control publish verification FAILED:');
-            console.error(failures.map((failure) => `- ${failure}`).join('\n'));
-            process.exit(1);
-          }
-          console.log('Mission Control publish verification PASSED.');
-          console.log(`Publishing currentApp: ${currentApp}`);
-          NODE
-
-      - name: Publish main to gh-pages only
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git push origin HEAD:gh-pages
+          echo 'This workflow is intentionally disabled.'
+          echo 'Mission Control now deploys from main through .github/workflows/pages.yml.'
+          echo 'Do not push main to gh-pages from this workflow.'
