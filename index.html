@@ -28,7 +28,7 @@
     (async function bootMissionControl() {
       const status = document.getElementById('boot-status');
       const errorBox = document.getElementById('boot-error');
-      const BOOT_ID = '20260624-actions-root-1';
+      const BOOT_ID = '20260624-root-cache-kill-1';
 
       function withNoCache(path, build) {
         const url = new URL(path, window.location.href);
@@ -37,7 +37,40 @@
         return url.toString();
       }
 
+      async function clearStaleRuntimeCaches() {
+        let hadController = false;
+        try {
+          hadController = !!(navigator.serviceWorker && navigator.serviceWorker.controller);
+          if ('serviceWorker' in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations.map((registration) => registration.unregister().catch(() => false)));
+          }
+        } catch (error) {
+          console.warn('[Mission Control Boot] service worker cleanup skipped', error);
+        }
+
+        try {
+          if ('caches' in window) {
+            const keys = await caches.keys();
+            await Promise.all(keys.map((key) => caches.delete(key).catch(() => false)));
+          }
+        } catch (error) {
+          console.warn('[Mission Control Boot] cache cleanup skipped', error);
+        }
+
+        if (hadController && !sessionStorage.getItem('mission-control-cache-kill-reloaded')) {
+          sessionStorage.setItem('mission-control-cache-kill-reloaded', BOOT_ID);
+          status.textContent = 'Refreshing Mission Control runtime...';
+          window.location.replace(window.location.href);
+          return false;
+        }
+        return true;
+      }
+
       try {
+        const canContinue = await clearStaleRuntimeCaches();
+        if (!canContinue) return;
+
         const manifestResponse = await fetch(withNoCache('dashboard-current.json', BOOT_ID), {
           cache: 'no-store',
           headers: { 'Cache-Control': 'no-cache' }
