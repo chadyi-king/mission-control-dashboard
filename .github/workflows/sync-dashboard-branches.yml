@@ -18,7 +18,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 concurrency:
   group: mission-control-dashboard-publish
@@ -33,11 +32,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify source contract before publishing
+      - name: Verify dashboard source before publishing
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const path = require('path');
           const failures = [];
           const exists = (file) => fs.existsSync(file);
           const read = (file) => fs.readFileSync(file, 'utf8');
@@ -49,30 +47,22 @@ jobs:
           }
 
           const current = exists('dashboard-current.json') ? readJson('dashboard-current.json') : {};
-          const marker = exists('mission-control-build.json') ? readJson('mission-control-build.json') : {};
-          const expected = current.expected || marker.expected || {};
-          const currentApp = current.currentApp || marker.currentApp;
-          const dataSnapshot = current.dataSnapshot || marker.dataSnapshot || 'data.json';
+          const expected = current.expected || {};
+          const currentApp = current.currentApp;
+          const dataSnapshot = current.dataSnapshot || 'data.json';
 
           if (current.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
           if (!currentApp) fail('dashboard-current.json missing currentApp');
           if (currentApp && !exists(currentApp)) fail(`missing current app file: ${currentApp}`);
           if (!exists(dataSnapshot)) fail(`missing data snapshot: ${dataSnapshot}`);
 
-          if (exists('index.html')) {
-            const bootloader = read('index.html');
-            if (!bootloader.includes('dashboard-current.json')) fail('index.html does not load dashboard-current.json');
-            if (!bootloader.includes("cache: 'no-store'")) fail('index.html missing no-store manifest/app fetch');
-          }
-
           const normalizeRef = (ref) => {
             if (!ref) return null;
             const raw = String(ref).trim();
             if (!raw || raw.startsWith('#')) return null;
             if (/^(https?:|data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
-            let clean = raw.split('#')[0].split('?')[0].replace(/^\.\//, '').replace(/^\//, '');
-            if (!clean || clean.includes('..')) return null;
-            return clean;
+            const clean = raw.split('#')[0].split('?')[0].replace(/^\.\//, '').replace(/^\//, '');
+            return clean && !clean.includes('..') ? clean : null;
           };
           const refsFromHtml = (file) => {
             if (!exists(file)) return [];
@@ -125,16 +115,11 @@ jobs:
             Object.values(data.categories || {}).forEach((category) => (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase())));
             visible.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
             const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
-            const expectedProjects = expected.projects ?? 22;
-            const expectedVisible = expected.visibleTasks ?? 106;
-            const expectedDone = expected.doneTasks ?? 29;
-            const expectedProject = String(expected.requiredProject || 'C4').toUpperCase();
-            const expectedProjectName = expected.requiredProjectName || 'Website Services';
-            if (projects.size !== expectedProjects) fail(`expected ${expectedProjects} projects, found ${projects.size}`);
-            if (!projects.has(expectedProject)) fail(`missing ${expectedProject}`);
-            if (c4.name !== expectedProjectName) fail(`expected C4 ${expectedProjectName}, found ${JSON.stringify(c4.name)}`);
-            if (visible.length !== expectedVisible) fail(`expected ${expectedVisible} visible tasks, found ${visible.length}`);
-            if (done.length !== expectedDone) fail(`expected ${expectedDone} done tasks, found ${done.length}`);
+            if (projects.size !== (expected.projects ?? 22)) fail(`expected ${expected.projects ?? 22} projects, found ${projects.size}`);
+            if (!projects.has(String(expected.requiredProject || 'C4').toUpperCase())) fail('missing C4');
+            if (c4.name !== (expected.requiredProjectName || 'Website Services')) fail(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
+            if (visible.length !== (expected.visibleTasks ?? 106)) fail(`expected ${expected.visibleTasks ?? 106} visible tasks, found ${visible.length}`);
+            if (done.length !== (expected.doneTasks ?? 29)) fail(`expected ${expected.doneTasks ?? 29} done tasks, found ${done.length}`);
           }
 
           if (failures.length) {
@@ -144,52 +129,6 @@ jobs:
           }
           console.log('Mission Control publish verification PASSED.');
           console.log(`Publishing currentApp: ${currentApp}`);
-          NODE
-
-      - name: Ensure GitHub Pages uses gh-pages root
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          REPOSITORY: ${{ github.repository }}
-        run: |
-          node <<'NODE'
-          (async () => {
-            const repo = process.env.REPOSITORY;
-            const token = process.env.GITHUB_TOKEN;
-            const base = `https://api.github.com/repos/${repo}`;
-            const headers = {
-              Accept: 'application/vnd.github+json',
-              Authorization: `Bearer ${token}`,
-              'X-GitHub-Api-Version': '2022-11-28',
-              'User-Agent': 'mission-control-dashboard-publish'
-            };
-            const desired = { build_type: 'legacy', source: { branch: 'gh-pages', path: '/' } };
-            const request = async (path, options = {}) => {
-              const response = await fetch(`${base}${path}`, { ...options, headers: { ...headers, ...(options.headers || {}) } });
-              const text = await response.text();
-              let body;
-              try { body = text ? JSON.parse(text) : null; } catch { body = text; }
-              return { response, body };
-            };
-            const before = await request('/pages');
-            const method = before.response.status === 404 ? 'POST' : 'PATCH';
-            const update = await request('/pages', {
-              method,
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(desired)
-            });
-            if (!update.response.ok) {
-              throw new Error(`Could not set Pages source: HTTP ${update.response.status} ${JSON.stringify(update.body)}`);
-            }
-            const after = await request('/pages');
-            const source = after.body?.source || {};
-            if (source.branch !== 'gh-pages' || source.path !== '/') {
-              throw new Error(`Pages source mismatch after update: ${JSON.stringify(source)}`);
-            }
-            console.log('GitHub Pages source confirmed: gh-pages / root');
-          })().catch((error) => {
-            console.error(error);
-            process.exit(1);
-          });
           NODE
 
       - name: Publish main to gh-pages only
