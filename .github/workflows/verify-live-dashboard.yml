@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows:
-      - Deploy Mission Control Dashboard
+      - Sync Dashboard Publishing Branch
     types:
       - completed
 
@@ -169,7 +169,7 @@ jobs:
                 proof.checks.proofKind = deploymentProof.kind === 'mission-control-dashboard-deployment-proof';
                 proof.checks.proofSourceSha = !expectedSourceSha || deploymentProof.sourceSha === expectedSourceSha;
                 proof.checks.proofDataHash = !deploymentProof.dataSha256 || deploymentProof.dataSha256 === proof.observed.dataSha256;
-                proof.checks.actionsDeployment = deploymentProof.publishedBy === 'pages.yml' && deploymentProof.deploymentMode === 'github-actions-pages';
+                proof.checks.branchDeployment = deploymentProof.publishedBy === 'sync-dashboard-branches.yml' && deploymentProof.deploymentMode === 'legacy-gh-pages-branch';
                 proof.checks.currentAppLoaded = dom.resourceNames.some((name) => name.includes(manifest.currentApp));
                 proof.checks.dataLoaded = dom.resourceNames.some((name) => name.includes(manifest.dataSnapshot || 'data.json'));
 
