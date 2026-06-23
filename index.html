@@ -71,17 +71,9 @@
         const canContinue = await clearStaleRuntimeCaches();
         if (!canContinue) return;
 
-        const manifestResponse = await fetch(withNoCache('dashboard-current.json', BOOT_ID), {
-          cache: 'no-store',
-          headers: { 'Cache-Control': 'no-cache' }
-        });
-        if (!manifestResponse.ok) throw new Error('dashboard-current.json HTTP ' + manifestResponse.status);
-
-        const manifest = await manifestResponse.json();
-        if (!manifest.currentApp) throw new Error('dashboard-current.json missing currentApp');
-
-        const appFile = manifest.currentApp;
-        const appBuild = manifest.appBuildId || manifest.dashboardBuildId || BOOT_ID;
+        // Force layout v2 - bypass manifest CDN cache
+        const appFile = 'app-20260624-layout-v2.html';
+        const appBuild = '20260624-layout-v2';
         status.textContent = 'Loading Mission Control...';
 
         const appResponse = await fetch(withNoCache(appFile, appBuild), {
