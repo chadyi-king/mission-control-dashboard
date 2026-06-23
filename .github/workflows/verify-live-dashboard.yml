@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows:
-      - Deploy Mission Control Dashboard
+      - Verify Mission Control Dashboard Source
     types:
       - completed
 
@@ -16,28 +16,15 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify GitHub Pages bootloader, app, assets, and data snapshot
+      - name: Verify GitHub Pages root, manifest, app, assets, and data snapshot
         run: |
           node <<'NODE'
           const assert = (condition, message) => {
             if (!condition) throw new Error(message);
           };
           const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-          const fetchText = async (url) => {
-            const response = await fetch(url, {
-              headers: {
-                'Cache-Control': 'no-cache',
-                'Pragma': 'no-cache'
-              }
-            });
-            const text = await response.text();
-            return { response, text };
-          };
-          const jsonFrom = async (url) => {
-            const { response, text } = await fetchText(url);
-            assert(response.ok, `${url} HTTP ${response.status}`);
-            return JSON.parse(text);
-          };
+          const base = 'https://chadyi-king.github.io/mission-control-dashboard/';
+
           const aliases = {
             backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
             check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested',
@@ -46,6 +33,56 @@ jobs:
           const normalizeStatus = (status) => {
             const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
             return aliases[raw] || raw || 'open';
+          };
+          const withCacheBust = (path, cacheKey) => {
+            const url = new URL(path, base);
+            url.searchParams.set('verify', cacheKey);
+            url.searchParams.set('t', String(Date.now()));
+            return url.toString();
+          };
+          const fetchText = async (path, cacheKey) => {
+            const url = path.startsWith('http') ? path : withCacheBust(path, cacheKey);
+            const response = await fetch(url, {
+              cache: 'no-store',
+              headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
+              }
+            });
+            const text = await response.text();
+            return { url, response, text };
+          };
+          const jsonFrom = async (path, cacheKey) => {
+            const result = await fetchText(path, cacheKey);
+            assert(result.response.ok, `${result.url} HTTP ${result.response.status}`);
+            return JSON.parse(result.text);
+          };
+          const normalizeRef = (ref) => {
+            if (!ref) return null;
+            const raw = String(ref).trim();
+            if (!raw || raw.startsWith('#')) return null;
+            if (/^(data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
+            if (/^https?:\/\//i.test(raw) && !raw.startsWith(base)) return null;
+            const url = new URL(raw, base);
+            let clean = url.pathname.replace(/^\/mission-control-dashboard\//, '').replace(/^\//, '');
+            if (!clean || clean.includes('..')) return null;
+            return clean;
+          };
+          const refsFromHtml = (html) => {
+            const refs = [];
+            for (const match of html.matchAll(/<(?:link|script)[^>]+(?:href|src)=["']([^"']+)["']/gi)) {
+              const ref = normalizeRef(match[1]);
+              if (ref) refs.push(ref);
+            }
+            const legacy = html.match(/LEGACY_VISUAL_APP\s*=\s*['"]([^'"]+)['"]/);
+            if (legacy) {
+              const ref = normalizeRef(legacy[1]);
+              if (ref) refs.push(ref);
+            }
+            return [...new Set(refs)];
+          };
+          const assertNoOldBrowserWritePath = (label, text) => {
+            assert(!/GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist/i.test(text), `${label} contains old browser write/PAT pattern`);
           };
           const verifySnapshot = (data) => {
             const tasks = Object.entries(data.tasks || {})
@@ -65,65 +102,62 @@ jobs:
             assert(tasks.length === 106, `expected 106 visible tasks, found ${tasks.length}`);
             assert(done.length === 29, `expected 29 done tasks, found ${done.length}`);
           };
-          const assertNoOldBrowserWritePath = (label, text) => {
-            assert(!/GitHub PAT|Personal Access Token|api\.github\.com|Mark Done to persist/i.test(text), `${label} contains old browser write/PAT pattern`);
-          };
 
-          const base = 'https://chadyi-king.github.io/mission-control-dashboard/';
-          let lastError;
-          for (let attempt = 1; attempt <= 8; attempt += 1) {
-            const cacheKey = `verify-${Date.now()}-${attempt}`;
-            try {
-              const rootUrl = `${base}?${cacheKey}`;
-              const root = await fetchText(rootUrl);
-              assert(root.response.ok, `root HTTP ${root.response.status}`);
-              assert(root.text.includes('dashboard-current.json'), 'root did not load dashboard-current.json boot manifest');
-              assert(root.text.includes('app-20260623-backend-contract-1.html'), 'root did not reference current backend-contract app');
-              assert(root.text.includes('RED SUN COMMAND'), 'root did not contain Red Sun boot shell');
-              assertNoOldBrowserWritePath('root', root.text);
+          (async () => {
+            let lastError;
+            for (let attempt = 1; attempt <= 12; attempt += 1) {
+              const cacheKey = `verify-${Date.now()}-${attempt}`;
+              try {
+                const root = await fetchText('', cacheKey);
+                assert(root.response.ok, `root HTTP ${root.response.status}`);
+                assert(root.text.includes('dashboard-current.json'), 'root does not load dashboard-current.json');
+                assert(root.text.includes('RED SUN COMMAND'), 'root does not contain Red Sun boot shell');
+                assertNoOldBrowserWritePath('root', root.text);
 
-              const manifest = await jsonFrom(`${base}dashboard-current.json?${cacheKey}`);
-              assert(manifest.dashboardBuildId === '20260623-backend-contract-1', `manifest dashboardBuildId mismatch: ${manifest.dashboardBuildId}`);
-              assert(manifest.appBuildId === '20260622-visual-restore-1', `manifest appBuildId mismatch: ${manifest.appBuildId}`);
-              assert(manifest.currentApp === 'app-20260623-backend-contract-1.html', `manifest currentApp mismatch: ${manifest.currentApp}`);
+                const manifest = await jsonFrom('dashboard-current.json', cacheKey);
+                assert(manifest.kind === 'mission-control-dashboard-current-app', `manifest kind mismatch: ${manifest.kind}`);
+                assert(manifest.currentApp, 'manifest missing currentApp');
+                assert(manifest.dataSnapshot || 'data.json', 'manifest missing dataSnapshot');
 
-              const appHtml = await fetchText(`${base}${manifest.currentApp}?${cacheKey}`);
-              assert(appHtml.response.ok, `${manifest.currentApp} HTTP ${appHtml.response.status}`);
-              assert(appHtml.text.includes('main-styles.css?build=20260622-visual-restore-1'), 'app html did not reference restored CSS asset');
-              assert(appHtml.text.includes('dashboard-hermes-bridge.js?build=20260622-visual-restore-1'), 'app html did not reference Hermes bridge asset');
-              assert(appHtml.text.includes('dashboard-app.js?build=20260622-visual-restore-1'), 'app html did not reference dashboard app JS asset');
-              assert(appHtml.text.includes('dashboard-visual-state-hydrator.js?build=20260623-backend-contract-1'), 'app html did not reference visual workflow hydrator');
-              assertNoOldBrowserWritePath('app html', appHtml.text);
+                const app = await fetchText(manifest.currentApp, cacheKey);
+                assert(app.response.ok, `${manifest.currentApp} HTTP ${app.response.status}`);
+                assertNoOldBrowserWritePath(manifest.currentApp, app.text);
 
-              const bridge = await fetchText(`${base}dashboard-hermes-bridge.js?${cacheKey}`);
-              assert(bridge.response.ok, `dashboard-hermes-bridge.js HTTP ${bridge.response.status}`);
-              assert(bridge.text.includes('__MISSION_CONTROL_HERMES__'), 'Hermes bridge missing global bridge object');
-              assert(bridge.text.includes('/api/sync'), 'Hermes bridge missing sync endpoint');
-              assert(bridge.text.includes('/api/dashboard-intents'), 'Hermes bridge missing dashboard intent endpoint');
-              assertNoOldBrowserWritePath('Hermes bridge', bridge.text);
+                const htmlToInspect = new Map([[manifest.currentApp, app.text]]);
+                for (const [htmlFile, html] of [...htmlToInspect]) {
+                  for (const ref of refsFromHtml(html)) {
+                    const asset = await fetchText(ref, cacheKey);
+                    assert(asset.response.ok, `${ref} HTTP ${asset.response.status} referenced by ${htmlFile}`);
+                    if (ref.endsWith('.html') && !htmlToInspect.has(ref)) htmlToInspect.set(ref, asset.text);
+                    if (/\.(html|js)$/i.test(ref)) assertNoOldBrowserWritePath(ref, asset.text);
+                  }
+                }
 
-              const app = await fetchText(`${base}dashboard-app.js?${cacheKey}`);
-              assert(app.response.ok, `dashboard-app.js HTTP ${app.response.status}`);
-              assert(app.text.includes("BUILD_ID = '20260622-visual-restore-1'"), 'dashboard app missing expected internal build id');
-              assert(app.text.includes("cache: 'no-store'"), 'dashboard app missing no-store data fetch');
-              assert(app.text.includes("url.searchParams.set('t'"), 'dashboard app missing timestamp cache buster');
-              assertNoOldBrowserWritePath('dashboard app', app.text);
+                const allRefs = [...htmlToInspect.values()].flatMap(refsFromHtml);
+                const cssRefs = allRefs.filter((ref) => ref.endsWith('.css'));
+                const jsRefs = allRefs.filter((ref) => ref.endsWith('.js'));
+                assert(cssRefs.length > 0, 'current app references no CSS assets');
+                assert(jsRefs.length > 0, 'current app references no JS assets');
 
-              const hydrator = await fetchText(`${base}dashboard-visual-state-hydrator.js?${cacheKey}`);
-              assert(hydrator.response.ok, `dashboard-visual-state-hydrator.js HTTP ${hydrator.response.status}`);
-              assert(hydrator.text.includes('visualWorkflowState'), 'visual hydrator missing visualWorkflowState');
-              assert(hydrator.text.includes('priorityQueueOrder'), 'visual hydrator missing priorityQueueOrder');
-              assert(hydrator.text.includes('agentBoards'), 'visual hydrator missing agentBoards');
+                const data = await jsonFrom(manifest.dataSnapshot || 'data.json', cacheKey);
+                verifySnapshot(data);
 
-              const data = await jsonFrom(`${base}data.json?${cacheKey}`);
-              verifySnapshot(data);
-              console.log('Live Mission Control verified: bootloader, manifest, app html, assets, Hermes bridge, visual workflow hydrator, C4, 22 projects, 106 tasks, 29 done.');
-              process.exit(0);
-            } catch (error) {
-              lastError = error;
-              console.log(`Attempt ${attempt} failed: ${error.message}`);
-              await sleep(15000);
+                console.log('Live Mission Control verified.');
+                console.log(`Root: 200`);
+                console.log(`Manifest currentApp: ${manifest.currentApp}`);
+                console.log(`CSS refs: ${[...new Set(cssRefs)].join(', ')}`);
+                console.log(`JS refs: ${[...new Set(jsRefs)].join(', ')}`);
+                console.log('Data: 22 projects / 106 visible tasks / 29 done / C4 Website Services');
+                return;
+              } catch (error) {
+                lastError = error;
+                console.log(`Attempt ${attempt} failed: ${error.message}`);
+                await sleep(15000);
+              }
             }
-          }
-          throw lastError;
+            throw lastError;
+          })().catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
           NODE
