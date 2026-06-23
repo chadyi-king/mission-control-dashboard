@@ -1,17 +1,214 @@
-name: Deprecated Dashboard Branch Sync Disabled
+name: Sync Dashboard Publishing Branch
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '*.html'
+      - '*.css'
+      - '*.js'
+      - '*.json'
+      - '.nojekyll'
+      - 'assets/**'
+      - '.github/workflows/sync-dashboard-branches.yml'
+      - '.github/workflows/verify-live-dashboard.yml'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: mission-control-dashboard-branch-publish
+  cancel-in-progress: true
 
 jobs:
-  disabled:
+  publish-gh-pages:
     runs-on: ubuntu-latest
     steps:
-      - name: Explain disabled publisher
+      - name: Checkout dashboard source from main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: source
+
+      - name: Build clean gh-pages artifact from main
+        working-directory: source
         run: |
-          echo 'This workflow is intentionally disabled.'
-          echo 'Mission Control now deploys from main through .github/workflows/pages.yml.'
-          echo 'Do not push main to gh-pages from this workflow.'
+          set -euo pipefail
+          rm -rf public
+          mkdir -p public
+
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const crypto = require('crypto');
+          const source = process.cwd();
+          const out = path.join(source, 'public');
+          const failures = [];
+          const copied = new Set();
+          const fail = (message) => failures.push(message);
+          const exists = (file) => fs.existsSync(path.join(source, file));
+          const read = (file) => fs.readFileSync(path.join(source, file), 'utf8');
+          const readJson = (file) => JSON.parse(read(file));
+          const forbidden = /api\.github\.com|GitHub PAT|Personal Access Token|Mark Done to persist/i;
+          const aliases = {
+            backlog: 'open', pending: 'open', todo: 'open', review: 'needs_review',
+            check_this: 'needs_review', waiting_on_you: 'input_requested', needs_input: 'input_requested',
+            in_progress: 'active'
+          };
+          const normalizeStatus = (status) => {
+            const raw = String(status || 'open').trim().toLowerCase().replace(/[\s-]+/g, '_');
+            return aliases[raw] || raw || 'open';
+          };
+          const normalizeRef = (ref) => {
+            if (!ref) return null;
+            const raw = String(ref).trim();
+            if (!raw || raw.startsWith('#')) return null;
+            if (/^(https?:|data:|mailto:|tel:|javascript:)/i.test(raw)) return null;
+            const clean = raw.split('#')[0].split('?')[0].replace(/^\.\//, '').replace(/^\/mission-control-dashboard\//, '').replace(/^\//, '');
+            if (!clean || clean.includes('..')) return null;
+            return clean;
+          };
+          const refsFromHtml = (file) => {
+            if (!exists(file)) return [];
+            const html = read(file);
+            const refs = [];
+            for (const match of html.matchAll(/<(?:link|script)[^>]+(?:href|src)=["']([^"']+)["']/gi)) {
+              const ref = normalizeRef(match[1]);
+              if (ref) refs.push(ref);
+            }
+            const legacy = html.match(/LEGACY_VISUAL_APP\s*=\s*['"]([^'"]+)['"]/);
+            if (legacy) {
+              const ref = normalizeRef(legacy[1]);
+              if (ref) refs.push(ref);
+            }
+            return [...new Set(refs)];
+          };
+          const copyFile = (file) => {
+            if (!exists(file)) {
+              fail(`missing required artifact file: ${file}`);
+              return;
+            }
+            if (copied.has(file)) return;
+            const from = path.join(source, file);
+            const to = path.join(out, file);
+            fs.mkdirSync(path.dirname(to), { recursive: true });
+            fs.copyFileSync(from, to);
+            copied.add(file);
+          };
+
+          for (const file of ['index.html', 'dashboard-current.json', 'data.json']) copyFile(file);
+          if (exists('mission-control-build.json')) copyFile('mission-control-build.json');
+          if (exists('.nojekyll')) copyFile('.nojekyll');
+          else fs.writeFileSync(path.join(out, '.nojekyll'), '');
+
+          const current = exists('dashboard-current.json') ? readJson('dashboard-current.json') : {};
+          const currentApp = current.currentApp;
+          const dataSnapshot = current.dataSnapshot || 'data.json';
+          if (current.kind !== 'mission-control-dashboard-current-app') fail('dashboard-current.json kind mismatch');
+          if (!currentApp) fail('dashboard-current.json missing currentApp');
+          copyFile(dataSnapshot);
+
+          const htmlQueue = ['index.html'];
+          if (currentApp) htmlQueue.push(currentApp);
+          for (let index = 0; index < htmlQueue.length; index += 1) {
+            const file = htmlQueue[index];
+            copyFile(file);
+            if (!exists(file)) continue;
+            const body = read(file);
+            if (forbidden.test(body)) fail(`${file} contains old browser write/PAT pattern`);
+            for (const ref of refsFromHtml(file)) {
+              copyFile(ref);
+              if (ref.endsWith('.html') && !htmlQueue.includes(ref)) htmlQueue.push(ref);
+            }
+          }
+
+          for (const file of [...copied]) {
+            if (/\.(html|js)$/i.test(file) && exists(file) && forbidden.test(read(file))) {
+              fail(`${file} contains old browser write/PAT pattern`);
+            }
+          }
+          const copiedList = [...copied];
+          if (!copiedList.some((file) => file.endsWith('.css'))) fail('artifact references no CSS assets');
+          if (!copiedList.some((file) => file.endsWith('.js'))) fail('artifact references no JS assets');
+
+          if (fs.existsSync(path.join(source, 'assets'))) {
+            fs.cpSync(path.join(source, 'assets'), path.join(out, 'assets'), { recursive: true });
+          }
+
+          const data = exists(dataSnapshot) ? readJson(dataSnapshot) : {};
+          const tasks = Object.entries(data.tasks || {})
+            .filter(([, task]) => task && typeof task === 'object')
+            .map(([id, task]) => ({ id: task.id || id, ...task }));
+          const visible = tasks.filter((task) => normalizeStatus(task.status) !== 'removed');
+          const done = visible.filter((task) => normalizeStatus(task.status) === 'done');
+          const projects = new Set();
+          Object.keys(data.projects || {}).forEach((id) => projects.add(String(id).toUpperCase()));
+          Object.keys(data.projectDetails || {}).forEach((id) => projects.add(String(id).toUpperCase()));
+          Object.values(data.categories || {}).forEach((category) => (category.projects || []).forEach((id) => projects.add(String(id).toUpperCase())));
+          visible.forEach((task) => { if (task.project) projects.add(String(task.project).toUpperCase()); });
+          const c4 = (data.projects || {}).C4 || (data.projectDetails || {}).C4 || {};
+          if (projects.size < 22) fail(`expected at least 22 projects, found ${projects.size}`);
+          if (!projects.has('C4')) fail('missing C4');
+          if (c4.name !== 'Website Services') fail(`expected C4 Website Services, found ${JSON.stringify(c4.name)}`);
+          if (!visible.length) fail('no visible tasks found');
+          if (done.length > visible.length) fail('done task count exceeds visible task count');
+
+          const dataText = fs.readFileSync(path.join(out, dataSnapshot), 'utf8');
+          const proof = {
+            kind: 'mission-control-dashboard-deployment-proof',
+            publishedBy: 'sync-dashboard-branches.yml',
+            sourceBranch: 'main',
+            sourceSha: process.env.GITHUB_SHA,
+            runId: process.env.GITHUB_RUN_ID,
+            runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            createdAt: new Date().toISOString(),
+            currentApp,
+            dataSnapshot,
+            dataSha256: crypto.createHash('sha256').update(dataText).digest('hex'),
+            expected: {
+              projects: projects.size,
+              visibleTasks: visible.length,
+              doneTasks: done.length,
+              c4Name: c4.name
+            }
+          };
+          fs.writeFileSync(path.join(out, 'deployment-proof.json'), JSON.stringify(proof, null, 2) + '\n');
+
+          if (failures.length) {
+            console.error('Mission Control gh-pages artifact verification FAILED:');
+            console.error(failures.map((failure) => `- ${failure}`).join('\n'));
+            process.exit(1);
+          }
+          console.log('Mission Control gh-pages artifact verification PASSED.');
+          console.log(`sourceSha: ${process.env.GITHUB_SHA}`);
+          console.log(`currentApp: ${currentApp}`);
+          console.log(`data: ${projects.size} projects / ${visible.length} visible tasks / ${done.length} done / C4 Website Services`);
+          console.log('artifact files:');
+          copiedList.sort().forEach((file) => console.log(`- ${file}`));
+          NODE
+
+      - name: Checkout gh-pages publishing branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 0
+          token: ${{ github.token }}
+
+      - name: Replace gh-pages with clean artifact
+        run: |
+          set -euo pipefail
+          find gh-pages -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R source/public/. gh-pages/
+          cd gh-pages
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'gh-pages already matches the clean dashboard artifact.'
+          else
+            git commit -m "Publish dashboard from main ${GITHUB_SHA}"
+            git push origin gh-pages
+          fi
