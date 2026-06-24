@@ -6,18 +6,18 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Mission Control Dashboard</title>
+  <title>RED SUN COMMAND | Mission Control</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='s' cx='42%25' cy='38%25' r='62%25'><stop offset='0%25' stop-color='%23FFEE99'/><stop offset='15%25' stop-color='%23FF6B00'/><stop offset='35%25' stop-color='%23DC143C'/><stop offset='65%25' stop-color='%233a0000'/><stop offset='100%25' stop-color='%23080000'/></radialGradient></defs><circle cx='50' cy='50' r='48' fill='url(%23s)'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main-styles-20260623-p5.css?build=20260624-root-direct-stable-1">
+  <link rel="stylesheet" href="main-styles-20260625-v2.css?build=20260625-layout-v2">
 </head>
 <body>
   <script>
     (() => {
-      window.__MISSION_CONTROL_ROOT_MODE__ = 'direct-stable-v1';
-      window.__MISSION_CONTROL_ROOT_BUILD__ = '20260624-root-direct-stable-1';
+      window.__MISSION_CONTROL_ROOT_MODE__ = 'layout-v2';
+      window.__MISSION_CONTROL_ROOT_BUILD__ = '20260625-layout-v2';
 
       const safeIncludes = (value, fragment) => String(value || '').toLowerCase().includes(fragment);
       const isDashboardCacheKey = (key) => {
@@ -67,6 +67,7 @@
   <div class="solar-corona" aria-hidden="true"></div>
   <div class="rs-bg-sun" aria-hidden="true"></div>
 
+  <!-- TOP BAR: RED SUN COMMAND + TICKER -->
   <header class="topbar">
     <div class="topbar-left">
       <div class="red-sun-orb" aria-hidden="true"></div>
@@ -76,28 +77,128 @@
       </div>
     </div>
     <div class="topbar-center">
-      <div class="topbar-ticker" id="ticker">Loading mission intelligence...</div>
+      <div class="topbar-ticker" id="ticker">
+        <span class="ticker-content" id="ticker-content">Initializing mission intelligence...</span>
+      </div>
     </div>
     <div class="topbar-right">
       <div class="sync-chip" id="sync-chip">BOOTING</div>
-      <div class="last-audit-badge"><span class="lad-label">Build</span><span class="lad-value" id="build-id">root-direct-stable-1</span></div>
+      <div class="last-audit-badge"><span class="lad-label">Build</span><span class="lad-value" id="build-id">layout-v2</span></div>
     </div>
   </header>
 
+  <!-- COMMAND STRIP: Quick metrics -->
   <nav class="cmd-strip" id="cmd-strip" aria-label="Mission statistics"></nav>
-  <nav class="agent-rail" id="agent-rail" aria-label="Agent status rail"></nav>
 
   <main class="main-content">
     <section id="home-section" class="section active">
-      <section class="stats-bar" aria-label="Dashboard statistics">
-        <article class="stat-card"><div class="stat-header"><span class="stat-label">Total Tasks</span></div><div class="stat-value" id="stat-total">-</div><div class="stat-breakdown"><span id="stat-open">- open</span></div></article>
-        <article class="stat-card"><div class="stat-header"><span class="stat-label">Completed</span></div><div class="stat-value stat-val-good" id="stat-done">-</div><div class="stat-breakdown"><span id="stat-rate">-</span></div></article>
-        <article class="stat-card"><div class="stat-header"><span class="stat-label">Projects</span></div><div class="stat-value" id="stat-projects">-</div><div class="stat-breakdown"><span id="stat-c4">C4 checking</span></div></article>
-        <article class="stat-card"><div class="stat-header"><span class="stat-label">Needs Caleb</span></div><div class="stat-value stat-val-warn" id="stat-caleb">-</div><div class="stat-breakdown"><span id="stat-input">- input</span></div></article>
-        <article class="stat-card"><div class="stat-header"><span class="stat-label">Active Work</span></div><div class="stat-value" id="stat-active">-</div><div class="stat-breakdown"><span id="stat-blocked">- blocked</span></div></article>
-        <article class="stat-card"><div class="stat-header"><span class="stat-label">Fleet</span></div><div class="stat-value" id="stat-agents">-</div><div class="stat-breakdown"><span id="stat-live-agents">- live</span></div></article>
+
+      <!-- 3 CLUSTERS LAYOUT -->
+      <section class="clusters-grid" aria-label="Mission clusters">
+        
+        <!-- CLUSTER 1: SCHEDULE -->
+        <article class="cluster cluster-schedule">
+          <div class="cluster-header">
+            <div class="cluster-icon">📅</div>
+            <div class="cluster-title">SCHEDULE</div>
+          </div>
+          <div class="cluster-body">
+            <div class="cluster-row">
+              <div class="cluster-metric">
+                <div class="cluster-value" id="schedule-due-today">-</div>
+                <div class="cluster-label">Due Today</div>
+                <div class="cluster-sub" id="schedule-due-tomorrow">- tomorrow</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value cluster-value-warn" id="schedule-overdue">-</div>
+                <div class="cluster-label">Overdue</div>
+                <div class="cluster-sub" id="schedule-overdue-breakdown">-</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value" id="schedule-this-week">-</div>
+                <div class="cluster-label">This Week</div>
+                <div class="cluster-sub" id="schedule-week-breakdown">-</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CLUSTER 2: PROGRESS + OPERATIONS -->
+        <article class="cluster cluster-progress">
+          <div class="cluster-header">
+            <div class="cluster-icon">⚡</div>
+            <div class="cluster-title">PROGRESS + OPERATIONS</div>
+          </div>
+          <div class="cluster-body">
+            <div class="cluster-row">
+              <div class="cluster-metric">
+                <div class="cluster-value" id="progress-projects">-</div>
+                <div class="cluster-label">Projects</div>
+                <div class="cluster-sub" id="progress-project-breakdown">-</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value" id="progress-completion">-</div>
+                <div class="cluster-label">Completion</div>
+                <div class="cluster-sub" id="progress-completion-breakdown">-</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value cluster-value-warn" id="progress-blocked">-</div>
+                <div class="cluster-label">Blocked</div>
+                <div class="cluster-sub" id="progress-paused">- paused</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value" id="progress-fleet">-</div>
+                <div class="cluster-label">Fleet</div>
+                <div class="cluster-sub" id="progress-fleet-breakdown">-</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value cluster-value-alert" id="progress-needs-you">-</div>
+                <div class="cluster-label">Needs You</div>
+                <div class="cluster-sub" id="progress-needs-breakdown">-</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CLUSTER 3: P&L -->
+        <article class="cluster cluster-pnl">
+          <div class="cluster-header">
+            <div class="cluster-icon">💰</div>
+            <div class="cluster-title">P&L</div>
+          </div>
+          <div class="cluster-body">
+            <div class="cluster-row">
+              <div class="cluster-metric">
+                <div class="cluster-value" id="pnl-weekly">-</div>
+                <div class="cluster-label">Weekly P/L</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value cluster-value-good" id="pnl-best">-</div>
+                <div class="cluster-label">Best Agent</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value cluster-value-warn" id="pnl-worst">-</div>
+                <div class="cluster-label">Worst Agent</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value cluster-value-good" id="pnl-profit">-</div>
+                <div class="cluster-label">Profit</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value cluster-value-alert" id="pnl-loss">-</div>
+                <div class="cluster-label">Loss</div>
+              </div>
+              <div class="cluster-metric">
+                <div class="cluster-value" id="pnl-net">-</div>
+                <div class="cluster-label">Net</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
       </section>
 
+      <!-- AGENT FLEET -->
       <section class="fleet-fullwidth-wrapper" id="fleet-panel">
         <div class="fleet-fullwidth">
           <div class="fleet-header">
@@ -107,6 +208,7 @@
         </div>
       </section>
 
+      <!-- COMMAND GRID: Briefing, Review, Input, Queue, Focus -->
       <section class="command-grid" id="command-grid">
         <div class="agent-ops">
           <article class="cmd-card daily-briefing-card" id="briefing-panel">
@@ -139,11 +241,13 @@
         </aside>
       </section>
 
+      <!-- WEEK CALENDAR -->
       <section class="week-calendar-section" id="week-panel">
         <div class="week-cal-header"><div class="week-cal-title">WEEK AT A GLANCE</div><div class="week-range-label" id="week-window">SGT</div></div>
         <div id="week-calendar" class="week-calendar"></div>
       </section>
 
+      <!-- AGENT WORKFLOW BOARDS -->
       <section class="cmd-card" id="agent-board-panel">
         <div class="cmd-card-header"><div class="cmd-card-title">AGENT WORKFLOW BOARDS</div><select id="agent-board-select" aria-label="Choose agent board"></select></div>
         <div id="agent-board" class="kanban-board"></div>
@@ -152,6 +256,7 @@
 
     <div class="section-flow-divider"><div class="flow-divider-line"></div><div class="flow-divider-label">PROJECT CATEGORIES</div><div class="flow-divider-line"></div></div>
 
+    <!-- PROJECT CATEGORIES -->
     <section id="categories-section" class="section">
       <div class="section-kicker">Execution Layer</div>
       <h1 class="page-title">A / B / C Categories</h1>
@@ -174,6 +279,7 @@
     </section>
   </main>
 
+  <!-- TASK MODAL -->
   <div id="task-modal" class="modal-overlay" hidden>
     <article class="task-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <button type="button" class="modal-close" id="modal-close" aria-label="Close task detail">x</button>
@@ -185,8 +291,8 @@
   </div>
 
   <div id="toast" class="toast" hidden></div>
-  <script src="dashboard-fresh-data-source.js?build=20260624-root-direct-stable-1" defer></script>
-  <script src="dashboard-hermes-bridge.js?build=20260624-root-direct-stable-1" defer></script>
-  <script src="dashboard-app-20260623-cachebreak-1.js?build=20260624-root-direct-stable-1" defer></script>
+  <script src="dashboard-fresh-data-source.js?build=20260625-layout-v2" defer></script>
+  <script src="dashboard-hermes-bridge.js?build=20260625-layout-v2" defer></script>
+  <script src="dashboard-app-20260625-layout-v2.js?build=20260625-layout-v2" defer></script>
 </body>
 </html>

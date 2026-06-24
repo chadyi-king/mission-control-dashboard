@@ -1,8 +1,8 @@
 {
   "kind": "mission-control-dashboard-current-app",
-  "dashboardBuildId": "20260624-root-stabilize-1",
-  "appBuildId": "20260624-stable-v1",
-  "currentApp": "app-20260624-stable-v1.html",
+  "dashboardBuildId": "20260625-layout-v2",
+  "appBuildId": "20260625-layout-v2",
+  "currentApp": "index.html",
   "dataSnapshot": "data.json",
   "minimumExpected": {
     "projects": 22,
@@ -16,6 +16,6 @@
     "visibleTasks": 106,
     "doneTasks": 29
   },
-  "qaStatus": "stable-rollback-from-layout-v2",
-  "notes": "Stable v1 restores the RED SUN COMMAND dashboard shell and keeps data.json generated from Hermes canonical state. Layout-v2 remains inactive until it has full CSS/JS support and visual QA proof."
+  "qaStatus": "visual-pass",
+  "notes": "Layout v2: 3 clusters (Schedule, Progress+Operations, P&L), scrolling ticker, agent fleet, RED SUN COMMAND style preserved."
 }

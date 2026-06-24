@@ -84,8 +84,8 @@ jobs:
           if (forbidden.test(read('index.html'))) fail('index.html contains old browser write/PAT pattern');
           if (forbidden.test(appHtml)) fail(`${manifest.currentApp} contains old browser write/PAT pattern`);
           if (!appHtml.includes('dashboard-fresh-data-source.js')) fail(`${manifest.currentApp} does not load dashboard-fresh-data-source.js`);
-          if (!appHtml.includes('dashboard-app-20260623-cachebreak-1.js')) fail(`${manifest.currentApp} does not load the stable dashboard JS`);
-          if (!appHtml.includes('main-styles-20260623-p5.css')) fail(`${manifest.currentApp} does not load the stable dashboard CSS`);
+          if (!appHtml.includes('dashboard-app-20260623-cachebreak-1.js') && !appHtml.includes('dashboard-app-20260625-layout-v2.js')) fail(`${manifest.currentApp} does not load a recognized dashboard JS`);
+          if (!appHtml.includes('main-styles-20260623-p5.css') && !appHtml.includes('main-styles-20260625-v2.css')) fail(`${manifest.currentApp} does not load a recognized dashboard CSS`);
 
           const files = new Set(['index.html', 'dashboard-current.json', manifest.currentApp, manifest.dataSnapshot || 'data.json', 'service-worker.js', 'sw.js']);
           addAssetRefs(appHtml, files);

@@ -372,16 +372,6 @@
       "completedAt": "2026-04-16",
       "createdAt": "2026-04-02T00:00:00"
     },
-    "B1-2": {
-      "id": "B1-2",
-      "title": "Draft formal message to Charmaine about suing platform (not individuals) per lawyer/judge advice to claim money",
-      "project": "B1",
-      "category": "B",
-      "agent": "forger",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
     "A1-12": {
       "id": "A1-12",
       "title": "Reply to lawyer",
@@ -408,7 +398,7 @@
     },
     "A1-14": {
       "id": "A1-14",
-      "title": "Build EPEPTOME website — selling peptides for research (DEPRECATED - moved to B11)",
+      "title": "Build EPEPTOME website \u2014 selling peptides for research (DEPRECATED - moved to B11)",
       "project": "A1",
       "category": "A",
       "agent": "chad-yi",
@@ -419,7 +409,7 @@
     },
     "A2-1": {
       "id": "A2-1",
-      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "project": "A2",
       "category": "A",
       "agent": "escrita",
@@ -430,7 +420,7 @@
     },
     "A3-1": {
       "id": "A3-1",
-      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
+      "title": "Script 1 \u2014 Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare \u2014 principalities not flesh and blood)",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -441,7 +431,7 @@
     },
     "A3-2": {
       "id": "A3-2",
-      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "title": "Script 2 \u2014 Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -452,7 +442,7 @@
     },
     "A3-3": {
       "id": "A3-3",
-      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
+      "title": "Script 3 \u2014 Christian faith & Gen Z + continuation of spiritual warfare series",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -507,7 +497,7 @@
     },
     "A4-2": {
       "id": "A4-2",
-      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
+      "title": "Interview streaming management companies \u2014 must handle clipping, social media, content strategy",
       "project": "A4",
       "category": "A",
       "agent": "clair",
@@ -518,7 +508,7 @@
     },
     "A4-3": {
       "id": "A4-3",
-      "title": "Define content strategy — what to stream, how to grow audience",
+      "title": "Define content strategy \u2014 what to stream, how to grow audience",
       "project": "A4",
       "category": "A",
       "agent": "clair",
@@ -573,7 +563,7 @@
     },
     "A5-5": {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
+      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
       "project": "A5",
       "category": "A",
       "agent": "quanta",
@@ -581,27 +571,6 @@
       "priority": "medium",
       "pauseReason": "Trading on hold after losses",
       "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A6-2": {
-      "id": "A6-2",
-      "title": "Create habit tracker in dashboard",
-      "project": "A6",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A6-15": {
-      "id": "A6-15",
-      "title": "Build Cerebronn as a proper bot in VS Code Studio",
-      "project": "A6",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-04-30",
-      "createdAt": "2026-03-31T00:00:00+08:00"
     },
     "B6-10": {
       "id": "B6-10",
@@ -615,7 +584,7 @@
     },
     "A7-1": {
       "id": "A7-1",
-      "title": "Finalize wedding theme — BLACK AND WHITE",
+      "title": "Finalize wedding theme \u2014 BLACK AND WHITE",
       "project": "A7",
       "category": "A",
       "agent": "chad-yi",
@@ -639,7 +608,7 @@
     },
     "A7-3": {
       "id": "A7-3",
-      "title": "Send invitations — RSVP by end of June",
+      "title": "Send invitations \u2014 RSVP by end of June",
       "project": "A7",
       "category": "A",
       "agent": "chad-yi",
@@ -696,7 +665,7 @@
     },
     "B3-2": {
       "id": "B3-2",
-      "title": "SEO + Google Ads setup — ① SEO optimization (3-step process) ② Google Ads (landing pages + checklist) ③ Social media ④ Client management",
+      "title": "SEO + Google Ads setup \u2014 \u2460 SEO optimization (3-step process) \u2461 Google Ads (landing pages + checklist) \u2462 Social media \u2463 Client management",
       "project": "B3",
       "category": "B",
       "agent": "forger",
@@ -764,7 +733,7 @@
     },
     "B6-4": {
       "id": "B6-4",
-      "title": "SEO setup — Basic complete (meta tags, H1s). Content ongoing",
+      "title": "SEO setup \u2014 Basic complete (meta tags, H1s). Content ongoing",
       "project": "B6",
       "category": "B",
       "agent": "forger",
@@ -775,7 +744,7 @@
     },
     "B6-5": {
       "id": "B6-5",
-      "title": "Google Ads + finish marketing — ① Google Ads (2 landing pages + checklist) ② Social media ③ Client management",
+      "title": "Google Ads + finish marketing \u2014 \u2460 Google Ads (2 landing pages + checklist) \u2461 Social media \u2462 Client management",
       "project": "B6",
       "category": "B",
       "agent": "forger",
@@ -834,7 +803,7 @@
     },
     "B7-1": {
       "id": "B7-1",
-      "title": "Design website layout and structure — Homepage, services, about, contact pages",
+      "title": "Design website layout and structure \u2014 Homepage, services, about, contact pages",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -845,7 +814,7 @@
     },
     "B7-2": {
       "id": "B7-2",
-      "title": "Write website copy and content — Brand messaging, service descriptions, SEO content",
+      "title": "Write website copy and content \u2014 Brand messaging, service descriptions, SEO content",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -856,7 +825,7 @@
     },
     "B8-1": {
       "id": "B8-1",
-      "title": "Design website layout and structure — Homepage, portfolio, services, contact pages",
+      "title": "Design website layout and structure \u2014 Homepage, portfolio, services, contact pages",
       "project": "B8",
       "category": "B",
       "agent": "forger",
@@ -879,7 +848,7 @@
     },
     "B8-3": {
       "id": "B8-3",
-      "title": "Research Higgsfield AI pathway — AI UGC and Product Advertisements",
+      "title": "Research Higgsfield AI pathway \u2014 AI UGC and Product Advertisements",
       "project": "B8",
       "category": "B",
       "agent": "cerebronn",
@@ -902,7 +871,7 @@
     },
     "B9-1": {
       "id": "B9-1",
-      "title": "Set up Shopify store — Theme selection, product catalog, payment gateways",
+      "title": "Set up Shopify store \u2014 Theme selection, product catalog, payment gateways",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -913,7 +882,7 @@
     },
     "B10-1": {
       "id": "B10-1",
-      "title": "Corporate data tracking setup — Back burner, revisit end of year",
+      "title": "Corporate data tracking setup \u2014 Back burner, revisit end of year",
       "project": "B10",
       "category": "B",
       "agent": "forger",
@@ -923,7 +892,7 @@
     },
     "B11-1": {
       "id": "B11-1",
-      "title": "Design website layout — Homepage, product catalog, about, contact pages",
+      "title": "Design website layout \u2014 Homepage, product catalog, about, contact pages",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -934,7 +903,7 @@
     },
     "C1-1": {
       "id": "C1-1",
-      "title": "Study for RES exam — Moved to Notebook LLM",
+      "title": "Study for RES exam \u2014 Moved to Notebook LLM",
       "project": "C1",
       "category": "C",
       "agent": "chad-yi",
@@ -946,7 +915,7 @@
     },
     "C1-2": {
       "id": "C1-2",
-      "title": "Register for RES exam — October or December 2026 session",
+      "title": "Register for RES exam \u2014 October or December 2026 session",
       "project": "C1",
       "category": "C",
       "agent": "chad-yi",
@@ -969,7 +938,7 @@
     },
     "C2-2": {
       "id": "C2-2",
-      "title": "Research remote sales companies — Look for high-commission roles (base $60k negotiable to $35-40k)",
+      "title": "Research remote sales companies \u2014 Look for high-commission roles (base $60k negotiable to $35-40k)",
       "project": "C2",
       "category": "C",
       "agent": "chad-yi",
@@ -980,7 +949,7 @@
     },
     "C3-1": {
       "id": "C3-1",
-      "title": "Research Gather Town — 2D virtual workspace platform. Custom map creation possible with object library + interactive elements",
+      "title": "Research Gather Town \u2014 2D virtual workspace platform. Custom map creation possible with object library + interactive elements",
       "project": "C3",
       "category": "C",
       "agent": "mensamusa",
@@ -1010,26 +979,6 @@
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00",
       "sourceStatus": "backlog"
-    },
-    "C3-4": {
-      "id": "C3-4",
-      "title": "Test with internal team",
-      "project": "C3",
-      "category": "C",
-      "agent": "mensamusa",
-      "status": "removed",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "C3-5": {
-      "id": "C3-5",
-      "title": "Launch for B6 Elluminate client pilot",
-      "project": "C3",
-      "category": "C",
-      "agent": "mensamusa",
-      "status": "removed",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
     },
     "A1-6": {
       "id": "A1-6",
@@ -1117,7 +1066,7 @@
     },
     "A3-7": {
       "id": "A3-7",
-      "title": "Script 4 — [NEED TOPIC FROM CALEB]",
+      "title": "Script 4 \u2014 [NEED TOPIC FROM CALEB]",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -1128,7 +1077,7 @@
     },
     "A3-8": {
       "id": "A3-8",
-      "title": "Script 5 — [NEED TOPIC FROM CALEB]",
+      "title": "Script 5 \u2014 [NEED TOPIC FROM CALEB]",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -1139,7 +1088,7 @@
     },
     "A3-9": {
       "id": "A3-9",
-      "title": "Script 6 — [NEED TOPIC FROM CALEB]",
+      "title": "Script 6 \u2014 [NEED TOPIC FROM CALEB]",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -1172,7 +1121,7 @@
     },
     "A6-16": {
       "id": "A6-16",
-      "title": "Fix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions",
+      "title": "Fix dashboard functionality \u2014 stats cards, agent faces, Kanban boards with agent task instructions",
       "project": "A6",
       "category": "A",
       "agent": "chad-yi",
@@ -1224,20 +1173,9 @@
       "createdAt": "2026-02-01T00:00:00+08:00",
       "sourceStatus": "backlog"
     },
-    "A1-9": {
-      "id": "A1-9",
-      "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-12-31",
-      "createdAt": "2026-12-01T00:00:00+08:00"
-    },
     "B3-3": {
       "id": "B3-3",
-      "title": "Add Team Building section to website — Create subdomain or page for team building activities (escape rooms, laser tag, etc.) alongside large-scale events",
+      "title": "Add Team Building section to website \u2014 Create subdomain or page for team building activities (escape rooms, laser tag, etc.) alongside large-scale events",
       "project": "B3",
       "category": "B",
       "agent": "forger",
@@ -1270,7 +1208,7 @@
     },
     "B7-5": {
       "id": "B7-5",
-      "title": "Add contact forms and CTAs — Lead capture, booking integration",
+      "title": "Add contact forms and CTAs \u2014 Lead capture, booking integration",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -1281,7 +1219,7 @@
     },
     "B7-6": {
       "id": "B7-6",
-      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "title": "Basic SEO setup \u2014 Meta tags, sitemap, Google Search Console",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -1303,7 +1241,7 @@
     },
     "B8-4": {
       "id": "B8-4",
-      "title": "Write website copy and content — AI marketing services, case studies, pricing",
+      "title": "Write website copy and content \u2014 AI marketing services, case studies, pricing",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1336,7 +1274,7 @@
     },
     "B8-8": {
       "id": "B8-8",
-      "title": "Add portfolio showcase — Higgsfield AI video examples, client work",
+      "title": "Add portfolio showcase \u2014 Higgsfield AI video examples, client work",
       "project": "B8",
       "category": "B",
       "agent": "forger",
@@ -1347,7 +1285,7 @@
     },
     "B8-9": {
       "id": "B8-9",
-      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "title": "Basic SEO setup \u2014 Meta tags, sitemap, Google Search Console",
       "project": "B8",
       "category": "B",
       "agent": "forger",
@@ -1358,7 +1296,7 @@
     },
     "B9-2": {
       "id": "B9-2",
-      "title": "Design store layout and branding — Homepage, product pages, checkout flow",
+      "title": "Design store layout and branding \u2014 Homepage, product pages, checkout flow",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1369,7 +1307,7 @@
     },
     "B9-3": {
       "id": "B9-3",
-      "title": "Write product descriptions and copy — SEO-optimized, persuasive sales copy",
+      "title": "Write product descriptions and copy \u2014 SEO-optimized, persuasive sales copy",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1380,7 +1318,7 @@
     },
     "B9-4": {
       "id": "B9-4",
-      "title": "Configure shipping and fulfillment — Rates, zones, automated notifications",
+      "title": "Configure shipping and fulfillment \u2014 Rates, zones, automated notifications",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1391,7 +1329,7 @@
     },
     "B9-5": {
       "id": "B9-5",
-      "title": "Set up payment processing — Stripe, PayPal, local payment methods",
+      "title": "Set up payment processing \u2014 Stripe, PayPal, local payment methods",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1402,7 +1340,7 @@
     },
     "B9-6": {
       "id": "B9-6",
-      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "title": "Basic SEO setup \u2014 Meta tags, sitemap, Google Search Console",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1413,7 +1351,7 @@
     },
     "B9-7": {
       "id": "B9-7",
-      "title": "Add analytics and tracking — Google Analytics, Facebook Pixel, conversion tracking",
+      "title": "Add analytics and tracking \u2014 Google Analytics, Facebook Pixel, conversion tracking",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1424,7 +1362,7 @@
     },
     "B11-2": {
       "id": "B11-2",
-      "title": "Set up e-commerce platform — Payment gateways, shipping, inventory management",
+      "title": "Set up e-commerce platform \u2014 Payment gateways, shipping, inventory management",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1435,7 +1373,7 @@
     },
     "B11-3": {
       "id": "B11-3",
-      "title": "Write product descriptions — Research peptides, benefits, usage guidelines",
+      "title": "Write product descriptions \u2014 Research peptides, benefits, usage guidelines",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1446,7 +1384,7 @@
     },
     "B11-4": {
       "id": "B11-4",
-      "title": "Ensure legal compliance — Disclaimers, research-use-only labels, age verification",
+      "title": "Ensure legal compliance \u2014 Disclaimers, research-use-only labels, age verification",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1479,7 +1417,7 @@
     },
     "B11-7": {
       "id": "B11-7",
-      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "title": "Basic SEO setup \u2014 Meta tags, sitemap, Google Search Console",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1490,7 +1428,7 @@
     },
     "C3-6": {
       "id": "C3-6",
-      "title": "EXODEUS - Riftborn — Create new game: MegaMan + SKUL inspired action-platformer with roguelike elements",
+      "title": "EXODEUS - Riftborn \u2014 Create new game: MegaMan + SKUL inspired action-platformer with roguelike elements",
       "project": "C3",
       "category": "C",
       "agent": "mensamusa",
@@ -1501,7 +1439,7 @@
     },
     "B8-10": {
       "id": "B8-10",
-      "title": "Create Higgsfield AI video for TRME — Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for TRME \u2014 Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1512,7 +1450,7 @@
     },
     "B8-11": {
       "id": "B8-11",
-      "title": "Create Higgsfield AI video for Fire Terminator — Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for Fire Terminator \u2014 Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1523,7 +1461,7 @@
     },
     "B8-12": {
       "id": "B8-12",
-      "title": "Create Higgsfield AI video for DOTERRA — Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for DOTERRA \u2014 Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1534,7 +1472,7 @@
     },
     "B8-13": {
       "id": "B8-13",
-      "title": "Create Higgsfield AI video for HEI Legacy — Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for HEI Legacy \u2014 Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1545,7 +1483,7 @@
     },
     "B8-14": {
       "id": "B8-14",
-      "title": "Create Higgsfield AI video for Day Zero with Andre — Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for Day Zero with Andre \u2014 Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1556,7 +1494,7 @@
     },
     "C4-1": {
       "id": "C4-1",
-      "title": "Build website for HEI Legacy (with Marylyn) — Landing page, about, services, contact",
+      "title": "Build website for HEI Legacy (with Marylyn) \u2014 Landing page, about, services, contact",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1567,7 +1505,7 @@
     },
     "C4-2": {
       "id": "C4-2",
-      "title": "Build website for Day Zero with Andre — Landing page, program details, booking, testimonials",
+      "title": "Build website for Day Zero with Andre \u2014 Landing page, program details, booking, testimonials",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1578,7 +1516,7 @@
     },
     "C4-3": {
       "id": "C4-3",
-      "title": "Build website for Envision Electrical — Data center engineers, electrical infrastructure services, contact/quote forms",
+      "title": "Build website for Envision Electrical \u2014 Data center engineers, electrical infrastructure services, contact/quote forms",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1589,7 +1527,7 @@
     },
     "C4-4": {
       "id": "C4-4",
-      "title": "Create portfolio showcase for Website Services — Case studies, client testimonials, service packages",
+      "title": "Create portfolio showcase for Website Services \u2014 Case studies, client testimonials, service packages",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1600,7 +1538,7 @@
     },
     "C4-5": {
       "id": "C4-5",
-      "title": "Set up lead capture system — Contact forms, CRM integration, automated follow-ups",
+      "title": "Set up lead capture system \u2014 Contact forms, CRM integration, automated follow-ups",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1608,77 +1546,6 @@
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00",
       "sourceStatus": "backlog"
-    },
-    "TEST-2": {
-      "id": "TEST-2",
-      "title": "Verify Telegram handler test task",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-23T05:16:36.425548+08:00",
-      "completedAt": "2026-06-23T05:18:45.878289+08:00"
-    },
-    "TEMP-TEST": {
-      "id": "TEMP-TEST",
-      "title": "Temporary test task for validation",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-23T17:03:35.683619+08:00"
-    },
-    "TEMP-P3": {
-      "id": "TEMP-P3",
-      "title": "Temporary Priority 3 Telegram path test",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-23T17:23:08.813810+08:00"
-    },
-    "TEMP-LIVE-PROOF": {
-      "id": "TEMP-LIVE-PROOF",
-      "title": "Temporary live dashboard proof task",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-24T03:09:28.724739+08:00"
-    },
-    "TEMP-DASHBOARD-PROOF": {
-      "id": "TEMP-DASHBOARD-PROOF",
-      "title": "Dashboard proof task - safe temporary test",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-24T10:59:15.424505+08:00"
-    },
-    "TEMP-TEST-FIX": {
-      "id": "TEMP-TEST-FIX",
-      "title": "Testing publicSnapshotData sync",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "medium",
-      "createdAt": "2026-06-24T18:13:56.185828+08:00"
-    },
-    "TEMP-TEST-FIX2": {
-      "id": "TEMP-TEST-FIX2",
-      "title": "Testing dynamic counts",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "medium",
-      "createdAt": "2026-06-24T18:14:56.103680+08:00"
     }
   },
   "projectDetails": {
@@ -1818,34 +1685,37 @@
       "name": "Chad Yi",
       "role": "The Face - Primary interface",
       "platform": "Hermes Gateway / Telegram",
-      "status": "stale",
+      "status": "LIVE",
       "currentTask": "Live session on Telegram",
       "lastActive": "2026-04-16T20:07:36+08:00",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "LIVE"
     },
     "cerebronn": {
       "name": "Cerebronn",
       "role": "The Brain - Persistent memory & decisions",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "Architecture & deep reasoning (The Brain)",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "helios": {
       "name": "Helios",
       "role": "The Spine - COO, auditor, reporter",
       "platform": "Systemd service",
-      "status": "active",
+      "status": "INACTIVE",
       "currentTask": "Dashboard sync + audit",
       "lastActive": "2026-06-23T04:13:24.278580+08:00",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "INACTIVE"
     },
     "quanta": {
       "name": "Quanta",
       "role": "Trading - OANDA execution/status",
       "platform": "Telegram monitor / Quanta v3",
-      "status": "active",
+      "status": "INACTIVE",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
       "lastActive": "2026-06-23T04:08:26.946152+08:00",
       "capabilities": [],
@@ -1855,52 +1725,58 @@
       "openTrades": 0,
       "pendingOrders": 0,
       "accountMode": "practice_or_unknown",
-      "warnings": []
+      "warnings": [],
+      "buildState": "INACTIVE"
     },
     "forger": {
       "name": "Forger",
       "role": "Web Architect - websites, SEO, full-stack",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "escrita": {
       "name": "Escrita",
       "role": "Story Agent - RE:UNITE novel writing",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "autoura": {
       "name": "Autoura",
       "role": "Supervised growth agent - SME scouting, approval-gated outreach, client intake, story-first blueprints, Higgsfield prompt packs, clip review",
       "platform": "Hermes on-demand / Higgsfield after approval",
-      "status": "active_on_demand",
+      "status": "INACTIVE",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "INACTIVE"
     },
     "mensamusa": {
       "name": "Mensamusa",
       "role": "Research - knowledge and options intelligence",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "clair": {
       "name": "Clair",
       "role": "Streaming Scout",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "eplusplus": {
       "name": "E++",
@@ -1915,46 +1791,51 @@
       "name": "Kotler",
       "role": "Marketing Ops - Google Ads Manager",
       "platform": "External project",
-      "status": "external",
+      "status": "INACTIVE",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "INACTIVE"
     },
     "ledger": {
       "name": "Ledger",
       "role": "Finance / CRM",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "atlas": {
       "name": "Atlas",
       "role": "Researcher",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "pulsar": {
       "name": "Pulsar",
       "role": "Data Sentinel",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "abed": {
       "name": "Abed",
       "role": "Community Manager",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     }
   },
   "completions": {
@@ -2038,9 +1919,7 @@
       "C4-2",
       "C4-3",
       "C4-4",
-      "C4-5",
-      "TEMP-TEST-FIX",
-      "TEMP-TEST-FIX2"
+      "C4-5"
     ],
     "active": [
       "B6-10",
@@ -2092,7 +1971,7 @@
   "needsAttention": [
     {
       "id": "A2-1",
-      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "reason": "blocked",
       "owner": "ESCRITA"
     },
@@ -2104,13 +1983,13 @@
     },
     {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
+      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
       "reason": "paused",
       "owner": "CHAD_YI"
     },
     {
       "id": "B10-1",
-      "title": "Corporate data tracking setup — Back burner, revisit end of year",
+      "title": "Corporate data tracking setup \u2014 Back burner, revisit end of year",
       "reason": "paused",
       "owner": "Forger"
     }
@@ -2118,15 +1997,15 @@
   "inputsNeeded": [
     {
       "taskId": "A2-1",
-      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "agent": "ESCRITA",
-      "reason": "Blocked — needs input",
+      "reason": "Blocked \u2014 needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     }
   ],
   "dailyBriefing": {
     "date": "2026-06-23",
-    "summary": "📋 77 tasks in flight. Focus on top priorities.",
+    "summary": "\ud83d\udccb 77 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 1,
     "completedToday": 0,
@@ -2358,11 +2237,11 @@
     "currency": "USD",
     "tracking_started": "2026-04-17"
   },
-  "taskBoard": {
-    "queueCount": 0,
-    "lastEvent": null,
-    "status": "ready"
-  },
+  "taskBoard": [
+    "queueCount",
+    "lastEvent",
+    "status"
+  ],
   "calendarTasks": {
     "2026-04-16": [
       "A1-11"
