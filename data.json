@@ -1,6 +1,6 @@
 {
   "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-24T11:04:28.013983+08:00",
+  "lastUpdated": "2026-06-24T11:04:47.770530+08:00",
   "updatedBy": "hermes-canonical-sync",
   "projects": {
     "A1": {
@@ -2437,7 +2437,7 @@
     "workflowBucketsNormalized": true,
     "visualWorkflowStatePublished": true,
     "sourceSnapshotLastUpdated": "2026-06-23T22:30:31.660608+08:00",
-    "publishedAt": "2026-06-24T11:04:28.013983+08:00",
+    "publishedAt": "2026-06-24T11:04:47.770530+08:00",
     "counts": {
       "visibleTasks": 106,
       "doneTasks": 29,
@@ -2449,7 +2449,7 @@
     "operation": "publish_dashboard_snapshot",
     "actor": "hermes-canonical-sync",
     "source": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
-    "createdAt": "2026-06-24T11:04:28.013983+08:00",
+    "createdAt": "2026-06-24T11:04:47.770530+08:00",
     "canonicalLastUpdated": "2026-06-24T03:09:28.807706+08:00",
     "sourceSnapshotLastUpdated": "2026-06-23T22:30:31.660608+08:00",
     "counts": {
