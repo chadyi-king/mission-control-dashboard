@@ -4,7 +4,7 @@
 
 Mission Control is the visual/status surface for Hermes. It is not the command authority and it is not the long-term task database.
 
-Public URL: https://chadyi-king.github.io/mission-control-dashboard/
+Public URL: https://red-sun-command.dashboard/
 
 ## Data Ownership
 
@@ -103,7 +103,7 @@ Old snapshot statuses are normalized for display:
 
 GitHub Pages must publish this dashboard at:
 
-`https://chadyi-king.github.io/mission-control-dashboard/`
+`https://red-sun-command.dashboard/`
 
 Preferred Pages setting:
 

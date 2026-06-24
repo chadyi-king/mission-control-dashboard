@@ -2,7 +2,7 @@
 
 Static GitHub Pages dashboard for Hermes Mission Control.
 
-Live URL: https://chadyi-king.github.io/mission-control-dashboard/
+Live URL: https://red-sun-command.dashboard/
 
 ## Current Contract
 

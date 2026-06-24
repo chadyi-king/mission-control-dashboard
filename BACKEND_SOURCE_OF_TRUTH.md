@@ -50,7 +50,7 @@ The dashboard must not directly add tasks, mark tasks done, assign owners, set d
 The live root URL is:
 
 ```text
-https://chadyi-king.github.io/mission-control-dashboard/
+https://red-sun-command.dashboard/
 ```
 
 A healthy root load must show the current bootloader/app and must not show `GitHub Personal Access Token` or `Required for Mark Done to persist`.
@@ -58,7 +58,7 @@ A healthy root load must show the current bootloader/app and must not show `GitH
 Diagnostic probe file:
 
 ```text
-https://chadyi-king.github.io/mission-control-dashboard/backend-contract-probe-20260623.html
+https://red-sun-command.dashboard/backend-contract-probe-20260623.html
 ```
 
 If GitHub source files show the bootloader but the live root still shows the old PAT-era dashboard, the failure is in the GitHub Pages deployment layer, not in task data. In that case, do not claim the dashboard is fixed. Force a Pages rebuild from GitHub Settings or run the Pages deployment workflow after confirming the Pages source mode.

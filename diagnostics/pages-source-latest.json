@@ -11,7 +11,7 @@
   },
   "pages": {
     "status": "built",
-    "url": "https://chadyi-king.github.io/mission-control-dashboard/",
+    "url": "https://red-sun-command.dashboard/",
     "cname": null,
     "custom404": false,
     "buildType": "legacy",
@@ -34,7 +34,7 @@
       "head_sha": "556f7eeae3d6c6ee3b8b10b2feb75385380ff74c",
       "created_at": "2026-06-23T21:14:06Z",
       "updated_at": "2026-06-23T21:14:09Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057538696"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057538696"
     },
     {
       "id": 28057481458,
@@ -46,7 +46,7 @@
       "head_sha": "ff18ed051d9e251a9ac7f022e5261b57506b5a50",
       "created_at": "2026-06-23T21:13:05Z",
       "updated_at": "2026-06-23T21:13:09Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057481458"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057481458"
     },
     {
       "id": 28057476942,
@@ -58,7 +58,7 @@
       "head_sha": "2e23c51852c55359fc021d47aa6b7e696aba8ec7",
       "created_at": "2026-06-23T21:13:01Z",
       "updated_at": "2026-06-23T21:13:29Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057476942"
     },
     {
       "id": 28057464008,
@@ -70,7 +70,7 @@
       "head_sha": "ff18ed051d9e251a9ac7f022e5261b57506b5a50",
       "created_at": "2026-06-23T21:12:47Z",
       "updated_at": "2026-06-23T21:13:04Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057464008"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057464008"
     },
     {
       "id": 28057463994,
@@ -82,7 +82,7 @@
       "head_sha": "ff18ed051d9e251a9ac7f022e5261b57506b5a50",
       "created_at": "2026-06-23T21:12:47Z",
       "updated_at": "2026-06-23T21:13:03Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057463994"
     },
     {
       "id": 28057395159,
@@ -94,7 +94,7 @@
       "head_sha": "86d571abc4317121bc433faeaf52202e29b1856d",
       "created_at": "2026-06-23T21:11:35Z",
       "updated_at": "2026-06-23T21:11:43Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057395159"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057395159"
     },
     {
       "id": 28057291103,
@@ -106,7 +106,7 @@
       "head_sha": "7128c9db4eac9f9d63bae808b5d878e0d606c04f",
       "created_at": "2026-06-23T21:09:46Z",
       "updated_at": "2026-06-23T21:09:47Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057291103"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057291103"
     },
     {
       "id": 28057282422,
@@ -118,7 +118,7 @@
       "head_sha": "7128c9db4eac9f9d63bae808b5d878e0d606c04f",
       "created_at": "2026-06-23T21:09:38Z",
       "updated_at": "2026-06-23T21:09:44Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282422"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057282422"
     },
     {
       "id": 28057282420,
@@ -130,7 +130,7 @@
       "head_sha": "7128c9db4eac9f9d63bae808b5d878e0d606c04f",
       "created_at": "2026-06-23T21:09:38Z",
       "updated_at": "2026-06-23T21:09:47Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057282420"
     },
     {
       "id": 28057190865,
@@ -142,7 +142,7 @@
       "head_sha": "51360a26b8aeccfb5f9687090402d91c4d032c7a",
       "created_at": "2026-06-23T21:08:04Z",
       "updated_at": "2026-06-23T21:08:16Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057190865"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057190865"
     },
     {
       "id": 28057144709,
@@ -154,7 +154,7 @@
       "head_sha": "2e9896e1030252f0f4c07f2e3a1325e0c9127a2d",
       "created_at": "2026-06-23T21:07:14Z",
       "updated_at": "2026-06-23T21:07:15Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057144709"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057144709"
     },
     {
       "id": 28057135582,
@@ -166,7 +166,7 @@
       "head_sha": "2e9896e1030252f0f4c07f2e3a1325e0c9127a2d",
       "created_at": "2026-06-23T21:07:05Z",
       "updated_at": "2026-06-23T21:07:12Z",
-      "html_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057135582"
+      "html_url": "https://red-sun-command.dashboard/actions/runs/28057135582"
     }
   ],
   "recentGithubPagesDeployments": [
@@ -211,13 +211,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942/job/83063343592",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057476942/job/83063343592",
             "created_at": "2026-06-23T21:13:29Z",
             "updated_at": "2026-06-23T21:13:29Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172572105",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
-            "environment_url": "https://chadyi-king.github.io/mission-control-dashboard/",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942/job/83063343592",
+            "environment_url": "https://red-sun-command.dashboard/",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057476942/job/83063343592",
             "performed_via_github_app": null
           },
           {
@@ -248,13 +248,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942/job/83063343592",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057476942/job/83063343592",
             "created_at": "2026-06-23T21:13:15Z",
             "updated_at": "2026-06-23T21:13:15Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172572105",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942/job/83063343592",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057476942/job/83063343592",
             "performed_via_github_app": null
           },
           {
@@ -285,13 +285,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942/job/83063343592",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057476942/job/83063343592",
             "created_at": "2026-06-23T21:13:14Z",
             "updated_at": "2026-06-23T21:13:14Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172572105",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942/job/83063343592",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057476942/job/83063343592",
             "performed_via_github_app": null
           },
           {
@@ -322,13 +322,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942/job/83063343592",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057476942/job/83063343592",
             "created_at": "2026-06-23T21:13:13Z",
             "updated_at": "2026-06-23T21:13:13Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172572105",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057476942/job/83063343592",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057476942/job/83063343592",
             "performed_via_github_app": null
           }
         ]
@@ -375,13 +375,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "created_at": "2026-06-23T21:13:30Z",
             "updated_at": "2026-06-23T21:13:30Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172567724",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "performed_via_github_app": null
           },
           {
@@ -412,13 +412,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "created_at": "2026-06-23T21:13:03Z",
             "updated_at": "2026-06-23T21:13:03Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172567724",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
-            "environment_url": "https://chadyi-king.github.io/mission-control-dashboard/",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "environment_url": "https://red-sun-command.dashboard/",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "performed_via_github_app": null
           },
           {
@@ -449,13 +449,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "created_at": "2026-06-23T21:12:52Z",
             "updated_at": "2026-06-23T21:12:52Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172567724",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "performed_via_github_app": null
           },
           {
@@ -486,13 +486,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "created_at": "2026-06-23T21:12:50Z",
             "updated_at": "2026-06-23T21:12:50Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172567724",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "performed_via_github_app": null
           },
           {
@@ -523,13 +523,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "created_at": "2026-06-23T21:12:49Z",
             "updated_at": "2026-06-23T21:12:49Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172567724",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057463994/job/83063267215",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057463994/job/83063267215",
             "performed_via_github_app": null
           }
         ]
@@ -576,13 +576,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420/job/83062660004",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057282420/job/83062660004",
             "created_at": "2026-06-23T21:09:47Z",
             "updated_at": "2026-06-23T21:09:47Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172533852",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420/job/83062660004",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057282420/job/83062660004",
             "performed_via_github_app": null
           },
           {
@@ -613,13 +613,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420/job/83062660004",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057282420/job/83062660004",
             "created_at": "2026-06-23T21:09:42Z",
             "updated_at": "2026-06-23T21:09:42Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172533852",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420/job/83062660004",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057282420/job/83062660004",
             "performed_via_github_app": null
           },
           {
@@ -650,13 +650,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420/job/83062660004",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057282420/job/83062660004",
             "created_at": "2026-06-23T21:09:40Z",
             "updated_at": "2026-06-23T21:09:40Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172533852",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420/job/83062660004",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057282420/job/83062660004",
             "performed_via_github_app": null
           },
           {
@@ -687,13 +687,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420/job/83062660004",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057282420/job/83062660004",
             "created_at": "2026-06-23T21:09:39Z",
             "updated_at": "2026-06-23T21:09:39Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172533852",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057282420/job/83062660004",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057282420/job/83062660004",
             "performed_via_github_app": null
           }
         ]
@@ -740,13 +740,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "created_at": "2026-06-23T21:06:27Z",
             "updated_at": "2026-06-23T21:06:27Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172497305",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "performed_via_github_app": null
           },
           {
@@ -777,13 +777,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "created_at": "2026-06-23T21:06:22Z",
             "updated_at": "2026-06-23T21:06:22Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172497305",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "performed_via_github_app": null
           },
           {
@@ -814,13 +814,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "created_at": "2026-06-23T21:06:20Z",
             "updated_at": "2026-06-23T21:06:20Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172497305",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "performed_via_github_app": null
           },
           {
@@ -851,13 +851,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "created_at": "2026-06-23T21:06:20Z",
             "updated_at": "2026-06-23T21:06:20Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172497305",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "performed_via_github_app": null
           },
           {
@@ -888,13 +888,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "created_at": "2026-06-23T21:06:19Z",
             "updated_at": "2026-06-23T21:06:19Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172497305",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28057089921/job/83062017731",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28057089921/job/83062017731",
             "performed_via_github_app": null
           }
         ]
@@ -941,13 +941,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056857365/job/83061268943",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28056857365/job/83061268943",
             "created_at": "2026-06-23T21:02:44Z",
             "updated_at": "2026-06-23T21:02:44Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172454719",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056857365/job/83061268943",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28056857365/job/83061268943",
             "performed_via_github_app": null
           },
           {
@@ -978,13 +978,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056857365/job/83061268943",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28056857365/job/83061268943",
             "created_at": "2026-06-23T21:02:34Z",
             "updated_at": "2026-06-23T21:02:34Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172454719",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056857365/job/83061268943",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28056857365/job/83061268943",
             "performed_via_github_app": null
           },
           {
@@ -1015,13 +1015,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056857365/job/83061268943",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28056857365/job/83061268943",
             "created_at": "2026-06-23T21:02:31Z",
             "updated_at": "2026-06-23T21:02:31Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172454719",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056857365/job/83061268943",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28056857365/job/83061268943",
             "performed_via_github_app": null
           },
           {
@@ -1052,13 +1052,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056857365/job/83061268943",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28056857365/job/83061268943",
             "created_at": "2026-06-23T21:02:31Z",
             "updated_at": "2026-06-23T21:02:31Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172454719",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056857365/job/83061268943",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28056857365/job/83061268943",
             "performed_via_github_app": null
           }
         ]
@@ -1105,13 +1105,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056447639/job/83059881053",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28056447639/job/83059881053",
             "created_at": "2026-06-23T20:55:49Z",
             "updated_at": "2026-06-23T20:55:49Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172347646",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056447639/job/83059881053",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28056447639/job/83059881053",
             "performed_via_github_app": null
           },
           {
@@ -1142,13 +1142,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056447639/job/83059881053",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28056447639/job/83059881053",
             "created_at": "2026-06-23T20:55:40Z",
             "updated_at": "2026-06-23T20:55:40Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172347646",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056447639/job/83059881053",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28056447639/job/83059881053",
             "performed_via_github_app": null
           },
           {
@@ -1179,13 +1179,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056447639/job/83059881053",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28056447639/job/83059881053",
             "created_at": "2026-06-23T20:55:38Z",
             "updated_at": "2026-06-23T20:55:38Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172347646",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056447639/job/83059881053",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28056447639/job/83059881053",
             "performed_via_github_app": null
           },
           {
@@ -1216,13 +1216,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056447639/job/83059881053",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28056447639/job/83059881053",
             "created_at": "2026-06-23T20:55:37Z",
             "updated_at": "2026-06-23T20:55:37Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5172347646",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28056447639/job/83059881053",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28056447639/job/83059881053",
             "performed_via_github_app": null
           }
         ]
@@ -1269,13 +1269,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "created_at": "2026-06-23T21:13:03Z",
             "updated_at": "2026-06-23T21:13:03Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171657029",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "performed_via_github_app": null
           },
           {
@@ -1306,13 +1306,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "created_at": "2026-06-23T19:55:37Z",
             "updated_at": "2026-06-23T19:55:37Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171657029",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
-            "environment_url": "https://chadyi-king.github.io/mission-control-dashboard/",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "environment_url": "https://red-sun-command.dashboard/",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "performed_via_github_app": null
           },
           {
@@ -1343,13 +1343,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "created_at": "2026-06-23T19:55:28Z",
             "updated_at": "2026-06-23T19:55:28Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171657029",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "performed_via_github_app": null
           },
           {
@@ -1380,13 +1380,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "created_at": "2026-06-23T19:55:26Z",
             "updated_at": "2026-06-23T19:55:26Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171657029",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "performed_via_github_app": null
           },
           {
@@ -1417,13 +1417,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "created_at": "2026-06-23T19:55:25Z",
             "updated_at": "2026-06-23T19:55:25Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171657029",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28052960039/job/83048102909",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28052960039/job/83048102909",
             "performed_via_github_app": null
           }
         ]
@@ -1470,13 +1470,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "created_at": "2026-06-23T19:55:39Z",
             "updated_at": "2026-06-23T19:55:39Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171445185",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "performed_via_github_app": null
           },
           {
@@ -1507,13 +1507,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "created_at": "2026-06-23T19:37:35Z",
             "updated_at": "2026-06-23T19:37:35Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171445185",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
-            "environment_url": "https://chadyi-king.github.io/mission-control-dashboard/",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "environment_url": "https://red-sun-command.dashboard/",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "performed_via_github_app": null
           },
           {
@@ -1544,13 +1544,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "created_at": "2026-06-23T19:37:25Z",
             "updated_at": "2026-06-23T19:37:25Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171445185",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "performed_via_github_app": null
           },
           {
@@ -1581,13 +1581,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "created_at": "2026-06-23T19:37:22Z",
             "updated_at": "2026-06-23T19:37:22Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171445185",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "performed_via_github_app": null
           },
           {
@@ -1618,13 +1618,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "created_at": "2026-06-23T19:37:22Z",
             "updated_at": "2026-06-23T19:37:22Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171445185",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "performed_via_github_app": null
           },
           {
@@ -1655,13 +1655,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "created_at": "2026-06-23T19:37:21Z",
             "updated_at": "2026-06-23T19:37:21Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171445185",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051940346/job/83044566019",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051940346/job/83044566019",
             "performed_via_github_app": null
           }
         ]
@@ -1708,13 +1708,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "created_at": "2026-06-23T19:37:36Z",
             "updated_at": "2026-06-23T19:37:36Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171315372",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "performed_via_github_app": null
           },
           {
@@ -1745,13 +1745,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "created_at": "2026-06-23T19:26:27Z",
             "updated_at": "2026-06-23T19:26:27Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171315372",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
-            "environment_url": "https://chadyi-king.github.io/mission-control-dashboard/",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "environment_url": "https://red-sun-command.dashboard/",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "performed_via_github_app": null
           },
           {
@@ -1782,13 +1782,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "created_at": "2026-06-23T19:26:19Z",
             "updated_at": "2026-06-23T19:26:19Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171315372",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "performed_via_github_app": null
           },
           {
@@ -1819,13 +1819,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "created_at": "2026-06-23T19:26:17Z",
             "updated_at": "2026-06-23T19:26:17Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171315372",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "performed_via_github_app": null
           },
           {
@@ -1856,13 +1856,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "created_at": "2026-06-23T19:26:16Z",
             "updated_at": "2026-06-23T19:26:16Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171315372",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051309432/job/83042385157",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051309432/job/83042385157",
             "performed_via_github_app": null
           }
         ]
@@ -1909,13 +1909,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "created_at": "2026-06-23T19:26:28Z",
             "updated_at": "2026-06-23T19:26:28Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171297237",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "performed_via_github_app": null
           },
           {
@@ -1946,13 +1946,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "created_at": "2026-06-23T19:25:05Z",
             "updated_at": "2026-06-23T19:25:05Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171297237",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
-            "environment_url": "https://chadyi-king.github.io/mission-control-dashboard/",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "environment_url": "https://red-sun-command.dashboard/",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "performed_via_github_app": null
           },
           {
@@ -1983,13 +1983,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "created_at": "2026-06-23T19:24:49Z",
             "updated_at": "2026-06-23T19:24:49Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171297237",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "performed_via_github_app": null
           },
           {
@@ -2020,13 +2020,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "created_at": "2026-06-23T19:24:47Z",
             "updated_at": "2026-06-23T19:24:47Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171297237",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "performed_via_github_app": null
           },
           {
@@ -2057,13 +2057,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "created_at": "2026-06-23T19:24:46Z",
             "updated_at": "2026-06-23T19:24:46Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171297237",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051226670/job/83042081609",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051226670/job/83042081609",
             "performed_via_github_app": null
           }
         ]
@@ -2110,13 +2110,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "created_at": "2026-06-23T19:25:05Z",
             "updated_at": "2026-06-23T19:25:05Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171287953",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "performed_via_github_app": null
           },
           {
@@ -2147,13 +2147,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "created_at": "2026-06-23T19:24:10Z",
             "updated_at": "2026-06-23T19:24:10Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171287953",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
-            "environment_url": "https://chadyi-king.github.io/mission-control-dashboard/",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "environment_url": "https://red-sun-command.dashboard/",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "performed_via_github_app": null
           },
           {
@@ -2184,13 +2184,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "created_at": "2026-06-23T19:24:01Z",
             "updated_at": "2026-06-23T19:24:01Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171287953",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "performed_via_github_app": null
           },
           {
@@ -2221,13 +2221,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "created_at": "2026-06-23T19:24:00Z",
             "updated_at": "2026-06-23T19:24:00Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171287953",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "performed_via_github_app": null
           },
           {
@@ -2258,13 +2258,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "created_at": "2026-06-23T19:24:00Z",
             "updated_at": "2026-06-23T19:24:00Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171287953",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "performed_via_github_app": null
           },
           {
@@ -2295,13 +2295,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "created_at": "2026-06-23T19:23:59Z",
             "updated_at": "2026-06-23T19:23:59Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171287953",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28051176010/job/83041922177",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28051176010/job/83041922177",
             "performed_via_github_app": null
           }
         ]
@@ -2348,13 +2348,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "created_at": "2026-06-23T19:24:11Z",
             "updated_at": "2026-06-23T19:24:11Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171233589",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "performed_via_github_app": null
           },
           {
@@ -2385,13 +2385,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "created_at": "2026-06-23T19:19:37Z",
             "updated_at": "2026-06-23T19:19:37Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171233589",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
-            "environment_url": "https://chadyi-king.github.io/mission-control-dashboard/",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "environment_url": "https://red-sun-command.dashboard/",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "performed_via_github_app": null
           },
           {
@@ -2422,13 +2422,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "created_at": "2026-06-23T19:19:21Z",
             "updated_at": "2026-06-23T19:19:21Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171233589",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "performed_via_github_app": null
           },
           {
@@ -2459,13 +2459,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "created_at": "2026-06-23T19:19:19Z",
             "updated_at": "2026-06-23T19:19:19Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171233589",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "performed_via_github_app": null
           },
           {
@@ -2496,13 +2496,13 @@
             },
             "description": "",
             "environment": "github-pages",
-            "target_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "target_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "created_at": "2026-06-23T19:19:18Z",
             "updated_at": "2026-06-23T19:19:18Z",
             "deployment_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard/deployments/5171233589",
             "repository_url": "https://api.github.com/repos/chadyi-king/mission-control-dashboard",
             "environment_url": "",
-            "log_url": "https://github.com/chadyi-king/mission-control-dashboard/actions/runs/28050914658/job/83041005323",
+            "log_url": "https://red-sun-command.dashboard/actions/runs/28050914658/job/83041005323",
             "performed_via_github_app": null
           }
         ]
