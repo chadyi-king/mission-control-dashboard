@@ -2152,13 +2152,14 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 100000,
+        "account_id": "101-003-23656635-001",
+        "current_balance": 100000.0,
         "baseline_balance": 3821.73,
         "weekly_profit": 0,
         "weekly_loss": 0,
+        "total_pnl": 96178.27,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 0,
         "status": "unverified_account_reset",
         "pnl_status": "blocked",
         "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
@@ -2167,13 +2168,13 @@
     "weekly_rankings": {
       "best": {
         "agent": "quanta",
-        "amount": 0,
-        "period": "2026-05-15"
+        "amount": 0.0,
+        "period": "2026-05-17"
       },
       "worst": {
         "agent": "quanta",
-        "amount": 0,
-        "period": "2026-05-15"
+        "amount": 0.0,
+        "period": "2026-05-17"
       }
     },
     "daily_snapshots": [
@@ -2235,7 +2236,9 @@
       }
     ],
     "currency": "USD",
-    "tracking_started": "2026-04-17"
+    "tracking_started": "2026-04-17",
+    "version": "1.0.0",
+    "starting_balance": 3821.73
   },
   "taskBoard": [
     "queueCount",
