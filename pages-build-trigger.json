@@ -1,8 +1,0 @@
-{
-  "kind": "mission-control-pages-build-trigger",
-  "createdAt": "2026-06-24T05:55:00+08:00",
-  "reason": "Trigger deployment after active-files-only Pages artifact workflow repair.",
-  "expectedCurrentApp": "app-20260624-stable-v1.html",
-  "expectedRootBehavior": "Root URL should load stable bootloader, not layout-v2 or old PAT UI.",
-  "artifactMode": "active-files-only"
-}

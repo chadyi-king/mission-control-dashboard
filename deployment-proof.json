@@ -1,0 +1,31 @@
+{
+  "kind": "mission-control-dashboard-deployment-proof",
+  "publishedBy": "sync-dashboard-branches.yml",
+  "deploymentMode": "legacy-gh-pages-active-files-only",
+  "sourceBranch": "main",
+  "sourceSha": "ce1900c1b4972592c2a2cdb92b6f64b2554d2556",
+  "runId": "28180696771",
+  "runAttempt": "1",
+  "createdAt": "2026-06-25T15:18:55.854Z",
+  "currentApp": "app-20260624-stable-v1.html",
+  "includedFiles": [
+    "app-20260624-stable-v1.html",
+    "dashboard-app-20260623-cachebreak-1.js",
+    "dashboard-current.json",
+    "dashboard-fresh-data-source.js",
+    "dashboard-hermes-bridge.js",
+    "data.json",
+    "index.html",
+    "main-styles-20260623-p5.css",
+    "service-worker.js",
+    "sw.js"
+  ],
+  "dataSnapshot": "data.json",
+  "dataSha256": "216e267688807bb97d8cf00cdb3f190c5f7ede753797a892b43c2a9b8a3e49ae",
+  "expected": {
+    "projects": 22,
+    "visibleTasks": 106,
+    "doneTasks": 29,
+    "c4Name": "Website Services"
+  }
+}

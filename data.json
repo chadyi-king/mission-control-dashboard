@@ -1,6 +1,6 @@
 {
   "version": "2026-06-25-nuclear-reset",
-  "lastUpdated": "2026-06-25T21:48:24.091728+08:00",
+  "lastUpdated": "2026-06-25T23:18:38.070199+08:00",
   "updatedBy": "hermes-canonical-sync",
   "fleet": [
     {
@@ -2473,7 +2473,7 @@
     "workflowBucketsNormalized": true,
     "visualWorkflowStatePublished": true,
     "sourceSnapshotLastUpdated": "2026-06-25T16:50:00.000000+08:00",
-    "publishedAt": "2026-06-25T21:48:24.091728+08:00",
+    "publishedAt": "2026-06-25T23:18:38.070199+08:00",
     "counts": {
       "visibleTasks": 106,
       "doneTasks": 29,
@@ -2485,7 +2485,7 @@
     "operation": "publish_dashboard_snapshot",
     "actor": "hermes-canonical-sync",
     "source": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
-    "createdAt": "2026-06-25T21:48:24.091728+08:00",
+    "createdAt": "2026-06-25T23:18:38.070199+08:00",
     "canonicalLastUpdated": "2026-06-25T21:48:19.102971+08:00",
     "sourceSnapshotLastUpdated": "2026-06-25T16:50:00.000000+08:00",
     "counts": {
