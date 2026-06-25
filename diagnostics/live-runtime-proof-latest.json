@@ -1,10 +1,10 @@
 {
   "kind": "mission-control-live-runtime-proof",
   "verifierBuild": "20260624-direct-root-aware-1",
-  "generatedAt": "2026-06-24T10:34:38.716Z",
+  "generatedAt": "2026-06-25T15:28:29.482Z",
   "attempt": 32,
   "url": "https://chadyi-king.github.io/mission-control-dashboard/",
-  "expectedSourceSha": "f3eea705efb9dafdada80de9e2d5df112fd6aa0a",
+  "expectedSourceSha": "ce1900c1b4972592c2a2cdb92b6f64b2554d2556",
   "pass": false,
   "checks": {
     "rootHttpOk": true,
@@ -29,7 +29,7 @@
       "rootMode": "direct-stable-v1",
       "rootBuild": "20260624-root-direct-stable-1",
       "syncChip": "SNAPSHOT LIVE",
-      "statTotal": "108",
+      "statTotal": "106",
       "statDone": "29",
       "statProjects": "22",
       "statC4": "C4 visible",
@@ -37,14 +37,14 @@
       "dataSource": {
         "buildId": "20260624-github-api-data-2",
         "mode": "github-api-main",
-        "sha": "2e8c964f5e592dcde60845473f1ce642d1267c0d",
-        "updatedAt": "2026-06-24T10:34:38.978Z",
+        "sha": "660f1be557c3907a369fb9d0bd2d6e4d4ec9db3c",
+        "updatedAt": "2026-06-25T15:28:29.971Z",
         "lastError": ""
       },
       "fleetCards": 135,
       "statCards": 6,
       "categoryCards": 22,
-      "textSample": "RED SUN COMMAND\nMISSION CONTROL DASHBOARD\nBUILD 20260624-cachebust-1 | 22 projects | 108 tasks | 29 done | C4 Website Services | active A6-16, B6-10\nSNAPSHOT LIVE\nBUILD20260624-CACHEBUST-1\n22\nPROJECTS\n108\nTASKS\n29\nDONE\n79\nLEFT\n2\nACTIVE\n0\nREVIEW\n1\nINPUT\n1\nBLOCKED\n3\nPAUSED\nOK\nC4\nCHAD_YI\nstale\nCEREBRONN\nplan\nHELIOS\nlive\nQUANTA\nlive\nFORGER\nplan\nESCRITA\nplan\nAUTOURA\nbuild\nMENSAMUSA\nplan\nCLAIR\nplan\nE++\nplan\nKOTLER\next\nLEDGER\nplan\nATLAS\nplan\nPULSAR\nplan\nABED\nplan\nTOTAL TASKS\n108\n79 left\nCOMPLETED\n29\n27% complete\nPROJECTS\n22\nC4 visible\nNEEDS CALEB\n1\n1 input\nACTIVE WORK\n2\n1 blocked\nFLEET\n15\n4 live/ext\nTHE SEVENTEEN4 LIVE/EXT - 15 MAPPED\nNOT BUILT\nCHAD_YI\nThe Face - Primary interface\nLive session on Telegram\nNOT BUILT\nCEREBRONN\nThe Brain - Persistent memory & decisions\nArchitecture & deep reasoning (The Brain)\nLIVE\nHELIOS\nThe Spine - COO, auditor, reporter\nDashboard sync + audit\nLIVE\nQUANTA\nTrading - OANDA execution/status\nStatus/reporting active; live trading off; open trades 0, pending orders 0\nNOT BUILT\nFORGER\nWeb Architect - websites, SEO, full-stack\nPlanned\nNOT BUILT\nESCRITA\nStory Agent - RE:UNITE novel writing\nPlanned\nBUILDING\nAUTOURA\nSupervised growth agent - SME scouting, approval-gated outreach, client intake, story-first blueprints, Higgsfield prompt packs, clip review\nBuilding\nNOT BUILT\nMM\nMENSAMUSA\nResearch - knowledge and options intelligence\nPlanned\nNOT BUILT\nCL\nCLAIR\nStreaming Scout\nPlanned\nNOT BUILT\nE+\nE++\nCore Dev\nPlanned\nEXTERNAL\nKOTLER\nMarketing Ops - Google Ads Manager\nExternal\nNOT BUILT\nLG\nLEDGER\nFinance / CRM\nPlanned\nNOT BUILT\nAT\nATLAS\nResearcher\nPlanned\nNOT BUILT\nPS\nPULSAR\nData Sentinel\nPlanned\nNOT BUILT\nAB\nABED\nCommunity Manager\nPlanned\nDAILY BRIEFING\nRefresh\n🚫 1 blocked — needs action to unblock · ❓ 1 waiting for your input · ⚡ 2 active\n1\nBLOCKED\n1\nINPUT\n0\nREVIEW\n2\nACTIVE\nUpdate tasks through Telegram/Hermes\nAWAITING REVIEW\n0\nNo tasks awaiting review. Mark a task \"needs review\" to see it here.\nINPUT REQUESTED\n1\nChapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads\nA2-1\nA2\nESCRITA\nBLOCKED\nCALEB'S QUEUE\n1\nFix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions\nA6-16\nA6\nCHAD_YI\nACTIVE\nTODAY'S FOCUS\n3 TASKS\n1. Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads\nA2-1\nA2\nBLOCKED\nESCRITA\n2. Fix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions\nA6-16\nA6\nACTIVE\nCHAD_YI\n3. Build Kotler - unified Google Ads management for all EXSTATIC brands\nB6-10\nB6\nACTIVE\nKOTLER\nWEEK AT A GLANCE\n24 JUN - 30 J",
+      "textSample": "RED SUN COMMAND\nMISSION CONTROL DASHBOARD\nBUILD 20260624-cachebust-1 | 22 projects | 106 tasks | 29 done | C4 Website Services | active A6-16, B6-10\nSNAPSHOT LIVE\nBUILD20260624-CACHEBUST-1\n22\nPROJECTS\n106\nTASKS\n29\nDONE\n77\nLEFT\n2\nACTIVE\n0\nREVIEW\n1\nINPUT\n1\nBLOCKED\n3\nPAUSED\nOK\nC4\nCHAD_YI\nlive\nCEREBRONN\nnot b\nHELIOS\nlive\nQUANTA\nlive\nFORGER\nnot b\nESCRITA\nnot b\nAUTOURA\nlive\nMENSAMUSA\nnot b\nCLAIR\nnot b\nE++\nplan\nKOTLER\nlive\nLEDGER\nnot b\nATLAS\nnot b\nPULSAR\nnot b\nABED\nnot b\nTOTAL TASKS\n106\n77 left\nCOMPLETED\n29\n27% complete\nPROJECTS\n22\nC4 visible\nNEEDS CALEB\n1\n1 input\nACTIVE WORK\n2\n1 blocked\nFLEET\n15\n5 live/ext\nTHE SEVENTEEN5 LIVE/EXT - 15 MAPPED\nLIVE\nCHAD_YI\nThe Face - Primary interface\nLive session on Telegram\nNOT BUILT\nCEREBRONN\nThe Brain - Persistent memory & decisions\nArchitecture & deep reasoning (The Brain)\nLIVE\nHELIOS\nThe Spine - COO, auditor, reporter\nDashboard sync + audit\nLIVE\nQUANTA\nTrading - OANDA execution/status\nStatus/reporting active; live trading off; open trades 0, pending orders 0\nNOT BUILT\nFORGER\nWeb Architect - websites, SEO, full-stack\nNot Built\nNOT BUILT\nESCRITA\nStory Agent - RE:UNITE novel writing\nNot Built\nLIVE\nAUTOURA\nSupervised growth agent - SME scouting, approval-gated outreach, client intake, story-first blueprints, Higgsfield prompt packs, clip review\nActive\nNOT BUILT\nMM\nMENSAMUSA\nResearch - knowledge and options intelligence\nNot Built\nNOT BUILT\nCL\nCLAIR\nStreaming Scout\nNot Built\nNOT BUILT\nE+\nE++\nCore Dev\nPlanned\nLIVE\nKOTLER\nMarketing Ops - Google Ads Manager\nActive\nNOT BUILT\nLG\nLEDGER\nFinance / CRM\nNot Built\nNOT BUILT\nAT\nATLAS\nResearcher\nNot Built\nNOT BUILT\nPS\nPULSAR\nData Sentinel\nNot Built\nNOT BUILT\nAB\nABED\nCommunity Manager\nNot Built\nDAILY BRIEFING\nRefresh\n🚫 1 blocked — needs action to unblock · ❓ 1 waiting for your input · ⚡ 2 active\n1\nBLOCKED\n1\nINPUT\n0\nREVIEW\n2\nACTIVE\nUpdate tasks through Telegram/Hermes\nAWAITING REVIEW\n0\nNo tasks awaiting review. Mark a task \"needs review\" to see it here.\nINPUT REQUESTED\n1\nChapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads\nA2-1\nA2\nESCRITA\nBLOCKED\nCALEB'S QUEUE\n1\nFix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions\nA6-16\nA6\nCHAD_YI\nACTIVE\nTODAY'S FOCUS\n3 TASKS\n1. Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads\nA2-1\nA2\nBLOCKED\nESCRITA\n2. Fix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions\nA6-16\nA6\nACTIVE\nCHAD_YI\n3. Build Kotler - unified Google Ads management for all EXSTATIC brands\nB6-10\nB6\nACTIVE\nKOTLER\nWEEK AT A GLANCE\n25 JUN",
       "resourceNames": [
         "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap",
         "https://chadyi-king.github.io/mission-control-dashboard/main-styles-20260623-p5.css?build=20260624-root-direct-stable-1",
@@ -52,15 +52,15 @@
         "https://chadyi-king.github.io/mission-control-dashboard/dashboard-hermes-bridge.js?build=20260624-root-direct-stable-1",
         "https://chadyi-king.github.io/mission-control-dashboard/dashboard-app-20260623-cachebreak-1.js?build=20260624-root-direct-stable-1",
         "https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap",
-        "https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=1782297278773",
+        "https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=1782401309639",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/chad-yi-avatar.jpg?build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/cerebronn-avatar.jpg?v=1&build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/helios-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/quanta-avatar.jpg?build=20260624-cachebust-1",
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/helios-avatar.jpg?build=20260624-cachebust-1",
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/cerebronn-avatar.jpg?v=1&build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/forger-avatar.jpg?v=1&build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/escrita-avatar.jpg?v=1&build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/kotler-avatar.jpg?build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/autour-avatar.jpg?build=20260624-cachebust-1"
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/autour-avatar.jpg?build=20260624-cachebust-1",
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/kotler-avatar.jpg?build=20260624-cachebust-1"
       ]
     },
     "manifestStatus": 200,
@@ -91,10 +91,10 @@
       "publishedBy": "pages.yml",
       "deploymentMode": "github-actions-pages-artifact-active-files-only",
       "sourceBranch": "main",
-      "sourceSha": "f3eea705efb9dafdada80de9e2d5df112fd6aa0a",
-      "runId": "28091959726",
+      "sourceSha": "ce1900c1b4972592c2a2cdb92b6f64b2554d2556",
+      "runId": "28180696702",
       "runAttempt": "1",
-      "createdAt": "2026-06-24T10:25:26.302Z",
+      "createdAt": "2026-06-25T15:18:58.037Z",
       "currentApp": "app-20260624-stable-v1.html",
       "includedFiles": [
         "app-20260624-stable-v1.html",
@@ -109,20 +109,20 @@
         "sw.js"
       ],
       "dataSnapshot": "data.json",
-      "dataSha256": "8426c29ad67ce546a6f3a7dec1a26b700d307b2a2632ce797251f6c9a55012cc",
+      "dataSha256": "216e267688807bb97d8cf00cdb3f190c5f7ede753797a892b43c2a9b8a3e49ae",
       "expected": {
         "projects": 22,
-        "visibleTasks": 108,
+        "visibleTasks": 106,
         "doneTasks": 29,
         "c4Name": "Website Services"
       }
     },
     "githubDataStatus": 200,
-    "githubDataSha": "2e8c964f5e592dcde60845473f1ce642d1267c0d",
-    "dataSha256": "8426c29ad67ce546a6f3a7dec1a26b700d307b2a2632ce797251f6c9a55012cc",
+    "githubDataSha": "660f1be557c3907a369fb9d0bd2d6e4d4ec9db3c",
+    "dataSha256": "216e267688807bb97d8cf00cdb3f190c5f7ede753797a892b43c2a9b8a3e49ae",
     "stats": {
       "projects": 22,
-      "visible": 108,
+      "visible": 106,
       "done": 29,
       "c4Name": "Website Services"
     }
