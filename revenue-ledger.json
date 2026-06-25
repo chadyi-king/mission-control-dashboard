@@ -268,18 +268,34 @@
       "pnl": 0.0,
       "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
       "verified": false
+    },
+    {
+      "date": "2026-06-25",
+      "agent": "quanta",
+      "balance": 100000.0,
+      "pnl": 0.0,
+      "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+      "verified": false
+    },
+    {
+      "date": "2026-06-26",
+      "agent": "quanta",
+      "balance": 100000.0,
+      "pnl": 0.0,
+      "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+      "verified": false
     }
   ],
   "weekly_rankings": {
     "best": {
       "agent": "quanta",
       "amount": 0.0,
-      "period": "2026-05-16"
+      "period": "2026-05-18"
     },
     "worst": {
       "agent": "quanta",
       "amount": 0.0,
-      "period": "2026-05-16"
+      "period": "2026-05-18"
     }
   },
   "note_to_future_agents": "If you generate revenue for Caleb, append your daily/weekly PNL to this ledger under the 'agents' and 'daily_snapshots' keys. Helios reads this file and pushes it to the dashboard."
