@@ -1,10 +1,10 @@
 {
   "kind": "mission-control-live-runtime-proof",
   "verifierBuild": "20260624-direct-root-aware-1",
-  "generatedAt": "2026-06-25T18:12:15.908Z",
+  "generatedAt": "2026-06-25T18:41:36.952Z",
   "attempt": 32,
   "url": "https://chadyi-king.github.io/mission-control-dashboard/",
-  "expectedSourceSha": "470920290cea550c3cb3c63e53cb61582a4e5043",
+  "expectedSourceSha": "8c5ba6ba779596bfd108ba98c59e428eb8a10732",
   "pass": false,
   "checks": {
     "rootHttpOk": true,
@@ -37,8 +37,8 @@
       "dataSource": {
         "buildId": "20260624-github-api-data-2",
         "mode": "github-api-main",
-        "sha": "9dbd25f521fc2e4a1dbfbb35c0b835f4a7e990d8",
-        "updatedAt": "2026-06-25T18:12:16.396Z",
+        "sha": "6407709b52d408cc19fa1548bbfb4df425118039",
+        "updatedAt": "2026-06-25T18:41:37.237Z",
         "lastError": ""
       },
       "fleetCards": 135,
@@ -52,11 +52,11 @@
         "https://chadyi-king.github.io/mission-control-dashboard/dashboard-hermes-bridge.js?build=20260624-root-direct-stable-1",
         "https://chadyi-king.github.io/mission-control-dashboard/dashboard-app-20260623-cachebreak-1.js?build=20260624-root-direct-stable-1",
         "https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap",
-        "https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=1782411136026",
+        "https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=1782412897031",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/chad-yi-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/helios-avatar.jpg?build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/quanta-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/cerebronn-avatar.jpg?v=1&build=20260624-cachebust-1",
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/quanta-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/forger-avatar.jpg?v=1&build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/escrita-avatar.jpg?v=1&build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/autour-avatar.jpg?build=20260624-cachebust-1",
@@ -91,10 +91,10 @@
       "publishedBy": "pages.yml",
       "deploymentMode": "github-actions-pages-artifact-active-files-only",
       "sourceBranch": "main",
-      "sourceSha": "470920290cea550c3cb3c63e53cb61582a4e5043",
-      "runId": "28190254823",
+      "sourceSha": "8c5ba6ba779596bfd108ba98c59e428eb8a10732",
+      "runId": "28191978676",
       "runAttempt": "1",
-      "createdAt": "2026-06-25T18:02:21.355Z",
+      "createdAt": "2026-06-25T18:31:56.538Z",
       "currentApp": "app-20260624-stable-v1.html",
       "includedFiles": [
         "app-20260624-stable-v1.html",
@@ -109,7 +109,7 @@
         "sw.js"
       ],
       "dataSnapshot": "data.json",
-      "dataSha256": "e4c64168c3a3826c5ba42c8a7a304174624e322bb3d70effee901706195ea282",
+      "dataSha256": "62f68da612a6bf01dc1d5c0661f5d622778fef8e589e37d0b2834c6839052399",
       "expected": {
         "projects": 22,
         "visibleTasks": 106,
@@ -118,8 +118,8 @@
       }
     },
     "githubDataStatus": 200,
-    "githubDataSha": "9dbd25f521fc2e4a1dbfbb35c0b835f4a7e990d8",
-    "dataSha256": "e4c64168c3a3826c5ba42c8a7a304174624e322bb3d70effee901706195ea282",
+    "githubDataSha": "6407709b52d408cc19fa1548bbfb4df425118039",
+    "dataSha256": "62f68da612a6bf01dc1d5c0661f5d622778fef8e589e37d0b2834c6839052399",
     "stats": {
       "projects": 22,
       "visible": 106,
