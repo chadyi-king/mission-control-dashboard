@@ -1,138 +1,1457 @@
 {
-  "version": "2026-06-25-nuclear-reset",
-  "lastUpdated": "2026-06-25T23:18:38.070199+08:00",
+  "version": "3.0.0",
+  "lastUpdated": "2026-06-26T01:31:32.368434+08:00",
   "updatedBy": "hermes-canonical-sync",
-  "fleet": [
-    {
-      "id": "chad-yi",
-      "name": "CHAD_YI",
-      "role": "The Face",
-      "status": "LIVE",
-      "emoji": "🎭",
-      "activeTask": "A6-3 Dashboard audit",
-      "model": "kimi-k2.5"
+  "stats": {
+    "completedToday": 0,
+    "completedThisWeek": 0,
+    "critical": 0,
+    "urgent": 0,
+    "totalTasks": 106,
+    "tasksLeft": 77,
+    "completedTasks": 29,
+    "open": 71,
+    "active": 2,
+    "blocked": 1,
+    "needsReview": 0,
+    "inputRequested": 0,
+    "paused": 3
+  },
+  "completions": {
+    "today": [],
+    "this_week": [],
+    "all_time": 46
+  },
+  "weeklyProgress": {
+    "completed": 0,
+    "started": 0
+  },
+  "workflow": {
+    "open": [
+      "A1-14",
+      "A3-1",
+      "A3-2",
+      "A3-3",
+      "A3-4",
+      "A3-5",
+      "A3-6",
+      "A4-1",
+      "A4-2",
+      "A4-3",
+      "A4-4",
+      "A7-3",
+      "B1-1",
+      "B2-1",
+      "B3-2",
+      "B4-1",
+      "B5-1",
+      "B7-1",
+      "B7-2",
+      "B8-1",
+      "B9-1",
+      "B11-1",
+      "C1-2",
+      "C2-1",
+      "C2-2",
+      "C3-1",
+      "C3-2",
+      "C3-3",
+      "A3-7",
+      "A3-8",
+      "A3-9",
+      "B1-3",
+      "B1-4",
+      "A7-5",
+      "A7-6",
+      "A7-7",
+      "A7-8",
+      "B3-3",
+      "B7-3",
+      "B7-4",
+      "B7-5",
+      "B7-6",
+      "B7-7",
+      "B8-4",
+      "B8-5",
+      "B8-7",
+      "B8-8",
+      "B8-9",
+      "B9-2",
+      "B9-3",
+      "B9-4",
+      "B9-5",
+      "B9-6",
+      "B9-7",
+      "B11-2",
+      "B11-3",
+      "B11-4",
+      "B11-5",
+      "B11-6",
+      "B11-7",
+      "C3-6",
+      "B8-10",
+      "B8-11",
+      "B8-12",
+      "B8-13",
+      "B8-14",
+      "C4-1",
+      "C4-2",
+      "C4-3",
+      "C4-4",
+      "C4-5"
+    ],
+    "active": [
+      "B6-10",
+      "A6-16"
+    ],
+    "input_requested": [],
+    "needs_review": [],
+    "blocked": [
+      "A2-1"
+    ],
+    "paused": [
+      "A5-4",
+      "A5-5",
+      "B10-1"
+    ],
+    "done": [
+      "A1-11",
+      "A1-12",
+      "A1-13",
+      "A5-1",
+      "A5-3",
+      "A7-1",
+      "A7-2",
+      "A7-4",
+      "B3-1",
+      "B6-1",
+      "B6-2",
+      "B6-3",
+      "B6-4",
+      "B6-5",
+      "B6-6",
+      "B6-7",
+      "B6-8",
+      "B6-9",
+      "B8-2",
+      "B8-3",
+      "B8-6",
+      "C1-1",
+      "A1-6",
+      "A1-5",
+      "A1-2",
+      "A1-7",
+      "A6-14",
+      "A1-1",
+      "A1-4"
+    ],
+    "urgent": []
+  },
+  "tasks": {
+    "A1-11": {
+      "id": "A1-11",
+      "title": "File personal taxes",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-16",
+      "completedAt": "2026-04-16",
+      "createdAt": "2026-04-02T00:00:00"
     },
-    {
-      "id": "helios",
-      "name": "Helios",
-      "role": "The Spine",
-      "status": "LIVE",
-      "emoji": "🌞",
-      "activeTask": "15-min audits",
-      "model": "local"
+    "A1-12": {
+      "id": "A1-12",
+      "title": "Reply to lawyer",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
     },
-    {
-      "id": "cerebronn",
+    "A1-13": {
+      "id": "A1-13",
+      "title": "Fix Google Ads API",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-24",
+      "completedAt": "2026-04-24",
+      "createdAt": "2026-04-10T00:00:00"
+    },
+    "A1-14": {
+      "id": "A1-14",
+      "title": "Build EPEPTOME website — selling peptides for research (DEPRECATED - moved to B11)",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A2-1": {
+      "id": "A2-1",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "project": "A2",
+      "category": "A",
+      "agent": "ESCRITA",
+      "status": "blocked",
+      "priority": "medium",
+      "blockReason": "Waiting for Caleb to start brainstorm",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-1": {
+      "id": "A3-1",
+      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-2": {
+      "id": "A3-2",
+      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-3": {
+      "id": "A3-3",
+      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-4": {
+      "id": "A3-4",
+      "title": "Set up KOE YouTube channel branding",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-5": {
+      "id": "A3-5",
+      "title": "TikTok content strategy (short clips from scripts)",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-6": {
+      "id": "A3-6",
+      "title": "Record & edit first video",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A4-1": {
+      "id": "A4-1",
+      "title": "Research streaming platforms (Kick vs YouTube vs Twitch) and find management company",
+      "project": "A4",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A4-2": {
+      "id": "A4-2",
+      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
+      "project": "A4",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A4-3": {
+      "id": "A4-3",
+      "title": "Define content strategy — what to stream, how to grow audience",
+      "project": "A4",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A4-4": {
+      "id": "A4-4",
+      "title": "Set up streaming channel and management workflow",
+      "project": "A4",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A5-1": {
+      "id": "A5-1",
+      "title": "Quanta Trading Bot - Live trading",
+      "project": "A5",
+      "category": "A",
+      "agent": "Quanta",
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-04-24T03:00:13.854230+08:00",
+      "completedAt": "2026-05-08T03:00:13.854230+08:00"
+    },
+    "A5-3": {
+      "id": "A5-3",
+      "title": "Update Quanta symbol list",
+      "project": "A5",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-04-24T03:00:13.854230+08:00",
+      "completedAt": "2026-05-08T03:00:13.854230+08:00"
+    },
+    "A5-4": {
+      "id": "A5-4",
+      "title": "Add AXI/MT5 for QUANTA with same trading logic",
+      "project": "A5",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "paused",
+      "priority": "medium",
+      "pauseReason": "Trading on hold after losses",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A5-5": {
+      "id": "A5-5",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
+      "project": "A5",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "paused",
+      "priority": "medium",
+      "pauseReason": "Trading on hold after losses",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B6-10": {
+      "id": "B6-10",
+      "title": "Build Kotler - unified Google Ads management for all EXSTATIC brands",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "active",
+      "priority": "medium",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A7-1": {
+      "id": "A7-1",
+      "title": "Finalize wedding theme — BLACK AND WHITE",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-06-17",
+      "completedAt": "2026-06-17",
+      "createdAt": "2026-05-02T00:00:00+08:00"
+    },
+    "A7-2": {
+      "id": "A7-2",
+      "title": "Book venue and catering",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-23",
+      "completedAt": "2026-03-23",
+      "createdAt": "2026-03-09T00:00:00"
+    },
+    "A7-3": {
+      "id": "A7-3",
+      "title": "Send invitations — RSVP by end of June",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "medium",
+      "createdAt": "2026-03-31T00:00:00+08:00"
+    },
+    "A7-4": {
+      "id": "A7-4",
+      "title": "Prepare wedding guest list",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-06-17",
+      "completedAt": "2026-06-17",
+      "createdAt": "2026-03-29T00:00:00+08:00"
+    },
+    "B1-1": {
+      "id": "B1-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B1",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B2-1": {
+      "id": "B2-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B2",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B3-1": {
+      "id": "B3-1",
+      "title": "Team Elevate website (Lovable)",
+      "project": "B3",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-02-05",
+      "completedAt": "2026-02-05",
+      "createdAt": "2026-01-22T00:00:00"
+    },
+    "B3-2": {
+      "id": "B3-2",
+      "title": "SEO + Google Ads setup — ① SEO optimization (3-step process) ② Google Ads (landing pages + checklist) ③ Social media ④ Client management",
+      "project": "B3",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B4-1": {
+      "id": "B4-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B4",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B5-1": {
+      "id": "B5-1",
+      "title": "Full website + marketing setup — ① Website design ② SEO ③ Google Ads ④ Social media ⑤ Client management",
+      "project": "B5",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B6-1": {
+      "id": "B6-1",
+      "title": "Elluminate website (Lovable)",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-02-05",
+      "completedAt": "2026-02-05",
+      "createdAt": "2026-01-22T00:00:00"
+    },
+    "B6-2": {
+      "id": "B6-2",
+      "title": "MENDAKI - Get gel guns and archery tag",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-04-24T03:00:13.854230+08:00",
+      "completedAt": "2026-05-08T03:00:13.854230+08:00"
+    },
+    "B6-3": {
+      "id": "B6-3",
+      "title": "SPH items to order",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
+      "createdAt": "2026-04-13T00:00:00"
+    },
+    "B6-4": {
+      "id": "B6-4",
+      "title": "SEO setup — Basic complete (meta tags, H1s). Content ongoing",
+      "project": "B6",
+      "category": "B",
+      "agent": "Forger",
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-04-24T03:00:13.854230+08:00",
+      "completedAt": "2026-05-08T03:00:13.854230+08:00"
+    },
+    "B6-5": {
+      "id": "B6-5",
+      "title": "Google Ads + finish marketing — ① Google Ads (2 landing pages + checklist) ② Social media ③ Client management",
+      "project": "B6",
+      "category": "B",
+      "agent": "Forger",
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-02-01T00:00:00+08:00",
+      "completedAt": "2026-06-17T17:32:48.512259+08:00"
+    },
+    "B6-6": {
+      "id": "B6-6",
+      "title": "Find facilitators for ESU",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01",
+      "createdAt": "2026-02-15T00:00:00"
+    },
+    "B6-7": {
+      "id": "B6-7",
+      "title": "Check insurance for SMU event",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-23",
+      "completedAt": "2026-03-23",
+      "createdAt": "2026-03-09T00:00:00"
+    },
+    "B6-8": {
+      "id": "B6-8",
+      "title": "Order gel blitz guns for MENDAKI",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18",
+      "createdAt": "2026-03-04T00:00:00"
+    },
+    "B6-9": {
+      "id": "B6-9",
+      "title": "Order items for SPH event",
+      "project": "B6",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-27",
+      "completedAt": "2026-04-27",
+      "createdAt": "2026-04-13T00:00:00"
+    },
+    "B7-1": {
+      "id": "B7-1",
+      "title": "Design website layout and structure — Homepage, services, about, contact pages",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-2": {
+      "id": "B7-2",
+      "title": "Write website copy and content — Brand messaging, service descriptions, SEO content",
+      "project": "B7",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-1": {
+      "id": "B8-1",
+      "title": "Design website layout and structure — Homepage, portfolio, services, contact pages",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-2": {
+      "id": "B8-2",
+      "title": "Figure out Higgsfield AI for marketing studio",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "deadline": "2026-04-24",
+      "createdAt": "2026-03-25T00:00:00+08:00",
+      "completedAt": "2026-05-11T23:00:44.880903+08:00"
+    },
+    "B8-3": {
+      "id": "B8-3",
+      "title": "Research Higgsfield AI pathway — AI UGC and Product Advertisements",
+      "project": "B8",
+      "category": "B",
+      "agent": "Cerebronn",
+      "status": "done",
+      "priority": "done",
+      "createdAt": "2026-02-01T00:00:00+08:00",
+      "completedAt": "2026-06-17T17:37:42.491870+08:00"
+    },
+    "B8-6": {
+      "id": "B8-6",
+      "title": "Andre's video (changes done)",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-23",
+      "completedAt": "2026-03-23",
+      "createdAt": "2026-03-09T00:00:00"
+    },
+    "B9-1": {
+      "id": "B9-1",
+      "title": "Set up Shopify store — Theme selection, product catalog, payment gateways",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B10-1": {
+      "id": "B10-1",
+      "title": "Corporate data tracking setup — Back burner, revisit end of year",
+      "project": "B10",
+      "category": "B",
+      "agent": "Forger",
+      "status": "paused",
+      "priority": "medium",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-1": {
+      "id": "B11-1",
+      "title": "Design website layout — Homepage, product catalog, about, contact pages",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C1-1": {
+      "id": "C1-1",
+      "title": "Study for RES exam — Moved to Notebook LLM",
+      "project": "C1",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-04-28",
+      "completedAt": "2026-04-28",
+      "createdAt": "2026-04-14T00:00:00"
+    },
+    "C1-2": {
+      "id": "C1-2",
+      "title": "Register for RES exam — October or December 2026 session",
+      "project": "C1",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "medium",
+      "deadline": "2026-10-01",
+      "createdAt": "2026-04-15T00:00:00+08:00"
+    },
+    "C2-1": {
+      "id": "C2-1",
+      "title": "Update portfolio",
+      "project": "C2",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C2-2": {
+      "id": "C2-2",
+      "title": "Research remote sales companies — Look for high-commission roles (base $60k negotiable to $35-40k)",
+      "project": "C2",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C3-1": {
+      "id": "C3-1",
+      "title": "Research Gather Town — 2D virtual workspace platform. Custom map creation possible with object library + interactive elements",
+      "project": "C3",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C3-2": {
+      "id": "C3-2",
+      "title": "Design virtual team building activity concept",
+      "project": "C3",
+      "category": "C",
+      "agent": "Pixel",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C3-3": {
+      "id": "C3-3",
+      "title": "Create Gather Town space prototype",
+      "project": "C3",
+      "category": "C",
+      "agent": "Pixel",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A1-6": {
+      "id": "A1-6",
+      "title": "Sign Lisa's contract",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18",
+      "createdAt": "2026-03-04T00:00:00"
+    },
+    "A1-5": {
+      "id": "A1-5",
+      "title": "Rebook ACLP reassessment",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18",
+      "createdAt": "2026-03-04T00:00:00"
+    },
+    "A1-2": {
+      "id": "A1-2",
+      "title": "Devspace and Findit payments",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-18",
+      "completedAt": "2026-03-18",
+      "createdAt": "2026-03-04T00:00:00"
+    },
+    "A1-7": {
+      "id": "A1-7",
+      "title": "Book flights for Bali",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01",
+      "createdAt": "2026-02-15T00:00:00"
+    },
+    "A6-14": {
+      "id": "A6-14",
+      "title": "Dashboard homepage design",
+      "project": "A6",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-03-01",
+      "completedAt": "2026-03-01",
+      "createdAt": "2026-02-15T00:00:00"
+    },
+    "A1-1": {
+      "id": "A1-1",
+      "title": "Change Taiwan flights and hotel",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-02-13",
+      "completedAt": "2026-02-13",
+      "createdAt": "2026-01-30T00:00:00"
+    },
+    "A1-4": {
+      "id": "A1-4",
+      "title": "Send ACLP homework",
+      "project": "A1",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "done",
+      "priority": "done",
+      "completed": "2026-02-15",
+      "completedAt": "2026-02-15",
+      "createdAt": "2026-02-01T00:00:00"
+    },
+    "A3-7": {
+      "id": "A3-7",
+      "title": "Script 4 — [NEED TOPIC FROM CALEB]",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-8": {
+      "id": "A3-8",
+      "title": "Script 5 — [NEED TOPIC FROM CALEB]",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A3-9": {
+      "id": "A3-9",
+      "title": "Script 6 — [NEED TOPIC FROM CALEB]",
+      "project": "A3",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B1-3": {
+      "id": "B1-3",
+      "title": "Text Charmaine about refund",
+      "project": "B1",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "medium",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B1-4": {
+      "id": "B1-4",
+      "title": "Text Ian from WGC/EPOS about refund",
+      "project": "B1",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "medium",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A6-16": {
+      "id": "A6-16",
+      "title": "Fix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions",
+      "project": "A6",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "active",
+      "priority": "medium",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A7-5": {
+      "id": "A7-5",
+      "title": "Plan bridesmaid and groomsmen party",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A7-6": {
+      "id": "A7-6",
+      "title": "Prepare gifts for bridesmaids and groomsmen",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A7-7": {
+      "id": "A7-7",
+      "title": "Create WhatsApp group for wedding party",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "A7-8": {
+      "id": "A7-8",
+      "title": "Distribute roles and responsibilities to wedding party",
+      "project": "A7",
+      "category": "A",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B3-3": {
+      "id": "B3-3",
+      "title": "Add Team Building section to website — Create subdomain or page for team building activities (escape rooms, laser tag, etc.) alongside large-scale events",
+      "project": "B3",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-3": {
+      "id": "B7-3",
+      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-4": {
+      "id": "B7-4",
+      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-5": {
+      "id": "B7-5",
+      "title": "Add contact forms and CTAs — Lead capture, booking integration",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-6": {
+      "id": "B7-6",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B7-7": {
+      "id": "B7-7",
+      "title": "Finish framework for encompass website",
+      "project": "B7",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-4": {
+      "id": "B8-4",
+      "title": "Write website copy and content — AI marketing services, case studies, pricing",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-5": {
+      "id": "B8-5",
+      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-7": {
+      "id": "B8-7",
+      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-8": {
+      "id": "B8-8",
+      "title": "Add portfolio showcase — Higgsfield AI video examples, client work",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-9": {
+      "id": "B8-9",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "project": "B8",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-2": {
+      "id": "B9-2",
+      "title": "Design store layout and branding — Homepage, product pages, checkout flow",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-3": {
+      "id": "B9-3",
+      "title": "Write product descriptions and copy — SEO-optimized, persuasive sales copy",
+      "project": "B9",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-4": {
+      "id": "B9-4",
+      "title": "Configure shipping and fulfillment — Rates, zones, automated notifications",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-5": {
+      "id": "B9-5",
+      "title": "Set up payment processing — Stripe, PayPal, local payment methods",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-6": {
+      "id": "B9-6",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B9-7": {
+      "id": "B9-7",
+      "title": "Add analytics and tracking — Google Analytics, Facebook Pixel, conversion tracking",
+      "project": "B9",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-2": {
+      "id": "B11-2",
+      "title": "Set up e-commerce platform — Payment gateways, shipping, inventory management",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-3": {
+      "id": "B11-3",
+      "title": "Write product descriptions — Research peptides, benefits, usage guidelines",
+      "project": "B11",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-4": {
+      "id": "B11-4",
+      "title": "Ensure legal compliance — Disclaimers, research-use-only labels, age verification",
+      "project": "B11",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-5": {
+      "id": "B11-5",
+      "title": "Set up domain and hosting — Configure DNS, SSL, CDN",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-6": {
+      "id": "B11-6",
+      "title": "Implement responsive design — Mobile-first, cross-browser compatibility",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B11-7": {
+      "id": "B11-7",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
+      "project": "B11",
+      "category": "B",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C3-6": {
+      "id": "C3-6",
+      "title": "EXODEUS - Riftborn — Create new game: MegaMan + SKUL inspired action-platformer with roguelike elements",
+      "project": "C3",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-10": {
+      "id": "B8-10",
+      "title": "Create Higgsfield AI video for TRME — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-11": {
+      "id": "B8-11",
+      "title": "Create Higgsfield AI video for Fire Terminator — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-12": {
+      "id": "B8-12",
+      "title": "Create Higgsfield AI video for DOTERRA — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-13": {
+      "id": "B8-13",
+      "title": "Create Higgsfield AI video for HEI Legacy — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "B8-14": {
+      "id": "B8-14",
+      "title": "Create Higgsfield AI video for Day Zero with Andre — Product advertisement using AI UGC",
+      "project": "B8",
+      "category": "B",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-1": {
+      "id": "C4-1",
+      "title": "Build website for HEI Legacy (with Marylyn) — Landing page, about, services, contact",
+      "project": "C4",
+      "category": "C",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-2": {
+      "id": "C4-2",
+      "title": "Build website for Day Zero with Andre — Landing page, program details, booking, testimonials",
+      "project": "C4",
+      "category": "C",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-3": {
+      "id": "C4-3",
+      "title": "Build website for Envision Electrical — Data center engineers, electrical infrastructure services, contact/quote forms",
+      "project": "C4",
+      "category": "C",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-4": {
+      "id": "C4-4",
+      "title": "Create portfolio showcase for Website Services — Case studies, client testimonials, service packages",
+      "project": "C4",
+      "category": "C",
+      "agent": "CHAD_YI",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    },
+    "C4-5": {
+      "id": "C4-5",
+      "title": "Set up lead capture system — Contact forms, CRM integration, automated follow-ups",
+      "project": "C4",
+      "category": "C",
+      "agent": "Forger",
+      "status": "open",
+      "priority": "low",
+      "createdAt": "2026-02-01T00:00:00+08:00"
+    }
+  },
+  "recentWins": [],
+  "agents": {
+    "chad-yi": {
+      "name": "Chad Yi",
+      "role": "The Face - Primary interface",
+      "platform": "Hermes Gateway / Telegram",
+      "status": "stale",
+      "currentTask": "Live session on Telegram",
+      "lastActive": "2026-04-16T20:07:36+08:00",
+      "capabilities": []
+    },
+    "cerebronn": {
       "name": "Cerebronn",
-      "role": "The Brain",
-      "status": "NOT_BUILT",
-      "emoji": "🧠",
-      "activeTask": "Awaiting activation",
-      "model": "claude-sonnet-4"
+      "role": "The Brain - Persistent memory & decisions",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "Architecture & deep reasoning (The Brain)",
+      "lastActive": "",
+      "capabilities": []
     },
-    {
-      "id": "quanta",
+    "helios": {
+      "name": "Helios",
+      "role": "The Spine - COO, auditor, reporter",
+      "platform": "Systemd service",
+      "status": "active",
+      "currentTask": "Dashboard sync + audit",
+      "lastActive": "2026-06-26T01:31:00.143697+08:00",
+      "capabilities": []
+    },
+    "quanta": {
       "name": "Quanta",
-      "role": "Trading",
-      "status": "INACTIVE",
-      "emoji": "📈",
-      "activeTask": "Trading daemon verify",
-      "model": "kimi-k2.7"
+      "role": "Trading - OANDA execution/status",
+      "platform": "Telegram monitor / Quanta v3",
+      "status": "active",
+      "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
+      "lastActive": "2026-06-26T01:26:50.736137+08:00",
+      "capabilities": [],
+      "runtimeStatus": "scheduled_worker",
+      "tradingMode": "off",
+      "statusReporting": "active",
+      "openTrades": 0,
+      "pendingOrders": 0,
+      "accountMode": "practice_or_unknown",
+      "warnings": []
     },
-    {
-      "id": "escrita",
-      "name": "Escrita",
-      "role": "Writing",
-      "status": "NOT_BUILT",
-      "emoji": "✍️",
-      "activeTask": "Awaiting activation",
-      "model": "kimi-k2.7"
-    },
-    {
-      "id": "autoura",
-      "name": "Autoura",
-      "role": "Content",
-      "status": "NOT_BUILT",
-      "emoji": "🎬",
-      "activeTask": "Awaiting activation",
-      "model": "kimi-k2.7"
-    },
-    {
-      "id": "forger",
+    "forger": {
       "name": "Forger",
-      "role": "Builder",
-      "status": "NOT_BUILT",
-      "emoji": "🔨",
-      "activeTask": "Awaiting activation",
-      "model": "codex"
-    }
-  ],
-  "futureAgents": [
-    {
-      "id": "mensamusa",
+      "role": "Web Architect - websites, SEO, full-stack",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "escrita": {
+      "name": "Escrita",
+      "role": "Story Agent - RE:UNITE novel writing",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "autoura": {
+      "name": "Autoura",
+      "role": "Supervised growth agent - SME scouting, approval-gated outreach, client intake, story-first blueprints, Higgsfield prompt packs, clip review",
+      "platform": "Hermes on-demand / Higgsfield after approval",
+      "status": "active_on_demand",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
+    },
+    "mensamusa": {
       "name": "Mensamusa",
-      "role": "Options Intelligence",
-      "status": "PLANNED",
-      "emoji": "🎯",
-      "model": "kimi-k2.7"
+      "role": "Research - knowledge and options intelligence",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
     },
-    {
-      "id": "clair",
+    "clair": {
       "name": "Clair",
-      "role": "Specialist",
-      "status": "PLANNED",
-      "emoji": "🔮",
-      "model": "TBD"
+      "role": "Streaming Scout",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
     },
-    {
-      "id": "eplusplus",
-      "name": "EPLUSPLUS",
-      "role": "Specialist",
-      "status": "PLANNED",
-      "emoji": "➕",
-      "model": "TBD"
+    "eplusplus": {
+      "name": "E++",
+      "role": "Core Dev",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
     },
-    {
-      "id": "kotler",
+    "kotler": {
       "name": "Kotler",
-      "role": "Marketing",
-      "status": "EXTERNAL",
-      "emoji": "📢",
-      "model": "external"
+      "role": "Marketing Ops - Google Ads Manager",
+      "platform": "External project",
+      "status": "external",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
     },
-    {
-      "id": "ledger",
+    "ledger": {
       "name": "Ledger",
-      "role": "Finance",
-      "status": "PLANNED",
-      "emoji": "📊",
-      "model": "TBD"
+      "role": "Finance / CRM",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
     },
-    {
-      "id": "atlas",
+    "atlas": {
       "name": "Atlas",
-      "role": "Research",
-      "status": "PLANNED",
-      "emoji": "🗺️",
-      "model": "TBD"
+      "role": "Researcher",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
     },
-    {
-      "id": "pulsar",
+    "pulsar": {
       "name": "Pulsar",
-      "role": "Signals",
-      "status": "PLANNED",
-      "emoji": "📡",
-      "model": "TBD"
+      "role": "Data Sentinel",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
     },
-    {
-      "id": "abed",
+    "abed": {
       "name": "Abed",
-      "role": "Specialist",
-      "status": "PLANNED",
-      "emoji": "🛏️",
-      "model": "TBD"
+      "role": "Community Manager",
+      "platform": "Hermes planned agent",
+      "status": "planned",
+      "currentTask": "",
+      "lastActive": "",
+      "capabilities": []
     }
-  ],
+  },
+  "categories": {
+    "A": {
+      "name": "Ambition",
+      "description": "Personal Projects",
+      "projects": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7"
+      ]
+    },
+    "B": {
+      "name": "Business",
+      "description": "Active Ventures",
+      "projects": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11"
+      ]
+    },
+    "C": {
+      "name": "Callings",
+      "description": "Side Projects",
+      "projects": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ]
+    }
+  },
   "projects": {
     "A1": {
       "name": "Personal",
@@ -149,14 +1468,7 @@
         "A1-2",
         "A1-7",
         "A1-1",
-        "A1-4",
-        "TEST-2",
-        "TEMP-TEST",
-        "TEMP-P3",
-        "TEMP-LIVE-PROOF",
-        "TEMP-DASHBOARD-PROOF",
-        "TEMP-TEST-FIX",
-        "TEMP-TEST-FIX2"
+        "A1-4"
       ],
       "totalTasks": 10,
       "completedTasks": 9,
@@ -490,1195 +1802,6 @@
       "completionPct": 0
     }
   },
-  "tasks": {
-    "A1-11": {
-      "id": "A1-11",
-      "title": "File personal taxes",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-16",
-      "completedAt": "2026-04-16",
-      "createdAt": "2026-04-02T00:00:00"
-    },
-    "A1-12": {
-      "id": "A1-12",
-      "title": "Reply to lawyer",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-28",
-      "completedAt": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00"
-    },
-    "A1-13": {
-      "id": "A1-13",
-      "title": "Fix Google Ads API",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-24",
-      "completedAt": "2026-04-24",
-      "createdAt": "2026-04-10T00:00:00"
-    },
-    "A1-14": {
-      "id": "A1-14",
-      "title": "Build EPEPTOME website — selling peptides for research (DEPRECATED - moved to B11)",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A2-1": {
-      "id": "A2-1",
-      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
-      "project": "A2",
-      "category": "A",
-      "agent": "escrita",
-      "status": "blocked",
-      "priority": "medium",
-      "blockReason": "Waiting for Caleb to start brainstorm",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A3-1": {
-      "id": "A3-1",
-      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A3-2": {
-      "id": "A3-2",
-      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A3-3": {
-      "id": "A3-3",
-      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A3-4": {
-      "id": "A3-4",
-      "title": "Set up KOE YouTube channel branding",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A3-5": {
-      "id": "A3-5",
-      "title": "TikTok content strategy (short clips from scripts)",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A3-6": {
-      "id": "A3-6",
-      "title": "Record & edit first video",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A4-1": {
-      "id": "A4-1",
-      "title": "Research streaming platforms (Kick vs YouTube vs Twitch) and find management company",
-      "project": "A4",
-      "category": "A",
-      "agent": "clair",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A4-2": {
-      "id": "A4-2",
-      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
-      "project": "A4",
-      "category": "A",
-      "agent": "clair",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A4-3": {
-      "id": "A4-3",
-      "title": "Define content strategy — what to stream, how to grow audience",
-      "project": "A4",
-      "category": "A",
-      "agent": "clair",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A4-4": {
-      "id": "A4-4",
-      "title": "Set up streaming channel and management workflow",
-      "project": "A4",
-      "category": "A",
-      "agent": "clair",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A5-1": {
-      "id": "A5-1",
-      "title": "Quanta Trading Bot - Live trading",
-      "project": "A5",
-      "category": "A",
-      "agent": "quanta",
-      "status": "done",
-      "priority": "done",
-      "createdAt": "2026-04-24T03:00:13.854230+08:00",
-      "completedAt": "2026-05-08T03:00:13.854230+08:00"
-    },
-    "A5-3": {
-      "id": "A5-3",
-      "title": "Update Quanta symbol list",
-      "project": "A5",
-      "category": "A",
-      "agent": "quanta",
-      "status": "done",
-      "priority": "done",
-      "createdAt": "2026-04-24T03:00:13.854230+08:00",
-      "completedAt": "2026-05-08T03:00:13.854230+08:00"
-    },
-    "A5-4": {
-      "id": "A5-4",
-      "title": "Add AXI/MT5 for QUANTA with same trading logic",
-      "project": "A5",
-      "category": "A",
-      "agent": "quanta",
-      "status": "paused",
-      "priority": "medium",
-      "pauseReason": "Trading on hold after losses",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A5-5": {
-      "id": "A5-5",
-      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
-      "project": "A5",
-      "category": "A",
-      "agent": "quanta",
-      "status": "paused",
-      "priority": "medium",
-      "pauseReason": "Trading on hold after losses",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B6-10": {
-      "id": "B6-10",
-      "title": "Build Kotler - unified Google Ads management for all EXSTATIC brands",
-      "project": "B6",
-      "category": "B",
-      "agent": "kotler",
-      "status": "active",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A7-1": {
-      "id": "A7-1",
-      "title": "Finalize wedding theme — BLACK AND WHITE",
-      "project": "A7",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-06-17",
-      "completedAt": "2026-06-17",
-      "createdAt": "2026-05-02T00:00:00+08:00"
-    },
-    "A7-2": {
-      "id": "A7-2",
-      "title": "Book venue and catering",
-      "project": "A7",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-23",
-      "completedAt": "2026-03-23",
-      "createdAt": "2026-03-09T00:00:00"
-    },
-    "A7-3": {
-      "id": "A7-3",
-      "title": "Send invitations — RSVP by end of June",
-      "project": "A7",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "medium",
-      "createdAt": "2026-03-31T00:00:00+08:00",
-      "sourceStatus": "pending"
-    },
-    "A7-4": {
-      "id": "A7-4",
-      "title": "Prepare wedding guest list",
-      "project": "A7",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-06-17",
-      "completedAt": "2026-06-17",
-      "createdAt": "2026-03-29T00:00:00+08:00"
-    },
-    "B1-1": {
-      "id": "B1-1",
-      "title": "B1 EPOS: Full website + marketing setup",
-      "project": "B1",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B2-1": {
-      "id": "B2-1",
-      "title": "B2 Team Elevate: Full website + marketing setup",
-      "project": "B2",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B3-1": {
-      "id": "B3-1",
-      "title": "Team Elevate website (Lovable)",
-      "project": "B3",
-      "category": "B",
-      "agent": "forger",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-02-05",
-      "completedAt": "2026-02-05",
-      "createdAt": "2026-01-22T00:00:00"
-    },
-    "B3-2": {
-      "id": "B3-2",
-      "title": "SEO + Google Ads setup — ① SEO optimization (3-step process) ② Google Ads (landing pages + checklist) ③ Social media ④ Client management",
-      "project": "B3",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B4-1": {
-      "id": "B4-1",
-      "title": "B4 Elluminate: Full website + marketing setup",
-      "project": "B4",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B5-1": {
-      "id": "B5-1",
-      "title": "B5 EXSTATIC: Full website + marketing setup",
-      "project": "B5",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B6-1": {
-      "id": "B6-1",
-      "title": "Elluminate website (Lovable)",
-      "project": "B6",
-      "category": "B",
-      "agent": "kotler",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-02-05",
-      "completedAt": "2026-02-05",
-      "createdAt": "2026-01-22T00:00:00"
-    },
-    "B6-2": {
-      "id": "B6-2",
-      "title": "MENDAKI - Get gel guns and archery tag",
-      "project": "B6",
-      "category": "B",
-      "agent": "kotler",
-      "status": "done",
-      "priority": "done",
-      "createdAt": "2026-04-24T03:00:13.854230+08:00",
-      "completedAt": "2026-05-08T03:00:13.854230+08:00"
-    },
-    "B6-3": {
-      "id": "B6-3",
-      "title": "SPH items to order",
-      "project": "B6",
-      "category": "B",
-      "agent": "kotler",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-27",
-      "completedAt": "2026-04-27",
-      "createdAt": "2026-04-13T00:00:00"
-    },
-    "B6-4": {
-      "id": "B6-4",
-      "title": "SEO setup — Basic complete (meta tags, H1s). Content ongoing",
-      "project": "B6",
-      "category": "B",
-      "agent": "forger",
-      "status": "done",
-      "priority": "done",
-      "createdAt": "2026-04-24T03:00:13.854230+08:00",
-      "completedAt": "2026-05-08T03:00:13.854230+08:00"
-    },
-    "B6-5": {
-      "id": "B6-5",
-      "title": "Google Ads + finish marketing — ① Google Ads (2 landing pages + checklist) ② Social media ③ Client management",
-      "project": "B6",
-      "category": "B",
-      "agent": "forger",
-      "status": "done",
-      "priority": "done",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "completedAt": "2026-06-17T17:32:48.512259+08:00"
-    },
-    "B6-6": {
-      "id": "B6-6",
-      "title": "Find facilitators for ESU",
-      "project": "B6",
-      "category": "B",
-      "agent": "kotler",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-01",
-      "completedAt": "2026-03-01",
-      "createdAt": "2026-02-15T00:00:00"
-    },
-    "B6-7": {
-      "id": "B6-7",
-      "title": "Check insurance for SMU event",
-      "project": "B6",
-      "category": "B",
-      "agent": "kotler",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-23",
-      "completedAt": "2026-03-23",
-      "createdAt": "2026-03-09T00:00:00"
-    },
-    "B6-8": {
-      "id": "B6-8",
-      "title": "Order gel blitz guns for MENDAKI",
-      "project": "B6",
-      "category": "B",
-      "agent": "kotler",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-18",
-      "completedAt": "2026-03-18",
-      "createdAt": "2026-03-04T00:00:00"
-    },
-    "B6-9": {
-      "id": "B6-9",
-      "title": "Order items for SPH event",
-      "project": "B6",
-      "category": "B",
-      "agent": "kotler",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-27",
-      "completedAt": "2026-04-27",
-      "createdAt": "2026-04-13T00:00:00"
-    },
-    "B7-1": {
-      "id": "B7-1",
-      "title": "Design website layout and structure — Homepage, services, about, contact pages",
-      "project": "B7",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B7-2": {
-      "id": "B7-2",
-      "title": "Write website copy and content — Brand messaging, service descriptions, SEO content",
-      "project": "B7",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-1": {
-      "id": "B8-1",
-      "title": "Design website layout and structure — Homepage, portfolio, services, contact pages",
-      "project": "B8",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-2": {
-      "id": "B8-2",
-      "title": "Figure out Higgsfield AI for marketing studio",
-      "project": "B8",
-      "category": "B",
-      "agent": "autoura",
-      "status": "done",
-      "priority": "done",
-      "deadline": "2026-04-24",
-      "createdAt": "2026-03-25T00:00:00+08:00",
-      "completedAt": "2026-05-11T23:00:44.880903+08:00"
-    },
-    "B8-3": {
-      "id": "B8-3",
-      "title": "Research Higgsfield AI pathway — AI UGC and Product Advertisements",
-      "project": "B8",
-      "category": "B",
-      "agent": "cerebronn",
-      "status": "done",
-      "priority": "done",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "completedAt": "2026-06-17T17:37:42.491870+08:00"
-    },
-    "B8-6": {
-      "id": "B8-6",
-      "title": "Andre's video (changes done)",
-      "project": "B8",
-      "category": "B",
-      "agent": "autoura",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-23",
-      "completedAt": "2026-03-23",
-      "createdAt": "2026-03-09T00:00:00"
-    },
-    "B9-1": {
-      "id": "B9-1",
-      "title": "Set up Shopify store — Theme selection, product catalog, payment gateways",
-      "project": "B9",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B10-1": {
-      "id": "B10-1",
-      "title": "Corporate data tracking setup — Back burner, revisit end of year",
-      "project": "B10",
-      "category": "B",
-      "agent": "forger",
-      "status": "paused",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "B11-1": {
-      "id": "B11-1",
-      "title": "Design website layout — Homepage, product catalog, about, contact pages",
-      "project": "B11",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C1-1": {
-      "id": "C1-1",
-      "title": "Study for RES exam — Moved to Notebook LLM",
-      "project": "C1",
-      "category": "C",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-04-28",
-      "completedAt": "2026-04-28",
-      "createdAt": "2026-04-14T00:00:00"
-    },
-    "C1-2": {
-      "id": "C1-2",
-      "title": "Register for RES exam — October or December 2026 session",
-      "project": "C1",
-      "category": "C",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "medium",
-      "deadline": "2026-10-01",
-      "createdAt": "2026-04-15T00:00:00+08:00",
-      "sourceStatus": "pending"
-    },
-    "C2-1": {
-      "id": "C2-1",
-      "title": "Update portfolio",
-      "project": "C2",
-      "category": "C",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C2-2": {
-      "id": "C2-2",
-      "title": "Research remote sales companies — Look for high-commission roles (base $60k negotiable to $35-40k)",
-      "project": "C2",
-      "category": "C",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C3-1": {
-      "id": "C3-1",
-      "title": "Research Gather Town — 2D virtual workspace platform. Custom map creation possible with object library + interactive elements",
-      "project": "C3",
-      "category": "C",
-      "agent": "mensamusa",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C3-2": {
-      "id": "C3-2",
-      "title": "Design virtual team building activity concept",
-      "project": "C3",
-      "category": "C",
-      "agent": "pixel",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C3-3": {
-      "id": "C3-3",
-      "title": "Create Gather Town space prototype",
-      "project": "C3",
-      "category": "C",
-      "agent": "pixel",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A1-6": {
-      "id": "A1-6",
-      "title": "Sign Lisa's contract",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-18",
-      "completedAt": "2026-03-18",
-      "createdAt": "2026-03-04T00:00:00"
-    },
-    "A1-5": {
-      "id": "A1-5",
-      "title": "Rebook ACLP reassessment",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-18",
-      "completedAt": "2026-03-18",
-      "createdAt": "2026-03-04T00:00:00"
-    },
-    "A1-2": {
-      "id": "A1-2",
-      "title": "Devspace and Findit payments",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-18",
-      "completedAt": "2026-03-18",
-      "createdAt": "2026-03-04T00:00:00"
-    },
-    "A1-7": {
-      "id": "A1-7",
-      "title": "Book flights for Bali",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-01",
-      "completedAt": "2026-03-01",
-      "createdAt": "2026-02-15T00:00:00"
-    },
-    "A6-14": {
-      "id": "A6-14",
-      "title": "Dashboard homepage design",
-      "project": "A6",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-03-01",
-      "completedAt": "2026-03-01",
-      "createdAt": "2026-02-15T00:00:00"
-    },
-    "A1-1": {
-      "id": "A1-1",
-      "title": "Change Taiwan flights and hotel",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-02-13",
-      "completedAt": "2026-02-13",
-      "createdAt": "2026-01-30T00:00:00"
-    },
-    "A1-4": {
-      "id": "A1-4",
-      "title": "Send ACLP homework",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "done",
-      "priority": "done",
-      "completed": "2026-02-15",
-      "completedAt": "2026-02-15",
-      "createdAt": "2026-02-01T00:00:00"
-    },
-    "A3-7": {
-      "id": "A3-7",
-      "title": "Script 4 — [NEED TOPIC FROM CALEB]",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A3-8": {
-      "id": "A3-8",
-      "title": "Script 5 — [NEED TOPIC FROM CALEB]",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A3-9": {
-      "id": "A3-9",
-      "title": "Script 6 — [NEED TOPIC FROM CALEB]",
-      "project": "A3",
-      "category": "A",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B1-3": {
-      "id": "B1-3",
-      "title": "Text Charmaine about refund",
-      "project": "B1",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "pending"
-    },
-    "B1-4": {
-      "id": "B1-4",
-      "title": "Text Ian from WGC/EPOS about refund",
-      "project": "B1",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "pending"
-    },
-    "A6-16": {
-      "id": "A6-16",
-      "title": "Fix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions",
-      "project": "A6",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "active",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A7-5": {
-      "id": "A7-5",
-      "title": "Plan bridesmaid and groomsmen party",
-      "project": "A7",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A7-6": {
-      "id": "A7-6",
-      "title": "Prepare gifts for bridesmaids and groomsmen",
-      "project": "A7",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A7-7": {
-      "id": "A7-7",
-      "title": "Create WhatsApp group for wedding party",
-      "project": "A7",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "A7-8": {
-      "id": "A7-8",
-      "title": "Distribute roles and responsibilities to wedding party",
-      "project": "A7",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B3-3": {
-      "id": "B3-3",
-      "title": "Add Team Building section to website — Create subdomain or page for team building activities (escape rooms, laser tag, etc.) alongside large-scale events",
-      "project": "B3",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B7-3": {
-      "id": "B7-3",
-      "title": "B7 Envision: Set up domain and hosting",
-      "project": "B7",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B7-4": {
-      "id": "B7-4",
-      "title": "B7 Envision: Implement responsive design",
-      "project": "B7",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B7-5": {
-      "id": "B7-5",
-      "title": "Add contact forms and CTAs — Lead capture, booking integration",
-      "project": "B7",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B7-6": {
-      "id": "B7-6",
-      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
-      "project": "B7",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B7-7": {
-      "id": "B7-7",
-      "title": "Finish framework for encompass website",
-      "project": "B7",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-4": {
-      "id": "B8-4",
-      "title": "Write website copy and content — AI marketing services, case studies, pricing",
-      "project": "B8",
-      "category": "B",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-5": {
-      "id": "B8-5",
-      "title": "B8 AI Marketing: Set up domain and hosting",
-      "project": "B8",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-7": {
-      "id": "B8-7",
-      "title": "B8 AI Marketing: Implement responsive design",
-      "project": "B8",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-8": {
-      "id": "B8-8",
-      "title": "Add portfolio showcase — Higgsfield AI video examples, client work",
-      "project": "B8",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-9": {
-      "id": "B8-9",
-      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
-      "project": "B8",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B9-2": {
-      "id": "B9-2",
-      "title": "Design store layout and branding — Homepage, product pages, checkout flow",
-      "project": "B9",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B9-3": {
-      "id": "B9-3",
-      "title": "Write product descriptions and copy — SEO-optimized, persuasive sales copy",
-      "project": "B9",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B9-4": {
-      "id": "B9-4",
-      "title": "Configure shipping and fulfillment — Rates, zones, automated notifications",
-      "project": "B9",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B9-5": {
-      "id": "B9-5",
-      "title": "Set up payment processing — Stripe, PayPal, local payment methods",
-      "project": "B9",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B9-6": {
-      "id": "B9-6",
-      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
-      "project": "B9",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B9-7": {
-      "id": "B9-7",
-      "title": "Add analytics and tracking — Google Analytics, Facebook Pixel, conversion tracking",
-      "project": "B9",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B11-2": {
-      "id": "B11-2",
-      "title": "Set up e-commerce platform — Payment gateways, shipping, inventory management",
-      "project": "B11",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B11-3": {
-      "id": "B11-3",
-      "title": "Write product descriptions — Research peptides, benefits, usage guidelines",
-      "project": "B11",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B11-4": {
-      "id": "B11-4",
-      "title": "Ensure legal compliance — Disclaimers, research-use-only labels, age verification",
-      "project": "B11",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B11-5": {
-      "id": "B11-5",
-      "title": "B11 EPEPTOME: Set up domain and hosting",
-      "project": "B11",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B11-6": {
-      "id": "B11-6",
-      "title": "B11 EPEPTOME: Implement responsive design",
-      "project": "B11",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B11-7": {
-      "id": "B11-7",
-      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
-      "project": "B11",
-      "category": "B",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C3-6": {
-      "id": "C3-6",
-      "title": "EXODEUS - Riftborn — Create new game: MegaMan + SKUL inspired action-platformer with roguelike elements",
-      "project": "C3",
-      "category": "C",
-      "agent": "mensamusa",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-10": {
-      "id": "B8-10",
-      "title": "Create Higgsfield AI video for TRME — Product advertisement using AI UGC",
-      "project": "B8",
-      "category": "B",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-11": {
-      "id": "B8-11",
-      "title": "Create Higgsfield AI video for Fire Terminator — Product advertisement using AI UGC",
-      "project": "B8",
-      "category": "B",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-12": {
-      "id": "B8-12",
-      "title": "Create Higgsfield AI video for DOTERRA — Product advertisement using AI UGC",
-      "project": "B8",
-      "category": "B",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-13": {
-      "id": "B8-13",
-      "title": "Create Higgsfield AI video for HEI Legacy — Product advertisement using AI UGC",
-      "project": "B8",
-      "category": "B",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "B8-14": {
-      "id": "B8-14",
-      "title": "Create Higgsfield AI video for Day Zero with Andre — Product advertisement using AI UGC",
-      "project": "B8",
-      "category": "B",
-      "agent": "autoura",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C4-1": {
-      "id": "C4-1",
-      "title": "Build website for HEI Legacy (with Marylyn) — Landing page, about, services, contact",
-      "project": "C4",
-      "category": "C",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C4-2": {
-      "id": "C4-2",
-      "title": "Build website for Day Zero with Andre — Landing page, program details, booking, testimonials",
-      "project": "C4",
-      "category": "C",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C4-3": {
-      "id": "C4-3",
-      "title": "Build website for Envision Electrical — Data center engineers, electrical infrastructure services, contact/quote forms",
-      "project": "C4",
-      "category": "C",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C4-4": {
-      "id": "C4-4",
-      "title": "Create portfolio showcase for Website Services — Case studies, client testimonials, service packages",
-      "project": "C4",
-      "category": "C",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    },
-    "C4-5": {
-      "id": "C4-5",
-      "title": "Set up lead capture system — Contact forms, CRM integration, automated follow-ups",
-      "project": "C4",
-      "category": "C",
-      "agent": "forger",
-      "status": "open",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00",
-      "sourceStatus": "backlog"
-    }
-  },
   "projectDetails": {
     "A1": {
       "name": "Personal",
@@ -1769,336 +1892,6 @@
       "description": "Client website projects and portfolio"
     }
   },
-  "categories": {
-    "A": {
-      "name": "Ambition",
-      "description": "Personal Projects",
-      "projects": [
-        "A1",
-        "A2",
-        "A3",
-        "A4",
-        "A5",
-        "A6",
-        "A7"
-      ]
-    },
-    "B": {
-      "name": "Business",
-      "description": "Active Ventures",
-      "projects": [
-        "B1",
-        "B2",
-        "B3",
-        "B4",
-        "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
-        "B10",
-        "B11"
-      ]
-    },
-    "C": {
-      "name": "Callings",
-      "description": "Side Projects",
-      "projects": [
-        "C1",
-        "C2",
-        "C3",
-        "C4"
-      ]
-    }
-  },
-  "agents": {
-    "chad-yi": {
-      "name": "Chad Yi",
-      "role": "The Face - Primary interface",
-      "platform": "Hermes Gateway / Telegram",
-      "status": "LIVE",
-      "currentTask": "Live session on Telegram",
-      "lastActive": "2026-04-16T20:07:36+08:00",
-      "capabilities": [],
-      "buildState": "LIVE"
-    },
-    "cerebronn": {
-      "name": "Cerebronn",
-      "role": "The Brain - Persistent memory & decisions",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "Architecture & deep reasoning (The Brain)",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    },
-    "helios": {
-      "name": "Helios",
-      "role": "The Spine - COO, auditor, reporter",
-      "platform": "Systemd service",
-      "status": "INACTIVE",
-      "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-23T04:13:24.278580+08:00",
-      "capabilities": [],
-      "buildState": "INACTIVE"
-    },
-    "quanta": {
-      "name": "Quanta",
-      "role": "Trading - OANDA execution/status",
-      "platform": "Telegram monitor / Quanta v3",
-      "status": "INACTIVE",
-      "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-23T04:08:26.946152+08:00",
-      "capabilities": [],
-      "runtimeStatus": "scheduled_worker",
-      "tradingMode": "off",
-      "statusReporting": "active",
-      "openTrades": 0,
-      "pendingOrders": 0,
-      "accountMode": "practice_or_unknown",
-      "warnings": [],
-      "buildState": "INACTIVE"
-    },
-    "forger": {
-      "name": "Forger",
-      "role": "Web Architect - websites, SEO, full-stack",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    },
-    "escrita": {
-      "name": "Escrita",
-      "role": "Story Agent - RE:UNITE novel writing",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    },
-    "autoura": {
-      "name": "Autoura",
-      "role": "Supervised growth agent - SME scouting, approval-gated outreach, client intake, story-first blueprints, Higgsfield prompt packs, clip review",
-      "platform": "Hermes on-demand / Higgsfield after approval",
-      "status": "INACTIVE",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "INACTIVE"
-    },
-    "mensamusa": {
-      "name": "Mensamusa",
-      "role": "Research - knowledge and options intelligence",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    },
-    "clair": {
-      "name": "Clair",
-      "role": "Streaming Scout",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    },
-    "eplusplus": {
-      "name": "E++",
-      "role": "Core Dev",
-      "platform": "Hermes planned agent",
-      "status": "planned",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": []
-    },
-    "kotler": {
-      "name": "Kotler",
-      "role": "Marketing Ops - Google Ads Manager",
-      "platform": "External project",
-      "status": "INACTIVE",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "INACTIVE"
-    },
-    "ledger": {
-      "name": "Ledger",
-      "role": "Finance / CRM",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    },
-    "atlas": {
-      "name": "Atlas",
-      "role": "Researcher",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    },
-    "pulsar": {
-      "name": "Pulsar",
-      "role": "Data Sentinel",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    },
-    "abed": {
-      "name": "Abed",
-      "role": "Community Manager",
-      "platform": "Hermes planned agent",
-      "status": "NOT BUILT",
-      "currentTask": "",
-      "lastActive": "",
-      "capabilities": [],
-      "buildState": "NOT BUILT"
-    }
-  },
-  "completions": {
-    "today": [],
-    "this_week": [],
-    "all_time": 46
-  },
-  "weeklyProgress": {
-    "completed": 0,
-    "started": 0
-  },
-  "workflow": {
-    "open": [
-      "A1-14",
-      "A3-1",
-      "A3-2",
-      "A3-3",
-      "A3-4",
-      "A3-5",
-      "A3-6",
-      "A4-1",
-      "A4-2",
-      "A4-3",
-      "A4-4",
-      "A7-3",
-      "B1-1",
-      "B2-1",
-      "B3-2",
-      "B4-1",
-      "B5-1",
-      "B7-1",
-      "B7-2",
-      "B8-1",
-      "B9-1",
-      "B11-1",
-      "C1-2",
-      "C2-1",
-      "C2-2",
-      "C3-1",
-      "C3-2",
-      "C3-3",
-      "A3-7",
-      "A3-8",
-      "A3-9",
-      "B1-3",
-      "B1-4",
-      "A7-5",
-      "A7-6",
-      "A7-7",
-      "A7-8",
-      "B3-3",
-      "B7-3",
-      "B7-4",
-      "B7-5",
-      "B7-6",
-      "B7-7",
-      "B8-4",
-      "B8-5",
-      "B8-7",
-      "B8-8",
-      "B8-9",
-      "B9-2",
-      "B9-3",
-      "B9-4",
-      "B9-5",
-      "B9-6",
-      "B9-7",
-      "B11-2",
-      "B11-3",
-      "B11-4",
-      "B11-5",
-      "B11-6",
-      "B11-7",
-      "C3-6",
-      "B8-10",
-      "B8-11",
-      "B8-12",
-      "B8-13",
-      "B8-14",
-      "C4-1",
-      "C4-2",
-      "C4-3",
-      "C4-4",
-      "C4-5"
-    ],
-    "active": [
-      "B6-10",
-      "A6-16"
-    ],
-    "input_requested": [],
-    "needs_review": [],
-    "blocked": [
-      "A2-1"
-    ],
-    "paused": [
-      "A5-4",
-      "A5-5",
-      "B10-1"
-    ],
-    "done": [
-      "A1-11",
-      "A1-12",
-      "A1-13",
-      "A5-1",
-      "A5-3",
-      "A7-1",
-      "A7-2",
-      "A7-4",
-      "B3-1",
-      "B6-1",
-      "B6-2",
-      "B6-3",
-      "B6-4",
-      "B6-5",
-      "B6-6",
-      "B6-7",
-      "B6-8",
-      "B6-9",
-      "B8-2",
-      "B8-3",
-      "B8-6",
-      "C1-1",
-      "A1-6",
-      "A1-5",
-      "A1-2",
-      "A1-7",
-      "A6-14",
-      "A1-1",
-      "A1-4"
-    ],
-    "urgent": []
-  },
   "needsAttention": [
     {
       "id": "A2-1",
@@ -2135,7 +1928,7 @@
     }
   ],
   "dailyBriefing": {
-    "date": "2026-06-23",
+    "date": "2026-06-26",
     "summary": "📋 77 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 1,
@@ -2153,11 +1946,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-23T04:13:24.278580+08:00"
+        "lastActive": "2026-06-26T01:31:00.143697+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-23T04:08:26.946152+08:00"
+        "lastActive": "2026-06-26T01:26:50.736137+08:00"
       },
       "forger": {
         "status": "planned",
@@ -2207,12 +2000,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-23T04:13:24.275688+08:00",
+    "lastRun": "2026-06-26T01:31:00.140378+08:00",
     "dataIntegrity": "ok",
-    "taskCount": 112,
+    "taskCount": 106,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-23T04:13:24.286051+08:00",
+      "runAt": "2026-06-26T01:31:00.152720+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -2279,17 +2072,148 @@
       ]
     }
   },
+  "fleet": [
+    {
+      "id": "chad-yi",
+      "name": "CHAD_YI",
+      "role": "The Face",
+      "status": "LIVE",
+      "emoji": "🎭",
+      "activeTask": "A6-3 Dashboard audit",
+      "model": "kimi-k2.5"
+    },
+    {
+      "id": "helios",
+      "name": "Helios",
+      "role": "The Spine",
+      "status": "LIVE",
+      "emoji": "🌞",
+      "activeTask": "15-min audits",
+      "model": "local"
+    },
+    {
+      "id": "cerebronn",
+      "name": "Cerebronn",
+      "role": "The Brain",
+      "status": "NOT_BUILT",
+      "emoji": "🧠",
+      "activeTask": "Awaiting activation",
+      "model": "claude-sonnet-4"
+    },
+    {
+      "id": "quanta",
+      "name": "Quanta",
+      "role": "Trading",
+      "status": "INACTIVE",
+      "emoji": "📈",
+      "activeTask": "Trading daemon verify",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "escrita",
+      "name": "Escrita",
+      "role": "Writing",
+      "status": "NOT_BUILT",
+      "emoji": "✍️",
+      "activeTask": "Awaiting activation",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "autoura",
+      "name": "Autoura",
+      "role": "Content",
+      "status": "NOT_BUILT",
+      "emoji": "🎬",
+      "activeTask": "Awaiting activation",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "forger",
+      "name": "Forger",
+      "role": "Builder",
+      "status": "NOT_BUILT",
+      "emoji": "🔨",
+      "activeTask": "Awaiting activation",
+      "model": "codex"
+    }
+  ],
+  "futureAgents": [
+    {
+      "id": "mensamusa",
+      "name": "Mensamusa",
+      "role": "Options Intelligence",
+      "status": "PLANNED",
+      "emoji": "🎯",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "clair",
+      "name": "Clair",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "🔮",
+      "model": "TBD"
+    },
+    {
+      "id": "eplusplus",
+      "name": "EPLUSPLUS",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "➕",
+      "model": "TBD"
+    },
+    {
+      "id": "kotler",
+      "name": "Kotler",
+      "role": "Marketing",
+      "status": "EXTERNAL",
+      "emoji": "📢",
+      "model": "external"
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger",
+      "role": "Finance",
+      "status": "PLANNED",
+      "emoji": "📊",
+      "model": "TBD"
+    },
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "role": "Research",
+      "status": "PLANNED",
+      "emoji": "🗺️",
+      "model": "TBD"
+    },
+    {
+      "id": "pulsar",
+      "name": "Pulsar",
+      "role": "Signals",
+      "status": "PLANNED",
+      "emoji": "📡",
+      "model": "TBD"
+    },
+    {
+      "id": "abed",
+      "name": "Abed",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "🛏️",
+      "model": "TBD"
+    }
+  ],
   "revenue": {
     "agents": {
       "quanta": {
         "source": "oanda",
         "current_balance": 100000.0,
         "baseline_balance": 3821.73,
-        "weekly_profit": 0,
-        "weekly_loss": 0,
-        "total_pnl": 96178.27,
+        "weekly_profit": 0.0,
+        "weekly_loss": 0.0,
         "win_count": 0,
         "loss_count": 1,
+        "today_pnl": 0.0,
         "status": "unverified_account_reset",
         "pnl_status": "blocked",
         "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
@@ -2299,82 +2223,80 @@
       "best": {
         "agent": "quanta",
         "amount": 0.0,
-        "period": "2026-05-17"
+        "period": "2026-05-18"
       },
       "worst": {
         "agent": "quanta",
         "amount": 0.0,
-        "period": "2026-05-17"
+        "period": "2026-05-18"
       }
     },
     "daily_snapshots": [
       {
-        "date": "2026-06-17",
-        "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
-        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-        "verified": false
-      },
-      {
-        "date": "2026-06-18",
-        "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
-        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-        "verified": false
-      },
-      {
-        "date": "2026-06-19",
-        "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
-        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
-        "verified": false
-      },
-      {
         "date": "2026-06-20",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-21",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-22",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       },
       {
         "date": "2026-06-23",
         "agent": "quanta",
-        "balance": 100000,
-        "pnl": 0,
+        "balance": 100000.0,
+        "pnl": 0.0,
+        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+        "verified": false
+      },
+      {
+        "date": "2026-06-24",
+        "agent": "quanta",
+        "balance": 100000.0,
+        "pnl": 0.0,
+        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+        "verified": false
+      },
+      {
+        "date": "2026-06-25",
+        "agent": "quanta",
+        "balance": 100000.0,
+        "pnl": 0.0,
+        "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
+        "verified": false
+      },
+      {
+        "date": "2026-06-26",
+        "agent": "quanta",
+        "balance": 100000.0,
+        "pnl": 0.0,
         "note": "Balance 100000.00 | P/L +0.00 today | Open 0 | UNVERIFIED account reset/balance jump; PNL blocked",
         "verified": false
       }
     ],
     "currency": "USD",
-    "tracking_started": "2026-04-17",
-    "version": "1.0.0",
-    "starting_balance": 3821.73
+    "tracking_started": "2026-04-17"
   },
-  "taskBoard": [
-    "queueCount",
-    "lastEvent",
-    "status"
-  ],
+  "taskBoard": {
+    "queueCount": 0,
+    "lastEvent": null,
+    "status": "ready"
+  },
   "calendarTasks": {
     "2026-04-16": [
       "A1-11"
@@ -2445,22 +2367,6 @@
       "A1-4"
     ]
   },
-  "recentWins": [],
-  "stats": {
-    "completedToday": 0,
-    "completedThisWeek": 0,
-    "critical": 0,
-    "urgent": 0,
-    "totalTasks": 106,
-    "tasksLeft": 77,
-    "completedTasks": 29,
-    "open": 71,
-    "active": 2,
-    "blocked": 1,
-    "needsReview": 0,
-    "inputRequested": 0,
-    "paused": 3
-  },
   "visualWorkflowState": {},
   "canonicalState": {
     "path": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
@@ -2472,8 +2378,8 @@
     "publicSnapshotSanitized": true,
     "workflowBucketsNormalized": true,
     "visualWorkflowStatePublished": true,
-    "sourceSnapshotLastUpdated": "2026-06-25T16:50:00.000000+08:00",
-    "publishedAt": "2026-06-25T23:18:38.070199+08:00",
+    "sourceSnapshotLastUpdated": "2026-06-26T01:31:00.140378+08:00",
+    "publishedAt": "2026-06-26T01:31:32.368434+08:00",
     "counts": {
       "visibleTasks": 106,
       "doneTasks": 29,
@@ -2485,9 +2391,9 @@
     "operation": "publish_dashboard_snapshot",
     "actor": "hermes-canonical-sync",
     "source": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
-    "createdAt": "2026-06-25T23:18:38.070199+08:00",
-    "canonicalLastUpdated": "2026-06-25T21:48:19.102971+08:00",
-    "sourceSnapshotLastUpdated": "2026-06-25T16:50:00.000000+08:00",
+    "createdAt": "2026-06-26T01:31:32.368434+08:00",
+    "canonicalLastUpdated": "2026-06-26T01:31:28.976647+08:00",
+    "sourceSnapshotLastUpdated": "2026-06-26T01:31:00.140378+08:00",
     "counts": {
       "visibleTasks": 106,
       "doneTasks": 29,
