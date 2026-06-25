@@ -1,21 +1,19 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-26T02:02:05.850244+08:00",
-  "updatedBy": "hermes-canonical-sync",
+  "lastUpdated": "2026-06-26T02:16:04.517115+08:00",
+  "updatedBy": "helios-v3",
   "stats": {
+    "totalTasks": 106,
+    "tasksLeft": 77,
+    "completedTasks": 29,
     "completedToday": 0,
     "completedThisWeek": 0,
     "critical": 0,
     "urgent": 0,
-    "totalTasks": 106,
-    "tasksLeft": 77,
-    "completedTasks": 29,
-    "open": 71,
     "active": 2,
     "blocked": 1,
-    "needsReview": 0,
-    "inputRequested": 0,
-    "paused": 3
+    "review": 0,
+    "backlog": 71
   },
   "completions": {
     "today": [],
@@ -27,99 +25,30 @@
     "started": 0
   },
   "workflow": {
-    "open": [
-      "A1-14",
-      "A3-1",
-      "A3-2",
-      "A3-3",
-      "A3-4",
-      "A3-5",
-      "A3-6",
-      "A4-1",
-      "A4-2",
-      "A4-3",
-      "A4-4",
+    "pending": [
       "A7-3",
-      "B1-1",
-      "B2-1",
-      "B3-2",
-      "B4-1",
-      "B5-1",
-      "B7-1",
-      "B7-2",
-      "B8-1",
-      "B9-1",
-      "B11-1",
-      "C1-2",
-      "C2-1",
-      "C2-2",
-      "C3-1",
-      "C3-2",
-      "C3-3",
-      "A3-7",
-      "A3-8",
-      "A3-9",
       "B1-3",
       "B1-4",
-      "A7-5",
-      "A7-6",
-      "A7-7",
-      "A7-8",
-      "B3-3",
-      "B7-3",
-      "B7-4",
-      "B7-5",
-      "B7-6",
-      "B7-7",
-      "B8-4",
-      "B8-5",
-      "B8-7",
-      "B8-8",
-      "B8-9",
-      "B9-2",
-      "B9-3",
-      "B9-4",
-      "B9-5",
-      "B9-6",
-      "B9-7",
-      "B11-2",
-      "B11-3",
-      "B11-4",
-      "B11-5",
-      "B11-6",
-      "B11-7",
-      "C3-6",
-      "B8-10",
-      "B8-11",
-      "B8-12",
-      "B8-13",
-      "B8-14",
-      "C4-1",
-      "C4-2",
-      "C4-3",
-      "C4-4",
-      "C4-5"
+      "C1-2"
     ],
     "active": [
-      "B6-10",
-      "A6-16"
+      "A6-16",
+      "B6-10"
     ],
-    "input_requested": [],
-    "needs_review": [],
-    "blocked": [
-      "A2-1"
-    ],
-    "paused": [
-      "A5-4",
-      "A5-5",
-      "B10-1"
-    ],
+    "review": [],
     "done": [
+      "A1-1",
       "A1-11",
       "A1-12",
       "A1-13",
+      "A1-2",
+      "A1-4",
+      "A1-5",
+      "A1-6",
+      "A1-7",
       "A5-1",
       "A5-3",
+      "A6-14",
       "A7-1",
       "A7-2",
       "A7-4",
@@ -136,16 +65,169 @@
       "B8-2",
       "B8-3",
       "B8-6",
-      "C1-1",
-      "A1-6",
-      "A1-5",
-      "A1-2",
-      "A1-7",
-      "A6-14",
-      "A1-1",
-      "A1-4"
+      "C1-1"
     ],
-    "urgent": []
+    "urgent": [],
+    "blocked": [
+      "A2-1"
+    ],
+    "paused": [
+      "A5-4",
+      "A5-5",
+      "B10-1"
+    ],
+    "backlog": [
+      "A1-14",
+      "A3-1",
+      "A3-2",
+      "A3-3",
+      "A3-4",
+      "A3-5",
+      "A3-6",
+      "A3-7",
+      "A3-8",
+      "A3-9",
+      "A4-1",
+      "A4-2",
+      "A4-3",
+      "A4-4",
+      "A7-5",
+      "A7-6",
+      "A7-7",
+      "A7-8",
+      "B1-1",
+      "B11-1",
+      "B11-2",
+      "B11-3",
+      "B11-4",
+      "B11-5",
+      "B11-6",
+      "B11-7",
+      "B2-1",
+      "B3-2",
+      "B3-3",
+      "B4-1",
+      "B5-1",
+      "B7-1",
+      "B7-2",
+      "B7-3",
+      "B7-4",
+      "B7-5",
+      "B7-6",
+      "B7-7",
+      "B8-1",
+      "B8-10",
+      "B8-11",
+      "B8-12",
+      "B8-13",
+      "B8-14",
+      "B8-4",
+      "B8-5",
+      "B8-7",
+      "B8-8",
+      "B8-9",
+      "B9-1",
+      "B9-2",
+      "B9-3",
+      "B9-4",
+      "B9-5",
+      "B9-6",
+      "B9-7",
+      "C2-1",
+      "C2-2",
+      "C3-1",
+      "C3-2",
+      "C3-3",
+      "C3-6",
+      "C4-1",
+      "C4-2",
+      "C4-3",
+      "C4-4",
+      "C4-5"
+    ],
+    "waiting on you": [
+      "A2-1"
+    ],
+    "check this": [],
+    "agent on it": [
+      "A6-16",
+      "B6-10"
+    ],
+    "has deadline": [
+      "A7-3",
+      "B1-3",
+      "B1-4",
+      "C1-2"
+    ],
+    "todo": [
+      "A1-14",
+      "A3-1",
+      "A3-2",
+      "A3-3",
+      "A3-4",
+      "A3-5",
+      "A3-6",
+      "A3-7",
+      "A3-8",
+      "A3-9",
+      "A4-1",
+      "A4-2",
+      "A4-3",
+      "A4-4",
+      "A7-5",
+      "A7-6",
+      "A7-7",
+      "A7-8",
+      "B1-1",
+      "B11-1",
+      "B11-2",
+      "B11-3",
+      "B11-4",
+      "B11-5",
+      "B11-6",
+      "B11-7",
+      "B2-1",
+      "B3-2",
+      "B3-3",
+      "B4-1",
+      "B5-1",
+      "B7-1",
+      "B7-2",
+      "B7-3",
+      "B7-4",
+      "B7-5",
+      "B7-6",
+      "B7-7",
+      "B8-1",
+      "B8-10",
+      "B8-11",
+      "B8-12",
+      "B8-13",
+      "B8-14",
+      "B8-4",
+      "B8-5",
+      "B8-7",
+      "B8-8",
+      "B8-9",
+      "B9-1",
+      "B9-2",
+      "B9-3",
+      "B9-4",
+      "B9-5",
+      "B9-6",
+      "B9-7",
+      "C2-1",
+      "C2-2",
+      "C3-1",
+      "C3-2",
+      "C3-3",
+      "C3-6",
+      "C4-1",
+      "C4-2",
+      "C4-3",
+      "C4-4",
+      "C4-5"
+    ]
   },
   "tasks": {
     "A1-11": {
@@ -190,7 +272,7 @@
       "project": "A1",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -211,7 +293,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -221,7 +303,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -231,7 +313,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -241,7 +323,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -251,7 +333,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -261,7 +343,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -271,7 +353,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -281,7 +363,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -291,7 +373,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -301,7 +383,7 @@
       "project": "A4",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -389,7 +471,7 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "pending",
       "priority": "medium",
       "createdAt": "2026-03-31T00:00:00+08:00"
     },
@@ -411,7 +493,7 @@
       "project": "B1",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -421,7 +503,7 @@
       "project": "B2",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -443,7 +525,7 @@
       "project": "B3",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -453,7 +535,7 @@
       "project": "B4",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -463,7 +545,7 @@
       "project": "B5",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -578,7 +660,7 @@
       "project": "B7",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -588,7 +670,7 @@
       "project": "B7",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -598,7 +680,7 @@
       "project": "B8",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -643,7 +725,7 @@
       "project": "B9",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -663,7 +745,7 @@
       "project": "B11",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -685,7 +767,7 @@
       "project": "C1",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "pending",
       "priority": "medium",
       "deadline": "2026-10-01",
       "createdAt": "2026-04-15T00:00:00+08:00"
@@ -696,7 +778,7 @@
       "project": "C2",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -706,7 +788,7 @@
       "project": "C2",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -716,7 +798,7 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -726,7 +808,7 @@
       "project": "C3",
       "category": "C",
       "agent": "Pixel",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -736,7 +818,7 @@
       "project": "C3",
       "category": "C",
       "agent": "Pixel",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -830,7 +912,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -840,7 +922,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -850,7 +932,7 @@
       "project": "A3",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -860,7 +942,7 @@
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "pending",
       "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -870,7 +952,7 @@
       "project": "B1",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "pending",
       "priority": "medium",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -890,7 +972,7 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -900,7 +982,7 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -910,7 +992,7 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -920,7 +1002,7 @@
       "project": "A7",
       "category": "A",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -930,7 +1012,7 @@
       "project": "B3",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -940,7 +1022,7 @@
       "project": "B7",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -950,7 +1032,7 @@
       "project": "B7",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -960,7 +1042,7 @@
       "project": "B7",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -970,7 +1052,7 @@
       "project": "B7",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -980,7 +1062,7 @@
       "project": "B7",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -990,7 +1072,7 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1000,7 +1082,7 @@
       "project": "B8",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1010,7 +1092,7 @@
       "project": "B8",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1020,7 +1102,7 @@
       "project": "B8",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1030,7 +1112,7 @@
       "project": "B8",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1040,7 +1122,7 @@
       "project": "B9",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1050,7 +1132,7 @@
       "project": "B9",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1060,7 +1142,7 @@
       "project": "B9",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1070,7 +1152,7 @@
       "project": "B9",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1080,7 +1162,7 @@
       "project": "B9",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1090,7 +1172,7 @@
       "project": "B9",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1100,7 +1182,7 @@
       "project": "B11",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1110,7 +1192,7 @@
       "project": "B11",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1120,7 +1202,7 @@
       "project": "B11",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1130,7 +1212,7 @@
       "project": "B11",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1140,7 +1222,7 @@
       "project": "B11",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1150,7 +1232,7 @@
       "project": "B11",
       "category": "B",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1160,7 +1242,7 @@
       "project": "C3",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1170,7 +1252,7 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1180,7 +1262,7 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1190,7 +1272,7 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1200,7 +1282,7 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1210,7 +1292,7 @@
       "project": "B8",
       "category": "B",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1220,7 +1302,7 @@
       "project": "C4",
       "category": "C",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1230,7 +1312,7 @@
       "project": "C4",
       "category": "C",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1240,7 +1322,7 @@
       "project": "C4",
       "category": "C",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1250,7 +1332,7 @@
       "project": "C4",
       "category": "C",
       "agent": "CHAD_YI",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     },
@@ -1260,7 +1342,7 @@
       "project": "C4",
       "category": "C",
       "agent": "Forger",
-      "status": "open",
+      "status": "backlog",
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00"
     }
@@ -1291,7 +1373,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-26T01:31:00.143697+08:00",
+      "lastActive": "2026-06-26T02:16:04.520251+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1300,7 +1382,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "active",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-26T01:26:50.736137+08:00",
+      "lastActive": "2026-06-26T02:14:50.750203+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -1946,11 +2028,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-26T01:31:00.143697+08:00"
+        "lastActive": "2026-06-26T02:16:04.520251+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-26T01:26:50.736137+08:00"
+        "lastActive": "2026-06-26T02:14:50.750203+08:00"
       },
       "forger": {
         "status": "planned",
@@ -2000,12 +2082,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-26T01:31:00.140378+08:00",
+    "lastRun": "2026-06-26T02:16:04.517115+08:00",
     "dataIntegrity": "ok",
     "taskCount": 106,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-26T01:31:00.152720+08:00",
+      "runAt": "2026-06-26T02:16:04.529281+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -2216,7 +2298,8 @@
         "today_pnl": 0.0,
         "status": "unverified_account_reset",
         "pnl_status": "blocked",
-        "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
+        "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified.",
+        "account_id": "101-003-23656635-001"
       }
     },
     "weekly_rankings": {
