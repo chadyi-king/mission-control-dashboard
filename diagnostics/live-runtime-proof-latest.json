@@ -1,11 +1,11 @@
 {
   "kind": "mission-control-live-runtime-proof",
   "verifierBuild": "20260624-direct-root-aware-1",
-  "generatedAt": "2026-06-25T20:17:50.537Z",
-  "attempt": 1,
+  "generatedAt": "2026-06-25T20:41:51.107Z",
+  "attempt": 32,
   "url": "https://chadyi-king.github.io/mission-control-dashboard/",
-  "expectedSourceSha": "46e36116fc008714bbd366281a54165a9ac31e1e",
-  "pass": true,
+  "expectedSourceSha": "dd641acc35d6459ba445671d7e8f7ae7c396c565",
+  "pass": false,
   "checks": {
     "rootHttpOk": true,
     "noOldPatUi": true,
@@ -19,7 +19,7 @@
     "c4Visible": true,
     "directRootOrStableApp": true,
     "freshDataSourceLoaded": true,
-    "branchDeployment": true,
+    "branchDeployment": false,
     "proofSourceSha": true
   },
   "observed": {
@@ -37,8 +37,8 @@
       "dataSource": {
         "buildId": "20260624-github-api-data-2",
         "mode": "github-api-main",
-        "sha": "f8f9c107f6da008813e6cd3e833bd469dcaf3ac7",
-        "updatedAt": "2026-06-25T20:17:51.207Z",
+        "sha": "0be5764a53cd5ee2eb55c744351cf5f810f23a46",
+        "updatedAt": "2026-06-25T20:41:51.300Z",
         "lastError": ""
       },
       "fleetCards": 135,
@@ -52,13 +52,13 @@
         "https://chadyi-king.github.io/mission-control-dashboard/dashboard-hermes-bridge.js?build=20260624-root-direct-stable-1",
         "https://chadyi-king.github.io/mission-control-dashboard/dashboard-app-20260623-cachebreak-1.js?build=20260624-root-direct-stable-1",
         "https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap",
-        "https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=1782418670822",
+        "https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=1782420111224",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/chad-yi-avatar.jpg?build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/helios-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/cerebronn-avatar.jpg?v=1&build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/quanta-avatar.jpg?build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/forger-avatar.jpg?v=1&build=20260624-cachebust-1",
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/helios-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/escrita-avatar.jpg?v=1&build=20260624-cachebust-1",
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/forger-avatar.jpg?v=1&build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/autour-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/kotler-avatar.jpg?build=20260624-cachebust-1"
       ]
@@ -88,13 +88,13 @@
     "proofStatus": 200,
     "deploymentProof": {
       "kind": "mission-control-dashboard-deployment-proof",
-      "publishedBy": "sync-dashboard-branches.yml",
-      "deploymentMode": "legacy-gh-pages-active-files-only",
+      "publishedBy": "pages.yml",
+      "deploymentMode": "github-actions-pages-artifact-active-files-only",
       "sourceBranch": "main",
-      "sourceSha": "46e36116fc008714bbd366281a54165a9ac31e1e",
-      "runId": "28197841328",
+      "sourceSha": "dd641acc35d6459ba445671d7e8f7ae7c396c565",
+      "runId": "28198677495",
       "runAttempt": "1",
-      "createdAt": "2026-06-25T20:17:06.937Z",
+      "createdAt": "2026-06-25T20:32:34.347Z",
       "currentApp": "app-20260624-stable-v1.html",
       "includedFiles": [
         "app-20260624-stable-v1.html",
@@ -109,7 +109,7 @@
         "sw.js"
       ],
       "dataSnapshot": "data.json",
-      "dataSha256": "bccb729f4ec6dbece97cdaa8ee88ea5265d867466c3cd6c2bba7135c654ac85c",
+      "dataSha256": "0d4f7af05951f5e40a9198f88b9dc1e4308f8c9bd63ea7798d05f460ceccdf64",
       "expected": {
         "projects": 22,
         "visibleTasks": 106,
@@ -118,8 +118,8 @@
       }
     },
     "githubDataStatus": 200,
-    "githubDataSha": "f8f9c107f6da008813e6cd3e833bd469dcaf3ac7",
-    "dataSha256": "bccb729f4ec6dbece97cdaa8ee88ea5265d867466c3cd6c2bba7135c654ac85c",
+    "githubDataSha": "0be5764a53cd5ee2eb55c744351cf5f810f23a46",
+    "dataSha256": "0d4f7af05951f5e40a9198f88b9dc1e4308f8c9bd63ea7798d05f460ceccdf64",
     "stats": {
       "projects": 22,
       "visible": 106,
@@ -127,5 +127,7 @@
       "c4Name": "Website Services"
     }
   },
-  "errors": []
+  "errors": [
+    "failed checks: branchDeployment"
+  ]
 }
