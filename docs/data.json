@@ -1,7 +1,138 @@
 {
-  "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-24T18:15:09.079360+08:00",
+  "version": "2026-06-25-nuclear-reset",
+  "lastUpdated": "2026-06-25T21:48:24.091728+08:00",
   "updatedBy": "hermes-canonical-sync",
+  "fleet": [
+    {
+      "id": "chad-yi",
+      "name": "CHAD_YI",
+      "role": "The Face",
+      "status": "LIVE",
+      "emoji": "🎭",
+      "activeTask": "A6-3 Dashboard audit",
+      "model": "kimi-k2.5"
+    },
+    {
+      "id": "helios",
+      "name": "Helios",
+      "role": "The Spine",
+      "status": "LIVE",
+      "emoji": "🌞",
+      "activeTask": "15-min audits",
+      "model": "local"
+    },
+    {
+      "id": "cerebronn",
+      "name": "Cerebronn",
+      "role": "The Brain",
+      "status": "NOT_BUILT",
+      "emoji": "🧠",
+      "activeTask": "Awaiting activation",
+      "model": "claude-sonnet-4"
+    },
+    {
+      "id": "quanta",
+      "name": "Quanta",
+      "role": "Trading",
+      "status": "INACTIVE",
+      "emoji": "📈",
+      "activeTask": "Trading daemon verify",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "escrita",
+      "name": "Escrita",
+      "role": "Writing",
+      "status": "NOT_BUILT",
+      "emoji": "✍️",
+      "activeTask": "Awaiting activation",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "autoura",
+      "name": "Autoura",
+      "role": "Content",
+      "status": "NOT_BUILT",
+      "emoji": "🎬",
+      "activeTask": "Awaiting activation",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "forger",
+      "name": "Forger",
+      "role": "Builder",
+      "status": "NOT_BUILT",
+      "emoji": "🔨",
+      "activeTask": "Awaiting activation",
+      "model": "codex"
+    }
+  ],
+  "futureAgents": [
+    {
+      "id": "mensamusa",
+      "name": "Mensamusa",
+      "role": "Options Intelligence",
+      "status": "PLANNED",
+      "emoji": "🎯",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "clair",
+      "name": "Clair",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "🔮",
+      "model": "TBD"
+    },
+    {
+      "id": "eplusplus",
+      "name": "EPLUSPLUS",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "➕",
+      "model": "TBD"
+    },
+    {
+      "id": "kotler",
+      "name": "Kotler",
+      "role": "Marketing",
+      "status": "EXTERNAL",
+      "emoji": "📢",
+      "model": "external"
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger",
+      "role": "Finance",
+      "status": "PLANNED",
+      "emoji": "📊",
+      "model": "TBD"
+    },
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "role": "Research",
+      "status": "PLANNED",
+      "emoji": "🗺️",
+      "model": "TBD"
+    },
+    {
+      "id": "pulsar",
+      "name": "Pulsar",
+      "role": "Signals",
+      "status": "PLANNED",
+      "emoji": "📡",
+      "model": "TBD"
+    },
+    {
+      "id": "abed",
+      "name": "Abed",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "🛏️",
+      "model": "TBD"
+    }
+  ],
   "projects": {
     "A1": {
       "name": "Personal",
@@ -372,16 +503,6 @@
       "completedAt": "2026-04-16",
       "createdAt": "2026-04-02T00:00:00"
     },
-    "B1-2": {
-      "id": "B1-2",
-      "title": "Draft formal message to Charmaine about suing platform (not individuals) per lawyer/judge advice to claim money",
-      "project": "B1",
-      "category": "B",
-      "agent": "forger",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
     "A1-12": {
       "id": "A1-12",
       "title": "Reply to lawyer",
@@ -581,27 +702,6 @@
       "priority": "medium",
       "pauseReason": "Trading on hold after losses",
       "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A6-2": {
-      "id": "A6-2",
-      "title": "Create habit tracker in dashboard",
-      "project": "A6",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "A6-15": {
-      "id": "A6-15",
-      "title": "Build Cerebronn as a proper bot in VS Code Studio",
-      "project": "A6",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-04-30",
-      "createdAt": "2026-03-31T00:00:00+08:00"
     },
     "B6-10": {
       "id": "B6-10",
@@ -1011,26 +1111,6 @@
       "createdAt": "2026-02-01T00:00:00+08:00",
       "sourceStatus": "backlog"
     },
-    "C3-4": {
-      "id": "C3-4",
-      "title": "Test with internal team",
-      "project": "C3",
-      "category": "C",
-      "agent": "mensamusa",
-      "status": "removed",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
-    "C3-5": {
-      "id": "C3-5",
-      "title": "Launch for B6 Elluminate client pilot",
-      "project": "C3",
-      "category": "C",
-      "agent": "mensamusa",
-      "status": "removed",
-      "priority": "low",
-      "createdAt": "2026-02-01T00:00:00+08:00"
-    },
     "A1-6": {
       "id": "A1-6",
       "title": "Sign Lisa's contract",
@@ -1223,17 +1303,6 @@
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00",
       "sourceStatus": "backlog"
-    },
-    "A1-9": {
-      "id": "A1-9",
-      "title": "Set up double dates with Jamie's cousins (Ian, Sean, Joshua PNG) throughout the year",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "deadline": "2026-12-31",
-      "createdAt": "2026-12-01T00:00:00+08:00"
     },
     "B3-3": {
       "id": "B3-3",
@@ -1608,77 +1677,6 @@
       "priority": "low",
       "createdAt": "2026-02-01T00:00:00+08:00",
       "sourceStatus": "backlog"
-    },
-    "TEST-2": {
-      "id": "TEST-2",
-      "title": "Verify Telegram handler test task",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-23T05:16:36.425548+08:00",
-      "completedAt": "2026-06-23T05:18:45.878289+08:00"
-    },
-    "TEMP-TEST": {
-      "id": "TEMP-TEST",
-      "title": "Temporary test task for validation",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-23T17:03:35.683619+08:00"
-    },
-    "TEMP-P3": {
-      "id": "TEMP-P3",
-      "title": "Temporary Priority 3 Telegram path test",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-23T17:23:08.813810+08:00"
-    },
-    "TEMP-LIVE-PROOF": {
-      "id": "TEMP-LIVE-PROOF",
-      "title": "Temporary live dashboard proof task",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-24T03:09:28.724739+08:00"
-    },
-    "TEMP-DASHBOARD-PROOF": {
-      "id": "TEMP-DASHBOARD-PROOF",
-      "title": "Dashboard proof task - safe temporary test",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "removed",
-      "priority": "medium",
-      "createdAt": "2026-06-24T10:59:15.424505+08:00"
-    },
-    "TEMP-TEST-FIX": {
-      "id": "TEMP-TEST-FIX",
-      "title": "Testing publicSnapshotData sync",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "medium",
-      "createdAt": "2026-06-24T18:13:56.185828+08:00"
-    },
-    "TEMP-TEST-FIX2": {
-      "id": "TEMP-TEST-FIX2",
-      "title": "Testing dynamic counts",
-      "project": "A1",
-      "category": "A",
-      "agent": "chad-yi",
-      "status": "open",
-      "priority": "medium",
-      "createdAt": "2026-06-24T18:14:56.103680+08:00"
     }
   },
   "projectDetails": {
@@ -1818,34 +1816,37 @@
       "name": "Chad Yi",
       "role": "The Face - Primary interface",
       "platform": "Hermes Gateway / Telegram",
-      "status": "stale",
+      "status": "LIVE",
       "currentTask": "Live session on Telegram",
       "lastActive": "2026-04-16T20:07:36+08:00",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "LIVE"
     },
     "cerebronn": {
       "name": "Cerebronn",
       "role": "The Brain - Persistent memory & decisions",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "Architecture & deep reasoning (The Brain)",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "helios": {
       "name": "Helios",
       "role": "The Spine - COO, auditor, reporter",
       "platform": "Systemd service",
-      "status": "active",
+      "status": "INACTIVE",
       "currentTask": "Dashboard sync + audit",
       "lastActive": "2026-06-23T04:13:24.278580+08:00",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "INACTIVE"
     },
     "quanta": {
       "name": "Quanta",
       "role": "Trading - OANDA execution/status",
       "platform": "Telegram monitor / Quanta v3",
-      "status": "active",
+      "status": "INACTIVE",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
       "lastActive": "2026-06-23T04:08:26.946152+08:00",
       "capabilities": [],
@@ -1855,52 +1856,58 @@
       "openTrades": 0,
       "pendingOrders": 0,
       "accountMode": "practice_or_unknown",
-      "warnings": []
+      "warnings": [],
+      "buildState": "INACTIVE"
     },
     "forger": {
       "name": "Forger",
       "role": "Web Architect - websites, SEO, full-stack",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "escrita": {
       "name": "Escrita",
       "role": "Story Agent - RE:UNITE novel writing",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "autoura": {
       "name": "Autoura",
       "role": "Supervised growth agent - SME scouting, approval-gated outreach, client intake, story-first blueprints, Higgsfield prompt packs, clip review",
       "platform": "Hermes on-demand / Higgsfield after approval",
-      "status": "active_on_demand",
+      "status": "INACTIVE",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "INACTIVE"
     },
     "mensamusa": {
       "name": "Mensamusa",
       "role": "Research - knowledge and options intelligence",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "clair": {
       "name": "Clair",
       "role": "Streaming Scout",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "eplusplus": {
       "name": "E++",
@@ -1915,46 +1922,51 @@
       "name": "Kotler",
       "role": "Marketing Ops - Google Ads Manager",
       "platform": "External project",
-      "status": "external",
+      "status": "INACTIVE",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "INACTIVE"
     },
     "ledger": {
       "name": "Ledger",
       "role": "Finance / CRM",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "atlas": {
       "name": "Atlas",
       "role": "Researcher",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "pulsar": {
       "name": "Pulsar",
       "role": "Data Sentinel",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     },
     "abed": {
       "name": "Abed",
       "role": "Community Manager",
       "platform": "Hermes planned agent",
-      "status": "planned",
+      "status": "NOT BUILT",
       "currentTask": "",
       "lastActive": "",
-      "capabilities": []
+      "capabilities": [],
+      "buildState": "NOT BUILT"
     }
   },
   "completions": {
@@ -2038,9 +2050,7 @@
       "C4-2",
       "C4-3",
       "C4-4",
-      "C4-5",
-      "TEMP-TEST-FIX",
-      "TEMP-TEST-FIX2"
+      "C4-5"
     ],
     "active": [
       "B6-10",
@@ -2273,13 +2283,13 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "current_balance": 100000,
+        "current_balance": 100000.0,
         "baseline_balance": 3821.73,
         "weekly_profit": 0,
         "weekly_loss": 0,
+        "total_pnl": 96178.27,
         "win_count": 0,
         "loss_count": 1,
-        "today_pnl": 0,
         "status": "unverified_account_reset",
         "pnl_status": "blocked",
         "pnl_note": "Account balance jump/reset detected; PNL blocked until account environment, baseline, deposits/withdrawals, and reset provenance are verified."
@@ -2288,13 +2298,13 @@
     "weekly_rankings": {
       "best": {
         "agent": "quanta",
-        "amount": 0,
-        "period": "2026-05-15"
+        "amount": 0.0,
+        "period": "2026-05-17"
       },
       "worst": {
         "agent": "quanta",
-        "amount": 0,
-        "period": "2026-05-15"
+        "amount": 0.0,
+        "period": "2026-05-17"
       }
     },
     "daily_snapshots": [
@@ -2356,13 +2366,15 @@
       }
     ],
     "currency": "USD",
-    "tracking_started": "2026-04-17"
+    "tracking_started": "2026-04-17",
+    "version": "1.0.0",
+    "starting_balance": 3821.73
   },
-  "taskBoard": {
-    "queueCount": 0,
-    "lastEvent": null,
-    "status": "ready"
-  },
+  "taskBoard": [
+    "queueCount",
+    "lastEvent",
+    "status"
+  ],
   "calendarTasks": {
     "2026-04-16": [
       "A1-11"
@@ -2439,10 +2451,10 @@
     "completedThisWeek": 0,
     "critical": 0,
     "urgent": 0,
-    "totalTasks": 108,
-    "tasksLeft": 79,
+    "totalTasks": 106,
+    "tasksLeft": 77,
     "completedTasks": 29,
-    "open": 73,
+    "open": 71,
     "active": 2,
     "blocked": 1,
     "needsReview": 0,
@@ -2460,10 +2472,10 @@
     "publicSnapshotSanitized": true,
     "workflowBucketsNormalized": true,
     "visualWorkflowStatePublished": true,
-    "sourceSnapshotLastUpdated": "2026-06-23T22:30:31.660608+08:00",
-    "publishedAt": "2026-06-24T18:15:09.079360+08:00",
+    "sourceSnapshotLastUpdated": "2026-06-25T16:50:00.000000+08:00",
+    "publishedAt": "2026-06-25T21:48:24.091728+08:00",
     "counts": {
-      "visibleTasks": 108,
+      "visibleTasks": 106,
       "doneTasks": 29,
       "projects": 22,
       "hasC4": true
@@ -2473,11 +2485,11 @@
     "operation": "publish_dashboard_snapshot",
     "actor": "hermes-canonical-sync",
     "source": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
-    "createdAt": "2026-06-24T18:15:09.079360+08:00",
-    "canonicalLastUpdated": "2026-06-24T03:09:28.807706+08:00",
-    "sourceSnapshotLastUpdated": "2026-06-23T22:30:31.660608+08:00",
+    "createdAt": "2026-06-25T21:48:24.091728+08:00",
+    "canonicalLastUpdated": "2026-06-25T21:48:19.102971+08:00",
+    "sourceSnapshotLastUpdated": "2026-06-25T16:50:00.000000+08:00",
     "counts": {
-      "visibleTasks": 108,
+      "visibleTasks": 106,
       "doneTasks": 29,
       "projects": 22,
       "hasC4": true

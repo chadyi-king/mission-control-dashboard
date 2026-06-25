@@ -38,6 +38,7 @@
     projects: [],
     categories: [],
     agents: [],
+    futureAgents: [],
     queues: {},
     stats: {},
     boardAgentId: 'chad-yi',
@@ -89,6 +90,7 @@
     state.projects = buildProjects(state.raw, state.tasks);
     state.categories = buildCategories(state.raw, state.projects);
     state.agents = buildAgents(state.raw);
+    state.futureAgents = state.raw.futureAgents || [];
     state.queues = buildQueues(state.tasks, state.raw);
     state.stats = buildStats();
   }
@@ -614,19 +616,34 @@
   function renderFleet() {
     setText('fleet-count', `${state.stats.liveAgents} live/ext — ${state.agents.length} mapped`);
     const grid = $('fleet-grid');
-    if (!grid) return;
-    grid.innerHTML = state.agents.map((agent) => {
-      const image = agent.image ? `<div class="card-bg-img" style="background-image:url('${esc(assetUrl(agent.image))}');background-position:${esc(agent.imagePosition)};"></div>` : '';
-      const avatar = agent.image
-        ? `<div class="agent-avatar photo"><img src="${esc(assetUrl(agent.image))}" alt="${esc(displayAgentName(agent))}"></div>`
-        : `<div class="agent-avatar">${esc(agent.initials)}</div>`;
-      return `<article class="agent-card ${agent.image ? 'has-photo-bg' : 'ghost-agent'}" data-agent-card="${esc(agent.id)}">
-        ${image}
-        <div class="agent-card-header"><span class="agent-status-dot ${esc(agent.status)}"></span><span class="agent-badge ${isLiveAgent(agent.status) ? 'live' : 'not-built'}">${esc(statusBadge(agent.status))}</span></div>
-        <div class="agent-card-body">${avatar}<div class="agent-name">${esc(displayAgentName(agent))}</div><div class="agent-role">${esc(agent.role)}</div></div>
-        <div class="agent-card-footer">${esc(agent.currentTask || statusLabel(agent.status))}</div>
-      </article>`;
-    }).join('');
+    if (grid) {
+      grid.innerHTML = state.agents.map((agent) => {
+        const image = agent.image ? `<div class="card-bg-img" style="background-image:url('${esc(assetUrl(agent.image))}');background-position:${esc(agent.imagePosition)};"></div>` : '';
+        const avatar = agent.image
+          ? `<div class="agent-avatar photo"><img src="${esc(assetUrl(agent.image))}" alt="${esc(displayAgentName(agent))}"></div>`
+          : `<div class="agent-avatar">${esc(agent.initials)}</div>`;
+        return `<article class="agent-card ${agent.image ? 'has-photo-bg' : 'ghost-agent'}" data-agent-card="${esc(agent.id)}">
+          ${image}
+          <div class="agent-card-header"><span class="agent-status-dot ${esc(agent.status)}"></span><span class="agent-badge ${isLiveAgent(agent.status) ? 'live' : 'not-built'}">${esc(statusBadge(agent.status))}</span></div>
+          <div class="agent-card-body">${avatar}<div class="agent-name">${esc(displayAgentName(agent))}</div><div class="agent-role">${esc(agent.role)}</div></div>
+          <div class="agent-card-footer">${esc(agent.currentTask || statusLabel(agent.status))}</div>
+        </article>`;
+      }).join('');
+    }
+    // Render future agents
+    const futureGrid = $('fleet-future-grid');
+    if (futureGrid && state.futureAgents && state.futureAgents.length) {
+      futureGrid.innerHTML = state.futureAgents.map((agent) => {
+        const avatar = `<div class="agent-avatar">${esc(agent.emoji || '🔮')}</div>`;
+        return `<article class="agent-card ghost-agent future-agent" data-agent-card="${esc(agent.id)}" style="opacity:0.6;">
+          <div class="agent-card-header"><span class="agent-status-dot planned"></span><span class="agent-badge not-built">PLANNED</span></div>
+          <div class="agent-card-body">${avatar}<div class="agent-name">${esc(agent.name)}</div><div class="agent-role">${esc(agent.role)}</div></div>
+          <div class="agent-card-footer">Future agent</div>
+        </article>`;
+      }).join('');
+    } else if (futureGrid) {
+      futureGrid.innerHTML = '<div class="empty-state" style="opacity:0.5;">No future agents planned</div>';
+    }
   }
 
   // ===== PROJECTS =====

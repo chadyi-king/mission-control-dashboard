@@ -1,7 +1,138 @@
 {
-  "version": "2026-06-23-canonical-v1",
-  "lastUpdated": "2026-06-24T18:15:09.079360+08:00",
+  "version": "2026-06-25-nuclear-reset",
+  "lastUpdated": "2026-06-25T21:48:24.091728+08:00",
   "updatedBy": "hermes-canonical-sync",
+  "fleet": [
+    {
+      "id": "chad-yi",
+      "name": "CHAD_YI",
+      "role": "The Face",
+      "status": "LIVE",
+      "emoji": "🎭",
+      "activeTask": "A6-3 Dashboard audit",
+      "model": "kimi-k2.5"
+    },
+    {
+      "id": "helios",
+      "name": "Helios",
+      "role": "The Spine",
+      "status": "LIVE",
+      "emoji": "🌞",
+      "activeTask": "15-min audits",
+      "model": "local"
+    },
+    {
+      "id": "cerebronn",
+      "name": "Cerebronn",
+      "role": "The Brain",
+      "status": "NOT_BUILT",
+      "emoji": "🧠",
+      "activeTask": "Awaiting activation",
+      "model": "claude-sonnet-4"
+    },
+    {
+      "id": "quanta",
+      "name": "Quanta",
+      "role": "Trading",
+      "status": "INACTIVE",
+      "emoji": "📈",
+      "activeTask": "Trading daemon verify",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "escrita",
+      "name": "Escrita",
+      "role": "Writing",
+      "status": "NOT_BUILT",
+      "emoji": "✍️",
+      "activeTask": "Awaiting activation",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "autoura",
+      "name": "Autoura",
+      "role": "Content",
+      "status": "NOT_BUILT",
+      "emoji": "🎬",
+      "activeTask": "Awaiting activation",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "forger",
+      "name": "Forger",
+      "role": "Builder",
+      "status": "NOT_BUILT",
+      "emoji": "🔨",
+      "activeTask": "Awaiting activation",
+      "model": "codex"
+    }
+  ],
+  "futureAgents": [
+    {
+      "id": "mensamusa",
+      "name": "Mensamusa",
+      "role": "Options Intelligence",
+      "status": "PLANNED",
+      "emoji": "🎯",
+      "model": "kimi-k2.7"
+    },
+    {
+      "id": "clair",
+      "name": "Clair",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "🔮",
+      "model": "TBD"
+    },
+    {
+      "id": "eplusplus",
+      "name": "EPLUSPLUS",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "➕",
+      "model": "TBD"
+    },
+    {
+      "id": "kotler",
+      "name": "Kotler",
+      "role": "Marketing",
+      "status": "EXTERNAL",
+      "emoji": "📢",
+      "model": "external"
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger",
+      "role": "Finance",
+      "status": "PLANNED",
+      "emoji": "📊",
+      "model": "TBD"
+    },
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "role": "Research",
+      "status": "PLANNED",
+      "emoji": "🗺️",
+      "model": "TBD"
+    },
+    {
+      "id": "pulsar",
+      "name": "Pulsar",
+      "role": "Signals",
+      "status": "PLANNED",
+      "emoji": "📡",
+      "model": "TBD"
+    },
+    {
+      "id": "abed",
+      "name": "Abed",
+      "role": "Specialist",
+      "status": "PLANNED",
+      "emoji": "🛏️",
+      "model": "TBD"
+    }
+  ],
   "projects": {
     "A1": {
       "name": "Personal",
@@ -398,7 +529,7 @@
     },
     "A1-14": {
       "id": "A1-14",
-      "title": "Build EPEPTOME website \u2014 selling peptides for research (DEPRECATED - moved to B11)",
+      "title": "Build EPEPTOME website — selling peptides for research (DEPRECATED - moved to B11)",
       "project": "A1",
       "category": "A",
       "agent": "chad-yi",
@@ -409,7 +540,7 @@
     },
     "A2-1": {
       "id": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "project": "A2",
       "category": "A",
       "agent": "escrita",
@@ -420,7 +551,7 @@
     },
     "A3-1": {
       "id": "A3-1",
-      "title": "Script 1 \u2014 Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare \u2014 principalities not flesh and blood)",
+      "title": "Script 1 — Right vs Left politics: 3 Laws (Law 1: Left thinks right is evil, right thinks left is dumb. Law 2: Left is both evil and stupid. Law 3: Spiritual warfare — principalities not flesh and blood)",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -431,7 +562,7 @@
     },
     "A3-2": {
       "id": "A3-2",
-      "title": "Script 2 \u2014 Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
+      "title": "Script 2 — Spiritual warfare: Satan wants to rule world by attacking America's cultural lampstand. Left shows evil/stupidity pushing satanic ideologies",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -442,7 +573,7 @@
     },
     "A3-3": {
       "id": "A3-3",
-      "title": "Script 3 \u2014 Christian faith & Gen Z + continuation of spiritual warfare series",
+      "title": "Script 3 — Christian faith & Gen Z + continuation of spiritual warfare series",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -497,7 +628,7 @@
     },
     "A4-2": {
       "id": "A4-2",
-      "title": "Interview streaming management companies \u2014 must handle clipping, social media, content strategy",
+      "title": "Interview streaming management companies — must handle clipping, social media, content strategy",
       "project": "A4",
       "category": "A",
       "agent": "clair",
@@ -508,7 +639,7 @@
     },
     "A4-3": {
       "id": "A4-3",
-      "title": "Define content strategy \u2014 what to stream, how to grow audience",
+      "title": "Define content strategy — what to stream, how to grow audience",
       "project": "A4",
       "category": "A",
       "agent": "clair",
@@ -563,7 +694,7 @@
     },
     "A5-5": {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
       "project": "A5",
       "category": "A",
       "agent": "quanta",
@@ -584,7 +715,7 @@
     },
     "A7-1": {
       "id": "A7-1",
-      "title": "Finalize wedding theme \u2014 BLACK AND WHITE",
+      "title": "Finalize wedding theme — BLACK AND WHITE",
       "project": "A7",
       "category": "A",
       "agent": "chad-yi",
@@ -608,7 +739,7 @@
     },
     "A7-3": {
       "id": "A7-3",
-      "title": "Send invitations \u2014 RSVP by end of June",
+      "title": "Send invitations — RSVP by end of June",
       "project": "A7",
       "category": "A",
       "agent": "chad-yi",
@@ -665,7 +796,7 @@
     },
     "B3-2": {
       "id": "B3-2",
-      "title": "SEO + Google Ads setup \u2014 \u2460 SEO optimization (3-step process) \u2461 Google Ads (landing pages + checklist) \u2462 Social media \u2463 Client management",
+      "title": "SEO + Google Ads setup — ① SEO optimization (3-step process) ② Google Ads (landing pages + checklist) ③ Social media ④ Client management",
       "project": "B3",
       "category": "B",
       "agent": "forger",
@@ -733,7 +864,7 @@
     },
     "B6-4": {
       "id": "B6-4",
-      "title": "SEO setup \u2014 Basic complete (meta tags, H1s). Content ongoing",
+      "title": "SEO setup — Basic complete (meta tags, H1s). Content ongoing",
       "project": "B6",
       "category": "B",
       "agent": "forger",
@@ -744,7 +875,7 @@
     },
     "B6-5": {
       "id": "B6-5",
-      "title": "Google Ads + finish marketing \u2014 \u2460 Google Ads (2 landing pages + checklist) \u2461 Social media \u2462 Client management",
+      "title": "Google Ads + finish marketing — ① Google Ads (2 landing pages + checklist) ② Social media ③ Client management",
       "project": "B6",
       "category": "B",
       "agent": "forger",
@@ -803,7 +934,7 @@
     },
     "B7-1": {
       "id": "B7-1",
-      "title": "Design website layout and structure \u2014 Homepage, services, about, contact pages",
+      "title": "Design website layout and structure — Homepage, services, about, contact pages",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -814,7 +945,7 @@
     },
     "B7-2": {
       "id": "B7-2",
-      "title": "Write website copy and content \u2014 Brand messaging, service descriptions, SEO content",
+      "title": "Write website copy and content — Brand messaging, service descriptions, SEO content",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -825,7 +956,7 @@
     },
     "B8-1": {
       "id": "B8-1",
-      "title": "Design website layout and structure \u2014 Homepage, portfolio, services, contact pages",
+      "title": "Design website layout and structure — Homepage, portfolio, services, contact pages",
       "project": "B8",
       "category": "B",
       "agent": "forger",
@@ -848,7 +979,7 @@
     },
     "B8-3": {
       "id": "B8-3",
-      "title": "Research Higgsfield AI pathway \u2014 AI UGC and Product Advertisements",
+      "title": "Research Higgsfield AI pathway — AI UGC and Product Advertisements",
       "project": "B8",
       "category": "B",
       "agent": "cerebronn",
@@ -871,7 +1002,7 @@
     },
     "B9-1": {
       "id": "B9-1",
-      "title": "Set up Shopify store \u2014 Theme selection, product catalog, payment gateways",
+      "title": "Set up Shopify store — Theme selection, product catalog, payment gateways",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -882,7 +1013,7 @@
     },
     "B10-1": {
       "id": "B10-1",
-      "title": "Corporate data tracking setup \u2014 Back burner, revisit end of year",
+      "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "project": "B10",
       "category": "B",
       "agent": "forger",
@@ -892,7 +1023,7 @@
     },
     "B11-1": {
       "id": "B11-1",
-      "title": "Design website layout \u2014 Homepage, product catalog, about, contact pages",
+      "title": "Design website layout — Homepage, product catalog, about, contact pages",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -903,7 +1034,7 @@
     },
     "C1-1": {
       "id": "C1-1",
-      "title": "Study for RES exam \u2014 Moved to Notebook LLM",
+      "title": "Study for RES exam — Moved to Notebook LLM",
       "project": "C1",
       "category": "C",
       "agent": "chad-yi",
@@ -915,7 +1046,7 @@
     },
     "C1-2": {
       "id": "C1-2",
-      "title": "Register for RES exam \u2014 October or December 2026 session",
+      "title": "Register for RES exam — October or December 2026 session",
       "project": "C1",
       "category": "C",
       "agent": "chad-yi",
@@ -938,7 +1069,7 @@
     },
     "C2-2": {
       "id": "C2-2",
-      "title": "Research remote sales companies \u2014 Look for high-commission roles (base $60k negotiable to $35-40k)",
+      "title": "Research remote sales companies — Look for high-commission roles (base $60k negotiable to $35-40k)",
       "project": "C2",
       "category": "C",
       "agent": "chad-yi",
@@ -949,7 +1080,7 @@
     },
     "C3-1": {
       "id": "C3-1",
-      "title": "Research Gather Town \u2014 2D virtual workspace platform. Custom map creation possible with object library + interactive elements",
+      "title": "Research Gather Town — 2D virtual workspace platform. Custom map creation possible with object library + interactive elements",
       "project": "C3",
       "category": "C",
       "agent": "mensamusa",
@@ -1066,7 +1197,7 @@
     },
     "A3-7": {
       "id": "A3-7",
-      "title": "Script 4 \u2014 [NEED TOPIC FROM CALEB]",
+      "title": "Script 4 — [NEED TOPIC FROM CALEB]",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -1077,7 +1208,7 @@
     },
     "A3-8": {
       "id": "A3-8",
-      "title": "Script 5 \u2014 [NEED TOPIC FROM CALEB]",
+      "title": "Script 5 — [NEED TOPIC FROM CALEB]",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -1088,7 +1219,7 @@
     },
     "A3-9": {
       "id": "A3-9",
-      "title": "Script 6 \u2014 [NEED TOPIC FROM CALEB]",
+      "title": "Script 6 — [NEED TOPIC FROM CALEB]",
       "project": "A3",
       "category": "A",
       "agent": "autoura",
@@ -1121,7 +1252,7 @@
     },
     "A6-16": {
       "id": "A6-16",
-      "title": "Fix dashboard functionality \u2014 stats cards, agent faces, Kanban boards with agent task instructions",
+      "title": "Fix dashboard functionality — stats cards, agent faces, Kanban boards with agent task instructions",
       "project": "A6",
       "category": "A",
       "agent": "chad-yi",
@@ -1175,7 +1306,7 @@
     },
     "B3-3": {
       "id": "B3-3",
-      "title": "Add Team Building section to website \u2014 Create subdomain or page for team building activities (escape rooms, laser tag, etc.) alongside large-scale events",
+      "title": "Add Team Building section to website — Create subdomain or page for team building activities (escape rooms, laser tag, etc.) alongside large-scale events",
       "project": "B3",
       "category": "B",
       "agent": "forger",
@@ -1208,7 +1339,7 @@
     },
     "B7-5": {
       "id": "B7-5",
-      "title": "Add contact forms and CTAs \u2014 Lead capture, booking integration",
+      "title": "Add contact forms and CTAs — Lead capture, booking integration",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -1219,7 +1350,7 @@
     },
     "B7-6": {
       "id": "B7-6",
-      "title": "Basic SEO setup \u2014 Meta tags, sitemap, Google Search Console",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
       "project": "B7",
       "category": "B",
       "agent": "forger",
@@ -1241,7 +1372,7 @@
     },
     "B8-4": {
       "id": "B8-4",
-      "title": "Write website copy and content \u2014 AI marketing services, case studies, pricing",
+      "title": "Write website copy and content — AI marketing services, case studies, pricing",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1274,7 +1405,7 @@
     },
     "B8-8": {
       "id": "B8-8",
-      "title": "Add portfolio showcase \u2014 Higgsfield AI video examples, client work",
+      "title": "Add portfolio showcase — Higgsfield AI video examples, client work",
       "project": "B8",
       "category": "B",
       "agent": "forger",
@@ -1285,7 +1416,7 @@
     },
     "B8-9": {
       "id": "B8-9",
-      "title": "Basic SEO setup \u2014 Meta tags, sitemap, Google Search Console",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
       "project": "B8",
       "category": "B",
       "agent": "forger",
@@ -1296,7 +1427,7 @@
     },
     "B9-2": {
       "id": "B9-2",
-      "title": "Design store layout and branding \u2014 Homepage, product pages, checkout flow",
+      "title": "Design store layout and branding — Homepage, product pages, checkout flow",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1307,7 +1438,7 @@
     },
     "B9-3": {
       "id": "B9-3",
-      "title": "Write product descriptions and copy \u2014 SEO-optimized, persuasive sales copy",
+      "title": "Write product descriptions and copy — SEO-optimized, persuasive sales copy",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1318,7 +1449,7 @@
     },
     "B9-4": {
       "id": "B9-4",
-      "title": "Configure shipping and fulfillment \u2014 Rates, zones, automated notifications",
+      "title": "Configure shipping and fulfillment — Rates, zones, automated notifications",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1329,7 +1460,7 @@
     },
     "B9-5": {
       "id": "B9-5",
-      "title": "Set up payment processing \u2014 Stripe, PayPal, local payment methods",
+      "title": "Set up payment processing — Stripe, PayPal, local payment methods",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1340,7 +1471,7 @@
     },
     "B9-6": {
       "id": "B9-6",
-      "title": "Basic SEO setup \u2014 Meta tags, sitemap, Google Search Console",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1351,7 +1482,7 @@
     },
     "B9-7": {
       "id": "B9-7",
-      "title": "Add analytics and tracking \u2014 Google Analytics, Facebook Pixel, conversion tracking",
+      "title": "Add analytics and tracking — Google Analytics, Facebook Pixel, conversion tracking",
       "project": "B9",
       "category": "B",
       "agent": "forger",
@@ -1362,7 +1493,7 @@
     },
     "B11-2": {
       "id": "B11-2",
-      "title": "Set up e-commerce platform \u2014 Payment gateways, shipping, inventory management",
+      "title": "Set up e-commerce platform — Payment gateways, shipping, inventory management",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1373,7 +1504,7 @@
     },
     "B11-3": {
       "id": "B11-3",
-      "title": "Write product descriptions \u2014 Research peptides, benefits, usage guidelines",
+      "title": "Write product descriptions — Research peptides, benefits, usage guidelines",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1384,7 +1515,7 @@
     },
     "B11-4": {
       "id": "B11-4",
-      "title": "Ensure legal compliance \u2014 Disclaimers, research-use-only labels, age verification",
+      "title": "Ensure legal compliance — Disclaimers, research-use-only labels, age verification",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1417,7 +1548,7 @@
     },
     "B11-7": {
       "id": "B11-7",
-      "title": "Basic SEO setup \u2014 Meta tags, sitemap, Google Search Console",
+      "title": "Basic SEO setup — Meta tags, sitemap, Google Search Console",
       "project": "B11",
       "category": "B",
       "agent": "forger",
@@ -1428,7 +1559,7 @@
     },
     "C3-6": {
       "id": "C3-6",
-      "title": "EXODEUS - Riftborn \u2014 Create new game: MegaMan + SKUL inspired action-platformer with roguelike elements",
+      "title": "EXODEUS - Riftborn — Create new game: MegaMan + SKUL inspired action-platformer with roguelike elements",
       "project": "C3",
       "category": "C",
       "agent": "mensamusa",
@@ -1439,7 +1570,7 @@
     },
     "B8-10": {
       "id": "B8-10",
-      "title": "Create Higgsfield AI video for TRME \u2014 Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for TRME — Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1450,7 +1581,7 @@
     },
     "B8-11": {
       "id": "B8-11",
-      "title": "Create Higgsfield AI video for Fire Terminator \u2014 Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for Fire Terminator — Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1461,7 +1592,7 @@
     },
     "B8-12": {
       "id": "B8-12",
-      "title": "Create Higgsfield AI video for DOTERRA \u2014 Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for DOTERRA — Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1472,7 +1603,7 @@
     },
     "B8-13": {
       "id": "B8-13",
-      "title": "Create Higgsfield AI video for HEI Legacy \u2014 Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for HEI Legacy — Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1483,7 +1614,7 @@
     },
     "B8-14": {
       "id": "B8-14",
-      "title": "Create Higgsfield AI video for Day Zero with Andre \u2014 Product advertisement using AI UGC",
+      "title": "Create Higgsfield AI video for Day Zero with Andre — Product advertisement using AI UGC",
       "project": "B8",
       "category": "B",
       "agent": "autoura",
@@ -1494,7 +1625,7 @@
     },
     "C4-1": {
       "id": "C4-1",
-      "title": "Build website for HEI Legacy (with Marylyn) \u2014 Landing page, about, services, contact",
+      "title": "Build website for HEI Legacy (with Marylyn) — Landing page, about, services, contact",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1505,7 +1636,7 @@
     },
     "C4-2": {
       "id": "C4-2",
-      "title": "Build website for Day Zero with Andre \u2014 Landing page, program details, booking, testimonials",
+      "title": "Build website for Day Zero with Andre — Landing page, program details, booking, testimonials",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1516,7 +1647,7 @@
     },
     "C4-3": {
       "id": "C4-3",
-      "title": "Build website for Envision Electrical \u2014 Data center engineers, electrical infrastructure services, contact/quote forms",
+      "title": "Build website for Envision Electrical — Data center engineers, electrical infrastructure services, contact/quote forms",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1527,7 +1658,7 @@
     },
     "C4-4": {
       "id": "C4-4",
-      "title": "Create portfolio showcase for Website Services \u2014 Case studies, client testimonials, service packages",
+      "title": "Create portfolio showcase for Website Services — Case studies, client testimonials, service packages",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1538,7 +1669,7 @@
     },
     "C4-5": {
       "id": "C4-5",
-      "title": "Set up lead capture system \u2014 Contact forms, CRM integration, automated follow-ups",
+      "title": "Set up lead capture system — Contact forms, CRM integration, automated follow-ups",
       "project": "C4",
       "category": "C",
       "agent": "forger",
@@ -1971,7 +2102,7 @@
   "needsAttention": [
     {
       "id": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "reason": "blocked",
       "owner": "ESCRITA"
     },
@@ -1983,13 +2114,13 @@
     },
     {
       "id": "A5-5",
-      "title": "Fix QUANTA reporting \u2014 proper symbol reading from OANDA API",
+      "title": "Fix QUANTA reporting — proper symbol reading from OANDA API",
       "reason": "paused",
       "owner": "CHAD_YI"
     },
     {
       "id": "B10-1",
-      "title": "Corporate data tracking setup \u2014 Back burner, revisit end of year",
+      "title": "Corporate data tracking setup — Back burner, revisit end of year",
       "reason": "paused",
       "owner": "Forger"
     }
@@ -1997,15 +2128,15 @@
   "inputsNeeded": [
     {
       "taskId": "A2-1",
-      "title": "Chapter 13 writing \u2014 Link to Google Drive, use Cowork from Anthropic Claude for uploads",
+      "title": "Chapter 13 writing — Link to Google Drive, use Cowork from Anthropic Claude for uploads",
       "agent": "ESCRITA",
-      "reason": "Blocked \u2014 needs input",
+      "reason": "Blocked — needs input",
       "blockedSince": "2026-02-01T00:00:00+08:00"
     }
   ],
   "dailyBriefing": {
     "date": "2026-06-23",
-    "summary": "\ud83d\udccb 77 tasks in flight. Focus on top priorities.",
+    "summary": "📋 77 tasks in flight. Focus on top priorities.",
     "focus": 0,
     "blockers": 1,
     "completedToday": 0,
@@ -2152,7 +2283,6 @@
     "agents": {
       "quanta": {
         "source": "oanda",
-        "account_id": "101-003-23656635-001",
         "current_balance": 100000.0,
         "baseline_balance": 3821.73,
         "weekly_profit": 0,
@@ -2321,10 +2451,10 @@
     "completedThisWeek": 0,
     "critical": 0,
     "urgent": 0,
-    "totalTasks": 108,
-    "tasksLeft": 79,
+    "totalTasks": 106,
+    "tasksLeft": 77,
     "completedTasks": 29,
-    "open": 73,
+    "open": 71,
     "active": 2,
     "blocked": 1,
     "needsReview": 0,
@@ -2342,10 +2472,10 @@
     "publicSnapshotSanitized": true,
     "workflowBucketsNormalized": true,
     "visualWorkflowStatePublished": true,
-    "sourceSnapshotLastUpdated": "2026-06-23T22:30:31.660608+08:00",
-    "publishedAt": "2026-06-24T18:15:09.079360+08:00",
+    "sourceSnapshotLastUpdated": "2026-06-25T16:50:00.000000+08:00",
+    "publishedAt": "2026-06-25T21:48:24.091728+08:00",
     "counts": {
-      "visibleTasks": 108,
+      "visibleTasks": 106,
       "doneTasks": 29,
       "projects": 22,
       "hasC4": true
@@ -2355,11 +2485,11 @@
     "operation": "publish_dashboard_snapshot",
     "actor": "hermes-canonical-sync",
     "source": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
-    "createdAt": "2026-06-24T18:15:09.079360+08:00",
-    "canonicalLastUpdated": "2026-06-24T03:09:28.807706+08:00",
-    "sourceSnapshotLastUpdated": "2026-06-23T22:30:31.660608+08:00",
+    "createdAt": "2026-06-25T21:48:24.091728+08:00",
+    "canonicalLastUpdated": "2026-06-25T21:48:19.102971+08:00",
+    "sourceSnapshotLastUpdated": "2026-06-25T16:50:00.000000+08:00",
     "counts": {
-      "visibleTasks": 108,
+      "visibleTasks": 106,
       "doneTasks": 29,
       "projects": 22,
       "hasC4": true
