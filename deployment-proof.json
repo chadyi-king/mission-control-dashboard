@@ -3,10 +3,10 @@
   "publishedBy": "sync-dashboard-branches.yml",
   "deploymentMode": "legacy-gh-pages-active-files-only",
   "sourceBranch": "main",
-  "sourceSha": "bdb1cc326118ed54ba3468b910b58ff399888f51",
-  "runId": "28256906043",
+  "sourceSha": "27076763faecfc847a8b2753a26b1dd2640e2522",
+  "runId": "28258456796",
   "runAttempt": "1",
-  "createdAt": "2026-06-26T18:16:40.724Z",
+  "createdAt": "2026-06-26T18:47:10.801Z",
   "currentApp": "app-20260624-stable-v1.html",
   "includedFiles": [
     "app-20260624-stable-v1.html",
@@ -21,7 +21,7 @@
     "sw.js"
   ],
   "dataSnapshot": "data.json",
-  "dataSha256": "8a004f81fe7279c77afbe4aa8995a5982ebb59c1f592e2dc1cef485c34dcabf8",
+  "dataSha256": "cfde2b7df3ceda33331fdba9143accc3274280b71119ac62d29e49202447f276",
   "expected": {
     "projects": 22,
     "visibleTasks": 106,
