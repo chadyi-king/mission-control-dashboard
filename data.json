@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-26T09:00:21.424432+08:00",
-  "updatedBy": "helios-v3",
+  "lastUpdated": "2026-06-26T09:00:00+08:00",
+  "updatedBy": "quanta-pnl-updater",
   "stats": {
     "totalTasks": 106,
     "tasksLeft": 77,
@@ -2373,7 +2373,11 @@
       }
     ],
     "currency": "USD",
-    "tracking_started": "2026-04-17"
+    "tracking_started": "2026-04-17",
+    "last_updated": "2026-06-26T09:00:00+08:00",
+    "weekly_total_pnl": 0.0,
+    "total_pnl": 0.0,
+    "trading_daemon": "not_running"
   },
   "taskBoard": {
     "queueCount": 0,
