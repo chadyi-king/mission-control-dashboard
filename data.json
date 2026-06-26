@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-26T09:00:00+08:00",
-  "updatedBy": "quanta-pnl-updater",
+  "lastUpdated": "2026-06-26T09:45:24.245638+08:00",
+  "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 106,
     "tasksLeft": 77,
@@ -1373,7 +1373,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-26T09:00:21.427625+08:00",
+      "lastActive": "2026-06-26T09:45:24.248761+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1382,7 +1382,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "active",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-26T08:57:40.569148+08:00",
+      "lastActive": "2026-06-26T09:39:52.714471+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -2028,11 +2028,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-26T09:00:21.427625+08:00"
+        "lastActive": "2026-06-26T09:45:24.248761+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-26T08:57:40.569148+08:00"
+        "lastActive": "2026-06-26T09:39:52.714471+08:00"
       },
       "forger": {
         "status": "planned",
@@ -2082,12 +2082,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-26T09:00:21.424432+08:00",
+    "lastRun": "2026-06-26T09:45:24.245638+08:00",
     "dataIntegrity": "ok",
     "taskCount": 106,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-26T09:00:21.436628+08:00",
+      "runAt": "2026-06-26T09:45:24.274507+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -2373,11 +2373,7 @@
       }
     ],
     "currency": "USD",
-    "tracking_started": "2026-04-17",
-    "last_updated": "2026-06-26T09:00:00+08:00",
-    "weekly_total_pnl": 0.0,
-    "total_pnl": 0.0,
-    "trading_daemon": "not_running"
+    "tracking_started": "2026-04-17"
   },
   "taskBoard": {
     "queueCount": 0,
