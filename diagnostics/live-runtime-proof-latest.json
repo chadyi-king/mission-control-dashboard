@@ -1,10 +1,10 @@
 {
   "kind": "mission-control-live-runtime-proof",
   "verifierBuild": "20260624-direct-root-aware-1",
-  "generatedAt": "2026-06-27T13:47:33.331Z",
+  "generatedAt": "2026-06-27T14:02:35.536Z",
   "attempt": 1,
   "url": "https://chadyi-king.github.io/mission-control-dashboard/",
-  "expectedSourceSha": "7af20f7b010ecddf16bb6d02a1b86233feb823c6",
+  "expectedSourceSha": "9a08e0e5905b6f75a17fc9bd28b65d7332b4f431",
   "pass": true,
   "checks": {
     "rootHttpOk": true,
@@ -37,8 +37,8 @@
       "dataSource": {
         "buildId": "20260624-github-api-data-2",
         "mode": "github-api-main",
-        "sha": "ab0fd4c5448b23d3490d06580b8d3f6783ce5d5e",
-        "updatedAt": "2026-06-27T13:47:33.709Z",
+        "sha": "f789a8f3c09c18401b10584031ff4194612d5e9b",
+        "updatedAt": "2026-06-27T14:02:35.896Z",
         "lastError": ""
       },
       "fleetCards": 135,
@@ -52,14 +52,14 @@
         "https://chadyi-king.github.io/mission-control-dashboard/dashboard-hermes-bridge.js?build=20260624-root-direct-stable-1",
         "https://chadyi-king.github.io/mission-control-dashboard/dashboard-app-20260623-cachebreak-1.js?build=20260624-root-direct-stable-1",
         "https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap",
-        "https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=1782568053481",
+        "https://api.github.com/repos/chadyi-king/mission-control-dashboard/contents/data.json?ref=main&t=1782568955686",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/chad-yi-avatar.jpg?build=20260624-cachebust-1",
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/quanta-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/cerebronn-avatar.jpg?v=1&build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/helios-avatar.jpg?build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/quanta-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/forger-avatar.jpg?v=1&build=20260624-cachebust-1",
-        "https://chadyi-king.github.io/mission-control-dashboard/assets/autour-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/escrita-avatar.jpg?v=1&build=20260624-cachebust-1",
+        "https://chadyi-king.github.io/mission-control-dashboard/assets/autour-avatar.jpg?build=20260624-cachebust-1",
         "https://chadyi-king.github.io/mission-control-dashboard/assets/kotler-avatar.jpg?build=20260624-cachebust-1"
       ]
     },
@@ -91,10 +91,10 @@
       "publishedBy": "sync-dashboard-branches.yml",
       "deploymentMode": "legacy-gh-pages-active-files-only",
       "sourceBranch": "main",
-      "sourceSha": "7af20f7b010ecddf16bb6d02a1b86233feb823c6",
-      "runId": "28291053211",
+      "sourceSha": "9a08e0e5905b6f75a17fc9bd28b65d7332b4f431",
+      "runId": "28291412559",
       "runAttempt": "1",
-      "createdAt": "2026-06-27T13:46:44.013Z",
+      "createdAt": "2026-06-27T14:01:55.489Z",
       "currentApp": "app-20260624-stable-v1.html",
       "includedFiles": [
         "app-20260624-stable-v1.html",
@@ -109,7 +109,7 @@
         "sw.js"
       ],
       "dataSnapshot": "data.json",
-      "dataSha256": "b18c62ba9140f5f1b1d6f70d8ba1ec548f2f5680bcc7088c915559d915ca4895",
+      "dataSha256": "2331309c2e188c657ccf36819fd0182161db0d60abbb653b4b32a60b9fd0fcd1",
       "expected": {
         "projects": 22,
         "visibleTasks": 106,
@@ -118,8 +118,8 @@
       }
     },
     "githubDataStatus": 200,
-    "githubDataSha": "ab0fd4c5448b23d3490d06580b8d3f6783ce5d5e",
-    "dataSha256": "b18c62ba9140f5f1b1d6f70d8ba1ec548f2f5680bcc7088c915559d915ca4895",
+    "githubDataSha": "f789a8f3c09c18401b10584031ff4194612d5e9b",
+    "dataSha256": "2331309c2e188c657ccf36819fd0182161db0d60abbb653b4b32a60b9fd0fcd1",
     "stats": {
       "projects": 22,
       "visible": 106,
