@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "lastUpdated": "2026-06-27T10:15:26.601060+08:00",
+  "lastUpdated": "2026-06-27T11:00:48.390099+08:00",
   "updatedBy": "helios-v3",
   "stats": {
     "totalTasks": 106,
@@ -1373,7 +1373,7 @@
       "platform": "Systemd service",
       "status": "active",
       "currentTask": "Dashboard sync + audit",
-      "lastActive": "2026-06-27T10:15:26.604217+08:00",
+      "lastActive": "2026-06-27T11:00:48.393108+08:00",
       "capabilities": []
     },
     "quanta": {
@@ -1382,7 +1382,7 @@
       "platform": "Telegram monitor / Quanta v3",
       "status": "active",
       "currentTask": "Status/reporting active; live trading off; open trades 0, pending orders 0",
-      "lastActive": "2026-06-27T10:11:11.691768+08:00",
+      "lastActive": "2026-06-27T10:56:07.745782+08:00",
       "capabilities": [],
       "runtimeStatus": "scheduled_worker",
       "tradingMode": "off",
@@ -2028,11 +2028,11 @@
       },
       "helios": {
         "status": "active",
-        "lastActive": "2026-06-27T10:15:26.604217+08:00"
+        "lastActive": "2026-06-27T11:00:48.393108+08:00"
       },
       "quanta": {
         "status": "active",
-        "lastActive": "2026-06-27T10:11:11.691768+08:00"
+        "lastActive": "2026-06-27T10:56:07.745782+08:00"
       },
       "forger": {
         "status": "planned",
@@ -2082,12 +2082,12 @@
     "overdueTasks": []
   },
   "audit": {
-    "lastRun": "2026-06-27T10:15:26.601060+08:00",
+    "lastRun": "2026-06-27T11:00:48.390099+08:00",
     "dataIntegrity": "ok",
     "taskCount": 106,
     "findings": [],
     "preflight": {
-      "runAt": "2026-06-27T10:15:26.613988+08:00",
+      "runAt": "2026-06-27T11:00:48.401691+08:00",
       "passed": true,
       "blockingFailures": 0,
       "checks": [
@@ -2461,8 +2461,8 @@
     "publicSnapshotSanitized": true,
     "workflowBucketsNormalized": true,
     "visualWorkflowStatePublished": true,
-    "sourceSnapshotLastUpdated": "2026-06-27T09:30:18.080303+08:00",
-    "publishedAt": "2026-06-27T09:46:39.941164+08:00",
+    "sourceSnapshotLastUpdated": "2026-06-27T10:30:28.820391+08:00",
+    "publishedAt": "2026-06-27T10:31:48.651553+08:00",
     "counts": {
       "visibleTasks": 106,
       "doneTasks": 29,
@@ -2474,9 +2474,9 @@
     "operation": "publish_dashboard_snapshot",
     "actor": "hermes-canonical-sync",
     "source": "/home/chad-yi/.hermes/workspace/state/mission-control.json",
-    "createdAt": "2026-06-27T09:46:39.941164+08:00",
-    "canonicalLastUpdated": "2026-06-27T09:45:46.930500+08:00",
-    "sourceSnapshotLastUpdated": "2026-06-27T09:30:18.080303+08:00",
+    "createdAt": "2026-06-27T10:31:48.651553+08:00",
+    "canonicalLastUpdated": "2026-06-27T10:31:44.916477+08:00",
+    "sourceSnapshotLastUpdated": "2026-06-27T10:30:28.820391+08:00",
     "counts": {
       "visibleTasks": 106,
       "doneTasks": 29,
